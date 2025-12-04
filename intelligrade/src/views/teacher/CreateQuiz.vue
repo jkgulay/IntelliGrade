@@ -10,11 +10,10 @@
             <span class="brand-name">IntelliGrade</span>
           </div>
         </div>
-        
+
         <!-- Center: Empty space for clean look -->
-        <div class="navbar-center">
-        </div>
-        
+        <div class="navbar-center"></div>
+
         <!-- Right: User Profile and Actions -->
         <div class="navbar-right">
           <button @click="goBack" class="nav-icon-btn rounded-bg">
@@ -25,14 +24,20 @@
 
           <!-- Notification Bell -->
           <div class="notif-wrapper">
-            <button class="nav-icon-btn rounded-bg" @click="toggleNotifDropdown" aria-label="Notifications">
+            <button
+              class="nav-icon-btn rounded-bg"
+              @click="toggleNotifDropdown"
+              aria-label="Notifications"
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
-              <span v-if="notifications.length" class="notification-badge">{{ notifications.length }}</span>
+              <span v-if="notifications.length" class="notification-badge">{{
+                notifications.length
+              }}</span>
             </button>
-            
+
             <!-- Notification Dropdown -->
             <div v-if="showNotifDropdown" class="notification-dropdown">
               <div class="dropdown-header">
@@ -42,7 +47,12 @@
                 <div v-if="notifications.length === 0" class="no-notifications">
                   No new notifications
                 </div>
-                <div v-for="notif in notifications" :key="notif.id" class="notification-item" @click="handleNotificationClick(notif)">
+                <div
+                  v-for="notif in notifications"
+                  :key="notif.id"
+                  class="notification-item"
+                  @click="handleNotificationClick(notif)"
+                >
                   <div class="notif-content">
                     <h4>{{ notif.title }}</h4>
                     <p>{{ notif.body }}</p>
@@ -52,7 +62,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- User Profile -->
           <div class="user-profile-wrapper">
             <div class="user-profile rounded-bg" @click="toggleProfileDropdown">
@@ -63,11 +73,17 @@
                 </svg>
               </div>
               <span class="user-name">{{ fullName }}</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="dropdown-arrow">
-                <path d="M7 10l5 5 5-5z"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="dropdown-arrow"
+              >
+                <path d="M7 10l5 5 5-5z" />
               </svg>
             </div>
-            
+
             <!-- Profile Dropdown -->
             <div v-if="showProfileDropdown" class="profile-dropdown">
               <div class="dropdown-header">
@@ -84,20 +100,24 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="dropdown-menu">
                 <router-link to="/teacher/settings" class="dropdown-item">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"/>
+                    <path
+                      d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"
+                    />
                   </svg>
                   <span>Profile & Settings</span>
                 </router-link>
-                
+
                 <div class="dropdown-divider"></div>
-                
+
                 <button @click="logout" class="dropdown-item logout-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"/>
+                    <path
+                      d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"
+                    />
                   </svg>
                   <span>Logout</span>
                 </button>
@@ -109,46 +129,111 @@
     </nav>
 
     <!-- Sidebar Navigation - Custom Tooltip Labels on Hover -->
-    <aside class="sidebar" style="background:#3D8D7A; border-right:none;">
+    <aside class="sidebar" style="background: #3d8d7a; border-right: none">
       <nav class="sidebar-nav">
-        <router-link to="/teacher/dashboard" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/dashboard' }">
+        <router-link
+          to="/teacher/dashboard"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/dashboard' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M10 20v-6h4v6m5-8h3L12 3 2 12h3v8h5v-6h4v6h5v-8z" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Dashboard</span>
         </router-link>
-        <router-link to="/teacher/subjects" class="sidebar-item rounded-bg" :class="{ 'active': $route.path.includes('/teacher/subjects') }">
+        <router-link
+          to="/teacher/subjects"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path.includes('/teacher/subjects') }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="7" width="18" height="13" rx="2" />
               <path d="M3 7l9-4 9 4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Classes</span>
         </router-link>
-        <router-link to="/teacher/gradebook" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/gradebook' }">
+        <router-link
+          to="/teacher/gradebook"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/gradebook' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="4" y="4" width="16" height="16" rx="2" />
               <path d="M8 2v4M16 2v4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Gradebook</span>
         </router-link>
-        <router-link to="/teacher/upload-assessment" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/upload-assessment' }">
+        <router-link
+          to="/teacher/upload-assessment"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/upload-assessment' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M12 19V6M5 12l7-7 7 7" />
               <rect x="5" y="19" width="14" height="2" rx="1" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Upload Assessment</span>
         </router-link>
-        <router-link to="/teacher/analytics" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/analytics' }">
+        <router-link
+          to="/teacher/analytics"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/analytics' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="12" width="4" height="8" />
               <rect x="10" y="8" width="4" height="12" />
               <rect x="17" y="4" width="4" height="16" />
@@ -156,9 +241,22 @@
           </div>
           <span class="sidebar-tooltip">Analytics</span>
         </router-link>
-        <router-link to="/teacher/messages" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/messages' }">
+        <router-link
+          to="/teacher/messages"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/messages' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="M3 5l9 7 9-7" />
             </svg>
@@ -173,7 +271,7 @@
       <!-- Scroll to Top Button -->
       <button v-if="showScrollTop" @click="scrollToTop" class="scroll-to-top">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 14l5-5 5 5z"/>
+          <path d="M7 14l5-5 5 5z" />
         </svg>
       </button>
       <!-- Page Header -->
@@ -182,12 +280,16 @@
           <div class="header-left">
             <div class="header-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                <path
+                  d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                />
               </svg>
             </div>
             <div>
               <h1 class="header-title">Create New Quiz</h1>
-              <p class="header-subtitle">{{ subject.name }}<span v-if="section.name"> - {{ section.name }}</span></p>
+              <p class="header-subtitle">
+                {{ subject.name }}<span v-if="section.name"> - {{ section.name }}</span>
+              </p>
             </div>
           </div>
         </div>
@@ -195,651 +297,1035 @@
 
       <!-- Content Area -->
       <div class="main-container">
-      <div class="container">
-        <!-- Enhanced Progress Steps -->
-        <div v-if="currentStep !== 'landing'" class="progress-container">
-          <div class="progress-card">
-            <div class="progress-track">
-              <div v-for="(step, index) in steps" :key="index" class="progress-step">
-                <div class="step-line" :class="{ 'completed': getStepIndex(currentStep) > index }"></div>
-                <div class="step-indicator" :class="{ 
-                  'active': getStepIndex(currentStep) >= index,
-                  'completed': getStepIndex(currentStep) > index 
-                }">
-                  <div class="step-circle">
-                    <span v-if="getStepIndex(currentStep) > index" class="checkmark">✓</span>
-                    <span v-else class="step-number">{{ index + 1 }}</span>
+        <div class="container">
+          <!-- Enhanced Progress Steps -->
+          <div v-if="currentStep !== 'landing'" class="progress-container">
+            <div class="progress-card">
+              <div class="progress-track">
+                <div v-for="(step, index) in steps" :key="index" class="progress-step">
+                  <div
+                    class="step-line"
+                    :class="{ completed: getStepIndex(currentStep) > index }"
+                  ></div>
+                  <div
+                    class="step-indicator"
+                    :class="{
+                      active: getStepIndex(currentStep) >= index,
+                      completed: getStepIndex(currentStep) > index,
+                    }"
+                  >
+                    <div class="step-circle">
+                      <span v-if="getStepIndex(currentStep) > index" class="checkmark">✓</span>
+                      <span v-else class="step-number">{{ index + 1 }}</span>
+                    </div>
                   </div>
-                </div>
-                <span class="step-label">{{ step }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      <!-- =============================================== -->
-      <!-- LANDING PAGE: Dynamic Quiz Status Display -->
-      <!-- =============================================== -->
-      <div v-if="currentStep === 'landing'" class="landing-section">
-        
-        <!-- Loading State -->
-        <div v-if="isLoadingQuizzes" class="status-card loading-card">
-          <div class="status-icon">
-            <div class="spinner"></div>
-          </div>
-          <h3 class="status-title">Loading Quiz Data...</h3>
-          <p class="status-description">Please wait while we check your existing quizzes.</p>
-        </div>
-
-        <!-- No Quizzes State -->
-        <div v-else-if="existingQuizzesCount === 0" class="status-card empty-state-card">
-          <div class="status-icon">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
-            </svg>
-          </div>
-          <h3 class="status-title">No Quizzes Available</h3>
-          <p class="status-description">You haven't created any quizzes for this section yet.</p>
-          <div class="status-actions">
-            <button @click="currentStep = 'details'" class="create-quiz-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-              </svg>
-              Create Your First Quiz
-            </button>
-          </div>
-        </div>
-
-        <!-- Existing Quizzes State -->
-        <div v-else class="status-card existing-quizzes-card">
-          <div class="status-icon success-icon">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
-            </svg>
-          </div>
-          <h3 class="status-title">
-            {{ existingQuizzesCount }} Quiz{{ existingQuizzesCount > 1 ? 'es' : '' }} Created
-          </h3>
-          <p class="status-description">
-            You have successfully created {{ existingQuizzesCount }} quiz{{ existingQuizzesCount > 1 ? 'es' : '' }} for <strong>{{ section.name }}</strong>.
-            <br>Create another quiz or go back to manage existing ones.
-          </p>
-          <div class="status-actions">
-            <button @click="goBackToQuizzes" class="btn btn-secondary manage-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15 19l-7-7 7-7"/>
-              </svg>
-              Manage Quizzes
-            </button>
-            <button @click="currentStep = 'details'" class="create-quiz-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-              </svg>
-              Create Another Quiz
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quiz Details with Enhanced Design -->
-      <div v-if="currentStep === 'details'" class="content-card slide-up">
-        <div class="section-header">
-          <div class="section-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <div class="section-content">
-            <h2 class="section-title">Quiz Details</h2>
-            <p class="section-subtitle">Set up the basic information for your quiz</p>
-          </div>
-        </div>
-        
-        <div class="form-section">
-          <div class="form-grid">
-            <div class="form-group">
-              <label class="form-label">
-                <span class="label-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><path d="M4 20h4l10-10a2.828 2.828 0 0 0-4-4L4 16v4z"/><path d="M14.5 5.5l4 4"/></svg>
-                </span>
-                Quiz Title *
-              </label>
-              <input v-model="quiz.title" type="text" placeholder="e.g., Biology Chapter 5 Quiz" class="form-input enhanced-input" />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">
-                <span class="label-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><text x="7" y="17" font-size="10" fill="#20c997">#</text></svg>
-                </span>
-                Number of Questions *
-              </label>
-              <input v-model.number="quiz.numberOfQuestions" type="number" min="1" max="50" placeholder="e.g., 10" class="form-input enhanced-input" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">
-              <span class="label-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 2v4m8-4v4"/><path d="M4 10h16"/></svg>
-              </span>
-              Description / Instructions
-            </label>
-            <textarea v-model="quiz.description" rows="4" placeholder="Add instructions or context for this quiz..." class="form-input form-textarea enhanced-input"></textarea>
-          </div>
-
-          <div class="action-buttons">
-            <button @click="currentStep = 'landing'" class="btn btn-secondary">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15 19l-7-7 7-7"/>
-              </svg>
-              Back
-            </button>
-            <button @click="proceedToQuestions" class="btn btn-primary">
-              Continue to Questions
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add Questions with Clean Design -->
-      <div v-if="currentStep === 'questions'" class="content-card slide-up">
-        <div class="section-header">
-          <div class="section-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-          </div>
-          <div class="section-content">
-            <h2 class="section-title">Build Your Questions</h2>
-            <div class="question-counter">
-              <div class="counter-badge">
-                <span class="counter-text">{{ quiz.questions.length }} / {{ quiz.numberOfQuestions }} Questions</span>
-                <div class="progress-bar">
-                  <div class="progress-fill" :style="{ width: (quiz.questions.length / quiz.numberOfQuestions) * 100 + '%' }"></div>
+                  <span class="step-label">{{ step }}</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          <!-- =============================================== -->
+          <!-- LANDING PAGE: Dynamic Quiz Status Display -->
+          <!-- =============================================== -->
+          <div v-if="currentStep === 'landing'" class="landing-section">
+            <!-- Loading State -->
+            <div v-if="isLoadingQuizzes" class="status-card loading-card">
+              <div class="status-icon">
+                <div class="spinner"></div>
+              </div>
+              <h3 class="status-title">Loading Quiz Data...</h3>
+              <p class="status-description">Please wait while we check your existing quizzes.</p>
+            </div>
 
-        <!-- Questions Container -->
-        <div class="questions-wrapper">
-          <!-- Question Cards -->
-          <div v-for="(question, index) in quiz.questions" :key="index" class="question-card-modern">
-            <div class="question-card-header">
-              <div class="question-badge-modern">{{ index + 1 }}</div>
-              <h3 class="question-title-modern">Question {{ index + 1 }}</h3>
-              <button @click="removeQuestion(index)" class="remove-question-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+            <!-- No Quizzes State -->
+            <div v-else-if="existingQuizzesCount === 0" class="status-card empty-state-card">
+              <div class="status-icon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
                 </svg>
-              </button>
+              </div>
+              <h3 class="status-title">No Quizzes Available</h3>
+              <p class="status-description">
+                You haven't created any quizzes for this section yet.
+              </p>
+              <div class="status-actions">
+                <button @click="currentStep = 'details'" class="create-quiz-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                    <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                  </svg>
+                  Create Your First Quiz
+                </button>
+              </div>
             </div>
 
-            <div class="question-card-body">
-              <!-- Question Type Selection -->
-              <div class="form-field">
-                <label class="field-label">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+            <!-- Existing Quizzes State -->
+            <div v-else class="status-card existing-quizzes-card">
+              <div class="status-icon success-icon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
+                </svg>
+              </div>
+              <h3 class="status-title">
+                {{ existingQuizzesCount }} Quiz{{ existingQuizzesCount > 1 ? 'es' : '' }} Created
+              </h3>
+              <p class="status-description">
+                You have successfully created {{ existingQuizzesCount }} quiz{{
+                  existingQuizzesCount > 1 ? 'es' : ''
+                }}
+                for <strong>{{ section.name }}</strong
+                >. <br />Create another quiz or go back to manage existing ones.
+              </p>
+              <div class="status-actions">
+                <button @click="goBackToQuizzes" class="btn btn-secondary manage-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15 19l-7-7 7-7" />
                   </svg>
-                  Question Type
-                </label>
-                <select v-model="question.type" class="modern-select">
-                  <option value="multiple_choice">Multiple Choice</option>
-                  <option value="true_false">True/False</option>
-                  <option value="fill_blank">Fill in the Blanks</option>
-                </select>
+                  Manage Quizzes
+                </button>
+                <button @click="currentStep = 'details'" class="create-quiz-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                    <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                  </svg>
+                  Create Another Quiz
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quiz Details with Enhanced Design -->
+          <div v-if="currentStep === 'details'" class="content-card slide-up">
+            <div class="section-header">
+              <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div class="section-content">
+                <h2 class="section-title">Quiz Details</h2>
+                <p class="section-subtitle">Set up the basic information for your quiz</p>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">
+                    <span class="label-icon">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                      >
+                        <path d="M4 20h4l10-10a2.828 2.828 0 0 0-4-4L4 16v4z" />
+                        <path d="M14.5 5.5l4 4" />
+                      </svg>
+                    </span>
+                    Quiz Title *
+                  </label>
+                  <input
+                    v-model="quiz.title"
+                    type="text"
+                    placeholder="e.g., Biology Chapter 5 Quiz"
+                    class="form-input enhanced-input"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">
+                    <span class="label-icon">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                      >
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <text x="7" y="17" font-size="10" fill="#20c997">#</text>
+                      </svg>
+                    </span>
+                    Number of Questions *
+                  </label>
+                  <input
+                    v-model.number="quiz.numberOfQuestions"
+                    type="number"
+                    min="1"
+                    max="50"
+                    placeholder="e.g., 10"
+                    class="form-input enhanced-input"
+                  />
+                </div>
               </div>
 
-              <!-- Question Text -->
-              <div class="form-field">
-                <label class="field-label">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                  </svg>
-                  Question Text
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="label-icon">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#20c997"
+                      stroke-width="2"
+                    >
+                      <rect x="4" y="4" width="16" height="16" rx="2" />
+                      <path d="M8 2v4m8-4v4" />
+                      <path d="M4 10h16" />
+                    </svg>
+                  </span>
+                  Description / Instructions
                 </label>
-                <textarea 
-                  v-model="question.text" 
-                  rows="3" 
-                  placeholder="Enter your question here..." 
-                  class="modern-textarea"
+                <textarea
+                  v-model="quiz.description"
+                  rows="4"
+                  placeholder="Add instructions or context for this quiz..."
+                  class="form-input form-textarea enhanced-input"
                 ></textarea>
               </div>
 
-              <!-- Multiple Choice Options -->
-              <div v-if="question.type === 'multiple_choice'" class="options-section">
-                <label class="field-label">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
+              <div class="action-buttons">
+                <button @click="currentStep = 'landing'" class="btn btn-secondary">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15 19l-7-7 7-7" />
                   </svg>
-                  Answer Options
-                </label>
-                
-                <div class="options-list">
-                  <div v-for="(option, optIndex) in question.options" :key="optIndex" class="option-row">
-                    <div class="option-controls">
-                      <input 
-                        type="radio" 
-                        :name="'correct-' + index" 
-                        :checked="question.correctAnswer === optIndex" 
-                        @change="question.correctAnswer = optIndex" 
-                        class="option-radio-modern"
-                      />
-                      <div class="option-letter-modern">{{ String.fromCharCode(65 + optIndex) }}</div>
-                    </div>
-                    <input 
-                      v-model="question.options[optIndex]" 
-                      type="text" 
-                      :placeholder="'Enter option ' + String.fromCharCode(65 + optIndex)" 
-                      class="option-input-modern"
-                    />
-                    <button 
-                      v-if="question.options.length > 2" 
-                      @click="removeOption(index, optIndex)" 
-                      class="remove-option-modern"
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                
-                <button @click="addOption(index)" class="add-option-modern">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                  Back
+                </button>
+                <button @click="proceedToQuestions" class="btn btn-primary">
+                  Continue to Questions
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                  Add Option
                 </button>
               </div>
-
-              <!-- True/False Options -->
-              <div v-if="question.type === 'true_false'" class="tf-section">
-                <label class="field-label">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
-                  </svg>
-                  Correct Answer
-                </label>
-                
-                <div class="tf-options-modern">
-                  <label class="tf-option-modern" :class="{ active: question.correctAnswer === 'true' }">
-                    <input type="radio" v-model="question.correctAnswer" value="true" class="tf-radio-hidden" />
-                    <div class="tf-icon-modern true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
-                      </svg>
-                    </div>
-                    <span class="tf-label-modern">True</span>
-                  </label>
-                  
-                  <label class="tf-option-modern" :class="{ active: question.correctAnswer === 'false' }">
-                    <input type="radio" v-model="question.correctAnswer" value="false" class="tf-radio-hidden" />
-                    <div class="tf-icon-modern false">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
-                      </svg>
-                    </div>
-                    <span class="tf-label-modern">False</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Fill in the Blanks -->
-              <div v-if="question.type === 'fill_blank'" class="form-field">
-                <label class="field-label">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                  </svg>
-                  Correct Answer
-                </label>
-                <input 
-                  v-model="question.correctAnswer" 
-                  type="text" 
-                  placeholder="Enter the exact answer..." 
-                  class="modern-input"
-                />
-              </div>
             </div>
           </div>
 
-          <!-- Add Question Button -->
-          <div v-if="quiz.questions.length < quiz.numberOfQuestions" class="add-question-modern" @click="addQuestion">
-            <div class="add-question-content-modern">
-              <div class="add-icon-modern">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+          <!-- Add Questions with Clean Design -->
+          <div v-if="currentStep === 'questions'" class="content-card slide-up">
+            <div class="section-header">
+              <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
                 </svg>
               </div>
-              <h4>Add Question {{ quiz.questions.length + 1 }}</h4>
-              <p>Click to create a new question</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Navigation Actions -->
-        <div class="action-buttons-modern">
-          <button @click="currentStep = 'details'" class="btn-modern btn-secondary-modern">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
-            </svg>
-            Back
-          </button>
-          <button 
-            v-if="quiz.questions.length > 0" 
-            @click="currentStep = 'settings'" 
-            class="btn-modern btn-primary-modern"
-          >
-            Continue to Settings
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Quiz Settings with Enhanced Design -->
-      <div v-if="currentStep === 'settings'" class="content-card slide-up">
-        <div class="section-header">
-          <div class="section-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97L2.46 14.6c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.31.61.22l2.49-1c.52.39 1.06.73 1.69.98l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.25 1.17-.59 1.69-.98l2.49 1c.22.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.63Z"/>
-            </svg>
-          </div>
-          <div class="section-content">
-            <h2 class="section-title">Quiz Settings</h2>
-            <p class="section-subtitle">Configure how your quiz will work</p>
-          </div>
-        </div>
-
-        <div class="settings-grid">
-          <!-- Time Limit Setting -->
-          <div class="setting-card enhanced-setting">
-            <div class="setting-header">
-              <div class="setting-info">
-                <span class="setting-emoji">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                </span>
-                <div class="setting-details">
-                  <h3>Time Limit</h3>
-                  <p>Set a time constraint for this quiz</p>
-                </div>
-              </div>
-              <label class="toggle-switch">
-                <input v-model="quiz.settings.hasTimeLimit" type="checkbox" />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div v-if="quiz.settings.hasTimeLimit" class="setting-content">
-              <div class="time-input-group">
-                <input v-model.number="quiz.settings.timeLimit" type="number" min="1" max="180" placeholder="30" class="form-input time-input" />
-                <span class="time-unit">minutes</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Attempts Setting -->
-          <div class="setting-card enhanced-setting">
-            <div class="setting-header">
-              <div class="setting-info">
-                <span class="setting-emoji">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
-                    <polyline points="1 4 1 10 7 10"/>
-                    <polyline points="23 20 23 14 17 14"/>
-                    <path d="M20.49 9A9 9 0 0 0 5.51 15M3.51 9A9 9 0 0 1 18.49 15"/>
-                  </svg>
-                </span>
-                <div class="setting-details">
-                  <h3>Attempts Allowed</h3>
-                  <p>How many times can students retake?</p>
+              <div class="section-content">
+                <h2 class="section-title">Build Your Questions</h2>
+                <div class="question-counter">
+                  <div class="counter-badge">
+                    <span class="counter-text"
+                      >{{ quiz.questions.length }} / {{ quiz.numberOfQuestions }} Questions</span
+                    >
+                    <div class="progress-bar">
+                      <div
+                        class="progress-fill"
+                        :style="{
+                          width: (quiz.questions.length / quiz.numberOfQuestions) * 100 + '%',
+                        }"
+                      ></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="setting-content">
-              <div class="attempts-options">
-                <label class="attempt-option" :class="quiz.settings.attemptsAllowed === 1 ? 'selected' : ''">
-                  <input type="radio" v-model.number="quiz.settings.attemptsAllowed" :value="1" class="hidden" />
-                  <span class="attempt-number">1</span>
-                  <span class="attempt-label">Once</span>
-                </label>
-                <label class="attempt-option" :class="quiz.settings.attemptsAllowed === 2 ? 'selected' : ''">
-                  <input type="radio" v-model.number="quiz.settings.attemptsAllowed" :value="2" class="hidden" />
-                  <span class="attempt-number">2</span>
-                  <span class="attempt-label">Twice</span>
-                </label>
-                <label class="attempt-option" :class="quiz.settings.attemptsAllowed === 999 ? 'selected' : ''">
-                  <input type="radio" v-model.number="quiz.settings.attemptsAllowed" :value="999" class="hidden" />
-                  <span class="attempt-number">∞</span>
-                  <span class="attempt-label">Unlimited</span>
-                </label>
+
+            <!-- Questions Container -->
+            <div class="questions-wrapper">
+              <!-- Question Cards -->
+              <div
+                v-for="(question, index) in quiz.questions"
+                :key="index"
+                class="question-card-modern"
+              >
+                <div class="question-card-header">
+                  <div class="question-badge-modern">{{ index + 1 }}</div>
+                  <h3 class="question-title-modern">Question {{ index + 1 }}</h3>
+                  <button @click="removeQuestion(index)" class="remove-question-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="question-card-body">
+                  <!-- Question Type Selection -->
+                  <div class="form-field">
+                    <label class="field-label">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                        />
+                      </svg>
+                      Question Type
+                    </label>
+                    <select v-model="question.type" class="modern-select">
+                      <option value="multiple_choice">Multiple Choice</option>
+                      <option value="true_false">True/False</option>
+                      <option value="fill_blank">Fill in the Blanks</option>
+                    </select>
+                  </div>
+
+                  <!-- Question Text -->
+                  <div class="form-field">
+                    <label class="field-label">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                        />
+                      </svg>
+                      Question Text
+                    </label>
+                    <textarea
+                      v-model="question.text"
+                      rows="3"
+                      placeholder="Enter your question here..."
+                      class="modern-textarea"
+                    ></textarea>
+                  </div>
+
+                  <!-- Multiple Choice Options -->
+                  <div v-if="question.type === 'multiple_choice'" class="options-section">
+                    <label class="field-label">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
+                        />
+                      </svg>
+                      Answer Options
+                    </label>
+
+                    <div class="options-list">
+                      <div
+                        v-for="(option, optIndex) in question.options"
+                        :key="optIndex"
+                        class="option-row"
+                      >
+                        <div class="option-controls">
+                          <input
+                            type="radio"
+                            :name="'correct-' + index"
+                            :checked="question.correctAnswer === optIndex"
+                            @change="question.correctAnswer = optIndex"
+                            class="option-radio-modern"
+                          />
+                          <div class="option-letter-modern">
+                            {{ String.fromCharCode(65 + optIndex) }}
+                          </div>
+                        </div>
+                        <input
+                          v-model="question.options[optIndex]"
+                          type="text"
+                          :placeholder="'Enter option ' + String.fromCharCode(65 + optIndex)"
+                          class="option-input-modern"
+                        />
+                        <button
+                          v-if="question.options.length > 2"
+                          @click="removeOption(index, optIndex)"
+                          class="remove-option-modern"
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <button @click="addOption(index)" class="add-option-modern">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                      </svg>
+                      Add Option
+                    </button>
+                  </div>
+
+                  <!-- True/False Options -->
+                  <div v-if="question.type === 'true_false'" class="tf-section">
+                    <label class="field-label">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
+                        />
+                      </svg>
+                      Correct Answer
+                    </label>
+
+                    <div class="tf-options-modern">
+                      <label
+                        class="tf-option-modern"
+                        :class="{ active: question.correctAnswer === 'true' }"
+                      >
+                        <input
+                          type="radio"
+                          v-model="question.correctAnswer"
+                          value="true"
+                          class="tf-radio-hidden"
+                        />
+                        <div class="tf-icon-modern true">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
+                            />
+                          </svg>
+                        </div>
+                        <span class="tf-label-modern">True</span>
+                      </label>
+
+                      <label
+                        class="tf-option-modern"
+                        :class="{ active: question.correctAnswer === 'false' }"
+                      >
+                        <input
+                          type="radio"
+                          v-model="question.correctAnswer"
+                          value="false"
+                          class="tf-radio-hidden"
+                        />
+                        <div class="tf-icon-modern false">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                            />
+                          </svg>
+                        </div>
+                        <span class="tf-label-modern">False</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Fill in the Blanks -->
+                  <div v-if="question.type === 'fill_blank'" class="form-field">
+                    <label class="field-label">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                        />
+                      </svg>
+                      Correct Answer
+                    </label>
+                    <input
+                      v-model="question.correctAnswer"
+                      type="text"
+                      placeholder="Enter the exact answer..."
+                      class="modern-input"
+                    />
+                  </div>
+                </div>
               </div>
+
+              <!-- Add Question Button -->
+              <div
+                v-if="quiz.questions.length < quiz.numberOfQuestions"
+                class="add-question-modern"
+                @click="addQuestion"
+              >
+                <div class="add-question-content-modern">
+                  <div class="add-icon-modern">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                    </svg>
+                  </div>
+                  <h4>Add Question {{ quiz.questions.length + 1 }}</h4>
+                  <p>Click to create a new question</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation Actions -->
+            <div class="action-buttons-modern">
+              <button @click="currentStep = 'details'" class="btn-modern btn-secondary-modern">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"
+                  />
+                </svg>
+                Back
+              </button>
+              <button
+                v-if="quiz.questions.length > 0"
+                @click="currentStep = 'settings'"
+                class="btn-modern btn-primary-modern"
+              >
+                Continue to Settings
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
 
-          <!-- Shuffle Setting -->
-          <div class="setting-card enhanced-setting">
-            <div class="setting-header">
-              <div class="setting-info">
-                <span class="setting-emoji">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
-                    <polyline points="16 3 21 3 21 8"/>
-                    <line x1="4" y1="20" x2="21" y2="3"/>
-                    <polyline points="21 16 21 21 16 21"/>
-                    <line x1="15" y1="15" x2="21" y2="21"/>
-                    <line x1="4" y1="4" x2="9" y2="9"/>
-                  </svg>
-                </span>
-                <div class="setting-details">
-                  <h3>Shuffle Questions</h3>
-                  <p>Randomize question and answer order</p>
-                </div>
+          <!-- Quiz Settings with Enhanced Design -->
+          <div v-if="currentStep === 'settings'" class="content-card slide-up">
+            <div class="section-header">
+              <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97L2.46 14.6c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.31.61.22l2.49-1c.52.39 1.06.73 1.69.98l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.25 1.17-.59 1.69-.98l2.49 1c.22.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.63Z"
+                  />
+                </svg>
               </div>
-              <label class="toggle-switch">
-                <input v-model="quiz.settings.shuffle" type="checkbox" />
-                <span class="toggle-slider"></span>
-              </label>
+              <div class="section-content">
+                <h2 class="section-title">Quiz Settings</h2>
+                <p class="section-subtitle">Configure how your quiz will work</p>
+              </div>
             </div>
-          </div>
 
-          <!-- Schedule Setting -->
-          <div class="setting-card enhanced-setting schedule-card">
-            <div class="setting-header">
-              <div class="setting-info">
-                <span class="setting-emoji">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                  </svg>
-                </span>
-                <div class="setting-details">
-                  <h3>Schedule</h3>
-                  <p>Set when students can access this quiz</p>
-                </div>
-              </div>
-            </div>
-            <div class="setting-content">
-              <div class="schedule-grid">
-                <div class="form-group">
-                  <label class="form-label-small">
-                    <span class="label-icon">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
+            <div class="settings-grid">
+              <!-- Time Limit Setting -->
+              <div class="setting-card enhanced-setting">
+                <div class="setting-header">
+                  <div class="setting-info">
+                    <span class="setting-emoji">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#10b981"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
                       </svg>
                     </span>
-                    Start Date & Time (PHT)
+                    <div class="setting-details">
+                      <h3>Time Limit</h3>
+                      <p>Set a time constraint for this quiz</p>
+                    </div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input v-model="quiz.settings.hasTimeLimit" type="checkbox" />
+                    <span class="toggle-slider"></span>
                   </label>
-                  <input v-model="quiz.settings.startDate" type="datetime-local" class="form-input enhanced-input" />
-                  <small class="timezone-note">Philippines Time (UTC+8) - This will be saved as UTC in database</small>
                 </div>
-                <div class="form-group">
-                  <label class="form-label-small">
-                    <span class="label-icon">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 12 12 18 18 18"/>
+                <div v-if="quiz.settings.hasTimeLimit" class="setting-content">
+                  <div class="time-input-group">
+                    <input
+                      v-model.number="quiz.settings.timeLimit"
+                      type="number"
+                      min="1"
+                      max="180"
+                      placeholder="30"
+                      class="form-input time-input"
+                    />
+                    <span class="time-unit">minutes</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Attempts Setting -->
+              <div class="setting-card enhanced-setting">
+                <div class="setting-header">
+                  <div class="setting-info">
+                    <span class="setting-emoji">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#10b981"
+                        stroke-width="2"
+                      >
+                        <polyline points="1 4 1 10 7 10" />
+                        <polyline points="23 20 23 14 17 14" />
+                        <path d="M20.49 9A9 9 0 0 0 5.51 15M3.51 9A9 9 0 0 1 18.49 15" />
                       </svg>
                     </span>
-                    End Date & Time (PHT)
+                    <div class="setting-details">
+                      <h3>Attempts Allowed</h3>
+                      <p>How many times can students retake?</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="setting-content">
+                  <div class="attempts-options">
+                    <label
+                      class="attempt-option"
+                      :class="quiz.settings.attemptsAllowed === 1 ? 'selected' : ''"
+                    >
+                      <input
+                        type="radio"
+                        v-model.number="quiz.settings.attemptsAllowed"
+                        :value="1"
+                        class="hidden"
+                      />
+                      <span class="attempt-number">1</span>
+                      <span class="attempt-label">Once</span>
+                    </label>
+                    <label
+                      class="attempt-option"
+                      :class="quiz.settings.attemptsAllowed === 2 ? 'selected' : ''"
+                    >
+                      <input
+                        type="radio"
+                        v-model.number="quiz.settings.attemptsAllowed"
+                        :value="2"
+                        class="hidden"
+                      />
+                      <span class="attempt-number">2</span>
+                      <span class="attempt-label">Twice</span>
+                    </label>
+                    <label
+                      class="attempt-option"
+                      :class="quiz.settings.attemptsAllowed === 999 ? 'selected' : ''"
+                    >
+                      <input
+                        type="radio"
+                        v-model.number="quiz.settings.attemptsAllowed"
+                        :value="999"
+                        class="hidden"
+                      />
+                      <span class="attempt-number">∞</span>
+                      <span class="attempt-label">Unlimited</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shuffle Setting -->
+              <div class="setting-card enhanced-setting">
+                <div class="setting-header">
+                  <div class="setting-info">
+                    <span class="setting-emoji">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#10b981"
+                        stroke-width="2"
+                      >
+                        <polyline points="16 3 21 3 21 8" />
+                        <line x1="4" y1="20" x2="21" y2="3" />
+                        <polyline points="21 16 21 21 16 21" />
+                        <line x1="15" y1="15" x2="21" y2="21" />
+                        <line x1="4" y1="4" x2="9" y2="9" />
+                      </svg>
+                    </span>
+                    <div class="setting-details">
+                      <h3>Shuffle Questions</h3>
+                      <p>Randomize question and answer order</p>
+                    </div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input v-model="quiz.settings.shuffle" type="checkbox" />
+                    <span class="toggle-slider"></span>
                   </label>
-                  <input v-model="quiz.settings.endDate" type="datetime-local" class="form-input enhanced-input" />
-                  <small class="timezone-note">Philippines Time (UTC+8) - This will be saved as UTC in database</small>
+                </div>
+              </div>
+
+              <!-- Schedule Setting -->
+              <div class="setting-card enhanced-setting schedule-card">
+                <div class="setting-header">
+                  <div class="setting-info">
+                    <span class="setting-emoji">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#10b981"
+                        stroke-width="2"
+                      >
+                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                      </svg>
+                    </span>
+                    <div class="setting-details">
+                      <h3>Schedule</h3>
+                      <p>Set when students can access this quiz</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="setting-content">
+                  <div class="schedule-grid">
+                    <div class="form-group">
+                      <label class="form-label-small">
+                        <span class="label-icon">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#10b981"
+                            stroke-width="2"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                          </svg>
+                        </span>
+                        Start Date & Time (PHT)
+                      </label>
+                      <input
+                        v-model="quiz.settings.startDate"
+                        type="datetime-local"
+                        class="form-input enhanced-input"
+                      />
+                      <small class="timezone-note"
+                        >Philippines Time (UTC+8) - This will be saved as UTC in database</small
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label-small">
+                        <span class="label-icon">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#10b981"
+                            stroke-width="2"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 12 12 18 18 18" />
+                          </svg>
+                        </span>
+                        End Date & Time (PHT)
+                      </label>
+                      <input
+                        v-model="quiz.settings.endDate"
+                        type="datetime-local"
+                        class="form-input enhanced-input"
+                      />
+                      <small class="timezone-note"
+                        >Philippines Time (UTC+8) - This will be saved as UTC in database</small
+                      >
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="action-buttons">
-          <button @click="currentStep = 'questions'" class="btn btn-secondary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15 19l-7-7 7-7"/>
-            </svg>
-            Back
-          </button>
-          <button @click="currentStep = 'preview'" class="btn btn-primary">
-            Preview Quiz
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Preview with Enhanced Design -->
-      <div v-if="currentStep === 'preview'" class="content-card slide-up">
-        <div class="preview-header">
-          <div class="preview-badge">
-            <span class="badge-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3"/></svg>
-            </span>
-            PREVIEW MODE
-          </div>
-          <h2 class="preview-title">{{ quiz.title }}</h2>
-          <p class="preview-description">{{ quiz.description }}</p>
-          <div class="preview-stats">
-            <div class="stat-card">
-              <div class="stat-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div class="stat-value">
-                <span v-if="quiz.settings.hasTimeLimit">{{ quiz.settings.timeLimit }} min</span>
-                <span v-else>No limit</span>
-              </div>
-              <div class="stat-label">Time</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><path d="M4 20h4l10-10a2.828 2.828 0 0 0-4-4L4 16v4z"/><path d="M14.5 5.5l4 4"/></svg>
-              </div>
-              <div class="stat-value">{{ quiz.questions.length }}</div>
-              <div class="stat-label">Questions</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.51 15M3.51 9A9 9 0 0 1 18.49 15"/></svg>
-              </div>
-              <div class="stat-value">{{ quiz.settings.attemptsAllowed === 999 ? '∞' : quiz.settings.attemptsAllowed }}</div>
-              <div class="stat-label">Attempts</div>
+            <div class="action-buttons">
+              <button @click="currentStep = 'questions'" class="btn btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15 19l-7-7 7-7" />
+                </svg>
+                Back
+              </button>
+              <button @click="currentStep = 'preview'" class="btn btn-primary">
+                Preview Quiz
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </button>
             </div>
           </div>
-        </div>
 
-        <div class="preview-questions">
-          <div v-for="(question, index) in quiz.questions" :key="index" class="preview-card enhanced-preview">
-            <div class="preview-question-header">
-              <div class="preview-question-number">{{ index + 1 }}</div>
-              <div class="question-type-badge" :class="question.type">
-                <span v-if="question.type === 'multiple_choice'">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2" style="vertical-align:middle;"><path d="M4 20h4l10-10a2.828 2.828 0 0 0-4-4L4 16v4z"/><path d="M14.5 5.5l4 4"/></svg> MCQ
+          <!-- Preview with Enhanced Design -->
+          <div v-if="currentStep === 'preview'" class="content-card slide-up">
+            <div class="preview-header">
+              <div class="preview-badge">
+                <span class="badge-icon">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#20c997"
+                    stroke-width="2"
+                  >
+                    <ellipse cx="12" cy="12" rx="10" ry="6" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
                 </span>
-                <span v-else-if="question.type === 'true_false'">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2" style="vertical-align:middle;"><polyline points="20 6 9 17 4 12"/></svg> T/F
-                </span>
-                <span v-else>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2" style="vertical-align:middle;"><path d="M4 20h4l10-10a2.828 2.828 0 0 0-4-4L4 16v4z"/><path d="M14.5 5.5l4 4"/></svg> Fill
-                </span>
+                PREVIEW MODE
               </div>
-            </div>
-            <h3 class="preview-question-text">{{ question.text }}</h3>
-            
-            <!-- MCQ Preview -->
-            <div v-if="question.type === 'multiple_choice'" class="preview-options">
-              <div v-for="(option, optIndex) in question.options" :key="optIndex" 
-                   :class="['preview-option', question.correctAnswer === optIndex ? 'correct-option' : '']">
-                <div class="option-marker">{{ String.fromCharCode(65 + optIndex) }}</div>
-                <span class="option-text">{{ option }}</span>
-                <span v-if="question.correctAnswer === optIndex" class="correct-mark">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
-              </div>
-            </div>
-
-            <!-- True/False Preview -->
-            <div v-if="question.type === 'true_false'" class="preview-options">
-              <div :class="['preview-option', question.correctAnswer === 'true' ? 'correct-option' : '']">
-                <div class="option-marker">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <h2 class="preview-title">{{ quiz.title }}</h2>
+              <p class="preview-description">{{ quiz.description }}</p>
+              <div class="preview-stats">
+                <div class="stat-card">
+                  <div class="stat-icon">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#20c997"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  </div>
+                  <div class="stat-value">
+                    <span v-if="quiz.settings.hasTimeLimit">{{ quiz.settings.timeLimit }} min</span>
+                    <span v-else>No limit</span>
+                  </div>
+                  <div class="stat-label">Time</div>
                 </div>
-                <span class="option-text">True</span>
-                <span v-if="question.correctAnswer === 'true'" class="correct-mark">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
-              </div>
-              <div :class="['preview-option', question.correctAnswer === 'false' ? 'correct-option' : '']">
-                <div class="option-marker">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <div class="stat-card">
+                  <div class="stat-icon">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#20c997"
+                      stroke-width="2"
+                    >
+                      <path d="M4 20h4l10-10a2.828 2.828 0 0 0-4-4L4 16v4z" />
+                      <path d="M14.5 5.5l4 4" />
+                    </svg>
+                  </div>
+                  <div class="stat-value">{{ quiz.questions.length }}</div>
+                  <div class="stat-label">Questions</div>
                 </div>
-                <span class="option-text">False</span>
-                <span v-if="question.correctAnswer === 'false'" class="correct-mark">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
+                <div class="stat-card">
+                  <div class="stat-icon">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#20c997"
+                      stroke-width="2"
+                    >
+                      <polyline points="1 4 1 10 7 10" />
+                      <polyline points="23 20 23 14 17 14" />
+                      <path d="M20.49 9A9 9 0 0 0 5.51 15M3.51 9A9 9 0 0 1 18.49 15" />
+                    </svg>
+                  </div>
+                  <div class="stat-value">
+                    {{
+                      quiz.settings.attemptsAllowed === 999 ? '∞' : quiz.settings.attemptsAllowed
+                    }}
+                  </div>
+                  <div class="stat-label">Attempts</div>
+                </div>
               </div>
             </div>
 
-            <!-- Fill Blank Preview -->
-            <div v-if="question.type === 'fill_blank'" class="preview-fill-blank">
-              <div class="fill-blank-input">
-                <input type="text" disabled placeholder="Student answer here..." class="form-input" />
-              </div>
-              <div class="correct-answer-display">
-                <span class="correct-label">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2" style="vertical-align:middle;"><polyline points="20 6 9 17 4 12"/></svg> Correct Answer:
-                </span>
-                <span class="correct-text">{{ question.correctAnswer }}</span>
+            <div class="preview-questions">
+              <div
+                v-for="(question, index) in quiz.questions"
+                :key="index"
+                class="preview-card enhanced-preview"
+              >
+                <div class="preview-question-header">
+                  <div class="preview-question-number">{{ index + 1 }}</div>
+                  <div class="question-type-badge" :class="question.type">
+                    <span v-if="question.type === 'multiple_choice'">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                        style="vertical-align: middle"
+                      >
+                        <path d="M4 20h4l10-10a2.828 2.828 0 0 0-4-4L4 16v4z" />
+                        <path d="M14.5 5.5l4 4" />
+                      </svg>
+                      MCQ
+                    </span>
+                    <span v-else-if="question.type === 'true_false'">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                        style="vertical-align: middle"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      T/F
+                    </span>
+                    <span v-else>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                        style="vertical-align: middle"
+                      >
+                        <path d="M4 20h4l10-10a2.828 2.828 0 0 0-4-4L4 16v4z" />
+                        <path d="M14.5 5.5l4 4" />
+                      </svg>
+                      Fill
+                    </span>
+                  </div>
+                </div>
+                <h3 class="preview-question-text">{{ question.text }}</h3>
+
+                <!-- MCQ Preview -->
+                <div v-if="question.type === 'multiple_choice'" class="preview-options">
+                  <div
+                    v-for="(option, optIndex) in question.options"
+                    :key="optIndex"
+                    :class="[
+                      'preview-option',
+                      question.correctAnswer === optIndex ? 'correct-option' : '',
+                    ]"
+                  >
+                    <div class="option-marker">{{ String.fromCharCode(65 + optIndex) }}</div>
+                    <span class="option-text">{{ option }}</span>
+                    <span v-if="question.correctAnswer === optIndex" class="correct-mark">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- True/False Preview -->
+                <div v-if="question.type === 'true_false'" class="preview-options">
+                  <div
+                    :class="[
+                      'preview-option',
+                      question.correctAnswer === 'true' ? 'correct-option' : '',
+                    ]"
+                  >
+                    <div class="option-marker">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </div>
+                    <span class="option-text">True</span>
+                    <span v-if="question.correctAnswer === 'true'" class="correct-mark">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    :class="[
+                      'preview-option',
+                      question.correctAnswer === 'false' ? 'correct-option' : '',
+                    ]"
+                  >
+                    <div class="option-marker">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#ef4444"
+                        stroke-width="2"
+                      >
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                      </svg>
+                    </div>
+                    <span class="option-text">False</span>
+                    <span v-if="question.correctAnswer === 'false'" class="correct-mark">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Fill Blank Preview -->
+                <div v-if="question.type === 'fill_blank'" class="preview-fill-blank">
+                  <div class="fill-blank-input">
+                    <input
+                      type="text"
+                      disabled
+                      placeholder="Student answer here..."
+                      class="form-input"
+                    />
+                  </div>
+                  <div class="correct-answer-display">
+                    <span class="correct-label">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#20c997"
+                        stroke-width="2"
+                        style="vertical-align: middle"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      Correct Answer:
+                    </span>
+                    <span class="correct-text">{{ question.correctAnswer }}</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="action-buttons">
-          <button @click="currentStep = 'settings'" class="btn btn-secondary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M11 17l-5-5m0 0l5-5m-5 5h12"/>
-            </svg>
-            Edit Quiz
-          </button>
-          <button @click="publishQuiz" :disabled="isPublishing" class="btn btn-publish">
-            <svg v-if="!isPublishing" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <div v-else class="spinner"></div>
-            <span>{{ isPublishing ? 'Publishing...' : 'Publish Quiz Now' }}</span>
-            <svg v-if="!isPublishing" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-            </svg>
-          </button>
-        </div>
+            <div class="action-buttons">
+              <button @click="currentStep = 'settings'" class="btn btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                </svg>
+                Edit Quiz
+              </button>
+              <button @click="publishQuiz" :disabled="isPublishing" class="btn btn-publish">
+                <svg
+                  v-if="!isPublishing"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div v-else class="spinner"></div>
+                <span>{{ isPublishing ? 'Publishing...' : 'Publish Quiz Now' }}</span>
+                <svg
+                  v-if="!isPublishing"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -853,17 +1339,29 @@
         </div>
         <div class="modal-body">
           <div class="logout-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-              <polyline points="16 17 21 12 16 7"/>
-              <line x1="21" y1="12" x2="9" y2="12"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
             </svg>
           </div>
           <p class="logout-message">Are you sure you want to logout?</p>
           <p class="logout-submessage">You will be redirected to the login page.</p>
         </div>
         <div class="modal-footer logout-footer">
-          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">Cancel</button>
+          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">
+            Cancel
+          </button>
           <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
             <span v-if="!isLoggingOut">Logout</span>
             <span v-else class="loading-text">
@@ -878,53 +1376,53 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import { supabase } from '@/supabase.js';
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { supabase } from '@/supabase.js'
 
-const router = useRouter();
-const route = useRoute();
+const router = useRouter()
+const route = useRoute()
 
 // ===============================================
 // REACTIVE STATE
 // ===============================================
-const currentStep = ref('landing');
-const steps = ['Details', 'Questions', 'Settings', 'Preview'];
-const isPublishing = ref(false);
-const isLoadingQuizzes = ref(false);
-const existingQuizzesCount = ref(0);
-const isInitializing = ref(true); // NEW: Track initialization state
+const currentStep = ref('landing')
+const steps = ['Details', 'Questions', 'Settings', 'Preview']
+const isPublishing = ref(false)
+const isLoadingQuizzes = ref(false)
+const existingQuizzesCount = ref(0)
+const isInitializing = ref(true) // NEW: Track initialization state
 
 // Real-time subscription
-let quizSubscription = null;
+let quizSubscription = null
 
 // Teacher info and UI state
 const teacherInfo = ref({
   full_name: 'Teacher',
   email: '',
   role: 'teacher',
-  teacher_id: null
-});
+  teacher_id: null,
+})
 
 // Scroll-to-top functionality
-const showScrollTop = ref(false);
-const showNotifDropdown = ref(false);
-const showProfileDropdown = ref(false);
-const notifications = ref([]);
+const showScrollTop = ref(false)
+const showNotifDropdown = ref(false)
+const showProfileDropdown = ref(false)
+const notifications = ref([])
 
 // Logout modal states
-const showLogoutModal = ref(false);
-const isLoggingOut = ref(false);
+const showLogoutModal = ref(false)
+const isLoggingOut = ref(false)
 
 // Dynamic teacher name
-const fullName = computed(() => teacherInfo.value?.full_name || 'Teacher');
+const fullName = computed(() => teacherInfo.value?.full_name || 'Teacher')
 
 function handleScroll() {
-  showScrollTop.value = window.scrollY > 200;
+  showScrollTop.value = window.scrollY > 200
 }
 
 function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 // Profile and notification dropdown functions
@@ -948,44 +1446,50 @@ const handleNotificationClick = (notification) => {
 
 // Logout confirmation modal functions
 const openLogoutModal = () => {
-  showLogoutModal.value = true;
-};
+  showLogoutModal.value = true
+}
 
 const closeLogoutModal = () => {
-  showLogoutModal.value = false;
-};
+  showLogoutModal.value = false
+}
 
-const confirmLogout = () => {
-  console.log('🚪 Logging out...');
-  
-  // Clear storage immediately
-  localStorage.clear();
-  sessionStorage.clear();
-  
-  // Sign out from Supabase (don't wait)
-  supabase.auth.signOut().catch(err => console.log('Signout error:', err));
-  
-  // Immediate redirect - no waiting!
-  setTimeout(() => {
-    window.location.assign('/login');
-  }, 100);
-  
-  console.log('✅ Logout initiated');
-};
+const confirmLogout = async () => {
+  console.log('🚪 Logging out...')
+  isLoggingOut.value = true
+
+  localStorage.clear()
+  sessionStorage.clear()
+
+  const forceRedirect = setTimeout(() => {
+    window.location.replace('/login')
+  }, 2000)
+
+  try {
+    await Promise.race([
+      supabase.auth.signOut(),
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+    ])
+  } catch (err) {
+    console.error('❌ Logout error:', err)
+  } finally {
+    clearTimeout(forceRedirect)
+    window.location.replace('/login')
+  }
+}
 
 const logout = () => {
-  openLogoutModal();
-};
+  openLogoutModal()
+}
 
 const subject = ref({
   id: '',
-  name: 'Subject'
-});
+  name: 'Subject',
+})
 
 const section = ref({
   id: '',
-  name: ''
-});
+  name: '',
+})
 
 const quiz = ref({
   title: '',
@@ -998,9 +1502,9 @@ const quiz = ref({
     attemptsAllowed: 1,
     shuffle: false,
     startDate: '',
-    endDate: ''
-  }
-});
+    endDate: '',
+  },
+})
 
 // ===============================================
 // UTILITY FUNCTIONS
@@ -1008,9 +1512,9 @@ const quiz = ref({
 
 // TIMEZONE UTILITY FUNCTIONS
 const formatPHTime = (utcDateString) => {
-  if (!utcDateString) return 'Not set';
+  if (!utcDateString) return 'Not set'
   try {
-    const utcDate = new Date(utcDateString);
+    const utcDate = new Date(utcDateString)
     const options = {
       year: 'numeric',
       month: 'short',
@@ -1018,66 +1522,68 @@ const formatPHTime = (utcDateString) => {
       hour: '2-digit',
       minute: '2-digit',
       timeZone: 'Asia/Manila',
-      hour12: true
-    };
-    return utcDate.toLocaleString('en-PH', options) + ' PHT';
+      hour12: true,
+    }
+    return utcDate.toLocaleString('en-PH', options) + ' PHT'
   } catch (error) {
-    console.error('Error formatting PH time:', error);
-    return 'Invalid date';
+    console.error('Error formatting PH time:', error)
+    return 'Invalid date'
   }
-};
+}
 
 const convertPHTimeToUTC = (phDateString) => {
-  if (!phDateString) return null;
+  if (!phDateString) return null
   try {
-    const localDate = new Date(phDateString);
-    const phOffset = -8 * 60;
-    const localOffset = localDate.getTimezoneOffset();
-    const offsetDiff = localOffset - phOffset;
-    const utcTime = new Date(localDate.getTime() + (offsetDiff * 60 * 1000));
-    
+    const localDate = new Date(phDateString)
+    const phOffset = -8 * 60
+    const localOffset = localDate.getTimezoneOffset()
+    const offsetDiff = localOffset - phOffset
+    const utcTime = new Date(localDate.getTime() + offsetDiff * 60 * 1000)
+
     console.log('🕐 Converting PH to UTC:', {
       input: phDateString,
-      output: utcTime.toISOString()
-    });
-    
-    return utcTime.toISOString();
+      output: utcTime.toISOString(),
+    })
+
+    return utcTime.toISOString()
   } catch (error) {
-    console.error('Error converting PH time to UTC:', error);
-    return null;
+    console.error('Error converting PH time to UTC:', error)
+    return null
   }
-};
+}
 
 const convertUTCtoPHForInput = (utcDateString) => {
-  if (!utcDateString) return '';
+  if (!utcDateString) return ''
   try {
-    const utcDate = new Date(utcDateString);
+    const utcDate = new Date(utcDateString)
     const phTime = new Intl.DateTimeFormat('sv-SE', {
       timeZone: 'Asia/Manila',
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
       hour: '2-digit',
-      minute: '2-digit'
-    }).format(utcDate).replace(' ', 'T');
-    
-    return phTime;
+      minute: '2-digit',
+    })
+      .format(utcDate)
+      .replace(' ', 'T')
+
+    return phTime
   } catch (error) {
-    console.error('Error converting UTC to PH for input:', error);
-    return '';
+    console.error('Error converting UTC to PH for input:', error)
+    return ''
   }
-};
+}
 
 const getStepIndex = (step) => {
   const stepMap = {
-    'landing': -1,
-    'details': 0,
-    'questions': 1,
-    'settings': 2,
-    'preview': 3
-  };
-  return stepMap[step];
-};
+    landing: -1,
+    details: 0,
+    questions: 1,
+    settings: 2,
+    preview: 3,
+  }
+  return stepMap[step]
+}
 
 // ===============================================
 // DATA LOADING FUNCTIONS
@@ -1085,104 +1591,107 @@ const getStepIndex = (step) => {
 
 const loadTeacherInfo = async () => {
   try {
-    console.log('📋 Loading teacher info...');
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-    
+    console.log('📋 Loading teacher info...')
+    const {
+      data: { session },
+      error: sessionError,
+    } = await supabase.auth.getSession()
+
     if (sessionError || !session?.user) {
-      console.error('No session found:', sessionError);
-      router.push('/login');
-      return false;
+      console.error('No session found:', sessionError)
+      router.push('/login')
+      return false
     }
 
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
       .select('id, role, full_name, email')
       .eq('auth_user_id', session.user.id)
-      .single();
+      .single()
 
     if (profileError || !profile) {
-      console.error('Profile error:', profileError);
-      alert('Failed to load profile. Please try logging in again.');
-      return false;
+      console.error('Profile error:', profileError)
+      alert('Failed to load profile. Please try logging in again.')
+      return false
     }
 
     const { data: teacher, error: teacherError } = await supabase
       .from('teachers')
       .select('*')
       .eq('profile_id', profile.id)
-      .single();
+      .single()
 
     if (teacherError || !teacher) {
-      console.error('Teacher error:', teacherError);
-      alert('Teacher profile not found. Please contact support.');
-      return false;
+      console.error('Teacher error:', teacherError)
+      alert('Teacher profile not found. Please contact support.')
+      return false
     }
 
     teacherInfo.value = {
       full_name: teacher.full_name,
       email: teacher.email,
       role: profile.role,
-      teacher_id: teacher.id
-    };
+      teacher_id: teacher.id,
+    }
 
-    console.log('✅ Teacher info loaded:', teacherInfo.value);
-    return true;
+    console.log('✅ Teacher info loaded:', teacherInfo.value)
+    return true
   } catch (error) {
-    console.error('Error loading teacher info:', error);
-    alert('Failed to load teacher information. Please refresh the page.');
-    return false;
+    console.error('Error loading teacher info:', error)
+    alert('Failed to load teacher information. Please refresh the page.')
+    return false
   }
-};
+}
 
 const loadRouteParams = () => {
-  const subjectId = route.params.subjectId;
-  const sectionId = route.params.sectionId;
-  const subjectName = route.query.subjectName || 'Subject';
-  const sectionName = route.query.sectionName || '';
+  const subjectId = route.params.subjectId
+  const sectionId = route.params.sectionId
+  const subjectName = route.query.subjectName || 'Subject'
+  const sectionName = route.query.sectionName || ''
 
   if (!subjectId || !sectionId) {
-    console.error('Missing required route parameters');
-    return false;
+    console.error('Missing required route parameters')
+    return false
   }
 
-  subject.value = { id: subjectId, name: subjectName };
-  section.value = { id: sectionId, name: sectionName };
+  subject.value = { id: subjectId, name: subjectName }
+  section.value = { id: sectionId, name: sectionName }
 
-  console.log('✅ Route params loaded:', { subject: subject.value, section: section.value });
-  return true;
-};
+  console.log('✅ Route params loaded:', { subject: subject.value, section: section.value })
+  return true
+}
 
 const loadExistingQuizzes = async () => {
   try {
     if (!teacherInfo.value.teacher_id || !subject.value.id || !section.value.id) {
-      console.warn('⚠️ Missing required info for loading quizzes');
-      return;
+      console.warn('⚠️ Missing required info for loading quizzes')
+      return
     }
 
-    console.log('📊 Loading existing quizzes for section:', section.value.name);
-    
+    console.log('📊 Loading existing quizzes for section:', section.value.name)
+
     const { data: quizzes, error } = await supabase
       .from('quizzes')
       .select('id, title, created_at')
       .eq('teacher_id', teacherInfo.value.teacher_id)
       .eq('subject_id', subject.value.id)
       .eq('section_id', section.value.id)
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false })
 
     if (error) {
-      console.error('❌ Error loading quizzes:', error);
-      existingQuizzesCount.value = 0;
+      console.error('❌ Error loading quizzes:', error)
+      existingQuizzesCount.value = 0
     } else {
-      existingQuizzesCount.value = quizzes ? quizzes.length : 0;
-      console.log(`✅ Found ${existingQuizzesCount.value} existing quizzes`);
+      existingQuizzesCount.value = quizzes ? quizzes.length : 0
+      console.log(`✅ Found ${existingQuizzesCount.value} existing quizzes`)
     }
   } catch (error) {
-    console.error('❌ Exception while loading quizzes:', error);
-    existingQuizzesCount.value = 0;
+    console.error('❌ Exception while loading quizzes:', error)
+    existingQuizzesCount.value = 0
   } finally {
-    isLoadingQuizzes.value = false;
+    isLoadingQuizzes.value = false
   }
-};
+}
 
 // ===============================================
 // NAVIGATION FUNCTIONS
@@ -1190,52 +1699,52 @@ const loadExistingQuizzes = async () => {
 
 const goBack = () => {
   if (currentStep.value === 'landing') {
-    router.back();
+    router.back()
   } else {
     if (confirm('Are you sure you want to go back? Unsaved changes will be lost.')) {
-      router.back();
+      router.back()
     }
   }
-};
+}
 
 const goBackToQuizzes = () => {
   router.push({
     name: 'ViewAssessments',
     params: {
       subjectId: subject.value.id,
-      sectionId: section.value.id
+      sectionId: section.value.id,
     },
     query: {
       subjectName: subject.value.name,
       sectionName: section.value.name,
       gradeLevel: route.query.gradeLevel,
-      sectionCode: route.query.sectionCode
-    }
-  });
-};
+      sectionCode: route.query.sectionCode,
+    },
+  })
+}
 
 const proceedToQuestions = () => {
   // Check if teacher info is loaded
   if (!teacherInfo.value.teacher_id) {
-    alert('⚠️ System is still initializing. Please wait a moment and try again.');
-    console.error('Teacher ID not loaded yet');
-    return;
+    alert('⚠️ System is still initializing. Please wait a moment and try again.')
+    console.error('Teacher ID not loaded yet')
+    return
   }
 
   if (!quiz.value.title || !quiz.value.title.trim()) {
-    alert('Please enter a quiz title');
-    return;
+    alert('Please enter a quiz title')
+    return
   }
   if (!quiz.value.numberOfQuestions) {
-    alert('Please enter the number of questions');
-    return;
+    alert('Please enter the number of questions')
+    return
   }
   if (quiz.value.numberOfQuestions < 1 || quiz.value.numberOfQuestions > 50) {
-    alert('Number of questions must be between 1 and 50');
-    return;
+    alert('Number of questions must be between 1 and 50')
+    return
   }
-  currentStep.value = 'questions';
-};
+  currentStep.value = 'questions'
+}
 
 // ===============================================
 // QUESTION MANAGEMENT FUNCTIONS
@@ -1243,43 +1752,43 @@ const proceedToQuestions = () => {
 
 const addQuestion = () => {
   if (quiz.value.questions.length >= quiz.value.numberOfQuestions) {
-    alert(`You can only add ${quiz.value.numberOfQuestions} questions`);
-    return;
+    alert(`You can only add ${quiz.value.numberOfQuestions} questions`)
+    return
   }
   quiz.value.questions.push({
     type: 'multiple_choice',
     text: '',
     options: ['', '', '', ''],
-    correctAnswer: null
-  });
-};
+    correctAnswer: null,
+  })
+}
 
 const removeQuestion = (index) => {
   if (confirm('Are you sure you want to remove this question?')) {
-    quiz.value.questions.splice(index, 1);
+    quiz.value.questions.splice(index, 1)
   }
-};
+}
 
 const addOption = (questionIndex) => {
   if (quiz.value.questions[questionIndex].options.length < 6) {
-    quiz.value.questions[questionIndex].options.push('');
+    quiz.value.questions[questionIndex].options.push('')
   } else {
-    alert('Maximum 6 options allowed per question');
+    alert('Maximum 6 options allowed per question')
   }
-};
+}
 
 const removeOption = (questionIndex, optionIndex) => {
   if (quiz.value.questions[questionIndex].options.length > 2) {
-    quiz.value.questions[questionIndex].options.splice(optionIndex, 1);
+    quiz.value.questions[questionIndex].options.splice(optionIndex, 1)
     if (quiz.value.questions[questionIndex].correctAnswer === optionIndex) {
-      quiz.value.questions[questionIndex].correctAnswer = null;
+      quiz.value.questions[questionIndex].correctAnswer = null
     } else if (quiz.value.questions[questionIndex].correctAnswer > optionIndex) {
-      quiz.value.questions[questionIndex].correctAnswer--;
+      quiz.value.questions[questionIndex].correctAnswer--
     }
   } else {
-    alert('A question must have at least 2 options');
+    alert('A question must have at least 2 options')
   }
-};
+}
 
 // ===============================================
 // QUIZ VALIDATION FUNCTIONS
@@ -1287,89 +1796,89 @@ const removeOption = (questionIndex, optionIndex) => {
 
 const validateQuiz = () => {
   if (!quiz.value.title.trim()) {
-    alert('Please enter a quiz title');
-    currentStep.value = 'details';
-    return false;
+    alert('Please enter a quiz title')
+    currentStep.value = 'details'
+    return false
   }
 
   if (quiz.value.questions.length === 0) {
-    alert('Please add at least one question');
-    currentStep.value = 'questions';
-    return false;
+    alert('Please add at least one question')
+    currentStep.value = 'questions'
+    return false
   }
 
   for (let i = 0; i < quiz.value.questions.length; i++) {
-    const q = quiz.value.questions[i];
-    
+    const q = quiz.value.questions[i]
+
     if (!q.text.trim()) {
-      alert(`Question ${i + 1}: Please enter question text`);
-      currentStep.value = 'questions';
-      return false;
+      alert(`Question ${i + 1}: Please enter question text`)
+      currentStep.value = 'questions'
+      return false
     }
 
     if (q.type === 'multiple_choice') {
-      const emptyOptions = q.options.filter(opt => !opt.trim());
+      const emptyOptions = q.options.filter((opt) => !opt.trim())
       if (emptyOptions.length > 0) {
-        alert(`Question ${i + 1}: All answer options must be filled`);
-        currentStep.value = 'questions';
-        return false;
+        alert(`Question ${i + 1}: All answer options must be filled`)
+        currentStep.value = 'questions'
+        return false
       }
 
       if (q.correctAnswer === null || q.correctAnswer === undefined) {
-        alert(`Question ${i + 1}: Please select the correct answer`);
-        currentStep.value = 'questions';
-        return false;
+        alert(`Question ${i + 1}: Please select the correct answer`)
+        currentStep.value = 'questions'
+        return false
       }
     } else if (q.type === 'true_false') {
       if (!q.correctAnswer) {
-        alert(`Question ${i + 1}: Please select True or False as the correct answer`);
-        currentStep.value = 'questions';
-        return false;
+        alert(`Question ${i + 1}: Please select True or False as the correct answer`)
+        currentStep.value = 'questions'
+        return false
       }
     } else if (q.type === 'fill_blank') {
       if (!q.correctAnswer || !q.correctAnswer.trim()) {
-        alert(`Question ${i + 1}: Please enter the correct answer`);
-        currentStep.value = 'questions';
-        return false;
+        alert(`Question ${i + 1}: Please enter the correct answer`)
+        currentStep.value = 'questions'
+        return false
       }
     }
   }
 
   if (quiz.value.settings.hasTimeLimit) {
     if (!quiz.value.settings.timeLimit || quiz.value.settings.timeLimit < 1) {
-      alert('Please enter a valid time limit (at least 1 minute)');
-      currentStep.value = 'settings';
-      return false;
+      alert('Please enter a valid time limit (at least 1 minute)')
+      currentStep.value = 'settings'
+      return false
     }
   }
 
   if (quiz.value.settings.startDate && quiz.value.settings.endDate) {
-    const startDate = new Date(quiz.value.settings.startDate);
-    const endDate = new Date(quiz.value.settings.endDate);
-    const now = new Date();
-    
+    const startDate = new Date(quiz.value.settings.startDate)
+    const endDate = new Date(quiz.value.settings.endDate)
+    const now = new Date()
+
     if (endDate <= startDate) {
-      alert('End date must be after start date');
-      currentStep.value = 'settings';
-      return false;
+      alert('End date must be after start date')
+      currentStep.value = 'settings'
+      return false
     }
-    
+
     if (startDate < now) {
       const proceed = confirm(
         'The start date is in the past. Students will be able to take this quiz immediately.\n\n' +
-        `Start: ${new Date(quiz.value.settings.startDate).toLocaleString()}\n` +
-        `Now: ${now.toLocaleString()}\n\n` +
-        'Do you want to continue?'
-      );
+          `Start: ${new Date(quiz.value.settings.startDate).toLocaleString()}\n` +
+          `Now: ${now.toLocaleString()}\n\n` +
+          'Do you want to continue?',
+      )
       if (!proceed) {
-        currentStep.value = 'settings';
-        return false;
+        currentStep.value = 'settings'
+        return false
       }
     }
   }
 
-  return true;
-};
+  return true
+}
 
 // ===============================================
 // REAL-TIME SUBSCRIPTION SETUP
@@ -1377,10 +1886,10 @@ const validateQuiz = () => {
 
 const setupRealtimeSubscription = () => {
   if (!teacherInfo.value.teacher_id) {
-    console.warn('⚠️ Cannot setup realtime: teacher_id not available');
-    return;
+    console.warn('⚠️ Cannot setup realtime: teacher_id not available')
+    return
   }
-  
+
   quizSubscription = supabase
     .channel('quiz-changes')
     .on(
@@ -1389,19 +1898,22 @@ const setupRealtimeSubscription = () => {
         event: 'INSERT',
         schema: 'public',
         table: 'quizzes',
-        filter: `teacher_id=eq.${teacherInfo.value.teacher_id}`
+        filter: `teacher_id=eq.${teacherInfo.value.teacher_id}`,
       },
       (payload) => {
-        console.log('📡 Real-time: New quiz created:', payload.new);
-        if (payload.new.subject_id === subject.value.id && payload.new.section_id === section.value.id) {
-          existingQuizzesCount.value++;
+        console.log('📡 Real-time: New quiz created:', payload.new)
+        if (
+          payload.new.subject_id === subject.value.id &&
+          payload.new.section_id === section.value.id
+        ) {
+          existingQuizzesCount.value++
         }
-      }
+      },
     )
     .subscribe((status) => {
-      console.log('📡 Subscription status:', status);
-    });
-};
+      console.log('📡 Subscription status:', status)
+    })
+}
 
 // ===============================================
 // FIXED QUIZ PUBLISHING FUNCTION
@@ -1410,37 +1922,43 @@ const setupRealtimeSubscription = () => {
 const publishQuiz = async () => {
   // CRITICAL: Check if teacher info is loaded
   if (!teacherInfo.value.teacher_id) {
-    alert('⚠️ System Error: Teacher information not loaded.\n\nPlease refresh the page and try again.');
-    console.error('❌ Publish blocked: teacher_id not available');
-    return;
+    alert(
+      '⚠️ System Error: Teacher information not loaded.\n\nPlease refresh the page and try again.',
+    )
+    console.error('❌ Publish blocked: teacher_id not available')
+    return
   }
 
   // Validation first
   if (!validateQuiz()) {
-    console.log('❌ Validation failed');
-    return;
+    console.log('❌ Validation failed')
+    return
   }
 
-  if (!confirm(`Publish "${quiz.value.title}"?\n\nStudents will be able to see and take this quiz immediately.`)) {
-    return;
+  if (
+    !confirm(
+      `Publish "${quiz.value.title}"?\n\nStudents will be able to see and take this quiz immediately.`,
+    )
+  ) {
+    return
   }
 
-  isPublishing.value = true;
-  console.log('🚀 Starting quiz publication...');
+  isPublishing.value = true
+  console.log('🚀 Starting quiz publication...')
 
   try {
-    console.log('✅ Teacher verified:', teacherInfo.value.teacher_id);
+    console.log('✅ Teacher verified:', teacherInfo.value.teacher_id)
 
     // === STEP 1: Create Quiz ===
-    const startDateUTC = convertPHTimeToUTC(quiz.value.settings.startDate);
-    const endDateUTC = convertPHTimeToUTC(quiz.value.settings.endDate);
-    
+    const startDateUTC = convertPHTimeToUTC(quiz.value.settings.startDate)
+    const endDateUTC = convertPHTimeToUTC(quiz.value.settings.endDate)
+
     console.log('🕐 Timezone conversion:', {
       startInput: quiz.value.settings.startDate,
       startUTC: startDateUTC,
       endInput: quiz.value.settings.endDate,
-      endUTC: endDateUTC
-    });
+      endUTC: endDateUTC,
+    })
 
     const quizData = {
       subject_id: subject.value.id,
@@ -1450,76 +1968,80 @@ const publishQuiz = async () => {
       description: quiz.value.description.trim() || null,
       number_of_questions: parseInt(quiz.value.numberOfQuestions),
       has_time_limit: quiz.value.settings.hasTimeLimit,
-      time_limit_minutes: quiz.value.settings.hasTimeLimit ? parseInt(quiz.value.settings.timeLimit) : null,
+      time_limit_minutes: quiz.value.settings.hasTimeLimit
+        ? parseInt(quiz.value.settings.timeLimit)
+        : null,
       attempts_allowed: parseInt(quiz.value.settings.attemptsAllowed),
       shuffle_questions: quiz.value.settings.shuffle,
       shuffle_options: quiz.value.settings.shuffle,
       start_date: startDateUTC,
       end_date: endDateUTC,
-      status: 'published'
-    };
+      status: 'published',
+    }
 
-    console.log('📝 Quiz data prepared:', quizData);
-    console.log('📤 Step 1: Creating quiz...');
+    console.log('📝 Quiz data prepared:', quizData)
+    console.log('📤 Step 1: Creating quiz...')
 
     const { data: newQuiz, error: quizError } = await supabase
       .from('quizzes')
       .insert([quizData])
       .select()
-      .single();
+      .single()
 
     if (quizError) {
-      console.error('❌ Quiz creation failed:', quizError);
-      throw new Error(`Failed to create quiz: ${quizError.message}`);
+      console.error('❌ Quiz creation failed:', quizError)
+      throw new Error(`Failed to create quiz: ${quizError.message}`)
     }
 
     if (!newQuiz?.id) {
-      throw new Error('Quiz created but no ID returned');
+      throw new Error('Quiz created but no ID returned')
     }
 
-    console.log('✅ Step 1 complete: Quiz created with ID:', newQuiz.id);
+    console.log('✅ Step 1 complete: Quiz created with ID:', newQuiz.id)
 
     // === STEP 2: Insert Questions ===
-    console.log('📝 Step 2: Preparing questions...');
-    
+    console.log('📝 Step 2: Preparing questions...')
+
     const questionsData = quiz.value.questions.map((q, index) => ({
       quiz_id: newQuiz.id,
       question_number: index + 1,
       question_type: q.type,
       question_text: q.text.trim(),
-      points: 1.00
-    }));
+      points: 1.0,
+    }))
 
-    console.log(`✅ Prepared ${questionsData.length} questions`);
-    console.log('📤 Step 2: Inserting questions...');
+    console.log(`✅ Prepared ${questionsData.length} questions`)
+    console.log('📤 Step 2: Inserting questions...')
 
     const { data: insertedQuestions, error: questionsError } = await supabase
       .from('quiz_questions')
       .insert(questionsData)
-      .select();
+      .select()
 
     if (questionsError) {
-      console.error('❌ Questions insertion failed:', questionsError);
-      throw new Error(`Failed to insert questions: ${questionsError.message}`);
+      console.error('❌ Questions insertion failed:', questionsError)
+      throw new Error(`Failed to insert questions: ${questionsError.message}`)
     }
 
     if (!insertedQuestions || insertedQuestions.length !== questionsData.length) {
-      throw new Error(`Expected ${questionsData.length} questions, got ${insertedQuestions?.length || 0}`);
+      throw new Error(
+        `Expected ${questionsData.length} questions, got ${insertedQuestions?.length || 0}`,
+      )
     }
 
-    console.log(`✅ Step 2 complete: ${insertedQuestions.length} questions inserted`);
+    console.log(`✅ Step 2 complete: ${insertedQuestions.length} questions inserted`)
 
     // === STEP 3: Insert Options and Answers ONE BY ONE ===
-    console.log('📝 Step 3: Inserting options and answers one by one...');
-    
-    let totalOptionsInserted = 0;
-    let totalAnswersInserted = 0;
+    console.log('📝 Step 3: Inserting options and answers one by one...')
+
+    let totalOptionsInserted = 0
+    let totalAnswersInserted = 0
 
     for (let i = 0; i < quiz.value.questions.length; i++) {
-      const question = quiz.value.questions[i];
-      const questionId = insertedQuestions[i].id;
+      const question = quiz.value.questions[i]
+      const questionId = insertedQuestions[i].id
 
-      console.log(`Processing question ${i + 1}/${quiz.value.questions.length} (ID: ${questionId})`);
+      console.log(`Processing question ${i + 1}/${quiz.value.questions.length} (ID: ${questionId})`)
 
       if (question.type === 'multiple_choice') {
         // Insert options one by one
@@ -1528,161 +2050,167 @@ const publishQuiz = async () => {
             question_id: questionId,
             option_number: optIndex + 1,
             option_text: question.options[optIndex].trim(),
-            is_correct: question.correctAnswer === optIndex
-          };
+            is_correct: question.correctAnswer === optIndex,
+          }
 
-          console.log(`  Inserting option ${optIndex + 1}:`, optionData);
+          console.log(`  Inserting option ${optIndex + 1}:`, optionData)
 
           const { error: optionError } = await supabase
             .from('question_options')
-            .insert([optionData]);
+            .insert([optionData])
 
           if (optionError) {
-            console.error(`❌ Failed to insert option ${optIndex + 1}:`, optionError);
-            throw new Error(`Failed to insert option ${optIndex + 1} for question ${i + 1}: ${optionError.message}`);
+            console.error(`❌ Failed to insert option ${optIndex + 1}:`, optionError)
+            throw new Error(
+              `Failed to insert option ${optIndex + 1} for question ${i + 1}: ${optionError.message}`,
+            )
           }
 
-          totalOptionsInserted++;
-          console.log(`  ✅ Option ${optIndex + 1} inserted successfully`);
-          
+          totalOptionsInserted++
+          console.log(`  ✅ Option ${optIndex + 1} inserted successfully`)
+
           // Small delay to avoid rate limiting
-          await new Promise(resolve => setTimeout(resolve, 50));
+          await new Promise((resolve) => setTimeout(resolve, 50))
         }
       } else if (question.type === 'true_false' || question.type === 'fill_blank') {
         // Insert answer
         const answerData = {
           question_id: questionId,
           correct_answer: String(question.correctAnswer).trim(),
-          case_sensitive: question.type === 'fill_blank'
-        };
-
-        console.log(`  Inserting answer:`, answerData);
-
-        const { error: answerError } = await supabase
-          .from('question_answers')
-          .insert([answerData]);
-
-        if (answerError) {
-          console.error(`❌ Failed to insert answer:`, answerError);
-          throw new Error(`Failed to insert answer for question ${i + 1}: ${answerError.message}`);
+          case_sensitive: question.type === 'fill_blank',
         }
 
-        totalAnswersInserted++;
-        console.log(`  ✅ Answer inserted successfully`);
-        
+        console.log(`  Inserting answer:`, answerData)
+
+        const { error: answerError } = await supabase.from('question_answers').insert([answerData])
+
+        if (answerError) {
+          console.error(`❌ Failed to insert answer:`, answerError)
+          throw new Error(`Failed to insert answer for question ${i + 1}: ${answerError.message}`)
+        }
+
+        totalAnswersInserted++
+        console.log(`  ✅ Answer inserted successfully`)
+
         // Small delay
-        await new Promise(resolve => setTimeout(resolve, 50));
+        await new Promise((resolve) => setTimeout(resolve, 50))
       }
     }
 
-    console.log(`✅ Step 3 complete: ${totalOptionsInserted} options and ${totalAnswersInserted} answers inserted`);
+    console.log(
+      `✅ Step 3 complete: ${totalOptionsInserted} options and ${totalAnswersInserted} answers inserted`,
+    )
 
     // === SUCCESS ===
-    console.log('🎉 Quiz published successfully!');
+    console.log('🎉 Quiz published successfully!')
     console.log('Quiz details:', {
       id: newQuiz.id,
       code: newQuiz.quiz_code,
       title: newQuiz.title,
       questions: insertedQuestions.length,
       options: totalOptionsInserted,
-      answers: totalAnswersInserted
-    });
+      answers: totalAnswersInserted,
+    })
 
     // Show success message
-    alert(`✅ Quiz Published Successfully!\n\n📝 ${newQuiz.title}\n🔑 Quiz Code: ${newQuiz.quiz_code}\n📊 ${insertedQuestions.length} questions\n\n✨ Students can now take this quiz!`);
+    alert(
+      `✅ Quiz Published Successfully!\n\n📝 ${newQuiz.title}\n🔑 Quiz Code: ${newQuiz.quiz_code}\n📊 ${insertedQuestions.length} questions\n\n✨ Students can now take this quiz!`,
+    )
 
     // Redirect to view assessments
     router.push({
       name: 'ViewAssessments',
       params: {
         subjectId: subject.value.id,
-        sectionId: section.value.id
+        sectionId: section.value.id,
       },
       query: {
         subjectName: subject.value.name,
         sectionName: section.value.name,
         gradeLevel: route.query.gradeLevel,
-        sectionCode: route.query.sectionCode
-      }
-    });
-
+        sectionCode: route.query.sectionCode,
+      },
+    })
   } catch (error) {
-    console.error('❌ Publication error:', error);
+    console.error('❌ Publication error:', error)
 
-    let errorMessage = '❌ Failed to Publish Quiz\n\n';
+    let errorMessage = '❌ Failed to Publish Quiz\n\n'
 
     if (error.code === '23505') {
-      errorMessage += '⚠️ A quiz with this title already exists in this section.\nPlease use a different title.';
+      errorMessage +=
+        '⚠️ A quiz with this title already exists in this section.\nPlease use a different title.'
     } else if (error.code === '23503') {
-      errorMessage += '⚠️ Invalid reference detected.\nPlease refresh the page and try again.';
+      errorMessage += '⚠️ Invalid reference detected.\nPlease refresh the page and try again.'
     } else if (error.code === 'PGRST116') {
-      errorMessage += '⚠️ Database connection issue.\nPlease check your internet connection and try again.';
+      errorMessage +=
+        '⚠️ Database connection issue.\nPlease check your internet connection and try again.'
     } else if (error.code === '42501' || error.message.includes('row-level security')) {
-      errorMessage += '⚠️ Permission error while saving quiz data.\n\nThis usually means there\'s an issue with database permissions.\nPlease contact your system administrator or try logging out and back in.';
+      errorMessage +=
+        "⚠️ Permission error while saving quiz data.\n\nThis usually means there's an issue with database permissions.\nPlease contact your system administrator or try logging out and back in."
     } else if (error.message) {
-      errorMessage += `Error: ${error.message}`;
+      errorMessage += `Error: ${error.message}`
     } else {
-      errorMessage += '⚠️ An unexpected error occurred.\nPlease try again or contact support if the problem persists.';
+      errorMessage +=
+        '⚠️ An unexpected error occurred.\nPlease try again or contact support if the problem persists.'
     }
 
-    alert(errorMessage);
-
+    alert(errorMessage)
   } finally {
-    isPublishing.value = false;
-    console.log('🏁 Publishing process completed');
+    isPublishing.value = false
+    console.log('🏁 Publishing process completed')
   }
-};
+}
 
 // ===============================================
 // LIFECYCLE HOOKS
 // ===============================================
 
 onMounted(async () => {
-  console.log('🔧 Component mounted');
-  isInitializing.value = true;
-  
+  console.log('🔧 Component mounted')
+  isInitializing.value = true
+
   try {
     // Step 1: Load teacher info first
-    const teacherLoaded = await loadTeacherInfo();
+    const teacherLoaded = await loadTeacherInfo()
     if (!teacherLoaded) {
-      console.error('❌ Failed to load teacher info');
-      router.push('/login');
-      return;
+      console.error('❌ Failed to load teacher info')
+      router.push('/login')
+      return
     }
 
     // Step 2: Load route params
-    const paramsLoaded = loadRouteParams();
+    const paramsLoaded = loadRouteParams()
     if (!paramsLoaded) {
-      console.error('❌ Failed to load route params');
-      alert('Missing information. Redirecting...');
-      router.push('/teacher/subjects');
-      return;
+      console.error('❌ Failed to load route params')
+      alert('Missing information. Redirecting...')
+      router.push('/teacher/subjects')
+      return
     }
 
     // Step 3: Load existing quizzes
-    await loadExistingQuizzes();
-    
+    await loadExistingQuizzes()
+
     // Step 4: Setup realtime subscription
-    setupRealtimeSubscription();
-    
-    console.log('✅ Component initialization complete');
+    setupRealtimeSubscription()
+
+    console.log('✅ Component initialization complete')
   } catch (error) {
-    console.error('❌ Initialization error:', error);
-    alert('Failed to initialize page. Please refresh and try again.');
+    console.error('❌ Initialization error:', error)
+    alert('Failed to initialize page. Please refresh and try again.')
   } finally {
-    isInitializing.value = false;
-    window.addEventListener('scroll', handleScroll);
+    isInitializing.value = false
+    window.addEventListener('scroll', handleScroll)
   }
-});
+})
 
 onUnmounted(() => {
-  console.log('🧹 Component unmounting');
-  window.removeEventListener('scroll', handleScroll);
+  console.log('🧹 Component unmounting')
+  window.removeEventListener('scroll', handleScroll)
   if (quizSubscription) {
-    supabase.removeChannel(quizSubscription);
-    console.log('✅ Realtime subscription cleaned up');
+    supabase.removeChannel(quizSubscription)
+    console.log('✅ Realtime subscription cleaned up')
   }
-});
+})
 </script>
 
 <style scoped>
@@ -1710,7 +2238,7 @@ onUnmounted(() => {
   left: 0;
   width: 80px;
   height: calc(100vh - 64px);
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-right: none;
   z-index: 900;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
@@ -1730,19 +2258,21 @@ onUnmounted(() => {
   width: 56px;
   margin: 8px 0;
   border-radius: 12px;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   cursor: pointer;
   position: relative;
 }
 
 .sidebar-item.active {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid #fff;
 }
 
 .sidebar-item:hover {
-  background: rgba(255,255,255,0.22);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .sidebar-icon svg {
@@ -1755,13 +2285,13 @@ onUnmounted(() => {
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  color: #3D8D7A;
+  color: #3d8d7a;
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
@@ -1780,7 +2310,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -1907,12 +2437,12 @@ onUnmounted(() => {
 
 /* Rounded semi-transparent backgrounds */
 .rounded-bg {
-  background: rgba(255,255,255,0.13);
+  background: rgba(255, 255, 255, 0.13);
   border-radius: 16px;
   transition: background 0.2s;
 }
 .rounded-bg:hover {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* Notification and Profile Dropdowns */
@@ -1933,10 +2463,11 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
 }
 
-.notification-dropdown, .profile-dropdown {
+.notification-dropdown,
+.profile-dropdown {
   position: absolute;
   top: 55px;
   right: 0;
@@ -1961,7 +2492,7 @@ onUnmounted(() => {
 
 .profile-dropdown .dropdown-header {
   padding: 1.5rem;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
 }
 
@@ -2026,7 +2557,7 @@ onUnmounted(() => {
 
 .dropdown-item:hover {
   background: #f1f5f9;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-item svg {
@@ -2035,7 +2566,7 @@ onUnmounted(() => {
 }
 
 .dropdown-item:hover svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-divider {
@@ -2087,7 +2618,7 @@ onUnmounted(() => {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
@@ -2109,7 +2640,7 @@ onUnmounted(() => {
 /* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 /* Dark mode scrollbar */
@@ -2138,7 +2669,7 @@ onUnmounted(() => {
   right: 2rem;
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border: none;
   border-radius: 50%;
   color: white;
@@ -2154,7 +2685,7 @@ onUnmounted(() => {
 .scroll-to-top:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(61, 141, 122, 0.4);
-  background: linear-gradient(135deg, #2d6a5a, #3D8D7A);
+  background: linear-gradient(135deg, #2d6a5a, #3d8d7a);
 }
 
 .scroll-to-top:active {
@@ -2162,7 +2693,8 @@ onUnmounted(() => {
 }
 
 /* Hide any parent layout elements */
-body, html {
+body,
+html {
   overflow-x: hidden !important;
 }
 
@@ -2173,7 +2705,7 @@ body, html {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -2331,7 +2863,7 @@ body, html {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -2371,7 +2903,7 @@ body, html {
 
 /* Header Section - Same as MySubjects */
 .header-section {
-  background: linear-gradient(135deg, #3D8D7A 0%, #2D6A5A 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #2d6a5a 100%);
   padding: 2rem 1.5rem;
   position: relative;
   overflow: hidden;
@@ -2388,7 +2920,8 @@ body, html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>') repeat-x;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>')
+    repeat-x;
   opacity: 0.5;
 }
 
@@ -2415,7 +2948,11 @@ body, html {
 .header-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--accent-color, #4F8CFF) 0%, var(--accent-light, #6DD5FA) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-color, #4f8cff) 0%,
+    var(--accent-light, #6dd5fa) 100%
+  );
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -2426,7 +2963,11 @@ body, html {
 }
 
 .dark .header-icon {
-  background: linear-gradient(135deg, var(--accent-dark, #232a3b) 0%, var(--accent-color, #4F8CFF) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-dark, #232a3b) 0%,
+    var(--accent-color, #4f8cff) 100%
+  );
   box-shadow: 0 8px 32px rgba(79, 140, 255, 0.25);
   border: none;
 }
@@ -2533,26 +3074,26 @@ body, html {
   .header-section {
     padding: 1.5rem 1rem;
   }
-  
+
   .header-content {
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
   }
-  
+
   .header-left {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .header-text h1.header-title {
     font-size: 1.5rem;
   }
-  
+
   .header-text p.header-subtitle {
     font-size: 1rem;
   }
-  
+
   .main-container {
     padding: 1.5rem 1rem;
   }
@@ -2592,7 +3133,7 @@ body, html {
 .section-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #3D8D7A 0%, #2D6A5A 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #2d6a5a 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -2603,7 +3144,7 @@ body, html {
 }
 
 .dark .section-icon {
-  background: linear-gradient(135deg, #3D8D7A 0%, #2D6A5A 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #2d6a5a 100%);
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.3);
 }
 
@@ -2666,7 +3207,7 @@ body, html {
 }
 
 .step-line.completed {
-  background: #3D8D7A;
+  background: #3d8d7a;
 }
 
 .step-indicator {
@@ -2691,7 +3232,7 @@ body, html {
 
 .step-indicator.active .step-circle,
 .step-indicator.completed .step-circle {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -2708,15 +3249,14 @@ body, html {
 
 .step-indicator.active + .step-label,
 .step-indicator.completed + .step-label {
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-weight: 600;
 }
 
 .dark .step-indicator.active + .step-label,
 .dark .step-indicator.completed + .step-label {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
-
 
 /* =============================================== */
 /* LANDING SECTION STYLES - Same as MySubjects */
@@ -2771,7 +3311,7 @@ body, html {
 }
 
 .success-icon {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dark .status-icon {
@@ -2815,9 +3355,9 @@ body, html {
 
 /* Enhanced Create Quiz Button */
 .create-quiz-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
-  border: 1px solid #3D8D7A;
+  border: 1px solid #3d8d7a;
   border-radius: 10px;
   padding: 0.875rem 2rem;
   font-weight: 600;
@@ -2838,8 +3378,8 @@ body, html {
 }
 
 .create-quiz-btn:hover {
-  background: #2D6A5A;
-  border-color: #2D6A5A;
+  background: #2d6a5a;
+  border-color: #2d6a5a;
   transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.25);
 }
@@ -2854,19 +3394,23 @@ body, html {
   width: 40px;
   height: 40px;
   border: 3px solid #f1f5f9;
-  border-top: 3px solid #3D8D7A;
+  border-top: 3px solid #3d8d7a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
 .dark .spinner {
   border-color: #1e293b;
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive Design for Landing */
@@ -2874,25 +3418,25 @@ body, html {
   .landing-section {
     padding: 1rem 0.5rem;
   }
-  
+
   .status-card {
     padding: 2rem 1.5rem;
     margin: 0 1rem;
   }
-  
+
   .status-title {
     font-size: 1.25rem;
   }
-  
+
   .status-description {
     font-size: 0.95rem;
   }
-  
+
   .status-actions {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .create-quiz-btn,
   .manage-btn {
     width: 100%;
@@ -2982,7 +3526,7 @@ body, html {
 .form-textarea:focus,
 .form-select:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.1);
 }
 
@@ -2997,7 +3541,7 @@ body, html {
 .dark .form-input:focus,
 .dark .form-textarea:focus,
 .dark .form-select:focus {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.2);
 }
 
@@ -3022,14 +3566,14 @@ body, html {
 }
 
 .btn-primary {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
-  border: 1px solid #3D8D7A;
+  border: 1px solid #3d8d7a;
 }
 
 .btn-primary:hover {
-  background: #2D6A5A;
-  border-color: #2D6A5A;
+  background: #2d6a5a;
+  border-color: #2d6a5a;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.25);
 }
@@ -3080,17 +3624,17 @@ body, html {
 }
 
 .btn-publish {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
-  border: 1px solid #3D8D7A;
+  border: 1px solid #3d8d7a;
   padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: 700;
 }
 
 .btn-publish:hover {
-  background: #2D6A5A;
-  border-color: #2D6A5A;
+  background: #2d6a5a;
+  border-color: #2d6a5a;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(61, 141, 122, 0.3);
 }
@@ -3113,7 +3657,7 @@ body, html {
     flex-direction: column-reverse;
     gap: 0.75rem;
   }
-  
+
   .action-buttons .btn {
     width: 100%;
     justify-content: center;
@@ -3121,8 +3665,9 @@ body, html {
 }
 
 /* DateTime Local Calendar Styling */
-input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%233D8D7A'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e") no-repeat center;
+input[type='datetime-local']::-webkit-calendar-picker-indicator {
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%233D8D7A'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e")
+    no-repeat center;
   background-size: 16px 16px;
   cursor: pointer;
   opacity: 1;
@@ -3134,91 +3679,92 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   background-color: transparent;
 }
 
-.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23A3D1C6'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e") no-repeat center;
+.dark input[type='datetime-local']::-webkit-calendar-picker-indicator {
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23A3D1C6'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e")
+    no-repeat center;
   background-size: 16px 16px;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit {
-  color: #3D8D7A;
+input[type='datetime-local']::-webkit-datetime-edit {
+  color: #3d8d7a;
   font-family: 'Inter', sans-serif;
 }
 
-.dark input[type="datetime-local"]::-webkit-datetime-edit {
-  color: #A3D1C6;
+.dark input[type='datetime-local']::-webkit-datetime-edit {
+  color: #a3d1c6;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-text {
+input[type='datetime-local']::-webkit-datetime-edit-text {
   color: #6b7280;
   padding: 0 0.25rem;
 }
 
-.dark input[type="datetime-local"]::-webkit-datetime-edit-text {
-  color: #A3D1C6;
+.dark input[type='datetime-local']::-webkit-datetime-edit-text {
+  color: #a3d1c6;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-month-field,
-input[type="datetime-local"]::-webkit-datetime-edit-day-field,
-input[type="datetime-local"]::-webkit-datetime-edit-year-field,
-input[type="datetime-local"]::-webkit-datetime-edit-hour-field,
-input[type="datetime-local"]::-webkit-datetime-edit-minute-field {
+input[type='datetime-local']::-webkit-datetime-edit-month-field,
+input[type='datetime-local']::-webkit-datetime-edit-day-field,
+input[type='datetime-local']::-webkit-datetime-edit-year-field,
+input[type='datetime-local']::-webkit-datetime-edit-hour-field,
+input[type='datetime-local']::-webkit-datetime-edit-minute-field {
   background: transparent;
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-weight: 500;
   padding: 0.1rem 0.2rem;
   border-radius: 4px;
   border: none;
 }
 
-.dark input[type="datetime-local"]::-webkit-datetime-edit-month-field,
-.dark input[type="datetime-local"]::-webkit-datetime-edit-day-field,
-.dark input[type="datetime-local"]::-webkit-datetime-edit-year-field,
-.dark input[type="datetime-local"]::-webkit-datetime-edit-hour-field,
-.dark input[type="datetime-local"]::-webkit-datetime-edit-minute-field {
-  color: #A3D1C6;
+.dark input[type='datetime-local']::-webkit-datetime-edit-month-field,
+.dark input[type='datetime-local']::-webkit-datetime-edit-day-field,
+.dark input[type='datetime-local']::-webkit-datetime-edit-year-field,
+.dark input[type='datetime-local']::-webkit-datetime-edit-hour-field,
+.dark input[type='datetime-local']::-webkit-datetime-edit-minute-field {
+  color: #a3d1c6;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-month-field:focus,
-input[type="datetime-local"]::-webkit-datetime-edit-day-field:focus,
-input[type="datetime-local"]::-webkit-datetime-edit-year-field:focus,
-input[type="datetime-local"]::-webkit-datetime-edit-hour-field:focus,
-input[type="datetime-local"]::-webkit-datetime-edit-minute-field:focus {
+input[type='datetime-local']::-webkit-datetime-edit-month-field:focus,
+input[type='datetime-local']::-webkit-datetime-edit-day-field:focus,
+input[type='datetime-local']::-webkit-datetime-edit-year-field:focus,
+input[type='datetime-local']::-webkit-datetime-edit-hour-field:focus,
+input[type='datetime-local']::-webkit-datetime-edit-minute-field:focus {
   background: rgba(61, 141, 122, 0.1);
   outline: none;
 }
 
-.dark input[type="datetime-local"]::-webkit-datetime-edit-month-field:focus,
-.dark input[type="datetime-local"]::-webkit-datetime-edit-day-field:focus,
-.dark input[type="datetime-local"]::-webkit-datetime-edit-year-field:focus,
-.dark input[type="datetime-local"]::-webkit-datetime-edit-hour-field:focus,
-.dark input[type="datetime-local"]::-webkit-datetime-edit-minute-field:focus {
+.dark input[type='datetime-local']::-webkit-datetime-edit-month-field:focus,
+.dark input[type='datetime-local']::-webkit-datetime-edit-day-field:focus,
+.dark input[type='datetime-local']::-webkit-datetime-edit-year-field:focus,
+.dark input[type='datetime-local']::-webkit-datetime-edit-hour-field:focus,
+.dark input[type='datetime-local']::-webkit-datetime-edit-minute-field:focus {
   background: rgba(163, 209, 198, 0.1);
 }
 
 /* Custom calendar popup styling for supported browsers */
-input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+input[type='datetime-local']::-webkit-calendar-picker-indicator:hover {
   background-color: rgba(61, 141, 122, 0.1);
   border-radius: 4px;
 }
 
-.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+.dark input[type='datetime-local']::-webkit-calendar-picker-indicator:hover {
   background-color: rgba(163, 209, 198, 0.1);
 }
 
 /* Enhanced Calendar Popup Styling */
 /* Force calendar to use appropriate color scheme */
-input[type="datetime-local"] {
+input[type='datetime-local'] {
   color-scheme: light;
-  accent-color: #3D8D7A;
+  accent-color: #3d8d7a;
 }
 
-.dark input[type="datetime-local"] {
+.dark input[type='datetime-local'] {
   color-scheme: dark;
-  accent-color: #A3D1C6;
+  accent-color: #a3d1c6;
 }
 
 /* Style the calendar popup directly where browsers support it */
-input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+input[type='datetime-local']::-webkit-calendar-picker-indicator {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233D8D7A'%3e%3cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: center;
@@ -3232,46 +3778,46 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   transition: background-color 0.2s;
 }
 
-.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+.dark input[type='datetime-local']::-webkit-calendar-picker-indicator {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A3D1C6'%3e%3cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z'/%3e%3c/svg%3e");
 }
 
 /* Enhanced hover and active states */
-input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+input[type='datetime-local']::-webkit-calendar-picker-indicator:hover {
   background-color: rgba(61, 141, 122, 0.1);
 }
 
-.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+.dark input[type='datetime-local']::-webkit-calendar-picker-indicator:hover {
   background-color: rgba(163, 209, 198, 0.1);
 }
 
-input[type="datetime-local"]::-webkit-calendar-picker-indicator:active {
+input[type='datetime-local']::-webkit-calendar-picker-indicator:active {
   background-color: rgba(61, 141, 122, 0.2);
   transform: scale(0.95);
 }
 
-.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator:active {
+.dark input[type='datetime-local']::-webkit-calendar-picker-indicator:active {
   background-color: rgba(163, 209, 198, 0.2);
 }
 
 /* Additional webkit calendar styling */
-input[type="datetime-local"]::-webkit-inner-spin-button {
+input[type='datetime-local']::-webkit-inner-spin-button {
   display: none;
 }
 
-input[type="datetime-local"]::-webkit-clear-button {
+input[type='datetime-local']::-webkit-clear-button {
   display: none;
 }
 
 /* Force the calendar popup to respect dark mode */
 @media (prefers-color-scheme: dark) {
-  .dark input[type="datetime-local"] {
+  .dark input[type='datetime-local'] {
     color-scheme: dark;
   }
 }
 
 @media (prefers-color-scheme: light) {
-  input[type="datetime-local"] {
+  input[type='datetime-local'] {
     color-scheme: light;
   }
 }
@@ -3293,35 +3839,35 @@ input[type="datetime-local"]::-webkit-clear-button {
   display: block;
 }
 .dark .timezone-note {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .form-label-small {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #3D8D7A;
+  color: #3d8d7a;
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 .dark .form-label-small {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .label-icon {
   font-size: 1rem;
 }
-  .action-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1.1rem;
-    margin-top: 2rem;
-  }
-  .action-buttons .btn-primary {
-    min-width: 220px;
-    justify-content: center;
-  }
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.1rem;
+  margin-top: 2rem;
+}
+.action-buttons .btn-primary {
+  min-width: 220px;
+  justify-content: center;
+}
 @media (max-width: 768px) {
   .action-buttons {
     flex-direction: column;
@@ -3975,31 +4521,31 @@ input[type="datetime-local"]::-webkit-clear-button {
   .tf-options-modern {
     grid-template-columns: 1fr;
   }
-  
+
   .option-row {
     flex-direction: column;
     align-items: stretch;
     gap: 0.75rem;
   }
-  
+
   .option-controls {
     justify-content: flex-start;
   }
-  
+
   .action-buttons-modern {
     flex-direction: column-reverse;
     gap: 0.75rem;
   }
-  
+
   .btn-modern {
     width: 100%;
     justify-content: center;
   }
-  
+
   .question-card-header {
     padding: 1rem 1.5rem;
   }
-  
+
   .question-card-body {
     padding: 1.5rem;
   }
@@ -4128,7 +4674,7 @@ input[type="datetime-local"]::-webkit-clear-button {
 
 .toggle-slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 22px;
   width: 22px;
   left: 3px;
@@ -4301,15 +4847,15 @@ input[type="datetime-local"]::-webkit-clear-button {
   .settings-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .schedule-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .attempts-options {
     flex-direction: column;
   }
-  
+
   .attempt-option {
     flex-direction: row;
     justify-content: flex-start;
@@ -4666,23 +5212,23 @@ input[type="datetime-local"]::-webkit-clear-button {
     align-items: center;
     gap: 1rem;
   }
-  
+
   .stat-card {
     min-width: 200px;
   }
-  
+
   .preview-question-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .preview-option {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
   }
-  
+
   .option-marker {
     align-self: center;
   }
@@ -4711,13 +5257,17 @@ input[type="datetime-local"]::-webkit-clear-button {
   width: 90%;
   max-height: 90vh;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   animation: modalSlideIn 0.3s ease-out;
 }
 .dark .modal-content {
   background: #23272b;
-  border: 1px solid #3D8D7A;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #3d8d7a;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes modalSlideIn {
@@ -4734,7 +5284,7 @@ input[type="datetime-local"]::-webkit-clear-button {
   border-bottom: 1px solid #e5e7eb;
 }
 .dark .modal-header {
-  border-bottom-color: #3D8D7A;
+  border-bottom-color: #3d8d7a;
 }
 
 .modal-header h3 {
@@ -4744,7 +5294,7 @@ input[type="datetime-local"]::-webkit-clear-button {
   margin: 0;
 }
 .dark .modal-header h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-close {
@@ -4767,11 +5317,11 @@ input[type="datetime-local"]::-webkit-clear-button {
   color: #374151;
 }
 .dark .modal-close {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 .dark .modal-close:hover {
   background: rgba(163, 209, 198, 0.1);
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-body {
@@ -4782,11 +5332,11 @@ input[type="datetime-local"]::-webkit-clear-button {
 }
 
 .modal-icon {
-  color: #3D8D7A;
+  color: #3d8d7a;
   flex-shrink: 0;
 }
 .dark .modal-icon {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-text {
@@ -4801,7 +5351,7 @@ input[type="datetime-local"]::-webkit-clear-button {
   line-height: 1.5;
 }
 .dark .modal-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-description {
@@ -4811,7 +5361,7 @@ input[type="datetime-local"]::-webkit-clear-button {
   line-height: 1.5;
 }
 .dark .modal-description {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-actions {
@@ -4822,7 +5372,7 @@ input[type="datetime-local"]::-webkit-clear-button {
   justify-content: flex-end;
 }
 .dark .modal-actions {
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
 }
 
 .modal-actions .btn {
@@ -4835,16 +5385,16 @@ input[type="datetime-local"]::-webkit-clear-button {
     width: 95%;
     margin: 1rem;
   }
-  
+
   .modal-body {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .modal-actions {
     flex-direction: column-reverse;
   }
-  
+
   .modal-actions .btn {
     width: 100%;
   }
@@ -4900,8 +5450,12 @@ input[type="datetime-local"]::-webkit-clear-button {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive Design */
@@ -4915,11 +5469,11 @@ input[type="datetime-local"]::-webkit-clear-button {
   .main-content {
     padding: 1rem;
   }
-  
+
   .navbar-center {
     gap: 0.25rem;
   }
-  
+
   .nav-item {
     padding: 0.5rem 1rem;
     font-size: 0.7rem;
@@ -4930,22 +5484,22 @@ input[type="datetime-local"]::-webkit-clear-button {
   .main-content {
     padding: 1rem;
   }
-  
+
   .page-header {
     padding: 1rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .header-content {
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
   }
-  
+
   .navbar-content {
     padding: 0 0.5rem;
   }
-  
+
   .brand-name {
     display: none;
   }
@@ -4972,7 +5526,7 @@ input[type="datetime-local"]::-webkit-clear-button {
   border-radius: 16px;
   overflow: hidden;
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   animation: modalSlideIn 0.3s ease-out;
 }
 
@@ -4988,7 +5542,7 @@ input[type="datetime-local"]::-webkit-clear-button {
 }
 
 .logout-header {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
   padding: 1.5rem;
 }
@@ -5011,13 +5565,18 @@ input[type="datetime-local"]::-webkit-clear-button {
 }
 
 .logout-icon svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .logout-message {
@@ -5096,8 +5655,12 @@ input[type="datetime-local"]::-webkit-clear-button {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-logout .loading-text {
@@ -5107,8 +5670,12 @@ input[type="datetime-local"]::-webkit-clear-button {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Custom Scrollbar Styling - Green Theme */
@@ -5123,7 +5690,7 @@ input[type="datetime-local"]::-webkit-clear-button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
@@ -5145,7 +5712,7 @@ input[type="datetime-local"]::-webkit-clear-button {
 /* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 /* Dark mode scrollbar */
@@ -5173,5 +5740,4 @@ input[type="datetime-local"]::-webkit-clear-button {
   overflow-y: auto;
   overflow-x: hidden;
 }
-
 </style>

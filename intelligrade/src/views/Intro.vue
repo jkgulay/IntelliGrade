@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -35,7 +35,9 @@ onMounted(() => {
   align-items: center;
   background-color: #357a66; /* Matching login bg color */
   overflow: hidden;
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 .fade-out {
@@ -62,8 +64,12 @@ onMounted(() => {
 }
 
 @keyframes waveMove {
-  0% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); }
-  100% { transform: translateX(-50px) translateY(-20px) rotate(5deg) scale(1.05); }
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translateX(-50px) translateY(-20px) rotate(5deg) scale(1.05);
+  }
 }
 
 /* Bigger logo */
@@ -76,8 +82,16 @@ onMounted(() => {
 }
 
 @keyframes zoomIn {
-  0% { transform: scale(0.5); opacity: 0; }
-  50% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.15); }
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.15);
+  }
 }
 </style>

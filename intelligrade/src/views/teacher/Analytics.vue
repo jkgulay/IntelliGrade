@@ -10,42 +10,52 @@
             <span class="brand-name">IntelliGrade</span>
           </div>
         </div>
-        
+
         <!-- Center: Empty space for clean look -->
-        <div class="navbar-center">
-        </div>
-        
+        <div class="navbar-center"></div>
+
         <!-- Right: User Profile and Notifications -->
         <div class="navbar-right">
-          
           <!-- Section Filter -->
-          <select v-model="selectedSection" @change="filterBySection" class="section-filter rounded-bg">
+          <select
+            v-model="selectedSection"
+            @change="filterBySection"
+            class="section-filter rounded-bg"
+          >
             <option value="">All Sections</option>
             <option v-for="section in sections" :key="section.id" :value="section.id">
               {{ section.name }} - {{ section.subject_name }}
             </option>
           </select>
-          
+
           <!-- Export Button -->
           <button @click="exportData" class="export-btn rounded-bg">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+              <path
+                d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+              />
             </svg>
             <span>Export</span>
           </button>
-          
+
           <!-- Notifications and Profile Group -->
           <div class="notifications-profile-group">
             <!-- Notification Bell -->
             <div class="notif-wrapper">
-              <button class="nav-icon-btn rounded-bg" @click="toggleNotifDropdown" aria-label="Notifications">
+              <button
+                class="nav-icon-btn rounded-bg"
+                @click="toggleNotifDropdown"
+                aria-label="Notifications"
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                   <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                 </svg>
-                <span v-if="notifications.length" class="notification-badge">{{ notifications.length }}</span>
+                <span v-if="notifications.length" class="notification-badge">{{
+                  notifications.length
+                }}</span>
               </button>
-              
+
               <!-- Notification Dropdown -->
               <div v-if="showNotifDropdown" class="notification-dropdown">
                 <div class="dropdown-header">
@@ -55,7 +65,12 @@
                   <div v-if="notifications.length === 0" class="no-notifications">
                     No new notifications
                   </div>
-                  <div v-for="notif in notifications" :key="notif.id" class="notification-item" @click="handleNotificationClick(notif)">
+                  <div
+                    v-for="notif in notifications"
+                    :key="notif.id"
+                    class="notification-item"
+                    @click="handleNotificationClick(notif)"
+                  >
                     <div class="notif-content">
                       <h4>{{ notif.title }}</h4>
                       <p>{{ notif.body }}</p>
@@ -65,7 +80,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- User Profile -->
             <div class="user-profile-wrapper">
               <div class="user-profile rounded-bg" @click="toggleProfileDropdown">
@@ -76,46 +91,56 @@
                   </svg>
                 </div>
                 <span class="user-name">{{ fullName }}</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="dropdown-arrow">
-                  <path d="M7 10l5 5 5-5z"/>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="dropdown-arrow"
+                >
+                  <path d="M7 10l5 5 5-5z" />
                 </svg>
               </div>
-              
+
               <!-- Profile Dropdown -->
-            <div v-if="showProfileDropdown" class="profile-dropdown">
-              <div class="dropdown-header">
-                <div class="profile-info">
-                  <div class="profile-avatar">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                  </div>
-                  <div class="profile-details">
-                    <h4>{{ fullName }}</h4>
-                    <p>Teacher</p>
+              <div v-if="showProfileDropdown" class="profile-dropdown">
+                <div class="dropdown-header">
+                  <div class="profile-info">
+                    <div class="profile-avatar">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    </div>
+                    <div class="profile-details">
+                      <h4>{{ fullName }}</h4>
+                      <p>Teacher</p>
+                    </div>
                   </div>
                 </div>
+
+                <div class="dropdown-menu">
+                  <router-link to="/teacher/settings" class="dropdown-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"
+                      />
+                    </svg>
+                    <span>Profile & Settings</span>
+                  </router-link>
+
+                  <div class="dropdown-divider"></div>
+
+                  <button @click="logout" class="dropdown-item logout-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"
+                      />
+                    </svg>
+                    <span>Logout</span>
+                  </button>
+                </div>
               </div>
-              
-              <div class="dropdown-menu">
-                <router-link to="/teacher/settings" class="dropdown-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"/>
-                  </svg>
-                  <span>Profile & Settings</span>
-                </router-link>
-                
-                <div class="dropdown-divider"></div>
-                
-                <button @click="logout" class="dropdown-item logout-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"/>
-                  </svg>
-                  <span>Logout</span>
-                </button>
-              </div>
-            </div>
             </div>
           </div>
         </div>
@@ -123,46 +148,111 @@
     </nav>
 
     <!-- Sidebar Navigation - Custom Tooltip Labels on Hover -->
-    <aside class="sidebar" style="background:#3D8D7A; border-right:none;">
+    <aside class="sidebar" style="background: #3d8d7a; border-right: none">
       <nav class="sidebar-nav">
-        <router-link to="/teacher/dashboard" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/dashboard' }">
+        <router-link
+          to="/teacher/dashboard"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/dashboard' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M10 20v-6h4v6m5-8h3L12 3 2 12h3v8h5v-6h4v6h5v-8z" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Dashboard</span>
         </router-link>
-        <router-link to="/teacher/subjects" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/subjects' }">
+        <router-link
+          to="/teacher/subjects"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/subjects' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="7" width="18" height="13" rx="2" />
               <path d="M3 7l9-4 9 4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Classes</span>
         </router-link>
-        <router-link to="/teacher/gradebook" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/gradebook' }">
+        <router-link
+          to="/teacher/gradebook"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/gradebook' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="4" y="4" width="16" height="16" rx="2" />
               <path d="M8 2v4M16 2v4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Gradebook</span>
         </router-link>
-        <router-link to="/teacher/upload-assessment" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/upload-assessment' }">
+        <router-link
+          to="/teacher/upload-assessment"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/upload-assessment' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M12 19V6M5 12l7-7 7 7" />
               <rect x="5" y="19" width="14" height="2" rx="1" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Upload Assessment</span>
         </router-link>
-        <router-link to="/teacher/analytics" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/analytics' }">
+        <router-link
+          to="/teacher/analytics"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/analytics' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="12" width="4" height="8" />
               <rect x="10" y="8" width="4" height="12" />
               <rect x="17" y="4" width="4" height="16" />
@@ -170,9 +260,22 @@
           </div>
           <span class="sidebar-tooltip">Analytics</span>
         </router-link>
-        <router-link to="/teacher/messages" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/messages' }">
+        <router-link
+          to="/teacher/messages"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/messages' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="M3 5l9 7 9-7" />
             </svg>
@@ -213,39 +316,155 @@
 
       <!-- Stats Cards -->
       <div v-else class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon stat-average">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
-          </svg>
+        <div class="stat-card">
+          <div class="stat-icon stat-average">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"
+              />
+            </svg>
+          </div>
+          <div>
+            <div class="stat-number">{{ overallStats.averageScore }}%</div>
+            <div class="stat-label">Overall Average</div>
+          </div>
         </div>
-        <div>
-          <div class="stat-number">{{ overallStats.averageScore }}%</div>
-          <div class="stat-label">Overall Average</div>
-        </div>
-      </div>
 
-      <div class="stat-card">
-        <div class="stat-icon stat-students">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" />
-          </svg>
+        <div class="stat-card">
+          <div class="stat-icon stat-students">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z"
+              />
+            </svg>
+          </div>
+          <div>
+            <div class="stat-number">{{ overallStats.totalStudents }}</div>
+            <div class="stat-label">Total Students</div>
+          </div>
         </div>
-        <div>
-          <div class="stat-number">{{ overallStats.totalStudents }}</div>
-          <div class="stat-label">Total Students</div>
-        </div>
-      </div>
 
         <div class="stat-card">
           <div class="stat-icon stat-assessments">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M9,17H7V10H9V17M13,17H11V7H13V17M17,17H15V13H17V17Z" />
+              <path
+                d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M9,17H7V10H9V17M13,17H11V7H13V17M17,17H15V13H17V17Z"
+              />
             </svg>
           </div>
           <div>
             <div class="stat-number">{{ overallStats.totalQuizzes }}</div>
             <div class="stat-label">Quizzes Created</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Productivity Dashboard -->
+      <div v-if="!loading" class="productivity-section">
+        <div class="section-header">
+          <h2>📊 Teacher Productivity Dashboard</h2>
+          <p class="section-desc">
+            Track your grading efficiency and time savings with automated assessment
+          </p>
+        </div>
+
+        <div class="productivity-grid">
+          <!-- Auto-Graded Quizzes -->
+          <div class="productivity-card">
+            <div class="prod-icon auto-graded">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
+              </svg>
+            </div>
+            <div class="prod-content">
+              <div class="prod-value">{{ productivityStats.autoGradedCount }}</div>
+              <div class="prod-label">Auto-Graded Submissions</div>
+              <div class="prod-trend trend-positive">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 14l5-5 5 5H7z" />
+                </svg>
+                100% automated
+              </div>
+            </div>
+          </div>
+
+          <!-- Time Saved -->
+          <div class="productivity-card">
+            <div class="prod-icon time-saved">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                />
+              </svg>
+            </div>
+            <div class="prod-content">
+              <div class="prod-value">{{ productivityStats.timeSavedHours }} hrs</div>
+              <div class="prod-label">Estimated Time Saved</div>
+              <div class="prod-trend trend-positive">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 14l5-5 5 5H7z" />
+                </svg>
+                ~{{ productivityStats.minutesPerQuiz }} min saved per quiz
+              </div>
+            </div>
+          </div>
+
+          <!-- Grading Speed -->
+          <div class="productivity-card">
+            <div class="prod-icon grading-speed">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                />
+              </svg>
+            </div>
+            <div class="prod-content">
+              <div class="prod-value">{{ productivityStats.avgGradingTime }}s</div>
+              <div class="prod-label">Avg. Auto-Grading Time</div>
+              <div class="prod-trend trend-positive">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 14l5-5 5 5H7z" />
+                </svg>
+                vs ~5 min manual
+              </div>
+            </div>
+          </div>
+
+          <!-- Accuracy Rate -->
+          <div class="productivity-card">
+            <div class="prod-icon accuracy-rate">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
+            </div>
+            <div class="prod-content">
+              <div class="prod-value">{{ productivityStats.accuracyRate }}%</div>
+              <div class="prod-label">Grading Accuracy</div>
+              <div class="prod-trend trend-positive">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 14l5-5 5 5H7z" />
+                </svg>
+                Consistent scoring
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grading Activity Chart -->
+        <div class="activity-chart-card">
+          <div class="card-header">
+            <h3>Weekly Grading Activity</h3>
+            <p class="card-desc">Quiz submissions graded per day this week</p>
+          </div>
+          <div class="activity-chart">
+            <div v-for="(day, index) in weeklyActivity" :key="index" class="activity-bar-wrapper">
+              <div class="activity-bar" :style="{ height: day.height + '%' }">
+                <span class="bar-value">{{ day.count }}</span>
+              </div>
+              <span class="bar-label">{{ day.label }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -263,7 +482,9 @@
               <div v-for="quiz in quizPerformanceData" :key="quiz.quiz_id" class="performance-item">
                 <div class="quiz-info">
                   <div class="quiz-title">{{ quiz.quiz_title }}</div>
-                  <div class="quiz-meta">{{ quiz.total_attempts }} attempts • {{ quiz.students_attempted }} students</div>
+                  <div class="quiz-meta">
+                    {{ quiz.total_attempts }} attempts • {{ quiz.students_attempted }} students
+                  </div>
                 </div>
                 <div class="quiz-score">
                   <span :class="['score-badge', getScoreClass(quiz.average_score)]">
@@ -313,12 +534,12 @@
           <h3>Student Performance Overview</h3>
           <p class="card-desc">Quiz results and performance data for each student</p>
           <div class="table-controls">
-            <input 
-              v-model="searchQuery" 
-              type="text" 
+            <input
+              v-model="searchQuery"
+              type="text"
               placeholder="Search students..."
               class="search-input"
-            >
+            />
             <select v-model="sortBy" @change="sortStudents" class="sort-select">
               <option value="name">Sort by Name</option>
               <option value="average">Sort by Average Score</option>
@@ -326,7 +547,7 @@
             </select>
           </div>
         </div>
-        
+
         <div class="table-wrapper">
           <table class="performance-table">
             <thead>
@@ -371,16 +592,26 @@
                   </span>
                 </td>
                 <td class="actions-cell">
-                  <button @click="viewStudentDetails(student)" class="action-btn view-btn" title="View Details">
+                  <button
+                    @click="viewStudentDetails(student)"
+                    class="action-btn view-btn"
+                    title="View Details"
+                  >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
+                      <path
+                        d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z"
+                      />
                     </svg>
                   </button>
                 </td>
               </tr>
               <tr v-if="filteredStudents.length === 0">
-                <td colspan="8" style="text-align: center; padding: 2rem; color: #999;">
-                  {{ studentData.length === 0 ? 'No student data yet. Students need to take quizzes first.' : 'No students match your search.' }}
+                <td colspan="8" style="text-align: center; padding: 2rem; color: #999">
+                  {{
+                    studentData.length === 0
+                      ? 'No student data yet. Students need to take quizzes first.'
+                      : 'No students match your search.'
+                  }}
                 </td>
               </tr>
             </tbody>
@@ -389,17 +620,15 @@
 
         <!-- Pagination -->
         <div class="pagination">
-          <button 
+          <button
             @click="currentPage = Math.max(1, currentPage - 1)"
             :disabled="currentPage === 1"
             class="page-btn"
           >
             Previous
           </button>
-          <span class="page-info">
-            Page {{ currentPage }} of {{ totalPages }}
-          </span>
-          <button 
+          <span class="page-info"> Page {{ currentPage }} of {{ totalPages }} </span>
+          <button
             @click="currentPage = Math.min(totalPages, currentPage + 1)"
             :disabled="currentPage === totalPages"
             class="page-btn"
@@ -410,7 +639,6 @@
       </div>
     </main>
 
-
     <!-- Student Detail Modal -->
     <div v-if="selectedStudent" class="modal-overlay" @click.self="selectedStudent = null">
       <div class="modal student-detail-modal">
@@ -418,7 +646,7 @@
           <h3>{{ selectedStudent.student_name }} - Quiz Results</h3>
           <button @click="selectedStudent = null" class="close-btn">✕</button>
         </div>
-        
+
         <div class="modal-content">
           <div class="student-summary">
             <div class="summary-stat">
@@ -438,7 +666,11 @@
           <div class="quiz-history">
             <h4>Quiz Attempts</h4>
             <div v-if="studentQuizResults.length > 0" class="history-list">
-              <div v-for="result in studentQuizResults" :key="result.attempt_id" class="history-item">
+              <div
+                v-for="result in studentQuizResults"
+                :key="result.attempt_id"
+                class="history-item"
+              >
                 <div class="quiz-info">
                   <h5>{{ result.quiz_title }}</h5>
                   <p>Attempt {{ result.attempt_number }} • {{ formatDate(result.submitted_at) }}</p>
@@ -450,14 +682,12 @@
                 </div>
               </div>
             </div>
-            <div v-else class="empty-state">
-              No quiz attempts yet
-            </div>
+            <div v-else class="empty-state">No quiz attempts yet</div>
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Scroll to Top Button -->
     <Transition name="fade" mode="out-in">
       <button
@@ -484,17 +714,29 @@
         </div>
         <div class="modal-body">
           <div class="logout-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-              <polyline points="16 17 21 12 16 7"/>
-              <line x1="21" y1="12" x2="9" y2="12"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
             </svg>
           </div>
           <p class="logout-message">Are you sure you want to logout?</p>
           <p class="logout-submessage">You will be redirected to the login page.</p>
         </div>
         <div class="modal-footer logout-footer">
-          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">Cancel</button>
+          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">
+            Cancel
+          </button>
           <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
             <span v-if="!isLoggingOut">Logout</span>
             <span v-else class="loading-text">
@@ -576,7 +818,7 @@ export default {
   name: 'AnalyticsView',
   setup() {
     const { isDarkMode, initDarkMode } = useDarkMode()
-    
+
     const sections = ref<Section[]>([])
     const studentData = ref<StudentData[]>([])
     const quizPerformanceData = ref<QuizPerformance[]>([])
@@ -591,7 +833,7 @@ export default {
     const teacherId = ref<string>('')
     const showProfileDropdown = ref(false)
     const fullName = ref('Teacher')
-    
+
     // Notification dropdown states
     const showNotifDropdown = ref(false)
     const notifications = ref([])
@@ -599,9 +841,16 @@ export default {
     // Logout modal states
     const showLogoutModal = ref(false)
     const isLoggingOut = ref(false)
-    
+
     // Scroll to top functionality
     const showScrollTop = ref(false)
+
+    // Productivity dashboard data
+    const gradingMetrics = ref({
+      totalAutoGraded: 0,
+      avgGradingTimeSeconds: 0,
+      weeklyActivity: [] as { date: string; count: number }[],
+    })
 
     const scrollToTop = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -610,7 +859,7 @@ export default {
     const handleScroll = () => {
       showScrollTop.value = window.scrollY > 300
     }
-    
+
     // Real-time subscription channels
     let quizAttemptsSubscription: any = null
     let quizzesSubscription: any = null
@@ -620,45 +869,52 @@ export default {
     const overallStats = computed(() => {
       let students = studentData.value
       if (selectedSection.value) {
-        students = students.filter(s => s.section_id === selectedSection.value)
+        students = students.filter((s) => s.section_id === selectedSection.value)
       }
 
       const totalStudents = students.length
-      
+
       // Count unique quizzes from quiz performance data
       let quizzes = quizPerformanceData.value
       if (selectedSection.value) {
-        quizzes = quizzes.filter(q => q.section_id === selectedSection.value)
+        quizzes = quizzes.filter((q) => q.section_id === selectedSection.value)
       }
       const totalQuizzes = quizzes.length
-      
+
       // Calculate average score from students who have taken quizzes
-      const studentsWithScores = students.filter(s => s.average_score > 0)
-      const averageScore = studentsWithScores.length > 0 
-        ? Math.round(studentsWithScores.reduce((sum, s) => sum + s.average_score, 0) / studentsWithScores.length)
-        : 0
+      const studentsWithScores = students.filter((s) => s.average_score > 0)
+      const averageScore =
+        studentsWithScores.length > 0
+          ? Math.round(
+              studentsWithScores.reduce((sum, s) => sum + s.average_score, 0) /
+                studentsWithScores.length,
+            )
+          : 0
 
       return {
         totalStudents,
         totalQuizzes,
-        averageScore
+        averageScore,
       }
     })
 
     const performanceDistribution = computed(() => {
       let students = studentData.value
       if (selectedSection.value) {
-        students = students.filter(s => s.section_id === selectedSection.value)
+        students = students.filter((s) => s.section_id === selectedSection.value)
       }
 
       // Only count students who have taken at least one quiz
-      const studentsWithScores = students.filter(s => s.average_score > 0)
+      const studentsWithScores = students.filter((s) => s.average_score > 0)
 
       return {
-        excellent: studentsWithScores.filter(s => s.average_score >= 90).length,
-        good: studentsWithScores.filter(s => s.average_score >= 80 && s.average_score < 90).length,
-        satisfactory: studentsWithScores.filter(s => s.average_score >= 75 && s.average_score < 80).length,
-        needsHelp: studentsWithScores.filter(s => s.average_score < 75).length
+        excellent: studentsWithScores.filter((s) => s.average_score >= 90).length,
+        good: studentsWithScores.filter((s) => s.average_score >= 80 && s.average_score < 90)
+          .length,
+        satisfactory: studentsWithScores.filter(
+          (s) => s.average_score >= 75 && s.average_score < 80,
+        ).length,
+        needsHelp: studentsWithScores.filter((s) => s.average_score < 75).length,
       }
     })
 
@@ -667,16 +923,17 @@ export default {
 
       // Filter by section
       if (selectedSection.value) {
-        filtered = filtered.filter(s => s.section_id === selectedSection.value)
+        filtered = filtered.filter((s) => s.section_id === selectedSection.value)
       }
 
       // Filter by search query
       if (searchQuery.value) {
         const query = searchQuery.value.toLowerCase()
-        filtered = filtered.filter(s => 
-          s.student_name.toLowerCase().includes(query) ||
-          s.student_number.toLowerCase().includes(query) ||
-          s.student_email.toLowerCase().includes(query)
+        filtered = filtered.filter(
+          (s) =>
+            s.student_name.toLowerCase().includes(query) ||
+            s.student_number.toLowerCase().includes(query) ||
+            s.student_email.toLowerCase().includes(query),
         )
       }
 
@@ -699,27 +956,78 @@ export default {
 
     const totalPages = computed(() => {
       let filtered = studentData.value
-      
+
       if (selectedSection.value) {
-        filtered = filtered.filter(s => s.section_id === selectedSection.value)
+        filtered = filtered.filter((s) => s.section_id === selectedSection.value)
       }
-      
+
       if (searchQuery.value) {
         const query = searchQuery.value.toLowerCase()
-        filtered = filtered.filter(s => 
-          s.student_name.toLowerCase().includes(query) ||
-          s.student_number.toLowerCase().includes(query)
+        filtered = filtered.filter(
+          (s) =>
+            s.student_name.toLowerCase().includes(query) ||
+            s.student_number.toLowerCase().includes(query),
         )
       }
-      
+
       return Math.ceil(filtered.length / itemsPerPage) || 1
+    })
+
+    // Productivity Statistics computed property
+    const productivityStats = computed(() => {
+      const autoGradedCount = gradingMetrics.value.totalAutoGraded
+      // Estimate: 5 minutes manual grading per submission saved
+      const minutesPerQuiz = 5
+      const totalMinutesSaved = autoGradedCount * minutesPerQuiz
+      const timeSavedHours = Math.round((totalMinutesSaved / 60) * 10) / 10
+
+      return {
+        autoGradedCount,
+        timeSavedHours: timeSavedHours || 0,
+        minutesPerQuiz,
+        avgGradingTime: gradingMetrics.value.avgGradingTimeSeconds || 2,
+        accuracyRate: 100, // Auto-grading is 100% consistent for objective questions
+      }
+    })
+
+    // Weekly activity for chart
+    const weeklyActivity = computed(() => {
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+      const today = new Date()
+      const result = []
+
+      // Get last 7 days
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date(today)
+        date.setDate(date.getDate() - i)
+        const dateStr = date.toISOString().split('T')[0]
+
+        const dayActivity = gradingMetrics.value.weeklyActivity.find((a) => a.date === dateStr)
+
+        result.push({
+          label: days[date.getDay()],
+          count: dayActivity?.count || 0,
+          height: 0,
+        })
+      }
+
+      // Calculate bar heights (max 100%)
+      const maxCount = Math.max(...result.map((r) => r.count), 1)
+      result.forEach((r) => {
+        r.height = Math.round((r.count / maxCount) * 100)
+      })
+
+      return result
     })
 
     // Get current teacher ID
     const getCurrentTeacherId = async () => {
       try {
-        const { data: { session }, error: sessionError } = await supabase.auth.getSession()
-        
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession()
+
         if (sessionError || !session?.user) {
           console.error('No session found')
           return null
@@ -761,38 +1069,73 @@ export default {
     const fetchStudentPerformanceData = async (currentTeacherId: string) => {
       try {
         console.log('Fetching student performance data...')
-        
-        // Get all enrolled students in teacher's sections
+
+        // Fetch the teacher's data first
+        const { data: teacherData } = await supabase
+          .from('teachers')
+          .select('id, full_name')
+          .eq('id', currentTeacherId)
+          .single()
+
+        // First get subject IDs for this teacher
+        const { data: teacherSubjects, error: subjectsError } = await supabase
+          .from('subjects')
+          .select('id, name, teacher_id')
+          .eq('teacher_id', currentTeacherId)
+
+        if (subjectsError) throw subjectsError
+
+        const subjectIds = teacherSubjects?.map((s) => s.id) || []
+
+        if (subjectIds.length === 0) {
+          console.log('No subjects found for teacher')
+          studentData.value = []
+          return
+        }
+
+        // Then get sections for those subjects
+        const { data: teacherSections, error: sectionsError } = await supabase
+          .from('sections')
+          .select(
+            `
+            id,
+            name,
+            section_code,
+            subject_id
+          `,
+          )
+          .in('subject_id', subjectIds)
+
+        if (sectionsError) throw sectionsError
+
+        // Enhance sections with subject data
+        const subjectsMap = new Map(teacherSubjects?.map((s) => [s.id, s]) || [])
+        const enhancedSections =
+          teacherSections?.map((s) => ({
+            ...s,
+            subjects: subjectsMap.get(s.subject_id),
+          })) || []
+
+        const sectionIds = teacherSections?.map((s: any) => s.id) || []
+
+        if (sectionIds.length === 0) {
+          console.log('No sections found for teacher')
+          studentData.value = []
+          return
+        }
+
+        // Get all enrolled students in teacher's sections using section IDs
         const { data: enrollments, error: enrollError } = await supabase
           .from('enrollments')
-          .select(`
+          .select(
+            `
             student_id,
             section_id,
-            subject_id,
-            students!inner (
-              id,
-              student_id,
-              full_name,
-              email,
-              grade_level
-            ),
-            sections!inner (
-              id,
-              name,
-              section_code,
-              subjects!inner (
-                id,
-                name,
-                teacher_id,
-                teachers!inner (
-                  id,
-                  full_name
-                )
-              )
-            )
-          `)
+            subject_id
+          `,
+          )
           .eq('status', 'active')
-          .eq('sections.subjects.teacher_id', currentTeacherId)
+          .in('section_id', sectionIds)
 
         if (enrollError) throw enrollError
 
@@ -802,52 +1145,94 @@ export default {
           return
         }
 
+        // Fetch student data separately
+        const enrolledStudentIds = [...new Set(enrollments.map((e) => e.student_id))]
+        const { data: students } = await supabase
+          .from('students')
+          .select('id, student_id, full_name, email, grade_level')
+          .in('id', enrolledStudentIds)
+
+        const studentsMap = new Map((students || []).map((s) => [s.id, s]))
+
+        // Enhance enrollments with section and student data
+        const enhancedEnrollments =
+          enrollments
+            ?.map((e: any) => {
+              const section = enhancedSections?.find((s: any) => s.id === e.section_id)
+              const student = studentsMap.get(e.student_id)
+              return {
+                ...e,
+                sections: section,
+                students: student,
+              }
+            })
+            .filter((e) => e.students) || []
+
+        if (!enhancedEnrollments || enhancedEnrollments.length === 0) {
+          console.log('No enrollments found')
+          studentData.value = []
+          return
+        }
+
         // Get all quiz attempts for these students
-        const studentIds = enrollments.map((e: any) => e.student_id)
-        
+        const studentIds = enhancedEnrollments.map((e: any) => e.student_id)
+
         const { data: attempts, error: attemptsError } = await supabase
           .from('quiz_attempts')
-          .select(`
+          .select(
+            `
             id,
             student_id,
             quiz_id,
             percentage,
             submitted_at,
             attempt_number,
-            status,
-            quizzes!inner (
-              id,
-              title,
-              section_id
-            )
-          `)
+            status
+          `,
+          )
           .in('student_id', studentIds)
           .in('status', ['submitted', 'graded'])
 
         if (attemptsError) throw attemptsError
 
-        console.log('Found attempts:', attempts?.length || 0)
+        // Fetch quiz data separately
+        const attemptQuizIds = [...new Set((attempts || []).map((a) => a.quiz_id))]
+        const { data: attemptQuizzes } =
+          attemptQuizIds.length > 0
+            ? await supabase
+                .from('quizzes')
+                .select('id, title, section_id')
+                .in('id', attemptQuizIds)
+            : { data: [] }
+        const quizzesMap = new Map((attemptQuizzes || []).map((q) => [q.id, q]))
+
+        // Enhance attempts with quiz data
+        const enhancedAttempts = (attempts || []).map((a) => ({
+          ...a,
+          quizzes: quizzesMap.get(a.quiz_id),
+        }))
+
+        console.log('Found attempts:', enhancedAttempts?.length || 0)
 
         // Calculate stats for each student
-        const studentStats = enrollments.map((enrollment: any) => {
+        const studentStats = enhancedEnrollments.map((enrollment: any) => {
           const student = enrollment.students
           const section = enrollment.sections
-          const subject = section.subjects
-          const teacher = subject.teachers
+          const subject = section?.subjects
 
           // Get all attempts for this student in this teacher's sections
-          const studentAttempts = (attempts || []).filter((a: any) => 
-            a.student_id === student.id &&
-            enrollments.some((e: any) => 
-              e.student_id === student.id && 
-              e.section_id === a.quizzes.section_id
-            )
+          const studentAttempts = enhancedAttempts.filter(
+            (a: any) =>
+              a.student_id === student.id &&
+              enhancedEnrollments.some(
+                (e: any) => e.student_id === student.id && a.quizzes?.section_id === e.section_id,
+              ),
           )
 
           // Calculate statistics
           const totalAttempts = studentAttempts.length
           const uniqueQuizzes = new Set(studentAttempts.map((a: any) => a.quiz_id)).size
-          
+
           let averageScore = 0
           let bestScore = 0
           let lowestScore = 0
@@ -859,10 +1244,11 @@ export default {
             averageScore = Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length)
             bestScore = Math.max(...scores)
             lowestScore = Math.min(...scores)
-            
+
             // Get most recent attempt date
-            const sortedAttempts = studentAttempts.sort((a: any, b: any) => 
-              new Date(b.submitted_at).getTime() - new Date(a.submitted_at).getTime()
+            const sortedAttempts = studentAttempts.sort(
+              (a: any, b: any) =>
+                new Date(b.submitted_at).getTime() - new Date(a.submitted_at).getTime(),
             )
             lastQuizDate = sortedAttempts[0]?.submitted_at || ''
 
@@ -876,8 +1262,8 @@ export default {
           // Count attempts in last week
           const oneWeekAgo = new Date()
           oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
-          const attemptsLastWeek = studentAttempts.filter((a: any) => 
-            new Date(a.submitted_at) >= oneWeekAgo
+          const attemptsLastWeek = studentAttempts.filter(
+            (a: any) => new Date(a.submitted_at) >= oneWeekAgo,
           ).length
 
           return {
@@ -891,8 +1277,8 @@ export default {
             section_code: section.section_code,
             subject_id: subject.id,
             subject_name: subject.name,
-            teacher_id: teacher.id,
-            teacher_name: teacher.full_name,
+            teacher_id: teacherData?.id || currentTeacherId,
+            teacher_name: teacherData?.full_name || 'Unknown',
             total_quiz_attempts: totalAttempts,
             quizzes_attempted: uniqueQuizzes,
             average_score: averageScore,
@@ -900,13 +1286,12 @@ export default {
             lowest_score: lowestScore,
             last_quiz_date: lastQuizDate,
             attempts_last_week: attemptsLastWeek,
-            performance_status: performanceStatus
+            performance_status: performanceStatus,
           }
         })
 
         studentData.value = studentStats
         console.log('Student data updated:', studentStats.length, 'students')
-
       } catch (error) {
         console.error('Error fetching student performance:', error)
         studentData.value = []
@@ -918,42 +1303,88 @@ export default {
       try {
         console.log('Fetching quiz performance data...')
 
-        // Get all quizzes for this teacher
+        // First get subject IDs for this teacher
+        const { data: teacherSubjects, error: subjectsError } = await supabase
+          .from('subjects')
+          .select('id, name, teacher_id')
+          .eq('teacher_id', currentTeacherId)
+
+        if (subjectsError) throw subjectsError
+
+        const subjectIds = teacherSubjects?.map((s) => s.id) || []
+
+        if (subjectIds.length === 0) {
+          console.log('No subjects found for teacher')
+          quizPerformanceData.value = []
+          return
+        }
+
+        // Then get sections for those subjects
+        const { data: teacherSections, error: sectionsError } = await supabase
+          .from('sections')
+          .select(
+            `
+            id,
+            name,
+            subject_id
+          `,
+          )
+          .in('subject_id', subjectIds)
+
+        if (sectionsError) throw sectionsError
+
+        // Create subjects map for lookups
+        const subjectsMap = new Map(teacherSubjects?.map((s) => [s.id, s]) || [])
+
+        // Enhance sections with subject data
+        const enhancedSections =
+          teacherSections?.map((s) => ({
+            ...s,
+            subjects: subjectsMap.get(s.subject_id),
+          })) || []
+
+        const sectionIds = teacherSections?.map((s: any) => s.id) || []
+
+        if (sectionIds.length === 0) {
+          console.log('No sections found for teacher')
+          quizPerformanceData.value = []
+          return
+        }
+
+        // Get all quizzes for these sections
         const { data: quizzes, error: quizzesError } = await supabase
           .from('quizzes')
-          .select(`
+          .select(
+            `
             id,
             title,
             quiz_code,
-            section_id,
-            sections!inner (
-              id,
-              name,
-              subject_id,
-              subjects!inner (
-                id,
-                name,
-                teacher_id,
-                teachers!inner (
-                  id,
-                  full_name
-                )
-              )
-            )
-          `)
-          .eq('sections.subjects.teacher_id', currentTeacherId)
+            section_id
+          `,
+          )
+          .in('section_id', sectionIds)
 
         if (quizzesError) throw quizzesError
 
-        if (!quizzes || quizzes.length === 0) {
+        // Enhance quizzes with section data
+        const enhancedQuizzes =
+          quizzes?.map((q: any) => {
+            const section = enhancedSections?.find((s: any) => s.id === q.section_id)
+            return {
+              ...q,
+              sections: section,
+            }
+          }) || []
+
+        if (!enhancedQuizzes || enhancedQuizzes.length === 0) {
           console.log('No quizzes found')
           quizPerformanceData.value = []
           return
         }
 
         // Get all attempts for these quizzes
-        const quizIds = quizzes.map((q: any) => q.id)
-        
+        const quizIds = enhancedQuizzes.map((q: any) => q.id)
+
         const { data: attempts, error: attemptsError } = await supabase
           .from('quiz_attempts')
           .select('id, quiz_id, student_id, percentage, status')
@@ -965,68 +1396,191 @@ export default {
         console.log('Found quiz attempts:', attempts?.length || 0)
 
         // Calculate stats for each quiz
-        const quizStats = quizzes.map((quiz: any) => {
-          const section = quiz.sections
-          const subject = section.subjects
-          const teacher = subject.teachers
+        const quizStats = enhancedQuizzes
+          .map((quiz: any) => {
+            const section = quiz.sections
+            const subject = section?.subjects
 
-          // Get all attempts for this quiz
-          const quizAttempts = (attempts || []).filter((a: any) => a.quiz_id === quiz.id)
-          
-          const totalAttempts = quizAttempts.length
-          const uniqueStudents = new Set(quizAttempts.map((a: any) => a.student_id)).size
+            // Get all attempts for this quiz
+            const quizAttempts = (attempts || []).filter((a: any) => a.quiz_id === quiz.id)
 
-          let averageScore = 0
-          let highestScore = 0
-          let lowestScore = 0
-          let countExcellent = 0
-          let countGood = 0
-          let countSatisfactory = 0
-          let countNeedsHelp = 0
+            const totalAttempts = quizAttempts.length
+            const uniqueStudents = new Set(quizAttempts.map((a: any) => a.student_id)).size
 
-          if (totalAttempts > 0) {
-            const scores = quizAttempts.map((a: any) => a.percentage || 0)
-            averageScore = Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length)
-            highestScore = Math.max(...scores)
-            lowestScore = Math.min(...scores)
+            let averageScore = 0
+            let highestScore = 0
+            let lowestScore = 0
+            let countExcellent = 0
+            let countGood = 0
+            let countSatisfactory = 0
+            let countNeedsHelp = 0
 
-            // Count by performance level
-            scores.forEach(score => {
-              if (score >= 90) countExcellent++
-              else if (score >= 80) countGood++
-              else if (score >= 75) countSatisfactory++
-              else countNeedsHelp++
-            })
-          }
+            if (totalAttempts > 0) {
+              const scores = quizAttempts.map((a: any) => a.percentage || 0)
+              averageScore = Math.round(
+                scores.reduce((sum, score) => sum + score, 0) / scores.length,
+              )
+              highestScore = Math.max(...scores)
+              lowestScore = Math.min(...scores)
 
-          return {
-            quiz_id: quiz.id,
-            quiz_title: quiz.title,
-            quiz_code: quiz.quiz_code,
-            section_id: section.id,
-            section_name: section.name,
-            subject_id: subject.id,
-            subject_name: subject.name,
-            teacher_id: teacher.id,
-            teacher_name: teacher.full_name,
-            total_attempts: totalAttempts,
-            students_attempted: uniqueStudents,
-            average_score: averageScore,
-            highest_score: highestScore,
-            lowest_score: lowestScore,
-            count_excellent: countExcellent,
-            count_good: countGood,
-            count_satisfactory: countSatisfactory,
-            count_needs_help: countNeedsHelp
-          }
-        })
+              // Count by performance level
+              scores.forEach((score) => {
+                if (score >= 90) countExcellent++
+                else if (score >= 80) countGood++
+                else if (score >= 75) countSatisfactory++
+                else countNeedsHelp++
+              })
+            }
+
+            return {
+              quiz_id: quiz.id,
+              quiz_title: quiz.title,
+              quiz_code: quiz.quiz_code,
+              section_id: section?.id || null,
+              section_name: section?.name || 'Unknown Section',
+              subject_id: subject?.id || null,
+              subject_name: subject?.name || 'Unknown Subject',
+              teacher_id: currentTeacherId,
+              teacher_name: fullName.value || 'Unknown',
+              total_attempts: totalAttempts,
+              students_attempted: uniqueStudents,
+              average_score: averageScore,
+              highest_score: highestScore,
+              lowest_score: lowestScore,
+              count_excellent: countExcellent,
+              count_good: countGood,
+              count_satisfactory: countSatisfactory,
+              count_needs_help: countNeedsHelp,
+            }
+          })
+          .filter((q) => q.section_id !== null)
 
         quizPerformanceData.value = quizStats
         console.log('Quiz performance data updated:', quizStats.length, 'quizzes')
-
       } catch (error) {
         console.error('Error fetching quiz performance:', error)
         quizPerformanceData.value = []
+      }
+    }
+
+    // Fetch productivity/grading metrics
+    const fetchProductivityMetrics = async (currentTeacherId: string) => {
+      try {
+        console.log('Fetching productivity metrics...')
+
+        // Get teacher's subjects
+        const { data: teacherSubjects, error: subjectsError } = await supabase
+          .from('subjects')
+          .select('id')
+          .eq('teacher_id', currentTeacherId)
+
+        if (subjectsError) throw subjectsError
+
+        const subjectIds = teacherSubjects?.map((s) => s.id) || []
+        if (subjectIds.length === 0) {
+          gradingMetrics.value = {
+            totalAutoGraded: 0,
+            avgGradingTimeSeconds: 2,
+            weeklyActivity: [],
+          }
+          return
+        }
+
+        // Get sections for those subjects
+        const { data: teacherSections, error: sectionsError } = await supabase
+          .from('sections')
+          .select('id')
+          .in('subject_id', subjectIds)
+
+        if (sectionsError) throw sectionsError
+
+        const sectionIds = teacherSections?.map((s: any) => s.id) || []
+        if (sectionIds.length === 0) {
+          gradingMetrics.value = {
+            totalAutoGraded: 0,
+            avgGradingTimeSeconds: 2,
+            weeklyActivity: [],
+          }
+          return
+        }
+
+        // Get quizzes for those sections
+        const { data: quizzes, error: quizzesError } = await supabase
+          .from('quizzes')
+          .select('id')
+          .in('section_id', sectionIds)
+
+        if (quizzesError) throw quizzesError
+
+        const quizIds = quizzes?.map((q: any) => q.id) || []
+        if (quizIds.length === 0) {
+          gradingMetrics.value = {
+            totalAutoGraded: 0,
+            avgGradingTimeSeconds: 2,
+            weeklyActivity: [],
+          }
+          return
+        }
+
+        // Get all graded/submitted attempts for these quizzes
+        const { data: attempts, error: attemptsError } = await supabase
+          .from('quiz_attempts')
+          .select('id, auto_graded, submitted_at, started_at, graded_at')
+          .in('quiz_id', quizIds)
+          .in('status', ['submitted', 'graded'])
+
+        if (attemptsError) throw attemptsError
+
+        // Calculate metrics
+        const autoGradedAttempts = (attempts || []).filter((a: any) => a.auto_graded)
+        const totalAutoGraded = autoGradedAttempts.length
+
+        // Calculate average grading time (from submitted to graded)
+        let totalGradingTime = 0
+        let gradedCount = 0
+        autoGradedAttempts.forEach((a: any) => {
+          if (a.submitted_at && a.graded_at) {
+            const submitted = new Date(a.submitted_at).getTime()
+            const graded = new Date(a.graded_at).getTime()
+            const diffSeconds = (graded - submitted) / 1000
+            if (diffSeconds > 0 && diffSeconds < 60) {
+              // Reasonable auto-grading time
+              totalGradingTime += diffSeconds
+              gradedCount++
+            }
+          }
+        })
+        const avgGradingTimeSeconds =
+          gradedCount > 0 ? Math.round(totalGradingTime / gradedCount) : 2
+
+        // Calculate weekly activity (last 7 days)
+        const weeklyActivity: { date: string; count: number }[] = []
+        const today = new Date()
+
+        for (let i = 6; i >= 0; i--) {
+          const date = new Date(today)
+          date.setDate(date.getDate() - i)
+          const dateStr = date.toISOString().split('T')[0]
+
+          const count = (attempts || []).filter((a: any) => {
+            if (!a.submitted_at) return false
+            const submittedDate = new Date(a.submitted_at).toISOString().split('T')[0]
+            return submittedDate === dateStr
+          }).length
+
+          weeklyActivity.push({ date: dateStr, count })
+        }
+
+        gradingMetrics.value = {
+          totalAutoGraded,
+          avgGradingTimeSeconds,
+          weeklyActivity,
+        }
+
+        console.log('Productivity metrics updated:', gradingMetrics.value)
+      } catch (error) {
+        console.error('Error fetching productivity metrics:', error)
+        gradingMetrics.value = { totalAutoGraded: 0, avgGradingTimeSeconds: 2, weeklyActivity: [] }
       }
     }
 
@@ -1047,17 +1601,18 @@ export default {
         // Fetch both student and quiz performance data
         await Promise.all([
           fetchStudentPerformanceData(currentTeacherId),
-          fetchQuizPerformanceData(currentTeacherId)
+          fetchQuizPerformanceData(currentTeacherId),
+          fetchProductivityMetrics(currentTeacherId),
         ])
 
         // Build unique sections list for filter
         const uniqueSections = new Map()
-        studentData.value.forEach(s => {
+        studentData.value.forEach((s) => {
           if (!uniqueSections.has(s.section_id)) {
             uniqueSections.set(s.section_id, {
               id: s.section_id,
               name: s.section_name,
-              subject_name: s.subject_name
+              subject_name: s.subject_name,
             })
           }
         })
@@ -1066,9 +1621,8 @@ export default {
         console.log('Data loaded successfully:', {
           students: studentData.value.length,
           quizzes: quizPerformanceData.value.length,
-          sections: sections.value.length
+          sections: sections.value.length,
         })
-
       } catch (error) {
         console.error('Error fetching analytics data:', error)
       } finally {
@@ -1090,14 +1644,14 @@ export default {
           {
             event: '*',
             schema: 'public',
-            table: 'quiz_attempts'
+            table: 'quiz_attempts',
           },
           async (payload) => {
             console.log('Quiz attempt changed:', payload)
             // Refresh data when attempts are created, updated, or deleted
             await fetchStudentPerformanceData(teacherId.value)
             await fetchQuizPerformanceData(teacherId.value)
-          }
+          },
         )
         .subscribe()
 
@@ -1109,13 +1663,13 @@ export default {
           {
             event: '*',
             schema: 'public',
-            table: 'quizzes'
+            table: 'quizzes',
           },
           async (payload) => {
             console.log('Quiz changed:', payload)
             // Refresh quiz performance data
             await fetchQuizPerformanceData(teacherId.value)
-          }
+          },
         )
         .subscribe()
 
@@ -1127,13 +1681,13 @@ export default {
           {
             event: '*',
             schema: 'public',
-            table: 'enrollments'
+            table: 'enrollments',
           },
           async (payload) => {
             console.log('Enrollment changed:', payload)
             // Refresh student data
             await fetchStudentPerformanceData(teacherId.value)
-          }
+          },
         )
         .subscribe()
 
@@ -1165,7 +1719,8 @@ export default {
         // Fetch individual quiz attempts for this student
         const { data: attempts, error } = await supabase
           .from('quiz_attempts')
-          .select(`
+          .select(
+            `
             id,
             quiz_id,
             attempt_number,
@@ -1174,7 +1729,8 @@ export default {
             quizzes (
               title
             )
-          `)
+          `,
+          )
           .eq('student_id', student.student_id)
           .in('status', ['submitted', 'graded'])
           .order('submitted_at', { ascending: false })
@@ -1188,7 +1744,7 @@ export default {
             quiz_title: a.quizzes?.title || `Quiz ${a.quiz_id.slice(0, 8)}`,
             attempt_number: a.attempt_number,
             percentage: a.percentage || 0,
-            submitted_at: a.submitted_at
+            submitted_at: a.submitted_at,
           }))
         }
       } catch (error) {
@@ -1209,8 +1765,17 @@ export default {
 
     // Export data to CSV
     const exportData = () => {
-      const headers = ['Student Name', 'ID', 'Section', 'Subject', 'Average Score', 'Best Score', 'Quizzes Taken', 'Status']
-      const csvData = studentData.value.map(student => [
+      const headers = [
+        'Student Name',
+        'ID',
+        'Section',
+        'Subject',
+        'Average Score',
+        'Best Score',
+        'Quizzes Taken',
+        'Status',
+      ]
+      const csvData = studentData.value.map((student) => [
         student.student_name,
         student.student_number,
         student.section_name,
@@ -1218,11 +1783,11 @@ export default {
         student.average_score || 0,
         student.best_score || 0,
         student.quizzes_attempted,
-        student.performance_status
+        student.performance_status,
       ])
 
       const csvContent = [headers, ...csvData]
-        .map(row => row.map(field => `"${field}"`).join(','))
+        .map((row) => row.map((field) => `"${field}"`).join(','))
         .join('\n')
 
       const blob = new Blob([csvContent], { type: 'text/csv' })
@@ -1236,7 +1801,12 @@ export default {
 
     // Helper functions
     const getInitials = (name: string) => {
-      return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)
+      return name
+        .split(' ')
+        .map((n) => n[0])
+        .join('')
+        .toUpperCase()
+        .slice(0, 2)
     }
 
     const getScoreClass = (score: number) => {
@@ -1258,19 +1828,21 @@ export default {
       return new Date(dateString).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'short',
-        day: 'numeric'
+        day: 'numeric',
       })
     }
 
     // Lifecycle
     onMounted(async () => {
       initDarkMode()
+      window.addEventListener('scroll', handleScroll)
       await fetchData()
       await setupRealtimeSubscriptions()
     })
 
     onUnmounted(() => {
       cleanupSubscriptions()
+      window.removeEventListener('scroll', handleScroll)
     })
 
     // Notification dropdown functions
@@ -1317,22 +1889,33 @@ export default {
       showLogoutModal.value = false
     }
 
-    const confirmLogout = () => {
+    const confirmLogout = async () => {
       console.log('🚪 Logging out...')
-      
+      isLoggingOut.value = true
+
       // Clear storage immediately
       localStorage.clear()
       sessionStorage.clear()
-      
-      // Sign out from Supabase (don't wait)
-      supabase.auth.signOut().catch(err => console.log('Signout error:', err))
-      
-      // Immediate redirect - no waiting!
-      setTimeout(() => {
-        window.location.assign('/login')
-      }, 100)
-      
-      console.log('✅ Logout initiated')
+
+      // Set a timeout to force redirect after 2 seconds regardless of signOut result
+      const forceRedirect = setTimeout(() => {
+        console.log('⏱️ Force redirecting to login...')
+        window.location.replace('/login')
+      }, 2000)
+
+      try {
+        // Sign out from Supabase with timeout
+        await Promise.race([
+          supabase.auth.signOut(),
+          new Promise((resolve) => setTimeout(resolve, 1500)),
+        ])
+        console.log('✅ Logout successful')
+      } catch (err) {
+        console.error('❌ Logout error:', err)
+      } finally {
+        clearTimeout(forceRedirect)
+        window.location.replace('/login')
+      }
     }
 
     const logout = () => {
@@ -1360,6 +1943,8 @@ export default {
       performanceDistribution,
       filteredStudents,
       totalPages,
+      productivityStats,
+      weeklyActivity,
       fetchData,
       filterBySection,
       sortStudents,
@@ -1372,9 +1957,18 @@ export default {
       toggleProfileDropdown,
       toggleNotifDropdown,
       handleNotificationClick,
-      logout
+      logout,
+      // Logout modal
+      showLogoutModal,
+      isLoggingOut,
+      openLogoutModal,
+      closeLogoutModal,
+      confirmLogout,
+      // Scroll to top
+      showScrollTop,
+      scrollToTop,
     }
-  }
+  },
 }
 </script>
 
@@ -1389,7 +1983,8 @@ export default {
 }
 
 /* Hide any parent layout elements */
-body, html {
+body,
+html {
   overflow-x: hidden !important;
 }
 
@@ -1405,7 +2000,7 @@ body, html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
@@ -1427,7 +2022,7 @@ body, html {
 /* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 /* Dark mode scrollbar */
@@ -1473,7 +2068,7 @@ body, html {
   left: 0;
   width: 80px;
   height: calc(100vh - 64px);
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-right: none;
   z-index: 900;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
@@ -1492,20 +2087,22 @@ body, html {
   width: 56px;
   margin: 8px 0;
   border-radius: 12px;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   cursor: pointer;
   position: relative;
   text-decoration: none;
 }
 
 .sidebar-item.active {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid #fff;
 }
 
 .sidebar-item:hover {
-  background: rgba(255,255,255,0.22);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .sidebar-icon svg {
@@ -1518,13 +2115,13 @@ body, html {
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  color: #3D8D7A;
+  color: #3d8d7a;
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
@@ -1543,7 +2140,7 @@ body, html {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -1648,7 +2245,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
 }
 
 .notification-dropdown {
@@ -1666,7 +2263,7 @@ body, html {
 
 .notification-dropdown .dropdown-header {
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -1734,7 +2331,7 @@ body, html {
 }
 
 .section-filter option {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -1815,7 +2412,7 @@ body, html {
 
 .dropdown-header {
   padding: 1.5rem;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
 }
 
@@ -1870,7 +2467,7 @@ body, html {
 
 .dropdown-item:hover {
   background: #f1f5f9;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-item svg {
@@ -1879,7 +2476,7 @@ body, html {
 }
 
 .dropdown-item:hover svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-divider {
@@ -1907,12 +2504,12 @@ body, html {
 
 /* Rounded semi-transparent backgrounds for sidebar and navbar icons/buttons */
 .rounded-bg {
-  background: rgba(255,255,255,0.13);
+  background: rgba(255, 255, 255, 0.13);
   border-radius: 16px;
   transition: background 0.2s;
 }
 .rounded-bg:hover {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* Main Content */
@@ -1940,7 +2537,7 @@ body, html {
 }
 
 .main-content::-webkit-scrollbar-thumb {
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 8px;
 }
 
@@ -1975,7 +2572,7 @@ body, html {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -2066,10 +2663,18 @@ body, html {
   flex-shrink: 0;
 }
 
-.stat-average { background: linear-gradient(135deg, #3D8D7A, #2d6a5a); }
-.stat-students { background: linear-gradient(135deg, #06b6d4, #0891b2); }
-.stat-assessments { background: linear-gradient(135deg, #10b981, #059669); }
-.stat-help { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.stat-average {
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
+}
+.stat-students {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+.stat-assessments {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+.stat-help {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
 
 .stat-number {
   font-size: 2rem;
@@ -2105,7 +2710,7 @@ body, html {
 .dark .content-card {
   background: #23272b;
   border: 1px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .card-header {
@@ -2124,7 +2729,7 @@ body, html {
   margin-bottom: 0.25rem;
 }
 .dark .card-header h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .card-desc {
@@ -2132,7 +2737,7 @@ body, html {
   color: #6b7280;
 }
 .dark .card-desc {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .table-controls {
@@ -2145,17 +2750,17 @@ body, html {
 .search-input,
 .sort-select {
   padding: 0.5rem 0.75rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   border-radius: 6px;
   background: white;
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-size: 0.875rem;
 }
 .dark .search-input,
 .dark .sort-select {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .chart-controls {
@@ -2167,9 +2772,9 @@ body, html {
 
 .period-btn {
   padding: 0.5rem 1rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   background: white;
-  color: #3D8D7A;
+  color: #3d8d7a;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.875rem;
@@ -2177,15 +2782,15 @@ body, html {
 }
 .dark .period-btn {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .period-btn.active,
 .period-btn:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .chart-placeholder {
@@ -2193,13 +2798,13 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #FBFFE4;
+  background: #fbffe4;
   border-radius: 8px;
   color: #6b7280;
 }
 .dark .chart-placeholder {
   background: #181c20;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Table */
@@ -2208,7 +2813,7 @@ body, html {
   margin-bottom: 1rem;
   /* Custom scrollbar for table */
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 .table-wrapper::-webkit-scrollbar {
@@ -2221,7 +2826,7 @@ body, html {
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #3D8D7A, #20c997);
+  background: linear-gradient(90deg, #3d8d7a, #20c997);
   border-radius: 6px;
   transition: all 0.3s ease;
 }
@@ -2247,14 +2852,14 @@ body, html {
 }
 
 .performance-table th {
-  background: #FBFFE4;
+  background: #fbffe4;
   font-weight: 600;
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-size: 0.875rem;
 }
 .dark .performance-table th {
   background: #181c20;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .student-info {
@@ -2279,7 +2884,7 @@ body, html {
 .avatar-placeholder {
   width: 100%;
   height: 100%;
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   display: flex;
   align-items: center;
@@ -2294,7 +2899,7 @@ body, html {
   font-size: 0.875rem;
 }
 .dark .student-name {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .student-id {
@@ -2366,21 +2971,21 @@ body, html {
 }
 
 .view-btn {
-  background: #FBFFE4;
-  color: #3D8D7A;
+  background: #fbffe4;
+  color: #3d8d7a;
 }
 
 .view-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
 }
 
 .edit-btn {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 
 .edit-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
 }
 
 .warning-btn {
@@ -2405,9 +3010,9 @@ body, html {
 
 .page-btn {
   padding: 0.5rem 1rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   background: white;
-  color: #3D8D7A;
+  color: #3d8d7a;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
@@ -2415,12 +3020,12 @@ body, html {
 }
 .dark .page-btn {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .page-btn:hover:not(:disabled) {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: white;
 }
 
@@ -2434,7 +3039,7 @@ body, html {
   font-size: 0.875rem;
 }
 .dark .page-info {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Modals */
@@ -2484,7 +3089,7 @@ body, html {
   color: #1f2937;
 }
 .dark .modal-header h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .close-btn {
@@ -2502,7 +3107,7 @@ body, html {
   transition: all 0.2s;
 }
 .dark .close-btn {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .close-btn:hover {
@@ -2526,7 +3131,7 @@ body, html {
 .summary-stat {
   text-align: center;
   padding: 1rem;
-  background: #FBFFE4;
+  background: #fbffe4;
   border-radius: 8px;
 }
 .dark .summary-stat {
@@ -2536,11 +3141,11 @@ body, html {
 .summary-stat h4 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #3D8D7A;
+  color: #3d8d7a;
   margin: 0;
 }
 .dark .summary-stat h4 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .summary-stat p {
@@ -2549,7 +3154,7 @@ body, html {
   margin: 0.25rem 0 0 0;
 }
 .dark .summary-stat p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .assessment-history h4 {
@@ -2557,7 +3162,7 @@ body, html {
   margin: 0 0 1rem 0;
 }
 .dark .assessment-history h4 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .history-list {
@@ -2565,7 +3170,7 @@ body, html {
   overflow-y: auto;
   /* Custom scrollbar for modal lists */
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 .history-list::-webkit-scrollbar {
@@ -2578,7 +3183,7 @@ body, html {
 }
 
 .history-list::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3D8D7A, #20c997);
+  background: linear-gradient(180deg, #3d8d7a, #20c997);
   border-radius: 6px;
   transition: all 0.3s ease;
 }
@@ -2618,7 +3223,7 @@ body, html {
   margin: 0;
 }
 .dark .assessment-info h5 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .assessment-info p {
@@ -2627,7 +3232,7 @@ body, html {
   margin: 0.25rem 0 0 0;
 }
 .dark .assessment-info p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .remediation-notes {
@@ -2639,13 +3244,13 @@ body, html {
   margin: 0 0 1rem 0;
 }
 .dark .remediation-notes h4 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .notes-textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   border-radius: 8px;
   resize: vertical;
   font-family: inherit;
@@ -2654,12 +3259,12 @@ body, html {
 }
 .dark .notes-textarea {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .save-notes-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -2689,7 +3294,7 @@ body, html {
   margin-bottom: 0.5rem;
 }
 .dark .form-group label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .form-group input,
@@ -2697,7 +3302,7 @@ body, html {
 .form-group textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   border-radius: 8px;
   font-size: 0.875rem;
   background: white;
@@ -2707,15 +3312,15 @@ body, html {
 .dark .form-group select,
 .dark .form-group textarea {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .modal-actions {
@@ -2727,9 +3332,9 @@ body, html {
 
 .cancel-btn {
   padding: 0.75rem 1.5rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   background: white;
-  color: #3D8D7A;
+  color: #3d8d7a;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 500;
@@ -2737,12 +3342,12 @@ body, html {
 }
 .dark .cancel-btn {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .cancel-btn:hover {
-  background: #FBFFE4;
+  background: #fbffe4;
 }
 .dark .cancel-btn:hover {
   background: #181c20;
@@ -2750,7 +3355,7 @@ body, html {
 
 .submit-btn {
   padding: 0.75rem 1.5rem;
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   border-radius: 8px;
@@ -2773,7 +3378,7 @@ body, html {
   .main-content {
     padding: 1.5rem;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -2784,15 +3389,15 @@ body, html {
   .content-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .main-content {
     padding: 1rem;
   }
-  
+
   .navbar-center {
     gap: 0.25rem;
   }
-  
+
   .nav-item {
     padding: 0.5rem 1rem;
     font-size: 0.7rem;
@@ -2803,67 +3408,67 @@ body, html {
   .main-content {
     padding: 1rem;
   }
-  
+
   .page-header {
     padding: 1rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .header-content {
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
   }
-  
+
   .navbar-content {
     padding: 0 0.5rem;
   }
-  
+
   .brand-name {
     display: none;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .content-grid {
     gap: 1rem;
   }
-  
+
   .card-header {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .table-controls {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .search-input {
     width: 100%;
   }
-  
+
   .table-wrapper {
     font-size: 0.875rem;
   }
-  
+
   .performance-table th,
   .performance-table td {
     padding: 0.5rem;
   }
-  
+
   .student-summary {
     grid-template-columns: 1fr;
   }
-  
+
   .navbar-right {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .section-filter,
   .export-btn {
     font-size: 0.75rem;
@@ -2884,9 +3489,9 @@ body, html {
   justify-content: space-between;
   align-items: center;
   padding: 0.4rem 0.75rem;
-  background: #FBFFE4;
+  background: #fbffe4;
   border-radius: 6px;
-  border-left: 3px solid #3D8D7A;
+  border-left: 3px solid #3d8d7a;
   width: 100%;
 }
 
@@ -2907,7 +3512,7 @@ body, html {
 }
 
 .dark .quiz-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-meta {
@@ -2936,7 +3541,7 @@ body, html {
   justify-content: space-between;
   align-items: center;
   padding: 0.4rem 0.75rem;
-  background: #FBFFE4;
+  background: #fbffe4;
   border-radius: 6px;
   width: 100%;
 }
@@ -2975,12 +3580,12 @@ body, html {
 .dist-count {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #3D8D7A;
+  color: #3d8d7a;
   margin-left: 1rem;
 }
 
 .dark .dist-count {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .empty-state {
@@ -3020,7 +3625,7 @@ body, html {
 }
 
 .dark .quiz-info h5 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-info p {
@@ -3132,7 +3737,7 @@ body, html {
 }
 
 .dark .loading-text {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Logout Modal Styles */
@@ -3156,7 +3761,7 @@ body, html {
   border-radius: 16px;
   overflow: hidden;
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   animation: modalSlideIn 0.3s ease-out;
 }
 
@@ -3172,7 +3777,7 @@ body, html {
 }
 
 .logout-header {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
   padding: 1.5rem;
 }
@@ -3195,13 +3800,18 @@ body, html {
 }
 
 .logout-icon svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .logout-message {
@@ -3280,8 +3890,12 @@ body, html {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-logout .loading-text {
@@ -3291,7 +3905,241 @@ body, html {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-</style> 
+
+/* Productivity Dashboard Styles */
+.productivity-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 16px;
+  border: 1px solid #bbf7d0;
+}
+
+.dark .productivity-section {
+  background: linear-gradient(135deg, #1a2e26 0%, #1e3a32 100%);
+  border-color: #3d8d7a;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 0.25rem;
+}
+
+.dark .section-header h2 {
+  color: #a3d1c6;
+}
+
+.section-desc {
+  font-size: 0.875rem;
+  color: #4ade80;
+  margin: 0;
+}
+
+.dark .section-desc {
+  color: #86efac;
+}
+
+.productivity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.productivity-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.productivity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(61, 141, 122, 0.15);
+  border-color: #3d8d7a;
+}
+
+.dark .productivity-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.dark .productivity-card:hover {
+  border-color: #a3d1c6;
+}
+
+.prod-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.prod-icon.auto-graded {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: #166534;
+}
+
+.prod-icon.time-saved {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: #1e40af;
+}
+
+.prod-icon.grading-speed {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #92400e;
+}
+
+.prod-icon.accuracy-rate {
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  color: #4338ca;
+}
+
+.prod-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.prod-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.2;
+}
+
+.dark .prod-value {
+  color: #f9fafb;
+}
+
+.prod-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.dark .prod-label {
+  color: #9ca3af;
+}
+
+.prod-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+}
+
+.prod-trend.trend-positive {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.dark .prod-trend.trend-positive {
+  background: #14532d;
+  color: #86efac;
+}
+
+/* Activity Chart */
+.activity-chart-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.dark .activity-chart-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.activity-chart-card .card-header {
+  margin-bottom: 1.5rem;
+}
+
+.activity-chart-card .card-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+}
+
+.dark .activity-chart-card .card-header h3 {
+  color: #f9fafb;
+}
+
+.activity-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 150px;
+  padding: 0 1rem;
+  gap: 0.5rem;
+}
+
+.activity-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 60px;
+  height: 100%;
+}
+
+.activity-bar {
+  width: 100%;
+  background: linear-gradient(to top, #3d8d7a, #a3d1c6);
+  border-radius: 6px 6px 0 0;
+  min-height: 4px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transition: height 0.5s ease;
+  position: relative;
+}
+
+.bar-value {
+  position: absolute;
+  top: -24px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #3d8d7a;
+}
+
+.dark .bar-value {
+  color: #a3d1c6;
+}
+
+.bar-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.dark .bar-label {
+  color: #9ca3af;
+}
+</style>

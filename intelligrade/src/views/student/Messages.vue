@@ -1,4 +1,3 @@
-
 <template>
   <div class="messages-container">
     <!-- Loading Overlay (uniform with Subjects.vue) -->
@@ -16,13 +15,25 @@
     <div class="section-header-card minimal-header-card">
       <div class="section-header-left">
         <div class="section-header-icon minimal-header-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
         </div>
         <div>
           <div class="section-header-title minimal-header-title">Messages</div>
-          <div class="section-header-sub minimal-header-sub">Chat with your enrolled teachers and view announcements</div>
+          <div class="section-header-sub minimal-header-sub">
+            Chat with your enrolled teachers and view announcements
+          </div>
         </div>
       </div>
     </div>
@@ -31,31 +42,59 @@
     <div class="controls-section">
       <div class="search-box">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+          <path
+            d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
+          />
         </svg>
-        <input 
-          type="text" 
-          v-model="searchQuery" 
+        <input
+          type="text"
+          v-model="searchQuery"
           placeholder="Search teachers or subjects..."
           class="search-input"
         />
       </div>
       <div class="filter-tabs">
-        <button 
-          :class="['filter-tab', { 'active': currentTab === 'teachers' }]"
-          @click="currentTab = 'teachers'; showArchive = false"
+        <button
+          :class="['filter-tab', { active: currentTab === 'teachers' }]"
+          @click="
+            currentTab = 'teachers'
+            showArchive = false
+          "
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
           </svg>
           My Teachers
         </button>
-        <button 
-          :class="['filter-tab', { 'active': currentTab === 'archive' }]"
-          @click="currentTab = 'archive'; showArchive = true"
+        <button
+          :class="['filter-tab', { active: currentTab === 'archive' }]"
+          @click="
+            currentTab = 'archive'
+            showArchive = true
+          "
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <polyline points="21 8 21 21 3 21 3 8"></polyline>
             <rect x="1" y="3" width="22" height="5"></rect>
             <line x1="10" y1="12" x2="14" y2="12"></line>
@@ -63,12 +102,17 @@
           Archive
           <span v-if="currentTab === 'archive'" class="archive-indicator">In Archive</span>
         </button>
-        <button 
-          :class="['filter-tab', { 'active': currentTab === 'notifications' }]"
-          @click="currentTab = 'notifications'; showArchive = false"
+        <button
+          :class="['filter-tab', { active: currentTab === 'notifications' }]"
+          @click="
+            currentTab = 'notifications'
+            showArchive = false
+          "
         >
           Announcements
-          <span v-if="unreadNotificationsCount > 0" class="notification-badge">{{ unreadNotificationsCount }}</span>
+          <span v-if="unreadNotificationsCount > 0" class="notification-badge">{{
+            unreadNotificationsCount
+          }}</span>
         </button>
       </div>
     </div>
@@ -77,7 +121,6 @@
     <div class="content-area">
       <!-- Teachers Tab -->
       <div v-if="currentTab === 'teachers' || currentTab === 'archive'" class="tab-content">
-
         <!-- Loading State -->
         <div v-if="isLoadingTeachers" class="loading-state">
           <div class="loading-spinner-small">
@@ -87,23 +130,55 @@
         </div>
 
         <!-- Empty state when no deleted conversations -->
-        <div v-else-if="filteredTeachers.length === 0 && !hasDeletedConversations" class="empty-state">
+        <div
+          v-else-if="filteredTeachers.length === 0 && !hasDeletedConversations"
+          class="empty-state"
+        >
           <p>{{ showArchive ? 'No archived conversations' : 'No teachers found' }}</p>
-          <span class="empty-subtext">{{ showArchive ? 'Archived conversations will appear here.' : 'Teachers from your enrolled subjects will appear here.' }}</span>
+          <span class="empty-subtext">{{
+            showArchive
+              ? 'Archived conversations will appear here.'
+              : 'Teachers from your enrolled subjects will appear here.'
+          }}</span>
         </div>
 
         <!-- Show Available Teachers when conversations are deleted -->
-        <div v-else-if="filteredTeachers.length === 0 && hasDeletedConversations" class="deleted-state">
+        <div
+          v-else-if="filteredTeachers.length === 0 && hasDeletedConversations"
+          class="deleted-state"
+        >
           <div class="deleted-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
             </svg>
           </div>
           <p>You deleted all conversations</p>
-          <span class="deleted-subtext">Your enrolled teachers are still available. Click below to see them again.</span>
+          <span class="deleted-subtext"
+            >Your enrolled teachers are still available. Click below to see them again.</span
+          >
           <button @click="showAvailableTeachers" class="show-teachers-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
               <circle cx="12" cy="12" r="3"></circle>
             </svg>
@@ -118,10 +193,10 @@
               <h3 class="subject-section-name">{{ subject.name }}</h3>
               <span class="subject-section-code">{{ subject.code }}</span>
             </div>
-            
+
             <div class="teachers-cards">
-              <div 
-                v-for="teacher in subject.teachers" 
+              <div
+                v-for="teacher in subject.teachers"
                 :key="`${teacher.id}-${teacher.section_id}`"
                 :class="['simple-teacher-card', { 'has-unread': teacher.unread_count > 0 }]"
                 @click="startChatWithTeacher(teacher)"
@@ -133,37 +208,87 @@
                     </div>
                     <div class="simple-teacher-info">
                       <h4 class="simple-teacher-name">{{ teacher.teacher_name }}</h4>
-                      <p class="simple-teacher-email">{{ teacher.email || teacher.teacher_email }}</p>
-                      <div v-if="teacherPresence[teacher.id]?.is_online" class="simple-presence-status">
+                      <p class="simple-teacher-email">
+                        {{ teacher.email || teacher.teacher_email }}
+                      </p>
+                      <div
+                        v-if="teacherPresence[teacher.id]?.is_online"
+                        class="simple-presence-status"
+                      >
                         <div class="simple-online-dot"></div>
                         <span>Online</span>
                       </div>
                     </div>
                   </div>
                   <div class="simple-teacher-right">
-                    <div v-if="teacher.unread_count > 0" class="simple-unread-badge">{{ teacher.unread_count }}</div>
-                    <div class="options-btn-dropdown-wrapper" style="position: relative; display: inline-block;">
-                      <button 
-                        class="simple-options-btn" 
+                    <div v-if="teacher.unread_count > 0" class="simple-unread-badge">
+                      {{ teacher.unread_count }}
+                    </div>
+                    <div
+                      class="options-btn-dropdown-wrapper"
+                      style="position: relative; display: inline-block"
+                    >
+                      <button
+                        class="simple-options-btn"
                         @click.stop="toggleTeacherOptions(`${teacher.id}-${teacher.section_id}`)"
                       >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" />
+                          <path
+                            d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"
+                          />
                         </svg>
                       </button>
-                      <div v-if="activeTeacherOptionsId === `${teacher.id}-${teacher.section_id}`" class="simple-options-dropdown" @click.stop>
-                        <button @click.stop="archiveConversation(teacher); activeTeacherOptionsId = null" class="simple-dropdown-item">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <div
+                        v-if="activeTeacherOptionsId === `${teacher.id}-${teacher.section_id}`"
+                        class="simple-options-dropdown"
+                        @click.stop
+                      >
+                        <button
+                          @click.stop="
+                            archiveConversation(teacher)
+                            activeTeacherOptionsId = null
+                          "
+                          class="simple-dropdown-item"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
                             <polyline points="21 8 21 21 3 21 3 8"></polyline>
                             <rect x="1" y="3" width="22" height="5"></rect>
                             <line x1="10" y1="12" x2="14" y2="12"></line>
                           </svg>
                           {{ teacher.archived ? 'Unarchive' : 'Archive' }}
                         </button>
-                        <button @click.stop="deleteConversation(teacher); activeTeacherOptionsId = null" class="simple-dropdown-item delete-option">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <button
+                          @click.stop="
+                            deleteConversation(teacher)
+                            activeTeacherOptionsId = null
+                          "
+                          class="simple-dropdown-item delete-option"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
                             <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            <path
+                              d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                            ></path>
                           </svg>
                           Delete
                         </button>
@@ -171,13 +296,32 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="simple-teacher-body">
-                  <p class="simple-last-message">{{ teacher.last_message || 'Start a conversation' }}</p>
+                  <p class="simple-last-message">
+                    {{ teacher.last_message || 'Start a conversation' }}
+                  </p>
                   <div class="simple-message-meta">
-                    <span v-if="teacher.last_message_time || teacher.last_message_date" class="simple-message-time">{{ formatTime(teacher.last_message_time || teacher.last_message_date) }}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="simple-chat-icon">
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    <span
+                      v-if="teacher.last_message_time || teacher.last_message_date"
+                      class="simple-message-time"
+                      >{{
+                        formatTime(teacher.last_message_time || teacher.last_message_date)
+                      }}</span
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="simple-chat-icon"
+                    >
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                     </svg>
                   </div>
                 </div>
@@ -191,27 +335,41 @@
       <div v-else-if="currentTab === 'notifications'" class="tab-content">
         <div class="notifications-actions">
           <div class="notification-filters">
-            <button 
-              :class="['filter-btn', { 'active': currentFilter === 'all' }]"
+            <button
+              :class="['filter-btn', { active: currentFilter === 'all' }]"
               @click="currentFilter = 'all'"
             >
               All
             </button>
-            <button 
-              :class="['filter-btn', { 'active': currentFilter === 'unread' }]"
+            <button
+              :class="['filter-btn', { active: currentFilter === 'unread' }]"
               @click="currentFilter = 'unread'"
             >
               Unread
             </button>
           </div>
-          <button class="action-btn" @click="clearNotifications" v-if="unreadNotificationsCount > 0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20,6 9,17 4,12"/>
+          <button
+            class="action-btn"
+            @click="clearNotifications"
+            v-if="unreadNotificationsCount > 0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20,6 9,17 4,12" />
             </svg>
             Mark all read
           </button>
         </div>
-        
+
         <!-- Loading State for Notifications -->
         <div v-if="isLoadingNotifications" class="loading-state">
           <div class="loading-spinner-small">
@@ -219,26 +377,36 @@
           </div>
           <p>Loading notifications...</p>
         </div>
-        
+
         <div v-else-if="Object.keys(groupedBroadcasts).length === 0" class="empty-state">
           <!-- empty-icon removed -->
           <p>No announcements found</p>
           <span class="empty-subtext">Class announcements and notifications will appear here.</span>
         </div>
-        
+
         <div v-else class="notifications-grid">
-          <div 
-            v-for="(group, key) in groupedBroadcasts" 
-            :key="key" 
+          <div
+            v-for="(group, key) in groupedBroadcasts"
+            :key="key"
             class="notification-card"
             @click="openBroadcastGroup(group)"
           >
             <div class="notification-card-header">
               <div class="notification-left">
                 <div class="notification-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                   </svg>
                 </div>
                 <div class="notification-info">
@@ -248,29 +416,64 @@
               </div>
               <div class="notification-card-right">
                 <span class="notification-count">{{ group.announcements.length }}</span>
-                <span v-if="group.announcements.some(a => !a.is_read)" class="unread-dot"></span>
+                <span v-if="group.announcements.some((a) => !a.is_read)" class="unread-dot"></span>
               </div>
             </div>
             <div class="notification-card-body">
               <div class="notification-meta">
                 <span class="notification-teacher">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
                   </svg>
                   {{ group.teacher }}
                 </span>
                 <div class="notification-badges">
-                  <span class="announcement-count">{{ group.announcements.length }} announcement{{ group.announcements.length > 1 ? 's' : '' }}</span>
-                  <span 
-                    v-if="group.announcements.some(a => a.has_attachments || (a.attachments && a.attachments.length > 0))" 
+                  <span class="announcement-count"
+                    >{{ group.announcements.length }} announcement{{
+                      group.announcements.length > 1 ? 's' : ''
+                    }}</span
+                  >
+                  <span
+                    v-if="
+                      group.announcements.some(
+                        (a) => a.has_attachments || (a.attachments && a.attachments.length > 0),
+                      )
+                    "
                     class="attachment-indicator"
                     title="Contains attachments"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                      />
                     </svg>
-                    {{ group.announcements.reduce((total, a) => total + (a.attachments?.length || 0), 0) }}
+                    {{
+                      group.announcements.reduce(
+                        (total, a) => total + (a.attachments?.length || 0),
+                        0,
+                      )
+                    }}
                   </span>
                 </div>
               </div>
@@ -294,7 +497,17 @@
             </div>
           </div>
           <button @click="closeModal" class="simple-close-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -311,21 +524,64 @@
 
           <!-- Messages Container -->
           <div v-else class="simple-messages-container" ref="messagesContainer">
-            <div 
-              v-for="message in currentMessages" 
-              :key="message.id" 
-              :class="['simple-message-bubble', { 'sent': message.sender_id === currentStudentId, 'received': message.sender_id !== currentStudentId }]"
+            <div
+              v-for="message in currentMessages"
+              :key="message.id"
+              :class="[
+                'simple-message-bubble',
+                {
+                  sent: message.sender_id === currentStudentId,
+                  received: message.sender_id !== currentStudentId,
+                },
+              ]"
             >
-              <div v-if="message.attachments && message.attachments.length > 0" class="simple-message-attachments">
-                <div v-for="(attachment, idx) in message.attachments" :key="idx" class="simple-attachment">
-                  <img v-if="attachment.type === 'image'" :src="attachment.url" :alt="attachment.name" class="simple-attachment-image" @click="viewAttachment(attachment)" />
-                  <div v-else class="simple-attachment-file" @click="downloadAttachment(attachment)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <div
+                v-if="message.attachments && message.attachments.length > 0"
+                class="simple-message-attachments"
+              >
+                <div
+                  v-for="(attachment, idx) in message.attachments"
+                  :key="idx"
+                  class="simple-attachment"
+                >
+                  <img
+                    v-if="attachment.type === 'image'"
+                    :src="attachment.url"
+                    :alt="attachment.name"
+                    class="simple-attachment-image"
+                    @click="viewAttachment(attachment)"
+                  />
+                  <div
+                    v-else
+                    class="simple-attachment-file"
+                    @click="downloadAttachment(attachment)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
                       <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
                       <polyline points="13 2 13 9 20 9"></polyline>
                     </svg>
                     <span>{{ attachment.name }}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                       <polyline points="7 10 12 15 17 10"></polyline>
                       <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -333,25 +589,61 @@
                   </div>
                 </div>
               </div>
-              
+
               <p v-if="message.content" class="simple-message-text">{{ message.content }}</p>
-              
+
               <div class="simple-message-footer">
                 <span class="simple-message-time">{{ formatTime(message.sent_at) }}</span>
                 <span v-if="message.sender_id === currentStudentId" class="simple-message-status">
-                  <svg v-if="!message.is_read" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    v-if="!message.is_read"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    v-else
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <polyline points="20 6 9 17 4 12"></polyline>
                     <polyline points="20 6 9 17 4 12" transform="translate(4, 0)"></polyline>
                   </svg>
                 </span>
               </div>
             </div>
-            <div v-if="currentMessages.length === 0 && !isLoadingMessages" class="simple-no-messages">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="simple-no-messages-icon">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <div
+              v-if="currentMessages.length === 0 && !isLoadingMessages"
+              class="simple-no-messages"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="simple-no-messages-icon"
+              >
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
               </svg>
               <p>No messages yet. Start the conversation!</p>
             </div>
@@ -360,46 +652,102 @@
         <div class="simple-modal-footer">
           <div v-if="selectedFile" class="simple-file-preview">
             <div class="simple-preview-content">
-              <img v-if="previewFile" :src="previewFile" alt="Preview" class="simple-preview-image" />
+              <img
+                v-if="previewFile"
+                :src="previewFile"
+                alt="Preview"
+                class="simple-preview-image"
+              />
               <div v-else class="simple-preview-file">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
                   <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
                 <span>{{ selectedFile.name }}</span>
               </div>
               <button @click="removeFile" class="simple-remove-file-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
               </button>
             </div>
           </div>
-          
+
           <div class="simple-message-input-area">
-            <input 
-              type="file" 
-              ref="fileInput" 
-              @change="handleFileSelect" 
-              style="display: none" 
+            <input
+              type="file"
+              ref="fileInput"
+              @change="handleFileSelect"
+              style="display: none"
               accept="image/*,.pdf,.doc,.docx,.txt"
             />
-            <button class="simple-attach-btn" @click="fileInput?.click()" :disabled="isSendingMessage">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+            <button
+              class="simple-attach-btn"
+              @click="fileInput?.click()"
+              :disabled="isSendingMessage"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                ></path>
               </svg>
             </button>
-            <input 
-              type="text" 
-              v-model="newMessage" 
-              @keyup.enter="sendMessage" 
-              placeholder="Type your message to your teacher..." 
+            <input
+              type="text"
+              v-model="newMessage"
+              @keyup.enter="sendMessage"
+              placeholder="Type your message to your teacher..."
               class="simple-message-input"
               :disabled="isSendingMessage"
             />
-            <button class="simple-send-btn" @click="sendMessage" :disabled="(!newMessage.trim() && !selectedFile) || isSendingMessage">
-              <svg v-if="!isSendingMessage" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button
+              class="simple-send-btn"
+              @click="sendMessage"
+              :disabled="(!newMessage.trim() && !selectedFile) || isSendingMessage"
+            >
+              <svg
+                v-if="!isSendingMessage"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15.46 22 11 13 2 9.54 22 2"></polygon>
               </svg>
@@ -417,25 +765,55 @@
         <div class="enhanced-simple-modal-header">
           <div class="enhanced-simple-header-left">
             <div class="enhanced-simple-subject-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
               </svg>
             </div>
             <div class="enhanced-simple-header-info">
               <h2 class="enhanced-simple-modal-title">{{ selectedBroadcastGroup?.subject }}</h2>
               <div class="enhanced-simple-teacher-info">
                 <div class="enhanced-teacher-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <path d="M9 22V12h6v10"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <path d="M9 22V12h6v10" />
                   </svg>
                   <span>{{ selectedBroadcastGroup?.section }}</span>
                 </div>
                 <div class="enhanced-teacher-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
                   </svg>
                   <span>{{ selectedBroadcastGroup?.teacher }}</span>
                 </div>
@@ -443,9 +821,19 @@
             </div>
           </div>
           <button @click="closeBroadcastModal" class="enhanced-simple-close-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"/>
-              <line x1="6" y1="6" x2="18" y2="18"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
         </div>
@@ -455,9 +843,19 @@
           <!-- Enhanced Simple Announcement Count -->
           <div class="enhanced-simple-announcement-count">
             <div class="enhanced-count-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
               </svg>
             </div>
             <span>{{ selectedBroadcastGroup?.announcements?.length || 0 }} Announcements</span>
@@ -465,16 +863,26 @@
 
           <!-- Enhanced Simple Announcement List -->
           <div class="enhanced-simple-announcement-list">
-            <div 
-              v-for="announcement in selectedBroadcastGroup?.announcements || []" 
+            <div
+              v-for="announcement in selectedBroadcastGroup?.announcements || []"
               :key="announcement.notification_id"
-              :class="['enhanced-simple-announcement-item', { 'unread': !announcement.is_read }]"
+              :class="['enhanced-simple-announcement-item', { unread: !announcement.is_read }]"
               @click="openAnnouncementDetail(announcement)"
             >
               <div class="enhanced-simple-announcement-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polyline points="12 6 12 12 16 14"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
               <div class="enhanced-simple-announcement-content">
@@ -487,15 +895,43 @@
                 </div>
                 <div class="enhanced-simple-announcement-footer">
                   <div class="enhanced-simple-announcement-date">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <polyline points="12 6 12 12 16 14"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
                     </svg>
                     <span>{{ formatTime(announcement.created_at) }}</span>
                   </div>
-                  <div v-if="announcement.has_attachments || (announcement.attachments && announcement.attachments.length > 0)" class="enhanced-attachment-indicator">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                  <div
+                    v-if="
+                      announcement.has_attachments ||
+                      (announcement.attachments && announcement.attachments.length > 0)
+                    "
+                    class="enhanced-attachment-indicator"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                      />
                     </svg>
                     <span>{{ announcement.attachments?.length || 0 }}</span>
                   </div>
@@ -508,21 +944,45 @@
     </div>
 
     <!-- Simple Announcement Detail Modal -->
-    <div v-if="isAnnouncementDetailOpen" class="modal-overlay" @click.self="closeAnnouncementDetail">
+    <div
+      v-if="isAnnouncementDetailOpen"
+      class="modal-overlay"
+      @click.self="closeAnnouncementDetail"
+    >
       <div class="modal-content simple-announcement-detail-modal">
         <!-- Simple Header -->
         <div class="simple-announcement-header">
           <div class="simple-announcement-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
             </svg>
             CLASS ANNOUNCEMENT
           </div>
           <button @click="closeAnnouncementDetail" class="simple-header-close-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"/>
-              <line x1="6" y1="6" x2="18" y2="18"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
         </div>
@@ -530,16 +990,36 @@
         <!-- Simple Subject Info -->
         <div class="simple-subject-info">
           <div class="simple-subject-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
             </svg>
             {{ selectedAnnouncement?.subject_name }}
           </div>
           <div class="simple-subject-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <path d="M9 22V12h6v10"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <path d="M9 22V12h6v10" />
             </svg>
             {{ selectedAnnouncement?.section_name }}
           </div>
@@ -555,9 +1035,19 @@
             <div class="simple-meta-cards">
               <div class="simple-meta-card">
                 <div class="simple-meta-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
                   </svg>
                 </div>
                 <div class="simple-meta-content">
@@ -565,17 +1055,29 @@
                   <span class="simple-meta-value">{{ selectedAnnouncement.teacher_name }}</span>
                 </div>
               </div>
-              
+
               <div class="simple-meta-card">
                 <div class="simple-meta-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
                   </svg>
                 </div>
                 <div class="simple-meta-content">
                   <span class="simple-meta-label">POSTED ON</span>
-                  <span class="simple-meta-value">{{ formatFullDate(selectedAnnouncement.created_at) }}</span>
+                  <span class="simple-meta-value">{{
+                    formatFullDate(selectedAnnouncement.created_at)
+                  }}</span>
                 </div>
               </div>
             </div>
@@ -583,9 +1085,19 @@
             <!-- Simple Content Section -->
             <div class="simple-content-section">
               <div class="simple-content-header">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14 2 14 8 20 8"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
                 </svg>
                 Announcement Content
               </div>
@@ -596,39 +1108,72 @@
             </div>
 
             <!-- Simple Attachments Section -->
-            <div v-if="selectedAnnouncement.attachments && selectedAnnouncement.attachments.length > 0" class="simple-attachments-section">
+            <div
+              v-if="selectedAnnouncement.attachments && selectedAnnouncement.attachments.length > 0"
+              class="simple-attachments-section"
+            >
               <div class="simple-attachments-header">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                  ></path>
                 </svg>
                 Attachments ({{ selectedAnnouncement.attachments.length }})
               </div>
               <div class="simple-attachments-grid">
-                <div 
-                  v-for="(attachment, idx) in selectedAnnouncement.attachments" 
-                  :key="idx" 
+                <div
+                  v-for="(attachment, idx) in selectedAnnouncement.attachments"
+                  :key="idx"
                   class="simple-attachment-item"
                 >
                   <!-- Image Attachments -->
                   <div v-if="attachment.type === 'image'" class="simple-attachment-image-container">
-                    <img 
-                      :src="attachment.url" 
-                      :alt="attachment.name" 
-                      class="simple-attachment-image" 
+                    <img
+                      :src="attachment.url"
+                      :alt="attachment.name"
+                      class="simple-attachment-image"
                       @click="viewAttachment(attachment)"
                     />
                     <div class="simple-attachment-overlay">
-                      <button @click="viewAttachment(attachment)" class="simple-view-btn">View</button>
-                      <button @click="downloadAttachment(attachment)" class="simple-download-btn">Download</button>
+                      <button @click="viewAttachment(attachment)" class="simple-view-btn">
+                        View
+                      </button>
+                      <button @click="downloadAttachment(attachment)" class="simple-download-btn">
+                        Download
+                      </button>
                     </div>
                   </div>
 
                   <!-- File Attachments -->
-                  <div v-else class="simple-attachment-file" @click="downloadAttachment(attachment)">
+                  <div
+                    v-else
+                    class="simple-attachment-file"
+                    @click="downloadAttachment(attachment)"
+                  >
                     <div class="simple-file-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                        <polyline points="13 2 13 9 20 9"/>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                        <polyline points="13 2 13 9 20 9" />
                       </svg>
                     </div>
                     <div class="simple-file-info">
@@ -726,14 +1271,18 @@ interface Message {
   sent_at: string
   is_read: boolean
   read_at?: string
+  message_type?: string
   attachments: Attachment[]
 }
 
 // Watch for route changes
 const route = useRoute()
-watch(() => route.fullPath, () => {
-  loadEnrolledSubjectsAndTeachers()
-})
+watch(
+  () => route.fullPath,
+  () => {
+    loadEnrolledSubjectsAndTeachers()
+  },
+)
 
 // State management
 const currentTab = ref('teachers')
@@ -781,71 +1330,78 @@ const teacherPresence = ref<Record<string, any>>({})
 // ================================
 
 const unreadNotificationsCount = computed(() => {
-  return notifications.value.filter(n => !n.is_read).length
+  return notifications.value.filter((n) => !n.is_read).length
 })
 
 const hasDeletedConversations = computed(() => {
-  return deletedConversationKeys.value.size > 0 && filteredTeachers.value.length === 0 && !showArchive.value
+  return (
+    deletedConversationKeys.value.size > 0 &&
+    filteredTeachers.value.length === 0 &&
+    !showArchive.value
+  )
 })
 
 const filteredTeachers = computed(() => {
-  let teachers = enrolledTeachers.value.filter(t => showArchive.value ? t.archived : !t.archived)
-  
+  let teachers = enrolledTeachers.value.filter((t) =>
+    showArchive.value ? t.archived : !t.archived,
+  )
+
   if (selectedSubject.value) {
-    teachers = teachers.filter(t => t.subject_id === parseInt(selectedSubject.value))
+    teachers = teachers.filter((t) => t.subject_id === parseInt(selectedSubject.value))
   }
-  
+
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase()
-    teachers = teachers.filter(t => 
-      t.teacher_name.toLowerCase().includes(query) ||
-      t.subject_name.toLowerCase().includes(query)
+    teachers = teachers.filter(
+      (t) =>
+        t.teacher_name.toLowerCase().includes(query) ||
+        t.subject_name.toLowerCase().includes(query),
     )
   }
-  
+
   return teachers
 })
 
 const groupedTeachers = computed((): Subject[] => {
   const subjects: Record<number, Subject> = {}
-  
-  filteredTeachers.value.forEach(teacher => {
+
+  filteredTeachers.value.forEach((teacher) => {
     const subjectId = teacher.subject_id
     if (!subjects[subjectId]) {
       subjects[subjectId] = {
         id: subjectId,
         name: teacher.subject_name,
         code: teacher.section_code,
-        teachers: []
+        teachers: [],
       }
     }
     subjects[subjectId].teachers.push(teacher)
   })
-  
+
   return Object.values(subjects)
 })
 
 const groupedBroadcasts = computed((): Record<string, BroadcastGroup> => {
   const groups: Record<string, BroadcastGroup> = {}
   let notifs = notifications.value
-  
+
   if (currentFilter.value === 'unread') {
-    notifs = notifs.filter(n => !n.is_read)
+    notifs = notifs.filter((n) => !n.is_read)
   }
-  
-  notifs.forEach(notif => {
+
+  notifs.forEach((notif) => {
     const key = `${notif.section_name}: ${notif.subject_name}`
     if (!groups[key]) {
       groups[key] = {
         section: notif.section_name,
         subject: notif.subject_name,
         teacher: notif.teacher_name,
-        announcements: []
+        announcements: [],
       }
     }
     groups[key].announcements.push(notif)
   })
-  
+
   return groups
 })
 
@@ -863,41 +1419,38 @@ const uploadFileToStorage = async (file, folder = 'message-attachments') => {
     const fileExt = file.name.split('.').pop()
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
     const filePath = `${folder}/${fileName}`
-    
+
     console.log('Uploading file:', filePath)
-    
+
     // Upload to storage
     const { error: uploadError, data: uploadData } = await supabase.storage
       .from('attachments')
       .upload(filePath, file, {
         cacheControl: '3600',
-        upsert: false
+        upsert: false,
       })
-    
+
     if (uploadError) {
       console.error('Upload error:', uploadError)
       throw uploadError
     }
-    
+
     console.log('Upload successful:', uploadData)
-    
+
     // Get public URL
-    const { data: urlData } = supabase.storage
-      .from('attachments')
-      .getPublicUrl(filePath)
-    
+    const { data: urlData } = supabase.storage.from('attachments').getPublicUrl(filePath)
+
     const attachmentData = {
       path: filePath,
       url: urlData.publicUrl,
       name: file.name,
       type: file.type.startsWith('image/') ? 'image' : 'file',
       size: file.size,
-      mimeType: file.type
+      mimeType: file.type,
     }
-    
+
     console.log('Attachment data:', attachmentData)
     return attachmentData
-    
   } catch (error) {
     console.error('Error uploading file:', error)
     throw error
@@ -910,28 +1463,28 @@ const saveMessageAttachments = async (messageId, attachments) => {
       return []
     }
 
-    const attachmentRecords = attachments.map(att => ({
+    const attachmentRecords = attachments.map((att) => ({
       message_id: messageId,
       file_name: att.name,
       file_path: att.path,
       file_url: att.url,
       file_type: att.type,
       file_size: att.size,
-      mime_type: att.mimeType
+      mime_type: att.mimeType,
     }))
-    
+
     console.log('Saving attachments to DB:', attachmentRecords)
-    
+
     const { data, error } = await supabase
       .from('message_attachments')
       .insert(attachmentRecords)
       .select()
-    
+
     if (error) {
       console.error('Error saving attachments:', error)
       throw error
     }
-    
+
     console.log('Attachments saved successfully:', data)
     return data
   } catch (error) {
@@ -949,37 +1502,42 @@ const toggleTeacherOptions = (teacherId) => {
 }
 
 const archiveConversation = (teacher) => {
-  enrolledTeachers.value = enrolledTeachers.value.map(t => 
-    (t.id === teacher.id && t.section_id === teacher.section_id) 
-      ? { ...t, archived: !t.archived } 
-      : t
+  enrolledTeachers.value = enrolledTeachers.value.map((t) =>
+    t.id === teacher.id && t.section_id === teacher.section_id
+      ? { ...t, archived: !t.archived }
+      : t,
   )
   activeTeacherOptionsId.value = null
 }
 
 const deleteConversation = async (teacher) => {
-  if (!confirm(`Are you sure you want to delete the conversation with Teacher: ${teacher.teacher_name}?\n\nNote: All messages will be permanently deleted, but you can still message this teacher again.`)) {
+  if (
+    !confirm(
+      `Are you sure you want to delete the conversation with Teacher: ${teacher.teacher_name}?\n\nNote: All messages will be permanently deleted, but you can still message this teacher again.`,
+    )
+  ) {
     return
   }
-  
+
   try {
     const { error } = await supabase
       .from('messages')
       .delete()
       .eq('section_id', teacher.section_id)
-      .or(`and(sender_id.eq.${currentStudentId.value},recipient_id.eq.${teacher.id}),and(sender_id.eq.${teacher.id},recipient_id.eq.${currentStudentId.value})`)
-    
+      .or(
+        `and(sender_id.eq.${currentStudentId.value},recipient_id.eq.${teacher.id}),and(sender_id.eq.${teacher.id},recipient_id.eq.${currentStudentId.value})`,
+      )
+
     if (error) throw error
-    
+
     deletedConversationKeys.value.add(`${teacher.id}-${teacher.section_id}`)
-    
-    enrolledTeachers.value = enrolledTeachers.value.filter(t => 
-      !(t.id === teacher.id && t.section_id === teacher.section_id)
+
+    enrolledTeachers.value = enrolledTeachers.value.filter(
+      (t) => !(t.id === teacher.id && t.section_id === teacher.section_id),
     )
     activeTeacherOptionsId.value = null
-    
+
     console.log('Conversation deleted. Teacher can be restored.')
-    
   } catch (error) {
     console.error('Error deleting conversation:', error)
     alert('Failed to delete conversation. Please try again.')
@@ -994,9 +1552,9 @@ const showAvailableTeachers = () => {
 const handleFileSelect = (event) => {
   const file = event.target.files[0]
   if (!file) return
-  
+
   selectedFile.value = file
-  
+
   if (file.type.startsWith('image/')) {
     const reader = new FileReader()
     reader.onload = (e) => {
@@ -1034,9 +1592,9 @@ const downloadAttachment = (attachment) => {
 
 const openBroadcastGroup = async (group: BroadcastGroup) => {
   selectedBroadcastGroup.value = group
-  
+
   console.log('Opening broadcast group:', group)
-  
+
   // Load attachments for announcements that don't have them loaded yet
   for (const announcement of group.announcements) {
     if (!announcement.attachments || announcement.attachments.length === 0) {
@@ -1046,17 +1604,17 @@ const openBroadcastGroup = async (group: BroadcastGroup) => {
           .from('message_attachments')
           .select('*')
           .eq('message_id', announcement.notification_id)
-        
+
         if (error) {
           console.warn('Error loading attachments for announcement:', error)
         } else if (attachments && attachments.length > 0) {
-          announcement.attachments = attachments.map(att => ({
+          announcement.attachments = attachments.map((att) => ({
             name: att.file_name,
             url: att.file_url,
             type: att.file_type,
             size: att.file_size || 'Unknown size',
             path: att.file_path,
-            mimeType: att.mime_type
+            mimeType: att.mime_type,
           }))
           announcement.has_attachments = true
           console.log('Loaded attachments for announcement:', announcement.attachments)
@@ -1071,7 +1629,7 @@ const openBroadcastGroup = async (group: BroadcastGroup) => {
       }
     }
   }
-  
+
   isBroadcastModalOpen.value = true
 }
 
@@ -1095,29 +1653,29 @@ const closeAnnouncementDetail = () => {
 const loadAnnouncementAttachments = async (messageId: string) => {
   try {
     if (!selectedAnnouncement.value) return
-    
+
     console.log('Loading attachments for announcement:', messageId)
-    
+
     const { data: attachments, error } = await supabase
       .from('message_attachments')
       .select('*')
       .eq('message_id', messageId)
-    
+
     if (error) {
       console.warn('Error loading announcement attachments:', error)
       selectedAnnouncement.value.attachments = []
       selectedAnnouncement.value.has_attachments = false
       return
     }
-    
+
     if (attachments && attachments.length > 0) {
-      selectedAnnouncement.value.attachments = attachments.map(att => ({
+      selectedAnnouncement.value.attachments = attachments.map((att) => ({
         name: att.file_name,
         url: att.file_url,
         type: att.file_type,
         size: att.file_size || 'Unknown size',
         path: att.file_path,
-        mimeType: att.mime_type
+        mimeType: att.mime_type,
       }))
       selectedAnnouncement.value.has_attachments = true
       console.log('Loaded attachments for announcement:', selectedAnnouncement.value.attachments)
@@ -1137,69 +1695,79 @@ const loadAnnouncementAttachments = async (messageId: string) => {
 
 const formatFileSize = (bytes) => {
   if (!bytes) return '0 B'
-  
+
   const k = 1024
   const sizes = ['B', 'KB', 'MB', 'GB']
   const i = Math.floor(Math.log(bytes) / Math.log(k))
-  
+
   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
 }
 
 const formatFullDate = (dateString) => {
   if (!dateString) return ''
-  
+
   const date = new Date(dateString)
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit'
+    minute: '2-digit',
   })
 }
 
 const markBroadcastAsRead = async (announcement: Notification) => {
   if (announcement.is_read) return
-  
+
   try {
     if (!currentStudentId.value) return
-    
-    console.log('Marking broadcast as read:', announcement.notification_id, 'for student:', currentStudentId.value)
-    
-    // Insert into message_reads table to track that this student has read this message
-    const { error } = await supabase
-      .from('message_reads')
-      .insert({
+
+    console.log(
+      'Marking broadcast as read:',
+      announcement.notification_id,
+      'for student:',
+      currentStudentId.value,
+    )
+
+    // Try to insert into message_reads table (may not exist)
+    try {
+      const { error } = await supabase.from('message_reads').insert({
         message_id: announcement.notification_id,
-        reader_id: currentStudentId.value
+        reader_id: currentStudentId.value,
       })
-    
-    if (error && !error.message?.includes('duplicate key')) {
-      throw error
+
+      if (error && !error.message?.includes('duplicate key')) {
+        console.log('message_reads table may not exist, skipping:', error.message)
+      }
+    } catch (e) {
+      console.log('message_reads insert failed (table may not exist)')
     }
-    
-    // Update local state
+
+    // Update local state regardless
     announcement.is_read = true
     announcement.read_at = new Date().toISOString()
-    
+
     // Update in notifications array
-    const notificationIndex = notifications.value.findIndex(n => n.notification_id === announcement.notification_id)
+    const notificationIndex = notifications.value.findIndex(
+      (n) => n.notification_id === announcement.notification_id,
+    )
     if (notificationIndex !== -1) {
       notifications.value[notificationIndex].is_read = true
       notifications.value[notificationIndex].read_at = announcement.read_at
     }
-    
+
     // Update in broadcast group if open
     if (selectedBroadcastGroup.value) {
-      const groupAnnouncement = selectedBroadcastGroup.value.announcements.find(a => a.notification_id === announcement.notification_id)
+      const groupAnnouncement = selectedBroadcastGroup.value.announcements.find(
+        (a) => a.notification_id === announcement.notification_id,
+      )
       if (groupAnnouncement) {
         groupAnnouncement.is_read = true
         groupAnnouncement.read_at = announcement.read_at
       }
     }
-    
+
     console.log('Broadcast marked as read successfully:', announcement.notification_id)
-    
   } catch (error) {
     console.error('Error marking broadcast as read:', error)
   }
@@ -1208,7 +1776,7 @@ const markBroadcastAsRead = async (announcement: Notification) => {
 const handleClickOutside = (event) => {
   const optionsDropdown = event.target.closest('.simple-options-dropdown')
   const optionsBtn = event.target.closest('.simple-options-btn')
-  
+
   if (!optionsDropdown && !optionsBtn) {
     activeTeacherOptionsId.value = null
   }
@@ -1220,43 +1788,45 @@ const handleClickOutside = (event) => {
 
 const getCurrentUser = async () => {
   try {
-    const { data: { user }, error: authError } = await supabase.auth.getUser()
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser()
     if (authError) throw authError
-    
+
     if (!user) {
       console.error('No authenticated user found')
       return null
     }
-    
+
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
       .select('id, auth_user_id, role, full_name, email')
       .eq('auth_user_id', user.id)
       .single()
-    
+
     if (profileError) throw profileError
-    
+
     if (!profile || profile.role !== 'student') {
       console.error('User is not a student or profile not found')
       return null
     }
-    
+
     const { data: studentData, error: studentError } = await supabase
       .from('students')
       .select('id')
       .eq('profile_id', profile.id)
       .single()
-    
+
     if (studentError) throw studentError
-    
+
     currentUser.value = user
     currentStudentId.value = studentData.id
-    
+
     console.log('Student authenticated:', profile.full_name)
     console.log('Student ID:', studentData.id)
-    
+
     return { authUser: user, studentId: studentData.id, profile: profile }
-    
   } catch (error) {
     console.error('Error getting current user:', error)
     return null
@@ -1273,98 +1843,100 @@ const loadEnrolledSubjectsAndTeachers = async () => {
       console.error('No student ID available')
       return
     }
-    
+
     isLoadingTeachers.value = true
     console.log('Loading subjects and teachers for student:', currentStudentId.value)
-    
+
     const { data: enrollments, error: enrollError } = await supabase
       .from('enrollments')
       .select('section_id')
       .eq('student_id', currentStudentId.value)
       .eq('status', 'active')
-    
+
     if (enrollError) {
       console.error('Error fetching enrollments:', enrollError)
       throw enrollError
     }
-    
+
     console.log('Enrollments found:', enrollments)
-    
+
     if (!enrollments || enrollments.length === 0) {
       console.log('No enrollments found for this student')
       enrolledSubjects.value = []
       enrolledTeachers.value = []
       return
     }
-    
-    const sectionIds = enrollments.map(e => e.section_id)
-    
+
+    const sectionIds = enrollments.map((e) => e.section_id)
+
     console.log('Fetching sections for IDs:', sectionIds)
     const { data: sections, error: sectionsError } = await supabase
       .from('sections')
-      .select(`
+      .select(
+        `
         id,
         name,
         section_code,
         subject_id
-      `)
+      `,
+      )
       .in('id', sectionIds)
-    
+
     if (sectionsError) {
       console.error('Error fetching sections:', sectionsError)
       throw sectionsError
     }
-    
+
     console.log('Sections found:', sections)
-    
+
     if (!sections || sections.length === 0) {
       enrolledSubjects.value = []
       enrolledTeachers.value = []
       return
     }
-    
-    const subjectIds = [...new Set(sections.map(s => s.subject_id))]
+
+    const subjectIds = [...new Set(sections.map((s) => s.subject_id))]
     const { data: subjects, error: subjectsError } = await supabase
       .from('subjects')
       .select('id, name, teacher_id')
       .in('id', subjectIds)
-    
+
     if (subjectsError) throw subjectsError
-    
-    const teacherIds = [...new Set(subjects.map(s => s.teacher_id))]
+
+    const teacherIds = [...new Set(subjects.map((s) => s.teacher_id))]
     const { data: teachers, error: teachersError } = await supabase
       .from('teachers')
       .select('id, full_name, email')
       .in('id', teacherIds)
-    
+
     if (teachersError) throw teachersError
-    
+
     console.log('Subjects:', subjects)
     console.log('Teachers:', teachers)
-    
+
     const processedSubjects = []
     const processedTeachers = []
     const subjectMap = new Map()
-    
-    const subjectsDataMap = new Map(subjects.map(s => [s.id, s]))
-    const teachersDataMap = new Map(teachers.map(t => [t.id, t]))
-    
+
+    const subjectsDataMap = new Map(subjects.map((s) => [s.id, s]))
+    const teachersDataMap = new Map(teachers.map((t) => [t.id, t]))
+
     for (const section of sections) {
       const subject = subjectsDataMap.get(section.subject_id)
       if (!subject) continue
-      
+
       const teacher = teachersDataMap.get(subject.teacher_id)
       if (!teacher) continue
-      
+
       if (!subjectMap.has(subject.id)) {
         processedSubjects.push({
           id: subject.id,
           name: subject.name,
-          code: section.section_code
+          code: section.section_code,
         })
         subjectMap.set(subject.id, true)
       }
-      
+
       const { count: unreadCount } = await supabase
         .from('messages')
         .select('*', { count: 'exact', head: true })
@@ -1373,18 +1945,20 @@ const loadEnrolledSubjectsAndTeachers = async () => {
         .eq('recipient_id', currentStudentId.value)
         .eq('message_type', 'direct')
         .eq('is_read', false)
-      
+
       const { data: lastMsgData } = await supabase
         .from('messages')
         .select('message_text, sent_at')
         .eq('section_id', section.id)
-        .or(`and(sender_id.eq.${currentStudentId.value},recipient_id.eq.${teacher.id}),and(sender_id.eq.${teacher.id},recipient_id.eq.${currentStudentId.value})`)
+        .or(
+          `and(sender_id.eq.${currentStudentId.value},recipient_id.eq.${teacher.id}),and(sender_id.eq.${teacher.id},recipient_id.eq.${currentStudentId.value})`,
+        )
         .eq('message_type', 'direct')
         .order('sent_at', { ascending: false })
         .limit(1)
-      
+
       const lastMsg = lastMsgData && lastMsgData.length > 0 ? lastMsgData[0] : null
-      
+
       processedTeachers.push({
         id: teacher.id,
         teacher_name: teacher.full_name,
@@ -1398,16 +1972,15 @@ const loadEnrolledSubjectsAndTeachers = async () => {
         last_message: lastMsg?.message_text || null,
         last_message_time: lastMsg?.sent_at || null,
         name: teacher.full_name,
-        archived: false
+        archived: false,
       })
     }
-    
+
     enrolledSubjects.value = processedSubjects
     enrolledTeachers.value = processedTeachers
-    
+
     console.log('Processed subjects:', processedSubjects)
     console.log('Processed teachers:', processedTeachers)
-    
   } catch (error) {
     console.error('Error loading enrolled data:', error)
     alert('Error loading messaging data. Please check console for details.')
@@ -1419,24 +1992,24 @@ const loadEnrolledSubjectsAndTeachers = async () => {
 const loadNotifications = async () => {
   try {
     if (!currentStudentId.value) return
-    
+
     isLoadingNotifications.value = true
     console.log('Loading notifications for student:', currentStudentId.value)
-    
+
     // Get student enrollments
     const { data: enrollments } = await supabase
       .from('enrollments')
       .select('section_id')
       .eq('student_id', currentStudentId.value)
       .eq('status', 'active')
-    
+
     if (!enrollments || enrollments.length === 0) {
       notifications.value = []
       return
     }
-    
-    const sectionIds = enrollments.map(e => e.section_id)
-    
+
+    const sectionIds = enrollments.map((e) => e.section_id)
+
     // Get broadcast messages for these sections
     const { data: messages, error } = await supabase
       .from('messages')
@@ -1445,28 +2018,28 @@ const loadNotifications = async () => {
       .eq('message_type', 'announcement')
       .is('recipient_id', null) // Ensure it's a broadcast message
       .order('sent_at', { ascending: false })
-    
+
     if (error) throw error
-    
+
     if (!messages || messages.length === 0) {
       notifications.value = []
       return
     }
-    
+
     // Load attachments for all messages
-    const messageIds = messages.map(m => m.id)
+    const messageIds = messages.map((m) => m.id)
     let attachmentsMap: Record<string, any[]> = {}
-    
+
     try {
       const { data: attachments, error: attachError } = await supabase
         .from('message_attachments')
         .select('*')
         .in('message_id', messageIds)
-      
+
       if (attachError) {
         console.warn('Error loading attachments:', attachError)
       } else if (attachments) {
-        attachments.forEach(att => {
+        attachments.forEach((att) => {
           if (!attachmentsMap[att.message_id]) {
             attachmentsMap[att.message_id] = []
           }
@@ -1476,57 +2049,62 @@ const loadNotifications = async () => {
             type: att.file_type,
             size: att.file_size || 'Unknown size',
             path: att.file_path,
-            mimeType: att.mime_type
+            mimeType: att.mime_type,
           })
         })
       }
     } catch (attachError) {
       console.warn('Message attachments table not found or error:', attachError)
     }
-    
+
     // Load section details
     const { data: sections } = await supabase
       .from('sections')
       .select('id, name, subject_id')
       .in('id', sectionIds)
-    
-    const sectionMap = new Map(sections?.map(s => [s.id, s]) || [])
-    
+
+    const sectionMap = new Map(sections?.map((s) => [s.id, s]) || [])
+
     // Load subject details
-    const subjectIds = [...new Set(sections?.map(s => s.subject_id) || [])]
+    const subjectIds = [...new Set(sections?.map((s) => s.subject_id) || [])]
     const { data: subjects } = await supabase
       .from('subjects')
       .select('id, name')
       .in('id', subjectIds)
-    
-    const subjectMap = new Map(subjects?.map(s => [s.id, s]) || [])
-    
+
+    const subjectMap = new Map(subjects?.map((s) => [s.id, s]) || [])
+
     // Load teacher details
-    const senderIds = [...new Set(messages.map(m => m.sender_id))]
+    const senderIds = [...new Set(messages.map((m) => m.sender_id))]
     const { data: senders } = await supabase
       .from('teachers')
       .select('id, full_name')
       .in('id', senderIds)
-    
-    const senderMap = new Map(senders?.map(s => [s.id, s]) || [])
-    
-    // Check message reads for this student
-    const { data: messageReads } = await supabase
-      .from('message_reads')
-      .select('message_id, read_at')
-      .eq('reader_id', currentStudentId.value)
-      .in('message_id', messageIds)
-    
-    const readMap = new Map(messageReads?.map(mr => [mr.message_id, mr.read_at]) || [])
-    
+
+    const senderMap = new Map(senders?.map((s) => [s.id, s]) || [])
+
+    // Check message reads for this student (table may not exist)
+    let readMap = new Map()
+    try {
+      const { data: messageReads } = await supabase
+        .from('message_reads')
+        .select('message_id, read_at')
+        .eq('reader_id', currentStudentId.value)
+        .in('message_id', messageIds)
+
+      readMap = new Map(messageReads?.map((mr) => [mr.message_id, mr.read_at]) || [])
+    } catch (e) {
+      console.log('message_reads table may not exist, skipping read status check')
+    }
+
     // Transform messages to notifications
-    notifications.value = messages.map(msg => {
+    notifications.value = messages.map((msg) => {
       const section = sectionMap.get(msg.section_id)
       const subject = section ? subjectMap.get(section.subject_id) : null
       const sender = senderMap.get(msg.sender_id)
       const messageAttachments = attachmentsMap[msg.id] || []
       const isRead = readMap.has(msg.id)
-      
+
       return {
         notification_id: msg.id,
         title: 'Class Announcement',
@@ -1540,13 +2118,20 @@ const loadNotifications = async () => {
         section_name: section?.name || 'Unknown Section',
         section_id: msg.section_id,
         has_attachments: messageAttachments.length > 0,
-        attachments: messageAttachments
+        attachments: messageAttachments,
       }
     })
-    
-    console.log('Loaded notifications with attachments:', notifications.value.length, 'notifications')
-    console.log('Attachments found:', Object.keys(attachmentsMap).length, 'messages have attachments')
-    
+
+    console.log(
+      'Loaded notifications with attachments:',
+      notifications.value.length,
+      'notifications',
+    )
+    console.log(
+      'Attachments found:',
+      Object.keys(attachmentsMap).length,
+      'messages have attachments',
+    )
   } catch (error) {
     console.error('Error loading notifications:', error)
     notifications.value = []
@@ -1561,20 +2146,20 @@ const loadNotifications = async () => {
 
 const startChatWithTeacher = async (teacher) => {
   console.log('Starting chat with teacher:', teacher)
-  
+
   activeTeacher.value = {
     ...teacher,
     id: teacher.id,
     teacher_name: teacher.teacher_name,
     subject_name: teacher.subject_name,
-    section_id: teacher.section_id
+    section_id: teacher.section_id,
   }
-  
+
   isModalOpen.value = true
   await nextTick()
-  
+
   await loadConversationMessages(teacher.id, teacher.section_id)
-  
+
   await nextTick()
   scrollToBottom()
 }
@@ -1582,47 +2167,49 @@ const startChatWithTeacher = async (teacher) => {
 const loadConversationMessages = async (teacherId, sectionId) => {
   try {
     if (!currentStudentId.value) return
-    
-    console.log('Loading messages between student and teacher:', { 
-      studentId: currentStudentId.value, 
-      teacherId, 
-      sectionId 
+
+    console.log('Loading messages between student and teacher:', {
+      studentId: currentStudentId.value,
+      teacherId,
+      sectionId,
     })
-    
+
     isLoadingMessages.value = true
     currentMessages.value = []
-    
+
     const { data: messages, error } = await supabase
       .from('messages')
       .select('*')
       .eq('section_id', sectionId)
       .eq('message_type', 'direct')
-      .or(`and(sender_id.eq.${currentStudentId.value},recipient_id.eq.${teacherId}),and(sender_id.eq.${teacherId},recipient_id.eq.${currentStudentId.value})`)
+      .or(
+        `and(sender_id.eq.${currentStudentId.value},recipient_id.eq.${teacherId}),and(sender_id.eq.${teacherId},recipient_id.eq.${currentStudentId.value})`,
+      )
       .order('sent_at', { ascending: true })
-    
+
     if (error) {
       console.error('Error fetching messages:', error)
       throw error
     }
-    
+
     console.log('Raw messages from database:', messages)
-    
+
     if (!messages || messages.length === 0) {
       console.log('No messages found in database')
       currentMessages.value = []
       isLoadingMessages.value = false
       return
     }
-    
-    const messageIds = messages.map(m => m.id)
+
+    const messageIds = messages.map((m) => m.id)
     const { data: attachments } = await supabase
       .from('message_attachments')
       .select('*')
       .in('message_id', messageIds)
-    
+
     const attachmentsMap = {}
     if (attachments) {
-      attachments.forEach(att => {
+      attachments.forEach((att) => {
         if (!attachmentsMap[att.message_id]) {
           attachmentsMap[att.message_id] = []
         }
@@ -1631,12 +2218,12 @@ const loadConversationMessages = async (teacherId, sectionId) => {
           url: att.file_url,
           type: att.file_type,
           size: att.file_size,
-          path: att.file_path
+          path: att.file_path,
         })
       })
     }
-    
-    currentMessages.value = messages.map(msg => ({
+
+    currentMessages.value = messages.map((msg) => ({
       id: msg.id,
       sender_id: msg.sender_id,
       recipient_id: msg.recipient_id,
@@ -1645,14 +2232,13 @@ const loadConversationMessages = async (teacherId, sectionId) => {
       is_read: msg.is_read,
       read_at: msg.read_at,
       message_type: 'direct',
-      attachments: attachmentsMap[msg.id] || []
+      attachments: attachmentsMap[msg.id] || [],
     }))
-    
+
     console.log('Processed messages with attachments:', currentMessages.value)
-    
+
     await nextTick()
     await markMessagesAsRead(teacherId, sectionId)
-    
   } catch (error) {
     console.error('Error loading conversation messages:', error)
     currentMessages.value = []
@@ -1667,10 +2253,14 @@ const loadConversationMessages = async (teacherId, sectionId) => {
 
 const sendMessage = async () => {
   // Validate input
-  if ((!newMessage.value.trim() && !selectedFile.value) || !activeTeacher.value || !currentStudentId.value) {
+  if (
+    (!newMessage.value.trim() && !selectedFile.value) ||
+    !activeTeacher.value ||
+    !currentStudentId.value
+  ) {
     return
   }
-  
+
   if (isSendingMessage.value) {
     console.warn('Already sending message, please wait...')
     return
@@ -1681,7 +2271,7 @@ const sendMessage = async () => {
 
   try {
     isSendingMessage.value = true
-    
+
     // Create temporary UI message
     const tempMessage = {
       id: 'temp-' + Date.now(),
@@ -1692,23 +2282,23 @@ const sendMessage = async () => {
       is_read: false,
       read_at: null,
       message_type: 'direct',
-      attachments: []
+      attachments: [],
     }
-    
+
     currentMessages.value.push(tempMessage)
     newMessage.value = ''
-    
+
     // Clear file input immediately
     if (fileInput.value) {
       fileInput.value.value = ''
     }
     removeFile()
-    
+
     await nextTick()
     scrollToBottom()
 
     let uploadedAttachment: Attachment | null = null
-    
+
     // Step 1: Upload file if present
     if (fileToUpload) {
       try {
@@ -1718,7 +2308,7 @@ const sendMessage = async () => {
       } catch (uploadError) {
         console.error('File upload failed:', uploadError)
         // Remove temp message on upload failure
-        const tempIndex = currentMessages.value.findIndex(m => m.id === tempMessage.id)
+        const tempIndex = currentMessages.value.findIndex((m) => m.id === tempMessage.id)
         if (tempIndex !== -1) {
           currentMessages.value.splice(tempIndex, 1)
         }
@@ -1736,7 +2326,7 @@ const sendMessage = async () => {
         recipient_id: activeTeacher.value.id,
         message_text: messageText || '📎 Attachment',
         message_type: 'direct',
-        is_read: false
+        is_read: false,
       })
       .select()
       .single()
@@ -1760,7 +2350,7 @@ const sendMessage = async () => {
     }
 
     // Step 4: Update UI with real message
-    const tempIndex = currentMessages.value.findIndex(m => m.id === tempMessage.id)
+    const tempIndex = currentMessages.value.findIndex((m) => m.id === tempMessage.id)
     if (tempIndex !== -1) {
       currentMessages.value[tempIndex] = {
         id: newMsg.id,
@@ -1771,31 +2361,34 @@ const sendMessage = async () => {
         is_read: newMsg.is_read,
         read_at: newMsg.read_at,
         message_type: newMsg.message_type,
-        attachments: uploadedAttachment ? [{
-          name: uploadedAttachment.name,
-          url: uploadedAttachment.url,
-          type: uploadedAttachment.type,
-          size: uploadedAttachment.size,
-          path: uploadedAttachment.path,
-          mimeType: uploadedAttachment.mimeType
-        }] : []
+        attachments: uploadedAttachment
+          ? [
+              {
+                name: uploadedAttachment.name,
+                url: uploadedAttachment.url,
+                type: uploadedAttachment.type,
+                size: uploadedAttachment.size,
+                path: uploadedAttachment.path,
+                mimeType: uploadedAttachment.mimeType,
+              },
+            ]
+          : [],
       }
     }
 
     console.log('Message sent successfully!')
-    
+
     // Refresh teacher list
     await loadEnrolledSubjectsAndTeachers()
-
   } catch (error) {
     console.error('Failed to send message:', error)
-    
+
     // Remove temp message on error
-    const tempIndex = currentMessages.value.findIndex(m => m.id === 'temp-' + Date.now())
+    const tempIndex = currentMessages.value.findIndex((m) => m.id === 'temp-' + Date.now())
     if (tempIndex !== -1) {
       currentMessages.value.splice(tempIndex, 1)
     }
-    
+
     // Show user-friendly error
     const errorMsg = error instanceof Error ? error.message : 'Failed to send message'
     alert(`Error: ${errorMsg}\n\nPlease try again.`)
@@ -1808,9 +2401,9 @@ const sendMessage = async () => {
 const markMessagesAsRead = async (teacherId, sectionId) => {
   try {
     if (!currentStudentId.value) return
-    
+
     console.log('Marking messages as read:', { teacherId, sectionId })
-    
+
     const { data: updatedMessages, error } = await supabase
       .from('messages')
       .update({ is_read: true, read_at: new Date().toISOString() })
@@ -1820,20 +2413,20 @@ const markMessagesAsRead = async (teacherId, sectionId) => {
       .eq('message_type', 'direct')
       .eq('is_read', false)
       .select()
-    
+
     if (error) throw error
-    
+
     console.log('Database updated, affected rows:', updatedMessages?.length || 0)
-    
-    currentMessages.value.forEach(m => {
+
+    currentMessages.value.forEach((m) => {
       if (m.sender_id === teacherId && !m.is_read) {
         m.is_read = true
         m.read_at = new Date().toISOString()
       }
     })
-    
-    const teacherIndex = enrolledTeachers.value.findIndex(t => 
-      t.id === teacherId && t.section_id === sectionId
+
+    const teacherIndex = enrolledTeachers.value.findIndex(
+      (t) => t.id === teacherId && t.section_id === sectionId,
     )
     if (teacherIndex !== -1) {
       enrolledTeachers.value = enrolledTeachers.value.map((teacher, index) => {
@@ -1844,9 +2437,8 @@ const markMessagesAsRead = async (teacherId, sectionId) => {
         return teacher
       })
     }
-    
+
     console.log('Messages marked as read and UI updated')
-    
   } catch (error) {
     console.error('Error marking messages as read:', error)
   }
@@ -1862,26 +2454,20 @@ const closeModal = () => {
 const clearNotifications = async () => {
   try {
     if (!currentStudentId.value) return
-    
+
     console.log('Marking all notifications as read')
-    
-    const unreadIds = notifications.value
-      .filter(n => !n.is_read)
-      .map(n => n.notification_id)
-    
+
+    const unreadIds = notifications.value.filter((n) => !n.is_read).map((n) => n.notification_id)
+
     if (unreadIds.length === 0) return
-    
-    const { error } = await supabase
-      .from('messages')
-      .update({ is_read: true })
-      .in('id', unreadIds)
-    
+
+    const { error } = await supabase.from('messages').update({ is_read: true }).in('id', unreadIds)
+
     if (error) throw error
-    
-    notifications.value.forEach(n => {
+
+    notifications.value.forEach((n) => {
       n.is_read = true
     })
-    
   } catch (error) {
     console.error('Error clearing notifications:', error)
   }
@@ -1893,9 +2479,9 @@ const clearNotifications = async () => {
 
 const setupRealTimeSubscriptions = () => {
   if (!currentStudentId.value) return
-  
+
   console.log('Setting up real-time subscriptions for student messages')
-  
+
   messageChannel = supabase
     .channel('student-messages-realtime')
     .on(
@@ -1903,43 +2489,47 @@ const setupRealTimeSubscriptions = () => {
       {
         event: 'INSERT',
         schema: 'public',
-        table: 'messages'
+        table: 'messages',
       },
       async (payload) => {
         console.log('New message received:', payload.new)
-        
+
         const newMessageData = payload.new
-        
+
         if (newMessageData.message_type === 'announcement') {
           await loadNotifications()
           return
         }
-        
-        if (newMessageData.recipient_id === currentStudentId.value && 
-            newMessageData.message_type === 'direct') {
-          
+
+        if (
+          newMessageData.recipient_id === currentStudentId.value &&
+          newMessageData.message_type === 'direct'
+        ) {
           await loadEnrolledSubjectsAndTeachers()
-          
-          if (isModalOpen.value && 
-              activeTeacher.value && 
-              newMessageData.section_id === activeTeacher.value.section_id &&
-              newMessageData.sender_id === activeTeacher.value.id) {
-            
+
+          if (
+            isModalOpen.value &&
+            activeTeacher.value &&
+            newMessageData.section_id === activeTeacher.value.section_id &&
+            newMessageData.sender_id === activeTeacher.value.id
+          ) {
             const { data: attachments } = await supabase
               .from('message_attachments')
               .select('*')
               .eq('message_id', newMessageData.id)
-            
-            const processedAttachments = attachments ? attachments.map(att => ({
-              name: att.file_name,
-              url: att.file_url,
-              type: att.file_type,
-              size: att.file_size,
-              path: att.file_path
-            })) : []
-            
+
+            const processedAttachments = attachments
+              ? attachments.map((att) => ({
+                  name: att.file_name,
+                  url: att.file_url,
+                  type: att.file_type,
+                  size: att.file_size,
+                  path: att.file_path,
+                }))
+              : []
+
             console.log('Loaded attachments for new message:', processedAttachments)
-            
+
             currentMessages.value.push({
               id: newMessageData.id,
               sender_id: newMessageData.sender_id,
@@ -1949,70 +2539,72 @@ const setupRealTimeSubscriptions = () => {
               is_read: newMessageData.is_read,
               read_at: newMessageData.read_at,
               message_type: newMessageData.message_type,
-              attachments: processedAttachments
+              attachments: processedAttachments,
             })
-            
+
             console.log('Message added with attachments:', processedAttachments)
-            
+
             await nextTick()
             scrollToBottom()
-            
+
             await markMessagesAsRead(newMessageData.sender_id, newMessageData.section_id)
           }
         }
-      }
+      },
     )
     .on(
       'postgres_changes',
       {
         event: 'UPDATE',
         schema: 'public',
-        table: 'messages'
+        table: 'messages',
       },
       async (payload) => {
         console.log('Message updated:', payload.new)
-        
+
         if (isModalOpen.value && activeTeacher.value) {
-          const messageIndex = currentMessages.value.findIndex(m => m.id === payload.new.id)
+          const messageIndex = currentMessages.value.findIndex((m) => m.id === payload.new.id)
           if (messageIndex !== -1) {
             currentMessages.value[messageIndex].is_read = payload.new.is_read
             currentMessages.value[messageIndex].read_at = payload.new.read_at
           }
         }
-        
+
         await loadEnrolledSubjectsAndTeachers()
-      }
+      },
     )
     .on(
       'postgres_changes',
       {
         event: 'INSERT',
         schema: 'public',
-        table: 'message_attachments'
+        table: 'message_attachments',
       },
       async (payload) => {
         console.log('New attachment received:', payload.new)
-        
+
         if (isModalOpen.value && activeTeacher.value) {
-          const messageIndex = currentMessages.value.findIndex(m => m.id === payload.new.message_id)
+          const messageIndex = currentMessages.value.findIndex(
+            (m) => m.id === payload.new.message_id,
+          )
           if (messageIndex !== -1) {
             const newAttachment = {
               name: payload.new.file_name,
               url: payload.new.file_url,
               type: payload.new.file_type,
               size: payload.new.file_size,
-              path: payload.new.file_path
+              path: payload.new.file_path,
             }
-            
+
             if (!currentMessages.value[messageIndex].attachments) {
               currentMessages.value[messageIndex].attachments = []
             }
-            
+
             currentMessages.value[messageIndex].attachments.push(newAttachment)
             console.log('Attachment added to message:', newAttachment)
           }
         }
-      }
+      },
     )
     .subscribe()
 }
@@ -2036,12 +2628,12 @@ const scrollToBottom = () => {
 
 const formatTime = (dateString) => {
   if (!dateString) return ''
-  
+
   const date = new Date(dateString)
   const now = new Date()
   const diffMs = now.getTime() - date.getTime()
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
-  
+
   if (diffDays === 0) {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   } else if (diffDays === 1) {
@@ -2060,18 +2652,18 @@ const formatTime = (dateString) => {
 const getPresenceStatus = (teacherId) => {
   const presence = teacherPresence.value[teacherId]
   if (!presence || !presence.last_seen) return 'Offline'
-  
+
   if (presence.is_online) {
     return 'Online now'
   }
-  
+
   const now = new Date()
   const lastSeen = new Date(presence.last_seen)
   const diffMs = now.getTime() - lastSeen.getTime()
   const diffMinutes = Math.floor(diffMs / (1000 * 60))
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
-  
+
   if (diffMinutes < 1) {
     return 'Online now'
   } else if (diffMinutes < 60) {
@@ -2089,30 +2681,30 @@ const getPresenceStatus = (teacherId) => {
 
 const setupPresenceTracking = async () => {
   if (!currentStudentId.value) return
-  
-  const teacherIds = [...new Set(enrolledTeachers.value.map(t => t.id))]
-  
+
+  const teacherIds = [...new Set(enrolledTeachers.value.map((t) => t.id))]
+
   if (teacherIds.length === 0) return
-  
+
   const { data: presenceData, error } = await supabase
     .from('user_presence')
     .select('*')
     .in('user_id', teacherIds)
-  
+
   if (error) {
     console.error('Error fetching teacher presence:', error)
     return
   }
-  
+
   if (presenceData) {
-    presenceData.forEach(p => {
+    presenceData.forEach((p) => {
       teacherPresence.value[p.user_id] = {
         is_online: p.is_online,
-        last_seen: p.last_seen
+        last_seen: p.last_seen,
       }
     })
   }
-  
+
   presenceChannel = supabase
     .channel('teacher-presence-tracking')
     .on(
@@ -2121,13 +2713,15 @@ const setupPresenceTracking = async () => {
         event: '*',
         schema: 'public',
         table: 'user_presence',
-        filter: `user_id=in.(${teacherIds.join(',')})`
+        filter: `user_id=in.(${teacherIds.join(',')})`,
       },
       (payload) => {
         console.log('Presence update received:', payload)
-        
-        const userId = (payload.new as { user_id?: string })?.user_id || (payload.old as { user_id?: string })?.user_id
-        
+
+        const userId =
+          (payload.new as { user_id?: string })?.user_id ||
+          (payload.old as { user_id?: string })?.user_id
+
         if (payload.eventType === 'DELETE') {
           if (userId && teacherPresence.value[userId]) {
             teacherPresence.value[userId].is_online = false
@@ -2135,30 +2729,31 @@ const setupPresenceTracking = async () => {
         } else if (payload.new && userId) {
           teacherPresence.value[userId] = {
             is_online: payload.new.is_online,
-            last_seen: payload.new.last_seen
+            last_seen: payload.new.last_seen,
           }
         }
-      }
+      },
     )
     .subscribe()
-  
+
   console.log('Presence tracking setup complete for', teacherIds.length, 'teachers')
 }
 
 const updateStudentPresence = async (isOnline) => {
   if (!currentUser.value) return
-  
+
   try {
-    const { error } = await supabase
-      .from('user_presence')
-      .upsert({
+    const { error } = await supabase.from('user_presence').upsert(
+      {
         user_id: currentUser.value.id,
         is_online: isOnline,
-        last_seen: new Date().toISOString()
-      }, {
-        onConflict: 'user_id'
-      })
-    
+        last_seen: new Date().toISOString(),
+      },
+      {
+        onConflict: 'user_id',
+      },
+    )
+
     if (error) throw error
   } catch (error) {
     console.error('Error updating student presence:', error)
@@ -2171,20 +2766,17 @@ const updateStudentPresence = async (isOnline) => {
 
 onMounted(async () => {
   console.log('Student messages component mounted')
-  
+
   document.addEventListener('click', handleClickOutside)
-  
+
   const userData = await getCurrentUser()
   if (userData) {
     console.log('Student authenticated:', userData.profile.full_name)
-    
-    await Promise.all([
-      loadEnrolledSubjectsAndTeachers(),
-      loadNotifications()
-    ])
-    
+
+    await Promise.all([loadEnrolledSubjectsAndTeachers(), loadNotifications()])
+
     isInitialLoading.value = false
-    
+
     setupRealTimeSubscriptions()
     await setupPresenceTracking()
     await updateStudentPresence(true)
@@ -2217,7 +2809,7 @@ onUnmounted(() => {
 /* Main Container */
 .messages-container {
   min-height: 100vh;
-  background: #FBFFE4;
+  background: #fbffe4;
   padding: 1.5rem 2rem;
   font-family: 'Inter', sans-serif;
   max-width: 1400px;
@@ -2234,14 +2826,14 @@ onUnmounted(() => {
   padding: 1.5rem 2.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   width: 100%;
   max-width: none;
 }
 .dark .section-header-card {
   background: #23272b;
   border: 2px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .section-header-left {
@@ -2253,7 +2845,7 @@ onUnmounted(() => {
 .section-header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #A3D1C6 0%, #87C5B8 100%);
+  background: linear-gradient(135deg, #a3d1c6 0%, #87c5b8 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -2408,7 +3000,8 @@ onUnmounted(() => {
 }
 
 @keyframes pulse-archive {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
   }
   50% {
@@ -2416,33 +3009,32 @@ onUnmounted(() => {
   }
 }
 
-
-  .filter-tabs {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    flex: 1 1 100%;
-    overflow-x: auto;
-    padding-bottom: 0.25rem;
-    flex-wrap: nowrap;
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  flex: 1 1 100%;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  flex-wrap: nowrap;
   background: none;
-  }
+}
 
-  .filter-tab {
-    flex: 1 1 0;
-    min-width: 0;
-    padding: 0.75rem 0.5rem;
-    font-size: 0.85rem;
-    border-radius: 10px;
-    white-space: nowrap;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-color: #20c997;
-  }
+.filter-tab {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.85rem;
+  border-radius: 10px;
+  white-space: nowrap;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #20c997;
+}
 
 /* Content Area */
 .content-area {
@@ -2524,11 +3116,11 @@ onUnmounted(() => {
 }
 
 .show-teachers-btn:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
   transform: translateY(-1px);
 }
 .dark .show-teachers-btn:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
 }
 
 /* Teachers Grid */
@@ -2646,7 +3238,7 @@ onUnmounted(() => {
 .teacher-avatar {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -2658,7 +3250,7 @@ onUnmounted(() => {
   position: relative;
 }
 .dark .teacher-avatar {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .online-indicator {
@@ -2689,7 +3281,7 @@ onUnmounted(() => {
   background: var(--dropdown-bg, #fff);
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   z-index: 100;
   padding: 6px 0;
   display: flex;
@@ -2974,7 +3566,7 @@ onUnmounted(() => {
   background: #20c997;
 }
 .dark .action-btn:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
 }
 
 .notifications-grid {
@@ -3007,13 +3599,13 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(90deg, #20c997 0%, #3d8d7a 100%);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
 }
 .dark .notification-card::before {
-  background: linear-gradient(90deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(90deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .notification-card:hover {
@@ -3048,7 +3640,7 @@ onUnmounted(() => {
 .notification-icon {
   width: 44px;
   height: 44px;
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -3058,7 +3650,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 .dark .notification-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 
@@ -3123,7 +3715,8 @@ onUnmounted(() => {
 }
 
 @keyframes pulse-unread {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
   }
   50% {
@@ -3203,7 +3796,9 @@ onUnmounted(() => {
   max-width: 600px;
   max-height: 80vh;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
 }
@@ -3234,7 +3829,7 @@ onUnmounted(() => {
 .teacher-avatar-chat {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -3244,7 +3839,7 @@ onUnmounted(() => {
   font-size: 1rem;
 }
 .dark .teacher-avatar-chat {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .header-details {
@@ -3492,11 +4087,11 @@ onUnmounted(() => {
 }
 
 .send-btn:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
   transform: scale(1.05);
 }
 .dark .send-btn:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
 }
 
 .send-btn:disabled {
@@ -3514,7 +4109,7 @@ onUnmounted(() => {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
-  
+
   .notifications-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -3526,7 +4121,7 @@ onUnmounted(() => {
     padding: 0;
     min-height: calc(100vh - 150px);
   }
-  
+
   /* Header mobile optimization */
   .section-header-card {
     margin: 0.5rem;
@@ -3537,26 +4132,26 @@ onUnmounted(() => {
     max-width: 100vw;
     box-sizing: border-box;
   }
-  
+
   .section-header-left {
     gap: 0.75rem;
   }
-  
+
   .section-header-icon {
     width: 50px;
     height: 50px;
     border-radius: 12px;
   }
-  
+
   .section-header-title {
     font-size: 1.25rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .section-header-sub {
     font-size: 0.9rem;
   }
-  
+
   /* Controls section mobile optimization */
   .controls-section {
     margin: 0.5rem;
@@ -3570,19 +4165,19 @@ onUnmounted(() => {
     max-width: 100vw;
     box-sizing: border-box;
   }
-  
+
   .search-box {
     min-width: 120px;
     width: 45%;
     flex: 1 1 45%;
   }
-  
+
   .search-input {
     padding: 0.875rem 1rem 0.875rem 2.5rem;
     font-size: 1rem;
     border-radius: 12px;
   }
-  
+
   .filter-tabs {
     display: flex;
     justify-content: flex-end;
@@ -3599,7 +4194,7 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
   }
-  
+
   .filter-tab {
     padding: 0.75rem 1rem;
     font-size: 0.85rem;
@@ -3607,115 +4202,115 @@ onUnmounted(() => {
     white-space: nowrap;
     min-width: auto;
   }
-  
+
   /* Content area mobile optimization */
   .content-area {
     margin: 0 1rem;
   }
-  
+
   .teachers-cards {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .notifications-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .notification-card {
     padding: 1rem;
     border-radius: 12px;
   }
-  
+
   .notification-left {
     gap: 0.75rem;
   }
-  
+
   .notification-icon {
     width: 40px;
     height: 40px;
   }
-  
+
   .notification-title {
     font-size: 1rem;
     white-space: normal;
     overflow: visible;
     text-overflow: initial;
   }
-  
+
   .notification-meta {
     gap: 0.375rem;
   }
-  
+
   .notification-teacher {
     font-size: 0.8rem;
   }
-  
+
   .announcement-count {
     font-size: 0.75rem;
     padding: 0.2rem 0.4rem;
   }
-  
+
   /* Subject sections mobile layout */
   .subject-section {
     margin-bottom: 0.25rem;
     border-radius: 12px;
     padding: 0.75rem;
   }
-  
+
   .subject-section-header {
     padding: 1rem 0 0.75rem 0;
     margin-bottom: 0.75rem;
   }
-  
+
   .subject-section-name {
     font-size: 1.1rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .subject-section-code {
     font-size: 0.8rem;
     padding: 0.35rem 0.75rem;
     border-radius: 8px;
   }
-  
+
   .teachers-cards {
     gap: 0.5rem;
   }
-  
+
   /* Teacher card mobile optimization */
   .teacher-card {
     padding: 0.75rem;
     border-radius: 12px;
     position: relative;
   }
-  
+
   .teacher-info {
     gap: 0.75rem;
   }
-  
+
   .teacher-avatar {
     width: 50px;
     height: 50px;
     border-radius: 12px;
   }
-  
+
   .teacher-name {
     font-size: 1rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .teacher-email {
     font-size: 0.8rem;
   }
-  
+
   .teacher-status {
     gap: 0.75rem;
     flex-direction: column;
     align-items: flex-end;
   }
-  
+
   .unread-count {
     padding: 0.35rem 0.75rem;
     font-size: 0.75rem;
@@ -3723,13 +4318,13 @@ onUnmounted(() => {
     min-width: 24px;
     height: 24px;
   }
-  
+
   .teacher-options {
     width: 40px;
     height: 40px;
     border-radius: 10px;
   }
-  
+
   .teacher-options-menu {
     position: fixed;
     bottom: 1rem;
@@ -3741,82 +4336,82 @@ onUnmounted(() => {
     max-height: 50vh;
     overflow-y: auto;
   }
-  
+
   .teacher-option {
     padding: 1rem;
     font-size: 0.95rem;
     min-height: 56px;
     border-radius: 12px;
   }
-  
+
   /* Notification cards mobile optimization */
   .notification-card {
     padding: 1rem;
     border-radius: 12px;
   }
-  
+
   .notification-header {
     gap: 0.75rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .notification-sender {
     font-size: 0.95rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .notification-subject {
     font-size: 0.8rem;
   }
-  
+
   .notification-preview {
     font-size: 0.85rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .notification-time {
     font-size: 0.75rem;
   }
-  
+
   /* Empty states mobile optimization */
   .empty-state {
     padding: 2rem 1rem;
     margin: 1rem;
     border-radius: 16px;
   }
-  
+
   .empty-icon {
     width: 80px;
     height: 80px;
     margin-bottom: 1rem;
   }
-  
+
   .empty-state p {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .empty-subtext {
     font-size: 0.8rem;
   }
-  
+
   .deleted-state {
     margin: 1rem;
     padding: 1.5rem 1rem;
     border-radius: 16px;
   }
-  
+
   .show-teachers-btn {
     padding: 0.875rem 1.25rem;
     font-size: 0.9rem;
     border-radius: 12px;
   }
-  
+
   /* Modal mobile optimization */
   .modal-overlay {
     padding: 1rem;
   }
-  
+
   .modal-content {
     width: 100%;
     max-width: none;
@@ -3825,143 +4420,143 @@ onUnmounted(() => {
     max-height: 85vh;
     overflow-y: auto;
   }
-  
+
   .modal-header {
     padding: 1.25rem;
     border-radius: 16px 16px 0 0;
   }
-  
+
   .modal-title {
     font-size: 1.1rem;
   }
-  
+
   .modal-close {
     width: 40px;
     height: 40px;
     border-radius: 10px;
   }
-  
+
   .modal-body {
     padding: 1.25rem;
     max-height: 60vh;
     overflow-y: auto;
   }
-  
+
   .chat-header {
     padding: 1rem;
     border-radius: 12px 12px 0 0;
   }
-  
+
   .chat-teacher-info {
     gap: 0.75rem;
   }
-  
+
   .chat-teacher-avatar {
     width: 45px;
     height: 45px;
     border-radius: 10px;
   }
-  
+
   .chat-teacher-name {
     font-size: 1rem;
   }
-  
+
   .chat-teacher-status {
     font-size: 0.8rem;
   }
-  
+
   .messages-area {
     height: 300px;
     padding: 1rem;
   }
-  
+
   .message-bubble {
     max-width: 85%;
     padding: 0.875rem 1rem;
     border-radius: 16px;
     margin-bottom: 0.75rem;
   }
-  
+
   .message-text {
     font-size: 0.9rem;
     line-height: 1.5;
   }
-  
+
   .message-time {
     font-size: 0.7rem;
     margin-top: 0.25rem;
   }
-  
+
   .message-input-area {
     padding: 1rem;
     border-radius: 0 0 12px 12px;
   }
-  
+
   .message-input-container {
     gap: 0.75rem;
   }
-  
+
   .message-input {
     padding: 0.875rem 1rem;
     font-size: 0.95rem;
     border-radius: 12px;
   }
-  
+
   .send-btn,
   .attach-btn {
     width: 44px;
     height: 44px;
     border-radius: 10px;
   }
-  
+
   /* Broadcast modal mobile optimization */
   .broadcast-modal {
     border-radius: 16px;
   }
-  
+
   .broadcast-header {
     padding: 1.25rem;
     border-radius: 16px 16px 0 0;
   }
-  
+
   .broadcast-group-name {
     font-size: 1.1rem;
   }
-  
+
   .broadcast-announcements {
     padding: 1rem;
     max-height: 50vh;
     overflow-y: auto;
   }
-  
+
   .announcement-item {
     padding: 1rem;
     border-radius: 12px;
     margin-bottom: 0.875rem;
   }
-  
+
   .announcement-header {
     margin-bottom: 0.75rem;
   }
-  
+
   .announcement-title {
     font-size: 0.95rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .announcement-date {
     font-size: 0.75rem;
   }
-  
+
   .announcement-content {
     font-size: 0.85rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .announcement-actions {
     gap: 0.5rem;
   }
-  
+
   .view-details-btn {
     padding: 0.5rem 0.875rem;
     font-size: 0.8rem;
@@ -3975,114 +4570,114 @@ onUnmounted(() => {
     margin: 0.75rem;
     padding: 0.875rem;
   }
-  
+
   .section-header-icon {
     width: 45px;
     height: 45px;
   }
-  
+
   .section-header-title {
     font-size: 1.125rem;
   }
-  
+
   .controls-section {
     margin: 0 0.75rem 1.25rem 0.75rem;
     padding: 0.875rem;
   }
-  
+
   .content-area {
     margin: 0 0.75rem;
   }
-  
+
   .filter-tabs {
     flex-wrap: wrap;
     gap: 0.375rem;
   }
-  
+
   .filter-tab {
     padding: 0.625rem 0.875rem;
     font-size: 0.8rem;
   }
-  
+
   .teacher-card {
     padding: 0.875rem;
   }
-  
+
   .teacher-avatar {
     width: 45px;
     height: 45px;
   }
-  
+
   .teacher-name {
     font-size: 0.95rem;
   }
-  
+
   .teacher-email {
     font-size: 0.75rem;
   }
-  
+
   .notification-card {
     padding: 0.875rem;
     border-radius: 12px;
   }
-  
+
   .notification-card-header {
     margin-bottom: 0.75rem;
   }
-  
+
   .notification-left {
     gap: 0.625rem;
   }
-  
+
   .notification-icon {
     width: 36px;
     height: 36px;
   }
-  
+
   .notification-title {
     font-size: 0.95rem;
     line-height: 1.25;
   }
-  
+
   .notification-section {
     font-size: 0.8rem;
   }
-  
+
   .notification-count {
     padding: 0.25rem 0.5rem;
     font-size: 0.7rem;
     min-width: 20px;
   }
-  
+
   .notification-meta {
     gap: 0.375rem;
   }
-  
+
   .notification-teacher {
     font-size: 0.75rem;
     gap: 0.375rem;
   }
-  
+
   .notification-teacher svg {
     width: 14px;
     height: 14px;
   }
-  
+
   .announcement-count {
     font-size: 0.7rem;
     padding: 0.2rem 0.375rem;
   }
-  
+
   .empty-state {
     margin: 0.75rem;
     padding: 1.5rem 0.875rem;
   }
-  
+
   .empty-icon {
     width: 70px;
     height: 70px;
   }
-  
+
   .modal-header,
   .modal-body,
   .chat-header,
@@ -4090,21 +4685,21 @@ onUnmounted(() => {
   .message-input-area {
     padding: 1rem;
   }
-  
+
   .message-bubble {
     max-width: 90%;
     padding: 0.75rem 0.875rem;
   }
-  
+
   .broadcast-header,
   .broadcast-announcements {
     padding: 1rem;
   }
-  
+
   .announcement-item {
     padding: 0.875rem;
   }
-  
+
   /* Touch optimization for small screens */
   .teacher-options,
   .modal-close,
@@ -4113,7 +4708,7 @@ onUnmounted(() => {
     width: 44px;
     height: 44px;
   }
-  
+
   .unread-count {
     min-width: 22px;
     height: 22px;
@@ -4126,29 +4721,29 @@ onUnmounted(() => {
   .section-header-card {
     margin: 0.5rem;
   }
-  
+
   .controls-section {
     margin: 0 0.5rem 1rem 0.5rem;
   }
-  
+
   .content-area {
     margin: 0 0.5rem;
   }
-  
+
   .empty-state,
   .deleted-state {
     margin: 0.5rem;
   }
-  
+
   .teacher-options-menu {
     left: 0.5rem;
     right: 0.5rem;
   }
-  
+
   .modal-overlay {
     padding: 0.5rem;
   }
-  
+
   .message-bubble {
     max-width: 95%;
   }
@@ -4196,7 +4791,7 @@ onUnmounted(() => {
 .dark .loading-content {
   background: #23272b;
   border-color: #20c997;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 @keyframes slideUp {
@@ -4246,7 +4841,7 @@ onUnmounted(() => {
   font-family: 'Inter', sans-serif;
 }
 .dark .loading-text {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .loading-subtext {
@@ -4257,7 +4852,7 @@ onUnmounted(() => {
   font-family: 'Inter', sans-serif;
 }
 .dark .loading-subtext {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .loading-state {
@@ -4365,7 +4960,7 @@ onUnmounted(() => {
   justify-content: space-between;
 }
 .dark .simple-announcement-header {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .simple-announcement-badge {
@@ -4476,7 +5071,7 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 .dark .simple-meta-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .simple-meta-content {
@@ -4697,7 +5292,7 @@ onUnmounted(() => {
   transition: all 0.2s ease;
 }
 .dark .simple-close-announcement-btn {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .simple-close-announcement-btn:hover {
@@ -4705,7 +5300,7 @@ onUnmounted(() => {
   transform: translateY(-1px);
 }
 .dark .simple-close-announcement-btn:hover {
-  background: linear-gradient(135deg, #3D8D7A 0%, #138a73 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #138a73 100%);
 }
 
 /* Enhanced Modal Base */
@@ -4760,7 +5355,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 .dark .enhanced-simple-subject-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 
@@ -4870,7 +5465,7 @@ onUnmounted(() => {
   box-shadow: 0 2px 8px rgba(32, 201, 151, 0.3);
 }
 .dark .enhanced-count-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 2px 8px rgba(32, 201, 151, 0.3);
 }
 
@@ -4910,7 +5505,7 @@ onUnmounted(() => {
   transition: transform 0.3s ease;
 }
 .dark .enhanced-simple-announcement-item::before {
-  background: linear-gradient(90deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(90deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .enhanced-simple-announcement-item.unread::before {
@@ -4944,7 +5539,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 .dark .enhanced-simple-announcement-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 
@@ -5080,7 +5675,7 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 .dark .simple-subject-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .simple-modal-title {
@@ -5102,7 +5697,7 @@ onUnmounted(() => {
   letter-spacing: 0.5px;
 }
 
-[data-theme="dark"] .simple-teacher-label {
+[data-theme='dark'] .simple-teacher-label {
   color: rgba(232, 245, 232, 0.8);
 }
 
@@ -5226,7 +5821,7 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 .dark .simple-announcement-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .simple-announcement-content {
@@ -5305,7 +5900,7 @@ onUnmounted(() => {
   border: 3px solid rgba(255, 255, 255, 0.2);
 }
 .dark .broadcast-icon-large {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 8px 20px rgba(32, 201, 151, 0.4);
 }
 
@@ -5331,11 +5926,13 @@ onUnmounted(() => {
   color: #20c997;
 }
 
-.section-text, .teacher-text {
+.section-text,
+.teacher-text {
   font-weight: 600;
   color: #2c3e50;
 }
-.dark .section-text, .dark .teacher-text {
+.dark .section-text,
+.dark .teacher-text {
   color: #ffffff;
 }
 
@@ -5439,7 +6036,7 @@ onUnmounted(() => {
   box-shadow: 0 0 10px rgba(32, 201, 151, 0.5);
 }
 .dark .broadcast-item.unread::before {
-  background: linear-gradient(180deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(180deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 0 10px rgba(32, 201, 151, 0.5);
 }
 
@@ -5467,7 +6064,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 .dark .broadcast-item-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 
@@ -5520,11 +6117,16 @@ onUnmounted(() => {
 }
 
 @keyframes pulse-new {
-  0%, 100% {
-    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3), 0 0 0 0 rgba(220, 53, 69, 0.4);
+  0%,
+  100% {
+    box-shadow:
+      0 2px 8px rgba(220, 53, 69, 0.3),
+      0 0 0 0 rgba(220, 53, 69, 0.4);
   }
   50% {
-    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3), 0 0 0 6px rgba(220, 53, 69, 0.1);
+    box-shadow:
+      0 2px 8px rgba(220, 53, 69, 0.3),
+      0 0 0 6px rgba(220, 53, 69, 0.1);
   }
 }
 
@@ -5609,7 +6211,7 @@ onUnmounted(() => {
   border: 3px solid rgba(255, 255, 255, 0.2);
 }
 .dark .announcement-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 8px 20px rgba(32, 201, 151, 0.4);
 }
 
@@ -5733,7 +6335,7 @@ onUnmounted(() => {
   background-position: center;
 }
 .dark .teacher-info .teacher-name::before {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .announcement-date {
@@ -5848,7 +6450,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 .dark .close-detail-btn {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 
@@ -5858,7 +6460,7 @@ onUnmounted(() => {
   box-shadow: 0 6px 16px rgba(32, 201, 151, 0.4);
 }
 .dark .close-detail-btn:hover {
-  background: linear-gradient(135deg, #3D8D7A 0%, #138a73 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #138a73 100%);
   box-shadow: 0 6px 16px rgba(32, 201, 151, 0.4);
 }
 
@@ -5937,7 +6539,8 @@ onUnmounted(() => {
   opacity: 1;
 }
 
-.view-btn, .download-btn {
+.view-btn,
+.download-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -5953,7 +6556,8 @@ onUnmounted(() => {
   backdrop-filter: blur(8px);
 }
 
-.view-btn:hover, .download-btn:hover {
+.view-btn:hover,
+.download-btn:hover {
   background: rgba(255, 255, 255, 0.4);
   border-color: rgba(255, 255, 255, 0.6);
   transform: translateY(-2px);
@@ -5993,7 +6597,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 .dark .file-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 
@@ -6037,7 +6641,7 @@ onUnmounted(() => {
   box-shadow: 0 2px 8px rgba(32, 201, 151, 0.3);
 }
 .dark .download-file-btn {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 2px 8px rgba(32, 201, 151, 0.3);
 }
 
@@ -6047,7 +6651,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.4);
 }
 .dark .download-file-btn:hover {
-  background: linear-gradient(135deg, #3D8D7A 0%, #138a73 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #138a73 100%);
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.4);
 }
 
@@ -6078,16 +6682,20 @@ onUnmounted(() => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideInUp {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(30px) scale(0.95);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
@@ -6102,7 +6710,7 @@ onUnmounted(() => {
   overflow: hidden;
 }
 .dark .enhanced-header {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .enhanced-header::before {
@@ -6117,8 +6725,13 @@ onUnmounted(() => {
 }
 
 @keyframes shimmer {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(5deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
 }
 
 .header-left {
@@ -6151,7 +6764,8 @@ onUnmounted(() => {
   flex-wrap: wrap;
 }
 
-.subject-badge, .section-badge {
+.subject-badge,
+.section-badge {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -6275,7 +6889,7 @@ onUnmounted(() => {
   transition: transform 0.3s ease;
 }
 .dark .meta-card::before {
-  background: linear-gradient(90deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(90deg, #20c997 0%, #3d8d7a 100%);
 }
 
 .meta-card:hover {
@@ -6305,7 +6919,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 .dark .meta-icon {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 
@@ -6478,7 +7092,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 .dark .enhanced-close-detail-btn {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
 }
 
@@ -6488,7 +7102,7 @@ onUnmounted(() => {
   box-shadow: 0 6px 16px rgba(32, 201, 151, 0.4);
 }
 .dark .enhanced-close-detail-btn:hover {
-  background: linear-gradient(135deg, #3D8D7A 0%, #138a73 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #138a73 100%);
   box-shadow: 0 6px 16px rgba(32, 201, 151, 0.4);
 }
 
@@ -6506,32 +7120,33 @@ onUnmounted(() => {
     margin: 1rem;
     max-height: 90vh;
   }
-  
-  .broadcast-icon-large, .announcement-icon {
+
+  .broadcast-icon-large,
+  .announcement-icon {
     width: 48px;
     height: 48px;
   }
-  
+
   .announcement-title {
     font-size: 1.25rem;
   }
-  
+
   .attachments-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .attachment-image-large {
     height: 150px;
   }
-  
+
   .broadcast-item {
     padding: 1rem;
   }
-  
+
   .broadcast-item:hover {
     transform: translateX(4px);
   }
-  
+
   .announcement-meta {
     gap: 0.5rem;
   }
@@ -6543,21 +7158,21 @@ onUnmounted(() => {
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .unread-label {
     align-self: flex-start;
   }
-  
+
   .broadcast-item-footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .announcement-body {
     padding: 1rem;
   }
-  
+
   .announcement-detail-body {
     padding: 1rem;
   }
@@ -6655,7 +7270,7 @@ onUnmounted(() => {
   box-shadow: 0 2px 4px rgba(32, 201, 151, 0.2);
 }
 .dark .simple-teacher-avatar {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 2px 4px rgba(32, 201, 151, 0.2);
 }
 
@@ -6764,7 +7379,9 @@ onUnmounted(() => {
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.08);
   z-index: 1000;
   min-width: 140px;
   overflow: hidden;
@@ -6776,7 +7393,9 @@ onUnmounted(() => {
 .dark .simple-options-dropdown {
   background: #1e293b;
   border-color: #334155;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes dropdownSlideIn {
@@ -6802,7 +7421,9 @@ onUnmounted(() => {
 .dark .simple-options-dropdown {
   background: #1e293b;
   border-color: #334155;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.2),
+    0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .simple-dropdown-item {
@@ -6926,7 +7547,9 @@ onUnmounted(() => {
   min-height: 500px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   border: 1px solid #e2e8f0;
   overflow: hidden;
   margin: auto;
@@ -6934,7 +7557,9 @@ onUnmounted(() => {
 .dark .simple-modal-content {
   background: #1e293b;
   border-color: #334155;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 .modal-overlay .simple-modal-content .simple-modal-header {
@@ -6975,8 +7600,8 @@ onUnmounted(() => {
 .simple-modal-header textarea,
 .simple-modal-header .input,
 .simple-modal-header .search-input,
-.simple-modal-header [class*="input"],
-.simple-modal-header [class*="subject"] {
+.simple-modal-header [class*='input'],
+.simple-modal-header [class*='subject'] {
   background: transparent !important;
   color: white !important;
   border: none !important;
@@ -7452,12 +8077,16 @@ onUnmounted(() => {
 
 .simple-message-input-area:focus-within {
   border-color: #20c997;
-  box-shadow: 0 0 0 3px rgba(32, 201, 151, 0.1), 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 0 0 3px rgba(32, 201, 151, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.04);
   background: #ffffff;
 }
 .dark .simple-message-input-area:focus-within {
   border-color: #20c997;
-  box-shadow: 0 0 0 3px rgba(32, 201, 151, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 0 0 3px rgba(32, 201, 151, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.1);
   background: #1e293b;
 }
 
@@ -7567,23 +8196,23 @@ onUnmounted(() => {
     height: 90vh;
     min-height: 600px;
   }
-  
+
   .simple-modal-header {
     padding: 1.25rem 2rem;
   }
-  
+
   .simple-modal-body {
     padding: 1.5rem 2rem;
   }
-  
+
   .simple-modal-footer {
     padding: 1.25rem 2rem;
   }
-  
+
   .simple-message-bubble {
     max-width: 65%;
   }
-  
+
   .simple-messages-container {
     gap: 1.25rem;
   }
@@ -7593,44 +8222,44 @@ onUnmounted(() => {
   .modal-overlay {
     padding: 0.5rem;
   }
-  
+
   .simple-modal-content {
     height: 95vh;
     min-height: 400px;
     border-radius: 8px;
   }
-  
+
   .simple-teacher-card {
     padding: 0.875rem;
   }
-  
+
   .simple-teacher-left {
     gap: 0.625rem;
   }
-  
+
   .simple-teacher-avatar {
     width: 36px;
     height: 36px;
     font-size: 0.9rem;
   }
-  
+
   .simple-modal-content {
     margin: 0.5rem;
     max-height: 90vh;
   }
-  
+
   .simple-modal-header {
     padding: 1rem 1.25rem;
   }
-  
+
   .simple-modal-body {
     padding: 1rem;
   }
-  
+
   .simple-modal-footer {
     padding: 1rem;
   }
-  
+
   .simple-message-bubble {
     max-width: 85%;
   }
@@ -7642,81 +8271,81 @@ onUnmounted(() => {
     margin-bottom: 0.75rem;
     border-radius: 8px;
   }
-  
+
   .simple-teacher-name {
     font-size: 0.95rem;
   }
-  
+
   .simple-teacher-email {
     font-size: 0.8rem;
   }
-  
+
   .simple-options-dropdown {
     min-width: 130px;
     right: 0;
     top: calc(100% + 0.25rem);
   }
-  
+
   .simple-dropdown-item {
     padding: 0.75rem 0.875rem;
     font-size: 0.875rem;
     gap: 0.5rem;
   }
-  
+
   .simple-dropdown-item:hover {
     transform: translateX(2px);
   }
-  
+
   .simple-teacher-avatar-chat {
     width: 40px;
     height: 40px;
     font-size: 1rem;
   }
-  
+
   .simple-attachment-image {
     max-height: 200px;
     min-height: 100px;
   }
-  
+
   .simple-attachment-image-container {
     margin: 0.5rem 0;
   }
-  
+
   .simple-preview-image {
     width: 45px;
     height: 45px;
   }
-  
+
   .simple-modal-title {
     font-size: 1.1rem;
   }
 }
 
 /* Additional Dark Mode Coverage for Modal Header */
-[data-theme="dark"] .modal-overlay .simple-modal-content .simple-modal-header {
+[data-theme='dark'] .modal-overlay .simple-modal-content .simple-modal-header {
   background: #20c997 !important;
   background: linear-gradient(135deg, #20c997 0%, #20c997 100%) !important;
-  color: #E8F5E8 !important;
+  color: #e8f5e8 !important;
 }
 
-[data-theme="dark"] .modal-overlay .simple-modal-content .simple-modal-header::after {
+[data-theme='dark'] .modal-overlay .simple-modal-content .simple-modal-header::after {
   background: #20c997;
   background: linear-gradient(135deg, #20c997 0%, #20c997 100%);
 }
 
-[data-theme="dark"] .modal-overlay .simple-modal-content .simple-modal-header * {
+[data-theme='dark'] .modal-overlay .simple-modal-content .simple-modal-header * {
   background: transparent !important;
-  color: #E8F5E8 !important;
+  color: #e8f5e8 !important;
 }
 
-[data-theme="dark"] .simple-modal-header input,
-[data-theme="dark"] .simple-modal-header textarea,
-[data-theme="dark"] .simple-modal-header .input,
-[data-theme="dark"] .simple-modal-header .search-input,
-[data-theme="dark"] .simple-modal-header [class*="input"],
-[data-theme="dark"] .simple-modal-header [class*="subject"] {
+[data-theme='dark'] .simple-modal-header input,
+[data-theme='dark'] .simple-modal-header textarea,
+[data-theme='dark'] .simple-modal-header .input,
+[data-theme='dark'] .simple-modal-header .search-input,
+[data-theme='dark'] .simple-modal-header [class*='input'],
+[data-theme='dark'] .simple-modal-header [class*='subject'] {
   background: transparent !important;
-  color: #E8F5E8 !important;
+  color: #e8f5e8 !important;
   border: none !important;
   box-shadow: none !important;
 }
@@ -7747,7 +8376,7 @@ onUnmounted(() => {
   opacity: 0.8;
 }
 
-[data-theme="dark"] .attachment-indicator {
+[data-theme='dark'] .attachment-indicator {
   background: #0d47a1;
   color: #bbdefb;
 }
@@ -7766,7 +8395,7 @@ onUnmounted(() => {
   opacity: 0.7;
 }
 
-[data-theme="dark"] .enhanced-attachment-indicator {
+[data-theme='dark'] .enhanced-attachment-indicator {
   color: #999;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-container" :class="{ 'dark': isDarkMode }">
+  <div class="dashboard-container" :class="{ dark: isDarkMode }">
     <!-- Top Navigation Bar (Clean) -->
     <nav class="top-navbar">
       <div class="navbar-content">
@@ -11,21 +11,26 @@
           </div>
         </div>
         <!-- Center: Empty space for clean look -->
-        <div class="navbar-center">
-        </div>
-        
+        <div class="navbar-center"></div>
+
         <!-- Right: User Profile and Notifications -->
         <div class="navbar-right">
           <!-- Notification Bell -->
           <div class="notif-wrapper">
-            <button class="nav-icon-btn rounded-bg" @click="toggleNotifDropdown" aria-label="Notifications">
+            <button
+              class="nav-icon-btn rounded-bg"
+              @click="toggleNotifDropdown"
+              aria-label="Notifications"
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
-              <span v-if="notifications.length" class="notification-badge">{{ notifications.length }}</span>
+              <span v-if="notifications.length" class="notification-badge">{{
+                notifications.length
+              }}</span>
             </button>
-            
+
             <!-- Notification Dropdown -->
             <div v-if="showNotifDropdown" class="notification-dropdown">
               <div class="dropdown-header">
@@ -35,7 +40,12 @@
                 <div v-if="notifications.length === 0" class="no-notifications">
                   No new notifications
                 </div>
-                <div v-for="notif in notifications" :key="notif.id" class="notification-item" @click="handleNotificationClick(notif)">
+                <div
+                  v-for="notif in notifications"
+                  :key="notif.id"
+                  class="notification-item"
+                  @click="handleNotificationClick(notif)"
+                >
                   <div class="notif-content">
                     <h4>{{ notif.title }}</h4>
                     <p>{{ notif.body }}</p>
@@ -45,7 +55,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- User Profile -->
           <div class="user-profile-wrapper">
             <div class="user-profile rounded-bg" @click="toggleProfileDropdown">
@@ -56,11 +66,17 @@
                 </svg>
               </div>
               <span class="user-name">{{ fullName }}</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="dropdown-arrow">
-                <path d="M7 10l5 5 5-5z"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="dropdown-arrow"
+              >
+                <path d="M7 10l5 5 5-5z" />
               </svg>
             </div>
-            
+
             <!-- Profile Dropdown -->
             <div v-if="showProfileDropdown" class="profile-dropdown">
               <div class="dropdown-header">
@@ -77,20 +93,24 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="dropdown-menu">
                 <router-link to="/teacher/settings" class="dropdown-item">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"/>
+                    <path
+                      d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"
+                    />
                   </svg>
                   <span>Profile & Settings</span>
                 </router-link>
-                
+
                 <div class="dropdown-divider"></div>
-                
+
                 <button @click="logout" class="dropdown-item logout-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"/>
+                    <path
+                      d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"
+                    />
                   </svg>
                   <span>Logout</span>
                 </button>
@@ -102,46 +122,111 @@
     </nav>
 
     <!-- Sidebar Navigation - Custom Tooltip Labels on Hover -->
-    <aside class="sidebar" style="background:#3D8D7A; border-right:none;">
+    <aside class="sidebar" style="background: #3d8d7a; border-right: none">
       <nav class="sidebar-nav">
-        <router-link to="/teacher/dashboard" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/dashboard' }">
+        <router-link
+          to="/teacher/dashboard"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/dashboard' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M10 20v-6h4v6m5-8h3L12 3 2 12h3v8h5v-6h4v6h5v-8z" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Dashboard</span>
         </router-link>
-        <router-link to="/teacher/subjects" class="sidebar-item rounded-bg" :class="{ 'active': $route.path.includes('/teacher/subjects') }">
+        <router-link
+          to="/teacher/subjects"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path.includes('/teacher/subjects') }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="7" width="18" height="13" rx="2" />
               <path d="M3 7l9-4 9 4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Classes</span>
         </router-link>
-        <router-link to="/teacher/gradebook" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/gradebook' }">
+        <router-link
+          to="/teacher/gradebook"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/gradebook' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="4" y="4" width="16" height="16" rx="2" />
               <path d="M8 2v4M16 2v4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Gradebook</span>
         </router-link>
-        <router-link to="/teacher/upload-assessment" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/upload-assessment' }">
+        <router-link
+          to="/teacher/upload-assessment"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/upload-assessment' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M12 19V6M5 12l7-7 7 7" />
               <rect x="5" y="19" width="14" height="2" rx="1" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Upload Assessment</span>
         </router-link>
-        <router-link to="/teacher/analytics" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/analytics' }">
+        <router-link
+          to="/teacher/analytics"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/analytics' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="12" width="4" height="8" />
               <rect x="10" y="8" width="4" height="12" />
               <rect x="17" y="4" width="4" height="16" />
@@ -149,9 +234,22 @@
           </div>
           <span class="sidebar-tooltip">Analytics</span>
         </router-link>
-        <router-link to="/teacher/messages" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/messages' }">
+        <router-link
+          to="/teacher/messages"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/messages' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="M3 5l9 7 9-7" />
             </svg>
@@ -169,12 +267,16 @@
           <div class="header-left">
             <div class="header-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14M6,6C7.1,6 8,6.9 8,8C8,9.1 7.1,10 6,10C4.9,10 4,9.1 4,8C4,6.9 4.9,6 6,6M6,12C8.67,12 12,13.34 12,16V18H0V16C0,13.34 3.33,12 6,12Z" />
+                <path
+                  d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14M6,6C7.1,6 8,6.9 8,8C8,9.1 7.1,10 6,10C4.9,10 4,9.1 4,8C4,6.9 4.9,6 6,6M6,12C8.67,12 12,13.34 12,16V18H0V16C0,13.34 3.33,12 6,12Z"
+                />
               </svg>
             </div>
             <div>
               <h1 class="header-title">Student Management</h1>
-              <p class="header-subtitle">{{ subjectName }} (Grade {{ gradeLevel }}) - {{ sectionName }} ({{ sectionCode }})</p>
+              <p class="header-subtitle">
+                {{ subjectName }} (Grade {{ gradeLevel }}) - {{ sectionName }} ({{ sectionCode }})
+              </p>
             </div>
           </div>
         </div>
@@ -182,83 +284,93 @@
 
       <!-- Content Area -->
 
-    <!-- Main Content -->
-    <div class="main-content-wrapper">
-      <button v-if="showScrollTop" @click="scrollToTop" class="scroll-to-top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 14l5-5 5 5z"/>
-        </svg>
-      </button>
-      <div v-if="isLoading" class="loading-state">
-        <div class="loading-spinner"></div>
-        <p>{{ loadingMessage }}</p>
-      </div>
-      <div v-else>
-        <!-- Simple Summary Cards -->
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon stat-classes">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14M6,6C7.1,6 8,6.9 8,8C8,9.1 7.1,10 6,10C4.9,10 4,9.1 4,8C4,6.9 4.9,6 6,6M6,12C8.67,12 12,13.34 12,16V18H0V16C0,13.34 3.33,12 6,12Z" />
-              </svg>
-            </div>
-            <div>
-              <div class="stat-number">{{ students.length }}</div>
-              <div class="stat-label">Total Students</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon stat-graded">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-              </svg>
-            </div>
-            <div>
-              <div class="stat-number">{{ activeStudents }}</div>
-              <div class="stat-label">Active Students</div>
-            </div>
-          </div>
+      <!-- Main Content -->
+      <div class="main-content-wrapper">
+        <button v-if="showScrollTop" @click="scrollToTop" class="scroll-to-top">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7 14l5-5 5 5z" />
+          </svg>
+        </button>
+        <div v-if="isLoading" class="loading-state">
+          <div class="loading-spinner"></div>
+          <p>{{ loadingMessage }}</p>
         </div>
+        <div v-else>
+          <!-- Simple Summary Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon stat-classes">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14M6,6C7.1,6 8,6.9 8,8C8,9.1 7.1,10 6,10C4.9,10 4,9.1 4,8C4,6.9 4.9,6 6,6M6,12C8.67,12 12,13.34 12,16V18H0V16C0,13.34 3.33,12 6,12Z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="stat-number">{{ students.length }}</div>
+                <div class="stat-label">Total Students</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon stat-graded">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
+                </svg>
+              </div>
+              <div>
+                <div class="stat-number">{{ activeStudents }}</div>
+                <div class="stat-label">Active Students</div>
+              </div>
+            </div>
+          </div>
 
-        <!-- Students List Card -->
-        <div class="content-card">
-          <div class="card-header">
-            <h3>Enrolled Students</h3>
-            <p class="card-desc">{{ students.length }} students enrolled in this section</p>
-          </div>
-          <div class="search-controls">
-            <input type="text" v-model="searchQuery" placeholder="Search students by name or email..." class="search-input-simple" />
-            <select v-model="filterStatus" class="filter-select-simple">
-              <option value="all">All Students</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-            </select>
-          </div>
-          <div v-if="filteredStudents.length > 0" class="students-list-simple">
-            <div class="students-list-header">
-              <span>Name</span>
-              <span>Status</span>
-              <span>Enrolled</span>
+          <!-- Students List Card -->
+          <div class="content-card">
+            <div class="card-header">
+              <h3>Enrolled Students</h3>
+              <p class="card-desc">{{ students.length }} students enrolled in this section</p>
             </div>
-            <div v-for="student in filteredStudents" :key="student.id" class="students-list-row">
-              <span>{{ student.full_name }}</span>
-              <span :class="['status-badge', student.status]">{{ student.status }}</span>
-              <span>{{ formatDate(student.enrolled_at) }}</span>
+            <div class="search-controls">
+              <input
+                type="text"
+                v-model="searchQuery"
+                placeholder="Search students by name or email..."
+                class="search-input-simple"
+              />
+              <select v-model="filterStatus" class="filter-select-simple">
+                <option value="all">All Students</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+            <div v-if="filteredStudents.length > 0" class="students-list-simple">
+              <div class="students-list-header">
+                <span>Name</span>
+                <span>Status</span>
+                <span>Enrolled</span>
+              </div>
+              <div v-for="student in filteredStudents" :key="student.id" class="students-list-row">
+                <span>{{ student.full_name }}</span>
+                <span :class="['status-badge', student.status]">{{ student.status }}</span>
+                <span>{{ formatDate(student.enrolled_at) }}</span>
+              </div>
+            </div>
+            <div v-else-if="students.length === 0" class="empty-state">
+              <div class="empty-icon">
+                <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14M6,6C7.1,6 8,6.9 8,8C8,9.1 7.1,10 6,10C4.9,10 4,9.1 4,8C4,6.9 4.9,6 6,6M6,12C8.67,12 12,13.34 12,16V18H0V16C0,13.34 3.33,12 6,12Z"
+                  />
+                </svg>
+              </div>
+              <div class="empty-title">No Students Enrolled</div>
+              <div class="empty-desc">This section doesn't have any students enrolled yet.</div>
+            </div>
+            <div v-else class="no-results">
+              <p>No students found matching "{{ searchQuery }}"</p>
             </div>
           </div>
-          <div v-else-if="students.length === 0" class="empty-state">
-            <div class="empty-icon">
-              <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14M6,6C7.1,6 8,6.9 8,8C8,9.1 7.1,10 6,10C4.9,10 4,9.1 4,8C4,6.9 4.9,6 6,6M6,12C8.67,12 12,13.34 12,16V18H0V16C0,13.34 3.33,12 6,12Z" />
-              </svg>
-            </div>
-            <div class="empty-title">No Students Enrolled</div>
-            <div class="empty-desc">This section doesn't have any students enrolled yet.</div>
-          </div>
-          <div v-else class="no-results">
-            <p>No students found matching "{{ searchQuery }}"</p>
-          </div>
-        </div>
         </div>
       </div>
     </main>
@@ -271,17 +383,29 @@
         </div>
         <div class="modal-body">
           <div class="logout-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-              <polyline points="16 17 21 12 16 7"/>
-              <line x1="21" y1="12" x2="9" y2="12"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
             </svg>
           </div>
           <p class="logout-message">Are you sure you want to logout?</p>
           <p class="logout-submessage">You will be redirected to the login page.</p>
         </div>
         <div class="modal-footer logout-footer">
-          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">Cancel</button>
+          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">
+            Cancel
+          </button>
           <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
             <span v-if="!isLoggingOut">Logout</span>
             <span v-else class="loading-text">
@@ -322,16 +446,16 @@ const sectionCode = ref(route.query.sectionCode || '')
 
 // State
 interface Student {
-  id: string;
-  full_name: string;
-  email: string;
-  enrolled_at: string;
-  status: string;
-  enrollment_id: string;
-  grade_level: string;
-  last_activity?: string;
-  quiz_count?: number;
-  average_grade?: number;
+  id: string
+  full_name: string
+  email: string
+  enrolled_at: string
+  status: string
+  enrollment_id: string
+  grade_level: string
+  last_activity?: string
+  quiz_count?: number
+  average_grade?: number
 }
 const students = ref<Student[]>([])
 const searchQuery = ref('')
@@ -342,10 +466,10 @@ const loadingMessage = ref('')
 const showProfileDropdown = ref(false)
 const showNotifDropdown = ref(false)
 interface Notification {
-  id: string;
-  title: string;
-  body: string;
-  date: string;
+  id: string
+  title: string
+  body: string
+  date: string
 }
 const notifications = ref<Notification[]>([])
 
@@ -391,22 +515,28 @@ const closeLogoutModal = () => {
   showLogoutModal.value = false
 }
 
-const confirmLogout = () => {
+const confirmLogout = async () => {
   console.log('🚪 Logging out...')
-  
-  // Clear storage immediately
+  isLoggingOut.value = true
+
   localStorage.clear()
   sessionStorage.clear()
-  
-  // Sign out from Supabase (don't wait)
-  supabase.auth.signOut().catch(err => console.log('Signout error:', err))
-  
-  // Immediate redirect - no waiting!
-  setTimeout(() => {
-    window.location.assign('/login')
-  }, 100)
-  
-  console.log('✅ Logout initiated')
+
+  const forceRedirect = setTimeout(() => {
+    window.location.replace('/login')
+  }, 2000)
+
+  try {
+    await Promise.race([
+      supabase.auth.signOut(),
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+    ])
+  } catch (err) {
+    console.error('❌ Logout error:', err)
+  } finally {
+    clearTimeout(forceRedirect)
+    window.location.replace('/login')
+  }
 }
 
 const logout = () => {
@@ -420,9 +550,10 @@ const filteredStudents = computed(() => {
   // Filter by search query
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase()
-    filtered = filtered.filter((student: Student) => 
-      student.full_name.toLowerCase().includes(query) ||
-      student.email.toLowerCase().includes(query)
+    filtered = filtered.filter(
+      (student: Student) =>
+        student.full_name.toLowerCase().includes(query) ||
+        student.email.toLowerCase().includes(query),
     )
   }
 
@@ -466,7 +597,7 @@ const fetchStudents = async () => {
     }
 
     // Get student IDs from enrollments
-    const studentIds = enrollmentsData.map(enrollment => enrollment.student_id)
+    const studentIds = enrollmentsData.map((enrollment) => enrollment.student_id)
 
     // Fetch students details
     const { data: studentsData, error: studentsError } = await supabase
@@ -485,7 +616,7 @@ const fetchStudents = async () => {
     // Combine enrollment and student data
     students.value = enrollmentsData.map((enrollment: any) => {
       const studentData = studentsData?.find((s: any) => s.id === enrollment.student_id)
-      
+
       return {
         id: enrollment.student_id,
         full_name: studentData?.full_name || `Student ${enrollment.student_id.slice(-8)}`,
@@ -493,12 +624,11 @@ const fetchStudents = async () => {
         enrolled_at: enrollment.enrolled_at || enrollment.created_at,
         status: enrollment.status || 'active',
         enrollment_id: enrollment.id,
-        grade_level: studentData?.grade_level || 'N/A'
+        grade_level: studentData?.grade_level || 'N/A',
       } as Student
     })
 
     console.log('✅ Final students data:', students.value)
-
   } catch (error) {
     console.error('Error fetching students:', error)
     alert(`Error loading students: ${error instanceof Error ? error.message : 'Unknown error'}`)
@@ -515,7 +645,7 @@ const formatDate = (dateString: string) => {
   return date.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
-    year: 'numeric'
+    year: 'numeric',
   })
 }
 
@@ -525,31 +655,31 @@ const goBack = async () => {
     name: 'MySubjects',
     params: {
       subjectId: subjectId.value,
-      sectionId: sectionId.value
+      sectionId: sectionId.value,
     },
     query: {
       viewMode: 'section-detail',
       subjectName: subjectName.value,
       sectionName: sectionName.value,
       gradeLevel: gradeLevel.value,
-      sectionCode: sectionCode.value
-    }
-  });
+      sectionCode: sectionCode.value,
+    },
+  })
 }
 
 const exportStudents = async () => {
   isExporting.value = true
-  
+
   try {
     let csvContent = `Subject: ${subjectName.value} (Grade ${gradeLevel.value})\n`
     csvContent += `Section: ${sectionName.value} (${sectionCode.value})\n`
     csvContent += `Total Students: ${students.value.length}\n\n`
     csvContent += `Student ID,Full Name,Email,Status,Enrollment Date,Last Activity,Quiz Count,Average Grade\n`
-    
+
     students.value.forEach((student: Student) => {
       csvContent += `"${student.id}","${student.full_name}","${student.email}","${student.status}","${formatDate(student.enrolled_at)}","${formatDate(student.last_activity)}","${student.quiz_count || 0}","${student.average_grade || 'N/A'}%"\n`
     })
-    
+
     const blob = new Blob([csvContent], { type: 'text/csv' })
     const url = window.URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -559,7 +689,7 @@ const exportStudents = async () => {
     a.click()
     document.body.removeChild(a)
     window.URL.revokeObjectURL(url)
-    
+
     console.log('Exported students list successfully')
   } catch (error) {
     console.error('Error exporting students:', error)
@@ -603,7 +733,7 @@ onUnmounted(() => {
   left: 0;
   width: 80px;
   height: calc(100vh - 64px);
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-right: none;
   z-index: 900;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
@@ -622,19 +752,21 @@ onUnmounted(() => {
   width: 56px;
   margin: 8px 0;
   border-radius: 12px;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   cursor: pointer;
   position: relative;
 }
 
 .sidebar-item.active {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid #fff;
 }
 
 .sidebar-item:hover {
-  background: rgba(255,255,255,0.22);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .sidebar-icon svg {
@@ -647,13 +779,13 @@ onUnmounted(() => {
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  color: #3D8D7A;
+  color: #3d8d7a;
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 14px;
   font-family: Inter, sans-serif;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
@@ -672,7 +804,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -799,12 +931,12 @@ onUnmounted(() => {
 
 /* Rounded semi-transparent backgrounds for sidebar and navbar icons/buttons */
 .rounded-bg {
-  background: rgba(255,255,255,0.13);
+  background: rgba(255, 255, 255, 0.13);
   border-radius: 16px;
   transition: background 0.2s;
 }
 .rounded-bg:hover {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* Notification dropdown styles */
@@ -825,7 +957,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
 }
 
 .notification-dropdown {
@@ -914,7 +1046,7 @@ onUnmounted(() => {
 
 .profile-dropdown .dropdown-header {
   padding: 1.5rem;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
 }
 
@@ -969,7 +1101,7 @@ onUnmounted(() => {
 
 .dropdown-item:hover {
   background: #f1f5f9;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-item svg {
@@ -978,7 +1110,7 @@ onUnmounted(() => {
 }
 
 .dropdown-item:hover svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-divider {
@@ -1031,7 +1163,7 @@ onUnmounted(() => {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
@@ -1053,7 +1185,7 @@ onUnmounted(() => {
 /* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 /* Dark mode scrollbar */
@@ -1080,8 +1212,12 @@ onUnmounted(() => {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Top Navigation Bar (Same as Dashboard) */
@@ -1091,7 +1227,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -1146,8 +1282,6 @@ onUnmounted(() => {
   max-width: 600px;
 }
 
-
-
 .navbar-right {
   display: flex;
   align-items: center;
@@ -1186,8 +1320,12 @@ onUnmounted(() => {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Main Content */
@@ -1228,7 +1366,7 @@ onUnmounted(() => {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1250,7 +1388,7 @@ onUnmounted(() => {
 
 .students-home-container {
   min-height: 100vh;
-  background: #FBFFE4;
+  background: #fbffe4;
   padding: 1.5rem;
   font-family: 'Inter', sans-serif;
 }
@@ -1261,7 +1399,7 @@ onUnmounted(() => {
 /* Header Card - Matching MySubjects Style */
 .header-card {
   background: white;
-  border: 1.5px solid #3D8D7A;
+  border: 1.5px solid #3d8d7a;
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -1269,7 +1407,7 @@ onUnmounted(() => {
 }
 .dark .header-card {
   background: #23272b;
-  border: 1.5px solid #A3D1C6;
+  border: 1.5px solid #a3d1c6;
   box-shadow: 0 2px 8px rgba(163, 209, 198, 0.1);
 }
 
@@ -1288,7 +1426,7 @@ onUnmounted(() => {
 .user-icon {
   width: 56px;
   height: 56px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1303,7 +1441,7 @@ onUnmounted(() => {
   margin-bottom: 0.25rem;
 }
 .dark .header-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .header-subtitle {
@@ -1311,7 +1449,7 @@ onUnmounted(() => {
   color: #6b7280;
 }
 .dark .header-subtitle {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .header-actions {
@@ -1324,7 +1462,7 @@ onUnmounted(() => {
 .header-action-btn {
   background: #20c997;
   color: #181c20;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   padding: 0.5rem 1.25rem;
   border-radius: 8px;
   font-size: 0.875rem;
@@ -1341,7 +1479,7 @@ onUnmounted(() => {
   cursor: not-allowed;
 }
 .header-action-btn:hover:not(:disabled) {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
   transform: translateY(-1px);
@@ -1349,10 +1487,10 @@ onUnmounted(() => {
 .dark .header-action-btn {
   background: #20c997;
   color: #181c20;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 .dark .header-action-btn:hover:not(:disabled) {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
 }
@@ -1375,7 +1513,7 @@ onUnmounted(() => {
   background: white;
   border: 1.5px solid #e5e7eb;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   padding: 1.25rem;
   display: flex;
   align-items: center;
@@ -1414,11 +1552,11 @@ onUnmounted(() => {
   transition: transform 0.2s ease;
 }
 
-.stat-classes { 
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+.stat-classes {
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.3);
 }
-.stat-graded { 
+.stat-graded {
   background: linear-gradient(135deg, #10b981, #059669);
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
@@ -1448,7 +1586,7 @@ onUnmounted(() => {
   background: #fff;
   border: 1.5px solid #e5e7eb;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   padding: 0;
   margin-bottom: 1rem;
   transition: all 0.18s ease;
@@ -1585,13 +1723,13 @@ onUnmounted(() => {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, #3D8D7A 0%, #20c997 100%);
-  border-bottom: 1px solid #A3D1C6;
+  background: linear-gradient(135deg, #3d8d7a 0%, #20c997 100%);
+  border-bottom: 1px solid #a3d1c6;
 }
 
 .dark .students-list-header {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
-  border-bottom-color: #A3D1C6;
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
+  border-bottom-color: #a3d1c6;
   color: #ffffff;
 }
 
@@ -1668,22 +1806,22 @@ onUnmounted(() => {
   padding: 2.5rem 1.5rem;
   margin: 2rem auto;
   max-width: 480px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
   text-align: center;
   color: #1f2937;
 }
 .dark .empty-state {
   background: #23272b;
-  color: #A3D1C6;
+  color: #a3d1c6;
   border: 1px solid #20c997;
 }
 
 .empty-icon {
   margin-bottom: 1rem;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 .dark .empty-icon {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .empty-title {
@@ -1727,15 +1865,19 @@ onUnmounted(() => {
   width: 40px;
   height: 40px;
   border: 4px solid rgba(61, 141, 122, 0.1);
-  border-left: 4px solid #3D8D7A;
+  border-left: 4px solid #3d8d7a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-state p {
@@ -1772,41 +1914,41 @@ onUnmounted(() => {
     gap: 1rem;
     align-items: stretch;
   }
-  
+
   .header-actions {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .search-controls {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .students-list-header,
   .students-list-row {
     grid-template-columns: 1fr auto;
     gap: 0.5rem;
   }
-  
+
   .students-list-header span:last-child,
   .students-list-row span:last-child {
     display: none;
   }
-  
+
   .main-content {
     padding: 1rem;
     margin-left: 0;
   }
-  
+
   .sidebar {
     transform: translateX(-100%);
   }
-  
+
   .page-header {
     padding: 1rem;
     margin-bottom: 1.5rem;
@@ -1834,7 +1976,7 @@ onUnmounted(() => {
   border-radius: 16px;
   overflow: hidden;
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   animation: modalSlideIn 0.3s ease-out;
 }
 
@@ -1850,7 +1992,7 @@ onUnmounted(() => {
 }
 
 .logout-header {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
   padding: 1.5rem;
 }
@@ -1873,13 +2015,18 @@ onUnmounted(() => {
 }
 
 .logout-icon svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .logout-message {
@@ -1958,8 +2105,12 @@ onUnmounted(() => {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-logout .loading-text {
@@ -1969,7 +2120,11 @@ onUnmounted(() => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>

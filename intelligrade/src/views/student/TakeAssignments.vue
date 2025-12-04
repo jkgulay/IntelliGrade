@@ -6,17 +6,21 @@
         <div class="section-header-left">
           <div class="section-header-icon">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              <path
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
             </svg>
           </div>
-          
+
           <div class="header-text">
             <h1 class="section-header-title">{{ subject.name }} - Assignments</h1>
             <p class="section-header-subtitle">{{ section.name }}</p>
-            <p class="section-header-description">{{ studentInfo.full_name }} • Grade {{ studentInfo.grade_level }}</p>
+            <p class="section-header-description">
+              {{ studentInfo.full_name }} • Grade {{ studentInfo.grade_level }}
+            </p>
           </div>
         </div>
-        
+
         <div class="header-actions">
           <button @click="goBack" class="back-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -56,7 +60,12 @@
             <h2 class="category-title">
               <span class="category-icon">
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
                 </svg>
               </span>
               New Assignments
@@ -64,35 +73,43 @@
             <span class="category-count">{{ newAssignments.length }}</span>
           </div>
           <div class="assignment-grid">
-            <div v-for="assignment in newAssignments" :key="assignment.id" class="assignment-card new-assignment">
+            <div
+              v-for="assignment in newAssignments"
+              :key="assignment.id"
+              class="assignment-card new-assignment"
+            >
               <div class="assignment-badge new-badge">New</div>
               <div class="assignment-header">
                 <h3 class="assignment-title">{{ assignment.title }}</h3>
                 <div class="assignment-type">
                   <span class="type-icon">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                      <path
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
                     </svg>
                   </span>
                   <span>{{ formatAssignmentType(assignment.assignment_type) }}</span>
                 </div>
               </div>
-              <p class="assignment-description">{{ assignment.description || 'No description provided' }}</p>
+              <p class="assignment-description">
+                {{ assignment.description || 'No description provided' }}
+              </p>
               <div class="assignment-meta">
                 <div class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>{{ assignment.total_points }} Points</span>
                 </div>
                 <div class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>{{ formatSubmissionType(assignment.submission_type) }}</span>
                 </div>
               </div>
-              <div class="assignment-due-date" :class="{ 'overdue': isOverdue(assignment.due_date) }">
+              <div class="assignment-due-date" :class="{ overdue: isOverdue(assignment.due_date) }">
                 <span class="due-label">Due:</span>
                 <span class="due-time">{{ formatPHTime(assignment.due_date) }}</span>
                 <span v-if="isOverdue(assignment.due_date)" class="overdue-label">OVERDUE</span>
@@ -100,8 +117,10 @@
               <div class="assignment-actions">
                 <button @click="viewAssignmentDetails(assignment)" class="btn btn-primary">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
                   </svg>
                   View Assignment
                 </button>
@@ -116,7 +135,12 @@
             <h2 class="category-title">
               <span class="category-icon">
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C20.832 18.477 19.247 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C20.832 18.477 19.247 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
                 </svg>
               </span>
               Past Assignments
@@ -124,37 +148,76 @@
             <span class="category-count">{{ pastAssignments.length }}</span>
           </div>
           <div class="assignment-grid">
-            <div v-for="assignment in pastAssignments" :key="assignment.id" class="assignment-card past-assignment">
-              <div v-if="getSubmissionStatus(assignment) === 'graded'" class="assignment-badge completed-badge">Completed</div>
-              <div v-else-if="getSubmissionStatus(assignment) === 'submitted'" class="assignment-badge submitted-badge">Submitted</div>
-              <div v-else-if="isOverdue(assignment.due_date)" class="assignment-badge overdue-badge">Overdue</div>
+            <div
+              v-for="assignment in pastAssignments"
+              :key="assignment.id"
+              class="assignment-card past-assignment"
+            >
+              <div
+                v-if="getSubmissionStatus(assignment) === 'graded'"
+                class="assignment-badge completed-badge"
+              >
+                Completed
+              </div>
+              <div
+                v-else-if="getSubmissionStatus(assignment) === 'submitted'"
+                class="assignment-badge submitted-badge"
+              >
+                Submitted
+              </div>
+              <div
+                v-else-if="isOverdue(assignment.due_date)"
+                class="assignment-badge overdue-badge"
+              >
+                Overdue
+              </div>
               <div class="assignment-header">
                 <h3 class="assignment-title">{{ assignment.title }}</h3>
                 <div class="assignment-type">
                   <span class="type-icon">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                      <path
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
                     </svg>
                   </span>
                   <span>{{ formatAssignmentType(assignment.assignment_type) }}</span>
                 </div>
               </div>
-              <p class="assignment-description">{{ assignment.description || 'No description provided' }}</p>
+              <p class="assignment-description">
+                {{ assignment.description || 'No description provided' }}
+              </p>
               <div class="assignment-meta">
                 <div class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>{{ assignment.total_points }} Points</span>
                 </div>
               </div>
-              <div v-if="getSubmission(assignment.id)?.score !== null && getSubmission(assignment.id)?.score !== undefined" class="assignment-result">
+              <div
+                v-if="
+                  getSubmission(assignment.id)?.score !== null &&
+                  getSubmission(assignment.id)?.score !== undefined
+                "
+                class="assignment-result"
+              >
                 <div class="result-score">
                   <span class="score-label">Your Score:</span>
-                  <span class="score-value">{{ calculatePercentage(getSubmission(assignment.id).score, assignment.total_points) }}%</span>
+                  <span class="score-value"
+                    >{{
+                      calculatePercentage(
+                        getSubmission(assignment.id).score,
+                        assignment.total_points,
+                      )
+                    }}%</span
+                  >
                 </div>
                 <div class="result-details">
-                  <span>{{ getSubmission(assignment.id).score }} / {{ assignment.total_points }} points</span>
+                  <span
+                    >{{ getSubmission(assignment.id).score }} /
+                    {{ assignment.total_points }} points</span
+                  >
                 </div>
               </div>
               <div class="assignment-actions">
@@ -170,7 +233,12 @@
         <div v-if="assignments.length === 0" class="empty-state">
           <div class="empty-icon">
             <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
             </svg>
           </div>
           <h3>No Assignments Available</h3>
@@ -185,7 +253,7 @@
         <div class="details-header">
           <button @click="selectedAssignment = null" class="back-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15 19l-7-7 7-7"/>
+              <path d="M15 19l-7-7 7-7" />
             </svg>
             Back to Assignments
           </button>
@@ -201,21 +269,41 @@
               <div class="assignment-type-display">
                 <div class="type-icon">
                   <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                    />
                   </svg>
                 </div>
                 <div class="type-content">
                   <span class="type-label">Assignment Type</span>
-                  <span class="type-value">{{ formatAssignmentType(selectedAssignment.assignment_type) }}</span>
+                  <span class="type-value">{{
+                    formatAssignmentType(selectedAssignment.assignment_type)
+                  }}</span>
                 </div>
               </div>
-              <p class="details-description">{{ selectedAssignment.description || 'No description provided' }}</p>
-              
+              <p class="details-description">
+                {{ selectedAssignment.description || 'No description provided' }}
+              </p>
+
               <div class="info-grid">
                 <div class="info-item">
                   <div class="info-icon">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
                   <div class="info-content">
@@ -225,8 +313,19 @@
                 </div>
                 <div class="info-item">
                   <div class="info-icon">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
                   <div class="info-content">
@@ -236,30 +335,48 @@
                 </div>
                 <div class="info-item">
                   <div class="info-icon">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
                     </svg>
                   </div>
                   <div class="info-content">
                     <span class="info-label">Submission Type</span>
-                    <span class="info-value">{{ formatSubmissionType(selectedAssignment.submission_type) }}</span>
+                    <span class="info-value">{{
+                      formatSubmissionType(selectedAssignment.submission_type)
+                    }}</span>
                   </div>
                 </div>
               </div>
 
               <!-- Teacher Attachments -->
-              <div v-if="selectedAssignment.attachments && selectedAssignment.attachments.length > 0" class="attachments-section">
+              <div
+                v-if="selectedAssignment.attachments && selectedAssignment.attachments.length > 0"
+                class="attachments-section"
+              >
                 <h3 class="attachments-title">Assignment Materials</h3>
                 <div class="attachments-list">
-                  <a 
-                    v-for="(attachment, index) in selectedAssignment.attachments" 
+                  <a
+                    v-for="(attachment, index) in selectedAssignment.attachments"
                     :key="index"
                     :href="attachment.url"
                     target="_blank"
                     class="attachment-item"
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                      <path
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
                     </svg>
                     <span class="attachment-name">{{ attachment.name }}</span>
                     <span class="attachment-size">{{ formatFileSize(attachment.size) }}</span>
@@ -270,13 +387,15 @@
               <!-- Submission Section -->
               <div class="submission-section">
                 <h3 class="submission-title">Your Submission</h3>
-                
+
                 <!-- Existing Submission -->
                 <div v-if="currentSubmission" class="existing-submission">
                   <div class="submission-status-card" :class="currentSubmission.status">
                     <div class="status-header">
                       <span class="status-label">Status:</span>
-                      <span class="status-value">{{ formatSubmissionStatus(currentSubmission.status) }}</span>
+                      <span class="status-value">{{
+                        formatSubmissionStatus(currentSubmission.status)
+                      }}</span>
                     </div>
                     <div v-if="currentSubmission.submitted_at" class="submission-date">
                       Submitted: {{ formatPHTime(currentSubmission.submitted_at) }}
@@ -297,21 +416,28 @@
 
                   <div v-if="currentSubmission.link_url" class="submitted-link">
                     <h4>Your Link Submission:</h4>
-                    <a :href="currentSubmission.link_url" target="_blank" class="link-value">{{ currentSubmission.link_url }}</a>
+                    <a :href="currentSubmission.link_url" target="_blank" class="link-value">{{
+                      currentSubmission.link_url
+                    }}</a>
                   </div>
 
-                  <div v-if="currentSubmission.attachments && currentSubmission.attachments.length > 0" class="submitted-files">
+                  <div
+                    v-if="currentSubmission.attachments && currentSubmission.attachments.length > 0"
+                    class="submitted-files"
+                  >
                     <h4>Your Files:</h4>
                     <div class="files-list">
-                      <a 
-                        v-for="(file, index) in currentSubmission.attachments" 
+                      <a
+                        v-for="(file, index) in currentSubmission.attachments"
                         :key="index"
                         :href="file.url"
                         target="_blank"
                         class="file-item"
                       >
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                          <path
+                            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                          />
                         </svg>
                         <span>{{ file.name }}</span>
                       </a>
@@ -323,8 +449,18 @@
                     <div class="grade-display">
                       <div class="grade-score">
                         <span class="score-label">Your Score:</span>
-                        <span class="score-value">{{ currentSubmission.score }} / {{ selectedAssignment.total_points }}</span>
-                        <span class="score-percentage">({{ calculatePercentage(currentSubmission.score, selectedAssignment.total_points) }}%)</span>
+                        <span class="score-value"
+                          >{{ currentSubmission.score }} /
+                          {{ selectedAssignment.total_points }}</span
+                        >
+                        <span class="score-percentage"
+                          >({{
+                            calculatePercentage(
+                              currentSubmission.score,
+                              selectedAssignment.total_points,
+                            )
+                          }}%)</span
+                        >
                       </div>
                     </div>
                     <div v-if="currentSubmission.feedback" class="teacher-feedback">
@@ -338,9 +474,18 @@
                 </div>
 
                 <!-- New Submission Form -->
-                <div v-else-if="!isOverdue(selectedAssignment.due_date) || selectedAssignment.allow_late_submission" class="submission-form">
+                <div
+                  v-else-if="
+                    !isOverdue(selectedAssignment.due_date) ||
+                    selectedAssignment.allow_late_submission
+                  "
+                  class="submission-form"
+                >
                   <!-- Text Entry -->
-                  <div v-if="selectedAssignment.submission_type === 'text_entry'" class="form-group">
+                  <div
+                    v-if="selectedAssignment.submission_type === 'text_entry'"
+                    class="form-group"
+                  >
                     <label>Your Answer:</label>
                     <textarea
                       v-model="submissionData.text_content"
@@ -362,9 +507,17 @@
                   </div>
 
                   <!-- File Upload -->
-                  <div v-if="selectedAssignment.submission_type === 'file_upload'" class="form-group">
+                  <div
+                    v-if="selectedAssignment.submission_type === 'file_upload'"
+                    class="form-group"
+                  >
                     <label>Upload Files:</label>
-                    <div class="upload-area" @click="triggerFileInput" @dragover.prevent @drop.prevent="handleFileDrop">
+                    <div
+                      class="upload-area"
+                      @click="triggerFileInput"
+                      @dragover.prevent
+                      @drop.prevent="handleFileDrop"
+                    >
                       <input
                         type="file"
                         ref="fileInput"
@@ -374,13 +527,22 @@
                         style="display: none"
                       />
                       <div class="upload-content">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg
+                          width="48"
+                          height="48"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
                           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                           <polyline points="17 8 12 3 7 8"></polyline>
                           <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg>
                         <p class="upload-text">Click to upload or drag and drop</p>
-                        <p class="upload-hint">PDF, DOC, XLS, PPT, TXT, Images, ZIP (Max 10MB each)</p>
+                        <p class="upload-hint">
+                          PDF, DOC, XLS, PPT, TXT, Images, ZIP (Max 10MB each)
+                        </p>
                       </div>
                     </div>
 
@@ -388,7 +550,9 @@
                     <div v-if="selectedFiles.length > 0" class="selected-files">
                       <div v-for="(file, index) in selectedFiles" :key="index" class="file-preview">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                          <path
+                            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                          />
                         </svg>
                         <div class="file-info">
                           <span class="file-name">{{ file.name }}</span>
@@ -400,27 +564,36 @@
                   </div>
 
                   <!-- Submit Button -->
-                  <button 
-                    @click="submitAssignment" 
+                  <button
+                    @click="submitAssignment"
                     :disabled="isSubmitting || !canSubmit"
                     class="btn btn-submit-assignment"
                   >
                     <div v-if="isSubmitting" class="spinner"></div>
                     <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span>{{ isSubmitting ? 'Submitting...' : 'Submit Assignment' }}</span>
                   </button>
 
-                  <div v-if="isOverdue(selectedAssignment.due_date) && selectedAssignment.allow_late_submission" class="late-warning">
-                    ⚠️ This assignment is past due. Late penalty: {{ selectedAssignment.late_penalty }}% per day
+                  <div
+                    v-if="
+                      isOverdue(selectedAssignment.due_date) &&
+                      selectedAssignment.allow_late_submission
+                    "
+                    class="late-warning"
+                  >
+                    ⚠️ This assignment is past due. Late penalty:
+                    {{ selectedAssignment.late_penalty }}% per day
                   </div>
                 </div>
 
                 <!-- Overdue Message -->
                 <div v-else class="overdue-message">
                   <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    <path
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                    />
                   </svg>
                   <h3>Assignment Overdue</h3>
                   <p>This assignment is past the due date and late submissions are not allowed.</p>
@@ -434,7 +607,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { supabase } from '@/supabase.js'
@@ -455,7 +628,7 @@ const currentSubmission = ref(null)
 // Submission form data
 const submissionData = ref({
   text_content: '',
-  link_url: ''
+  link_url: '',
 })
 const selectedFiles = ref([])
 const fileInput = ref(null)
@@ -469,14 +642,14 @@ const formatPHTime = (utcDateString) => {
   if (!utcDateString) return 'Not set'
   try {
     const utcDate = new Date(utcDateString)
-    const options = {
+    const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
       timeZone: 'Asia/Manila',
-      hour12: true
+      hour12: true,
     }
     return utcDate.toLocaleString('en-PH', options) + ' PHT'
   } catch (error) {
@@ -487,33 +660,33 @@ const formatPHTime = (utcDateString) => {
 
 const formatAssignmentType = (type) => {
   const types = {
-    'homework': 'Homework',
-    'project': 'Project',
-    'essay': 'Essay',
-    'presentation': 'Presentation',
-    'research': 'Research Paper',
-    'lab': 'Lab Work',
-    'other': 'Other'
+    homework: 'Homework',
+    project: 'Project',
+    essay: 'Essay',
+    presentation: 'Presentation',
+    research: 'Research Paper',
+    lab: 'Lab Work',
+    other: 'Other',
   }
   return types[type] || type
 }
 
 const formatSubmissionType = (type) => {
   const types = {
-    'file_upload': 'File Upload',
-    'text_entry': 'Text Entry',
-    'link': 'External Link',
-    'physical': 'Physical Submission'
+    file_upload: 'File Upload',
+    text_entry: 'Text Entry',
+    link: 'External Link',
+    physical: 'Physical Submission',
   }
   return types[type] || type
 }
 
 const formatSubmissionStatus = (status) => {
   const statuses = {
-    'draft': 'Draft',
-    'submitted': 'Submitted',
-    'graded': 'Graded',
-    'returned': 'Returned'
+    draft: 'Draft',
+    submitted: 'Submitted',
+    graded: 'Graded',
+    returned: 'Returned',
   }
   return statuses[status] || status
 }
@@ -523,7 +696,7 @@ const formatFileSize = (bytes) => {
   const k = 1024
   const sizes = ['Bytes', 'KB', 'MB', 'GB']
   const i = Math.floor(Math.log(bytes) / Math.log(k))
-  return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i]
+  return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i]
 }
 
 const isOverdue = (dueDate) => {
@@ -538,7 +711,7 @@ const calculatePercentage = (score, total) => {
 
 // Helper Methods
 const getSubmission = (assignmentId) => {
-  return submissions.value.find(s => s.assignment_id === assignmentId)
+  return submissions.value.find((s) => s.assignment_id === assignmentId)
 }
 
 const getSubmissionStatus = (assignment) => {
@@ -549,62 +722,66 @@ const getSubmissionStatus = (assignment) => {
 
 const getAssignmentStatusClass = () => {
   if (!selectedAssignment.value) return 'available'
-  
+
   const submission = getSubmission(selectedAssignment.value.id)
-  
+
   if (submission?.status === 'graded') return 'graded'
   if (submission?.status === 'submitted') return 'submitted'
   if (isOverdue(selectedAssignment.value.due_date)) {
     return selectedAssignment.value.allow_late_submission ? 'overdue-allowed' : 'overdue'
   }
-  
+
   return 'available'
 }
 
 const getAssignmentStatusText = () => {
   if (!selectedAssignment.value) return 'Available'
-  
+
   const submission = getSubmission(selectedAssignment.value.id)
-  
+
   if (submission?.status === 'graded') return 'Graded'
   if (submission?.status === 'submitted') return 'Submitted - Awaiting Grade'
   if (isOverdue(selectedAssignment.value.due_date)) {
-    return selectedAssignment.value.allow_late_submission 
-      ? 'Overdue - Late Submission Allowed' 
+    return selectedAssignment.value.allow_late_submission
+      ? 'Overdue - Late Submission Allowed'
       : 'Overdue - Closed'
   }
-  
+
   return 'Available'
 }
 
 // Computed Properties
 const newAssignments = computed(() => {
   const now = new Date()
-  return assignments.value.filter(assignment => {
-    const submission = getSubmission(assignment.id)
-    const isNotSubmitted = !submission || submission.status === 'draft'
-    const isNotOverdue = !assignment.due_date || new Date(assignment.due_date) > now
-    return isNotSubmitted && isNotOverdue
-  }).sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+  return assignments.value
+    .filter((assignment) => {
+      const submission = getSubmission(assignment.id)
+      const isNotSubmitted = !submission || submission.status === 'draft'
+      const isNotOverdue = !assignment.due_date || new Date(assignment.due_date) > now
+      return isNotSubmitted && isNotOverdue
+    })
+    .sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
 })
 
 const pastAssignments = computed(() => {
   const now = new Date()
-  return assignments.value.filter(assignment => {
-    const submission = getSubmission(assignment.id)
-    const isSubmitted = submission && submission.status !== 'draft'
-    const isOverdue = assignment.due_date && new Date(assignment.due_date) <= now
-    return isSubmitted || isOverdue
-  }).sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+  return assignments.value
+    .filter((assignment) => {
+      const submission = getSubmission(assignment.id)
+      const isSubmitted = submission && submission.status !== 'draft'
+      const isOverdue = assignment.due_date && new Date(assignment.due_date) <= now
+      return isSubmitted || isOverdue
+    })
+    .sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
 })
 
 const completedAssignments = computed(() => {
-  return submissions.value.filter(s => s.status !== 'draft')
+  return submissions.value.filter((s) => s.status !== 'draft')
 })
 
 const canSubmit = computed(() => {
   if (!selectedAssignment.value) return false
-  
+
   if (selectedAssignment.value.submission_type === 'text_entry') {
     return submissionData.value.text_content.trim().length > 0
   }
@@ -620,7 +797,9 @@ const canSubmit = computed(() => {
 // Data Loading Methods
 const loadStudentInfo = async () => {
   try {
-    const { data: { session } } = await supabase.auth.getSession()
+    const {
+      data: { session },
+    } = await supabase.auth.getSession()
     if (!session?.user) {
       router.push('/login')
       return false
@@ -651,7 +830,7 @@ const loadStudentInfo = async () => {
     studentInfo.value = {
       full_name: student.full_name,
       grade_level: student.grade_level,
-      student_id: student.id
+      student_id: student.id,
     }
 
     return true
@@ -662,10 +841,10 @@ const loadStudentInfo = async () => {
 }
 
 const loadRouteParams = () => {
-  const subjectId = route.params.subjectId
-  const sectionId = route.params.sectionId
-  const subjectName = route.query.subjectName || 'Subject'
-  const sectionName = route.query.sectionName || ''
+  const subjectId = route.params.subjectId as string
+  const sectionId = route.params.sectionId as string
+  const subjectName = (route.query.subjectName as string) || 'Subject'
+  const sectionName = (route.query.sectionName as string) || ''
 
   if (!subjectId || !sectionId) {
     console.error('Missing required route parameters')
@@ -702,10 +881,9 @@ const loadAssignments = async () => {
     console.log('📋 Assignments data:', assignmentsData)
 
     assignments.value = assignmentsData || []
-    
+
     // Load submissions after assignments are loaded
     await loadSubmissions()
-    
   } catch (error) {
     console.error('❌ Error loading assignments:', error)
     alert('Failed to load assignments: ' + error.message)
@@ -726,13 +904,19 @@ const loadSubmissions = async () => {
     }
 
     console.log('📝 Fetching submissions for student:', studentInfo.value.student_id)
-    console.log('📋 Assignment IDs:', assignments.value.map(a => a.id))
+    console.log(
+      '📋 Assignment IDs:',
+      assignments.value.map((a) => a.id),
+    )
 
     const { data: submissionsData, error: submissionsError } = await supabase
       .from('assignment_submissions')
       .select('*')
       .eq('student_id', studentInfo.value.student_id)
-      .in('assignment_id', assignments.value.map(a => a.id))
+      .in(
+        'assignment_id',
+        assignments.value.map((a) => a.id),
+      )
 
     if (submissionsError) {
       console.error('❌ Error fetching submissions:', submissionsError)
@@ -743,7 +927,6 @@ const loadSubmissions = async () => {
     console.log('📋 Submissions data:', submissionsData)
 
     submissions.value = submissionsData || []
-    
   } catch (error) {
     console.error('❌ Error loading submissions:', error)
   }
@@ -760,53 +943,61 @@ const setupRealtimeSubscription = () => {
 
   assignmentSubscription = supabase
     .channel(`section-${section.value.id}-assignments`)
-    .on('postgres_changes', {
-      event: '*',
-      schema: 'public',
-      table: 'assignments',
-      filter: `section_id=eq.${section.value.id}`
-    }, async (payload) => {
-      console.log('📡 Assignment change detected:', payload.eventType)
-      
-      if (payload.eventType === 'INSERT') {
-        // Only add if published
-        if (payload.new.status === 'published') {
-          console.log('✅ New published assignment added')
-          assignments.value.unshift(payload.new)
-        }
-      } else if (payload.eventType === 'UPDATE') {
-        const index = assignments.value.findIndex(a => a.id === payload.new.id)
-        if (payload.new.status === 'published') {
-          if (index !== -1) {
-            console.log('✅ Assignment updated')
-            assignments.value[index] = payload.new
-          } else {
-            console.log('✅ Assignment published, adding to list')
+    .on(
+      'postgres_changes',
+      {
+        event: '*',
+        schema: 'public',
+        table: 'assignments',
+        filter: `section_id=eq.${section.value.id}`,
+      },
+      async (payload) => {
+        console.log('📡 Assignment change detected:', payload.eventType)
+
+        if (payload.eventType === 'INSERT') {
+          // Only add if published
+          if (payload.new.status === 'published') {
+            console.log('✅ New published assignment added')
             assignments.value.unshift(payload.new)
           }
-        } else {
-          // If unpublished, remove from list
-          if (index !== -1) {
-            console.log('⚠️ Assignment unpublished, removing from list')
-            assignments.value.splice(index, 1)
+        } else if (payload.eventType === 'UPDATE') {
+          const index = assignments.value.findIndex((a) => a.id === payload.new.id)
+          if (payload.new.status === 'published') {
+            if (index !== -1) {
+              console.log('✅ Assignment updated')
+              assignments.value[index] = payload.new
+            } else {
+              console.log('✅ Assignment published, adding to list')
+              assignments.value.unshift(payload.new)
+            }
+          } else {
+            // If unpublished, remove from list
+            if (index !== -1) {
+              console.log('⚠️ Assignment unpublished, removing from list')
+              assignments.value.splice(index, 1)
+            }
           }
+        } else if (payload.eventType === 'DELETE') {
+          console.log('🗑️ Assignment deleted')
+          assignments.value = assignments.value.filter((a) => a.id !== payload.old.id)
         }
-      } else if (payload.eventType === 'DELETE') {
-        console.log('🗑️ Assignment deleted')
-        assignments.value = assignments.value.filter(a => a.id !== payload.old.id)
-      }
-      
-      await loadSubmissions()
-    })
-    .on('postgres_changes', {
-      event: '*',
-      schema: 'public',
-      table: 'assignment_submissions',
-      filter: `student_id=eq.${studentInfo.value.student_id}`
-    }, async (payload) => {
-      console.log('📡 Submission change detected:', payload.eventType)
-      await loadSubmissions()
-    })
+
+        await loadSubmissions()
+      },
+    )
+    .on(
+      'postgres_changes',
+      {
+        event: '*',
+        schema: 'public',
+        table: 'assignment_submissions',
+        filter: `student_id=eq.${studentInfo.value.student_id}`,
+      },
+      async (payload) => {
+        console.log('📡 Submission change detected:', payload.eventType)
+        await loadSubmissions()
+      },
+    )
     .subscribe((status) => {
       console.log('📡 Subscription status:', status)
     })
@@ -815,18 +1006,18 @@ const setupRealtimeSubscription = () => {
 // Navigation Methods
 const goBack = () => {
   router.push({
-    name: 'StudentSubjects'
+    name: 'StudentSubjects',
   })
 }
 
 const viewAssignmentDetails = (assignment) => {
   selectedAssignment.value = assignment
   currentSubmission.value = getSubmission(assignment.id)
-  
+
   // Reset submission form
   submissionData.value = {
     text_content: '',
-    link_url: ''
+    link_url: '',
   }
   selectedFiles.value = []
 }
@@ -848,7 +1039,7 @@ const handleFileDrop = (event) => {
 
 const addFiles = (files) => {
   const maxSize = 10 * 1024 * 1024 // 10MB
-  const validFiles = files.filter(file => {
+  const validFiles = files.filter((file) => {
     if (file.size > maxSize) {
       alert(`${file.name} is too large. Maximum size is 10MB.`)
       return false
@@ -865,37 +1056,35 @@ const removeFile = (index) => {
 // File Upload Method
 const uploadFiles = async () => {
   const uploadedFiles = []
-  
+
   try {
     for (const file of selectedFiles.value) {
       const fileExt = file.name.split('.').pop()
       const fileName = `${studentInfo.value.student_id}/${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`
-      
+
       console.log('📤 Uploading file:', fileName)
-      
-      const { data, error } = await supabase.storage
-        .from('assignment-submissions')
-        .upload(fileName, file)
-      
+
+      const { error } = await supabase.storage.from('assignment-submissions').upload(fileName, file)
+
       if (error) {
         console.error('❌ File upload error:', error)
         throw error
       }
-      
+
       const { data: urlData } = supabase.storage
         .from('assignment-submissions')
         .getPublicUrl(fileName)
-      
+
       uploadedFiles.push({
         name: file.name,
         url: urlData.publicUrl,
         size: file.size,
-        type: file.type
+        type: file.type,
       })
-      
+
       console.log('✅ File uploaded:', fileName)
     }
-    
+
     return uploadedFiles
   } catch (error) {
     console.error('❌ Error uploading files:', error)
@@ -915,12 +1104,12 @@ const submitAssignment = async () => {
   try {
     console.log('📤 Submitting assignment...')
 
-    const submissionPayload = {
+    const submissionPayload: Record<string, any> = {
       assignment_id: selectedAssignment.value.id,
       student_id: studentInfo.value.student_id,
       submission_type: selectedAssignment.value.submission_type,
       status: 'submitted',
-      submitted_at: new Date().toISOString()
+      submitted_at: new Date().toISOString(),
     }
 
     // Add content based on submission type
@@ -954,7 +1143,6 @@ const submitAssignment = async () => {
     // Reload submissions and go back
     await loadSubmissions()
     selectedAssignment.value = null
-
   } catch (error) {
     console.error('❌ Error submitting assignment:', error)
     alert('Failed to submit assignment: ' + error.message)
@@ -966,7 +1154,7 @@ const submitAssignment = async () => {
 // Lifecycle Hooks
 onMounted(async () => {
   console.log('🔧 Component mounted - initializing...')
-  
+
   const studentLoaded = await loadStudentInfo()
   if (!studentLoaded) {
     console.error('❌ Failed to load student info')
@@ -986,32 +1174,31 @@ onMounted(async () => {
     subjectId: subject.value.id,
     sectionId: section.value.id,
     subjectName: subject.value.name,
-    sectionName: section.value.name
+    sectionName: section.value.name,
   })
 
   await loadAssignments()
   setupRealtimeSubscription()
   loading.value = false
-  
+
   console.log('✅ Component initialization complete')
   console.log('📊 Final state:', {
     assignments: assignments.value.length,
-    submissions: submissions.value.length
+    submissions: submissions.value.length,
   })
 })
 
 onUnmounted(() => {
   console.log('🧹 Component unmounting - cleaning up...')
-  
+
   if (assignmentSubscription) {
     supabase.removeChannel(assignmentSubscription)
     assignmentSubscription = null
   }
-  
+
   console.log('✅ Cleanup complete')
 })
 </script>
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -1025,7 +1212,7 @@ onUnmounted(() => {
 /* Main Container */
 .take-assignment-page {
   min-height: 100vh;
-  background: #FBFFE4;
+  background: #fbffe4;
   padding: 1.5rem;
   font-family: 'Inter', sans-serif;
 }
@@ -1036,7 +1223,7 @@ onUnmounted(() => {
 
 /* Header Section */
 .section-header-card {
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(61, 141, 122, 0.08);
   background: white;
@@ -1046,7 +1233,7 @@ onUnmounted(() => {
 
 .dark .section-header-card {
   background: #23272b;
-  border: 1px solid #3D8D7A;
+  border: 1px solid #3d8d7a;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
@@ -1065,7 +1252,7 @@ onUnmounted(() => {
 .section-header-icon {
   width: 56px;
   height: 56px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1081,7 +1268,7 @@ onUnmounted(() => {
 }
 
 .dark .section-header-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-header-subtitle {
@@ -1090,7 +1277,7 @@ onUnmounted(() => {
 }
 
 .dark .section-header-subtitle {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-header-description {
@@ -1099,7 +1286,7 @@ onUnmounted(() => {
 }
 
 .dark .section-header-description {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .back-btn {
@@ -1115,11 +1302,11 @@ onUnmounted(() => {
   border: 2px solid #20c997;
   background: #20c997;
   color: #181c20;
-  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.10);
+  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.1);
 }
 
 .back-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
   box-shadow: 0 4px 16px rgba(61, 141, 122, 0.18);
@@ -1128,11 +1315,11 @@ onUnmounted(() => {
 .dark .back-btn {
   background: #20c997;
   color: #181c20;
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
 }
 
 .dark .back-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
 }
@@ -1153,7 +1340,7 @@ onUnmounted(() => {
   width: 48px;
   height: 48px;
   border: 4px solid #e5e7eb;
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -1167,7 +1354,7 @@ onUnmounted(() => {
 /* Main Content */
 .main-content {
   background: white;
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(61, 141, 122, 0.08);
   overflow: hidden;
@@ -1175,7 +1362,7 @@ onUnmounted(() => {
 
 .dark .main-content {
   background: #23272b;
-  border: 1px solid #3D8D7A;
+  border: 1px solid #3d8d7a;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
@@ -1189,7 +1376,7 @@ onUnmounted(() => {
 
 .stat-card {
   background: white;
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
@@ -1204,18 +1391,18 @@ onUnmounted(() => {
 
 .dark .stat-card {
   background: #23272b;
-  border: 1px solid #3D8D7A;
+  border: 1px solid #3d8d7a;
 }
 
 .stat-value {
   font-size: 2rem;
   font-weight: 700;
-  color: #3D8D7A;
+  color: #3d8d7a;
   margin-bottom: 0.5rem;
 }
 
 .dark .stat-value {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .stat-label {
@@ -1225,7 +1412,7 @@ onUnmounted(() => {
 }
 
 .dark .stat-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Assignments Section */
@@ -1263,7 +1450,7 @@ onUnmounted(() => {
 .category-icon {
   width: 32px;
   height: 32px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -1272,7 +1459,7 @@ onUnmounted(() => {
 }
 
 .category-count {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
@@ -1308,17 +1495,17 @@ onUnmounted(() => {
 }
 
 .assignment-card.new-assignment:hover {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 8px 32px rgba(61, 141, 122, 0.2);
 }
 
 .assignment-card.past-assignment {
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
   background: linear-gradient(135deg, #f8fdfc, #e6fffa);
 }
 
 .assignment-card.past-assignment:hover {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 8px 32px rgba(61, 141, 122, 0.15);
 }
 
@@ -1340,7 +1527,7 @@ onUnmounted(() => {
 }
 
 .submitted-badge {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -1415,7 +1602,7 @@ onUnmounted(() => {
   padding: 12px;
   background: #f8fdfc;
   border-radius: 8px;
-  border-left: 4px solid #3D8D7A;
+  border-left: 4px solid #3d8d7a;
   margin-bottom: 20px;
 }
 
@@ -1447,7 +1634,7 @@ onUnmounted(() => {
 
 .assignment-score {
   background: #e6fffa;
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 20px;
@@ -1465,7 +1652,7 @@ onUnmounted(() => {
 }
 
 .score-value {
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-size: 1.1rem;
 }
 
@@ -1476,7 +1663,7 @@ onUnmounted(() => {
 
 .assignment-result {
   background: #e6fffa;
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 20px;
@@ -1495,7 +1682,7 @@ onUnmounted(() => {
 }
 
 .result-score .score-value {
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-size: 1.1rem;
 }
 
@@ -1530,21 +1717,21 @@ onUnmounted(() => {
 }
 
 .btn-primary:hover {
-  background: #3D8D7A;
-  border-color: #3D8D7A;
+  background: #3d8d7a;
+  border-color: #3d8d7a;
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(61, 141, 122, 0.3);
 }
 
 .btn-secondary {
   background: white;
-  color: #3D8D7A;
-  border: 2px solid #A3D1C6;
+  color: #3d8d7a;
+  border: 2px solid #a3d1c6;
 }
 
 .btn-secondary:hover {
-  background: #A3D1C6;
-  border-color: #3D8D7A;
+  background: #a3d1c6;
+  border-color: #3d8d7a;
   color: white;
   transform: translateY(-2px);
 }
@@ -1692,7 +1879,7 @@ onUnmounted(() => {
 .assignment-type-display .type-icon {
   width: 40px;
   height: 40px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -1757,7 +1944,7 @@ onUnmounted(() => {
 .info-icon {
   width: 40px;
   height: 40px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -1779,7 +1966,7 @@ onUnmounted(() => {
 }
 
 .dark .info-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .info-value {
@@ -1790,7 +1977,7 @@ onUnmounted(() => {
 }
 
 .dark .info-value {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Attachments Section */
@@ -2210,8 +2397,8 @@ onUnmounted(() => {
 }
 
 .btn-submit-assignment:hover:not(:disabled) {
-  background: #3D8D7A;
-  border-color: #3D8D7A;
+  background: #3d8d7a;
+  border-color: #3d8d7a;
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(61, 141, 122, 0.3);
 }
@@ -2269,8 +2456,12 @@ onUnmounted(() => {
 
 /* Animations */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive Design */

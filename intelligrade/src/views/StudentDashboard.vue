@@ -5,15 +5,17 @@
     <header class="mobile-header">
       <div class="header-left">
         <div class="profile-pic-container">
-          <img 
-            v-if="userProfile.profilePhoto" 
-            :src="userProfile.profilePhoto" 
+          <img
+            v-if="userProfile.profilePhoto"
+            :src="userProfile.profilePhoto"
             alt="Profile Photo"
             class="profile-photo"
           />
           <div v-else class="profile-photo-placeholder">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+              <path
+                d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"
+              />
             </svg>
           </div>
         </div>
@@ -21,18 +23,16 @@
           <h3 v-if="userProfile.fullName" class="user-name">
             {{ userProfile.fullName }}
           </h3>
-          <h3 v-else class="no-name-text">
-            Hi Student!
-          </h3>
-          <p v-if="userProfile.grade" class="grade">
-            Grade {{ userProfile.grade }}
-          </p>
+          <h3 v-else class="no-name-text">Hi Student!</h3>
+          <p v-if="userProfile.grade" class="grade">Grade {{ userProfile.grade }}</p>
         </div>
       </div>
       <div class="header-right">
         <button @click="toggleProfileMenu" class="profile-menu-btn">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" />
+            <path
+              d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"
+            />
           </svg>
         </button>
       </div>
@@ -44,14 +44,16 @@
         <div class="profile-dropdown-content">
           <div class="profile-info">
             <div class="profile-pic-large">
-              <img 
-                v-if="userProfile.profilePhoto" 
-                :src="userProfile.profilePhoto" 
+              <img
+                v-if="userProfile.profilePhoto"
+                :src="userProfile.profilePhoto"
                 alt="Profile Photo"
               />
               <div v-else class="profile-photo-placeholder-large">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                  <path
+                    d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"
+                  />
                 </svg>
               </div>
             </div>
@@ -60,19 +62,25 @@
               <h4 v-else>Student</h4>
               <p class="role-text">STUDENT</p>
               <p v-if="userProfile.grade" class="grade-text">GRADE {{ userProfile.grade }}</p>
-              <p v-if="userProfile.studentId" class="student-id-text">ID: {{ userProfile.studentId }}</p>
+              <p v-if="userProfile.studentId" class="student-id-text">
+                ID: {{ userProfile.studentId }}
+              </p>
             </div>
           </div>
           <div class="profile-actions">
             <router-link to="/student/settings" class="profile-action" @click="closeProfileMenu">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.67,8.75L19.67,5.27C19.56,5.08 19.3,5.03 19.1,5.12L16.9,6C16.5,5.65 16.08,5.36 15.61,5.1L15.2,2.83C15.15,2.56 14.9,2.33 14.62,2.33L9.38,2.33C9.1,2.33 8.85,2.56 8.8,2.83L8.39,5.09C7.92,5.34 7.5,5.65 7.1,6L4.9,5.12C4.7,5.03 4.44,5.08 4.33,5.27L2.33,8.75C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.33,15.25L4.33,18.73C4.44,18.92 4.7,18.97 4.9,18.88L7.1,18C7.5,18.35 7.92,18.64 8.39,18.9L8.8,21.17C8.85,21.44 9.1,21.67 9.38,21.67L14.62,21.67C14.9,21.67 15.15,21.44 15.2,21.17L15.61,18.91C16.08,18.66 16.5,18.35 16.9,18L19.1,18.88C19.3,18.97 19.56,18.92 19.67,18.73L21.67,15.25C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+                <path
+                  d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.67,8.75L19.67,5.27C19.56,5.08 19.3,5.03 19.1,5.12L16.9,6C16.5,5.65 16.08,5.36 15.61,5.1L15.2,2.83C15.15,2.56 14.9,2.33 14.62,2.33L9.38,2.33C9.1,2.33 8.85,2.56 8.8,2.83L8.39,5.09C7.92,5.34 7.5,5.65 7.1,6L4.9,5.12C4.7,5.03 4.44,5.08 4.33,5.27L2.33,8.75C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.33,15.25L4.33,18.73C4.44,18.92 4.7,18.97 4.9,18.88L7.1,18C7.5,18.35 7.92,18.64 8.39,18.9L8.8,21.17C8.85,21.44 9.1,21.67 9.38,21.67L14.62,21.67C14.9,21.67 15.15,21.44 15.2,21.17L15.61,18.91C16.08,18.66 16.5,18.35 16.9,18L19.1,18.88C19.3,18.97 19.56,18.92 19.67,18.73L21.67,15.25C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"
+                />
               </svg>
               <span>Settings</span>
             </router-link>
             <button @click="handleLogout" class="profile-action logout-action">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z" />
+                <path
+                  d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z"
+                />
               </svg>
               <span>Logout</span>
             </button>
@@ -85,15 +93,17 @@
     <aside class="sidebar desktop-only">
       <div class="user-info">
         <div class="profile-pic-container">
-          <img 
-            v-if="userProfile.profilePhoto" 
-            :src="userProfile.profilePhoto" 
+          <img
+            v-if="userProfile.profilePhoto"
+            :src="userProfile.profilePhoto"
             alt="Profile Photo"
             class="profile-photo"
           />
           <div v-else class="profile-photo-placeholder">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+              <path
+                d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"
+              />
             </svg>
           </div>
         </div>
@@ -101,25 +111,17 @@
           <h3 v-if="userProfile.fullName" class="user-name">
             {{ userProfile.fullName }}
           </h3>
-          <h3 v-else class="no-name-text">
-            Name not available
-          </h3>
-          
+          <h3 v-else class="no-name-text">Name not available</h3>
+
           <p class="role">STUDENT</p>
-          
-          <p v-if="userProfile.grade" class="grade">
-            GRADE {{ userProfile.grade }}
-          </p>
-          <p v-else class="grade grade-missing">
-            GRADE NOT SET
-          </p>
-          
+
+          <p v-if="userProfile.grade" class="grade">GRADE {{ userProfile.grade }}</p>
+          <p v-else class="grade grade-missing">GRADE NOT SET</p>
+
           <p v-if="userProfile.studentId" class="student-id">
             STUDENT ID: {{ userProfile.studentId }}
           </p>
-          <p v-else class="student-id student-id-missing">
-            STUDENT ID: NOT SET
-          </p>
+          <p v-else class="student-id student-id-missing">STUDENT ID: NOT SET</p>
         </div>
       </div>
 
@@ -135,10 +137,20 @@
         </router-link>
         <router-link
           to="/student/subjects"
-          :class="['nav-item', { 'is-active': $route.name === 'StudentSubjects' || $route.name === 'TakeQuiz' || $route.name === 'StudentGrades' }]"
+          :class="[
+            'nav-item',
+            {
+              'is-active':
+                $route.name === 'StudentSubjects' ||
+                $route.name === 'TakeQuiz' ||
+                $route.name === 'StudentGrades',
+            },
+          ]"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3,5.5V18.5A2.5,2.5 0 0,0 5.5,21A2.5,2.5 0 0,0 8,18.5V5.5A2.5,2.5 0 0,0 5.5,3A2.5,2.5 0 0,0 3,5.5M12,5.5V18.5A2.5,2.5 0 0,0 14.5,21A2.5,2.5 0 0,0 17,18.5V5.5A2.5,2.5 0 0,0 14.5,3A2.5,2.5 0 0,0 12,5.5M21,5.5V18.5A2.5,2.5 0 0,0 23.5,21A2.5,2.5 0 0,0 26,18.5V5.5A2.5,2.5 0 0,0 23.5,3A2.5,2.5 0 0,0 21,5.5Z" />
+            <path
+              d="M3,5.5V18.5A2.5,2.5 0 0,0 5.5,21A2.5,2.5 0 0,0 8,18.5V5.5A2.5,2.5 0 0,0 5.5,3A2.5,2.5 0 0,0 3,5.5M12,5.5V18.5A2.5,2.5 0 0,0 14.5,21A2.5,2.5 0 0,0 17,18.5V5.5A2.5,2.5 0 0,0 14.5,3A2.5,2.5 0 0,0 12,5.5M21,5.5V18.5A2.5,2.5 0 0,0 23.5,21A2.5,2.5 0 0,0 26,18.5V5.5A2.5,2.5 0 0,0 23.5,3A2.5,2.5 0 0,0 21,5.5Z"
+            />
           </svg>
           <span>Subjects</span>
         </router-link>
@@ -147,7 +159,9 @@
           :class="['nav-item', { 'is-active': $route.name === 'StudentCalendar' }]"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16.5,13.5H11V18.5H16.5V13.5Z" />
+            <path
+              d="M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16.5,13.5H11V18.5H16.5V13.5Z"
+            />
           </svg>
           <span>Calendar</span>
         </router-link>
@@ -156,7 +170,9 @@
           :class="['nav-item', { 'is-active': $route.name === 'StudentMessages' }]"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="messages-icon">
-            <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zM4 6h16v.5l-8 5-8-5V6zm0 13.5V8l8 5 8-5v11.5H4z"/>
+            <path
+              d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zM4 6h16v.5l-8 5-8-5V6zm0 13.5V8l8 5 8-5v11.5H4z"
+            />
           </svg>
           <span>Messages</span>
         </router-link>
@@ -165,7 +181,9 @@
           :class="['nav-item', { 'is-active': $route.name === 'StudentSettings' }]"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.67,8.75L19.67,5.27C19.56,5.08 19.3,5.03 19.1,5.12L16.9,6C16.5,5.65 16.08,5.36 15.61,5.1L15.2,2.83C15.15,2.56 14.9,2.33 14.62,2.33L9.38,2.33C9.1,2.33 8.85,2.56 8.8,2.83L8.39,5.09C7.92,5.34 7.5,5.65 7.1,6L4.9,5.12C4.7,5.03 4.44,5.08 4.33,5.27L2.33,8.75C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.33,15.25L4.33,18.73C4.44,18.92 4.7,18.97 4.9,18.88L7.1,18C7.5,18.35 7.92,18.64 8.39,18.9L8.8,21.17C8.85,21.44 9.1,21.67 9.38,21.67L14.62,21.67C14.9,21.67 15.15,21.44 15.2,21.17L15.61,18.91C16.08,18.66 16.5,18.35 16.9,18L19.1,18.88C19.3,18.97 19.56,18.92 19.67,18.73L21.67,15.25C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+            <path
+              d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.67,8.75L19.67,5.27C19.56,5.08 19.3,5.03 19.1,5.12L16.9,6C16.5,5.65 16.08,5.36 15.61,5.1L15.2,2.83C15.15,2.56 14.9,2.33 14.62,2.33L9.38,2.33C9.1,2.33 8.85,2.56 8.8,2.83L8.39,5.09C7.92,5.34 7.5,5.65 7.1,6L4.9,5.12C4.7,5.03 4.44,5.08 4.33,5.27L2.33,8.75C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.33,15.25L4.33,18.73C4.44,18.92 4.7,18.97 4.9,18.88L7.1,18C7.5,18.35 7.92,18.64 8.39,18.9L8.8,21.17C8.85,21.44 9.1,21.67 9.38,21.67L14.62,21.67C14.9,21.67 15.15,21.44 15.2,21.17L15.61,18.91C16.08,18.66 16.5,18.35 16.9,18L19.1,18.88C19.3,18.97 19.56,18.92 19.67,18.73L21.67,15.25C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"
+            />
           </svg>
           <span>Settings</span>
         </router-link>
@@ -173,7 +191,9 @@
 
       <button @click="showLogoutModal" class="logout-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z" />
+          <path
+            d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z"
+          />
         </svg>
         <span>Logout</span>
       </button>
@@ -196,10 +216,20 @@
       </router-link>
       <router-link
         to="/student/subjects"
-        :class="['mobile-nav-item', { 'is-active': $route.name === 'StudentSubjects' || $route.name === 'TakeQuiz' || $route.name === 'StudentGrades' }]"
+        :class="[
+          'mobile-nav-item',
+          {
+            'is-active':
+              $route.name === 'StudentSubjects' ||
+              $route.name === 'TakeQuiz' ||
+              $route.name === 'StudentGrades',
+          },
+        ]"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+          <path
+            d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"
+          />
         </svg>
         <span>Subjects</span>
       </router-link>
@@ -208,7 +238,9 @@
         :class="['mobile-nav-item', { 'is-active': $route.name === 'StudentCalendar' }]"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16.5,13.5H11V18.5H16.5V13.5Z" />
+          <path
+            d="M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16.5,13.5H11V18.5H16.5V13.5Z"
+          />
         </svg>
         <span>Calendar</span>
       </router-link>
@@ -217,7 +249,9 @@
         :class="['mobile-nav-item', { 'is-active': $route.name === 'StudentMessages' }]"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+          <path
+            d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"
+          />
         </svg>
         <span>Messages</span>
       </router-link>
@@ -226,10 +260,14 @@
     <!-- Floating Help & Support Button -->
     <button class="floating-help-btn" @click="toggleHelpMenu" title="Help & Support">
       <svg v-if="!isHelpMenuOpen" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z" />
+        <path
+          d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z"
+        />
       </svg>
       <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+        <path
+          d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+        />
       </svg>
     </button>
 
@@ -244,7 +282,9 @@
           <a href="#" class="help-menu-item" @click.prevent="openGuide">
             <div class="help-item-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19,2L14,6.5V17.5L19,13V2M6.5,5C4.55,5 2.45,5.4 1,6.5V21.16C1,21.41 1.25,21.66 1.5,21.66C1.6,21.66 1.65,21.59 1.75,21.59C3.1,20.94 5.05,20.5 6.5,20.5C8.45,20.5 10.55,20.9 12,22C13.35,21.15 15.8,20.5 17.5,20.5C19.15,20.5 20.85,20.81 22.25,21.56C22.35,21.61 22.4,21.59 22.5,21.59C22.75,21.59 23,21.34 23,21.09V6.5C22.4,6.05 21.75,5.75 21,5.5V7.5L21,13V19C19.9,18.65 18.7,18.5 17.5,18.5C15.8,18.5 13.35,19.15 12,20V13L12,8.5V6.5C10.55,5.4 8.45,5 6.5,5Z" />
+                <path
+                  d="M19,2L14,6.5V17.5L19,13V2M6.5,5C4.55,5 2.45,5.4 1,6.5V21.16C1,21.41 1.25,21.66 1.5,21.66C1.6,21.66 1.65,21.59 1.75,21.59C3.1,20.94 5.05,20.5 6.5,20.5C8.45,20.5 10.55,20.9 12,22C13.35,21.15 15.8,20.5 17.5,20.5C19.15,20.5 20.85,20.81 22.25,21.56C22.35,21.61 22.4,21.59 22.5,21.59C22.75,21.59 23,21.34 23,21.09V6.5C22.4,6.05 21.75,5.75 21,5.5V7.5L21,13V19C19.9,18.65 18.7,18.5 17.5,18.5C15.8,18.5 13.35,19.15 12,20V13L12,8.5V6.5C10.55,5.4 8.45,5 6.5,5Z"
+                />
               </svg>
             </div>
             <div class="help-item-content">
@@ -255,7 +295,9 @@
           <a href="#" class="help-menu-item" @click.prevent="openFAQ">
             <div class="help-item-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18,15H6L2,19V3A1,1 0 0,1 3,2H18A1,1 0 0,1 19,3V14A1,1 0 0,1 18,15M23,9V23L19,19H8A1,1 0 0,1 7,18V17H20V8H21A1,1 0 0,1 22,9Z" />
+                <path
+                  d="M18,15H6L2,19V3A1,1 0 0,1 3,2H18A1,1 0 0,1 19,3V14A1,1 0 0,1 18,15M23,9V23L19,19H8A1,1 0 0,1 7,18V17H20V8H21A1,1 0 0,1 22,9Z"
+                />
               </svg>
             </div>
             <div class="help-item-content">
@@ -266,7 +308,9 @@
           <a href="#" class="help-menu-item" @click.prevent="contactSupport">
             <div class="help-item-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+                <path
+                  d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"
+                />
               </svg>
             </div>
             <div class="help-item-content">
@@ -295,20 +339,18 @@
         <div class="modal-header">
           <div class="modal-icon">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9,12L11,14.4L15,9.6M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2Z" />
+              <path
+                d="M9,12L11,14.4L15,9.6M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2Z"
+              />
             </svg>
           </div>
           <h3 class="modal-title">Confirm Logout</h3>
           <p class="modal-message">Are you sure you want to logout from your account?</p>
         </div>
-        
+
         <div class="modal-actions">
-          <button @click="hideLogoutModal" class="btn-cancel">
-            Cancel
-          </button>
-          <button @click="confirmLogout" class="btn-confirm">
-            Yes, Logout
-          </button>
+          <button @click="hideLogoutModal" class="btn-cancel">Cancel</button>
+          <button @click="confirmLogout" class="btn-confirm">Yes, Logout</button>
         </div>
       </div>
     </div>
@@ -323,8 +365,8 @@
   </div>
 </template>
 
-<script>
-import { supabase } from '../supabase.js';
+<script lang="ts">
+import { supabase } from '../supabase.js'
 
 export default {
   name: 'StudentDashboard',
@@ -336,7 +378,7 @@ export default {
         grade: null,
         email: '',
         role: '',
-        profilePhoto: null
+        profilePhoto: null,
       },
       isLogoutModalVisible: false,
       isProfileMenuOpen: false,
@@ -345,164 +387,165 @@ export default {
       currentProfileId: null,
       isHelpMenuOpen: false,
       isLoggingOut: false,
-      isLoadingProfile: true
-    };
-  },
-  watch: {
-    '$route'() {
-      this.isProfileMenuOpen = false;
-      this.isHelpMenuOpen = false;
+      isLoadingProfile: true,
     }
   },
+  watch: {
+    $route() {
+      this.isProfileMenuOpen = false
+      this.isHelpMenuOpen = false
+    },
+  },
   async mounted() {
-    console.log('========================================');
-    console.log('StudentDashboard Component Mounted');
-    console.log('========================================');
-    await this.loadUserProfile();
-    this.setupRealtimeSubscription();
-    this.initializeDarkMode();
-    
-    window.addEventListener('studentProfileUpdated', this.handleProfileUpdate);
-    document.addEventListener('click', this.handleClickOutside);
+    console.log('========================================')
+    console.log('StudentDashboard Component Mounted')
+    console.log('========================================')
+    await this.loadUserProfile()
+    this.setupRealtimeSubscription()
+    this.initializeDarkMode()
+
+    window.addEventListener('studentProfileUpdated', this.handleProfileUpdate)
+    document.addEventListener('click', this.handleClickOutside)
   },
   beforeUnmount() {
-    this.cleanupSubscriptions();
-    window.removeEventListener('studentProfileUpdated', this.handleProfileUpdate);
-    document.removeEventListener('click', this.handleClickOutside);
+    this.cleanupSubscriptions()
+    window.removeEventListener('studentProfileUpdated', this.handleProfileUpdate)
+    document.removeEventListener('click', this.handleClickOutside)
   },
   methods: {
     async loadUserProfile() {
       try {
-        this.isLoadingProfile = true;
-        console.log('📋 STEP 1: Getting authenticated user...');
-        
-        const { data: { user }, error: authError } = await supabase.auth.getUser();
-        
+        this.isLoadingProfile = true
+        console.log('📋 STEP 1: Getting authenticated user...')
+
+        const {
+          data: { user },
+          error: authError,
+        } = await supabase.auth.getUser()
+
         if (authError) {
-          console.error('❌ Authentication Error:', authError);
-          this.$router.push('/login');
-          return;
+          console.error('❌ Authentication Error:', authError)
+          this.$router.push('/login')
+          return
         }
 
         if (!user) {
-          console.error('❌ No authenticated user found');
-          this.$router.push('/login');
-          return;
+          console.error('❌ No authenticated user found')
+          this.$router.push('/login')
+          return
         }
 
-        console.log('✅ Authenticated User ID:', user.id);
-        console.log('✅ User Email:', user.email);
-        
-        await this.fetchStudentProfile(user.id);
+        console.log('✅ Authenticated User ID:', user.id)
+        console.log('✅ User Email:', user.email)
 
+        await this.fetchStudentProfile(user.id)
       } catch (error) {
-        console.error('❌ FATAL ERROR in loadUserProfile:', error);
-        console.error('Error details:', error.message);
-        this.handleProfileError();
+        console.error('❌ FATAL ERROR in loadUserProfile:', error)
+        console.error('Error details:', error.message)
+        this.handleProfileError()
       } finally {
-        this.isLoadingProfile = false;
+        this.isLoadingProfile = false
       }
     },
 
     async fetchStudentProfile(userId) {
       try {
-        console.log('');
-        console.log('📋 STEP 2: Fetching profile from database...');
-        console.log('Looking for auth_user_id:', userId);
-        
+        console.log('')
+        console.log('📋 STEP 2: Fetching profile from database...')
+        console.log('Looking for auth_user_id:', userId)
+
         const { data: profileData, error: profileError } = await supabase
           .from('profiles')
           .select('*')
           .eq('auth_user_id', userId)
-          .single();
+          .single()
 
         if (profileError) {
-          console.error('❌ Profile Query Error:', profileError);
-          throw profileError;
+          console.error('❌ Profile Query Error:', profileError)
+          throw profileError
         }
 
         if (!profileData) {
-          console.error('❌ No profile data returned from query');
-          throw new Error('Profile not found in database');
+          console.error('❌ No profile data returned from query')
+          throw new Error('Profile not found in database')
         }
 
-        console.log('✅ Profile Data Retrieved:', profileData);
+        console.log('✅ Profile Data Retrieved:', profileData)
 
         if (profileData.role !== 'student') {
-          console.error('❌ Access Denied: User role is', profileData.role, 'not student');
-          this.$router.push('/login');
-          return;
+          console.error('❌ Access Denied: User role is', profileData.role, 'not student')
+          this.$router.push('/login')
+          return
         }
 
-        this.currentProfileId = profileData.id;
-        console.log('✅ Profile ID stored:', this.currentProfileId);
+        this.currentProfileId = profileData.id
+        console.log('✅ Profile ID stored:', this.currentProfileId)
 
-        console.log('');
-        console.log('📋 STEP 3: Fetching student record...');
-        console.log('Looking for profile_id:', profileData.id);
-        
+        console.log('')
+        console.log('📋 STEP 3: Fetching student record...')
+        console.log('Looking for profile_id:', profileData.id)
+
         const { data: studentData, error: studentError } = await supabase
           .from('students')
           .select('*')
           .eq('profile_id', profileData.id)
-          .single();
+          .single()
 
         if (studentError) {
-          console.error('❌ Student Query Error:', studentError);
-          throw studentError;
+          console.error('❌ Student Query Error:', studentError)
+          throw studentError
         }
 
         if (!studentData) {
-          console.error('❌ No student data returned from query');
-          throw new Error('Student record not found');
+          console.error('❌ No student data returned from query')
+          throw new Error('Student record not found')
         }
 
-        console.log('✅ Student Data Retrieved:', studentData);
+        console.log('✅ Student Data Retrieved:', studentData)
 
-        console.log('');
-        console.log('📋 STEP 4: Setting userProfile data...');
-        
+        console.log('')
+        console.log('📋 STEP 4: Setting userProfile data...')
+
         // FIXED: Direct assignment without fallbacks that cause issues
-        this.userProfile.fullName = studentData.full_name || '';
-        this.userProfile.email = studentData.email || '';
-        this.userProfile.studentId = studentData.student_id || '';
-        this.userProfile.grade = studentData.grade_level;
-        this.userProfile.role = 'student';
-        this.userProfile.profilePhoto = profileData.profile_photo || null;
+        this.userProfile.fullName = studentData.full_name || ''
+        this.userProfile.email = studentData.email || ''
+        this.userProfile.studentId = studentData.student_id || ''
+        this.userProfile.grade = studentData.grade_level
+        this.userProfile.role = 'student'
+        this.userProfile.profilePhoto = profileData.profile_photo || null
 
-        console.log('✅ ========================================');
-        console.log('✅ USER PROFILE SUCCESSFULLY LOADED');
-        console.log('✅ ========================================');
-        console.log('Full Name:', this.userProfile.fullName);
-        console.log('Student ID:', this.userProfile.studentId);
-        console.log('Grade Level:', this.userProfile.grade);
-        console.log('Role:', this.userProfile.role);
-        console.log('Email:', this.userProfile.email);
-        console.log('Profile Photo:', this.userProfile.profilePhoto);
-        console.log('========================================');
+        console.log('✅ ========================================')
+        console.log('✅ USER PROFILE SUCCESSFULLY LOADED')
+        console.log('✅ ========================================')
+        console.log('Full Name:', this.userProfile.fullName)
+        console.log('Student ID:', this.userProfile.studentId)
+        console.log('Grade Level:', this.userProfile.grade)
+        console.log('Role:', this.userProfile.role)
+        console.log('Email:', this.userProfile.email)
+        console.log('Profile Photo:', this.userProfile.profilePhoto)
+        console.log('========================================')
 
-        this.$forceUpdate();
-
+        this.$forceUpdate()
       } catch (error) {
-        console.error('');
-        console.error('❌ ========================================');
-        console.error('❌ ERROR in fetchStudentProfile');
-        console.error('❌ ========================================');
-        console.error('Error Type:', error.name);
-        console.error('Error Message:', error.message);
-        console.error('Stack Trace:', error.stack);
-        console.error('========================================');
-        throw error;
+        console.error('')
+        console.error('❌ ========================================')
+        console.error('❌ ERROR in fetchStudentProfile')
+        console.error('❌ ========================================')
+        console.error('Error Type:', error.name)
+        console.error('Error Message:', error.message)
+        console.error('Stack Trace:', error.stack)
+        console.error('========================================')
+        throw error
       }
     },
 
     setupRealtimeSubscription() {
       if (!this.currentProfileId) {
-        console.log('⚠️ No profile ID available - skipping real-time subscriptions');
-        return;
+        console.log('⚠️ No profile ID available - skipping real-time subscriptions')
+        return
       }
 
-      console.log('🔔 Setting up real-time subscriptions...');
+      console.log('🔔 Setting up real-time subscriptions...')
 
       this.profileSubscription = supabase
         .channel(`profile_${this.currentProfileId}`)
@@ -512,21 +555,22 @@ export default {
             event: '*',
             schema: 'public',
             table: 'profiles',
-            filter: `id=eq.${this.currentProfileId}`
+            filter: `id=eq.${this.currentProfileId}`,
           },
-          (payload) => {
-            console.log('📢 Profile updated via real-time:', payload);
+          (payload: any) => {
+            console.log('📢 Profile updated via real-time:', payload)
             if (payload.new) {
-              this.userProfile.fullName = payload.new.full_name || this.userProfile.fullName;
-              this.userProfile.email = payload.new.email || this.userProfile.email;
-              this.userProfile.profilePhoto = payload.new.profile_photo || this.userProfile.profilePhoto;
-              this.$forceUpdate();
+              this.userProfile.fullName = payload.new.full_name || this.userProfile.fullName
+              this.userProfile.email = payload.new.email || this.userProfile.email
+              this.userProfile.profilePhoto =
+                payload.new.profile_photo || this.userProfile.profilePhoto
+              this.$forceUpdate()
             }
-          }
+          },
         )
         .subscribe((status) => {
-          console.log('Profile subscription status:', status);
-        });
+          console.log('Profile subscription status:', status)
+        })
 
       this.studentSubscription = supabase
         .channel(`student_${this.currentProfileId}`)
@@ -536,181 +580,187 @@ export default {
             event: '*',
             schema: 'public',
             table: 'students',
-            filter: `profile_id=eq.${this.currentProfileId}`
+            filter: `profile_id=eq.${this.currentProfileId}`,
           },
-          (payload) => {
-            console.log('📢 Student data updated via real-time:', payload);
+          (payload: any) => {
+            console.log('📢 Student data updated via real-time:', payload)
             if (payload.new) {
-              this.userProfile.studentId = payload.new.student_id || this.userProfile.studentId;
-              this.userProfile.grade = payload.new.grade_level;
-              this.$forceUpdate();
+              this.userProfile.studentId = payload.new.student_id || this.userProfile.studentId
+              this.userProfile.grade = payload.new.grade_level
+              this.$forceUpdate()
             }
-          }
+          },
         )
         .subscribe((status) => {
-          console.log('Student subscription status:', status);
-        });
+          console.log('Student subscription status:', status)
+        })
     },
 
     cleanupSubscriptions() {
-      console.log('🧹 Cleaning up subscriptions...');
-      
+      console.log('🧹 Cleaning up subscriptions...')
+
       if (this.profileSubscription) {
         try {
-          supabase.removeChannel(this.profileSubscription);
-          this.profileSubscription = null;
-          console.log('✅ Profile subscription removed');
+          supabase.removeChannel(this.profileSubscription)
+          this.profileSubscription = null
+          console.log('✅ Profile subscription removed')
         } catch (error) {
-          console.error('❌ Error removing profile subscription:', error);
+          console.error('❌ Error removing profile subscription:', error)
         }
       }
-      
+
       if (this.studentSubscription) {
         try {
-          supabase.removeChannel(this.studentSubscription);
-          this.studentSubscription = null;
-          console.log('✅ Student subscription removed');
+          supabase.removeChannel(this.studentSubscription)
+          this.studentSubscription = null
+          console.log('✅ Student subscription removed')
         } catch (error) {
-          console.error('❌ Error removing student subscription:', error);
+          console.error('❌ Error removing student subscription:', error)
         }
       }
     },
 
     handleProfileError() {
-      console.error('⚠️ Setting error state in userProfile');
-      this.userProfile.fullName = 'Error Loading';
-      this.userProfile.email = 'Check Console';
-      this.userProfile.studentId = 'ERROR';
-      this.userProfile.grade = null;
-      this.userProfile.role = 'student';
-      this.userProfile.profilePhoto = null;
-      this.$forceUpdate();
+      console.error('⚠️ Setting error state in userProfile')
+      this.userProfile.fullName = 'Error Loading'
+      this.userProfile.email = 'Check Console'
+      this.userProfile.studentId = 'ERROR'
+      this.userProfile.grade = null
+      this.userProfile.role = 'student'
+      this.userProfile.profilePhoto = null
+      this.$forceUpdate()
     },
 
     initializeDarkMode() {
-      const savedTheme = localStorage.getItem('darkMode');
+      const savedTheme = localStorage.getItem('darkMode')
       if (savedTheme === 'true') {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.add('dark')
       }
     },
 
     showLogoutModal() {
-      this.isLogoutModalVisible = true;
+      this.isLogoutModalVisible = true
     },
 
     hideLogoutModal() {
-      this.isLogoutModalVisible = false;
+      this.isLogoutModalVisible = false
     },
 
     async confirmLogout() {
-      console.log('🚪 Starting logout process...');
-      
-      this.isLogoutModalVisible = false;
-      this.isLoggingOut = true;
-      
+      console.log('🚪 Starting logout process...')
+
+      this.isLogoutModalVisible = false
+      this.isLoggingOut = true
+
       try {
-        console.log('Step 1: Cleaning up subscriptions');
-        this.cleanupSubscriptions();
-        
-        await new Promise(resolve => setTimeout(resolve, 200));
-        
-        console.log('Step 2: Clearing local storage');
-        localStorage.clear();
-        sessionStorage.clear();
-        
-        console.log('Step 3: Signing out from Supabase');
-        const { error } = await supabase.auth.signOut({ scope: 'local' });
-        
+        console.log('Step 1: Cleaning up subscriptions')
+        this.cleanupSubscriptions()
+
+        await new Promise((resolve) => setTimeout(resolve, 200))
+
+        console.log('Step 2: Clearing local storage')
+        localStorage.clear()
+        sessionStorage.clear()
+
+        console.log('Step 3: Signing out from Supabase')
+        const { error } = await supabase.auth.signOut({ scope: 'local' })
+
         if (error) {
-          console.error('❌ Logout error:', error);
+          console.error('❌ Logout error:', error)
         }
-        
-        console.log('✅ Logout successful');
-        
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        console.log('Step 4: Redirecting to login');
-        window.location.replace('/login');
-        
+
+        console.log('✅ Logout successful')
+
+        await new Promise((resolve) => setTimeout(resolve, 500))
+
+        console.log('Step 4: Redirecting to login')
+        window.location.replace('/login')
       } catch (error) {
-        console.error('❌ Error during logout:', error);
-        this.isLoggingOut = false;
-        localStorage.clear();
-        sessionStorage.clear();
-        window.location.replace('/login');
+        console.error('❌ Error during logout:', error)
+        this.isLoggingOut = false
+        localStorage.clear()
+        sessionStorage.clear()
+        window.location.replace('/login')
       }
     },
 
     toggleProfileMenu() {
-      this.isProfileMenuOpen = !this.isProfileMenuOpen;
+      this.isProfileMenuOpen = !this.isProfileMenuOpen
     },
 
     closeProfileMenu() {
-      this.isProfileMenuOpen = false;
+      this.isProfileMenuOpen = false
     },
 
     async handleLogout() {
-      this.closeProfileMenu();
-      this.showLogoutModal();
+      this.closeProfileMenu()
+      this.showLogoutModal()
     },
 
     handleClickOutside(event) {
-      const profileDropdown = document.querySelector('.profile-dropdown');
-      const profileMenuBtn = document.querySelector('.profile-menu-btn');
-      const helpMenu = document.querySelector('.help-menu');
-      const helpBtn = document.querySelector('.floating-help-btn');
-      
-      if (this.isProfileMenuOpen && profileDropdown && 
-          !profileDropdown.contains(event.target) && 
-          !profileMenuBtn.contains(event.target)) {
-        this.closeProfileMenu();
+      const profileDropdown = document.querySelector('.profile-dropdown')
+      const profileMenuBtn = document.querySelector('.profile-menu-btn')
+      const helpMenu = document.querySelector('.help-menu')
+      const helpBtn = document.querySelector('.floating-help-btn')
+
+      if (
+        this.isProfileMenuOpen &&
+        profileDropdown &&
+        !profileDropdown.contains(event.target) &&
+        !profileMenuBtn.contains(event.target)
+      ) {
+        this.closeProfileMenu()
       }
-      
-      if (this.isHelpMenuOpen && helpMenu && 
-          !helpMenu.contains(event.target) && 
-          !helpBtn.contains(event.target)) {
-        this.isHelpMenuOpen = false;
+
+      if (
+        this.isHelpMenuOpen &&
+        helpMenu &&
+        !helpMenu.contains(event.target) &&
+        !helpBtn.contains(event.target)
+      ) {
+        this.isHelpMenuOpen = false
       }
     },
 
     toggleHelpMenu() {
-      this.isHelpMenuOpen = !this.isHelpMenuOpen;
+      this.isHelpMenuOpen = !this.isHelpMenuOpen
     },
 
     openGuide() {
-      this.isHelpMenuOpen = false;
+      this.isHelpMenuOpen = false
     },
 
     openFAQ() {
-      this.isHelpMenuOpen = false;
+      this.isHelpMenuOpen = false
     },
 
     contactSupport() {
-      this.isHelpMenuOpen = false;
+      this.isHelpMenuOpen = false
     },
 
     reportIssue() {
-      this.isHelpMenuOpen = false;
+      this.isHelpMenuOpen = false
     },
 
     handleProfileUpdate(event) {
-      console.log('📢 Handling profile update event:', event.detail);
-      const { gradeChanged, nameChanged, studentIdChanged, newGrade, newName, newStudentId } = event.detail || {};
-      
+      console.log('📢 Handling profile update event:', event.detail)
+      const { gradeChanged, nameChanged, studentIdChanged, newGrade, newName, newStudentId } =
+        event.detail || {}
+
       if (gradeChanged && newGrade !== undefined) {
-        this.userProfile.grade = newGrade;
+        this.userProfile.grade = newGrade
       }
       if (nameChanged && newName) {
-        this.userProfile.fullName = newName;
+        this.userProfile.fullName = newName
       }
       if (studentIdChanged && newStudentId) {
-        this.userProfile.studentId = newStudentId;
+        this.userProfile.studentId = newStudentId
       }
-      
-      this.$forceUpdate();
-    }
-  }
-};
+
+      this.$forceUpdate()
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -745,7 +795,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
+  background:
     radial-gradient(circle at 20% 80%, rgba(61, 141, 122, 0.02) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(179, 216, 168, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(163, 209, 198, 0.01) 0%, transparent 50%);
@@ -761,7 +811,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1rem;
-  box-shadow: 
+  box-shadow:
     0 8px 32px var(--shadow-medium),
     0 0 0 1px var(--border-color);
   overflow-y: hidden;
@@ -844,8 +894,12 @@ export default {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .no-name-text {
@@ -901,8 +955,13 @@ export default {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .user-info .student-id {
@@ -969,7 +1028,7 @@ export default {
   margin-right: 0.75rem;
   width: 18px;
   height: 18px;
-  fill: #3D8D7A;
+  fill: #3d8d7a;
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
@@ -1084,7 +1143,7 @@ export default {
   padding: 2.5rem;
   max-width: 420px;
   width: 90%;
-  box-shadow: 
+  box-shadow:
     0 8px 40px rgba(0, 0, 0, 0.12),
     0 0 0 1px rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1095,7 +1154,7 @@ export default {
 :root.dark .modal-container {
   background: rgba(30, 35, 34, 0.95);
   border: 1px solid rgba(95, 179, 160, 0.2);
-  box-shadow: 
+  box-shadow:
     0 8px 40px rgba(0, 0, 0, 0.3),
     0 0 0 1px rgba(95, 179, 160, 0.1);
 }
@@ -1107,7 +1166,7 @@ export default {
 .modal-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #5FB3A0 0%, #A3D1C6 100%);
+  background: linear-gradient(135deg, #5fb3a0 0%, #a3d1c6 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1215,18 +1274,22 @@ export default {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes modalSlideIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(-30px) scale(0.95); 
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
   }
-  to { 
-    opacity: 1; 
-    transform: translateY(0) scale(1); 
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -1272,7 +1335,7 @@ export default {
   .mobile-header {
     display: flex;
   }
-  
+
   .dashboard-container {
     padding-top: 70px;
     padding-bottom: 80px;
@@ -1555,25 +1618,25 @@ export default {
   .mobile-header {
     padding: 0 0.75rem;
   }
-  
+
   .header-left .user-name,
   .header-left .no-name-text {
     font-size: 0.9rem;
   }
-  
+
   .header-left .grade {
     font-size: 0.7rem;
   }
-  
+
   .profile-dropdown {
     width: calc(100vw - 1.5rem);
     right: 0.75rem;
   }
-  
+
   .mobile-nav-item span {
     font-size: 0.65rem;
   }
-  
+
   .mobile-bottom-nav {
     padding: 0.25rem 0.5rem;
   }
@@ -1719,7 +1782,7 @@ export default {
     width: 56px;
     height: 56px;
   }
-  
+
   .help-menu {
     bottom: 12rem;
     right: 1.5rem;
@@ -1735,7 +1798,7 @@ export default {
     width: 52px;
     height: 52px;
   }
-  
+
   .help-menu {
     bottom: 12rem;
     right: 1rem;
@@ -1775,8 +1838,12 @@ export default {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .logging-out-content p {
@@ -1795,7 +1862,8 @@ export default {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -1813,23 +1881,23 @@ html, body {
   --bg-secondary: #fefefe;
   --bg-accent: #f3f7f4;
   --bg-accent-hover: #e9f5ee;
-  
+
   --card-background: #ffffff;
   --card-background-hover: #f8faf9;
-  
+
   --accent-color: #33806b;
   --accent-hover: #2d6a57;
-  --accent-light: #5FB3A0;
-  --accent-lighter: #A3D1C6;
-  
+  --accent-light: #5fb3a0;
+  --accent-lighter: #a3d1c6;
+
   --text-primary: #1a1a1a;
   --text-secondary: #3d8d7a;
   --text-muted: #7a9c8f;
   --text-inverse: #ffffff;
-  
+
   --border-color: rgba(61, 141, 122, 0.12);
   --border-hover: rgba(61, 141, 122, 0.2);
-  
+
   --shadow-light: rgba(61, 141, 122, 0.05);
   --shadow-medium: rgba(61, 141, 122, 0.1);
   --shadow-strong: rgba(61, 141, 122, 0.2);
@@ -1841,23 +1909,23 @@ html, body {
   --bg-secondary: #23272b;
   --bg-accent: #23272b;
   --bg-accent-hover: #23272b;
-  
+
   --card-background: #23272b;
   --card-background-hover: #181c20;
-  
-  --accent-color: #5FB3A0;
+
+  --accent-color: #5fb3a0;
   --accent-hover: #33806b;
-  --accent-light: #7BC4B5;
-  --accent-lighter: #A3D1C6;
-  
+  --accent-light: #7bc4b5;
+  --accent-lighter: #a3d1c6;
+
   --text-primary: #f0f0f0;
-  --text-secondary: #A3D1C6;
+  --text-secondary: #a3d1c6;
   --text-muted: #7a9c8f;
   --text-inverse: #ffffff;
-  
+
   --border-color: rgba(95, 179, 160, 0.15);
   --border-hover: rgba(95, 179, 160, 0.25);
-  
+
   --shadow-light: rgba(0, 0, 0, 0.1);
   --shadow-medium: rgba(0, 0, 0, 0.2);
   --shadow-strong: rgba(0, 0, 0, 0.3);
@@ -1875,7 +1943,7 @@ html, body {
 .profile-photo-placeholder {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #3D8D7A 0%, #5FB3A0 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #5fb3a0 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1897,7 +1965,7 @@ html, body {
     width: 50px;
     height: 50px;
   }
-  
+
   .profile-photo-placeholder svg {
     width: 28px;
     height: 28px;
@@ -1910,7 +1978,7 @@ html, body {
     width: 40px;
     height: 40px;
   }
-  
+
   .profile-photo-placeholder svg {
     width: 24px;
     height: 24px;

@@ -35,3 +35,6 @@ __pycache__/
 .env
 .env.local
 .env.*.local
+
+# Local History (VS Code extension)
+.history/

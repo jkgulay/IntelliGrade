@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-container" :class="{ 'dark': isDarkMode }">
+  <div class="dashboard-container" :class="{ dark: isDarkMode }">
     <!-- Top Navigation Bar -->
     <nav class="top-navbar">
       <div class="navbar-content">
@@ -11,21 +11,26 @@
           </div>
         </div>
         <!-- Center: Empty space for clean look -->
-        <div class="navbar-center">
-        </div>
-        
+        <div class="navbar-center"></div>
+
         <!-- Right: User Profile and Notifications -->
         <div class="navbar-right">
           <!-- Notification Bell -->
           <div class="notif-wrapper">
-            <button class="nav-icon-btn rounded-bg" @click="toggleNotifDropdown" aria-label="Notifications">
+            <button
+              class="nav-icon-btn rounded-bg"
+              @click="toggleNotifDropdown"
+              aria-label="Notifications"
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
-              <span v-if="notifications.length" class="notification-badge">{{ notifications.length }}</span>
+              <span v-if="notifications.length" class="notification-badge">{{
+                notifications.length
+              }}</span>
             </button>
-            
+
             <!-- Notification Dropdown -->
             <div v-if="showNotifDropdown" class="notification-dropdown">
               <div class="dropdown-header">
@@ -35,7 +40,12 @@
                 <div v-if="notifications.length === 0" class="no-notifications">
                   No new notifications
                 </div>
-                <div v-for="notif in notifications" :key="notif.id" class="notification-item" @click="handleNotificationClick(notif)">
+                <div
+                  v-for="notif in notifications"
+                  :key="notif.id"
+                  class="notification-item"
+                  @click="handleNotificationClick(notif)"
+                >
                   <div class="notif-content">
                     <h4>{{ notif.title }}</h4>
                     <p>{{ notif.body }}</p>
@@ -45,7 +55,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- User Profile -->
           <div class="user-profile-wrapper">
             <div class="user-profile rounded-bg" @click="toggleProfileDropdown">
@@ -56,11 +66,17 @@
                 </svg>
               </div>
               <span class="user-name">{{ fullName }}</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="dropdown-arrow">
-                <path d="M7 10l5 5 5-5z"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="dropdown-arrow"
+              >
+                <path d="M7 10l5 5 5-5z" />
               </svg>
             </div>
-            
+
             <!-- Profile Dropdown -->
             <div v-if="showProfileDropdown" class="profile-dropdown">
               <div class="dropdown-header">
@@ -77,20 +93,24 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="dropdown-menu">
                 <router-link to="/teacher/settings" class="dropdown-item">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"/>
+                    <path
+                      d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"
+                    />
                   </svg>
                   <span>Profile & Settings</span>
                 </router-link>
-                
+
                 <div class="dropdown-divider"></div>
-                
+
                 <button @click="logout" class="dropdown-item logout-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"/>
+                    <path
+                      d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"
+                    />
                   </svg>
                   <span>Logout</span>
                 </button>
@@ -102,46 +122,111 @@
     </nav>
 
     <!-- Sidebar Navigation - Custom Tooltip Labels on Hover -->
-    <aside class="sidebar" style="background:#3D8D7A; border-right:none;">
+    <aside class="sidebar" style="background: #3d8d7a; border-right: none">
       <nav class="sidebar-nav">
-        <router-link to="/teacher/dashboard" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/dashboard' }">
+        <router-link
+          to="/teacher/dashboard"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/dashboard' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M10 20v-6h4v6m5-8h3L12 3 2 12h3v8h5v-6h4v6h5v-8z" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Dashboard</span>
         </router-link>
-        <router-link to="/teacher/subjects" class="sidebar-item rounded-bg" :class="{ 'active': $route.path.includes('/teacher/subjects') }">
+        <router-link
+          to="/teacher/subjects"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path.includes('/teacher/subjects') }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="7" width="18" height="13" rx="2" />
               <path d="M3 7l9-4 9 4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Classes</span>
         </router-link>
-        <router-link to="/teacher/gradebook" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/gradebook' }">
+        <router-link
+          to="/teacher/gradebook"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/gradebook' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="4" y="4" width="16" height="16" rx="2" />
               <path d="M8 2v4M16 2v4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Gradebook</span>
         </router-link>
-        <router-link to="/teacher/upload-assessment" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/upload-assessment' }">
+        <router-link
+          to="/teacher/upload-assessment"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/upload-assessment' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M12 19V6M5 12l7-7 7 7" />
               <rect x="5" y="19" width="14" height="2" rx="1" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Upload Assessment</span>
         </router-link>
-        <router-link to="/teacher/analytics" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/analytics' }">
+        <router-link
+          to="/teacher/analytics"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/analytics' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="12" width="4" height="8" />
               <rect x="10" y="8" width="4" height="12" />
               <rect x="17" y="4" width="4" height="16" />
@@ -149,9 +234,22 @@
           </div>
           <span class="sidebar-tooltip">Analytics</span>
         </router-link>
-        <router-link to="/teacher/messages" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/messages' }">
+        <router-link
+          to="/teacher/messages"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/messages' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="M3 5l9 7 9-7" />
             </svg>
@@ -166,7 +264,7 @@
       <!-- Scroll to Top Button -->
       <button v-if="showScrollTop" @click="scrollToTop" class="scroll-to-top">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 14l5-5 5 5z"/>
+          <path d="M7 14l5-5 5 5z" />
         </svg>
       </button>
 
@@ -176,7 +274,9 @@
           <div class="header-left">
             <div class="header-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                <path
+                  d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                />
               </svg>
             </div>
             <div>
@@ -188,7 +288,12 @@
             <!-- Section Selector -->
             <div class="section-selector">
               <label for="section-select">Section:</label>
-              <select id="section-select" v-model="selectedSectionId" @change="onSectionChange" class="section-select">
+              <select
+                id="section-select"
+                v-model="selectedSectionId"
+                @change="onSectionChange"
+                class="section-select"
+              >
                 <option value="">Choose a Section</option>
                 <optgroup v-for="subject in subjects" :key="subject.id" :label="subject.name">
                   <option v-for="section in subject.sections" :key="section.id" :value="section.id">
@@ -198,8 +303,16 @@
               </select>
             </div>
             <button @click="refreshData" class="refresh-btn grade-btn" :disabled="loading">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" :class="{ 'spinning': loading }">
-                <path d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" />
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                :class="{ spinning: loading }"
+              >
+                <path
+                  d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z"
+                />
               </svg>
               Refresh
             </button>
@@ -216,7 +329,9 @@
       <!-- Error State -->
       <div v-else-if="error" class="error-container">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
+          <path
+            d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"
+          />
         </svg>
         <h3>Error Loading Data</h3>
         <p>{{ error }}</p>
@@ -227,7 +342,9 @@
       <div v-else-if="!selectedSectionId" class="no-section-state">
         <div class="empty-icon">
           <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M7,7H9V9H7V7M7,11H9V13H7V11M7,15H9V17H7V15M11,7H17V9H11V7M11,11H17V13H11V11M11,15H17V17H11V15Z" />
+            <path
+              d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M7,7H9V9H7V7M7,11H9V13H7V11M7,15H9V17H7V15M11,7H17V9H11V7M11,11H17V13H11V11M11,15H17V17H11V15Z"
+            />
           </svg>
         </div>
         <h3>Select a Section</h3>
@@ -242,11 +359,29 @@
             <h3>{{ currentSectionInfo.name }} Analytics</h3>
             <div class="header-actions">
               <span class="student-count">{{ students.length }} Students</span>
-              <button @click="exportToExcel" class="export-btn grade-btn" :disabled="!students.length">
+              <button
+                @click="exportToPDF"
+                class="export-btn grade-btn pdf-btn"
+                :disabled="!students.length"
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10.92,12.31C10.68,11.54 10.15,9.08 11.55,9.04C12.95,9 12.03,12.16 12.03,12.16C12.42,13.65 14.05,14.72 14.05,14.72C14.55,14.57 17.4,14.24 17,15.72C16.57,17.2 13.5,15.81 13.5,15.81C11.55,15.95 10.09,16.47 10.09,16.47C8.96,18.58 7.64,19.5 7.1,18.61C6.43,17.5 9.23,16.07 9.23,16.07C10.68,13.72 10.9,12.35 10.92,12.31Z"
+                  />
                 </svg>
-                Export to Excel
+                Export PDF
+              </button>
+              <button
+                @click="exportToExcel"
+                class="export-btn grade-btn"
+                :disabled="!students.length"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
+                </svg>
+                Export Excel
               </button>
             </div>
           </div>
@@ -254,7 +389,9 @@
             <div class="stat-mini">
               <div class="stat-icon">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+                  <path
+                    d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"
+                  />
                 </svg>
               </div>
               <div class="stat-content">
@@ -287,7 +424,9 @@
             <div class="stat-mini">
               <div class="stat-icon">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9,10V12H7V10H9M13,10V12H11V10H13M17,10V12H15V10H17M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H6V1H8V3H16V1H18V3H19M19,19V8H5V19H19M9,14V16H7V14H9M13,14V16H11V14H13M17,14V16H15V14H17Z" />
+                  <path
+                    d="M9,10V12H7V10H9M13,10V12H11V10H13M17,10V12H15V10H17M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H6V1H8V3H16V1H18V3H19M19,19V8H5V19H19M9,14V16H7V14H9M13,14V16H11V14H13M17,14V16H15V14H17Z"
+                  />
                 </svg>
               </div>
               <div class="stat-content">
@@ -307,16 +446,24 @@
                   <th class="student-column sticky-col">
                     <div class="header-content">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8Z" />
+                        <path
+                          d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8Z"
+                        />
                       </svg>
                       Student
                     </div>
                   </th>
-                  <th v-for="assessment in assessments" :key="assessment.id" class="assessment-column">
+                  <th
+                    v-for="assessment in assessments"
+                    :key="assessment.id"
+                    class="assessment-column"
+                  >
                     <div class="header-content">
                       <div class="assessment-title">{{ assessment.title }}</div>
                       <div class="assessment-info">
-                        <span class="assessment-type">{{ getAssessmentTypeLabel(assessment.type) }}</span>
+                        <span class="assessment-type">{{
+                          getAssessmentTypeLabel(assessment.type)
+                        }}</span>
                         <span class="assessment-points">{{ assessment.max_score }}pts</span>
                       </div>
                     </div>
@@ -324,7 +471,9 @@
                   <th class="total-column">
                     <div class="header-content">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M7,7H17V9H7V7M7,11H17V13H7V11M7,15H17V17H7V15Z" />
+                        <path
+                          d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M7,7H17V9H7V7M7,11H17V13H7V11M7,15H17V17H7V15Z"
+                        />
                       </svg>
                       Total
                     </div>
@@ -334,7 +483,7 @@
               <tbody class="gradebook-body">
                 <template v-for="student in students" :key="student.id">
                   <!-- Main Student Row -->
-                  <tr class="student-row" :class="{ 'expanded': expandedStudent === student.id }">
+                  <tr class="student-row" :class="{ expanded: expandedStudent === student.id }">
                     <td class="student-cell sticky-col" @click="toggleStudentHistory(student.id)">
                       <div class="student-info">
                         <div class="student-avatar">{{ getInitials(student.full_name) }}</div>
@@ -342,7 +491,10 @@
                           <div class="student-name">{{ student.full_name }}</div>
                           <div class="student-id">{{ student.student_id || 'N/A' }}</div>
                         </div>
-                        <button class="expand-btn" :class="{ 'rotated': expandedStudent === student.id }">
+                        <button
+                          class="expand-btn"
+                          :class="{ rotated: expandedStudent === student.id }"
+                        >
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
                           </svg>
@@ -351,7 +503,7 @@
                     </td>
                     <td v-for="assessment in assessments" :key="assessment.id" class="score-cell">
                       <div class="score-input-wrapper">
-                        <input 
+                        <input
                           v-if="assessment.type === 'manual'"
                           type="number"
                           :value="getStudentScore(student.id, assessment.id)"
@@ -363,26 +515,45 @@
                           step="0.5"
                           placeholder="--"
                         />
-                        <div v-else class="score-display auto" :class="getScoreClass(getStudentPercentage(student.id, assessment.id))">
-                          <span class="score-value">{{ getStudentScore(student.id, assessment.id) || '--' }}</span>
-                          <span v-if="getStudentScore(student.id, assessment.id)" class="score-max">/ {{ assessment.max_score }}</span>
+                        <div
+                          v-else
+                          class="score-display auto"
+                          :class="getScoreClass(getStudentPercentage(student.id, assessment.id))"
+                        >
+                          <span class="score-value">{{
+                            getStudentScore(student.id, assessment.id) || '--'
+                          }}</span>
+                          <span v-if="getStudentScore(student.id, assessment.id)" class="score-max"
+                            >/ {{ assessment.max_score }}</span
+                          >
                         </div>
-                        <div v-if="hasSubmissionPending(student.id, assessment.id)" class="pending-indicator" title="Pending Review">
+                        <div
+                          v-if="hasSubmissionPending(student.id, assessment.id)"
+                          class="pending-indicator"
+                          title="Pending Review"
+                        >
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" />
+                            <path
+                              d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"
+                            />
                           </svg>
                         </div>
                       </div>
                     </td>
                     <td class="total-cell">
-                      <div class="total-score" :class="getScoreClass(getStudentTotalPercentage(student.id))">
+                      <div
+                        class="total-score"
+                        :class="getScoreClass(getStudentTotalPercentage(student.id))"
+                      >
                         <span class="total-value">{{ getStudentTotal(student.id) }}</span>
                         <span class="total-max">/ {{ getTotalMaxScore() }}</span>
-                        <div class="total-percentage">{{ getStudentTotalPercentage(student.id) }}%</div>
+                        <div class="total-percentage">
+                          {{ getStudentTotalPercentage(student.id) }}%
+                        </div>
                       </div>
                     </td>
                   </tr>
-                  
+
                   <!-- Expandable Student History Row -->
                   <tr v-if="expandedStudent === student.id" class="student-history-row">
                     <td colspan="100%" class="history-cell">
@@ -391,27 +562,44 @@
                           <h4>{{ student.full_name }} - Detailed History</h4>
                         </div>
                         <div class="history-content">
-                          <div v-for="assessment in assessments" :key="assessment.id" class="history-item">
+                          <div
+                            v-for="assessment in assessments"
+                            :key="assessment.id"
+                            class="history-item"
+                          >
                             <div class="history-assessment">
                               <div class="assessment-name">{{ assessment.title }}</div>
                               <div class="assessment-details">
                                 <span class="score-info">
-                                  Score: {{ getStudentScore(student.id, assessment.id) || 'Not taken' }}
-                                  <span v-if="getStudentScore(student.id, assessment.id)">/ {{ assessment.max_score }}</span>
+                                  Score:
+                                  {{ getStudentScore(student.id, assessment.id) || 'Not taken' }}
+                                  <span v-if="getStudentScore(student.id, assessment.id)"
+                                    >/ {{ assessment.max_score }}</span
+                                  >
                                 </span>
-                                <span v-if="getStudentScore(student.id, assessment.id)" class="percentage-info">
+                                <span
+                                  v-if="getStudentScore(student.id, assessment.id)"
+                                  class="percentage-info"
+                                >
                                   ({{ getStudentPercentage(student.id, assessment.id) }}%)
                                 </span>
                               </div>
-                              <div v-if="hasSubmissionPending(student.id, assessment.id)" class="status-pending">
+                              <div
+                                v-if="hasSubmissionPending(student.id, assessment.id)"
+                                class="status-pending"
+                              >
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" />
+                                  <path
+                                    d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"
+                                  />
                                 </svg>
                                 Pending Review
                               </div>
-                              <button v-if="hasSubmissionToGrade(student.id, assessment.id)" 
+                              <button
+                                v-if="hasSubmissionToGrade(student.id, assessment.id)"
                                 @click="reviewStudentSubmission(student.id, assessment.id)"
-                                class="review-btn">
+                                class="review-btn"
+                              >
                                 Grade Submission
                               </button>
                             </div>
@@ -427,204 +615,251 @@
         </div>
       </div>
 
-
-    <!-- Review/Grade Modal -->
-    <div v-if="showReviewModal" class="modal-overlay" @click="closeReviewModal">
-      <div class="review-modal" @click.stop>
-        <div class="modal-header">
-          <div>
-            <h3>{{ modalMode === 'view' ? 'View Submission' : 'Grade Submission' }}</h3>
-            <p class="modal-subtitle" v-if="selectedSubmission">
-              {{ selectedSubmission.student_name }} - {{ selectedSubmission.quiz_title }}
-            </p>
-          </div>
-          <button @click="closeReviewModal" class="modal-close">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-
-        <div class="modal-content">
-          <div v-if="loadingQuestions" class="loading-questions">
-            <div class="spinner-small"></div>
-            <p>Loading questions...</p>
+      <!-- Review/Grade Modal -->
+      <div v-if="showReviewModal" class="modal-overlay" @click="closeReviewModal">
+        <div class="review-modal" @click.stop>
+          <div class="modal-header">
+            <div>
+              <h3>{{ modalMode === 'view' ? 'View Submission' : 'Grade Submission' }}</h3>
+              <p class="modal-subtitle" v-if="selectedSubmission">
+                {{ selectedSubmission.student_name }} - {{ selectedSubmission.quiz_title }}
+              </p>
+            </div>
+            <button @click="closeReviewModal" class="modal-close">
+              <i class="fas fa-times"></i>
+            </button>
           </div>
 
-          <div v-else-if="reviewQuestions.length === 0" class="no-questions">
-            <p>No questions found for this quiz.</p>
-          </div>
-
-          <div v-else class="submission-review">
-            <div class="review-summary">
-              <div class="summary-stat">
-                <span class="stat-label">Score</span>
-                <span class="stat-value">{{ calculateReviewScore() }}/{{ maxReviewScore }}</span>
-              </div>
-              <div class="summary-stat">
-                <span class="stat-label">Percentage</span>
-                <span class="stat-value">{{ calculateReviewPercentage() }}%</span>
-              </div>
-              <div class="summary-stat">
-                <span class="stat-label">Correct</span>
-                <span class="stat-value">{{ correctAnswerCount }}/{{ reviewQuestions.length }}</span>
-              </div>
+          <div class="modal-content">
+            <div v-if="loadingQuestions" class="loading-questions">
+              <div class="spinner-small"></div>
+              <p>Loading questions...</p>
             </div>
 
-            <div class="questions-review">
-              <div v-for="(question, index) in reviewQuestions" :key="question.id" class="question-review-item">
-                <div class="question-header">
-                  <div class="question-number">Q{{ index + 1 }}</div>
-                  <div class="question-result" :class="question.is_correct ? 'correct' : 'incorrect'">
-                    {{ question.is_correct ? '✓ Correct' : '✗ Incorrect' }}
-                  </div>
-                  <div class="question-points" v-if="modalMode === 'grade'">
-                    <input 
-                      v-model.number="question.manualPoints"
-                      type="number"
-                      :max="question.points"
-                      min="0"
-                      step="0.5"
-                      class="points-input"
-                      @input="updateQuestionPoints(question)"
-                    /> / {{ question.points }} pts
-                  </div>
-                  <div class="question-points" v-else>
-                    {{ question.points_earned }} / {{ question.points }} pts
-                  </div>
+            <div v-else-if="reviewQuestions.length === 0" class="no-questions">
+              <p>No questions found for this quiz.</p>
+            </div>
+
+            <div v-else class="submission-review">
+              <div class="review-summary">
+                <div class="summary-stat">
+                  <span class="stat-label">Score</span>
+                  <span class="stat-value">{{ calculateReviewScore() }}/{{ maxReviewScore }}</span>
                 </div>
+                <div class="summary-stat">
+                  <span class="stat-label">Percentage</span>
+                  <span class="stat-value">{{ calculateReviewPercentage() }}%</span>
+                </div>
+                <div class="summary-stat">
+                  <span class="stat-label">Correct</span>
+                  <span class="stat-value"
+                    >{{ correctAnswerCount }}/{{ reviewQuestions.length }}</span
+                  >
+                </div>
+              </div>
 
-                <div class="question-text">{{ question.question_text }}</div>
-
-                <!-- Multiple Choice -->
-                <div v-if="question.question_type === 'multiple_choice'" class="answer-section">
-                  <div class="answer-key-label">
-                    <strong>Answer Key:</strong> {{ getCorrectOptionLabel(question) }}
-                  </div>
-                  <div class="answer-key-label">
-                    <strong>Student's Answer:</strong> 
-                    <span v-if="question.selected_option_id">{{ getStudentOptionLabel(question) }}</span>
-                    <span v-else-if="question.answer_text">{{ question.answer_text }}</span>
-                    <span v-else style="color: #ef4444;">
-                      No answer provided
-                    </span>
-                  </div>
-                  <div class="options-grid">
-                    <div 
-                      v-for="option in question.options" 
-                      :key="option.id" 
-                      class="option-item"
-                      :class="{
-                        'selected': question.selected_option_id === option.id,
-                        'correct': option.is_correct,
-                        'incorrect': question.selected_option_id === option.id && !option.is_correct
-                      }"
+              <div class="questions-review">
+                <div
+                  v-for="(question, index) in reviewQuestions"
+                  :key="question.id"
+                  class="question-review-item"
+                >
+                  <div class="question-header">
+                    <div class="question-number">Q{{ index + 1 }}</div>
+                    <div
+                      class="question-result"
+                      :class="question.is_correct ? 'correct' : 'incorrect'"
                     >
-                      <div class="option-letter">{{ String.fromCharCode(65 + (option.option_number - 1)) }}</div>
-                      <div class="option-content">
-                        <div class="option-text">{{ option.option_text }}</div>
-                        <div v-if="option.is_correct" class="correct-tag">✓ Correct Answer</div>
-                        <div v-if="question.selected_option_id === option.id" class="selected-tag">Student's Answer</div>
+                      {{ question.is_correct ? '✓ Correct' : '✗ Incorrect' }}
+                    </div>
+                    <div class="question-points" v-if="modalMode === 'grade'">
+                      <input
+                        v-model.number="question.manualPoints"
+                        type="number"
+                        :max="question.points"
+                        min="0"
+                        step="0.5"
+                        class="points-input"
+                        @input="updateQuestionPoints(question)"
+                      />
+                      / {{ question.points }} pts
+                    </div>
+                    <div class="question-points" v-else>
+                      {{ question.points_earned }} / {{ question.points }} pts
+                    </div>
+                  </div>
+
+                  <div class="question-text">{{ question.question_text }}</div>
+
+                  <!-- Multiple Choice -->
+                  <div v-if="question.question_type === 'multiple_choice'" class="answer-section">
+                    <div class="answer-key-label">
+                      <strong>Answer Key:</strong> {{ getCorrectOptionLabel(question) }}
+                    </div>
+                    <div class="answer-key-label">
+                      <strong>Student's Answer:</strong>
+                      <span v-if="question.selected_option_id">{{
+                        getStudentOptionLabel(question)
+                      }}</span>
+                      <span v-else-if="question.answer_text">{{ question.answer_text }}</span>
+                      <span v-else style="color: #ef4444"> No answer provided </span>
+                    </div>
+                    <div class="options-grid">
+                      <div
+                        v-for="option in question.options"
+                        :key="option.id"
+                        class="option-item"
+                        :class="{
+                          selected: question.selected_option_id === option.id,
+                          correct: option.is_correct,
+                          incorrect:
+                            question.selected_option_id === option.id && !option.is_correct,
+                        }"
+                      >
+                        <div class="option-letter">
+                          {{ String.fromCharCode(65 + (option.option_number - 1)) }}
+                        </div>
+                        <div class="option-content">
+                          <div class="option-text">{{ option.option_text }}</div>
+                          <div v-if="option.is_correct" class="correct-tag">✓ Correct Answer</div>
+                          <div
+                            v-if="question.selected_option_id === option.id"
+                            class="selected-tag"
+                          >
+                            Student's Answer
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- True/False -->
-                <div v-else-if="question.question_type === 'true_false'" class="answer-section">
-                  <div class="answer-key-label">
-                    <strong>Answer Key:</strong> {{ question.correct_answer }}
-                  </div>
-                  <div class="answer-key-label">
-                    <strong>Student's Answer:</strong> 
-                    <span v-if="question.answer_text" :class="question.is_correct ? 'text-green-600' : 'text-red-600'">
-                      {{ question.answer_text }}
-                    </span>
-                    <span v-else style="color: #ef4444;">No answer provided</span>
-                  </div>
-                  <div class="true-false-options">
-                    <div class="tf-option" :class="{ 
-                      'student-selected': question.answer_text === 'true', 
-                      'correct-answer': question.correct_answer === 'true',
-                      'wrong-answer': question.answer_text === 'true' && question.correct_answer !== 'true'
-                    }">
-                      <strong>True</strong>
-                      <span v-if="question.correct_answer === 'true'" class="correct-tag">✓ Correct</span>
-                      <span v-if="question.answer_text === 'true'" class="selected-tag">Student's Answer</span>
+                  <!-- True/False -->
+                  <div v-else-if="question.question_type === 'true_false'" class="answer-section">
+                    <div class="answer-key-label">
+                      <strong>Answer Key:</strong> {{ question.correct_answer }}
                     </div>
-                    <div class="tf-option" :class="{ 
-                      'student-selected': question.answer_text === 'false', 
-                      'correct-answer': question.correct_answer === 'false',
-                      'wrong-answer': question.answer_text === 'false' && question.correct_answer !== 'false'
-                    }">
-                      <strong>False</strong>
-                      <span v-if="question.correct_answer === 'false'" class="correct-tag">✓ Correct</span>
-                      <span v-if="question.answer_text === 'false'" class="selected-tag">Student's Answer</span>
+                    <div class="answer-key-label">
+                      <strong>Student's Answer:</strong>
+                      <span
+                        v-if="question.answer_text"
+                        :class="question.is_correct ? 'text-green-600' : 'text-red-600'"
+                      >
+                        {{ question.answer_text }}
+                      </span>
+                      <span v-else style="color: #ef4444">No answer provided</span>
                     </div>
-                  </div>
-                </div>
-
-                <!-- Fill in the Blank -->
-                <div v-else-if="question.question_type === 'fill_blank'" class="answer-section">
-                  <div class="fill-blank-answers">
-                    <div class="answer-key-box">
-                      <div class="answer-label">Answer Key:</div>
-                      <div class="answer-text correct">
-                        {{ question.correct_answer }}
+                    <div class="true-false-options">
+                      <div
+                        class="tf-option"
+                        :class="{
+                          'student-selected': question.answer_text === 'true',
+                          'correct-answer': question.correct_answer === 'true',
+                          'wrong-answer':
+                            question.answer_text === 'true' && question.correct_answer !== 'true',
+                        }"
+                      >
+                        <strong>True</strong>
+                        <span v-if="question.correct_answer === 'true'" class="correct-tag"
+                          >✓ Correct</span
+                        >
+                        <span v-if="question.answer_text === 'true'" class="selected-tag"
+                          >Student's Answer</span
+                        >
+                      </div>
+                      <div
+                        class="tf-option"
+                        :class="{
+                          'student-selected': question.answer_text === 'false',
+                          'correct-answer': question.correct_answer === 'false',
+                          'wrong-answer':
+                            question.answer_text === 'false' && question.correct_answer !== 'false',
+                        }"
+                      >
+                        <strong>False</strong>
+                        <span v-if="question.correct_answer === 'false'" class="correct-tag"
+                          >✓ Correct</span
+                        >
+                        <span v-if="question.answer_text === 'false'" class="selected-tag"
+                          >Student's Answer</span
+                        >
                       </div>
                     </div>
-                    <div class="student-answer-box">
-                      <div class="answer-label">Student's Answer:</div>
-                      <div class="answer-text" :class="question.is_correct ? 'correct' : 'incorrect'">
-                        {{ question.answer_text || 'No answer' }}
+                  </div>
+
+                  <!-- Fill in the Blank -->
+                  <div v-else-if="question.question_type === 'fill_blank'" class="answer-section">
+                    <div class="fill-blank-answers">
+                      <div class="answer-key-box">
+                        <div class="answer-label">Answer Key:</div>
+                        <div class="answer-text correct">
+                          {{ question.correct_answer }}
+                        </div>
+                      </div>
+                      <div class="student-answer-box">
+                        <div class="answer-label">Student's Answer:</div>
+                        <div
+                          class="answer-text"
+                          :class="question.is_correct ? 'correct' : 'incorrect'"
+                        >
+                          {{ question.answer_text || 'No answer' }}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- Teacher Comment -->
-                <div class="teacher-comment-section" v-if="modalMode === 'grade'">
-                  <textarea 
-                    v-model="question.teacherComment"
-                    class="comment-input"
-                    placeholder="Add feedback for this question..."
-                    rows="2"
-                  ></textarea>
-                </div>
-                <div class="teacher-comment-section" v-else-if="question.teacher_comment">
-                  <div class="comment-display">
-                    <strong>Teacher's Feedback:</strong>
-                    <p>{{ question.teacher_comment }}</p>
+                  <!-- Teacher Comment -->
+                  <div class="teacher-comment-section" v-if="modalMode === 'grade'">
+                    <textarea
+                      v-model="question.teacherComment"
+                      class="comment-input"
+                      placeholder="Add feedback for this question..."
+                      rows="2"
+                    ></textarea>
+                  </div>
+                  <div class="teacher-comment-section" v-else-if="question.teacher_comment">
+                    <div class="comment-display">
+                      <strong>Teacher's Feedback:</strong>
+                      <p>{{ question.teacher_comment }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Overall Feedback -->
-            <div class="overall-feedback-section" v-if="modalMode === 'grade'">
-              <h4>Overall Feedback</h4>
-              <textarea 
-                v-model="reviewFeedback" 
-                class="feedback-textarea"
-                placeholder="Add overall feedback for the student..."
-                rows="3"
-              ></textarea>
-            </div>
-            <div class="overall-feedback-section" v-else-if="selectedSubmission?.teacher_feedback">
-              <h4>Overall Feedback</h4>
-              <div class="feedback-display">
-                <p>{{ selectedSubmission.teacher_feedback }}</p>
+              <!-- Overall Feedback -->
+              <div class="overall-feedback-section" v-if="modalMode === 'grade'">
+                <h4>Overall Feedback</h4>
+                <textarea
+                  v-model="reviewFeedback"
+                  class="feedback-textarea"
+                  placeholder="Add overall feedback for the student..."
+                  rows="3"
+                ></textarea>
+              </div>
+              <div
+                class="overall-feedback-section"
+                v-else-if="selectedSubmission?.teacher_feedback"
+              >
+                <h4>Overall Feedback</h4>
+                <div class="feedback-display">
+                  <p>{{ selectedSubmission.teacher_feedback }}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="modal-actions">
-          <button @click="closeReviewModal" class="btn-modal cancel">Close</button>
-          <button v-if="modalMode === 'grade'" @click="saveGrade" class="btn-modal primary" :disabled="savingGrade">
-            {{ savingGrade ? 'Saving...' : 'Save Grade' }}
-          </button>
+          <div class="modal-actions">
+            <button @click="closeReviewModal" class="btn-modal cancel">Close</button>
+            <button
+              v-if="modalMode === 'grade'"
+              @click="saveGrade"
+              class="btn-modal primary"
+              :disabled="savingGrade"
+            >
+              {{ savingGrade ? 'Saving...' : 'Save Grade' }}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </main>
 
     <!-- Logout Confirmation Modal -->
@@ -635,17 +870,29 @@
         </div>
         <div class="modal-body">
           <div class="logout-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-              <polyline points="16 17 21 12 16 7"/>
-              <line x1="21" y1="12" x2="9" y2="12"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
             </svg>
           </div>
           <p class="logout-message">Are you sure you want to logout?</p>
           <p class="logout-submessage">You will be redirected to the login page.</p>
         </div>
         <div class="modal-footer logout-footer">
-          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">Cancel</button>
+          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">
+            Cancel
+          </button>
           <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
             <span v-if="!isLoggingOut">Logout</span>
             <span v-else class="loading-text">
@@ -720,7 +967,7 @@ const analyticsData = computed(() => {
       averageScore: 0,
       highestScore: 0,
       lowestScore: 0,
-      submissionRate: 0
+      submissionRate: 0,
     }
   }
 
@@ -728,8 +975,8 @@ const analyticsData = computed(() => {
   let totalSubmissions = 0
   let possibleSubmissions = students.value.length * assessments.value.length
 
-  students.value.forEach(student => {
-    assessments.value.forEach(assessment => {
+  students.value.forEach((student) => {
+    assessments.value.forEach((assessment) => {
       const score = getStudentScore(student.id, assessment.id)
       if (score !== null && score !== undefined && score !== '') {
         const percentage = (score / assessment.max_score) * 100
@@ -739,32 +986,35 @@ const analyticsData = computed(() => {
     })
   })
 
-  const averageScore = scores.length > 0 ? Math.round(scores.reduce((sum, s) => sum + s, 0) / scores.length) : 0
+  const averageScore =
+    scores.length > 0 ? Math.round(scores.reduce((sum, s) => sum + s, 0) / scores.length) : 0
   const highestScore = scores.length > 0 ? Math.round(Math.max(...scores)) : 0
   const lowestScore = scores.length > 0 ? Math.round(Math.min(...scores)) : 0
-  const submissionRate = possibleSubmissions > 0 ? Math.round((totalSubmissions / possibleSubmissions) * 100) : 0
+  const submissionRate =
+    possibleSubmissions > 0 ? Math.round((totalSubmissions / possibleSubmissions) * 100) : 0
 
   return {
     averageScore,
-    highestScore, 
+    highestScore,
     lowestScore,
-    submissionRate
+    submissionRate,
   }
 })
 
 const correctAnswerCount = computed(() => {
-  return reviewQuestions.value.filter(q => q.is_correct).length
+  return reviewQuestions.value.filter((q) => q.is_correct).length
 })
 
 const maxReviewScore = computed(() => {
   return reviewQuestions.value.reduce((sum, q) => sum + (q.points || 1), 0)
 })
 
-
-
 const getTeacherInfo = async () => {
   try {
-    const { data: { user }, error: userError } = await supabase.auth.getUser()
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser()
     if (userError || !user) {
       error.value = 'Authentication error'
       return false
@@ -815,9 +1065,10 @@ const fetchSubjects = async () => {
     // Get subjects with sections
     const { data: subjectsData, error: subjectsError } = await supabase
       .from('subjects')
-      .select(`
-        id, 
-        name, 
+      .select(
+        `
+        id,
+        name,
         grade_level,
         sections!inner(
           id,
@@ -825,7 +1076,8 @@ const fetchSubjects = async () => {
           section_code,
           is_active
         )
-      `)
+      `,
+      )
       .eq('teacher_id', teacherId.value)
       .eq('is_active', true)
       .eq('sections.is_active', true)
@@ -835,12 +1087,13 @@ const fetchSubjects = async () => {
     console.log('📚 Found subjects with sections:', subjectsData?.length || 0)
 
     // Process the data for dropdown
-    subjects.value = subjectsData?.map(subject => ({
-      id: subject.id,
-      name: subject.name,
-      grade_level: subject.grade_level,
-      sections: subject.sections || []
-    })) || []
+    subjects.value =
+      subjectsData?.map((subject) => ({
+        id: subject.id,
+        name: subject.name,
+        grade_level: subject.grade_level,
+        sections: subject.sections || [],
+      })) || []
 
     console.log('✅ Processed subjects:', subjects.value)
   } catch (err) {
@@ -880,10 +1133,12 @@ const fetchGradebookData = async (sectionId) => {
   // Get section info
   const { data: sectionInfo, error: sectionError } = await supabase
     .from('sections')
-    .select(`
+    .select(
+      `
       id, name, section_code, subject_id,
       subjects(name, grade_level)
-    `)
+    `,
+    )
     .eq('id', sectionId)
     .single()
 
@@ -893,15 +1148,17 @@ const fetchGradebookData = async (sectionId) => {
   // Get students in this section
   const { data: studentsData, error: studentsError } = await supabase
     .from('enrollments')
-    .select(`
+    .select(
+      `
       student_id,
       students(id, full_name, email, student_id)
-    `)
+    `,
+    )
     .eq('section_id', sectionId)
     .eq('status', 'active')
 
   if (studentsError) throw studentsError
-  students.value = studentsData?.map(enrollment => enrollment.students) || []
+  students.value = studentsData?.map((enrollment) => enrollment.students) || []
 
   // Get quizzes (auto-graded assessments) for this section
   const { data: quizzesData, error: quizzesError } = await supabase
@@ -920,15 +1177,15 @@ const fetchGradebookData = async (sectionId) => {
       .from('quiz_questions')
       .select('points')
       .eq('quiz_id', quiz.id)
-    
+
     const totalPoints = questionsData?.reduce((sum, q) => sum + (q.points || 0), 0) || 100
-    
+
     quizzesWithPoints.push({
       id: quiz.id,
       title: quiz.title,
       type: 'auto',
       max_score: totalPoints,
-      created_at: quiz.created_at
+      created_at: quiz.created_at,
     })
   }
 
@@ -936,34 +1193,34 @@ const fetchGradebookData = async (sectionId) => {
   // For now, we'll create some sample manual assessments
   const manualAssessments = [
     { id: 'manual_1', title: 'Assignment 1', type: 'manual', max_score: 50 },
-    { id: 'manual_2', title: 'Activity 1', type: 'manual', max_score: 25 }
+    { id: 'manual_2', title: 'Activity 1', type: 'manual', max_score: 25 },
   ]
 
   // Combine all assessments
-  const allAssessments = [
-    ...quizzesWithPoints,
-    ...manualAssessments
-  ]
+  const allAssessments = [...quizzesWithPoints, ...manualAssessments]
 
   assessments.value = allAssessments
 
   // Get quiz attempts/results for gradebook
   if (quizzesWithPoints && quizzesWithPoints.length > 0) {
-    const quizIds = quizzesWithPoints.map(q => q.id)
+    const quizIds = quizzesWithPoints.map((q) => q.id)
     const { data: attemptsData } = await supabase
       .from('quiz_attempts')
       .select('student_id, quiz_id, total_score, status, submitted_at')
       .in('quiz_id', quizIds)
-      .in('student_id', students.value.map(s => s.id))
+      .in(
+        'student_id',
+        students.value.map((s) => s.id),
+      )
       .order('submitted_at', { ascending: false })
 
     // Process attempts into gradebook data structure
     const newGradebookData = {}
-    students.value.forEach(student => {
+    students.value.forEach((student) => {
       newGradebookData[student.id] = {}
     })
 
-    attemptsData?.forEach(attempt => {
+    attemptsData?.forEach((attempt) => {
       // Only take the latest attempt for each student-quiz combination
       if (!newGradebookData[attempt.student_id][attempt.quiz_id]) {
         newGradebookData[attempt.student_id][attempt.quiz_id] = attempt.total_score
@@ -976,7 +1233,7 @@ const fetchGradebookData = async (sectionId) => {
   console.log('✅ Gradebook data loaded:', {
     section: sectionInfo.name,
     students: students.value.length,
-    assessments: assessments.value.length
+    assessments: assessments.value.length,
   })
 }
 
@@ -987,14 +1244,14 @@ const getStudentScore = (studentId, assessmentId) => {
 
 const getStudentPercentage = (studentId, assessmentId) => {
   const score = getStudentScore(studentId, assessmentId)
-  const assessment = assessments.value.find(a => a.id === assessmentId)
+  const assessment = assessments.value.find((a) => a.id === assessmentId)
   if (!score || !assessment) return 0
   return Math.round((score / assessment.max_score) * 100)
 }
 
 const getStudentTotal = (studentId) => {
   let total = 0
-  assessments.value.forEach(assessment => {
+  assessments.value.forEach((assessment) => {
     const score = getStudentScore(studentId, assessment.id)
     if (score) total += score
   })
@@ -1018,10 +1275,8 @@ const getAssessmentTypeLabel = (type) => {
 
 const hasSubmissionPending = (studentId, assessmentId) => {
   // Check if there's a pending submission for this student-assessment combination
-  return submissions.value.some(s => 
-    s.student_id === studentId && 
-    s.quiz_id === assessmentId && 
-    s.status === 'submitted'
+  return submissions.value.some(
+    (s) => s.student_id === studentId && s.quiz_id === assessmentId && s.status === 'submitted',
   )
 }
 
@@ -1049,10 +1304,10 @@ const saveManualScore = async (studentId, assessmentId) => {
 
 const reviewStudentSubmission = async (studentId, assessmentId) => {
   // Find the submission to review
-  const submission = submissions.value.find(s => 
-    s.student_id === studentId && s.quiz_id === assessmentId
+  const submission = submissions.value.find(
+    (s) => s.student_id === studentId && s.quiz_id === assessmentId,
   )
-  
+
   if (submission) {
     await reviewSubmission(submission)
   }
@@ -1061,14 +1316,14 @@ const reviewStudentSubmission = async (studentId, assessmentId) => {
 const refreshData = async () => {
   console.log('  Manual refresh triggered...')
   loading.value = true
-  
+
   try {
     await fetchSubjects()
-    
+
     if (selectedSectionId.value) {
       await fetchGradebookData(selectedSectionId.value)
     }
-    
+
     console.log('✅ Manual refresh completed')
   } catch (error) {
     console.error('❌ Error during manual refresh:', error)
@@ -1086,7 +1341,7 @@ const loadQuestionsAndAnswers = async (submission) => {
       id: submission.id,
       quiz_id: submission.quiz_id,
       student_id: submission.student_id,
-      student_name: submission.student_name
+      student_name: submission.student_name,
     })
 
     // Get questions first
@@ -1108,7 +1363,7 @@ const loadQuestionsAndAnswers = async (submission) => {
       return
     }
 
-    const questionIds = questions.map(q => q.id)
+    const questionIds = questions.map((q) => q.id)
     console.log('🔢 Question IDs:', questionIds)
 
     // Get question options first
@@ -1155,7 +1410,11 @@ const loadQuestionsAndAnswers = async (submission) => {
 
     console.log('📋 Options data:', optionsRes.data?.length || 0, optionsRes.data)
     console.log('✅ Correct answers data:', answersRes.data?.length || 0, answersRes.data)
-    console.log('👤 Student answers data:', studentAnswersRes.data?.length || 0, studentAnswersRes.data)
+    console.log(
+      '👤 Student answers data:',
+      studentAnswersRes.data?.length || 0,
+      studentAnswersRes.data,
+    )
 
     if (optionsRes.error) console.error('Options error:', optionsRes.error)
     if (answersRes.error) console.error('Answers error:', answersRes.error)
@@ -1166,33 +1425,35 @@ const loadQuestionsAndAnswers = async (submission) => {
       found: studentAnswersRes.data?.length || 0,
       attemptId: submission.id,
       questionIds: questionIds,
-      studentAnswers: studentAnswersRes.data
+      studentAnswers: studentAnswersRes.data,
     })
 
     // If no student answers found, try comprehensive search
     if (!studentAnswersRes.data || studentAnswersRes.data.length === 0) {
       console.log('🔍 No student answers found, trying multiple approaches...')
-      
+
       // Try 1: Get all answers for this attempt (no filters)
       const { data: allAnswers, error: allError } = await supabase
         .from('student_answers')
         .select('*')
         .eq('attempt_id', submission.id)
-      
+
       console.log('🔍 All answers for attempt:', allAnswers?.length || 0, allAnswers)
-      
+
       // Try 2: Get answers by student and quiz combination
       const { data: studentQuizAnswers, error: sqError } = await supabase
         .from('student_answers')
-        .select(`
+        .select(
+          `
           *,
           quiz_attempts!inner(quiz_id, student_id)
-        `)
+        `,
+        )
         .eq('quiz_attempts.quiz_id', submission.quiz_id)
         .eq('quiz_attempts.student_id', submission.student_id)
-      
+
       console.log('🔍 Student-quiz answers:', studentQuizAnswers?.length || 0, studentQuizAnswers)
-      
+
       // Use whichever approach found data
       if (allAnswers && allAnswers.length > 0) {
         studentAnswersRes.data = allAnswers
@@ -1209,13 +1470,13 @@ const loadQuestionsAndAnswers = async (submission) => {
       .from('student_answers')
       .select('*')
       .eq('attempt_id', submission.id)
-    
+
     console.log('🔍 Raw debug query result:', debugAnswers?.length || 0, debugAnswers)
     if (debugError) console.error('Debug query error:', debugError)
 
     // Create lookup maps with better validation
     const optionsMap = {}
-    optionsRes.data?.forEach(opt => {
+    optionsRes.data?.forEach((opt) => {
       if (!optionsMap[opt.question_id]) {
         optionsMap[opt.question_id] = []
       }
@@ -1223,18 +1484,18 @@ const loadQuestionsAndAnswers = async (submission) => {
     })
 
     const answersMap = {}
-    answersRes.data?.forEach(ans => {
+    answersRes.data?.forEach((ans) => {
       answersMap[ans.question_id] = ans
     })
 
     const studentAnswersMap = {}
-    studentAnswersRes.data?.forEach(sa => {
+    studentAnswersRes.data?.forEach((sa) => {
       console.log('📝 Mapping student answer:', {
         id: sa.id,
         question_id: sa.question_id,
         selected_option_id: sa.selected_option_id,
         answer_text: sa.answer_text,
-        attempt_id: sa.attempt_id
+        attempt_id: sa.attempt_id,
       })
       studentAnswersMap[sa.question_id] = sa
     })
@@ -1248,12 +1509,12 @@ const loadQuestionsAndAnswers = async (submission) => {
         hasSelectedOption: !!answer.selected_option_id,
         hasAnswerText: !!answer.answer_text,
         selectedOptionId: answer.selected_option_id,
-        answerText: answer.answer_text
-      }))
+        answerText: answer.answer_text,
+      })),
     })
 
     // Process the questions with enhanced logic
-    reviewQuestions.value = questions.map(q => {
+    reviewQuestions.value = questions.map((q) => {
       const studentAnswer = studentAnswersMap[q.id] || {}
       const correctAnswer = answersMap[q.id]
       const questionOptions = optionsMap[q.id] || []
@@ -1263,17 +1524,17 @@ const loadQuestionsAndAnswers = async (submission) => {
           id: studentAnswer.id,
           selected_option_id: studentAnswer.selected_option_id,
           answer_text: studentAnswer.answer_text,
-          hasData: !!Object.keys(studentAnswer).length
+          hasData: !!Object.keys(studentAnswer).length,
         },
         correctAnswer,
         questionOptions: questionOptions.length,
-        optionsList: questionOptions.map(opt => ({
+        optionsList: questionOptions.map((opt) => ({
           id: opt.id,
           number: opt.option_number,
           text: opt.option_text,
-          correct: opt.is_correct
+          correct: opt.is_correct,
         })),
-        type: q.question_type
+        type: q.question_type,
       })
 
       // Determine if answer is correct based on question type
@@ -1282,14 +1543,14 @@ const loadQuestionsAndAnswers = async (submission) => {
 
       if (q.question_type === 'multiple_choice') {
         // Find correct option
-        const correctOption = questionOptions.find(opt => opt.is_correct)
+        const correctOption = questionOptions.find((opt) => opt.is_correct)
         correctAnswerText = correctOption ? correctOption.option_text : 'No correct option found'
-        
+
         console.log(`Multiple choice analysis:`, {
           correctOption,
           studentSelectedId: studentAnswer.selected_option_id,
           studentAnswerText: studentAnswer.answer_text,
-          allOptions: questionOptions
+          allOptions: questionOptions,
         })
 
         // Check if student selected the correct option by ID
@@ -1299,13 +1560,13 @@ const loadQuestionsAndAnswers = async (submission) => {
         // Enhanced fallback logic for answer_text matching
         else if (studentAnswer.answer_text && questionOptions.length > 0) {
           const answerText = studentAnswer.answer_text.toString().toLowerCase().trim()
-          
+
           console.log(`🔍 Trying to match answer_text: "${answerText}" for question ${q.id}`)
-          
+
           // Method 1: Check if it's a number (like "1", "2", etc.)
           if (/^\d+$/.test(answerText)) {
             const optionNumber = parseInt(answerText)
-            const selectedOption = questionOptions.find(opt => opt.option_number === optionNumber)
+            const selectedOption = questionOptions.find((opt) => opt.option_number === optionNumber)
             if (selectedOption) {
               console.log(`✅ Matched by option number: ${optionNumber}`)
               if (selectedOption.is_correct) isCorrect = true
@@ -1314,8 +1575,8 @@ const loadQuestionsAndAnswers = async (submission) => {
           }
           // Method 2: Check if it matches option text exactly
           else {
-            const matchedOption = questionOptions.find(opt => 
-              opt.option_text.toLowerCase().trim() === answerText
+            const matchedOption = questionOptions.find(
+              (opt) => opt.option_text.toLowerCase().trim() === answerText,
             )
             if (matchedOption) {
               console.log(`✅ Matched by option text: "${matchedOption.option_text}"`)
@@ -1325,7 +1586,7 @@ const loadQuestionsAndAnswers = async (submission) => {
             // Method 3: Check if it matches option letter (A, B, C, etc.)
             else if (/^[a-zA-Z]$/.test(answerText)) {
               const letterIndex = answerText.toUpperCase().charCodeAt(0) - 65 + 1
-              const letterOption = questionOptions.find(opt => opt.option_number === letterIndex)
+              const letterOption = questionOptions.find((opt) => opt.option_number === letterIndex)
               if (letterOption) {
                 console.log(`✅ Matched by letter: ${answerText.toUpperCase()}`)
                 if (letterOption.is_correct) isCorrect = true
@@ -1334,7 +1595,7 @@ const loadQuestionsAndAnswers = async (submission) => {
             }
           }
         }
-        
+
         // If we still don't have a selected_option_id but have answer_text, use it for display
         if (!studentAnswer.selected_option_id && studentAnswer.answer_text) {
           console.log(`⚠️ Could not match answer_text "${studentAnswer.answer_text}" to any option`)
@@ -1348,11 +1609,13 @@ const loadQuestionsAndAnswers = async (submission) => {
         correctAnswerText = correctAnswer?.correct_answer
         if (correctAnswerText && studentAnswer.answer_text) {
           // Case-insensitive comparison, trimmed
-          isCorrect = studentAnswer.answer_text.trim().toLowerCase() === correctAnswerText.trim().toLowerCase()
+          isCorrect =
+            studentAnswer.answer_text.trim().toLowerCase() ===
+            correctAnswerText.trim().toLowerCase()
         }
       }
 
-      const pointsEarned = isCorrect ? (q.points || 1) : 0
+      const pointsEarned = isCorrect ? q.points || 1 : 0
 
       console.log(`Question ${q.question_number} final result:`, {
         type: q.question_type,
@@ -1362,7 +1625,7 @@ const loadQuestionsAndAnswers = async (submission) => {
         answer_text: studentAnswer.answer_text,
         is_correct: isCorrect,
         points_earned: pointsEarned,
-        studentAnswerObject: studentAnswer
+        studentAnswerObject: studentAnswer,
       })
 
       return {
@@ -1380,7 +1643,7 @@ const loadQuestionsAndAnswers = async (submission) => {
         teacher_comment: studentAnswer.teacher_comment || '',
         manualPoints: pointsEarned,
         teacherComment: studentAnswer.teacher_comment || '',
-        student_answer_id: studentAnswer.id || null
+        student_answer_id: studentAnswer.id || null,
       }
     })
 
@@ -1441,7 +1704,7 @@ const closeReviewModal = () => {
 }
 
 const getCorrectOptionLabel = (question) => {
-  const correctOption = question.options.find(opt => opt.is_correct)
+  const correctOption = question.options.find((opt) => opt.is_correct)
   if (correctOption) {
     return String.fromCharCode(65 + correctOption.option_number - 1)
   }
@@ -1449,41 +1712,41 @@ const getCorrectOptionLabel = (question) => {
 }
 
 const getStudentOptionLabel = (question) => {
-  const selectedOption = question.options.find(opt => opt.id === question.selected_option_id)
+  const selectedOption = question.options.find((opt) => opt.id === question.selected_option_id)
   if (selectedOption) {
     return String.fromCharCode(65 + (selectedOption.option_number - 1))
   }
-  
+
   // Enhanced fallback: if we have answer_text but no selected_option_id, try comprehensive matching
   if (question.answer_text && question.options.length > 0) {
     const answerText = question.answer_text.toString().toLowerCase().trim()
-    
+
     // Method 1: Check if it's a number (like "1", "2", etc.)
     if (/^\d+$/.test(answerText)) {
       const optionNumber = parseInt(answerText)
-      const matchedOption = question.options.find(opt => opt.option_number === optionNumber)
+      const matchedOption = question.options.find((opt) => opt.option_number === optionNumber)
       if (matchedOption) {
         return String.fromCharCode(65 + (matchedOption.option_number - 1))
       }
     }
-    
+
     // Method 2: Check if it's already a letter (A, B, C, etc.)
     if (/^[a-zA-Z]$/.test(answerText)) {
       return answerText.toUpperCase()
     }
-    
+
     // Method 3: Try to match by option text
-    const textMatchedOption = question.options.find(opt => 
-      opt.option_text.toLowerCase().trim() === answerText
+    const textMatchedOption = question.options.find(
+      (opt) => opt.option_text.toLowerCase().trim() === answerText,
     )
     if (textMatchedOption) {
       return String.fromCharCode(65 + (textMatchedOption.option_number - 1))
     }
-    
+
     // If no match found, show the raw answer with indication
     return `"${question.answer_text}"`
   }
-  
+
   return 'No answer'
 }
 
@@ -1504,18 +1767,18 @@ const saveGrade = async () => {
         teacher_feedback: reviewFeedback.value,
         manually_reviewed: true,
         graded_by: teacherId.value,
-        graded_at: new Date().toISOString()
+        graded_at: new Date().toISOString(),
       })
       .eq('id', selectedSubmission.value.id)
 
     if (updateError) throw updateError
 
     const answerUpdates = reviewQuestions.value
-      .filter(q => q.student_answer_id)
-      .map(q => ({
+      .filter((q) => q.student_answer_id)
+      .map((q) => ({
         id: q.student_answer_id,
         teacher_comment: q.teacherComment || null,
-        points_earned: parseFloat(q.manualPoints) || 0
+        points_earned: parseFloat(q.manualPoints) || 0,
       }))
 
     if (answerUpdates.length > 0) {
@@ -1524,15 +1787,14 @@ const saveGrade = async () => {
           .from('student_answers')
           .update({
             teacher_comment: update.teacher_comment,
-            points_earned: update.points_earned
+            points_earned: update.points_earned,
           })
           .eq('id', update.id)
       }
     }
 
-    await supabase
-      .from('quiz_results')
-      .upsert({
+    await supabase.from('quiz_results').upsert(
+      {
         quiz_id: selectedSubmission.value.quiz_id,
         student_id: selectedSubmission.value.student_id,
         best_attempt_id: selectedSubmission.value.id,
@@ -1542,13 +1804,15 @@ const saveGrade = async () => {
         latest_attempt_date: selectedSubmission.value.submitted_at,
         status: 'graded',
         finalized: true,
-        visible_to_student: true
-      }, {
+        visible_to_student: true,
+      },
+      {
         onConflict: 'quiz_id,student_id',
-        ignoreDuplicates: false
-      })
+        ignoreDuplicates: false,
+      },
+    )
 
-    const index = submissions.value.findIndex(s => s.id === selectedSubmission.value.id)
+    const index = submissions.value.findIndex((s) => s.id === selectedSubmission.value.id)
     if (index !== -1) {
       submissions.value[index].status = 'graded'
       submissions.value[index].total_score = finalScore
@@ -1582,7 +1846,12 @@ const getSortIcon = (field) => {
 
 const getInitials = (name) => {
   if (!name) return '?'
-  return name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2)
+  return name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
+    .substring(0, 2)
 }
 
 const formatDate = (dateString) => {
@@ -1597,10 +1866,10 @@ const formatTime = (dateString) => {
 
 const getStatusText = (status) => {
   const map = {
-    'in_progress': 'In Progress',
-    'submitted': 'Pending Review',
-    'graded': 'Graded',
-    'reviewed': 'Reviewed'
+    in_progress: 'In Progress',
+    submitted: 'Pending Review',
+    graded: 'Graded',
+    reviewed: 'Reviewed',
   }
   return map[status] || status
 }
@@ -1614,77 +1883,107 @@ const getScoreClass = (percentage) => {
 
 const getSubjectIconSvg = (subjectName) => {
   const name = subjectName.toLowerCase()
-  
-  if (name.includes('math') || name.includes('algebra') || name.includes('geometry') || name.includes('calculus')) {
+
+  if (
+    name.includes('math') ||
+    name.includes('algebra') ||
+    name.includes('geometry') ||
+    name.includes('calculus')
+  ) {
     return '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M7,7H9V9H7V7M7,11H9V13H7V11M7,15H9V17H7V15M11,7H17V9H11V7M11,11H17V13H11V11M11,15H17V17H11V15Z" /></svg>'
   }
-  
+
   if (name.includes('english') || name.includes('literature') || name.includes('writing')) {
     return '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" /></svg>'
   }
-  
-  if (name.includes('science') || name.includes('biology') || name.includes('chemistry') || name.includes('physics')) {
+
+  if (
+    name.includes('science') ||
+    name.includes('biology') ||
+    name.includes('chemistry') ||
+    name.includes('physics')
+  ) {
     return '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5,13H6.5L9.5,6H14.5L17.5,13H19L15.5,4H8.5L5,13M15,16A1,1 0 0,1 16,17A1,1 0 0,1 15,18A1,1 0 0,1 14,17A1,1 0 0,1 15,16M15,10A1,1 0 0,1 16,11A1,1 0 0,1 15,12A1,1 0 0,1 14,11A1,1 0 0,1 15,10Z" /></svg>'
   }
-  
+
   if (name.includes('filipino') || name.includes('tagalog')) {
     return '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.87,15.07L15.28,17.48L17.48,15.28L15.07,12.87L17.48,10.46L15.28,8.26L12.87,10.67L10.46,8.26L8.26,10.46L10.67,12.87L8.26,15.28L10.46,17.48L12.87,15.07M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M10,10.5C10,9.67 9.33,9 8.5,9C7.67,9 7,9.67 7,10.5C7,11.33 7.67,12 8.5,12C9.33,12 10,11.33 10,10.5M12,14C12,11.34 14.33,9.2 17.35,9.04C17.75,6.27 15.41,4 12.5,4C9.59,4 7.25,6.27 7.65,9.04C10.67,9.2 13,11.34 13,14H12Z" /></svg>'
   }
-  
+
   if (name.includes('history') || name.includes('social')) {
     return '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13,3V9H21V3M13,21H21V11H13M3,21H11V15H3M3,13H11V3H3V13Z" /></svg>'
   }
-  
+
   if (name.includes('art') || name.includes('music') || name.includes('creative')) {
     return '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12,3V13.55C11.41,13.21 10.73,13 10,13A4,4 0 0,0 6,17A4,4 0 0,0 10,21A4,4 0 0,0 14,17V7H18V3H12Z" /></svg>'
   }
-  
+
   if (name.includes('pe') || name.includes('physical') || name.includes('sports')) {
     return '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5,2A7.5,7.5 0 0,1 14,9.5C14,10.87 13.61,12.14 12.94,13.22L19.07,19.36L17.66,20.78L11.5,14.63C10.42,15.28 9.17,15.67 7.83,15.67A7.67,7.67 0 0,1 0.17,8A7.5,7.5 0 0,1 6.5,2M6.5,4A5.5,5.5 0 0,0 1,9.5A5.5,5.5 0 0,0 6.5,15A5.5,5.5 0 0,0 12,9.5A5.5,5.5 0 0,0 6.5,4Z" /></svg>'
   }
-  
-  if (name.includes('computer') || name.includes('ict') || name.includes('programming') || name.includes('technology')) {
+
+  if (
+    name.includes('computer') ||
+    name.includes('ict') ||
+    name.includes('programming') ||
+    name.includes('technology')
+  ) {
     return '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z" /></svg>'
   }
-  
+
   return '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3.9 19 5 18.1 5 17V9H19C20.1 9 21 8.1 21 7V5C21 3.9 20.1 3 19 3Z" /></svg>'
 }
 
 const getSubjectIconColor = (subjectName) => {
   const name = subjectName.toLowerCase()
-  
-  if (name.includes('math') || name.includes('algebra') || name.includes('geometry') || name.includes('calculus')) {
+
+  if (
+    name.includes('math') ||
+    name.includes('algebra') ||
+    name.includes('geometry') ||
+    name.includes('calculus')
+  ) {
     return '#2563eb'
   }
-  
+
   if (name.includes('english') || name.includes('literature') || name.includes('writing')) {
     return '#dc2626'
   }
-  
-  if (name.includes('science') || name.includes('biology') || name.includes('chemistry') || name.includes('physics')) {
+
+  if (
+    name.includes('science') ||
+    name.includes('biology') ||
+    name.includes('chemistry') ||
+    name.includes('physics')
+  ) {
     return '#16a34a'
   }
-  
+
   if (name.includes('filipino') || name.includes('tagalog')) {
     return '#ca8a04'
   }
-  
+
   if (name.includes('history') || name.includes('social')) {
     return '#9333ea'
   }
-  
+
   if (name.includes('art') || name.includes('music') || name.includes('creative')) {
     return '#ec4899'
   }
-  
+
   if (name.includes('pe') || name.includes('physical') || name.includes('sports')) {
     return '#ea580c'
   }
-  
-  if (name.includes('computer') || name.includes('ict') || name.includes('programming') || name.includes('technology')) {
+
+  if (
+    name.includes('computer') ||
+    name.includes('ict') ||
+    name.includes('programming') ||
+    name.includes('technology')
+  ) {
     return '#0891b2'
   }
-  
+
   return '#3D8D7A'
 }
 
@@ -1720,22 +2019,28 @@ const closeLogoutModal = () => {
   showLogoutModal.value = false
 }
 
-const confirmLogout = () => {
+const confirmLogout = async () => {
   console.log('🚪 Logging out...')
-  
-  // Clear storage immediately
+  isLoggingOut.value = true
+
   localStorage.clear()
   sessionStorage.clear()
-  
-  // Sign out from Supabase (don't wait)
-  supabase.auth.signOut().catch(err => console.log('Signout error:', err))
-  
-  // Immediate redirect - no waiting!
-  setTimeout(() => {
-    window.location.assign('/login')
-  }, 100)
-  
-  console.log('✅ Logout initiated')
+
+  const forceRedirect = setTimeout(() => {
+    window.location.replace('/login')
+  }, 2000)
+
+  try {
+    await Promise.race([
+      supabase.auth.signOut(),
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+    ])
+  } catch (err) {
+    console.error('❌ Logout error:', err)
+  } finally {
+    clearTimeout(forceRedirect)
+    window.location.replace('/login')
+  }
 }
 
 const logout = () => {
@@ -1755,36 +2060,36 @@ const exportToExcel = () => {
 
   // Prepare data for Excel export
   const exportData = []
-  
+
   // Header row
   const headers = ['Student Name', 'Student ID']
-  assessments.value.forEach(assessment => {
+  assessments.value.forEach((assessment) => {
     headers.push(`${assessment.title} (${assessment.max_score}pts)`)
   })
   headers.push('Total', 'Percentage')
   exportData.push(headers)
-  
+
   // Student data rows
-  students.value.forEach(student => {
+  students.value.forEach((student) => {
     const row = [student.full_name, student.student_id || 'N/A']
-    
+
     // Assessment scores
-    assessments.value.forEach(assessment => {
+    assessments.value.forEach((assessment) => {
       const score = getStudentScore(student.id, assessment.id)
       row.push(score !== null ? score : '--')
     })
-    
+
     // Total and percentage
     row.push(getStudentTotal(student.id))
     row.push(`${getStudentTotalPercentage(student.id)}%`)
-    
+
     exportData.push(row)
   })
-  
+
   // Create workbook and worksheet
   const wb = XLSX.utils.book_new()
   const ws = XLSX.utils.aoa_to_sheet(exportData)
-  
+
   // Set column widths
   const colWidths = [
     { wch: 25 }, // Student Name
@@ -1794,18 +2099,205 @@ const exportToExcel = () => {
     colWidths.push({ wch: 12 }) // Assessment columns
   })
   colWidths.push({ wch: 10 }, { wch: 12 }) // Total, Percentage
-  
+
   ws['!cols'] = colWidths
-  
+
   // Add worksheet to workbook
   const sheetName = `${currentSectionInfo.value.name || 'Gradebook'}_${new Date().toISOString().split('T')[0]}`
   XLSX.utils.book_append_sheet(wb, ws, sheetName)
-  
+
   // Download file
   const fileName = `${currentSectionInfo.value.name || 'Gradebook'}_${new Date().toISOString().split('T')[0]}.xlsx`
   XLSX.writeFile(wb, fileName)
-  
+
   console.log('✅ Gradebook exported to Excel:', fileName)
+}
+
+// PDF Export Function - Creates printable table for browser PDF export
+const exportToPDF = () => {
+  if (!selectedSectionId.value || !students.value.length) {
+    alert('Please select a section with students to export')
+    return
+  }
+
+  // Create printable HTML content
+  const sectionName = currentSectionInfo.value.name || 'Class Record'
+  const exportDate = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+
+  let tableHTML = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>${sectionName} - Class Record</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+          font-family: 'Segoe UI', Arial, sans-serif;
+          padding: 20px;
+          color: #1f2937;
+        }
+        .header {
+          text-align: center;
+          margin-bottom: 20px;
+          padding-bottom: 15px;
+          border-bottom: 2px solid #3D8D7A;
+        }
+        .header h1 {
+          color: #3D8D7A;
+          font-size: 24px;
+          margin-bottom: 5px;
+        }
+        .header p {
+          color: #6b7280;
+          font-size: 14px;
+        }
+        .summary {
+          display: flex;
+          justify-content: space-around;
+          margin-bottom: 20px;
+          padding: 15px;
+          background: #f0fdf4;
+          border-radius: 8px;
+        }
+        .summary-item {
+          text-align: center;
+        }
+        .summary-value {
+          font-size: 24px;
+          font-weight: bold;
+          color: #3D8D7A;
+        }
+        .summary-label {
+          font-size: 12px;
+          color: #6b7280;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+          font-size: 11px;
+        }
+        th, td {
+          border: 1px solid #e5e7eb;
+          padding: 8px 6px;
+          text-align: left;
+        }
+        th {
+          background: #3D8D7A;
+          color: white;
+          font-weight: 600;
+          text-align: center;
+        }
+        td { text-align: center; }
+        td:first-child, td:nth-child(2) { text-align: left; }
+        tr:nth-child(even) { background: #f9fafb; }
+        .total-col { background: #dcfce7; font-weight: bold; }
+        .percent-col { background: #dbeafe; font-weight: bold; }
+        .excellent { color: #166534; }
+        .good { color: #1e40af; }
+        .satisfactory { color: #92400e; }
+        .needs-help { color: #dc2626; }
+        .footer {
+          margin-top: 30px;
+          text-align: center;
+          font-size: 11px;
+          color: #9ca3af;
+        }
+        @media print {
+          body { padding: 10px; }
+          .summary { break-inside: avoid; }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>📚 ${sectionName}</h1>
+        <p>Class Record • Generated on ${exportDate}</p>
+      </div>
+
+      <div class="summary">
+        <div class="summary-item">
+          <div class="summary-value">${students.value.length}</div>
+          <div class="summary-label">Students</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value">${assessments.value.length}</div>
+          <div class="summary-label">Assessments</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value">${analyticsData.value.averageScore}%</div>
+          <div class="summary-label">Class Average</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value">${analyticsData.value.highestScore}%</div>
+          <div class="summary-label">Highest</div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>ID</th>
+  `
+
+  // Add assessment headers
+  assessments.value.forEach((assessment) => {
+    tableHTML += `<th>${assessment.title}<br><small>(${assessment.max_score}pts)</small></th>`
+  })
+  tableHTML += `<th class="total-col">Total</th><th class="percent-col">%</th></tr></thead><tbody>`
+
+  // Add student rows
+  students.value.forEach((student) => {
+    const percentage = getStudentTotalPercentage(student.id)
+    const percentClass =
+      percentage >= 90
+        ? 'excellent'
+        : percentage >= 80
+          ? 'good'
+          : percentage >= 75
+            ? 'satisfactory'
+            : 'needs-help'
+
+    tableHTML += `<tr><td>${student.full_name}</td><td>${student.student_id || 'N/A'}</td>`
+
+    assessments.value.forEach((assessment) => {
+      const score = getStudentScore(student.id, assessment.id)
+      tableHTML += `<td>${score !== null ? score : '--'}</td>`
+    })
+
+    tableHTML += `<td class="total-col">${getStudentTotal(student.id)}</td>`
+    tableHTML += `<td class="percent-col ${percentClass}">${percentage}%</td></tr>`
+  })
+
+  tableHTML += `
+        </tbody>
+      </table>
+
+      <div class="footer">
+        <p>Generated by IntelliGrade • ${new Date().toLocaleString()}</p>
+      </div>
+    </body>
+    </html>
+  `
+
+  // Open in new window for printing
+  const printWindow = window.open('', '_blank')
+  if (printWindow) {
+    printWindow.document.write(tableHTML)
+    printWindow.document.close()
+
+    // Wait for content to load, then trigger print
+    printWindow.onload = () => {
+      printWindow.print()
+    }
+  }
+
+  console.log('✅ PDF export initiated for:', sectionName)
 }
 
 watch([searchQuery, selectedStatus], () => {
@@ -1816,7 +2308,7 @@ onMounted(async () => {
   const success = await getTeacherInfo()
   if (success) {
     await fetchSubjects()
-    
+
     // Load teacher name
     if (teacherId.value) {
       try {
@@ -1825,7 +2317,7 @@ onMounted(async () => {
           .select('full_name')
           .eq('id', teacherId.value)
           .single()
-          
+
         if (!error && teacher) {
           fullName.value = teacher.full_name || 'Teacher'
           console.log('✅ Teacher loaded:', { id: teacherId.value, name: fullName.value })
@@ -1834,49 +2326,57 @@ onMounted(async () => {
         console.warn('Failed to load teacher name:', err)
       }
     }
-    
+
     // Add scroll event listener for scroll-to-top button
     const handleScroll = () => {
       showScrollTop.value = window.scrollY > 300
     }
     window.addEventListener('scroll', handleScroll)
-    
+
     // Set up real-time subscription for gradebook updates
     console.log('🔴 Setting up real-time subscriptions...')
-    
+
     const subscription = supabase
       .channel('gradebook_realtime')
-      .on('postgres_changes', {
-        event: '*',
-        schema: 'public',
-        table: 'quiz_attempts'
-      }, async (payload) => {
-        console.log('🔄 Quiz attempt change detected:', payload.eventType)
-        
-        // Refresh gradebook data if viewing a section
-        if (selectedSectionId.value) {
-          await fetchGradebookData(selectedSectionId.value)
-        }
-      })
-      .on('postgres_changes', {
-        event: '*',
-        schema: 'public',
-        table: 'quizzes'
-      }, async (payload) => {
-        console.log('🔄 Quiz change detected:', payload.eventType)
-        
-        // Refresh gradebook data if viewing a section
-        if (selectedSectionId.value) {
-          await fetchGradebookData(selectedSectionId.value)
-        }
-      })
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'quiz_attempts',
+        },
+        async (payload) => {
+          console.log('🔄 Quiz attempt change detected:', payload.eventType)
+
+          // Refresh gradebook data if viewing a section
+          if (selectedSectionId.value) {
+            await fetchGradebookData(selectedSectionId.value)
+          }
+        },
+      )
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'quizzes',
+        },
+        async (payload) => {
+          console.log('🔄 Quiz change detected:', payload.eventType)
+
+          // Refresh gradebook data if viewing a section
+          if (selectedSectionId.value) {
+            await fetchGradebookData(selectedSectionId.value)
+          }
+        },
+      )
       .subscribe((status) => {
         console.log('📡 Subscription status:', status)
         if (status === 'SUBSCRIBED') {
           console.log('✅ Real-time subscriptions active!')
         }
       })
-    
+
     // Cleanup on unmount
     return () => {
       console.log('🧹 Cleaning up subscriptions...')
@@ -1899,7 +2399,8 @@ onMounted(async () => {
 }
 
 /* Reset and Hide Parent Layouts */
-body, html {
+body,
+html {
   overflow-x: hidden !important;
 }
 
@@ -1920,7 +2421,7 @@ body, html {
   left: 0;
   width: 80px;
   height: calc(100vh - 64px);
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-right: none;
   z-index: 900;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
@@ -1939,19 +2440,21 @@ body, html {
   width: 56px;
   margin: 8px 0;
   border-radius: 12px;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   cursor: pointer;
   position: relative;
 }
 
 .sidebar-item.active {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid #fff;
 }
 
 .sidebar-item:hover {
-  background: rgba(255,255,255,0.22);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .sidebar-icon svg {
@@ -1964,13 +2467,13 @@ body, html {
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  color: #3D8D7A;
+  color: #3d8d7a;
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
@@ -1989,7 +2492,7 @@ body, html {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -2116,12 +2619,12 @@ body, html {
 
 /* Rounded semi-transparent backgrounds for sidebar and navbar icons/buttons */
 .rounded-bg {
-  background: rgba(255,255,255,0.13);
+  background: rgba(255, 255, 255, 0.13);
   border-radius: 16px;
   transition: background 0.2s;
 }
 .rounded-bg:hover {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* Notification dropdown styles */
@@ -2142,7 +2645,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
 }
 
 .notification-dropdown {
@@ -2231,7 +2734,7 @@ body, html {
 
 .profile-dropdown .dropdown-header {
   padding: 1.5rem;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
 }
 
@@ -2286,7 +2789,7 @@ body, html {
 
 .dropdown-item:hover {
   background: #f1f5f9;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-item svg {
@@ -2295,7 +2798,7 @@ body, html {
 }
 
 .dropdown-item:hover svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-divider {
@@ -2328,7 +2831,7 @@ body, html {
   right: 2rem;
   width: 48px;
   height: 48px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   border-radius: 50%;
@@ -2374,7 +2877,7 @@ body, html {
 }
 
 .main-content::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 16px;
   border: 2px solid #f1f5f9;
   transition: all 0.3s ease;
@@ -2420,7 +2923,7 @@ body, html {
 
 .page-header:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-1px);
 }
 
@@ -2451,7 +2954,7 @@ body, html {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -2515,7 +3018,7 @@ body, html {
 
 .gradebook-container {
   min-height: 100vh;
-  background: #FBFFE4;
+  background: #fbffe4;
   padding: 1.5rem;
   font-family: 'Inter', sans-serif;
 }
@@ -2526,7 +3029,7 @@ body, html {
 /* Header */
 .header-card {
   background: white;
-  border: 1.5px solid #3D8D7A;
+  border: 1.5px solid #3d8d7a;
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -2534,7 +3037,7 @@ body, html {
 }
 .dark .header-card {
   background: #23272b;
-  border: 1.5px solid #A3D1C6;
+  border: 1.5px solid #a3d1c6;
   box-shadow: 0 2px 8px rgba(163, 209, 198, 0.1);
 }
 
@@ -2555,7 +3058,7 @@ body, html {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -2570,7 +3073,7 @@ body, html {
   margin-bottom: 0.25rem;
 }
 .dark .header-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .header-subtitle {
@@ -2578,7 +3081,7 @@ body, html {
   color: #6b7280;
 }
 .dark .header-subtitle {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .header-actions {
@@ -2604,7 +3107,7 @@ body, html {
 .search-box input {
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 2.5rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   border-radius: 8px;
   font-size: 0.875rem;
   background: white;
@@ -2612,18 +3115,18 @@ body, html {
 }
 .dark .search-box input {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .search-box input:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.1);
 }
 
 .grade-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   border-radius: 8px;
@@ -2635,12 +3138,12 @@ body, html {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .grade-btn:hover:not(:disabled) {
   background: #2d6b5c;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
 }
 
@@ -2648,6 +3151,21 @@ body, html {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+}
+
+.pdf-btn {
+  background: #dc2626;
+}
+
+.pdf-btn:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .refresh-btn {
@@ -2659,16 +3177,21 @@ body, html {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { 
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.3;
   }
-  50% { 
+  50% {
     transform: scale(1.05);
     opacity: 0.1;
   }
@@ -2686,8 +3209,12 @@ body, html {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Enhanced Subject Filter Buttons */
@@ -2703,7 +3230,7 @@ body, html {
 
 .subject-filters:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-1px);
 }
 
@@ -2723,7 +3250,7 @@ body, html {
   padding-bottom: 1rem;
 }
 .dark .filter-header {
-  border-bottom-color: #3D8D7A;
+  border-bottom-color: #3d8d7a;
 }
 
 .filter-title {
@@ -2778,18 +3305,18 @@ body, html {
 
 .filter-btn.modern:hover {
   background: #f9fafb;
-  border-color: var(--filter-color, #3D8D7A);
+  border-color: var(--filter-color, #3d8d7a);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 .dark .filter-btn.modern:hover {
   background: #4b5563;
-  border-color: var(--filter-color, #A3D1C6);
+  border-color: var(--filter-color, #a3d1c6);
 }
 
 .filter-btn.modern.active {
-  background: var(--filter-color, #3D8D7A);
-  border-color: var(--filter-color, #3D8D7A);
+  background: var(--filter-color, #3d8d7a);
+  border-color: var(--filter-color, #3d8d7a);
   color: white;
   box-shadow: 0 4px 15px rgba(61, 141, 122, 0.3);
   transform: translateY(-1px);
@@ -2810,7 +3337,7 @@ body, html {
 
 /* All button special styling */
 .filter-btn.modern:first-child {
-  --filter-color: #3D8D7A;
+  --filter-color: #3d8d7a;
 }
 
 /* Breadcrumb Navigation */
@@ -2829,7 +3356,7 @@ body, html {
 
 .breadcrumb-nav:hover {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .dark .breadcrumb-nav {
@@ -2844,7 +3371,7 @@ body, html {
 .breadcrumb-btn {
   background: none;
   border: none;
-  color: #3D8D7A;
+  color: #3d8d7a;
   cursor: pointer;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
@@ -2858,15 +3385,15 @@ body, html {
   transition: all 0.2s;
 }
 .dark .breadcrumb-btn {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .breadcrumb-btn:hover {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 .dark .breadcrumb-btn:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -2877,7 +3404,7 @@ body, html {
   padding: 0.75rem 1rem;
 }
 .dark .breadcrumb-current {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .breadcrumb-separator {
@@ -2885,11 +3412,12 @@ body, html {
   font-size: 1rem;
 }
 .dark .breadcrumb-separator {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Loading and Error States */
-.loading-container, .error-container {
+.loading-container,
+.error-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2898,7 +3426,7 @@ body, html {
   color: #6b7280;
 }
 .dark .loading-container {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .error-container {
@@ -2909,7 +3437,7 @@ body, html {
 
 .error-container svg {
   margin-bottom: 1rem;
-    margin-bottom: -20rem; 
+  margin-bottom: -20rem;
 }
 
 .error-container h3 {
@@ -2921,8 +3449,8 @@ body, html {
 .spinner-large {
   width: 40px;
   height: 40px;
-  border: 4px solid #B3D8A8;
-  border-top: 4px solid #3D8D7A;
+  border: 4px solid #b3d8a8;
+  border-top: 4px solid #3d8d7a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -2954,7 +3482,7 @@ body, html {
 
 .content-card.modern:hover {
   box-shadow: 0 8px 24px rgba(61, 141, 122, 0.12);
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-2px);
 }
 
@@ -2981,7 +3509,7 @@ body, html {
 }
 /* Removed duplicated and misplaced CSS block causing errors */
 .dark .card-title-section h3 {
-  background: linear-gradient(135deg, #A3D1C6, #34d399);
+  background: linear-gradient(135deg, #a3d1c6, #34d399);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -3013,11 +3541,11 @@ body, html {
 .card-stats .stat-number {
   font-size: 1.75rem;
   font-weight: 800;
-  color: #3D8D7A;
+  color: #3d8d7a;
   line-height: 1;
 }
 .dark .card-stats .stat-number {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .card-stats .stat-label {
@@ -3095,7 +3623,7 @@ body, html {
 
 .gradebook-header:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-1px);
 }
 
@@ -3137,12 +3665,12 @@ body, html {
 }
 
 .section-select:hover {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .section-select:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.1);
 }
 
@@ -3166,7 +3694,7 @@ body, html {
   width: 40px;
   height: 40px;
   border: 4px solid #e2e8f0;
-  border-top: 4px solid #3D8D7A;
+  border-top: 4px solid #3d8d7a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -3287,7 +3815,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border-radius: 6px;
 }
@@ -3403,7 +3931,7 @@ body, html {
 }
 
 .assessment-type {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   padding: 0.125rem 0.5rem;
   border-radius: 4px;
@@ -3426,7 +3954,7 @@ body, html {
 
 .student-row.expanded {
   background: #f0f9ff;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .student-cell {
@@ -3457,7 +3985,7 @@ body, html {
 .student-avatar {
   width: 36px;
   height: 36px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -3495,12 +4023,12 @@ body, html {
 
 .expand-btn:hover {
   background: #f1f5f9;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .expand-btn.rotated {
   transform: rotate(90deg);
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 /* Score Cells */
@@ -3530,7 +4058,7 @@ body, html {
 
 .score-input:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 2px rgba(61, 141, 122, 0.1);
 }
 
@@ -3565,10 +4093,18 @@ body, html {
 }
 
 /* Score Color Classes */
-.excellent .score-value { color: #059669; }
-.good .score-value { color: #0891b2; }
-.average .score-value { color: #d97706; }
-.needs-improvement .score-value { color: #dc2626; }
+.excellent .score-value {
+  color: #059669;
+}
+.good .score-value {
+  color: #0891b2;
+}
+.average .score-value {
+  color: #d97706;
+}
+.needs-improvement .score-value {
+  color: #dc2626;
+}
 
 /* Total Column */
 .total-cell {
@@ -3628,7 +4164,7 @@ body, html {
 /* Student History Panel */
 .student-history-row {
   background: #f0f9ff;
-  border-bottom: 2px solid #3D8D7A;
+  border-bottom: 2px solid #3d8d7a;
 }
 
 .history-cell {
@@ -3638,7 +4174,7 @@ body, html {
 .student-history-panel {
   padding: 1.5rem;
   background: #f0f9ff;
-  border-left: 4px solid #3D8D7A;
+  border-left: 4px solid #3d8d7a;
 }
 
 .history-header {
@@ -3704,7 +4240,7 @@ body, html {
 }
 
 .review-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   padding: 0.5rem 0.75rem;
@@ -3835,25 +4371,25 @@ body, html {
   .analytics-stats {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .gradebook-scroll {
     max-height: 50vh;
   }
-  
+
   .history-content {
     grid-template-columns: 1fr;
   }
-  
+
   .section-selector {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .section-select {
     min-width: 100%;
   }
-  
+
   .header-actions {
     flex-direction: column;
     align-items: stretch;
@@ -3904,22 +4440,22 @@ body, html {
   transition: all 0.3s ease;
 }
 
-.stat-icon.pending { 
+.stat-icon.pending {
   background: linear-gradient(135deg, #f59e0b, #d97706);
   box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
 }
 
-.stat-icon.graded { 
+.stat-icon.graded {
   background: linear-gradient(135deg, #10b981, #059669);
   box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
 }
 
-.stat-icon.total { 
+.stat-icon.total {
   background: linear-gradient(135deg, #3b82f6, #2563eb);
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
-.stat-icon.average { 
+.stat-icon.average {
   background: linear-gradient(135deg, #8b5cf6, #7c3aed);
   box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
 }
@@ -4046,30 +4582,30 @@ body, html {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
-  
+
   .stat-card.modern {
     padding: 1rem;
     gap: 0.75rem;
   }
-  
+
   .stat-icon {
     width: 40px;
     height: 40px;
   }
-  
+
   .stat-pulse {
     width: 40px;
     height: 40px;
   }
-  
+
   .stat-number {
     font-size: 1.5rem;
   }
-  
+
   .stat-label {
     font-size: 0.75rem;
   }
-  
+
   .stat-description {
     font-size: 0.6875rem;
   }
@@ -4080,13 +4616,13 @@ body, html {
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-  
+
   .stat-card.modern {
     flex-direction: row;
     text-align: left;
     padding: 1rem;
   }
-  
+
   .stat-content {
     margin-top: 0;
   }
@@ -4101,7 +4637,8 @@ body, html {
   margin-top: 1rem;
 }
 
-.subjects-grid, .sections-grid {
+.subjects-grid,
+.sections-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
@@ -4109,7 +4646,7 @@ body, html {
 
 .subject-card.modern {
   background: #ffffff;
-  border: 1.5px solid #A3D1C6;
+  border: 1.5px solid #a3d1c6;
   border-radius: 16px;
   padding: 1.5rem;
   cursor: pointer;
@@ -4135,7 +4672,7 @@ body, html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #3D8D7A, #059669);
+  background: linear-gradient(135deg, #3d8d7a, #059669);
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 16px;
@@ -4168,7 +4705,7 @@ body, html {
   position: relative;
   flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: #fff;
 }
 .dark .subject-icon.modern {
@@ -4185,9 +4722,10 @@ body, html {
   fill: white;
 }
 
-.subject-card, .section-card {
-  background: #FBFFE4;
-  border: 1px solid #A3D1C6;
+.subject-card,
+.section-card {
+  background: #fbffe4;
+  border: 1px solid #a3d1c6;
   border-radius: 12px;
   padding: 1.25rem;
   cursor: pointer;
@@ -4196,27 +4734,31 @@ body, html {
   align-items: center;
   gap: 1rem;
 }
-.dark .subject-card, .dark .section-card {
+.dark .subject-card,
+.dark .section-card {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
-.subject-card:hover, .section-card:hover {
+.subject-card:hover,
+.section-card:hover {
   background: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.15);
   transform: translateY(-2px);
 }
-.dark .subject-card:hover, .dark .section-card:hover {
+.dark .subject-card:hover,
+.dark .section-card:hover {
   background: #2a3038;
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
 }
 
-.subject-icon, .section-icon {
+.subject-icon,
+.section-icon {
   width: 48px;
   height: 48px;
   border-radius: 10px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4224,18 +4766,21 @@ body, html {
   flex-shrink: 0;
 }
 
-.subject-info, .section-info {
+.subject-info,
+.section-info {
   flex: 1;
 }
 
-.subject-info h4, .section-info h4 {
+.subject-info h4,
+.section-info h4 {
   font-size: 1.125rem;
   font-weight: 600;
   color: #1f2937;
   margin: 0 0 0.25rem 0;
 }
-.dark .subject-info h4, .dark .section-info h4 {
-  color: #A3D1C6;
+.dark .subject-info h4,
+.dark .section-info h4 {
+  color: #a3d1c6;
 }
 
 .subject-grade {
@@ -4244,11 +4789,11 @@ body, html {
   margin: 0 0 0.5rem 0;
 }
 .dark .subject-grade {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-code {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
   border-radius: 6px;
   padding: 0.25rem 0.5rem;
@@ -4259,11 +4804,12 @@ body, html {
   margin: 0 0 0.5rem 0;
 }
 .dark .section-code {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
-.subject-stats, .section-stats {
+.subject-stats,
+.section-stats {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
@@ -4278,7 +4824,7 @@ body, html {
   font-weight: 500;
 }
 .dark .stat-item {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .stat-item.pending {
@@ -4289,14 +4835,14 @@ body, html {
 }
 
 .card-arrow {
-  color: #A3D1C6;
+  color: #a3d1c6;
   font-size: 1.25rem;
   transition: all 0.2s;
 }
 
 .subject-card:hover .card-arrow,
 .section-card:hover .card-arrow {
-  color: #3D8D7A;
+  color: #3d8d7a;
   transform: translateX(2px);
 }
 
@@ -4306,12 +4852,12 @@ body, html {
   color: #6b7280;
 }
 .dark .empty-state {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .empty-state svg {
   margin-bottom: 1rem;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .empty-state h3 {
@@ -4320,7 +4866,7 @@ body, html {
   color: #1f2937;
 }
 .dark .empty-state h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Submissions Section */
@@ -4332,7 +4878,7 @@ body, html {
 
 .filter-select {
   padding: 0.5rem 0.75rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   border-radius: 6px;
   background: white;
   font-size: 0.875rem;
@@ -4340,8 +4886,8 @@ body, html {
 }
 .dark .filter-select {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .submissions-table-container {
@@ -4350,7 +4896,7 @@ body, html {
   border: 1px solid rgba(61, 141, 122, 0.1);
 }
 .dark .submissions-table-container {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .submissions-table {
@@ -4370,11 +4916,11 @@ body, html {
 }
 .dark .submissions-table th,
 .dark .submissions-table td {
-  border-bottom-color: #3D8D7A;
+  border-bottom-color: #3d8d7a;
 }
 
 .submissions-table th {
-  background: #FBFFE4;
+  background: #fbffe4;
   font-weight: 600;
   color: #1f2937;
   font-size: 1rem;
@@ -4383,7 +4929,7 @@ body, html {
 }
 .dark .submissions-table th {
   background: #1f2429;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .submissions-table th.sortable {
@@ -4393,7 +4939,7 @@ body, html {
 }
 
 .submissions-table th.sortable:hover {
-  background: #B3D8A8;
+  background: #b3d8a8;
 }
 .dark .submissions-table th.sortable:hover {
   background: #2a3038;
@@ -4415,7 +4961,7 @@ body, html {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   display: flex;
   align-items: center;
@@ -4432,7 +4978,7 @@ body, html {
   line-height: 1.3;
 }
 .dark .student-name {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .student-email {
@@ -4456,21 +5002,21 @@ body, html {
   line-height: 1.3;
 }
 .dark .quiz-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-code {
   font-size: 0.75rem;
   color: #6b7280;
   font-family: 'Courier New', monospace;
-  background: #B3D8A8;
+  background: #b3d8a8;
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
   display: inline-block;
   font-weight: 500;
 }
 .dark .quiz-code {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -4483,7 +5029,7 @@ body, html {
   font-weight: 500;
 }
 .dark .date {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .time {
@@ -4503,10 +5049,18 @@ body, html {
   margin-bottom: 0.25rem;
 }
 
-.score-percentage.excellent { color: #059669; }
-.score-percentage.good { color: #3D8D7A; }
-.score-percentage.average { color: #d97706; }
-.score-percentage.needs-improvement { color: #dc2626; }
+.score-percentage.excellent {
+  color: #059669;
+}
+.score-percentage.good {
+  color: #3d8d7a;
+}
+.score-percentage.average {
+  color: #d97706;
+}
+.score-percentage.needs-improvement {
+  color: #dc2626;
+}
 
 .score-fraction {
   font-size: 0.7rem;
@@ -4537,7 +5091,7 @@ body, html {
 
 .status-badge.reviewed {
   background: rgba(61, 141, 122, 0.1);
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 /* Action Buttons */
@@ -4569,22 +5123,22 @@ body, html {
 }
 
 .btn-action:not(.modern).review {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 
 .btn-action:not(.modern).review:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
 .btn-action:not(.modern).view {
   background: rgba(163, 209, 198, 0.3);
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .btn-action:not(.modern).view:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #1f2937;
 }
 
@@ -4661,13 +5215,13 @@ body, html {
   border-top: 1px solid rgba(61, 141, 122, 0.1);
 }
 .dark .pagination {
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
 }
 
 .pagination-btn {
   width: 36px;
   height: 36px;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   background: white;
   border-radius: 6px;
   cursor: pointer;
@@ -4675,21 +5229,21 @@ body, html {
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 .dark .pagination-btn {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .pagination-btn:hover:not(:disabled) {
-  background: #B3D8A8;
-  border-color: #3D8D7A;
+  background: #b3d8a8;
+  border-color: #3d8d7a;
   color: #1f2937;
 }
 .dark .pagination-btn:hover:not(:disabled) {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -4704,7 +5258,7 @@ body, html {
   font-weight: 500;
 }
 .dark .pagination-info {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Modal Styles */
@@ -4731,11 +5285,11 @@ body, html {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 .dark .review-modal {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .modal-header {
@@ -4744,11 +5298,11 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #FBFFE4;
+  background: #fbffe4;
 }
 .dark .modal-header {
   background: #1f2429;
-  border-bottom-color: #3D8D7A;
+  border-bottom-color: #3d8d7a;
 }
 
 .modal-header h3 {
@@ -4758,7 +5312,7 @@ body, html {
   margin: 0;
 }
 .dark .modal-header h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-subtitle {
@@ -4767,7 +5321,7 @@ body, html {
   margin: 0.25rem 0 0 0;
 }
 .dark .modal-subtitle {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-close {
@@ -4784,15 +5338,15 @@ body, html {
   transition: all 0.2s;
 }
 .dark .modal-close {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-close:hover {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 .dark .modal-close:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -4801,7 +5355,8 @@ body, html {
   overflow-y: auto;
 }
 
-.loading-questions, .no-questions {
+.loading-questions,
+.no-questions {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4809,15 +5364,16 @@ body, html {
   padding: 3rem 2rem;
   color: #6b7280;
 }
-.dark .loading-questions, .dark .no-questions {
-  color: #A3D1C6;
+.dark .loading-questions,
+.dark .no-questions {
+  color: #a3d1c6;
 }
 
 .spinner-small {
   width: 30px;
   height: 30px;
-  border: 3px solid #B3D8A8;
-  border-top: 3px solid #3D8D7A;
+  border: 3px solid #b3d8a8;
+  border-top: 3px solid #3d8d7a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -4839,7 +5395,7 @@ body, html {
 }
 .dark .review-summary {
   background: #1f2429;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .summary-stat {
@@ -4856,7 +5412,7 @@ body, html {
   font-weight: 500;
 }
 .dark .stat-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .stat-value {
@@ -4865,7 +5421,7 @@ body, html {
   color: #1f2937;
 }
 .dark .stat-value {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Question Review Styles */
@@ -4883,7 +5439,7 @@ body, html {
 }
 .dark .question-review-item {
   background: #2a3038;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .question-header {
@@ -4895,7 +5451,7 @@ body, html {
 }
 
 .question-number {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
@@ -4927,7 +5483,7 @@ body, html {
   font-size: 0.875rem;
 }
 .dark .question-points {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .question-text {
@@ -4937,7 +5493,7 @@ body, html {
   line-height: 1.6;
 }
 .dark .question-text {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .answer-section {
@@ -5037,7 +5593,8 @@ body, html {
   gap: 1rem;
 }
 
-.student-answer-box, .correct-answer-box {
+.student-answer-box,
+.correct-answer-box {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid #e2e8f0;
@@ -5120,11 +5677,11 @@ body, html {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  background: #FBFFE4;
+  background: #fbffe4;
 }
 .dark .modal-actions {
   background: #1f2429;
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
 }
 
 .btn-modal {
@@ -5140,25 +5697,25 @@ body, html {
 .btn-modal.cancel {
   background: #f1f5f9;
   color: #6b7280;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 .dark .btn-modal.cancel {
   background: #23272b;
-  color: #A3D1C6;
-  border-color: #3D8D7A;
+  color: #a3d1c6;
+  border-color: #3d8d7a;
 }
 
 .btn-modal.cancel:hover {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 .dark .btn-modal.cancel:hover {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
 .btn-modal.primary {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -5176,7 +5733,7 @@ body, html {
 .points-input {
   width: 60px;
   padding: 0.375rem 0.5rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   border-radius: 4px;
   text-align: center;
   font-weight: 600;
@@ -5185,36 +5742,39 @@ body, html {
 }
 .dark .points-input {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .points-input:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.1);
 }
 
 /* Input and Textarea Styles */
-.comment-input, .feedback-textarea {
+.comment-input,
+.feedback-textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   border-radius: 6px;
   font-family: inherit;
   font-size: 0.875rem;
   resize: vertical;
   background: white;
 }
-.dark .comment-input, .dark .feedback-textarea {
+.dark .comment-input,
+.dark .feedback-textarea {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
-.comment-input:focus, .feedback-textarea:focus {
+.comment-input:focus,
+.feedback-textarea:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.1);
 }
 
@@ -5229,7 +5789,7 @@ body, html {
   margin-bottom: 0.75rem;
 }
 .dark .answer-key-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .options-grid {
@@ -5253,7 +5813,7 @@ body, html {
 }
 
 .option-item.correct {
-  border-color: #B3D8A8;
+  border-color: #b3d8a8;
   background: rgba(179, 216, 168, 0.1);
 }
 
@@ -5263,7 +5823,7 @@ body, html {
 }
 
 .option-item.selected {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .option-letter {
@@ -5280,7 +5840,7 @@ body, html {
 }
 
 .option-item.correct .option-letter {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 
@@ -5298,10 +5858,11 @@ body, html {
   line-height: 1.5;
 }
 .dark .option-text {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
-.correct-tag, .selected-tag {
+.correct-tag,
+.selected-tag {
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.25rem 0.5rem;
@@ -5317,7 +5878,7 @@ body, html {
 
 .selected-tag {
   background: rgba(61, 141, 122, 0.1);
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 /* True/False Options */
@@ -5341,12 +5902,12 @@ body, html {
 }
 
 .tf-option.student-selected {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   background: rgba(61, 141, 122, 0.05);
 }
 
 .tf-option.correct-answer {
-  border-color: #B3D8A8;
+  border-color: #b3d8a8;
   background: rgba(179, 216, 168, 0.1);
 }
 
@@ -5362,7 +5923,7 @@ body, html {
   margin-bottom: 0.5rem;
 }
 .dark .tf-option strong {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Fill in the Blank */
@@ -5372,12 +5933,14 @@ body, html {
   gap: 1rem;
 }
 
-.answer-key-box, .student-answer-box {
+.answer-key-box,
+.student-answer-box {
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
 }
-.dark .answer-key-box, .dark .student-answer-box {
+.dark .answer-key-box,
+.dark .student-answer-box {
   border-color: #374151;
 }
 
@@ -5388,7 +5951,7 @@ body, html {
   font-weight: 600;
 }
 .dark .answer-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .answer-text {
@@ -5415,7 +5978,7 @@ body, html {
   border-top: 1px solid rgba(61, 141, 122, 0.1);
 }
 .dark .teacher-comment-section {
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
 }
 
 .overall-feedback-section {
@@ -5424,7 +5987,7 @@ body, html {
   border-top: 2px solid rgba(61, 141, 122, 0.1);
 }
 .dark .overall-feedback-section {
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
 }
 
 .overall-feedback-section h4 {
@@ -5434,18 +5997,18 @@ body, html {
   font-weight: 600;
 }
 .dark .overall-feedback-section h4 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .feedback-display {
-  background: #FBFFE4;
+  background: #fbffe4;
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid rgba(61, 141, 122, 0.1);
 }
 .dark .feedback-display {
   background: #1f2429;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .feedback-display p {
@@ -5454,7 +6017,7 @@ body, html {
   margin: 0;
 }
 .dark .feedback-display p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .comment-display {
@@ -5468,11 +6031,11 @@ body, html {
 }
 
 .comment-display strong {
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-weight: 600;
 }
 .dark .comment-display strong {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .comment-display p {
@@ -5480,7 +6043,7 @@ body, html {
   color: #1f2937;
 }
 .dark .comment-display p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Responsive Design */
@@ -5498,7 +6061,8 @@ body, html {
     min-width: auto;
   }
 
-  .subjects-grid, .sections-grid {
+  .subjects-grid,
+  .sections-grid {
     grid-template-columns: 1fr;
   }
 
@@ -5670,29 +6234,29 @@ body, html {
   .logout-footer {
     flex-direction: column;
   }
-  
+
   .btn-cancel,
   .btn-logout {
     width: 100%;
   }
-  
+
   .main-content {
     padding: 1rem;
   }
-  
+
   .gradebook-header {
     padding: 1rem;
   }
-  
+
   .header-actions {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .section-select {
     min-width: 100%;
   }
-  
+
   .modal-actions {
     flex-direction: column;
   }
@@ -5957,11 +6521,11 @@ body, html {
   .main-content {
     padding: 1rem;
   }
-  
+
   .navbar-center {
     gap: 0.25rem;
   }
-  
+
   .nav-item {
     padding: 0.5rem 1rem;
     font-size: 0.7rem;
@@ -5993,50 +6557,50 @@ body, html {
     height: 50px;
     font-size: 1.25rem;
   }
-  
+
   .main-content {
     padding: 1rem;
     margin-left: 0;
     width: 100%;
   }
-  
+
   .page-header {
     padding: 1rem;
   }
-  
+
   .filter-buttons {
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-  
+
   .content-card.modern {
     padding: 1.5rem;
     margin: 0 0 1rem 0;
   }
-  
+
   .filter-title {
     font-size: 1.25rem;
   }
-  
+
   .header-title {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .header-content {
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
   }
-  
+
   .navbar-content {
     padding: 0 0.5rem;
   }
-  
+
   .brand-name {
     display: none;
   }
-  
+
   .search-box {
     min-width: 200px;
   }
@@ -6059,7 +6623,10 @@ body, html {
   box-shadow: 0 2px 8px rgba(61, 141, 122, 0.08);
   border: 1px solid #e2e8f0;
   cursor: pointer;
-  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+  transition:
+    box-shadow 0.2s,
+    border 0.2s,
+    background 0.2s;
   position: relative;
   display: flex;
   align-items: center;
@@ -6114,7 +6681,7 @@ body, html {
   color: #fff;
   margin-right: 1.25rem;
   box-shadow: 0 2px 6px rgba(61, 141, 122, 0.12);
-  background: linear-gradient(135deg, #3D8D7A 0%, #10b981 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #10b981 100%);
 }
 .dark .section-icon.modern {
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
@@ -6186,7 +6753,7 @@ body, html {
 }
 
 .empty-state.modern:hover {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   background: linear-gradient(135deg, #f8fdfa 0%, #ecfdf5 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(61, 141, 122, 0.1);
@@ -6259,12 +6826,12 @@ body, html {
 
 .subject-card.modern:hover .card-arrow.modern,
 .section-card.modern:hover .card-arrow.modern {
-  color: #3D8D7A;
+  color: #3d8d7a;
   transform: translateX(4px);
 }
 .dark .subject-card.modern:hover .card-arrow.modern,
 .dark .section-card.modern:hover .card-arrow.modern {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Logout Modal Styles */
@@ -6294,7 +6861,10 @@ body, html {
   box-shadow: 0 2px 8px rgba(61, 141, 122, 0.08);
   border: 1px solid #e2e8f0;
   cursor: pointer;
-  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+  transition:
+    box-shadow 0.2s,
+    border 0.2s,
+    background 0.2s;
   position: relative;
   display: flex;
   align-items: center;
@@ -6304,7 +6874,7 @@ body, html {
 }
 
 .logout-header {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
   padding: 1.5rem;
 }
@@ -6327,13 +6897,18 @@ body, html {
 }
 
 .logout-icon svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .logout-message {
@@ -6412,8 +6987,12 @@ body, html {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-logout .loading-text {
@@ -6423,8 +7002,12 @@ body, html {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Custom Scrollbar Styling - Green Theme */
@@ -6439,7 +7022,7 @@ body, html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
@@ -6461,7 +7044,7 @@ body, html {
 /* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 /* Dark mode scrollbar */
@@ -6489,5 +7072,4 @@ body, html {
   overflow-y: auto;
   overflow-x: hidden;
 }
-
 </style>

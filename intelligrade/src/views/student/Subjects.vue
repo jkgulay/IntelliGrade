@@ -1,64 +1,14 @@
-@media (max-width: 768px) {
-  .stats-grid {
-    gap: 0.25rem;
-    margin-bottom: 0.25rem;
-  }
-  .stat-card {
-    gap: 0.25rem;
-    padding: 0.5rem 0.5rem;
-  }
-  .stat-value {
-    font-size: 1.1rem;
-    margin-right: 0.25rem;
-  }
-  .stat-label {
-    font-size: 0.8rem;
-    margin-left: 0.1rem;
-  }
-}
-/* code: Responsive mobile improvements for back button and stat boxes */
-@media (max-width: 768px) {
-  .section-header-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  .back-btn {
-    align-self: flex-start;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    min-width: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    justify-content: center;
-    font-size: 1.25rem;
-    gap: 0;
-  }
-  .back-btn span {
-    display: none;
-  }
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .stat-card {
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-  }
-  .stat-value {
-    font-size: 1.25rem;
-    margin-right: 0.5rem;
-  }
-  .stat-label {
-    font-size: 0.85rem;
-    margin-left: 0.25rem;
-  }
-}
+@media (max-width: 768px) { .stats-grid { gap: 0.25rem; margin-bottom: 0.25rem; } .stat-card { gap:
+0.25rem; padding: 0.5rem 0.5rem; } .stat-value { font-size: 1.1rem; margin-right: 0.25rem; }
+.stat-label { font-size: 0.8rem; margin-left: 0.1rem; } } /* code: Responsive mobile improvements
+for back button and stat boxes */ @media (max-width: 768px) { .section-header-content {
+flex-direction: column; align-items: flex-start; gap: 0.5rem; } .back-btn { align-self: flex-start;
+margin-bottom: 0.5rem; padding: 0.5rem; min-width: 0; width: 40px; height: 40px; border-radius: 50%;
+justify-content: center; font-size: 1.25rem; gap: 0; } .back-btn span { display: none; } .stats-grid
+{ grid-template-columns: 1fr; gap: 0.5rem; margin-bottom: 0.5rem; } .stat-card { flex-direction:
+row; align-items: center; justify-content: flex-start; gap: 0.5rem; padding: 0.75rem 1rem; }
+.stat-value { font-size: 1.25rem; margin-right: 0.5rem; } .stat-label { font-size: 0.85rem;
+margin-left: 0.25rem; } }
 
 <template>
   <div class="subjects-container">
@@ -66,13 +16,27 @@
     <div class="section-header-card minimal-header-card">
       <div class="section-header-left">
         <div class="section-header-icon minimal-header-icon desktop-only">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M5,19V5H19V19H5Z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M5,19V5H19V19H5Z"
+            />
           </svg>
         </div>
-        <div style="width:100%">
+        <div style="width: 100%">
           <div class="section-header-title minimal-header-title">My Subjects</div>
-          <div class="section-header-sub minimal-header-sub">View and manage your enrolled subjects</div>
+          <div class="section-header-sub minimal-header-sub">
+            View and manage your enrolled subjects
+          </div>
           <!-- Enhanced Mobile Card -->
           <div class="header-stats-mobile formal-mobile-card">
             <div class="formal-mobile-stats">
@@ -82,7 +46,9 @@
               </div>
               <div class="enrollment-info-badge">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                  <path
+                    d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
                 </svg>
                 <span>Enrolled by Teacher</span>
               </div>
@@ -97,7 +63,9 @@
         </div>
         <div class="enrollment-info-badge desktop">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+            <path
+              d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+            />
           </svg>
           <span>Enrolled by Teacher</span>
         </div>
@@ -108,21 +76,23 @@
     <div class="controls-section">
       <div class="search-box">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+          <path
+            d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
+          />
         </svg>
-        <input 
-          type="text" 
-          v-model="searchQuery" 
+        <input
+          type="text"
+          v-model="searchQuery"
           placeholder="Search subjects..."
           class="search-input"
         />
       </div>
       <div class="filter-tabs">
-        <button 
-          v-for="filter in filters" 
+        <button
+          v-for="filter in filters"
           :key="filter.key"
           @click="activeFilter = filter.key"
-          :class="['filter-tab', { 'active': activeFilter === filter.key }]"
+          :class="['filter-tab', { active: activeFilter === filter.key }]"
         >
           {{ filter.label }}
         </button>
@@ -131,13 +101,13 @@
 
     <!-- Subjects Grid -->
     <div class="subjects-grid">
-      <div 
-        v-for="subject in filteredSubjects" 
-        :key="subject.id" 
+      <div
+        v-for="subject in filteredSubjects"
+        :key="subject.id"
         :class="[
           'subject-card',
           { 'favorite-card': favoriteSubjects.has(subject.id) },
-          { 'archived-card': archivedSubjects.has(subject.id) }
+          { 'archived-card': archivedSubjects.has(subject.id) },
         ]"
       >
         <div class="subject-header">
@@ -151,42 +121,53 @@
           </div>
           <div class="subject-header-right">
             <!-- Star/Favorite Button -->
-            <button 
+            <button
               @click.stop="toggleFavorite(subject.id)"
-              :class="['star-btn', { 'favorited': favoriteSubjects.has(subject.id) }]"
-              :title="favoriteSubjects.has(subject.id) ? 'Remove from favorites' : 'Add to favorites'"
+              :class="['star-btn', { favorited: favoriteSubjects.has(subject.id) }]"
+              :title="
+                favoriteSubjects.has(subject.id) ? 'Remove from favorites' : 'Add to favorites'
+              "
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" :fill="favoriteSubjects.has(subject.id) ? 'currentColor' : 'none'" stroke="currentColor" stroke-width="2">
-                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"></polygon>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                :fill="favoriteSubjects.has(subject.id) ? 'currentColor' : 'none'"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polygon
+                  points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"
+                ></polygon>
               </svg>
             </button>
             <!-- Options Menu -->
             <div class="options-menu" :ref="`options-${subject.id}`">
-              <button 
+              <button
                 @click.stop="toggleOptionsMenu(subject.id)"
                 class="options-btn"
                 :title="'More options'"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" />
+                  <path
+                    d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"
+                  />
                 </svg>
               </button>
               <div v-if="subject.showOptions" class="options-dropdown" @click.stop>
-                <button 
-                  @click.stop="confirmUnenroll(subject)"
-                  class="dropdown-item unenroll-item"
-                >
+                <button @click.stop="confirmUnenroll(subject)" class="dropdown-item unenroll-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                    <path
+                      d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                    />
                   </svg>
                   Unenroll from Class
                 </button>
-                <button 
-                  @click.stop="toggleArchive(subject.id)"
-                  class="dropdown-item"
-                >
+                <button @click.stop="toggleArchive(subject.id)" class="dropdown-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3,3H21V6.5H20V19A2,2 0 0,1 18,21H6A2,2 0 0,1 4,19V6.5H3V3M6.5,6.5V18.5H17.5V6.5H6.5M8,8V16.5H9.5V8H8M14.5,8V16.5H16V8H14.5Z" />
+                    <path
+                      d="M3,3H21V6.5H20V19A2,2 0 0,1 18,21H6A2,2 0 0,1 4,19V6.5H3V3M6.5,6.5V18.5H17.5V6.5H6.5M8,8V16.5H9.5V8H8M14.5,8V16.5H16V8H14.5Z"
+                    />
                   </svg>
                   {{ archivedSubjects.has(subject.id) ? 'Unarchive' : 'Archive' }}
                 </button>
@@ -194,7 +175,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="subject-content">
           <h3 class="subject-title">{{ subject.name }}</h3>
           <p class="subject-code">{{ subject.code }}</p>
@@ -202,7 +183,7 @@
           <p class="subject-section">Section: {{ subject.section }}</p>
           <p class="subject-grade">Grade {{ subject.gradeLevel }}</p>
         </div>
-        
+
         <div class="subject-stats compact">
           <div class="stat">
             <span class="stat-value">{{ subject.totalAssessments || 0 }}</span>
@@ -217,45 +198,53 @@
             <span class="stat-text">Grade</span>
           </div>
         </div>
-        
+
         <!-- Assessment Management Actions -->
         <div class="assessment-actions">
           <h4 class="actions-title">Assessments</h4>
           <div class="action-buttons-grid">
             <!-- Quizzes -->
-            <button 
+            <button
               class="assessment-action-btn quiz-btn"
               @click.stop="viewAssessments(subject, 'quiz')"
               :class="{ 'has-available': subject.availableQuizzes > 0 }"
             >
               <div class="btn-icon quiz-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9,5V9H21V7.5L22.5,6L21,4.5L19.5,6L18,4.5L16.5,6L18,7.5V9H15V5H9M9,19V15H15V19H9M21,15V13.5L19.5,12L18,13.5V15H21Z" />
+                  <path
+                    d="M9,5V9H21V7.5L22.5,6L21,4.5L19.5,6L18,4.5L16.5,6L18,7.5V9H15V5H9M9,19V15H15V19H9M21,15V13.5L19.5,12L18,13.5V15H21Z"
+                  />
                 </svg>
               </div>
               <div class="btn-content">
                 <span class="btn-title">Quizzes</span>
                 <span class="btn-count">{{ subject.availableQuizzes || 0 }} available</span>
               </div>
-              <div v-if="subject.availableQuizzes > 0" class="notification-badge">{{ subject.availableQuizzes }}</div>
+              <div v-if="subject.availableQuizzes > 0" class="notification-badge">
+                {{ subject.availableQuizzes }}
+              </div>
             </button>
 
             <!-- Assignments -->
-            <button 
+            <button
               class="assessment-action-btn assignment-btn"
               @click.stop="viewAssessments(subject, 'assignment')"
               :class="{ 'has-available': subject.availableAssignments > 0 }"
             >
               <div class="btn-icon assignment-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
                 </svg>
               </div>
               <div class="btn-content">
                 <span class="btn-title">Assignments</span>
                 <span class="btn-count">{{ subject.availableAssignments || 0 }} available</span>
               </div>
-              <div v-if="subject.availableAssignments > 0" class="notification-badge">{{ subject.availableAssignments }}</div>
+              <div v-if="subject.availableAssignments > 0" class="notification-badge">
+                {{ subject.availableAssignments }}
+              </div>
             </button>
           </div>
         </div>
@@ -263,7 +252,9 @@
         <div class="subject-actions compact">
           <button class="action-btn secondary full-width" @click.stop="viewGrades(subject)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19M17,12H7V10H17V12M15,16H7V14H15V16M17,8H7V6H17V8Z" />
+              <path
+                d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19M17,12H7V10H17V12M15,16H7V14H15V16M17,8H7V6H17V8Z"
+              />
             </svg>
             View Grades
           </button>
@@ -275,22 +266,33 @@
     <div v-if="filteredSubjects.length === 0 && !isLoading" class="empty-state">
       <div class="empty-icon">
         <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M5,19V5H19V19H5Z" />
+          <path
+            d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M5,19V5H19V19H5Z"
+          />
         </svg>
       </div>
       <h3>No subjects found</h3>
-      <p v-if="searchQuery || activeFilter !== 'all'">Try adjusting your search or filter criteria</p>
+      <p v-if="searchQuery || activeFilter !== 'all'">
+        Try adjusting your search or filter criteria
+      </p>
       <div v-else class="enrollment-notice">
         <div class="notice-icon">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+            <path
+              d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"
+            />
           </svg>
         </div>
         <p class="notice-title">Waiting for Teacher Enrollment</p>
-        <p class="notice-description">Your teacher will enroll you in their classes. Once enrolled, your subjects will appear here.</p>
+        <p class="notice-description">
+          Your teacher will enroll you in their classes. Once enrolled, your subjects will appear
+          here.
+        </p>
         <div class="notice-tip">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M11,17H13V11H11V17Z"/>
+            <path
+              d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M11,17H13V11H11V17Z"
+            />
           </svg>
           <span>Contact your teacher if you believe you should be enrolled in a class</span>
         </div>
@@ -304,7 +306,9 @@
           <h2>Confirm Unenrollment</h2>
           <button @click="cancelUnenroll" class="close-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+              <path
+                d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              />
             </svg>
           </button>
         </div>
@@ -312,14 +316,17 @@
         <div class="unenroll-content">
           <div class="warning-icon">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+              <path
+                d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+              />
             </svg>
           </div>
-          
+
           <p class="warning-text">
-            Are you sure you want to unenroll from <strong>{{ unenrollSubject?.name }}</strong>?
+            Are you sure you want to unenroll from <strong>{{ unenrollSubject?.name }}</strong
+            >?
           </p>
-          
+
           <div class="unenroll-details">
             <p><strong>Section:</strong> {{ unenrollSubject?.section }}</p>
             <p><strong>Teacher:</strong> {{ unenrollSubject?.instructor }}</p>
@@ -330,12 +337,20 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
             </svg>
-            <span>This action cannot be undone. You will lose access to all quizzes and grades for this class.</span>
+            <span
+              >This action cannot be undone. You will lose access to all quizzes and grades for this
+              class.</span
+            >
           </div>
 
           <div class="modal-actions">
             <button type="button" @click="cancelUnenroll" class="cancel-btn">Cancel</button>
-            <button type="button" @click="processUnenroll" :disabled="isUnenrolling" class="unenroll-btn">
+            <button
+              type="button"
+              @click="processUnenroll"
+              :disabled="isUnenrolling"
+              class="unenroll-btn"
+            >
               {{ isUnenrolling ? 'Unenrolling...' : 'Yes, Unenroll' }}
             </button>
           </div>
@@ -374,7 +389,7 @@ export default {
         { key: 'all', label: 'All Subjects' },
         { key: 'favorites', label: 'Favorites' },
         { key: 'active', label: 'Active' },
-        { key: 'archived', label: 'Archived' }
+        { key: 'archived', label: 'Archived' },
       ],
       subjects: [],
       pollingInterval: null,
@@ -383,80 +398,88 @@ export default {
       profile: null,
       favoriteSubjects: new Set(),
       archivedSubjects: new Set(),
-    };
+    }
   },
   watch: {
     $route() {
-      this.fetchSubjects();
-    }
+      this.fetchSubjects()
+    },
   },
   computed: {
     totalSubjects() {
-      return this.subjects.length;
+      return this.subjects.length
     },
     filteredSubjects() {
-      let filtered = this.subjects;
-      
+      let filtered = this.subjects
+
       if (this.activeFilter === 'favorites') {
-        filtered = filtered.filter(subject => this.favoriteSubjects.has(subject.id));
+        filtered = filtered.filter((subject) => this.favoriteSubjects.has(subject.id))
       } else if (this.activeFilter === 'archived') {
-        filtered = filtered.filter(subject => this.archivedSubjects.has(subject.id));
+        filtered = filtered.filter((subject) => this.archivedSubjects.has(subject.id))
       } else {
-        filtered = filtered.filter(subject => !this.archivedSubjects.has(subject.id));
+        filtered = filtered.filter((subject) => !this.archivedSubjects.has(subject.id))
       }
-      
-      if (this.activeFilter !== 'all' && this.activeFilter !== 'favorites' && this.activeFilter !== 'archived') {
-        filtered = filtered.filter(subject => subject.status === this.activeFilter);
+
+      if (
+        this.activeFilter !== 'all' &&
+        this.activeFilter !== 'favorites' &&
+        this.activeFilter !== 'archived'
+      ) {
+        filtered = filtered.filter((subject) => subject.status === this.activeFilter)
       }
-      
+
       if (this.searchQuery) {
-        filtered = filtered.filter(subject => 
-          subject.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-          subject.code.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-          subject.instructor.toLowerCase().includes(this.searchQuery.toLowerCase())
-        );
+        filtered = filtered.filter(
+          (subject) =>
+            subject.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+            subject.code.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+            subject.instructor.toLowerCase().includes(this.searchQuery.toLowerCase()),
+        )
       }
-      
+
       if (this.activeFilter !== 'archived') {
         filtered.sort((a, b) => {
-          const aIsFavorite = this.favoriteSubjects.has(a.id);
-          const bIsFavorite = this.favoriteSubjects.has(b.id);
-          if (aIsFavorite && !bIsFavorite) return -1;
-          if (!aIsFavorite && bIsFavorite) return 1;
-          return 0;
-        });
+          const aIsFavorite = this.favoriteSubjects.has(a.id)
+          const bIsFavorite = this.favoriteSubjects.has(b.id)
+          if (aIsFavorite && !bIsFavorite) return -1
+          if (!aIsFavorite && bIsFavorite) return 1
+          return 0
+        })
       }
-      
-      return filtered;
+
+      return filtered
     },
   },
   methods: {
     async initializeAuth() {
       try {
         console.log('🔐 Initializing student authentication...')
-        
-        const { data: { session }, error: sessionError } = await supabase.auth.getSession()
-        
+
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession()
+
         if (sessionError) {
           console.error('❌ Session error:', sessionError)
           throw sessionError
         }
-        
+
         if (!session?.user) {
           console.log('⚠️ No active session found')
           await this.$router.push('/login')
           return false
         }
-        
+
         console.log('✓ Session found for user:', session.user.id)
         this.currentUser = session.user
-        
+
         const { data: profile, error: profileError } = await supabase
           .from('profiles')
           .select('id, role, full_name, email')
           .eq('auth_user_id', session.user.id)
           .maybeSingle()
-        
+
         if (profileError) {
           console.error('❌ Error getting profile:', profileError)
           throw profileError
@@ -468,9 +491,12 @@ export default {
             .from('profiles')
             .insert({
               auth_user_id: session.user.id,
-              full_name: session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || 'Student',
+              full_name:
+                session.user.user_metadata?.full_name ||
+                session.user.email?.split('@')[0] ||
+                'Student',
               email: session.user.email,
-              role: 'student'
+              role: 'student',
             })
             .select()
             .single()
@@ -507,9 +533,9 @@ export default {
 
         if (!student) {
           console.log('⚠️ Student record not found, creating...')
-          
+
           const gradeLevel = session.user.user_metadata?.grade_level || 7
-          
+
           const { data: newStudent, error: createStudentError } = await supabase
             .from('students')
             .insert({
@@ -517,7 +543,7 @@ export default {
               full_name: this.profile.full_name,
               email: this.profile.email,
               grade_level: gradeLevel,
-              is_active: true
+              is_active: true,
             })
             .select()
             .single()
@@ -542,7 +568,6 @@ export default {
         }
 
         return true
-
       } catch (error) {
         console.error('❌ Auth initialization error:', error)
         alert(`Authentication error: ${error.message || 'Unknown error'}`)
@@ -552,12 +577,12 @@ export default {
     },
 
     generateSubjectColor(subjectName) {
-      const colors = ['#3D8D7A', '#6366f1', '#f59e0b', '#ef4444', '#8b5cf6', '#10b981'];
+      const colors = ['#3D8D7A', '#6366f1', '#f59e0b', '#ef4444', '#8b5cf6', '#10b981']
       const hash = subjectName.split('').reduce((a, b) => {
-        a = ((a << 5) - a) + b.charCodeAt(0);
-        return a & a;
-      }, 0);
-      return colors[Math.abs(hash) % colors.length];
+        a = (a << 5) - a + b.charCodeAt(0)
+        return a & a
+      }, 0)
+      return colors[Math.abs(hash) % colors.length]
     },
 
     async fetchSubjects() {
@@ -573,83 +598,74 @@ export default {
         this.isLoading = true
         this.loadingMessage = 'Loading your subjects...'
 
-        let { data: enrollments, error: viewError } = await supabase
-          .from('student_dashboard')
-          .select('*')
+        // Fetch enrollments directly (student_dashboard view may not exist)
+        const { data: enrollmentsData, error: enrollError } = await supabase
+          .from('enrollments')
+          .select('id, student_id, section_id, subject_id, status, enrolled_at')
           .eq('student_id', this.studentInfo.id)
-          .eq('enrollment_status', 'active')
+          .eq('status', 'active')
 
-        console.log('View query result:', { enrollments, viewError })
+        console.log('Enrollment query result:', { enrollmentsData, enrollError })
 
-        if (viewError || !enrollments || enrollments.length === 0) {
-          console.log('⚠️ View query failed or empty, using direct query...')
-          
-          const { data: enrollmentsData, error: enrollError } = await supabase
-            .from('enrollments')
-            .select('id, student_id, section_id, subject_id, status, enrolled_at')
-            .eq('student_id', this.studentInfo.id)
-            .eq('status', 'active')
-
-          if (enrollError) {
-            console.error('❌ Enrollment query error:', enrollError)
-            throw enrollError
-          }
-
-          if (!enrollmentsData || enrollmentsData.length === 0) {
-            console.log('ℹ️ No enrollments found')
-            this.subjects = []
-            this.isLoading = false
-            return
-          }
-
-          console.log('✓ Found', enrollmentsData.length, 'enrollments')
-
-          const sectionIds = enrollmentsData.map(e => e.section_id)
-          const { data: sectionsData } = await supabase
-            .from('sections')
-            .select('id, name, section_code, subject_id')
-            .in('id', sectionIds)
-
-          const subjectIds = [...new Set(sectionsData.map(s => s.subject_id))]
-          const { data: subjectsData } = await supabase
-            .from('subjects')
-            .select('id, name, grade_level, description, teacher_id')
-            .in('id', subjectIds)
-
-          const teacherIds = [...new Set(subjectsData.map(s => s.teacher_id))]
-          const { data: teachersData } = await supabase
-            .from('teachers')
-            .select('id, full_name, email, department')
-            .in('id', teacherIds)
-
-          const sectionsMap = new Map(sectionsData.map(s => [s.id, s]))
-          const subjectsMap = new Map(subjectsData.map(s => [s.id, s]))
-          const teachersMap = new Map(teachersData.map(t => [t.id, t]))
-
-          enrollments = enrollmentsData.map(e => {
-            const section = sectionsMap.get(e.section_id)
-            const subject = subjectsMap.get(section?.subject_id)
-            const teacher = subject ? teachersMap.get(subject.teacher_id) : null
-
-            return {
-              enrollment_id: e.id,
-              student_id: e.student_id,
-              section_id: e.section_id,
-              subject_id: subject?.id,
-              enrollment_status: e.status,
-              enrolled_at: e.enrolled_at,
-              section_name: section?.name,
-              section_code: section?.section_code,
-              subject_name: subject?.name,
-              subject_grade_level: subject?.grade_level,
-              subject_description: subject?.description,
-              teacher_id: teacher?.id,
-              teacher_name: teacher?.full_name,
-              teacher_email: teacher?.email,
-              teacher_department: teacher?.department
-            }
-          })
+        if (enrollError) {
+          console.error('❌ Enrollment query error:', enrollError)
+          throw enrollError
         }
+
+        if (!enrollmentsData || enrollmentsData.length === 0) {
+          console.log('ℹ️ No enrollments found')
+          this.subjects = []
+          this.isLoading = false
+          return
+        }
+
+        console.log('✓ Found', enrollmentsData.length, 'enrollments')
+
+        const enrolledSectionIds = enrollmentsData.map((e) => e.section_id)
+        const { data: sectionsData } = await supabase
+          .from('sections')
+          .select('id, name, section_code, subject_id')
+          .in('id', enrolledSectionIds)
+
+        const subjectIds = [...new Set(sectionsData.map((s) => s.subject_id))]
+        const { data: subjectsData } = await supabase
+          .from('subjects')
+          .select('id, name, grade_level, description, teacher_id')
+          .in('id', subjectIds)
+
+        const teacherIds = [...new Set(subjectsData.map((s) => s.teacher_id))]
+        const { data: teachersData } = await supabase
+          .from('teachers')
+          .select('id, full_name, email, department')
+          .in('id', teacherIds)
+
+        const sectionsMap = new Map(sectionsData.map((s) => [s.id, s]))
+        const subjectsMap = new Map(subjectsData.map((s) => [s.id, s]))
+        const teachersMap = new Map(teachersData.map((t) => [t.id, t]))
+
+        const enrollments = enrollmentsData.map((e) => {
+          const section = sectionsMap.get(e.section_id)
+          const subject = subjectsMap.get(section?.subject_id)
+          const teacher = subject ? teachersMap.get(subject.teacher_id) : null
+
+          return {
+            enrollment_id: e.id,
+            student_id: e.student_id,
+            section_id: e.section_id,
+            subject_id: subject?.id,
+            enrollment_status: e.status,
+            enrolled_at: e.enrolled_at,
+            section_name: section?.name,
+            section_code: section?.section_code,
+            subject_name: subject?.name,
+            subject_grade_level: subject?.grade_level,
+            subject_description: subject?.description,
+            teacher_id: teacher?.id,
+            teacher_name: teacher?.full_name,
+            teacher_email: teacher?.email,
+            teacher_department: teacher?.department,
+          }
+        })
 
         if (!enrollments || enrollments.length === 0) {
           console.log('ℹ️ No enrollments found after processing')
@@ -660,41 +676,47 @@ export default {
 
         console.log('✓ Processing', enrollments.length, 'enrollments')
 
-        const sectionIds = enrollments.map(e => e.section_id)
+        const sectionIds = enrollments.map((e) => e.section_id)
 
         // ============================================
         // FETCH QUIZZES - FIXED LOGIC
         // ============================================
         console.log('📝 Fetching quizzes for sections:', sectionIds)
-        
+
         // 🔍 DEBUG: Check ALL quizzes in the entire database first
         const { data: debugAllQuizzes, error: debugError } = await supabase
           .from('quizzes')
           .select('id, section_id, subject_id, title, status, created_at')
           .limit(20)
-        
+
         console.log('🔍 DEBUG - ALL quizzes in database (up to 20):', {
           count: debugAllQuizzes?.length || 0,
           quizzes: debugAllQuizzes,
-          error: debugError
+          error: debugError,
         })
-        
+
         if (debugAllQuizzes && debugAllQuizzes.length > 0) {
-          console.log('🔍 DEBUG - Section IDs in quizzes table:', debugAllQuizzes.map(q => q.section_id))
+          console.log(
+            '🔍 DEBUG - Section IDs in quizzes table:',
+            debugAllQuizzes.map((q) => q.section_id),
+          )
           console.log('🔍 DEBUG - Student enrolled section IDs:', sectionIds)
-          console.log('🔍 DEBUG - Do any match?', debugAllQuizzes.some(q => sectionIds.includes(q.section_id)))
+          console.log(
+            '🔍 DEBUG - Do any match?',
+            debugAllQuizzes.some((q) => sectionIds.includes(q.section_id)),
+          )
         }
-        
+
         const { data: allQuizzes, error: quizzesError } = await supabase
           .from('quizzes')
           .select('id, section_id, title, status, start_date, end_date, created_at')
           .in('section_id', sectionIds)
-          .eq('status', 'published')  // ✅ CRITICAL: Only fetch published quizzes
+          .eq('status', 'published') // ✅ CRITICAL: Only fetch published quizzes
 
-        console.log('📊 Quizzes query result:', { 
-          count: allQuizzes?.length || 0, 
+        console.log('📊 Quizzes query result:', {
+          count: allQuizzes?.length || 0,
           error: quizzesError,
-          quizzes: allQuizzes 
+          quizzes: allQuizzes,
         })
 
         if (quizzesError) {
@@ -703,7 +725,7 @@ export default {
 
         const quizzesBySection = {}
         if (allQuizzes) {
-          allQuizzes.forEach(quiz => {
+          allQuizzes.forEach((quiz) => {
             if (!quizzesBySection[quiz.section_id]) {
               quizzesBySection[quiz.section_id] = []
             }
@@ -714,26 +736,26 @@ export default {
         console.log('📦 Quizzes grouped by section:', quizzesBySection)
 
         // Fetch quiz results for student
-        const allQuizIds = allQuizzes ? allQuizzes.map(q => q.id) : []
+        const allQuizIds = allQuizzes ? allQuizzes.map((q) => q.id) : []
         const resultsByQuizId = {}
-        
+
         if (allQuizIds.length > 0) {
           console.log('📈 Fetching quiz results for', allQuizIds.length, 'quizzes')
-          
+
           const { data: allResults, error: resultsError } = await supabase
             .from('quiz_results')
             .select('quiz_id, best_score, best_percentage, total_attempts')
             .eq('student_id', this.studentInfo.id)
             .in('quiz_id', allQuizIds)
-          
+
           console.log('📊 Quiz results:', { count: allResults?.length || 0, error: resultsError })
-          
+
           if (resultsError) {
             console.error('❌ Error fetching quiz results:', resultsError)
           }
-          
+
           if (allResults) {
-            allResults.forEach(result => {
+            allResults.forEach((result) => {
               resultsByQuizId[result.quiz_id] = result
             })
           }
@@ -746,20 +768,20 @@ export default {
         // ============================================
         const assignmentsBySection = {}
         const assignmentsCompletedBySection = {}
-        
+
         if (sectionIds.length > 0) {
           console.log('📝 Fetching assignments for sections:', sectionIds)
-          
+
           const { data: allAssignments, error: assignmentsError } = await supabase
             .from('assignments')
             .select('id, section_id, subject_id, status, due_date')
             .in('section_id', sectionIds)
             .eq('status', 'published')
 
-          console.log('📝 Assignments query result:', { 
-            count: allAssignments?.length || 0, 
+          console.log('📝 Assignments query result:', {
+            count: allAssignments?.length || 0,
             error: assignmentsError,
-            assignments: allAssignments 
+            assignments: allAssignments,
           })
 
           if (assignmentsError) {
@@ -767,12 +789,12 @@ export default {
           }
 
           if (allAssignments) {
-            allAssignments.forEach(assignment => {
+            allAssignments.forEach((assignment) => {
               const sectionId = assignment.section_id
               assignmentsBySection[sectionId] = (assignmentsBySection[sectionId] || 0) + 1
             })
 
-            const assignmentIds = allAssignments.map(a => a.id)
+            const assignmentIds = allAssignments.map((a) => a.id)
             if (assignmentIds.length > 0) {
               const { data: submissions, error: submissionsError } = await supabase
                 .from('assignment_submissions')
@@ -780,9 +802,9 @@ export default {
                 .in('assignment_id', assignmentIds)
                 .eq('student_id', this.studentInfo.id)
 
-              console.log('📋 Submissions query result:', { 
-                count: submissions?.length || 0, 
-                error: submissionsError 
+              console.log('📋 Submissions query result:', {
+                count: submissions?.length || 0,
+                error: submissionsError,
               })
 
               if (submissionsError) {
@@ -790,17 +812,21 @@ export default {
               }
 
               if (submissions) {
-                submissions.forEach(submission => {
-                  const sectionId = submission.assignment?.section_id || submission.assignments?.section_id
+                submissions.forEach((submission: any) => {
+                  const assignment = Array.isArray(submission.assignment)
+                    ? submission.assignment[0]
+                    : submission.assignment
+                  const sectionId = assignment?.section_id
                   if (sectionId) {
-                    assignmentsCompletedBySection[sectionId] = (assignmentsCompletedBySection[sectionId] || 0) + 1
+                    assignmentsCompletedBySection[sectionId] =
+                      (assignmentsCompletedBySection[sectionId] || 0) + 1
                   }
                 })
               }
             }
           }
 
-          sectionIds.forEach(sId => {
+          sectionIds.forEach((sId) => {
             if (!(sId in assignmentsBySection)) {
               assignmentsBySection[sId] = 0
             }
@@ -817,18 +843,18 @@ export default {
         // BUILD SUBJECTS ARRAY
         // ============================================
         const now = new Date()
-        
-        const newSubjects = enrollments.map(enrollment => {
+
+        const newSubjects = enrollments.map((enrollment) => {
           const sectionId = enrollment.section_id
           const subjectId = enrollment.subject_id
 
           const sectionQuizzes = quizzesBySection[sectionId] || []
-          
+
           console.log(`\n📚 Processing section ${sectionId}:`)
           console.log('  Total quizzes:', sectionQuizzes.length)
-          
+
           // ✅ FIXED: Calculate available quizzes correctly
-          const availableQuizzesList = sectionQuizzes.filter(quiz => {
+          const availableQuizzesList = sectionQuizzes.filter((quiz) => {
             // Check if quiz has started
             const hasStarted = !quiz.start_date || new Date(quiz.start_date) <= now
             // Check if quiz has not expired
@@ -836,23 +862,23 @@ export default {
             // Check if quiz is not completed
             const result = resultsByQuizId[quiz.id]
             const isNotCompleted = !result || result.total_attempts === 0
-            
+
             const isAvailable = hasStarted && hasNotExpired && isNotCompleted
-            
+
             console.log(`  Quiz "${quiz.title}":`, {
               hasStarted,
               hasNotExpired,
               isNotCompleted,
               isAvailable,
-              result: result ? `${result.total_attempts} attempts` : 'no attempts'
+              result: result ? `${result.total_attempts} attempts` : 'no attempts',
             })
-            
+
             return isAvailable
           })
-          
+
           const completedQuizIds = sectionQuizzes
-            .map(q => q.id)
-            .filter(quizId => {
+            .map((q) => q.id)
+            .filter((quizId) => {
               const result = resultsByQuizId[quizId]
               return result && result.total_attempts > 0
             })
@@ -864,7 +890,7 @@ export default {
           console.log('  Final counts:', {
             total: totalQuizzes,
             completed: completedQuizzes,
-            available: availableQuizzes
+            available: availableQuizzes,
           })
 
           // Get assignment counts
@@ -872,10 +898,10 @@ export default {
           const completedAssignments = assignmentsCompletedBySection[sectionId] || 0
           const availableAssignments = Math.max(0, totalAssignments - completedAssignments)
 
-          console.log(`  Assignments:`, { 
-            total: totalAssignments, 
-            completed: completedAssignments, 
-            available: availableAssignments 
+          console.log(`  Assignments:`, {
+            total: totalAssignments,
+            completed: completedAssignments,
+            available: availableAssignments,
           })
 
           // Calculate total assessments
@@ -885,11 +911,11 @@ export default {
           // Calculate grade
           let currentGrade = '--'
           let overallScore = null
-          
+
           if (completedQuizIds.length > 0) {
-            const scores = completedQuizIds.map(qId => resultsByQuizId[qId].best_percentage || 0)
+            const scores = completedQuizIds.map((qId) => resultsByQuizId[qId].best_percentage || 0)
             overallScore = scores.reduce((sum, score) => sum + score, 0) / scores.length
-            
+
             if (overallScore >= 95) currentGrade = 'A+'
             else if (overallScore >= 90) currentGrade = 'A'
             else if (overallScore >= 85) currentGrade = 'B+'
@@ -925,14 +951,13 @@ export default {
             overallScore,
             enrollmentId: enrollment.enrollment_id,
             sectionId: sectionId,
-            showOptions: false
+            showOptions: false,
           }
         })
-        
+
         this.subjects = newSubjects
         console.log('\n✅ Successfully loaded', this.subjects.length, 'subjects')
         console.log('📋 Final subjects data:', this.subjects)
-
       } catch (error) {
         console.error('❌ Error fetching subjects:', error)
         alert(`Unable to load subjects: ${error.message}`)
@@ -968,7 +993,7 @@ export default {
         if (error) throw error
 
         this.showUnenrollModal = false
-        
+
         this.favoriteSubjects.delete(this.unenrollSubject.id)
         this.archivedSubjects.delete(this.unenrollSubject.id)
         this.saveUserPreferences()
@@ -977,7 +1002,6 @@ export default {
 
         alert(`You have been successfully unenrolled from ${this.unenrollSubject.name}.`)
         this.unenrollSubject = null
-
       } catch (error) {
         console.error('❌ Unenrollment error:', error)
         alert(`Failed to unenroll: ${error.message}`)
@@ -992,40 +1016,40 @@ export default {
           name: 'TakeAssignments',
           params: {
             subjectId: subject.id,
-            sectionId: subject.sectionId
+            sectionId: subject.sectionId,
           },
           query: {
             subjectName: subject.name,
             sectionName: subject.section,
-            instructor: subject.instructor
-          }
+            instructor: subject.instructor,
+          },
         })
       } else if (type === 'quiz') {
         this.$router.push({
           name: 'TakeQuiz',
           params: {
             subjectId: subject.id,
-            sectionId: subject.sectionId
+            sectionId: subject.sectionId,
           },
           query: {
             subjectName: subject.name,
             sectionName: subject.section,
-            instructor: subject.instructor
-          }
+            instructor: subject.instructor,
+          },
         })
       } else {
         this.$router.push({
           name: 'StudentAssessments',
           params: {
             subjectId: subject.id,
-            sectionId: subject.sectionId
+            sectionId: subject.sectionId,
           },
           query: {
             subjectName: subject.name,
             sectionName: subject.section,
             type: type,
-            instructor: subject.instructor
-          }
+            instructor: subject.instructor,
+          },
         })
       }
     },
@@ -1035,14 +1059,14 @@ export default {
         name: 'TakeQuiz',
         params: {
           subjectId: subject.id,
-          sectionId: subject.sectionId
+          sectionId: subject.sectionId,
         },
         query: {
           subjectName: subject.name,
           sectionName: subject.section,
           gradeLevel: subject.gradeLevel,
-          sectionCode: subject.code
-        }
+          sectionCode: subject.code,
+        },
       })
     },
 
@@ -1051,15 +1075,15 @@ export default {
         name: 'StudentGrades',
         params: {
           subjectId: subject.id,
-          sectionId: subject.sectionId
+          sectionId: subject.sectionId,
         },
         query: {
           subjectName: subject.name,
           sectionName: subject.section,
           instructor: subject.instructor,
           currentGrade: subject.currentGrade,
-          overallScore: subject.overallScore
-        }
+          overallScore: subject.overallScore,
+        },
       })
     },
 
@@ -1084,20 +1108,20 @@ export default {
     },
 
     toggleOptionsMenu(subjectId) {
-      this.subjects.forEach(subject => {
+      this.subjects.forEach((subject) => {
         if (subject.id !== subjectId) {
           subject.showOptions = false
         }
       })
-      
-      const subject = this.subjects.find(s => s.id === subjectId)
+
+      const subject = this.subjects.find((s) => s.id === subjectId)
       if (subject) {
         subject.showOptions = !subject.showOptions
       }
     },
 
     closeAllOptionsMenus() {
-      this.subjects.forEach(subject => {
+      this.subjects.forEach((subject) => {
         subject.showOptions = false
       })
     },
@@ -1111,11 +1135,11 @@ export default {
       try {
         localStorage.setItem(
           this.getUserStorageKey('favorites'),
-          JSON.stringify(Array.from(this.favoriteSubjects))
+          JSON.stringify(Array.from(this.favoriteSubjects)),
         )
         localStorage.setItem(
           this.getUserStorageKey('archived'),
-          JSON.stringify(Array.from(this.archivedSubjects))
+          JSON.stringify(Array.from(this.archivedSubjects)),
         )
       } catch (error) {
         console.warn('Failed to save preferences:', error)
@@ -1126,7 +1150,7 @@ export default {
       try {
         const favoritesData = localStorage.getItem(this.getUserStorageKey('favorites'))
         const archivedData = localStorage.getItem(this.getUserStorageKey('archived'))
-        
+
         if (favoritesData) {
           this.favoriteSubjects = new Set(JSON.parse(favoritesData))
         }
@@ -1145,10 +1169,10 @@ export default {
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
     console.log('🚀 COMPONENT MOUNTED')
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
-    
+
     try {
       const authSuccess = await this.initializeAuth()
-      
+
       if (!authSuccess) {
         console.log('❌ Auth failed')
         return
@@ -1156,11 +1180,10 @@ export default {
 
       this.loadUserPreferences()
       await this.fetchSubjects()
-      
+
       document.addEventListener('click', this.closeAllOptionsMenus)
-      
+
       console.log('✅ INITIALIZATION COMPLETE')
-      
     } catch (error) {
       console.error('❌ MOUNT ERROR:', error)
       await this.$router.push('/login')
@@ -1179,14 +1202,13 @@ export default {
       }
     })
   },
-  
+
   beforeUnmount() {
     if (this.pollingInterval) clearInterval(this.pollingInterval)
     document.removeEventListener('click', this.closeAllOptionsMenus)
-  }
+  },
 }
 </script>
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -1443,7 +1465,6 @@ export default {
   border: 2px solid #20c997;
 }
 
-
 :root {
   --bg-card-muted: rgba(var(--bg-card-rgb, 255, 255, 255), 0.6);
 }
@@ -1673,22 +1694,22 @@ export default {
   margin-bottom: 1.2rem;
 }
 
-  .subjects-grid {
-    gap: 1rem;
-    margin-bottom: 0.25rem;
-  }
-  .subject-card {
-    padding: 1.2rem 1.2rem 1.5rem 1.2rem;
-    gap: 0.15rem;
-    border-radius: 6px;
-    border: 2px solid #3D8D7A;
-    box-shadow: 0 2px 8px rgba(61, 141, 122, 0.10);
-    background: #fff;
-  }
-  .subject-header {
-    gap: 0.15rem;
-    margin-bottom: 0.08rem;
-  }
+.subjects-grid {
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+.subject-card {
+  padding: 1.2rem 1.2rem 1.5rem 1.2rem;
+  gap: 0.15rem;
+  border-radius: 6px;
+  border: 2px solid #3d8d7a;
+  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.1);
+  background: #fff;
+}
+.subject-header {
+  gap: 0.15rem;
+  margin-bottom: 0.08rem;
+}
 
 .subject-card:hover {
   transform: translateY(-2px);
@@ -1717,7 +1738,9 @@ export default {
 
 .subject-card.favorite-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px var(--shadow-medium), 0 0 0 1px rgba(255, 193, 7, 0.1);
+  box-shadow:
+    0 16px 48px var(--shadow-medium),
+    0 0 0 1px rgba(255, 193, 7, 0.1);
 }
 
 /* Archived Card Styling */
@@ -1817,12 +1840,8 @@ export default {
 
 .dropdown-item:hover {
   background: var(--bg-hover);
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
-
-
-
-
 
 .subject-header {
   display: flex;
@@ -2011,9 +2030,17 @@ export default {
 }
 
 @keyframes pulse-glow {
-  0% { box-shadow: 0 4px 16px rgba(61, 141, 122, 0.2); }
-  50% { box-shadow: 0 4px 20px rgba(61, 141, 122, 0.4), 0 0 20px rgba(61, 141, 122, 0.3); }
-  100% { box-shadow: 0 4px 16px rgba(61, 141, 122, 0.2); }
+  0% {
+    box-shadow: 0 4px 16px rgba(61, 141, 122, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 4px 20px rgba(61, 141, 122, 0.4),
+      0 0 20px rgba(61, 141, 122, 0.3);
+  }
+  100% {
+    box-shadow: 0 4px 16px rgba(61, 141, 122, 0.2);
+  }
 }
 
 .action-btn.completed {
@@ -2372,7 +2399,7 @@ export default {
 .input-with-icon svg {
   position: absolute;
   left: 1rem;
-  color: #3D8D7A;
+  color: #3d8d7a;
   z-index: 1;
 }
 

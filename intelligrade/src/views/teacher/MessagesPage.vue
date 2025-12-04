@@ -11,21 +11,26 @@
           </div>
         </div>
         <!-- Center: Empty space for clean look -->
-        <div class="navbar-center">
-        </div>
-        
+        <div class="navbar-center"></div>
+
         <!-- Right: User Profile and Notifications -->
         <div class="navbar-right">
           <!-- Notification Bell -->
           <div class="notif-wrapper">
-            <button class="nav-icon-btn rounded-bg" @click="toggleNotifDropdown" aria-label="Notifications">
+            <button
+              class="nav-icon-btn rounded-bg"
+              @click="toggleNotifDropdown"
+              aria-label="Notifications"
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
-              <span v-if="notifications.length" class="notification-badge">{{ notifications.length }}</span>
+              <span v-if="notifications.length" class="notification-badge">{{
+                notifications.length
+              }}</span>
             </button>
-            
+
             <!-- Notification Dropdown -->
             <div v-if="showNotifDropdown" class="notification-dropdown">
               <div class="dropdown-header">
@@ -35,7 +40,12 @@
                 <div v-if="notifications.length === 0" class="no-notifications">
                   No new notifications
                 </div>
-                <div v-for="notif in notifications" :key="notif.id" class="notification-item" @click="handleNotificationClick(notif)">
+                <div
+                  v-for="notif in notifications"
+                  :key="notif.id"
+                  class="notification-item"
+                  @click="handleNotificationClick(notif)"
+                >
                   <div class="notif-content">
                     <h4>{{ notif.title }}</h4>
                     <p>{{ notif.body }}</p>
@@ -45,7 +55,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- User Profile -->
           <div class="user-profile-wrapper">
             <div class="user-profile rounded-bg" @click="toggleProfileDropdown">
@@ -56,14 +66,29 @@
                 </svg>
               </div>
               <span class="user-name">{{ fullName }}</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="dropdown-arrow">
-                <path d="M7 10l5 5 5-5z"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="dropdown-arrow"
+              >
+                <path d="M7 10l5 5 5-5z" />
               </svg>
             </div>
-            
+
             <!-- Profile Dropdown -->
             <div v-if="showProfileDropdown" class="profile-dropdown">
-              <div class="dropdown-header" style="padding: 1.5rem; background: linear-gradient(135deg, #3D8D7A, #2d6a5a); color: white; border-bottom: none; border: none;">
+              <div
+                class="dropdown-header"
+                style="
+                  padding: 1.5rem;
+                  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
+                  color: white;
+                  border-bottom: none;
+                  border: none;
+                "
+              >
                 <div class="profile-info">
                   <div class="profile-avatar">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -77,20 +102,24 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="dropdown-menu">
                 <router-link to="/teacher/settings" class="dropdown-item">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"/>
+                    <path
+                      d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"
+                    />
                   </svg>
                   <span>Profile & Settings</span>
                 </router-link>
-                
+
                 <div class="dropdown-divider"></div>
-                
+
                 <button @click="logout" class="dropdown-item logout-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"/>
+                    <path
+                      d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"
+                    />
                   </svg>
                   <span>Logout</span>
                 </button>
@@ -102,46 +131,111 @@
     </nav>
 
     <!-- Sidebar Navigation - Custom Tooltip Labels on Hover -->
-    <aside class="sidebar" style="background:#3D8D7A; border-right:none;">
+    <aside class="sidebar" style="background: #3d8d7a; border-right: none">
       <nav class="sidebar-nav">
-        <router-link to="/teacher/dashboard" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/dashboard' }">
+        <router-link
+          to="/teacher/dashboard"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/dashboard' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M10 20v-6h4v6m5-8h3L12 3 2 12h3v8h5v-6h4v6h5v-8z" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Dashboard</span>
         </router-link>
-        <router-link to="/teacher/subjects" class="sidebar-item rounded-bg" :class="{ 'active': $route.path.includes('/teacher/subjects') }">
+        <router-link
+          to="/teacher/subjects"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path.includes('/teacher/subjects') }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="7" width="18" height="13" rx="2" />
               <path d="M3 7l9-4 9 4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Classes</span>
         </router-link>
-        <router-link to="/teacher/gradebook" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/gradebook' }">
+        <router-link
+          to="/teacher/gradebook"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/gradebook' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="4" y="4" width="16" height="16" rx="2" />
               <path d="M8 2v4M16 2v4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Gradebook</span>
         </router-link>
-        <router-link to="/teacher/upload-assessment" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/upload-assessment' }">
+        <router-link
+          to="/teacher/upload-assessment"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/upload-assessment' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M12 19V6M5 12l7-7 7 7" />
               <rect x="5" y="19" width="14" height="2" rx="1" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Upload Assessment</span>
         </router-link>
-        <router-link to="/teacher/analytics" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/analytics' }">
+        <router-link
+          to="/teacher/analytics"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/analytics' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="12" width="4" height="8" />
               <rect x="10" y="8" width="4" height="12" />
               <rect x="17" y="4" width="4" height="16" />
@@ -149,9 +243,22 @@
           </div>
           <span class="sidebar-tooltip">Analytics</span>
         </router-link>
-        <router-link to="/teacher/messages" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/messages' }">
+        <router-link
+          to="/teacher/messages"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/messages' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="M3 5l9 7 9-7" />
             </svg>
@@ -168,7 +275,7 @@
           <div class="header-left">
             <div class="header-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
               </svg>
             </div>
             <div>
@@ -191,125 +298,199 @@
 
       <!-- Content Area -->
 
-    <!-- Filter and Search Controls -->
-    <div class="controls-section">
-      <div class="search-box">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
-        </svg>
-        <input 
-          type="text" 
-          v-model="searchQuery" 
-          placeholder="Search students or sections..."
-          class="search-input"
-        />
-      </div>
-      <div class="filter-tabs">
-        <button 
-          :class="['filter-tab', { 'active': currentTab === 'students' && !showArchive }]"
-          @click="currentTab = 'students'; showArchive = false; showBroadcastHistory = false"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
+      <!-- Filter and Search Controls -->
+      <div class="controls-section">
+        <div class="search-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
+            />
           </svg>
-          My Students
-        </button>
-        <button 
-          :class="['filter-tab', { 'active': currentTab === 'broadcast' && !showBroadcastHistory }]"
-          @click="currentTab = 'broadcast'; showArchive = false; showBroadcastHistory = false"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10 3h4a8 8 0 0 1 0 16v-2.5"/>
-            <path d="M6 14c2-2 3-3.5 3-6"/>
-          </svg>
-          Broadcast
-        </button>
-        <button 
-          :class="['filter-tab', { 'active': showArchive }]"
-          @click="currentTab = 'students'; showArchive = true; showBroadcastHistory = false"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="21 8 21 21 3 21 3 8"></polyline>
-            <rect x="1" y="3" width="22" height="5"></rect>
-            <line x1="10" y1="12" x2="14" y2="12"></line>
-          </svg>
-          Archive
-        </button>
+          <input
+            type="text"
+            v-model="searchQuery"
+            placeholder="Search students or sections..."
+            class="search-input"
+          />
+        </div>
+        <div class="filter-tabs">
+          <button
+            :class="['filter-tab', { active: currentTab === 'students' && !showArchive }]"
+            @click="
+              currentTab = 'students'
+              showArchive = false
+              showBroadcastHistory = false
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            My Students
+          </button>
+          <button
+            :class="['filter-tab', { active: currentTab === 'broadcast' && !showBroadcastHistory }]"
+            @click="
+              currentTab = 'broadcast'
+              showArchive = false
+              showBroadcastHistory = false
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M10 3h4a8 8 0 0 1 0 16v-2.5" />
+              <path d="M6 14c2-2 3-3.5 3-6" />
+            </svg>
+            Broadcast
+          </button>
+          <button
+            :class="['filter-tab', { active: showArchive }]"
+            @click="
+              currentTab = 'students'
+              showArchive = true
+              showBroadcastHistory = false
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="21 8 21 21 3 21 3 8"></polyline>
+              <rect x="1" y="3" width="22" height="5"></rect>
+              <line x1="10" y1="12" x2="14" y2="12"></line>
+            </svg>
+            Archive
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- Grade Level Filter (only show for students tab and not in archive) -->
-    <div v-if="currentTab === 'students' && !showArchive && !showStudentsInSection" class="grade-filters">
-      <div class="grade-filter-tabs">
-        <button 
-          :class="['grade-tab', { 'active': selectedGradeFilter === 'all' }]"
-          @click="selectedGradeFilter = 'all'"
-        >
-          All Grades
-        </button>
-        <button 
-          v-for="grade in availableGrades" 
-          :key="grade"
-          :class="['grade-tab', { 'active': selectedGradeFilter === grade }]"
-          @click="selectedGradeFilter = grade"
-        >
-          Grade {{ grade }}
-        </button>
+      <!-- Grade Level Filter (only show for students tab and not in archive) -->
+      <div
+        v-if="currentTab === 'students' && !showArchive && !showStudentsInSection"
+        class="grade-filters"
+      >
+        <div class="grade-filter-tabs">
+          <button
+            :class="['grade-tab', { active: selectedGradeFilter === 'all' }]"
+            @click="selectedGradeFilter = 'all'"
+          >
+            All Grades
+          </button>
+          <button
+            v-for="grade in availableGrades"
+            :key="grade"
+            :class="['grade-tab', { active: selectedGradeFilter === grade }]"
+            @click="selectedGradeFilter = grade"
+          >
+            Grade {{ grade }}
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- Debug Info -->
-    <div v-if="debugMode" class="debug-section">
-      <div class="debug-header">
-        <h3>Debug Information</h3>
-        <button @click="debugMode = false" class="close-debug-btn">×</button>
+      <!-- Debug Info -->
+      <div v-if="debugMode" class="debug-section">
+        <div class="debug-header">
+          <h3>Debug Information</h3>
+          <button @click="debugMode = false" class="close-debug-btn">×</button>
+        </div>
+        <div class="debug-content">
+          <p><strong>Auth User ID:</strong> {{ currentUser?.id || 'None' }}</p>
+          <p><strong>Teacher Profile ID:</strong> {{ teacherProfile?.id || 'None' }}</p>
+          <p><strong>Teacher ID:</strong> {{ currentTeacherId || 'None' }}</p>
+          <p><strong>Teacher Name:</strong> {{ teacherProfile?.full_name || 'None' }}</p>
+          <p><strong>Contacts Count:</strong> {{ studentContacts.length }}</p>
+        </div>
       </div>
-      <div class="debug-content">
-        <p><strong>Auth User ID:</strong> {{ currentUser?.id || 'None' }}</p>
-        <p><strong>Teacher Profile ID:</strong> {{ teacherProfile?.id || 'None' }}</p>
-        <p><strong>Teacher ID:</strong> {{ currentTeacherId || 'None' }}</p>
-        <p><strong>Teacher Name:</strong> {{ teacherProfile?.full_name || 'None' }}</p>
-        <p><strong>Contacts Count:</strong> {{ studentContacts.length }}</p>
-      </div>
-    </div>
 
-    <!-- Main Content Area -->
-    <div class="content-area">
+      <!-- Main Content Area -->
+      <div class="content-area">
         <!-- Students Tab -->
         <div v-if="currentTab === 'students' && !showArchive" class="tab-content">
           <!-- Section Students View -->
           <div v-if="showStudentsInSection" class="section-students-view">
             <div class="section-students-header">
               <button class="back-to-sections-btn" @click="backToSections()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
                   <line x1="19" y1="12" x2="5" y2="12"></line>
                   <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
                 Back to Subjects
               </button>
               <div class="section-students-info">
-                <h3>{{ selectedSectionView?.subject_name }} - {{ selectedSectionView?.section_name }}</h3>
+                <h3>
+                  {{ selectedSectionView?.subject_name }} - {{ selectedSectionView?.section_name }}
+                </h3>
                 <div class="section-students-meta">
                   <span class="section-code">{{ selectedSectionView?.section_code }}</span>
                   <span class="grade-info">Grade {{ selectedSectionView?.grade_level }}</span>
-                  <span class="student-count">{{ selectedSectionView?.students.length }} enrolled students</span>
+                  <span class="student-count"
+                    >{{ selectedSectionView?.students.length }} enrolled students</span
+                  >
                 </div>
               </div>
-              <button 
-                class="section-broadcast-btn" 
-                @click="openBroadcastModal(); broadcastSection = selectedSectionView?.section_id"
+              <button
+                class="section-broadcast-btn"
+                @click="
+                  openBroadcastModal()
+                  broadcastSection = selectedSectionView?.section_id
+                "
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 11l18-5v12L3 14v-3z"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 11l18-5v12L3 14v-3z" />
                 </svg>
                 Send Broadcast
               </button>
             </div>
 
             <div class="section-students-list">
-              <div 
-                v-for="student in selectedSectionView?.students || []" 
+              <div
+                v-for="student in selectedSectionView?.students || []"
                 :key="`${student.student_id}-${selectedSectionView?.section_id}`"
                 :class="['section-student-item', { 'has-unread': student.unread_count > 0 }]"
                 @click="startChatWithStudent(student)"
@@ -317,22 +498,42 @@
                 <div class="section-student-info">
                   <div class="section-student-avatar">
                     <span>{{ student.student_name?.[0] || 'S' }}</span>
-                    <span v-if="studentPresence[student.auth_user_id]?.is_online" class="online-indicator" title="Online now"></span>
+                    <span
+                      v-if="studentPresence[student.auth_user_id]?.is_online"
+                      class="online-indicator"
+                      title="Online now"
+                    ></span>
                   </div>
                   <div class="section-student-details">
                     <h4 class="section-student-name">{{ student.student_name }}</h4>
                     <p class="section-student-email">{{ student.student_email }}</p>
                     <p class="section-student-id">Student ID: {{ student.student_number }}</p>
                     <p class="presence-status">{{ getPresenceStatus(student.auth_user_id) }}</p>
-                    <p class="section-last-message">{{ student.last_message || `Enrolled ${formatDate(student.enrolled_date)}` }}</p>
+                    <p class="section-last-message">
+                      {{ student.last_message || `Enrolled ${formatDate(student.enrolled_date)}` }}
+                    </p>
                   </div>
                 </div>
                 <div class="section-message-status">
-                  <span v-if="student.unread_count > 0" class="section-unread-badge">{{ student.unread_count }}</span>
-                  <span class="section-last-time">{{ formatTime(student.last_message_date || student.enrolled_date) }}</span>
+                  <span v-if="student.unread_count > 0" class="section-unread-badge">{{
+                    student.unread_count
+                  }}</span>
+                  <span class="section-last-time">{{
+                    formatTime(student.last_message_date || student.enrolled_date)
+                  }}</span>
                   <div class="section-chat-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                     </svg>
                   </div>
                 </div>
@@ -343,13 +544,23 @@
           <!-- Sections Overview -->
           <div v-else>
             <!-- Removed redundant search bar and section filter -->
-            
+
             <!-- Students grouped by section -->
             <div v-if="groupedStudents.length === 0" class="empty-state">
               <div class="empty-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="8.5" cy="7" r="4"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="8.5" cy="7" r="4" />
                 </svg>
               </div>
               <p>No enrolled students found</p>
@@ -357,7 +568,12 @@
             </div>
 
             <div v-else class="sections-overview">
-              <div v-for="(section, idx) in (groupedStudents as any[])" :key="section.section_id" class="section-overview-card" @click="viewSectionStudents(section)">
+              <div
+                v-for="(section, idx) in groupedStudents as any[]"
+                :key="section.section_id"
+                class="section-overview-card"
+                @click="viewSectionStudents(section)"
+              >
                 <!-- Subject Icon and Title -->
                 <div class="section-card-header">
                   <div class="section-icon" :style="{ background: getSectionIconColor(idx) }">
@@ -368,17 +584,44 @@
                     <p class="section-grade">Grade {{ section.grade_level }}</p>
                   </div>
                   <div class="section-options-container">
-                    <button class="section-options-btn" @click.stop="toggleSectionOptions(section.section_id)">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <button
+                      class="section-options-btn"
+                      @click.stop="toggleSectionOptions(section.section_id)"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
                         <circle cx="12" cy="12" r="1"></circle>
                         <circle cx="12" cy="5" r="1"></circle>
                         <circle cx="12" cy="19" r="1"></circle>
                       </svg>
                     </button>
                     <!-- Dropdown Menu -->
-                    <div v-if="openSectionDropdown === section.section_id" class="section-options-dropdown" @click.stop>
+                    <div
+                      v-if="openSectionDropdown === section.section_id"
+                      class="section-options-dropdown"
+                      @click.stop
+                    >
                       <button class="dropdown-option delete" @click="deleteSectionConfirm(section)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
                           <polyline points="3 6 5 6 21 6"></polyline>
                           <path d="m19 6-1 14c0 1-1 2-2 2H8c-1 0-2-1-2-2L5 6"></path>
                           <path d="m10 11 0 6"></path>
@@ -387,8 +630,21 @@
                         </svg>
                         Delete Section
                       </button>
-                      <button class="dropdown-option archive" @click="archiveSectionConfirm(section)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <button
+                        class="dropdown-option archive"
+                        @click="archiveSectionConfirm(section)"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
                           <rect x="2" y="3" width="20" height="5"></rect>
                           <path d="m4 8 16 0 0 9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z"></path>
                           <path d="m10 12 4 0"></path>
@@ -401,16 +657,32 @@
 
                 <!-- Section Stats -->
                 <div class="section-stats">
-                  <span class="section-students-count">{{ section.students.length }} sections • {{ section.students.length }} students</span>
+                  <span class="section-students-count"
+                    >{{ section.students.length }} sections •
+                    {{ section.students.length }} students</span
+                  >
                 </div>
 
                 <!-- Section Code -->
                 <div class="section-code-display">
                   <div class="section-code-label">SECTION CODE</div>
-                  <div class="section-code-value" @click.stop="copyToClipboard(section.section_code)">
+                  <div
+                    class="section-code-value"
+                    @click.stop="copyToClipboard(section.section_code)"
+                  >
                     {{ section.section_code }}
                     <button class="copy-code-btn">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                       </svg>
@@ -422,15 +694,41 @@
                 <!-- Quick Actions -->
                 <div class="section-card-actions">
                   <span class="students-count-badge">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                      <circle cx="8.5" cy="7" r="4"/>
-                      <path d="M20 8v6M23 11h-6"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="8.5" cy="7" r="4" />
+                      <path d="M20 8v6M23 11h-6" />
                     </svg>
                     {{ section.students.length }} students
                   </span>
-                  <button class="broadcast-quick-btn" @click.stop="openBroadcastModal(); broadcastSection = section.section_id">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <button
+                    class="broadcast-quick-btn"
+                    @click.stop="
+                      openBroadcastModal()
+                      broadcastSection = section.section_id
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
                       <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                     </svg>
                     Broadcast
@@ -443,10 +741,19 @@
 
         <!-- Archive Tab -->
         <div v-else-if="currentTab === 'students' && showArchive" class="tab-content">
-
           <div v-if="archivedChats.length === 0" class="empty-state">
             <div class="empty-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <polyline points="21 8 21 21 3 21 3 8"></polyline>
                 <rect x="1" y="3" width="22" height="5"></rect>
                 <line x1="10" y1="12" x2="14" y2="12"></line>
@@ -457,8 +764,8 @@
           </div>
 
           <div v-else class="students-list">
-            <div 
-              v-for="student in archivedChats" 
+            <div
+              v-for="student in archivedChats"
               :key="student.student_id"
               class="student-item archived"
             >
@@ -473,7 +780,17 @@
                 </div>
               </div>
               <button class="restore-btn" @click="restoreChat(student.student_id)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
                   <polyline points="23 4 23 10 17 10"></polyline>
                   <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
                 </svg>
@@ -490,9 +807,19 @@
             <div class="simple-broadcast-header">
               <div class="simple-header-content">
                 <div class="simple-header-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 11l18-5v12L3 14v-3z"/>
-                    <circle cx="12" cy="12" r="2"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 11l18-5v12L3 14v-3z" />
+                    <circle cx="12" cy="12" r="2" />
                   </svg>
                 </div>
                 <div class="simple-header-text">
@@ -501,14 +828,24 @@
                 </div>
               </div>
               <button class="simple-history-btn" @click="showBroadcastHistory = true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
                 View History
               </button>
             </div>
-            
+
             <!-- Full Screen Enhanced Broadcast Form -->
             <div class="broadcast-form-fullscreen">
               <div class="broadcast-form-columns">
@@ -518,17 +855,30 @@
                   <div class="broadcast-form-row">
                     <div class="form-group-compact">
                       <label>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                          <circle cx="8.5" cy="7" r="4"/>
-                          <path d="M20 8v6M23 11h-6"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                          <circle cx="8.5" cy="7" r="4" />
+                          <path d="M20 8v6M23 11h-6" />
                         </svg>
                         Select Section
                       </label>
                       <select v-model="broadcastSection" class="form-input-compact">
                         <option value="" disabled>Choose a section to broadcast...</option>
-                        <option v-for="section in uniqueSections" :key="section.section_id" :value="section.section_id">
-                          {{ section.section_name }} - {{ section.subject_name }} (Grade {{ section.grade_level }})
+                        <option
+                          v-for="section in uniqueSections"
+                          :key="section.section_id"
+                          :value="section.section_id"
+                        >
+                          {{ section.section_name }} - {{ section.subject_name }} (Grade
+                          {{ section.grade_level }})
                         </option>
                       </select>
                     </div>
@@ -538,18 +888,28 @@
                   <div class="broadcast-form-row">
                     <div class="form-group-compact">
                       <label>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                         </svg>
                         Your Message
                       </label>
-                      <textarea 
-                        v-model="broadcastMessage" 
+                      <textarea
+                        v-model="broadcastMessage"
                         placeholder="Type your announcement here... Make it clear and engaging for your students."
                         class="form-textarea-compact"
                         maxlength="500"
                       ></textarea>
-                      <div class="char-count-inline">{{ broadcastMessage.length }} / 500 characters</div>
+                      <div class="char-count-inline">
+                        {{ broadcastMessage.length }} / 500 characters
+                      </div>
                     </div>
                   </div>
 
@@ -557,22 +917,43 @@
                   <div class="broadcast-form-row">
                     <div class="form-group-compact">
                       <label>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                          />
                         </svg>
                         Attachments (Optional)
                       </label>
                     </div>
-                    <input 
-                      type="file" 
-                      ref="broadcastFileInput" 
-                      @change="handleBroadcastFileSelect" 
-                      multiple 
+                    <input
+                      type="file"
+                      ref="broadcastFileInput"
+                      @change="handleBroadcastFileSelect"
+                      multiple
                       accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
                       style="display: none"
                     />
-                    <button class="upload-button-inline" @click="($refs.broadcastFileInput as HTMLInputElement)?.click()">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <button
+                      class="upload-button-inline"
+                      @click="($refs.broadcastFileInput as HTMLInputElement)?.click()"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="17 8 12 3 7 8"></polyline>
                         <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -584,18 +965,32 @@
                   <!-- Action Buttons -->
                   <div class="action-buttons-fullwidth">
                     <button class="btn-cancel-full" @click="cancelBroadcast()">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                       </svg>
                       <span>Cancel</span>
                     </button>
-                    <button 
+                    <button
                       class="btn-send-full"
                       @click="sendBroadcastMessage"
                       :disabled="!broadcastMessage.trim() || !broadcastSection"
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
                         <line x1="22" y1="2" x2="11" y2="13"></line>
                         <polygon points="22 2 15.46 22 11 13 2 9.54 22 2"></polygon>
                       </svg>
@@ -613,11 +1008,19 @@
                       <p>{{ broadcastMessage }}</p>
                     </div>
                     <div v-else class="preview-placeholder">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
                       </svg>
                       <span>Your message preview will appear here</span>
                     </div>
@@ -627,13 +1030,31 @@
                   <div class="attachments-section-compact">
                     <h4>Attachments</h4>
                     <div v-if="broadcastAttachments.length > 0" class="attachments-preview-grid">
-                      <div v-for="(att, idx) in broadcastAttachments" :key="idx" class="attachment-preview-card">
+                      <div
+                        v-for="(att, idx) in broadcastAttachments"
+                        :key="idx"
+                        class="attachment-preview-card"
+                      >
                         <div class="attachment-preview-thumb">
-                          <img v-if="att.type === 'image'" :src="att.url" class="attachment-preview-img" />
+                          <img
+                            v-if="att.type === 'image'"
+                            :src="att.url"
+                            class="attachment-preview-img"
+                          />
                           <div v-else class="attachment-file-preview">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                              <polyline points="13 2 13 9 20 9"/>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            >
+                              <path
+                                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                              />
+                              <polyline points="13 2 13 9 20 9" />
                             </svg>
                           </div>
                         </div>
@@ -641,8 +1062,19 @@
                           <p class="attachment-preview-name">{{ att.name }}</p>
                           <span class="attachment-preview-size">{{ att.size }}</span>
                         </div>
-                        <button @click="broadcastAttachments.splice(idx, 1)" class="attachment-remove-btn">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <button
+                          @click="broadcastAttachments.splice(idx, 1)"
+                          class="attachment-remove-btn"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
                             <line x1="18" y1="6" x2="6" y2="18"></line>
                             <line x1="6" y1="6" x2="18" y2="18"></line>
                           </svg>
@@ -650,8 +1082,18 @@
                       </div>
                     </div>
                     <div v-else class="attachments-placeholder">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                        />
                       </svg>
                       <span>No attachments selected</span>
                     </div>
@@ -660,7 +1102,15 @@
                   <!-- Ready Status -->
                   <div v-if="broadcastMessage.trim() && broadcastSection" class="ready-status">
                     <div class="ready-indicator">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                         <polyline points="22 4 12 14.01 9 11.01"></polyline>
                       </svg>
@@ -678,7 +1128,17 @@
             <div v-if="showBroadcastMessages" class="broadcast-messages-view">
               <div class="broadcast-messages-header-card">
                 <button class="back-to-history-btn" @click="backToBroadcastHistory()">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <line x1="19" y1="12" x2="5" y2="12"></line>
                     <polyline points="12 19 5 12 12 5"></polyline>
                   </svg>
@@ -687,48 +1147,112 @@
                 <div class="broadcast-section-details">
                   <div class="section-badge">
                     <div class="section-badge-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
                       </svg>
                     </div>
                     <div class="section-badge-content">
                       <h3>{{ selectedBroadcastSection?.subject_name }}</h3>
-                      <p class="section-meta">{{ selectedBroadcastSection?.section_name }} • {{ selectedBroadcastSection?.section_code }}</p>
-                      <p class="section-stats">Grade {{ selectedBroadcastSection?.grade_level }} • {{ selectedBroadcastSection?.broadcasts.length }} announcements</p>
+                      <p class="section-meta">
+                        {{ selectedBroadcastSection?.section_name }} •
+                        {{ selectedBroadcastSection?.section_code }}
+                      </p>
+                      <p class="section-stats">
+                        Grade {{ selectedBroadcastSection?.grade_level }} •
+                        {{ selectedBroadcastSection?.broadcasts.length }} announcements
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="broadcast-messages-list-enhanced">
-                <div v-for="broadcast in selectedBroadcastSection?.broadcasts || []" :key="broadcast.id" class="broadcast-message-card-enhanced">
+                <div
+                  v-for="broadcast in selectedBroadcastSection?.broadcasts || []"
+                  :key="broadcast.id"
+                  class="broadcast-message-card-enhanced"
+                >
                   <div class="broadcast-card-header-enhanced">
                     <div class="broadcast-timestamp-enhanced">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
-                      <span>{{ formatDate(broadcast.sent_at) }} at {{ formatTime(broadcast.sent_at) }}</span>
+                      <span
+                        >{{ formatDate(broadcast.sent_at) }} at
+                        {{ formatTime(broadcast.sent_at) }}</span
+                      >
                     </div>
                     <div class="broadcast-actions-dropdown">
-                      <button class="dropdown-trigger" @click.stop="toggleBroadcastOptions(broadcast.id)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <button
+                        class="dropdown-trigger"
+                        @click.stop="toggleBroadcastOptions(broadcast.id)"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
                           <circle cx="12" cy="12" r="1"></circle>
                           <circle cx="12" cy="5" r="1"></circle>
                           <circle cx="12" cy="19" r="1"></circle>
                         </svg>
                       </button>
-                      <div v-if="showBroadcastOptionsMenu === broadcast.id" class="dropdown-menu" @click.stop>
+                      <div
+                        v-if="showBroadcastOptionsMenu === broadcast.id"
+                        class="dropdown-menu"
+                        @click.stop
+                      >
                         <button class="dropdown-item" @click="editBroadcast(broadcast)">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path
+                              d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                            ></path>
+                            <path
+                              d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                            ></path>
                           </svg>
                           Edit Message
                         </button>
                         <button class="dropdown-item" @click="archiveBroadcast(broadcast.id)">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
                             <polyline points="21 8 21 21 3 21 3 8"></polyline>
                             <rect x="1" y="3" width="22" height="5"></rect>
                             <line x1="10" y1="12" x2="14" y2="12"></line>
@@ -737,43 +1261,91 @@
                         </button>
                         <div class="dropdown-divider"></div>
                         <button class="dropdown-item danger" @click="deleteBroadcast(broadcast.id)">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
                             <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2 2h4a2 2 0 0 1 2 2v2"></path>
+                            <path
+                              d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2 2h4a2 2 0 0 1 2 2v2"
+                            ></path>
                           </svg>
                           Delete
                         </button>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div class="broadcast-content-enhanced">
                     <div class="broadcast-message-section">
                       <div class="broadcast-icon-badge-enhanced">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M3 11l18-5v12L3 14v-3z"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path d="M3 11l18-5v12L3 14v-3z" />
                         </svg>
                       </div>
                       <p class="broadcast-message-text-enhanced">{{ broadcast.message }}</p>
                     </div>
-                    
+
                     <!-- Enhanced Attachments with Full Screen Utilization -->
-                    <div v-if="broadcast.attachments && broadcast.attachments.length > 0" class="attachments-section-enhanced">
+                    <div
+                      v-if="broadcast.attachments && broadcast.attachments.length > 0"
+                      class="attachments-section-enhanced"
+                    >
                       <div class="attachments-header-enhanced">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                          />
                         </svg>
-                        <span>{{ broadcast.attachments.length }} attachment{{ broadcast.attachments.length > 1 ? 's' : '' }}</span>
+                        <span
+                          >{{ broadcast.attachments.length }} attachment{{
+                            broadcast.attachments.length > 1 ? 's' : ''
+                          }}</span
+                        >
                       </div>
-                      
+
                       <!-- Enhanced Attachments Gallery with Full Space Usage -->
                       <div class="attachments-gallery-enhanced">
-                        <div v-for="(att, idx) in broadcast.attachments" :key="idx" class="attachment-item-enhanced" @click="viewAttachment(att)">
+                        <div
+                          v-for="(att, idx) in broadcast.attachments"
+                          :key="idx"
+                          class="attachment-item-enhanced"
+                          @click="viewAttachment(att)"
+                        >
                           <div v-if="att.type === 'image'" class="image-attachment-enhanced">
                             <img :src="att.url" class="attachment-image-full" :alt="att.name" />
                             <div class="image-overlay-enhanced">
                               <div class="overlay-content">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                >
                                   <circle cx="11" cy="11" r="8"></circle>
                                   <path d="m21 21-4.35-4.35"></path>
                                 </svg>
@@ -784,22 +1356,47 @@
                               <span class="image-filename">{{ att.name }}</span>
                             </div>
                           </div>
-                          
+
                           <div v-else class="file-attachment-enhanced">
                             <div class="file-preview-enhanced">
                               <div class="file-icon-large">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                                  <polyline points="13 2 13 9 20 9"/>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="40"
+                                  height="40"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                >
+                                  <path
+                                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                                  />
+                                  <polyline points="13 2 13 9 20 9" />
                                 </svg>
                               </div>
-                              <div class="file-type-badge">{{ att.name.split('.').pop()?.toUpperCase() || 'FILE' }}</div>
+                              <div class="file-type-badge">
+                                {{ att.name.split('.').pop()?.toUpperCase() || 'FILE' }}
+                              </div>
                             </div>
                             <div class="file-details-enhanced">
                               <p class="file-name-enhanced">{{ att.name }}</p>
-                              <span class="file-size-enhanced">{{ att.size || 'Unknown size' }}</span>
-                              <button class="download-btn-enhanced" @click.stop="downloadAttachment(att)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <span class="file-size-enhanced">{{
+                                att.size || 'Unknown size'
+                              }}</span>
+                              <button
+                                class="download-btn-enhanced"
+                                @click.stop="downloadAttachment(att)"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                >
                                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                   <polyline points="7 10 12 15 17 10"></polyline>
                                   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -821,7 +1418,17 @@
               <div class="simple-history-header">
                 <div class="simple-history-content">
                   <button class="simple-back-btn" @click="showBroadcastHistory = false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
                       <line x1="19" y1="12" x2="5" y2="12"></line>
                       <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
@@ -829,7 +1436,15 @@
                   </button>
                   <div class="simple-history-info">
                     <div class="simple-history-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
@@ -848,23 +1463,44 @@
 
               <div v-if="groupedBroadcasts.length === 0" class="empty-state-modern">
                 <div class="empty-illustration">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M3 11l18-5v12L3 14v-3z"/>
-                    <circle cx="12" cy="12" r="2"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="120"
+                    height="120"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="M3 11l18-5v12L3 14v-3z" />
+                    <circle cx="12" cy="12" r="2" />
                   </svg>
                 </div>
                 <h3>No Broadcasts Yet</h3>
                 <p>Your sent announcements will appear here</p>
                 <button class="create-broadcast-btn" @click="showBroadcastHistory = false">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 5v14M5 12h14"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M12 5v14M5 12h14" />
                   </svg>
                   Create Your First Broadcast
                 </button>
               </div>
 
               <div v-else class="history-grid-enhanced-fullwidth">
-                <div v-for="section in (groupedBroadcasts as any[])" :key="section.section_id" class="history-card-enhanced-wide" @click="viewBroadcastSection(section)">
+                <div
+                  v-for="section in groupedBroadcasts as any[]"
+                  :key="section.section_id"
+                  class="history-card-enhanced-wide"
+                  @click="viewBroadcastSection(section)"
+                >
                   <div class="card-layout-horizontal">
                     <!-- Left Section: Subject Info -->
                     <div class="subject-info-section">
@@ -883,35 +1519,78 @@
 
                     <!-- Middle Section: Latest Broadcast Content -->
                     <div class="latest-message-content">
-                      <div v-if="section.broadcasts && section.broadcasts.length > 0" class="latest-broadcast-enhanced">
+                      <div
+                        v-if="section.broadcasts && section.broadcasts.length > 0"
+                        class="latest-broadcast-enhanced"
+                      >
                         <div class="latest-indicator">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                           </svg>
                           <span>Latest: {{ formatDate(section.broadcasts[0].sent_at) }}</span>
                         </div>
-                        
+
                         <div class="latest-content-enhanced">
                           <p class="latest-message-text">{{ section.broadcasts[0].message }}</p>
-                          
+
                           <!-- Compact Attachments Preview -->
-                          <div v-if="section.broadcasts[0].attachments && section.broadcasts[0].attachments.length > 0" class="attachments-preview-compact">
+                          <div
+                            v-if="
+                              section.broadcasts[0].attachments &&
+                              section.broadcasts[0].attachments.length > 0
+                            "
+                            class="attachments-preview-compact"
+                          >
                             <div class="attachments-row">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                              >
+                                <path
+                                  d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                                />
                               </svg>
-                              <span class="attachment-summary-icon">{{ section.broadcasts[0].attachments.length }} attachment{{ section.broadcasts[0].attachments.length > 1 ? 's' : '' }}</span>
+                              <span class="attachment-summary-icon"
+                                >{{ section.broadcasts[0].attachments.length }} attachment{{
+                                  section.broadcasts[0].attachments.length > 1 ? 's' : ''
+                                }}</span
+                              >
                               <div class="attachments-mini-preview">
-                                <div v-for="(att, idx) in section.broadcasts[0].attachments.slice(0, 3)" :key="idx" class="mini-attachment">
+                                <div
+                                  v-for="(att, idx) in section.broadcasts[0].attachments.slice(
+                                    0,
+                                    3,
+                                  )"
+                                  :key="idx"
+                                  class="mini-attachment"
+                                >
                                   <div v-if="att.type === 'image'" class="mini-image">
                                     <img :src="att.url" :alt="att.name" />
                                   </div>
                                   <div v-else class="mini-file">
-                                    <span>{{ att.name.split('.').pop()?.toUpperCase() || 'FILE' }}</span>
+                                    <span>{{
+                                      att.name.split('.').pop()?.toUpperCase() || 'FILE'
+                                    }}</span>
                                   </div>
                                 </div>
-                                <div v-if="section.broadcasts[0].attachments.length > 3" class="mini-more">
+                                <div
+                                  v-if="section.broadcasts[0].attachments.length > 3"
+                                  class="mini-more"
+                                >
                                   +{{ section.broadcasts[0].attachments.length - 3 }}
                                 </div>
                               </div>
@@ -928,201 +1607,373 @@
                         <div class="stats-label">broadcasts</div>
                       </div>
                       <div class="view-arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
                           <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Individual Chat Modal -->
-    <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button @click="closeModal" class="close-btn">&times;</button>
-          <div class="header-info">
-            <div class="student-avatar">
-              <span>{{ activeConversation?.student_name?.[0] || 'S' }}</span>
-            </div>
-            <div class="header-details">
-              <h2 class="modal-title">Student: {{ activeConversation?.student_name || 'Student' }}</h2>
-              <span class="section-info">{{ activeConversation?.subject_name }}</span>
+      <!-- Individual Chat Modal -->
+      <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button @click="closeModal" class="close-btn">&times;</button>
+            <div class="header-info">
+              <div class="student-avatar">
+                <span>{{ activeConversation?.student_name?.[0] || 'S' }}</span>
+              </div>
+              <div class="header-details">
+                <h2 class="modal-title">
+                  Student: {{ activeConversation?.student_name || 'Student' }}
+                </h2>
+                <span class="section-info">{{ activeConversation?.subject_name }}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="modal-body">
-          <!-- Loading indicator for messages -->
-          <div v-if="loadingMessages" class="messages-loading">
-            <div class="messages-loading-spinner"></div>
-            <p>Loading messages...</p>
-          </div>
-          
-          <div v-else class="messages-container" ref="messagesContainer">
-            <div 
-              v-for="message in currentMessages" 
-              :key="message.id" 
-              :class="['message-bubble', { 'sent': message.sender_id === currentTeacherId, 'received': message.sender_id !== currentTeacherId }]"
-            >
-              <p class="message-text">{{ message.message_text }}</p>
-              
-              <!-- Display attachments if any -->
-              <div v-if="message.attachments && message.attachments.length > 0" class="message-attachments">
-                <div v-for="(attachment, idx) in message.attachments" :key="idx" class="attachment-item">
-                  <!-- Image preview with better visibility -->
-                  <div v-if="attachment.type === 'image'" class="attachment-image-container" @click="viewAttachment(attachment)">
-                    <img :src="attachment.url" class="attachment-image" alt="Attachment" />
-                    <div class="image-overlay">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>
-                      <span>Click to view</span>
-                    </div>
-                  </div>
-                  
-                  <!-- File download -->
-                  <div v-else class="attachment-file">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                      <polyline points="13 2 13 9 20 9"/>
-                    </svg>
-                    <span>{{ attachment.name }}</span>
-                    <div class="attachment-actions">
-                      <button @click="viewAttachment(attachment)" class="attachment-btn" title="View">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <div class="modal-body">
+            <!-- Loading indicator for messages -->
+            <div v-if="loadingMessages" class="messages-loading">
+              <div class="messages-loading-spinner"></div>
+              <p>Loading messages...</p>
+            </div>
+
+            <div v-else class="messages-container" ref="messagesContainer">
+              <div
+                v-for="message in currentMessages"
+                :key="message.id"
+                :class="[
+                  'message-bubble',
+                  {
+                    sent: message.sender_id === currentTeacherId,
+                    received: message.sender_id !== currentTeacherId,
+                  },
+                ]"
+              >
+                <p class="message-text">{{ message.message_text }}</p>
+
+                <!-- Display attachments if any -->
+                <div
+                  v-if="message.attachments && message.attachments.length > 0"
+                  class="message-attachments"
+                >
+                  <div
+                    v-for="(attachment, idx) in message.attachments"
+                    :key="idx"
+                    class="attachment-item"
+                  >
+                    <!-- Image preview with better visibility -->
+                    <div
+                      v-if="attachment.type === 'image'"
+                      class="attachment-image-container"
+                      @click="viewAttachment(attachment)"
+                    >
+                      <img :src="attachment.url" class="attachment-image" alt="Attachment" />
+                      <div class="image-overlay">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
                           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                           <circle cx="12" cy="12" r="3"></circle>
                         </svg>
-                      </button>
-                      <button @click="downloadAttachment(attachment)" class="attachment-btn" title="Download">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                          <polyline points="7 10 12 15 17 10"></polyline>
-                          <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                      </button>
+                        <span>Click to view</span>
+                      </div>
+                    </div>
+
+                    <!-- File download -->
+                    <div v-else class="attachment-file">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                        <polyline points="13 2 13 9 20 9" />
+                      </svg>
+                      <span>{{ attachment.name }}</span>
+                      <div class="attachment-actions">
+                        <button
+                          @click="viewAttachment(attachment)"
+                          class="attachment-btn"
+                          title="View"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                        </button>
+                        <button
+                          @click="downloadAttachment(attachment)"
+                          class="attachment-btn"
+                          title="Download"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="message-footer">
-                <span class="message-time">{{ formatTime(message.sent_at) }}</span>
-                
-                <!-- Message Status for Sent Messages -->
-                <span v-if="message.sender_id === currentTeacherId" class="message-status">
-                  <span v-if="message.is_read" class="status-read">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: -8px;">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span v-if="message.read_at" class="read-time">Read {{ formatTime(message.read_at) }}</span>
+                <div class="message-footer">
+                  <span class="message-time">{{ formatTime(message.sent_at) }}</span>
+
+                  <!-- Message Status for Sent Messages -->
+                  <span v-if="message.sender_id === currentTeacherId" class="message-status">
+                    <span v-if="message.is_read" class="status-read">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        style="margin-left: -8px"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span v-if="message.read_at" class="read-time"
+                        >Read {{ formatTime(message.read_at) }}</span
+                      >
+                    </span>
+                    <span v-else class="status-sent">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      Sent
+                    </span>
                   </span>
-                  <span v-else class="status-sent">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    Sent
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div v-if="currentMessages.length === 0" class="no-messages">
-              <p>No messages yet. Start the conversation!</p>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <!-- Attachment Preview -->
-          <div v-if="messageAttachments.length > 0" class="attachments-preview">
-            <div class="attachment-preview-list">
-              <div v-for="(att, idx) in messageAttachments" :key="idx" class="attachment-preview-item">
-                <img v-if="att.type === 'image'" :src="att.url" class="attachment-preview-image" />
-                <div v-else class="attachment-preview-file">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                    <polyline points="13 2 13 9 20 9"/>
-                  </svg>
-                  <span>{{ att.name }}</span>
                 </div>
-                <button @click="messageAttachments.splice(idx, 1)" class="remove-attachment-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
+              </div>
+              <div v-if="currentMessages.length === 0" class="no-messages">
+                <p>No messages yet. Start the conversation!</p>
               </div>
             </div>
           </div>
+          <div class="modal-footer">
+            <!-- Attachment Preview -->
+            <div v-if="messageAttachments.length > 0" class="attachments-preview">
+              <div class="attachment-preview-list">
+                <div
+                  v-for="(att, idx) in messageAttachments"
+                  :key="idx"
+                  class="attachment-preview-item"
+                >
+                  <img
+                    v-if="att.type === 'image'"
+                    :src="att.url"
+                    class="attachment-preview-image"
+                  />
+                  <div v-else class="attachment-preview-file">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                      <polyline points="13 2 13 9 20 9" />
+                    </svg>
+                    <span>{{ att.name }}</span>
+                  </div>
+                  <button @click="messageAttachments.splice(idx, 1)" class="remove-attachment-btn">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
 
-          <div class="message-input-area">
-            <input 
-              type="file" 
-              ref="messageFileInput" 
-              @change="handleMessageFileSelect" 
-              multiple 
-              accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
-              style="display: none"
-            />
-            <button class="attach-file-btn" @click="($refs.messageFileInput as HTMLInputElement)?.click()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
-              </svg>
-            </button>
-            <input 
-              type="text" 
-              v-model="newMessage" 
-              @keyup.enter="handleSendMessage" 
-              placeholder="Type your message to the student..." 
-              class="message-input"
-            />
-            <button class="send-btn" @click="handleSendMessage" :disabled="!newMessage.trim() && messageAttachments.length === 0">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15.46 22 11 13 2 9.54 22 2"></polygon>
-              </svg>
-            </button>
+            <div class="message-input-area">
+              <input
+                type="file"
+                ref="messageFileInput"
+                @change="handleMessageFileSelect"
+                multiple
+                accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
+                style="display: none"
+              />
+              <button
+                class="attach-file-btn"
+                @click="($refs.messageFileInput as HTMLInputElement)?.click()"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                  />
+                </svg>
+              </button>
+              <input
+                type="text"
+                v-model="newMessage"
+                @keyup.enter="handleSendMessage"
+                placeholder="Type your message to the student..."
+                class="message-input"
+              />
+              <button
+                class="send-btn"
+                @click="handleSendMessage"
+                :disabled="!newMessage.trim() && messageAttachments.length === 0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15.46 22 11 13 2 9.54 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Attachment Viewer Modal -->
-    <div v-if="viewingAttachment" class="modal-overlay attachment-modal-overlay" @click.self="closeAttachmentViewer">
-      <div class="attachment-viewer">
-        <button @click="closeAttachmentViewer" class="close-btn viewer-close-btn">&times;</button>
-        <div class="attachment-viewer-content">
-          <img v-if="viewingAttachment.type === 'image'" :src="viewingAttachment.url" class="viewer-image" alt="Attachment" />
-          <div v-else class="viewer-file">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-              <polyline points="13 2 13 9 20 9"/>
-            </svg>
-            <h3>{{ viewingAttachment.name }}</h3>
-            <button @click="downloadAttachment(viewingAttachment)" class="download-viewer-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
+      <!-- Attachment Viewer Modal -->
+      <div
+        v-if="viewingAttachment"
+        class="modal-overlay attachment-modal-overlay"
+        @click.self="closeAttachmentViewer"
+      >
+        <div class="attachment-viewer">
+          <button @click="closeAttachmentViewer" class="close-btn viewer-close-btn">&times;</button>
+          <div class="attachment-viewer-content">
+            <img
+              v-if="viewingAttachment.type === 'image'"
+              :src="viewingAttachment.url"
+              class="viewer-image"
+              alt="Attachment"
+            />
+            <div v-else class="viewer-file">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="64"
+                height="64"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                <polyline points="13 2 13 9 20 9" />
               </svg>
-              Download File
-            </button>
+              <h3>{{ viewingAttachment.name }}</h3>
+              <button @click="downloadAttachment(viewingAttachment)" class="download-viewer-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download File
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
     </main>
 
-
     <!-- Individual Chat Modal -->
     <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content">
@@ -1133,7 +1984,9 @@
               <span>{{ activeConversation?.student_name?.[0] || 'S' }}</span>
             </div>
             <div class="header-details">
-              <h2 class="modal-title">Student: {{ activeConversation?.student_name || 'Student' }}</h2>
+              <h2 class="modal-title">
+                Student: {{ activeConversation?.student_name || 'Student' }}
+              </h2>
               <span class="section-info">{{ activeConversation?.subject_name }}</span>
             </div>
           </div>
@@ -1144,46 +1997,105 @@
             <div class="messages-loading-spinner"></div>
             <p>Loading messages...</p>
           </div>
-          
+
           <div v-else class="messages-container" ref="messagesContainer">
-            <div 
-              v-for="message in currentMessages" 
-              :key="message.id" 
-              :class="['message-bubble', { 'sent': message.sender_id === currentTeacherId, 'received': message.sender_id !== currentTeacherId }]"
+            <div
+              v-for="message in currentMessages"
+              :key="message.id"
+              :class="[
+                'message-bubble',
+                {
+                  sent: message.sender_id === currentTeacherId,
+                  received: message.sender_id !== currentTeacherId,
+                },
+              ]"
             >
               <p class="message-text">{{ message.message_text }}</p>
-              
+
               <!-- Display attachments if any -->
-              <div v-if="message.attachments && message.attachments.length > 0" class="message-attachments">
-                <div v-for="(attachment, idx) in message.attachments" :key="idx" class="attachment-item">
+              <div
+                v-if="message.attachments && message.attachments.length > 0"
+                class="message-attachments"
+              >
+                <div
+                  v-for="(attachment, idx) in message.attachments"
+                  :key="idx"
+                  class="attachment-item"
+                >
                   <!-- Image preview with better visibility -->
-                  <div v-if="attachment.type === 'image'" class="attachment-image-container" @click="viewAttachment(attachment)">
+                  <div
+                    v-if="attachment.type === 'image'"
+                    class="attachment-image-container"
+                    @click="viewAttachment(attachment)"
+                  >
                     <img :src="attachment.url" class="attachment-image" alt="Attachment" />
                     <div class="image-overlay">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
                       </svg>
                       <span>Click to view</span>
                     </div>
                   </div>
-                  
+
                   <!-- File download -->
                   <div v-else class="attachment-file">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                      <polyline points="13 2 13 9 20 9"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                      <polyline points="13 2 13 9 20 9" />
                     </svg>
                     <span>{{ attachment.name }}</span>
                     <div class="attachment-actions">
-                      <button @click="viewAttachment(attachment)" class="attachment-btn" title="View">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <button
+                        @click="viewAttachment(attachment)"
+                        class="attachment-btn"
+                        title="View"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
                           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                           <circle cx="12" cy="12" r="3"></circle>
                         </svg>
                       </button>
-                      <button @click="downloadAttachment(attachment)" class="attachment-btn" title="Download">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <button
+                        @click="downloadAttachment(attachment)"
+                        class="attachment-btn"
+                        title="Download"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
                           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                           <polyline points="7 10 12 15 17 10"></polyline>
                           <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1196,20 +2108,47 @@
 
               <div class="message-footer">
                 <span class="message-time">{{ formatTime(message.sent_at) }}</span>
-                
+
                 <!-- Message Status for Sent Messages -->
                 <span v-if="message.sender_id === currentTeacherId" class="message-status">
                   <span v-if="message.is_read" class="status-read">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: -8px;">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      style="margin-left: -8px"
+                    >
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    <span v-if="message.read_at" class="read-time">Read {{ formatTime(message.read_at) }}</span>
+                    <span v-if="message.read_at" class="read-time"
+                      >Read {{ formatTime(message.read_at) }}</span
+                    >
                   </span>
                   <span v-else class="status-sent">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                     Sent
@@ -1226,17 +2165,37 @@
           <!-- Attachment Preview -->
           <div v-if="messageAttachments.length > 0" class="attachments-preview">
             <div class="attachment-preview-list">
-              <div v-for="(att, idx) in messageAttachments" :key="idx" class="attachment-preview-item">
+              <div
+                v-for="(att, idx) in messageAttachments"
+                :key="idx"
+                class="attachment-preview-item"
+              >
                 <img v-if="att.type === 'image'" :src="att.url" class="attachment-preview-image" />
                 <div v-else class="attachment-preview-file">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                    <polyline points="13 2 13 9 20 9"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                    <polyline points="13 2 13 9 20 9" />
                   </svg>
                   <span>{{ att.name }}</span>
                 </div>
                 <button @click="messageAttachments.splice(idx, 1)" class="remove-attachment-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
@@ -1246,28 +2205,57 @@
           </div>
 
           <div class="message-input-area">
-            <input 
-              type="file" 
-              ref="messageFileInput" 
-              @change="handleMessageFileSelect" 
-              multiple 
+            <input
+              type="file"
+              ref="messageFileInput"
+              @change="handleMessageFileSelect"
+              multiple
               accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
               style="display: none"
             />
-            <button class="attach-file-btn" @click="($refs.messageFileInput as HTMLInputElement)?.click()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+            <button
+              class="attach-file-btn"
+              @click="($refs.messageFileInput as HTMLInputElement)?.click()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                />
               </svg>
             </button>
-            <input 
-              type="text" 
-              v-model="newMessage" 
-              @keyup.enter="handleSendMessage" 
-              placeholder="Type your message to the student..." 
+            <input
+              type="text"
+              v-model="newMessage"
+              @keyup.enter="handleSendMessage"
+              placeholder="Type your message to the student..."
               class="message-input"
             />
-            <button class="send-btn" @click="handleSendMessage" :disabled="!newMessage.trim() && messageAttachments.length === 0">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button
+              class="send-btn"
+              @click="handleSendMessage"
+              :disabled="!newMessage.trim() && messageAttachments.length === 0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15.46 22 11 13 2 9.54 22 2"></polygon>
               </svg>
@@ -1278,19 +2266,44 @@
     </div>
 
     <!-- Attachment Viewer Modal -->
-    <div v-if="viewingAttachment" class="modal-overlay attachment-modal-overlay" @click.self="closeAttachmentViewer">
+    <div
+      v-if="viewingAttachment"
+      class="modal-overlay attachment-modal-overlay"
+      @click.self="closeAttachmentViewer"
+    >
       <div class="attachment-viewer">
         <button @click="closeAttachmentViewer" class="close-btn viewer-close-btn">&times;</button>
         <div class="attachment-viewer-content">
-          <img v-if="viewingAttachment.type === 'image'" :src="viewingAttachment.url" class="viewer-image" alt="Attachment" />
+          <img
+            v-if="viewingAttachment.type === 'image'"
+            :src="viewingAttachment.url"
+            class="viewer-image"
+            alt="Attachment"
+          />
           <div v-else class="viewer-file">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-              <polyline points="13 2 13 9 20 9"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+              <polyline points="13 2 13 9 20 9" />
             </svg>
             <h3>{{ viewingAttachment.name }}</h3>
             <button @click="downloadAttachment(viewingAttachment)" class="download-viewer-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1318,17 +2331,29 @@
         </div>
         <div class="modal-body">
           <div class="logout-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-              <polyline points="16 17 21 12 16 7"/>
-              <line x1="21" y1="12" x2="9" y2="12"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
             </svg>
           </div>
           <p class="logout-message">Are you sure you want to logout?</p>
           <p class="logout-submessage">You will be redirected to the login page.</p>
         </div>
         <div class="modal-footer logout-footer">
-          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">Cancel</button>
+          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">
+            Cancel
+          </button>
           <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
             <span v-if="!isLoggingOut">Logout</span>
             <span v-else class="loading-text">
@@ -1341,7 +2366,6 @@
     </div>
   </div>
 </template>
-
 
 jhsckskfdvdsdokdkfmv
 <script setup lang="ts">
@@ -1444,34 +2468,30 @@ const uploadFileToStorage = async (file: File, folder = 'message-attachments') =
     const fileExt = file.name.split('.').pop()
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
     const filePath = `${folder}/${fileName}`
-    
+
     console.log('Uploading file:', filePath)
-    
-    const { data, error } = await supabase.storage
-      .from('attachments')
-      .upload(filePath, file, {
-        cacheControl: '3600',
-        upsert: false
-      })
-    
+
+    const { data, error } = await supabase.storage.from('attachments').upload(filePath, file, {
+      cacheControl: '3600',
+      upsert: false,
+    })
+
     if (error) {
       console.error('Upload error:', error)
       throw error
     }
-    
-    const { data: urlData } = supabase.storage
-      .from('attachments')
-      .getPublicUrl(filePath)
-    
+
+    const { data: urlData } = supabase.storage.from('attachments').getPublicUrl(filePath)
+
     console.log('File uploaded successfully:', urlData.publicUrl)
-    
+
     return {
       path: filePath,
       url: urlData.publicUrl,
       name: file.name,
       type: file.type.startsWith('image/') ? 'image' : 'file',
       size: file.size,
-      mimeType: file.type
+      mimeType: file.type,
     }
   } catch (error) {
     console.error('Error uploading file:', error)
@@ -1482,21 +2502,21 @@ const uploadFileToStorage = async (file: File, folder = 'message-attachments') =
 const saveMessageAttachments = async (messageId: string, attachments: any[]) => {
   try {
     // Check if message_attachments table exists
-    const attachmentRecords = attachments.map(att => ({
+    const attachmentRecords = attachments.map((att) => ({
       message_id: messageId,
       file_name: att.name,
       file_path: att.path,
       file_url: att.url,
       file_type: att.type,
       file_size: att.size,
-      mime_type: att.mimeType
+      mime_type: att.mimeType,
     }))
-    
+
     const { data, error } = await supabase
       .from('message_attachments')
       .insert(attachmentRecords)
       .select()
-    
+
     if (error) {
       console.error('Error saving attachments:', error)
       // If table doesn't exist, just log and continue
@@ -1506,7 +2526,7 @@ const saveMessageAttachments = async (messageId: string, attachments: any[]) => 
       }
       throw error
     }
-    
+
     return data
   } catch (error) {
     console.error('Error saving message attachments:', error)
@@ -1522,70 +2542,72 @@ const saveMessageAttachments = async (messageId: string, attachments: any[]) => 
 const getCurrentUser = async () => {
   try {
     loadingMessage.value = 'Checking authentication...'
-    
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+
+    const {
+      data: { session },
+      error: sessionError,
+    } = await supabase.auth.getSession()
     if (sessionError) {
       console.error('Session error:', sessionError)
       throw sessionError
     }
-    
+
     if (!session || !session.user) {
       console.log('No valid session found')
       await router.push('/login')
       return null
     }
-    
+
     console.log('Session user:', session.user.id, session.user.email)
     currentUser.value = session.user
-    
+
     loadingMessage.value = 'Loading teacher profile...'
-    
+
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
       .select('id, auth_user_id, full_name, email, role')
       .eq('auth_user_id', session.user.id)
       .eq('role', 'teacher')
       .single()
-    
+
     console.log('Profile lookup result:', { profile, profileError })
-    
+
     if (profileError || !profile) {
       throw new Error(`Teacher profile not found for auth user: ${session.user.id}`)
     }
-    
+
     const { data: teacher, error: teacherError } = await supabase
       .from('teachers')
       .select('*')
       .eq('profile_id', profile.id)
       .single()
-    
+
     console.log('Teacher lookup result:', { teacher, teacherError })
-    
+
     if (teacherError || !teacher) {
       throw new Error(`Teacher record not found for profile: ${profile.id}`)
     }
-    
+
     if (!teacher.is_active) {
       throw new Error('Teacher account is not active')
     }
-    
+
     teacherProfile.value = teacher
     currentTeacherId.value = teacher.id
     fullName.value = teacher.full_name || profile.full_name || 'Teacher'
-    
+
     console.log('Teacher authenticated:', {
       id: teacher.id,
       name: teacher.full_name,
       email: teacher.email,
-      active: teacher.is_active
+      active: teacher.is_active,
     })
-    
+
     return {
       authUser: session.user,
       teacherId: teacher.id,
-      profile: teacher
+      profile: teacher,
     }
-    
   } catch (error: any) {
     console.error('Error getting current user:', error)
     alert(`Authentication error: ${error.message}`)
@@ -1629,22 +2651,28 @@ const closeLogoutModal = () => {
   showLogoutModal.value = false
 }
 
-const confirmLogout = () => {
+const confirmLogout = async () => {
   console.log('🚪 Logging out...')
-  
-  // Clear storage immediately
+  isLoggingOut.value = true
+
   localStorage.clear()
   sessionStorage.clear()
-  
-  // Sign out from Supabase (don't wait)
-  supabase.auth.signOut().catch(err => console.log('Signout error:', err))
-  
-  // Immediate redirect - no waiting!
-  setTimeout(() => {
-    window.location.assign('/login')
-  }, 100)
-  
-  console.log('✅ Logout initiated')
+
+  const forceRedirect = setTimeout(() => {
+    window.location.replace('/login')
+  }, 2000)
+
+  try {
+    await Promise.race([
+      supabase.auth.signOut(),
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+    ])
+  } catch (err) {
+    console.error('❌ Logout error:', err)
+  } finally {
+    clearTimeout(forceRedirect)
+    window.location.replace('/login')
+  }
 }
 
 const logout = () => {
@@ -1668,12 +2696,12 @@ const loadTeacherContacts = async () => {
       console.error('No teacher ID available')
       return
     }
-    
+
     isLoading.value = true
     loadingMessage.value = 'Loading your students...'
-    
+
     console.log('Loading contacts for teacher:', currentTeacherId.value)
-    
+
     // Try to use the view first
     const { data: contacts, error: contactsError } = await supabase
       .from('teacher_contacts')
@@ -1682,7 +2710,7 @@ const loadTeacherContacts = async () => {
       .order('subject_name', { ascending: true })
       .order('section_name', { ascending: true })
       .order('student_name', { ascending: true })
-    
+
     if (contactsError) {
       console.error('Error loading from teacher_contacts view:', contactsError)
       console.log('Falling back to manual query...')
@@ -1690,41 +2718,41 @@ const loadTeacherContacts = async () => {
       studentContacts.value = manualContacts || []
       return
     }
-    
+
     console.log('Contacts loaded from view:', contacts?.length || 0)
-    
+
     if (!contacts || contacts.length === 0) {
       console.log('No students found for this teacher')
       studentContacts.value = []
       return
     }
-    
+
     // Get auth_user_ids for presence tracking
-    const studentIds = contacts.map(c => c.student_id).filter(Boolean)
+    const studentIds = contacts.map((c) => c.student_id).filter(Boolean)
     let authUserMap: Record<string, string> = {}
-    
+
     if (studentIds.length > 0) {
       const { data: students } = await supabase
         .from('students')
         .select('id, profile_id')
         .in('id', studentIds)
-      
+
       if (students) {
-        const profileIds = students.map(s => s.profile_id).filter(Boolean)
-        
+        const profileIds = students.map((s) => s.profile_id).filter(Boolean)
+
         if (profileIds.length > 0) {
           const { data: profiles } = await supabase
             .from('profiles')
             .select('id, auth_user_id')
             .in('id', profileIds)
-          
+
           if (profiles) {
             const profileToAuth: Record<string, string> = {}
-            profiles.forEach(p => {
+            profiles.forEach((p) => {
               profileToAuth[p.id] = p.auth_user_id
             })
-            
-            students.forEach(s => {
+
+            students.forEach((s) => {
               if (s.profile_id && profileToAuth[s.profile_id]) {
                 authUserMap[s.id] = profileToAuth[s.profile_id]
               }
@@ -1733,8 +2761,8 @@ const loadTeacherContacts = async () => {
         }
       }
     }
-    
-    const mappedContacts = contacts.map(contact => ({
+
+    const mappedContacts = contacts.map((contact) => ({
       student_id: contact.student_id,
       student_name: contact.student_name,
       student_email: contact.student_email,
@@ -1749,12 +2777,11 @@ const loadTeacherContacts = async () => {
       last_message_date: contact.last_message_date,
       last_message: contact.last_message || `Enrolled ${formatDate(contact.enrolled_date)}`,
       unread_count: contact.unread_count || 0,
-      auth_user_id: authUserMap[contact.student_id] || null
+      auth_user_id: authUserMap[contact.student_id] || null,
     }))
-    
+
     studentContacts.value = mappedContacts
     console.log('Mapped contacts:', mappedContacts.length)
-    
   } catch (error: any) {
     console.error('Error loading teacher contacts:', error)
     alert(`Error loading students: ${error.message}`)
@@ -1766,89 +2793,89 @@ const loadTeacherContacts = async () => {
 const loadContactsManually = async () => {
   try {
     console.log('Loading contacts manually for teacher:', currentTeacherId.value)
-    
+
     // Get teacher's subjects
     const { data: subjects, error: subjectsError } = await supabase
       .from('subjects')
       .select('id, name, grade_level')
       .eq('teacher_id', currentTeacherId.value)
       .eq('is_active', true)
-    
+
     if (subjectsError || !subjects || subjects.length === 0) {
       console.log('No subjects found for teacher')
       return []
     }
-    
-    const subjectIds = subjects.map(s => s.id)
-    
+
+    const subjectIds = subjects.map((s) => s.id)
+
     // Get sections for these subjects
     const { data: sections, error: sectionsError } = await supabase
       .from('sections')
       .select('id, name, section_code, subject_id')
       .in('subject_id', subjectIds)
       .eq('is_active', true)
-    
+
     if (sectionsError || !sections || sections.length === 0) {
       console.log('No sections found')
       return []
     }
-    
-    const sectionIds = sections.map(s => s.id)
-    
+
+    const sectionIds = sections.map((s) => s.id)
+
     // Get enrollments
     const { data: enrollments, error: enrollmentsError } = await supabase
       .from('enrollments')
       .select('id, student_id, section_id, subject_id, enrolled_at')
       .in('section_id', sectionIds)
       .eq('status', 'active')
-    
+
     if (enrollmentsError || !enrollments || enrollments.length === 0) {
       console.log('No enrollments found')
       return []
     }
-    
-    const studentIds = [...new Set(enrollments.map(e => e.student_id))]
-    
+
+    const studentIds = [...new Set(enrollments.map((e) => e.student_id))]
+
     // Get students
     const { data: students, error: studentsError } = await supabase
       .from('students')
       .select('id, full_name, email, student_id, grade_level, profile_id')
       .in('id', studentIds)
       .eq('is_active', true)
-    
+
     if (studentsError || !students) {
       console.log('No students found')
       return []
     }
-    
+
     // Get auth_user_ids
-    const profileIds = students.map(s => s.profile_id).filter(Boolean)
+    const profileIds = students.map((s) => s.profile_id).filter(Boolean)
     let authUserMap: Record<string, string> = {}
-    
+
     if (profileIds.length > 0) {
       const { data: profiles } = await supabase
         .from('profiles')
         .select('id, auth_user_id')
         .in('id', profileIds)
-      
+
       if (profiles) {
-        profiles.forEach(p => {
-          const student = students.find(s => s.profile_id === p.id)
+        profiles.forEach((p) => {
+          const student = students.find((s) => s.profile_id === p.id)
           if (student) {
             authUserMap[student.id] = p.auth_user_id
           }
         })
       }
     }
-    
+
     // Build contacts
     const contacts: any[] = []
-    
-    enrollments.forEach(enrollment => {
-      const student = students.find(s => s.id === enrollment.student_id)
-      const section = sections.find(s => s.id === enrollment.section_id)
-      const subject = subjects.find(s => s.id === section?.subject_id)
-      
+
+    enrollments.forEach((enrollment) => {
+      const student = students.find((s) => s.id === enrollment.student_id)
+      const section = sections.find((s) => s.id === enrollment.section_id)
+      const subject = subjects.find((s) => s.id === section?.subject_id)
+
       if (student && section && subject) {
         contacts.push({
           student_id: student.id,
@@ -1865,80 +2892,81 @@ const loadContactsManually = async () => {
           last_message_date: null,
           last_message: `Enrolled ${formatDate(enrollment.enrolled_at)}`,
           unread_count: 0,
-          auth_user_id: authUserMap[student.id] || null
+          auth_user_id: authUserMap[student.id] || null,
         })
       }
     })
-    
+
     console.log('Manual contacts loaded:', contacts.length)
     return contacts
-    
   } catch (error) {
     console.error('Error in manual contact loading:', error)
     return []
   }
 }
 
-
-
 const loadBroadcastHistory = async () => {
   try {
     if (!currentTeacherId.value) return
-    
+
     const { data: broadcasts, error } = await supabase
       .from('messages')
-      .select(`
+      .select(
+        `
         id,
         message_text,
         sent_at,
         message_type,
         section_id
-      `)
+      `,
+      )
       .eq('sender_id', currentTeacherId.value)
       .eq('message_type', 'announcement')
       .is('recipient_id', null)
       .order('sent_at', { ascending: false })
-    
+
     if (error) {
       console.error('Error loading broadcast history:', error)
       return
     }
-    
+
     if (!broadcasts || broadcasts.length === 0) {
       broadcastHistory.value = []
       return
     }
-    
+
     // Get section details
-    const sectionIds = [...new Set(broadcasts.map(b => b.section_id))]
+    const sectionIds = [...new Set(broadcasts.map((b) => b.section_id))]
     const { data: sections } = await supabase
       .from('sections')
-      .select(`
+      .select(
+        `
         id,
         name,
         section_code,
         subject_id
-      `)
+      `,
+      )
       .in('id', sectionIds)
-    
+
     // Get subject details
-    const subjectIds = sections?.map(s => s.subject_id).filter(Boolean) || []
+    const subjectIds = sections?.map((s) => s.subject_id).filter(Boolean) || []
     const { data: subjects } = await supabase
       .from('subjects')
       .select('id, name, grade_level')
       .in('id', subjectIds)
-    
+
     // Load attachments for all broadcast messages
-    const broadcastIds = broadcasts.map(b => b.id)
+    const broadcastIds = broadcasts.map((b) => b.id)
     let attachmentsMap: Record<string, any[]> = {}
-    
+
     if (broadcastIds.length > 0) {
       try {
         const { data: attachments, error: attachError } = await supabase
           .from('message_attachments')
           .select('*')
           .in('message_id', broadcastIds)
-        
+
         if (attachError) {
           console.warn('Error fetching attachments:', attachError)
         } else if (attachments) {
@@ -1950,7 +2978,7 @@ const loadBroadcastHistory = async () => {
               type: att.file_type,
               size: att.file_size || 'Unknown size',
               path: att.file_path,
-              mimeType: att.mime_type
+              mimeType: att.mime_type,
             })
             return acc
           }, {})
@@ -1959,11 +2987,11 @@ const loadBroadcastHistory = async () => {
         console.warn('Attachments table not found or error fetching attachments:', attachError)
       }
     }
-    
-    const transformedBroadcasts = broadcasts.map(b => {
-      const section = sections?.find(s => s.id === b.section_id)
-      const subject = subjects?.find(s => s.id === section?.subject_id)
-      
+
+    const transformedBroadcasts = broadcasts.map((b) => {
+      const section = sections?.find((s) => s.id === b.section_id)
+      const subject = subjects?.find((s) => s.id === section?.subject_id)
+
       return {
         id: b.id,
         message: b.message_text,
@@ -1974,18 +3002,16 @@ const loadBroadcastHistory = async () => {
         subject_name: subject?.name || 'Unknown',
         grade_level: subject?.grade_level || 0,
         attachments: attachmentsMap[b.id] || [],
-        recipient_count: 0
+        recipient_count: 0,
       }
     })
-    
+
     broadcastHistory.value = transformedBroadcasts
     console.log('Broadcast history loaded with attachments:', transformedBroadcasts.length)
-    
   } catch (error) {
     console.error('Error loading broadcast history:', error)
   }
 }
-
 
 // ================================
 // COMPUTED PROPERTIES
@@ -1993,35 +3019,36 @@ const loadBroadcastHistory = async () => {
 
 const filteredStudents = computed(() => {
   let students = studentContacts.value
-  
+
   if (selectedSection.value) {
-    students = students.filter(s => s.section_id === selectedSection.value)
+    students = students.filter((s) => s.section_id === selectedSection.value)
   }
-  
+
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase()
-    students = students.filter(s => 
-      s.student_name?.toLowerCase().includes(query) ||
-      s.subject_name?.toLowerCase().includes(query) ||
-      s.section_name?.toLowerCase().includes(query)
+    students = students.filter(
+      (s) =>
+        s.student_name?.toLowerCase().includes(query) ||
+        s.subject_name?.toLowerCase().includes(query) ||
+        s.section_name?.toLowerCase().includes(query),
     )
   }
-  
+
   return students
 })
 
 const groupedStudents = computed(() => {
   const sections: Record<string, any> = {}
-  
+
   let filteredData = filteredStudents.value
-  
+
   if (selectedGradeFilter.value !== 'all') {
-    filteredData = filteredData.filter(student => 
-      student.grade_level === parseInt(selectedGradeFilter.value)
+    filteredData = filteredData.filter(
+      (student) => student.grade_level === parseInt(selectedGradeFilter.value),
     )
   }
-  
-  filteredData.forEach(student => {
+
+  filteredData.forEach((student) => {
     const sectionKey = student.section_id
     if (!sections[sectionKey]) {
       sections[sectionKey] = {
@@ -2032,19 +3059,19 @@ const groupedStudents = computed(() => {
         subject_name: student.subject_name,
         grade_level: student.grade_level,
         students: [],
-        total_unread: 0
+        total_unread: 0,
       }
     }
     sections[sectionKey].students.push(student)
     sections[sectionKey].total_unread += student.unread_count || 0
   })
-  
+
   return Object.values(sections)
 })
 
 const availableGrades = computed(() => {
   const grades = new Set<number>()
-  studentContacts.value.forEach(student => {
+  studentContacts.value.forEach((student) => {
     if (student.grade_level) {
       grades.add(student.grade_level)
     }
@@ -2054,8 +3081,8 @@ const availableGrades = computed(() => {
 
 const groupedBroadcasts = computed(() => {
   const sections: Record<string, any> = {}
-  
-  broadcastHistory.value.forEach(broadcast => {
+
+  broadcastHistory.value.forEach((broadcast) => {
     const sectionKey = broadcast.section_id
     if (!sections[sectionKey]) {
       sections[sectionKey] = {
@@ -2064,19 +3091,19 @@ const groupedBroadcasts = computed(() => {
         section_code: broadcast.section_code,
         subject_name: broadcast.subject_name,
         grade_level: broadcast.grade_level,
-        broadcasts: []
+        broadcasts: [],
       }
     }
     sections[sectionKey].broadcasts.push(broadcast)
   })
-  
+
   return Object.values(sections)
 })
 
 const uniqueSections = computed(() => {
   const sectionsMap = new Map()
-  
-  studentContacts.value.forEach(student => {
+
+  studentContacts.value.forEach((student) => {
     const key = student.section_id
     if (!sectionsMap.has(key)) {
       sectionsMap.set(key, {
@@ -2084,11 +3111,11 @@ const uniqueSections = computed(() => {
         section_name: student.section_name,
         section_code: student.section_code,
         subject_name: student.subject_name,
-        grade_level: student.grade_level
+        grade_level: student.grade_level,
       })
     }
   })
-  
+
   return Array.from(sectionsMap.values())
 })
 
@@ -2098,18 +3125,18 @@ const uniqueSections = computed(() => {
 
 const startChatWithStudent = async (student: any) => {
   console.log('Starting chat with student:', student)
-  
+
   activeConversation.value = {
     ...student,
-    student_name: student.student_name || student.name
+    student_name: student.student_name || student.name,
   }
-  
+
   selectedChat.value = student
   isModalOpen.value = true
   showChatOptions.value = false
-  
+
   await loadConversationMessages(student.student_id, student.section_id)
-  
+
   await nextTick()
   scrollToBottom()
 }
@@ -2117,43 +3144,45 @@ const startChatWithStudent = async (student: any) => {
 const loadConversationMessages = async (studentId: string, sectionId: string) => {
   try {
     if (!currentTeacherId.value) return
-    
+
     loadingMessages.value = true
-    
-    console.log('Loading messages between teacher and student:', { 
-      teacherId: currentTeacherId.value, 
-      studentId, 
-      sectionId 
+
+    console.log('Loading messages between teacher and student:', {
+      teacherId: currentTeacherId.value,
+      studentId,
+      sectionId,
     })
-    
+
     // Load messages
     const { data: messages, error: messagesError } = await supabase
       .from('messages')
       .select('*')
       .eq('section_id', sectionId)
       .eq('message_type', 'direct')
-      .or(`and(sender_id.eq.${currentTeacherId.value},recipient_id.eq.${studentId}),and(sender_id.eq.${studentId},recipient_id.eq.${currentTeacherId.value})`)
+      .or(
+        `and(sender_id.eq.${currentTeacherId.value},recipient_id.eq.${studentId}),and(sender_id.eq.${studentId},recipient_id.eq.${currentTeacherId.value})`,
+      )
       .order('sent_at', { ascending: true })
-    
+
     if (messagesError) {
       console.error('Error loading messages:', messagesError)
       currentMessages.value = []
       return
     }
-    
+
     // Try to load attachments
     let attachmentsMap: Record<string, any[]> = {}
     if (messages && messages.length > 0) {
-      const messageIds = messages.map(m => m.id)
-      
+      const messageIds = messages.map((m) => m.id)
+
       try {
         const { data: attachments } = await supabase
           .from('message_attachments')
           .select('*')
           .in('message_id', messageIds)
-        
+
         if (attachments) {
-          attachments.forEach(att => {
+          attachments.forEach((att) => {
             if (!attachmentsMap[att.message_id]) {
               attachmentsMap[att.message_id] = []
             }
@@ -2162,7 +3191,7 @@ const loadConversationMessages = async (studentId: string, sectionId: string) =>
               url: att.file_url,
               type: att.file_type,
               size: att.file_size || 'Unknown size',
-              path: att.file_path
+              path: att.file_path,
             })
           })
         }
@@ -2170,22 +3199,21 @@ const loadConversationMessages = async (studentId: string, sectionId: string) =>
         console.log('No attachments table or error fetching')
       }
     }
-    
+
     // Add attachments to messages
-    const messagesWithAttachments = (messages || []).map(msg => ({
+    const messagesWithAttachments = (messages || []).map((msg) => ({
       ...msg,
-      attachments: attachmentsMap[msg.id] || []
+      attachments: attachmentsMap[msg.id] || [],
     }))
-    
+
     currentMessages.value = messagesWithAttachments
     console.log('Loaded messages:', messagesWithAttachments.length)
-    
+
     await nextTick()
     forceScrollToBottom()
-    
+
     // Mark as read
     markConversationAsRead(sectionId, studentId)
-    
   } catch (error) {
     console.error('Error loading conversation messages:', error)
     currentMessages.value = []
@@ -2195,22 +3223,26 @@ const loadConversationMessages = async (studentId: string, sectionId: string) =>
 }
 
 const handleSendMessage = async () => {
-  if ((!newMessage.value.trim() && messageAttachments.value.length === 0) || !activeConversation.value || !currentTeacherId.value) {
+  if (
+    (!newMessage.value.trim() && messageAttachments.value.length === 0) ||
+    !activeConversation.value ||
+    !currentTeacherId.value
+  ) {
     console.log('Cannot send: missing required data')
     return
   }
-  
+
   const messageText = newMessage.value.trim() || '📎 Attachment'
   const attachmentsToSend = [...messageAttachments.value]
-  
+
   console.log('Sending message:', {
     text: messageText,
     sectionId: activeConversation.value.section_id,
     senderId: currentTeacherId.value,
     recipientId: activeConversation.value.student_id,
-    attachments: attachmentsToSend.length
+    attachments: attachmentsToSend.length,
   })
-  
+
   // Create temp message for optimistic UI
   const tempMessage = {
     id: 'temp-' + Date.now(),
@@ -2221,21 +3253,21 @@ const handleSendMessage = async () => {
     is_read: false,
     message_type: 'direct',
     sending: true,
-    attachments: attachmentsToSend.map(att => ({
+    attachments: attachmentsToSend.map((att) => ({
       name: att.name,
       url: att.url,
       type: att.type,
-      size: att.size || 'Unknown size'
-    }))
+      size: att.size || 'Unknown size',
+    })),
   }
-  
+
   currentMessages.value.push(tempMessage)
   newMessage.value = ''
   messageAttachments.value = []
-  
+
   await nextTick()
   forceScrollToBottom()
-  
+
   try {
     // Upload attachments first
     let uploadedAttachments: any[] = []
@@ -2249,23 +3281,22 @@ const handleSendMessage = async () => {
       }
       console.log('Attachments uploaded:', uploadedAttachments.length)
     }
-    
+
     // Try using the RPC function first
     let messageId: string | null = null
-    
-    const { data: rpcResult, error: rpcError } = await supabase
-      .rpc('send_direct_message', {
-        p_section_id: activeConversation.value.section_id,
-        p_sender_id: currentTeacherId.value,
-        p_recipient_id: activeConversation.value.student_id,
-        p_message_text: messageText
-      })
-    
+
+    const { data: rpcResult, error: rpcError } = await supabase.rpc('send_direct_message', {
+      p_section_id: activeConversation.value.section_id,
+      p_sender_id: currentTeacherId.value,
+      p_recipient_id: activeConversation.value.student_id,
+      p_message_text: messageText,
+    })
+
     if (rpcError) {
       console.error('RPC error:', rpcError)
       // Fallback to direct insert
       console.log('Falling back to direct insert...')
-      
+
       const { data: insertData, error: insertError } = await supabase
         .from('messages')
         .insert({
@@ -2274,62 +3305,61 @@ const handleSendMessage = async () => {
           recipient_id: activeConversation.value.student_id,
           message_text: messageText,
           message_type: 'direct',
-          is_read: false
+          is_read: false,
         })
         .select('id')
         .single()
-      
+
       if (insertError) {
         console.error('Insert error:', insertError)
         throw new Error(`Failed to send message: ${insertError.message}`)
       }
-      
+
       messageId = insertData?.id
     } else {
       messageId = rpcResult
     }
-    
+
     console.log('Message sent with ID:', messageId)
-    
+
     // Save attachments if any
     if (uploadedAttachments.length > 0 && messageId) {
       await saveMessageAttachments(messageId, uploadedAttachments)
     }
-    
+
     // Update temp message with real data
-    const tempIndex = currentMessages.value.findIndex(m => m.id === tempMessage.id)
+    const tempIndex = currentMessages.value.findIndex((m) => m.id === tempMessage.id)
     if (tempIndex !== -1) {
       currentMessages.value[tempIndex] = {
         ...currentMessages.value[tempIndex],
         id: messageId,
         sending: false,
-        attachments: uploadedAttachments.map(att => ({
+        attachments: uploadedAttachments.map((att) => ({
           name: att.name,
           url: att.url,
           type: att.type,
           size: att.size || 'Unknown size',
-          path: att.path
-        }))
+          path: att.path,
+        })),
       }
     }
-    
+
     await nextTick()
     setTimeout(() => {
       forceScrollToBottom()
     }, 100)
-    
+
     // Refresh contacts to update last message
     await loadTeacherContacts()
-    
   } catch (error: any) {
     console.error('Failed to send message:', error)
-    
+
     // Remove temp message
-    const tempIndex = currentMessages.value.findIndex(m => m.id === tempMessage.id)
+    const tempIndex = currentMessages.value.findIndex((m) => m.id === tempMessage.id)
     if (tempIndex !== -1) {
       currentMessages.value.splice(tempIndex, 1)
     }
-    
+
     // Restore input
     newMessage.value = messageText
     messageAttachments.value = attachmentsToSend
@@ -2353,13 +3383,15 @@ const markConversationAsRead = async (sectionId: string, studentId: string) => {
     const { error } = await supabase.rpc('mark_conversation_read', {
       p_section_id: sectionId,
       p_other_user_id: studentId,
-      p_current_user_id: currentTeacherId.value
+      p_current_user_id: currentTeacherId.value,
     })
-    
+
     if (error && error.code !== '42883') {
       console.error('Error marking conversation as read:', error)
     } else if (!error) {
-      const student = studentContacts.value.find(s => s.student_id === studentId && s.section_id === sectionId)
+      const student = studentContacts.value.find(
+        (s) => s.student_id === studentId && s.section_id === sectionId,
+      )
       if (student) {
         student.unread_count = 0
       }
@@ -2376,44 +3408,44 @@ const markConversationAsRead = async (sectionId: string, studentId: string) => {
 const handleMessageFileSelect = (event: Event) => {
   const target = event.target as HTMLInputElement
   const files = Array.from(target.files || [])
-  
-  files.forEach(file => {
+
+  files.forEach((file) => {
     const fileType = file.type.startsWith('image/') ? 'image' : 'file'
     const tempUrl = URL.createObjectURL(file)
-    
+
     messageAttachments.value.push({
       type: fileType,
       name: file.name,
       size: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
       url: tempUrl,
-      file: file
+      file: file,
     })
   })
-  
+
   target.value = ''
 }
 
 const handleBroadcastFileSelect = (event: Event) => {
   const target = event.target as HTMLInputElement
   const files = Array.from(target.files || [])
-  
-  files.forEach(file => {
+
+  files.forEach((file) => {
     const reader = new FileReader()
     const fileType = file.type.startsWith('image/') ? 'image' : 'file'
-    
+
     reader.onload = (e) => {
       broadcastAttachments.value.push({
         type: fileType,
         name: file.name,
         size: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
         url: e.target?.result as string,
-        file: file
+        file: file,
       })
     }
-    
+
     reader.readAsDataURL(file)
   })
-  
+
   target.value = ''
 }
 
@@ -2440,10 +3472,10 @@ const downloadAttachment = (attachment: any) => {
 // ================================
 
 const handleArchiveChat = (studentId: string) => {
-  const student = studentContacts.value.find(s => s.student_id === studentId)
+  const student = studentContacts.value.find((s) => s.student_id === studentId)
   if (student) {
     archivedChats.value.push(student)
-    studentContacts.value = studentContacts.value.filter(s => s.student_id !== studentId)
+    studentContacts.value = studentContacts.value.filter((s) => s.student_id !== studentId)
     closeModal()
     alert(`Conversation with ${student.student_name} has been archived.`)
   }
@@ -2451,10 +3483,10 @@ const handleArchiveChat = (studentId: string) => {
 
 const handleDeleteChat = (studentId: string) => {
   if (confirm('Are you sure you want to delete this conversation? This action cannot be undone.')) {
-    const student = studentContacts.value.find(s => s.student_id === studentId)
-    studentContacts.value = studentContacts.value.filter(s => s.student_id !== studentId)
+    const student = studentContacts.value.find((s) => s.student_id === studentId)
+    studentContacts.value = studentContacts.value.filter((s) => s.student_id !== studentId)
     closeModal()
-    
+
     if (student) {
       alert(`Conversation with ${student.student_name} has been deleted.`)
     }
@@ -2462,10 +3494,10 @@ const handleDeleteChat = (studentId: string) => {
 }
 
 const restoreChat = (studentId: string) => {
-  const student = archivedChats.value.find(s => s.student_id === studentId)
+  const student = archivedChats.value.find((s) => s.student_id === studentId)
   if (student) {
     studentContacts.value.push(student)
-    archivedChats.value = archivedChats.value.filter(s => s.student_id !== studentId)
+    archivedChats.value = archivedChats.value.filter((s) => s.student_id !== studentId)
     alert(`Conversation with ${student.student_name} has been restored.`)
   }
 }
@@ -2517,13 +3549,13 @@ const sendBroadcastMessage = async () => {
     alert('Please select a section and enter a message.')
     return
   }
-  
+
   try {
     isLoading.value = true
     loadingMessage.value = 'Sending broadcast message...'
-    
+
     const attachmentsToSend = [...broadcastAttachments.value]
-    
+
     // Upload attachments
     const uploadedAttachments: any[] = []
     if (attachmentsToSend.length > 0) {
@@ -2535,19 +3567,18 @@ const sendBroadcastMessage = async () => {
         }
       }
     }
-    
+
     loadingMessage.value = 'Sending to students...'
-    
+
     // Try RPC first
     let messageId: string | null = null
-    
-    const { data: rpcResult, error: rpcError } = await supabase
-      .rpc('send_section_announcement', {
-        p_section_id: broadcastSection.value,
-        p_teacher_id: currentTeacherId.value,
-        p_message_text: broadcastMessage.value.trim()
-      })
-    
+
+    const { data: rpcResult, error: rpcError } = await supabase.rpc('send_section_announcement', {
+      p_section_id: broadcastSection.value,
+      p_teacher_id: currentTeacherId.value,
+      p_message_text: broadcastMessage.value.trim(),
+    })
+
     if (rpcError) {
       console.error('RPC error for announcement:', rpcError)
       // Fallback to direct insert
@@ -2559,39 +3590,40 @@ const sendBroadcastMessage = async () => {
           recipient_id: null,
           message_text: broadcastMessage.value.trim(),
           message_type: 'announcement',
-          is_read: false
+          is_read: false,
         })
         .select('id')
         .single()
-      
+
       if (insertError) {
         console.error('Insert error:', insertError)
         throw new Error(`Failed to send broadcast: ${insertError.message}`)
       }
-      
+
       messageId = insertData?.id
     } else {
       messageId = rpcResult
     }
-    
+
     console.log('Broadcast message sent with ID:', messageId)
-    
+
     // Save attachments
     if (uploadedAttachments.length > 0 && messageId) {
       await saveMessageAttachments(messageId, uploadedAttachments)
     }
-    
-    const selectedSectionInfo = uniqueSections.value.find(s => s.section_id === broadcastSection.value)
+
+    const selectedSectionInfo = uniqueSections.value.find(
+      (s) => s.section_id === broadcastSection.value,
+    )
     const sectionName = selectedSectionInfo ? selectedSectionInfo.section_name : 'Selected Section'
     alert(`Broadcast message sent successfully to all students in ${sectionName}!`)
-    
+
     broadcastMessage.value = ''
     broadcastSection.value = ''
     broadcastAttachments.value = []
-    
+
     await loadTeacherContacts()
     await loadBroadcastHistory()
-    
   } catch (error: any) {
     console.error('Error sending broadcast message:', error)
     alert(`Failed to send broadcast message: ${error.message}`)
@@ -2601,7 +3633,8 @@ const sendBroadcastMessage = async () => {
 }
 
 const toggleBroadcastOptions = (broadcastId: string) => {
-  showBroadcastOptionsMenu.value = showBroadcastOptionsMenu.value === broadcastId ? null : broadcastId
+  showBroadcastOptionsMenu.value =
+    showBroadcastOptionsMenu.value === broadcastId ? null : broadcastId
 }
 
 const editBroadcast = (broadcast: any) => {
@@ -2610,48 +3643,45 @@ const editBroadcast = (broadcast: any) => {
   broadcastAttachments.value = [...(broadcast.attachments || [])]
   showBroadcastHistory.value = false
   showBroadcastOptionsMenu.value = null
-  
+
   alert('Edit mode: Update your message and click Send to save changes.')
 }
 
 const archiveBroadcast = (broadcastId: string) => {
-  const broadcast = broadcastHistory.value.find(b => b.id === broadcastId)
+  const broadcast = broadcastHistory.value.find((b) => b.id === broadcastId)
   if (broadcast) {
     archivedBroadcasts.value.push(broadcast)
-    broadcastHistory.value = broadcastHistory.value.filter(b => b.id !== broadcastId)
+    broadcastHistory.value = broadcastHistory.value.filter((b) => b.id !== broadcastId)
     showBroadcastOptionsMenu.value = null
     alert('Broadcast has been archived.')
   }
 }
 
 const deleteBroadcast = async (broadcastId: string) => {
-  if (confirm('Are you sure you want to delete this broadcast? This will also remove it from student message pages.')) {
+  if (
+    confirm(
+      'Are you sure you want to delete this broadcast? This will also remove it from student message pages.',
+    )
+  ) {
     try {
       // Delete attachments first
       try {
-        await supabase
-          .from('message_attachments')
-          .delete()
-          .eq('message_id', broadcastId)
+        await supabase.from('message_attachments').delete().eq('message_id', broadcastId)
       } catch (e) {
         console.log('No attachments to delete or table not found')
       }
-      
-      const { error: msgError } = await supabase
-        .from('messages')
-        .delete()
-        .eq('id', broadcastId)
-      
+
+      const { error: msgError } = await supabase.from('messages').delete().eq('id', broadcastId)
+
       if (msgError) {
         console.error('Error deleting broadcast:', msgError)
         alert('Failed to delete broadcast.')
         return
       }
-      
-      broadcastHistory.value = broadcastHistory.value.filter(b => b.id !== broadcastId)
+
+      broadcastHistory.value = broadcastHistory.value.filter((b) => b.id !== broadcastId)
       showBroadcastOptionsMenu.value = null
       alert('Broadcast has been deleted.')
-      
     } catch (error) {
       console.error('Error deleting broadcast:', error)
       alert('Failed to delete broadcast.')
@@ -2686,7 +3716,11 @@ const toggleSectionOptions = (sectionId: string) => {
 }
 
 const deleteSectionConfirm = (section: any) => {
-  if (confirm(`Are you sure you want to delete the section "${section.subject_name} - Grade ${section.grade_level}"? This action cannot be undone.`)) {
+  if (
+    confirm(
+      `Are you sure you want to delete the section "${section.subject_name} - Grade ${section.grade_level}"? This action cannot be undone.`,
+    )
+  ) {
     deleteSection(section)
   }
   openSectionDropdown.value = null
@@ -2722,24 +3756,23 @@ const archiveSection = async (section: any) => {
 const markAllAsRead = async () => {
   try {
     if (!currentTeacherId.value) return
-    
-    const unreadStudents = studentContacts.value.filter(s => s.unread_count > 0)
-    
+
+    const unreadStudents = studentContacts.value.filter((s) => s.unread_count > 0)
+
     if (unreadStudents.length === 0) {
       alert('No unread messages to mark as read.')
       return
     }
-    
+
     isLoading.value = true
     loadingMessage.value = 'Marking messages as read...'
-    
+
     for (const student of unreadStudents) {
       await markConversationAsRead(student.section_id, student.student_id)
     }
-    
+
     await loadTeacherContacts()
     alert('All messages marked as read!')
-    
   } catch (error) {
     console.error('Error marking all as read:', error)
   } finally {
@@ -2751,7 +3784,7 @@ const scrollToBottom = () => {
   if (messagesContainer.value) {
     messagesContainer.value.scrollTo({
       top: messagesContainer.value.scrollHeight,
-      behavior: 'smooth'
+      behavior: 'smooth',
     })
   }
 }
@@ -2760,7 +3793,7 @@ const scrollToTop = () => {
   if (messagesContainer.value) {
     messagesContainer.value.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     })
   }
 }
@@ -2769,7 +3802,7 @@ const forceScrollToBottom = () => {
   if (messagesContainer.value) {
     const element = messagesContainer.value
     element.scrollTop = element.scrollHeight
-    
+
     requestAnimationFrame(() => {
       if (element) {
         element.scrollTop = element.scrollHeight
@@ -2777,7 +3810,7 @@ const forceScrollToBottom = () => {
           if (element) {
             element.scrollTo({
               top: element.scrollHeight,
-              behavior: 'smooth'
+              behavior: 'smooth',
             })
           }
         }, 10)
@@ -2788,12 +3821,12 @@ const forceScrollToBottom = () => {
 
 const formatTime = (dateString: string) => {
   if (!dateString) return ''
-  
+
   const date = new Date(dateString)
   const now = new Date()
   const diffMs = now.getTime() - date.getTime()
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
-  
+
   if (diffDays === 0) {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   } else if (diffDays === 1) {
@@ -2813,18 +3846,18 @@ const formatDate = (dateString: string) => {
 const getPresenceStatus = (authUserId: string) => {
   const presence = studentPresence.value[authUserId]
   if (!presence || !presence.last_seen) return 'Offline'
-  
+
   if (presence.is_online) {
     return 'Online now'
   }
-  
+
   const now = new Date()
   const lastSeen = new Date(presence.last_seen)
   const diffMs = now.getTime() - lastSeen.getTime()
   const diffMinutes = Math.floor(diffMs / (1000 * 60))
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
-  
+
   if (diffMinutes < 1) {
     return 'Online now'
   } else if (diffMinutes < 60) {
@@ -2841,34 +3874,33 @@ const getPresenceStatus = (authUserId: string) => {
 }
 
 const setupPresenceTracking = async () => {
+  // Note: user_presence table may not exist yet - gracefully handle
   if (!currentTeacherId.value) return
-  
-  const studentAuthIds = [...new Set(
-    studentContacts.value
-      .map(s => s.auth_user_id)
-      .filter(id => id)
-  )]
-  
+
+  const studentAuthIds = [
+    ...new Set(studentContacts.value.map((s) => s.auth_user_id).filter((id) => id)),
+  ]
+
   if (studentAuthIds.length === 0) return
-  
+
   console.log('Setting up presence tracking for students:', studentAuthIds.length)
-  
+
   try {
     const { data: presenceData, error } = await supabase
       .from('user_presence')
       .select('*')
       .in('user_id', studentAuthIds)
-    
+
     if (error) {
       console.error('Error fetching student presence:', error)
       return
     }
-    
+
     if (presenceData) {
-      presenceData.forEach(p => {
+      presenceData.forEach((p) => {
         studentPresence.value[p.user_id] = {
           is_online: p.is_online,
-          last_seen: p.last_seen
+          last_seen: p.last_seen,
         }
       })
     }
@@ -2879,17 +3911,18 @@ const setupPresenceTracking = async () => {
 
 const updateTeacherPresence = async (isOnline: boolean) => {
   if (!currentUser.value) return
-  
+
   try {
-    await supabase
-      .from('user_presence')
-      .upsert({
+    await supabase.from('user_presence').upsert(
+      {
         user_id: currentUser.value.id,
         is_online: isOnline,
-        last_seen: new Date().toISOString()
-      }, {
-        onConflict: 'user_id'
-      })
+        last_seen: new Date().toISOString(),
+      },
+      {
+        onConflict: 'user_id',
+      },
+    )
   } catch (error) {
     console.log('Could not update presence')
   }
@@ -2916,13 +3949,17 @@ const getSectionIconColor = (idx: number) => {
 // WATCHERS
 // ================================
 
-watch(currentMessages, (newMessages, oldMessages) => {
-  if (newMessages.length > (oldMessages?.length || 0) && isModalOpen.value) {
-    nextTick(() => {
-      forceScrollToBottom()
-    })
-  }
-}, { deep: true, immediate: false })
+watch(
+  currentMessages,
+  (newMessages, oldMessages) => {
+    if (newMessages.length > (oldMessages?.length || 0) && isModalOpen.value) {
+      nextTick(() => {
+        forceScrollToBottom()
+      })
+    }
+  },
+  { deep: true, immediate: false },
+)
 
 watch(isModalOpen, (isOpen) => {
   if (isOpen && currentMessages.value.length > 0) {
@@ -2941,7 +3978,7 @@ watch(isModalOpen, (isOpen) => {
 const setupAuthListener = () => {
   supabase.auth.onAuthStateChange(async (event, session) => {
     console.log('Auth state change:', event)
-    
+
     if (event === 'SIGNED_OUT' || !session) {
       currentUser.value = null
       currentTeacherId.value = null
@@ -2951,7 +3988,7 @@ const setupAuthListener = () => {
       await router.push('/login')
       return
     }
-    
+
     if (event === 'SIGNED_IN' && session?.user) {
       console.log('User signed in, loading data')
       const userData = await getCurrentUser()
@@ -2965,16 +4002,16 @@ const setupAuthListener = () => {
 
 onMounted(async () => {
   console.log('Teacher messages component mounted')
-  
+
   initDarkMode()
   setupAuthListener()
-  
+
   document.addEventListener('click', () => {
     openSectionDropdown.value = null
   })
-  
+
   document.addEventListener('click', handleClickOutside)
-  
+
   const userData = await getCurrentUser()
   if (userData) {
     console.log('Teacher authenticated:', userData.profile.full_name)
@@ -2991,7 +4028,6 @@ onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
 })
 </script>
-        
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -3004,7 +4040,8 @@ onUnmounted(() => {
 }
 
 /* Hide any parent layout elements */
-body, html {
+body,
+html {
   overflow-x: hidden !important;
 }
 
@@ -3028,7 +4065,7 @@ body, html {
   left: 0;
   width: 80px;
   height: calc(100vh - 64px);
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-right: none;
   z-index: 900;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
@@ -3047,19 +4084,21 @@ body, html {
   width: 56px;
   margin: 8px 0;
   border-radius: 12px;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   cursor: pointer;
   position: relative;
 }
 
 .sidebar-item.active {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid #fff;
 }
 
 .sidebar-item:hover {
-  background: rgba(255,255,255,0.22);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .sidebar-icon svg {
@@ -3072,13 +4111,13 @@ body, html {
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  color: #3D8D7A;
+  color: #3d8d7a;
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
@@ -3097,7 +4136,7 @@ body, html {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -3224,12 +4263,12 @@ body, html {
 
 /* Rounded semi-transparent backgrounds for sidebar and navbar icons/buttons */
 .rounded-bg {
-  background: rgba(255,255,255,0.13);
+  background: rgba(255, 255, 255, 0.13);
   border-radius: 16px;
   transition: background 0.2s;
 }
 .rounded-bg:hover {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* Notification dropdown styles */
@@ -3250,7 +4289,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
 }
 
 .notification-dropdown {
@@ -3390,7 +4429,7 @@ body, html {
 
 .dropdown-item:hover {
   background: #f1f5f9;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-item svg {
@@ -3399,7 +4438,7 @@ body, html {
 }
 
 .dropdown-item:hover svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-divider {
@@ -3450,7 +4489,7 @@ body, html {
 }
 
 .main-content::-webkit-scrollbar-thumb {
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 8px;
 }
 
@@ -3470,7 +4509,7 @@ body, html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
@@ -3492,7 +4531,7 @@ body, html {
 /* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 /* Dark mode scrollbar */
@@ -3541,7 +4580,7 @@ body, html {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -3690,7 +4729,8 @@ body, html {
   gap: 8px;
 }
 
-.form-input-compact, .form-textarea-compact {
+.form-input-compact,
+.form-textarea-compact {
   width: 100%;
   padding: 12px 16px;
   border: 1px solid #d1d5db;
@@ -3709,7 +4749,8 @@ body, html {
   resize: vertical;
 }
 
-.form-input-compact:focus, .form-textarea-compact:focus {
+.form-input-compact:focus,
+.form-textarea-compact:focus {
   outline: none;
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
@@ -3754,14 +4795,16 @@ body, html {
   gap: 20px;
 }
 
-.preview-section-compact, .attachments-section-compact {
+.preview-section-compact,
+.attachments-section-compact {
   background: #f8fafc;
   border-radius: 12px;
   padding: 20px;
   border: 1px solid #f1f5f9;
 }
 
-.preview-section-compact h4, .attachments-section-compact h4 {
+.preview-section-compact h4,
+.attachments-section-compact h4 {
   margin: 0 0 16px 0;
   font-size: 15px;
   font-weight: 600;
@@ -3775,7 +4818,8 @@ body, html {
   margin: 0;
 }
 
-.preview-placeholder, .attachments-placeholder {
+.preview-placeholder,
+.attachments-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3889,7 +4933,8 @@ body, html {
   justify-content: flex-end;
 }
 
-.btn-cancel-full, .btn-send-full {
+.btn-cancel-full,
+.btn-send-full {
   padding: 14px 24px;
   border-radius: 10px;
   font-size: 15px;
@@ -4180,19 +5225,19 @@ body, html {
     padding: 16px;
     gap: 16px;
   }
-  
+
   .broadcast-content-enhanced {
     padding: 20px;
   }
-  
+
   .attachments-gallery-enhanced {
     grid-template-columns: 1fr;
   }
-  
+
   .image-attachment-enhanced {
     height: 200px;
   }
-  
+
   .file-attachment-enhanced {
     flex-direction: column;
     text-align: center;
@@ -4280,7 +5325,9 @@ body, html {
   gap: 6px;
 }
 
-.section-badge, .code-badge, .grade-badge {
+.section-badge,
+.code-badge,
+.grade-badge {
   font-size: 11px;
   padding: 3px 8px;
   border-radius: 6px;
@@ -4645,7 +5692,7 @@ body, html {
     grid-template-columns: 1fr 320px;
     gap: 24px;
   }
-  
+
   .broadcast-form-right {
     width: 320px;
     padding-left: 24px;
@@ -4657,7 +5704,7 @@ body, html {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  
+
   .broadcast-form-right {
     width: 100%;
     border-left: none;
@@ -4665,7 +5712,7 @@ body, html {
     padding-left: 0;
     padding-top: 24px;
   }
-  
+
   .history-grid-enhanced {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 16px;
@@ -4678,31 +5725,32 @@ body, html {
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  
+
   .upload-button-inline {
     align-self: flex-start;
   }
-  
+
   .history-grid-enhanced {
     grid-template-columns: 1fr;
     padding: 12px;
   }
-  
+
   .card-header-enhanced {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
-  
+
   .broadcast-stats-enhanced {
     align-self: flex-end;
   }
-  
+
   .attachments-grid-enhanced {
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
   }
-  
-  .attachment-tile-enhanced, .more-attachments-tile {
+
+  .attachment-tile-enhanced,
+  .more-attachments-tile {
     width: 60px;
     height: 60px;
   }
@@ -4717,7 +5765,7 @@ body, html {
 /* Main Container */
 .messages-container {
   min-height: 100vh;
-  background: #FBFFE4;
+  background: #fbffe4;
   padding: 1.5rem 2rem;
   font-family: 'Inter', sans-serif;
   max-width: 1400px;
@@ -4734,7 +5782,7 @@ body, html {
   padding: 1.5rem 2.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   width: 100%;
   max-width: none;
   display: flex;
@@ -4744,7 +5792,7 @@ body, html {
 .dark .section-header-card {
   background: #23272b;
   border: 2px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .section-header-left {
@@ -4756,7 +5804,7 @@ body, html {
 .section-header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #A3D1C6 0%, #87C5B8 100%);
+  background: linear-gradient(135deg, #a3d1c6 0%, #87c5b8 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -5412,8 +6460,12 @@ body, html {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-text {
@@ -5438,11 +6490,11 @@ body, html {
   .main-content {
     padding: 1rem;
   }
-  
+
   .navbar-center {
     gap: 0.25rem;
   }
-  
+
   .nav-item {
     padding: 0.5rem 1rem;
     font-size: 0.7rem;
@@ -5453,52 +6505,52 @@ body, html {
   .main-content {
     padding: 1rem;
   }
-  
+
   .page-header {
     padding: 1rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .header-content {
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
   }
-  
+
   .navbar-content {
     padding: 0 0.5rem;
   }
-  
+
   .brand-name {
     display: none;
   }
-  
+
   .controls-section {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .search-box {
     min-width: auto;
   }
-  
+
   .filter-tabs {
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   .filter-tab {
     flex: 1;
     min-width: 0;
     padding: 0.75rem 0.5rem;
     font-size: 0.85rem;
   }
-  
+
   .grade-filter-tabs {
     justify-content: center;
     gap: 0.25rem;
   }
-  
+
   .grade-tab {
     padding: 0.5rem 0.75rem;
     font-size: 0.8rem;
@@ -5523,7 +6575,7 @@ body, html {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -5532,7 +6584,7 @@ body, html {
 }
 
 .dark .header-icon {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
 }
 
@@ -5544,7 +6596,7 @@ body, html {
 }
 
 .dark .header-title {
-  color: #FBFFE4;
+  color: #fbffe4;
 }
 
 .header-subtitle {
@@ -5555,7 +6607,7 @@ body, html {
 }
 
 .dark .header-subtitle {
-  color: #B3D8A8;
+  color: #b3d8a8;
 }
 
 .header-actions {
@@ -5564,7 +6616,8 @@ body, html {
 }
 
 /* Buttons */
-.action-btn, .debug-btn {
+.action-btn,
+.debug-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -5581,11 +6634,11 @@ body, html {
 .action-btn {
   background: #20c997;
   color: #181c20;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 
 .action-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
   transform: translateY(-1px);
@@ -5599,20 +6652,20 @@ body, html {
   height: 40px;
   border: none;
   border-radius: 8px;
-  background: #B3D8A8;
-  color: #3D8D7A;
+  background: #b3d8a8;
+  color: #3d8d7a;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .dark-mode-toggle:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   transform: translateY(-1px);
 }
 
 .dark .dark-mode-toggle {
-  background: #3D8D7A;
-  color: #B3D8A8;
+  background: #3d8d7a;
+  color: #b3d8a8;
 }
 
 .dark .dark-mode-toggle:hover {
@@ -5620,7 +6673,7 @@ body, html {
 }
 
 .debug-btn {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 
@@ -5632,11 +6685,11 @@ body, html {
 .dark .action-btn {
   background: #20c997;
   color: #181c20;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 
 .dark .debug-btn {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
 }
 
@@ -5652,14 +6705,14 @@ body, html {
 .dark .content-card {
   background: #23272b;
   border: 1px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.25rem; 
+  margin-bottom: 1.25rem;
 }
 
 .card-header h3 {
@@ -5669,7 +6722,7 @@ body, html {
   margin-bottom: 0.25rem;
 }
 .dark .card-header h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Tabs - Enhanced to match MySubjects.vue */
@@ -5684,27 +6737,27 @@ body, html {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
-  border: 1.5px solid #A3D1C6;
+  border: 1.5px solid #a3d1c6;
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: #FBFFE4;
-  color: #3D8D7A;
+  background: #fbffe4;
+  color: #3d8d7a;
   font-family: 'Inter', sans-serif;
 }
 
 .tab-btn.active {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 2px 4px rgba(61, 141, 122, 0.1);
 }
 
 .tab-btn:hover:not(.active) {
   background: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(61, 141, 122, 0.15);
 }
@@ -5712,7 +6765,7 @@ body, html {
 .dark .tab-btn {
   background: #181c1f;
   border: 1.5px solid #20c997;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .dark .tab-btn.active {
@@ -5742,7 +6795,7 @@ body, html {
 
 .section-overview-card {
   background: #ffffff;
-  border: 1.5px solid #B3D8A8;
+  border: 1.5px solid #b3d8a8;
   border-radius: 12px;
   padding: 1.5rem;
   transition: all 0.2s ease;
@@ -5751,7 +6804,7 @@ body, html {
 }
 
 .section-overview-card:hover {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(61, 141, 122, 0.15);
 }
@@ -5762,7 +6815,7 @@ body, html {
 }
 
 .dark .section-overview-card:hover {
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
   box-shadow: 0 4px 16px rgba(163, 209, 198, 0.15);
 }
 
@@ -5807,13 +6860,13 @@ body, html {
 
 .section-grade {
   font-size: 0.875rem;
-  color: #3D8D7A;
+  color: #3d8d7a;
   margin: 0;
   font-family: 'Inter', sans-serif;
 }
 
 .dark .section-grade {
-  color: #B3D8A8;
+  color: #b3d8a8;
 }
 
 .section-options-btn {
@@ -5947,7 +7000,7 @@ body, html {
 
 .section-code-value {
   background: #fff;
-  border: 1.5px solid #B3D8A8;
+  border: 1.5px solid #b3d8a8;
   border-radius: 8px;
   padding: 0.75rem;
   display: flex;
@@ -5957,7 +7010,9 @@ body, html {
   font-size: 0.95rem;
   color: #1f2937;
   font-weight: 600;
-  transition: background 0.2s, border 0.2s;
+  transition:
+    background 0.2s,
+    border 0.2s;
 }
 
 .dark .section-code-value {
@@ -6031,7 +7086,7 @@ body, html {
 .section-overview-icon {
   width: 48px;
   height: 48px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -6047,7 +7102,7 @@ body, html {
 }
 
 .section-overview-title {
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
@@ -6055,7 +7110,7 @@ body, html {
 }
 
 .dark .section-overview-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
   font-weight: 700;
 }
 
@@ -6065,7 +7120,7 @@ body, html {
   margin-bottom: 0.25rem;
 }
 .dark .section-overview-subtitle {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-overview-grade {
@@ -6073,7 +7128,7 @@ body, html {
   color: #6b7280;
 }
 .dark .section-overview-grade {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Section Code Inline - Like MySubjects.vue */
@@ -6081,8 +7136,8 @@ body, html {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: #F8F9FA;
-  border: 1px solid #A3D1C6;
+  background: #f8f9fa;
+  border: 1px solid #a3d1c6;
   border-radius: 6px;
   padding: 0.25rem 0.6rem;
   font-size: 0.875rem;
@@ -6095,7 +7150,7 @@ body, html {
 }
 
 .code-label {
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-weight: 600;
   font-size: 0.75rem;
 }
@@ -6106,7 +7161,7 @@ body, html {
 
 .section-code-value {
   background: #fff;
-  border: 1.5px solid #B3D8A8;
+  border: 1.5px solid #b3d8a8;
   border-radius: 8px;
   padding: 0.6rem 0.7rem;
   display: flex;
@@ -6117,7 +7172,9 @@ body, html {
   color: #23423a;
   font-weight: 500;
   letter-spacing: 0.04em;
-  transition: background 0.2s, border 0.2s;
+  transition:
+    background 0.2s,
+    border 0.2s;
   white-space: nowrap;
   overflow-x: auto;
 }
@@ -6126,7 +7183,7 @@ body, html {
   display: block;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #3D8D7A;
+  color: #3d8d7a;
   line-height: 1;
 }
 
@@ -6137,7 +7194,7 @@ body, html {
   margin-top: 0.25rem;
 }
 .dark .count-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-overview-unread {
@@ -6160,15 +7217,17 @@ body, html {
 }
 
 /* Student List Items - Enhanced to match MySubjects.vue */
-.students-list, .section-students-list {
+.students-list,
+.section-students-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.student-item, .section-student-item {
-  background: #FBFFE4;
-  border: 1.5px solid #A3D1C6;
+.student-item,
+.section-student-item {
+  background: #fbffe4;
+  border: 1.5px solid #a3d1c6;
   border-radius: 12px;
   padding: 1.25rem;
   display: flex;
@@ -6179,43 +7238,46 @@ body, html {
   font-family: 'Inter', sans-serif;
 }
 
-.student-item:hover, .section-student-item:hover {
+.student-item:hover,
+.section-student-item:hover {
   background: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.15);
 }
 
-.student-item.has-unread, .section-student-item.has-unread {
-  border-color: #3D8D7A;
+.student-item.has-unread,
+.section-student-item.has-unread {
+  border-color: #3d8d7a;
   background: #f0fdf4;
   box-shadow: 0 2px 8px rgba(61, 141, 122, 0.1);
 }
 
-.dark .student-item, 
+.dark .student-item,
 .dark .section-student-item {
   background: #181c1f;
   border: 1.5px solid #20c997;
 }
 
-.dark .student-item:hover, 
+.dark .student-item:hover,
 .dark .section-student-item:hover {
   background: #20242a;
   border-color: #20c997;
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.15);
 }
 
-.dark .student-item.has-unread, 
+.dark .student-item.has-unread,
 .dark .section-student-item.has-unread {
   border-color: #20c997;
   background: #0f1b16;
   box-shadow: 0 2px 8px rgba(32, 201, 151, 0.1);
 }
 
-.student-avatar, .section-student-avatar {
+.student-avatar,
+.section-student-avatar {
   width: 40px;
   height: 40px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -6245,7 +7307,8 @@ body, html {
 }
 
 @keyframes pulse-online {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.3);
   }
   50% {
@@ -6253,29 +7316,32 @@ body, html {
   }
 }
 
-.student-info, .section-student-info {
+.student-info,
+.section-student-info {
   flex: 1;
 }
 
-.student-name, .section-student-name {
+.student-name,
+.section-student-name {
   font-size: 0.938rem;
   font-weight: 600;
   color: #1f2937;
   margin-bottom: 0.25rem;
 }
-.dark .student-name, 
+.dark .student-name,
 .dark .section-student-name {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
-.student-email, .section-student-email {
+.student-email,
+.section-student-email {
   font-size: 0.813rem;
   color: #6b7280;
   margin-bottom: 0.125rem;
 }
-.dark .student-email, 
+.dark .student-email,
 .dark .section-student-email {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-student-id {
@@ -6283,7 +7349,7 @@ body, html {
   color: #6b7280;
 }
 .dark .section-student-id {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .presence-status {
@@ -6296,20 +7362,23 @@ body, html {
   color: #20c997;
 }
 
-.last-message, .section-last-message {
+.last-message,
+.section-last-message {
   font-style: italic;
   color: #6b7280;
   font-size: 0.75rem;
 }
 
-.message-status, .section-message-status {
+.message-status,
+.section-message-status {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 0.25rem;
 }
 
-.unread-badge, .section-unread-badge {
+.unread-badge,
+.section-unread-badge {
   background: #ef4444;
   color: white;
   padding: 0.125rem 0.375rem;
@@ -6318,13 +7387,15 @@ body, html {
   font-weight: 600;
 }
 
-.last-time, .section-last-time {
+.last-time,
+.section-last-time {
   color: #6b7280;
   font-size: 0.75rem;
 }
 
-.chat-icon, .section-chat-icon {
-  color: #3D8D7A;
+.chat-icon,
+.section-chat-icon {
+  color: #3d8d7a;
 }
 
 /* Archived Items - MySubjects.vue style */
@@ -6371,14 +7442,14 @@ body, html {
 
 .back-to-sections-btn:hover {
   background: #f9fafb;
-  border-color: #3D8D7A;
-  color: #3D8D7A;
+  border-color: #3d8d7a;
+  color: #3d8d7a;
 }
 
 .dark .back-to-sections-btn {
   background: #374151;
   border-color: #4b5563;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .dark .back-to-sections-btn:hover {
@@ -6407,7 +7478,7 @@ body, html {
   margin-bottom: 0.5rem;
 }
 .dark .section-students-info h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-students-meta {
@@ -6417,11 +7488,11 @@ body, html {
   font-size: 0.875rem;
 }
 .dark .section-students-meta {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-broadcast-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -6481,14 +7552,14 @@ body, html {
 
 .search-input:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.1);
 }
 
 .dark .search-input {
   background: #374151;
   border-color: #4b5563;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .dark .search-input:focus {
@@ -6509,7 +7580,7 @@ body, html {
 .dark .section-filter {
   background: #374151;
   border-color: #4b5563;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .dark .header-subtitle {
@@ -6522,7 +7593,8 @@ body, html {
 }
 
 /* Buttons */
-.action-btn, .debug-btn {
+.action-btn,
+.debug-btn {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -6536,7 +7608,7 @@ body, html {
 }
 
 .action-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -6545,7 +7617,7 @@ body, html {
 }
 
 .debug-btn {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #2c3e50;
 }
 
@@ -6554,11 +7626,11 @@ body, html {
 }
 
 .dark .action-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
 }
 
 .dark .debug-btn {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #2c3e50;
 }
 
@@ -6612,7 +7684,7 @@ body, html {
 }
 
 .tab-btn.active {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -6626,7 +7698,7 @@ body, html {
 }
 
 .dark .tab-btn.active {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -6672,8 +7744,8 @@ body, html {
 
 .back-to-sections-btn:hover {
   background: #f8f9fa;
-  border-color: #3D8D7A;
-  color: #3D8D7A;
+  border-color: #3d8d7a;
+  color: #3d8d7a;
 }
 
 .dark .back-to-sections-btn {
@@ -6684,8 +7756,8 @@ body, html {
 
 .dark .back-to-sections-btn:hover {
   background: #505050;
-  border-color: #3D8D7A;
-  color: #3D8D7A;
+  border-color: #3d8d7a;
+  color: #3d8d7a;
 }
 
 .section-students-info {
@@ -6710,7 +7782,7 @@ body, html {
 }
 
 .section-broadcast-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -6727,13 +7799,15 @@ body, html {
 }
 
 /* Student Lists */
-.section-students-list, .students-list {
+.section-students-list,
+.students-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.section-student-item, .student-item {
+.section-student-item,
+.student-item {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -6744,34 +7818,40 @@ body, html {
   transition: all 0.3s ease;
 }
 
-.section-student-item:hover, .student-item:hover {
+.section-student-item:hover,
+.student-item:hover {
   background: #f8f9fa;
   transform: translateY(-1px);
 }
 
-.section-student-item.has-unread, .student-item.has-unread {
-  border-color: #3D8D7A;
+.section-student-item.has-unread,
+.student-item.has-unread {
+  border-color: #3d8d7a;
   background: #f0f9f7;
 }
 
-.dark .section-student-item, .dark .student-item {
+.dark .section-student-item,
+.dark .student-item {
   border-color: #404040;
   background: #333;
 }
 
-.dark .section-student-item:hover, .dark .student-item:hover {
+.dark .section-student-item:hover,
+.dark .student-item:hover {
   background: #404040;
 }
 
-.dark .section-student-item.has-unread, .dark .student-item.has-unread {
-  border-color: #3D8D7A;
+.dark .section-student-item.has-unread,
+.dark .student-item.has-unread {
+  border-color: #3d8d7a;
   background: #2a3d37;
 }
 
-.section-student-avatar, .student-avatar {
+.section-student-avatar,
+.student-avatar {
   width: 40px;
   height: 40px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -6780,25 +7860,30 @@ body, html {
   font-weight: bold;
 }
 
-.section-student-info, .student-info {
+.section-student-info,
+.student-info {
   flex: 1;
 }
 
-.section-student-details, .student-details {
+.section-student-details,
+.student-details {
   flex: 1;
 }
 
-.section-student-name, .student-name {
+.section-student-name,
+.student-name {
   margin: 0 0 4px 0;
   color: #2c3e50;
   font-size: 1rem;
 }
 
-.dark .section-student-name, .dark .student-name {
+.dark .section-student-name,
+.dark .student-name {
   color: #e0e0e0;
 }
 
-.section-student-email, .student-email {
+.section-student-email,
+.student-email {
   margin: 0 0 2px 0;
   color: #6c757d;
   font-size: 0.9rem;
@@ -6810,20 +7895,23 @@ body, html {
   font-size: 0.8rem;
 }
 
-.section-last-message, .last-message {
+.section-last-message,
+.last-message {
   font-style: italic;
   color: #6c757d !important;
   font-size: 0.8rem !important;
 }
 
-.section-message-status, .message-status {
+.section-message-status,
+.message-status {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 4px;
 }
 
-.section-unread-badge, .unread-badge {
+.section-unread-badge,
+.unread-badge {
   background: #dc3545;
   color: white;
   padding: 2px 6px;
@@ -6832,13 +7920,15 @@ body, html {
   font-weight: bold;
 }
 
-.section-last-time, .last-time {
+.section-last-time,
+.last-time {
   color: #6c757d;
   font-size: 0.8rem;
 }
 
-.section-chat-icon, .chat-icon {
-  color: #3D8D7A;
+.section-chat-icon,
+.chat-icon {
+  color: #3d8d7a;
 }
 
 /* Sections Overview */
@@ -6876,7 +7966,7 @@ body, html {
 .section-overview-icon {
   width: 40px;
   height: 40px;
-  background: #B3D8A8;
+  background: #b3d8a8;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -6925,7 +8015,7 @@ body, html {
   display: block;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .count-label {
@@ -7021,7 +8111,9 @@ body, html {
   color: #e0e0e0;
 }
 
-.form-input, .form-textarea, .form-select {
+.form-input,
+.form-textarea,
+.form-select {
   width: 100%;
   padding: 12px;
   border: 1px solid #e0e0e0;
@@ -7408,8 +8500,12 @@ body, html {
 }
 
 @keyframes fastSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .messages-loading p {
@@ -7511,7 +8607,8 @@ body, html {
   gap: 0.25rem;
 }
 
-.status-read, .status-sent {
+.status-read,
+.status-sent {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -7526,7 +8623,7 @@ body, html {
   margin-left: 0.25rem;
 }
 
-.dark .status-read, 
+.dark .status-read,
 .dark .status-sent,
 .dark .read-time {
   color: #34d399;
@@ -7547,10 +8644,12 @@ body, html {
 }
 
 .dark .form-group label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
-.form-input, .form-textarea, .form-select {
+.form-input,
+.form-textarea,
+.form-select {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid #e5e7eb;
@@ -7562,9 +8661,11 @@ body, html {
   transition: all 0.2s;
 }
 
-.form-input:focus, .form-textarea:focus, .form-select:focus {
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.1);
 }
 
@@ -7578,7 +8679,7 @@ body, html {
 .dark .form-select {
   background: #374151;
   border-color: #4b5563;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .dark .form-input:focus,
@@ -7603,7 +8704,8 @@ body, html {
   background: #111827;
 }
 
-.attach-file-btn, .send-btn {
+.attach-file-btn,
+.send-btn {
   padding: 0.75rem;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
@@ -7829,56 +8931,58 @@ body, html {
     width: 95%;
     max-height: 90vh;
   }
-  
+
   .modal-header {
     padding: 1rem;
   }
-  
+
   .modal-title {
     font-size: 1.1rem;
   }
-  
+
   .student-avatar {
     width: 40px;
     height: 40px;
     font-size: 1rem;
   }
-  
+
   .header-info {
     gap: 0.75rem;
   }
-  
+
   .modal-body .messages-container {
     padding: 1rem;
   }
-  
+
   .message-text {
     max-width: 85%;
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
   }
-  
+
   .message-input-area {
     padding: 1rem;
   }
-  
+
   .message-input {
     padding: 0.75rem;
     font-size: 0.875rem;
   }
-  
-  .attach-file-btn, .send-btn {
+
+  .attach-file-btn,
+  .send-btn {
     width: 38px;
     height: 38px;
     padding: 0.625rem;
   }
-  
-  .close-btn, .options-menu-btn {
+
+  .close-btn,
+  .options-menu-btn {
     width: 36px;
     height: 36px;
     padding: 0.5rem;
   }
-  
+
   .no-messages {
     padding: 2rem 1rem;
   }
@@ -7909,7 +9013,7 @@ body, html {
 }
 
 .dark .attachment-name {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .remove-attachment-btn {
@@ -7935,8 +9039,8 @@ body, html {
 /* Broadcast Form Styling - Enhanced to match MySubjects.vue */
 .broadcast-form {
   max-width: 600px;
-  background: #FBFFE4;
-  border: 1.5px solid #A3D1C6;
+  background: #fbffe4;
+  border: 1.5px solid #a3d1c6;
   border-radius: 12px;
   padding: 1.5rem;
   transition: all 0.2s ease;
@@ -7954,7 +9058,7 @@ body, html {
 .broadcast-header h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #3D8D7A;
+  color: #3d8d7a;
   margin-bottom: 0.5rem;
   font-family: 'Inter', sans-serif;
 }
@@ -7970,11 +9074,11 @@ body, html {
 }
 
 .dark .broadcast-header p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .view-history-btn {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #1f2937;
   border: none;
   padding: 0.5rem 1rem;
@@ -8006,8 +9110,8 @@ body, html {
 }
 
 .broadcast-messages-header {
-  background: #FBFFE4;
-  border: 1.5px solid #A3D1C6;
+  background: #fbffe4;
+  border: 1.5px solid #a3d1c6;
   border-radius: 12px;
   padding: 1.25rem;
   margin-bottom: 1.5rem;
@@ -8025,8 +9129,8 @@ body, html {
 }
 
 .broadcast-message-item {
-  background: #FBFFE4;
-  border: 1.5px solid #A3D1C6;
+  background: #fbffe4;
+  border: 1.5px solid #a3d1c6;
   border-radius: 12px;
   padding: 1.25rem;
   transition: all 0.2s ease;
@@ -8034,7 +9138,7 @@ body, html {
 
 .broadcast-message-item:hover {
   background: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.15);
 }
@@ -8058,7 +9162,7 @@ body, html {
 }
 
 .dark .empty-state {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .empty-state svg {
@@ -8080,7 +9184,7 @@ body, html {
 }
 
 .dark .empty-subtext {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Additional responsive improvements */
@@ -8088,29 +9192,29 @@ body, html {
   .messages-container {
     padding: 1rem;
   }
-  
+
   .header-card {
     padding: 1rem;
   }
-  
+
   .content-card {
     padding: 1rem;
   }
-  
+
   .sections-overview {
     grid-template-columns: 1fr;
   }
-  
+
   .modal-content {
     width: 95%;
     margin: 1rem;
   }
-  
+
   .header-actions {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .tab-btn {
     padding: 0.5rem 0.75rem;
     font-size: 0.813rem;
@@ -8123,7 +9227,7 @@ body, html {
 .debug-btn:focus,
 .send-btn:focus,
 .attach-file-btn:focus {
-  outline: 2px solid #3D8D7A;
+  outline: 2px solid #3d8d7a;
   outline-offset: 2px;
 }
 
@@ -8139,7 +9243,7 @@ body, html {
   max-width: 70%;
   padding: 12px 16px;
   border-radius: 18px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   word-wrap: break-word;
   margin: 0;
@@ -8177,11 +9281,12 @@ body, html {
   gap: 4px;
 }
 
-.status-read, .status-sent {
+.status-read,
+.status-sent {
   display: flex;
   align-items: center;
   gap: 2px;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 /* Message Input */
@@ -8197,7 +9302,8 @@ body, html {
   border-top-color: #404040;
 }
 
-.attach-file-btn, .send-btn {
+.attach-file-btn,
+.send-btn {
   padding: 12px;
   border: none;
   border-radius: 50%;
@@ -8209,7 +9315,7 @@ body, html {
 }
 
 .attach-file-btn {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #2c3e50;
 }
 
@@ -8218,7 +9324,7 @@ body, html {
 }
 
 .send-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -8373,34 +9479,36 @@ body, html {
   .messages-container {
     padding: 10px;
   }
-  
+
   .header-content {
     flex-direction: column;
     gap: 16px;
     text-align: center;
   }
-  
+
   .section-actions {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .sections-overview {
     grid-template-columns: 1fr;
   }
-  
+
   .modal-content {
     width: 95%;
     margin: 10px;
   }
-  
-  .section-student-item, .student-item {
+
+  .section-student-item,
+  .student-item {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
   }
-  
-  .section-message-status, .message-status {
+
+  .section-message-status,
+  .message-status {
     align-self: flex-end;
     flex-direction: row;
     gap: 8px;
@@ -8413,18 +9521,18 @@ body, html {
     text-align: center;
     gap: 8px;
   }
-  
+
   .tabs {
     flex-direction: column;
     gap: 4px;
   }
-  
+
   .section-students-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
-  
+
   .message-input-area {
     flex-direction: column;
     gap: 8px;
@@ -8524,7 +9632,7 @@ body, html {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  box-shadow: 0 1px 4px rgba(32,201,151,0.07);
+  box-shadow: 0 1px 4px rgba(32, 201, 151, 0.07);
 }
 
 .dark .simple-broadcast-header {
@@ -8570,7 +9678,7 @@ body, html {
 }
 
 .dark .simple-header-text p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .simple-history-btn {
@@ -8612,14 +9720,14 @@ body, html {
   background: #f8fafc;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 1px 4px rgba(32,201,151,0.07);
+  box-shadow: 0 1px 4px rgba(32, 201, 151, 0.07);
   padding: 2rem 0;
 }
 
 .broadcast-form-card {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 1px 4px rgba(32,201,151,0.07);
+  box-shadow: 0 1px 4px rgba(32, 201, 151, 0.07);
   border: 1px solid #e5e7eb;
   padding: 2rem 2rem 1.5rem 2rem;
   margin: 0 2rem;
@@ -8628,7 +9736,7 @@ body, html {
 .dark .broadcast-form-card {
   background: #23272b;
   border: 1px solid #374151;
-  box-shadow: 0 1px 4px rgba(32,201,151,0.13);
+  box-shadow: 0 1px 4px rgba(32, 201, 151, 0.13);
 }
 
 /* Form Fields */
@@ -8648,11 +9756,11 @@ body, html {
 }
 
 .dark .form-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .form-label svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dark .form-label svg {
@@ -8667,7 +9775,8 @@ body, html {
 }
 
 /* Form Inputs */
-.form-select-enhanced, .form-textarea-enhanced {
+.form-select-enhanced,
+.form-textarea-enhanced {
   border-radius: 8px;
   border: 1px solid #e5e7eb;
   background: #f8fafc;
@@ -8679,19 +9788,22 @@ body, html {
   font-family: 'Inter', sans-serif;
 }
 
-.form-select-enhanced:focus, .form-textarea-enhanced:focus {
+.form-select-enhanced:focus,
+.form-textarea-enhanced:focus {
   border-color: #20c997;
   outline: none;
   background: #fff;
 }
 
-.dark .form-select-enhanced, .dark .form-textarea-enhanced {
+.dark .form-select-enhanced,
+.dark .form-textarea-enhanced {
   background: #1f2937;
   border-color: #374151;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
-.dark .form-select-enhanced:focus, .dark .form-textarea-enhanced:focus {
+.dark .form-select-enhanced:focus,
+.dark .form-textarea-enhanced:focus {
   border-color: #20c997;
   background: #23272b;
 }
@@ -8776,7 +9888,7 @@ body, html {
 
 .form-textarea-enhanced:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   background: white;
   box-shadow: 0 0 0 4px rgba(61, 141, 122, 0.1);
 }
@@ -8788,7 +9900,7 @@ body, html {
 .dark .form-textarea-enhanced {
   background: #1f2937;
   border-color: #374151;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .dark .form-textarea-enhanced:focus {
@@ -8836,7 +9948,7 @@ body, html {
 }
 
 .attachment-card:hover {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.15);
 }
@@ -8934,7 +10046,7 @@ body, html {
 }
 
 .dark .attachment-name {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .attachment-size {
@@ -8989,7 +10101,7 @@ body, html {
 }
 
 .dark .upload-btn span {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .upload-hint {
@@ -9044,7 +10156,7 @@ body, html {
 }
 
 .dark .preview-text {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Form Actions */
@@ -9214,7 +10326,7 @@ body, html {
 .upload-btn:focus-visible,
 .send-btn-enhanced:focus-visible,
 .cancel-btn-enhanced:focus-visible {
-  outline: 3px solid #3D8D7A;
+  outline: 3px solid #3d8d7a;
   outline-offset: 2px;
 }
 
@@ -9236,7 +10348,7 @@ body, html {
   border-radius: 12px;
   padding: 1.25rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 1px 4px rgba(32,201,151,0.07);
+  box-shadow: 0 1px 4px rgba(32, 201, 151, 0.07);
 }
 
 .dark .simple-history-header {
@@ -9322,7 +10434,7 @@ body, html {
 }
 
 .dark .simple-history-info p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .simple-stats-badge {
@@ -9356,7 +10468,7 @@ body, html {
 }
 
 .dark .simple-stats-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .history-icon {
@@ -9428,7 +10540,8 @@ body, html {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -9445,7 +10558,7 @@ body, html {
 }
 
 .dark .empty-state-modern h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .empty-state-modern p {
@@ -9463,7 +10576,7 @@ body, html {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #3D8D7A 0%, #20c997 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #20c997 100%);
   color: white;
   border: none;
   border-radius: 12px;
@@ -9589,7 +10702,7 @@ body, html {
 }
 
 .dark .simple-subject-details p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .simple-broadcast-count {
@@ -9628,7 +10741,7 @@ body, html {
 }
 
 .dark .simple-meta-item {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .simple-meta-item svg {
@@ -9791,8 +10904,8 @@ body, html {
 
 .back-to-history-btn:hover {
   background: white;
-  border-color: #3D8D7A;
-  color: #3D8D7A;
+  border-color: #3d8d7a;
+  color: #3d8d7a;
   transform: translateX(-4px);
 }
 
@@ -9836,7 +10949,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #3D8D7A;
+  color: #3d8d7a;
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.15);
   flex-shrink: 0;
 }
@@ -9855,7 +10968,7 @@ body, html {
 }
 
 .dark .section-badge-content h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-meta {
@@ -9897,7 +11010,7 @@ body, html {
 }
 
 .broadcast-message-card:hover {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 4px 16px rgba(61, 141, 122, 0.1);
   transform: translateY(-2px);
 }
@@ -9951,7 +11064,7 @@ body, html {
 }
 
 .broadcast-timestamp svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dark .broadcast-timestamp svg {
@@ -9979,8 +11092,8 @@ body, html {
 
 .dropdown-trigger:hover {
   background: white;
-  border-color: #3D8D7A;
-  color: #3D8D7A;
+  border-color: #3d8d7a;
+  color: #3d8d7a;
 }
 
 .dark .dropdown-trigger {
@@ -10046,7 +11159,7 @@ body, html {
 
 .dropdown-item:hover {
   background: #f9fafb;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-item.danger:hover {
@@ -10139,7 +11252,7 @@ body, html {
 }
 
 .attachments-header svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dark .attachments-header svg {
@@ -10162,7 +11275,7 @@ body, html {
 }
 
 .attachment-preview-card:hover {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.15);
 }
@@ -10353,8 +11466,12 @@ body, html {
 }
 
 @keyframes fastSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .dark .messages-loading-spinner {
@@ -10366,7 +11483,7 @@ body, html {
 .messages-loading p {
   font-size: 0.938rem;
   font-weight: 600;
-  color: #3D8D7A;
+  color: #3d8d7a;
   margin: 0;
   font-family: 'Inter', sans-serif;
 }
@@ -10391,7 +11508,8 @@ body, html {
    ============================================ */
 
 /* Scroll Buttons */
-.scroll-top-btn, .scroll-bottom-btn {
+.scroll-top-btn,
+.scroll-bottom-btn {
   position: absolute;
   right: 1rem;
   width: 44px;
@@ -10418,13 +11536,15 @@ body, html {
   bottom: 1rem;
 }
 
-.scroll-top-btn:hover, .scroll-bottom-btn:hover {
+.scroll-top-btn:hover,
+.scroll-bottom-btn:hover {
   background: #18a577;
   transform: scale(1.1);
   box-shadow: 0 6px 20px rgba(32, 201, 151, 0.4);
 }
 
-.dark .scroll-top-btn, .dark .scroll-bottom-btn {
+.dark .scroll-top-btn,
+.dark .scroll-bottom-btn {
   background: #20c997;
   box-shadow: 0 4px 12px rgba(32, 201, 151, 0.4);
 }
@@ -10441,8 +11561,12 @@ body, html {
 }
 
 @keyframes fastSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .message-bubble.sending {
@@ -10680,11 +11804,7 @@ body, html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10730,7 +11850,7 @@ body, html {
 
 .attachment-file:hover {
   background: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateX(2px);
 }
 
@@ -10771,7 +11891,7 @@ body, html {
 .attachment-btn {
   width: 32px;
   height: 32px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border: none;
   border-radius: 8px;
   display: flex;
@@ -10919,7 +12039,7 @@ body, html {
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
-  background: linear-gradient(135deg, #3D8D7A 0%, #20c997 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #20c997 100%);
   color: white;
   border: none;
   border-radius: 12px;
@@ -11019,11 +12139,7 @@ body, html {
 
   .image-overlay {
     opacity: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.4) 100%
-    );
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
   }
 }
 
@@ -11070,7 +12186,7 @@ body, html {
 .attachment-image-container:focus-visible,
 .attachment-btn:focus-visible,
 .download-viewer-btn:focus-visible {
-  outline: 3px solid #3D8D7A;
+  outline: 3px solid #3d8d7a;
   outline-offset: 2px;
 }
 
@@ -11106,7 +12222,7 @@ body, html {
   width: 40px;
   height: 40px;
   border: 3px solid rgba(61, 141, 122, 0.2);
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   z-index: 1;
@@ -11142,7 +12258,7 @@ body, html {
   border-radius: 16px;
   overflow: hidden;
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   animation: modalSlideIn 0.3s ease-out;
 }
 
@@ -11158,7 +12274,7 @@ body, html {
 }
 
 .logout-header {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
   padding: 1.5rem;
 }
@@ -11181,13 +12297,18 @@ body, html {
 }
 
 .logout-icon svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .logout-message {
@@ -11266,8 +12387,12 @@ body, html {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-logout .loading-text {
@@ -11277,15 +12402,19 @@ body, html {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Profile Dropdown Override - Maximum specificity */
 div.profile-dropdown div.dropdown-header,
 .profile-dropdown .dropdown-header {
   padding: 1.5rem !important;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a) !important;
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a) !important;
   color: white !important;
   border-bottom: none !important;
   border: none !important;
@@ -11293,15 +12422,15 @@ div.profile-dropdown div.dropdown-header,
 }
 
 /* Force override any potential conflicts */
-[class*="profile-dropdown"] [class*="dropdown-header"] {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a) !important;
+[class*='profile-dropdown'] [class*='dropdown-header'] {
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a) !important;
   border-bottom: none !important;
 }
 
 /* Nuclear option - override everything */
 .profile-dropdown .dropdown-header {
-  background: #3D8D7A !important;
-  background-image: linear-gradient(135deg, #3D8D7A, #2d6a5a) !important;
+  background: #3d8d7a !important;
+  background-image: linear-gradient(135deg, #3d8d7a, #2d6a5a) !important;
 }
 </style>
 
@@ -11309,7 +12438,7 @@ div.profile-dropdown div.dropdown-header,
 /* Global override for MessagesPage profile dropdown */
 .profile-dropdown .dropdown-header {
   padding: 1.5rem !important;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a) !important;
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a) !important;
   color: white !important;
   border-bottom: none !important;
   border: none !important;

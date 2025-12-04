@@ -10,23 +10,28 @@
             <span class="brand-name">IntelliGrade</span>
           </div>
         </div>
-        
+
         <!-- Center: Empty space for clean look -->
-        <div class="navbar-center">
-        </div>
-        
-       <!-- Right: User Profile and Notifications -->
+        <div class="navbar-center"></div>
+
+        <!-- Right: User Profile and Notifications -->
         <div class="navbar-right">
           <!-- Notification Bell -->
           <div class="notif-wrapper">
-            <button class="nav-icon-btn rounded-bg" @click="toggleNotifDropdown" aria-label="Notifications">
+            <button
+              class="nav-icon-btn rounded-bg"
+              @click="toggleNotifDropdown"
+              aria-label="Notifications"
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
-              <span v-if="notifications.length" class="notification-badge">{{ notifications.length }}</span>
+              <span v-if="notifications.length" class="notification-badge">{{
+                notifications.length
+              }}</span>
             </button>
-            
+
             <!-- Notification Dropdown -->
             <div v-if="showNotifDropdown" class="notification-dropdown">
               <div class="dropdown-header">
@@ -36,7 +41,12 @@
                 <div v-if="notifications.length === 0" class="no-notifications">
                   No new notifications
                 </div>
-                <div v-for="notif in notifications" :key="notif.id" class="notification-item" @click="handleNotificationClick(notif)">
+                <div
+                  v-for="notif in notifications"
+                  :key="notif.id"
+                  class="notification-item"
+                  @click="handleNotificationClick(notif)"
+                >
                   <div class="notif-content">
                     <h4>{{ notif.title }}</h4>
                     <p>{{ notif.body }}</p>
@@ -46,7 +56,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- User Profile -->
           <div class="user-profile-wrapper">
             <div class="user-profile rounded-bg" @click="toggleProfileDropdown">
@@ -57,11 +67,17 @@
                 </svg>
               </div>
               <span class="user-name">{{ fullName }}</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="dropdown-arrow">
-                <path d="M7 10l5 5 5-5z"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="dropdown-arrow"
+              >
+                <path d="M7 10l5 5 5-5z" />
               </svg>
             </div>
-            
+
             <!-- Profile Dropdown -->
             <div v-if="showProfileDropdown" class="profile-dropdown">
               <div class="dropdown-header">
@@ -78,20 +94,24 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="dropdown-menu">
                 <router-link to="/teacher/settings" class="dropdown-item">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V4H13V9H18V20Z"/>
+                    <path
+                      d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V4H13V9H18V20Z"
+                    />
                   </svg>
                   <span>Profile & Settings</span>
                 </router-link>
-                
+
                 <div class="dropdown-divider"></div>
-                
+
                 <button @click="logout" class="dropdown-item logout-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"/>
+                    <path
+                      d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"
+                    />
                   </svg>
                   <span>Logout</span>
                 </button>
@@ -103,46 +123,111 @@
     </nav>
 
     <!-- Sidebar Navigation -->
-    <aside class="sidebar" style="background:#3D8D7A; border-right:none;">
+    <aside class="sidebar" style="background: #3d8d7a; border-right: none">
       <nav class="sidebar-nav">
-        <router-link to="/teacher/dashboard" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/dashboard' }">
+        <router-link
+          to="/teacher/dashboard"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/dashboard' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M10 20v-6h4v6m5-8h3L12 3 2 12h3v8h5v-6h4v6h5v-8z" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Dashboard</span>
         </router-link>
-        <router-link to="/teacher/subjects" class="sidebar-item rounded-bg" :class="{ 'active': $route.path.includes('/subjects') }">
+        <router-link
+          to="/teacher/subjects"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path.includes('/subjects') }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="7" width="18" height="13" rx="2" />
               <path d="M3 7l9-4 9 4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Classes</span>
         </router-link>
-        <router-link to="/teacher/gradebook" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/gradebook' }">
+        <router-link
+          to="/teacher/gradebook"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/gradebook' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="4" y="4" width="16" height="16" rx="2" />
               <path d="M8 2v4M16 2v4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Gradebook</span>
         </router-link>
-        <router-link to="/teacher/upload-assessment" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/upload-assessment' }">
+        <router-link
+          to="/teacher/upload-assessment"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/upload-assessment' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M12 19V6M5 12l7-7 7 7" />
               <rect x="5" y="19" width="14" height="2" rx="1" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Upload Assessment</span>
         </router-link>
-        <router-link to="/teacher/analytics" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/analytics' }">
+        <router-link
+          to="/teacher/analytics"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/analytics' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="12" width="4" height="8" />
               <rect x="10" y="8" width="4" height="12" />
               <rect x="17" y="4" width="4" height="16" />
@@ -150,9 +235,22 @@
           </div>
           <span class="sidebar-tooltip">Analytics</span>
         </router-link>
-        <router-link to="/teacher/messages" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/messages' }">
+        <router-link
+          to="/teacher/messages"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/messages' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="M3 5l9 7 9-7" />
             </svg>
@@ -167,10 +265,10 @@
       <!-- Scroll to Top Button -->
       <button v-if="showScrollTop" @click="scrollToTop" class="scroll-to-top">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 14l5-5 5 5z"/>
+          <path d="M7 14l5-5 5 5z" />
         </svg>
       </button>
-      
+
       <!-- Main Content Container -->
       <div class="main-container">
         <!-- Assessment Management Header -->
@@ -179,17 +277,23 @@
             <div class="header-left">
               <button @click="goBackToSubjects" class="back-btn" title="Back to My Subjects">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                  <path
+                    d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"
+                  />
                 </svg>
               </button>
               <div class="header-icon">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
                 </svg>
               </div>
               <div class="header-info">
                 <h1 class="section-title">Assessment Management</h1>
-                <p class="section-subtitle">{{ subjectName }}<span v-if="sectionName"> - {{ sectionName }}</span></p>
+                <p class="section-subtitle">
+                  {{ subjectName }}<span v-if="sectionName"> - {{ sectionName }}</span>
+                </p>
               </div>
             </div>
             <div class="header-actions">
@@ -208,7 +312,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="container">
           <!-- Loading State -->
           <div v-if="isLoading" class="status-card loading-card">
@@ -223,7 +327,9 @@
           <div v-else-if="error" class="status-card error-card">
             <div class="status-icon error-icon">
               <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z" />
+                <path
+                  d="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z"
+                />
               </svg>
             </div>
             <h3 class="status-title">Error Loading Assessments</h3>
@@ -231,7 +337,9 @@
             <div class="status-actions">
               <button @click="fetchAllAssessments" class="btn btn-primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                  <path
+                    d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
+                  />
                 </svg>
                 Try Again
               </button>
@@ -242,11 +350,15 @@
           <div v-else-if="allAssessments.length === 0" class="status-card empty-state-card">
             <div class="status-icon">
               <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                <path
+                  d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                />
               </svg>
             </div>
             <h3 class="status-title">No Assessments Available</h3>
-            <p class="status-description">You haven't created any assessments for this section yet.</p>
+            <p class="status-description">
+              You haven't created any assessments for this section yet.
+            </p>
             <div class="status-actions">
               <button @click="navigateToCreateQuiz" class="create-quiz-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -261,20 +373,20 @@
           <div v-else class="content-section">
             <!-- Filter Tabs -->
             <div class="filter-tabs">
-              <button 
-                @click="activeView = 'all'" 
+              <button
+                @click="activeView = 'all'"
                 :class="['filter-tab', { active: activeView === 'all' }]"
               >
                 All ({{ allAssessments.length }})
               </button>
-              <button 
-                @click="activeView = 'quizzes'" 
+              <button
+                @click="activeView = 'quizzes'"
                 :class="['filter-tab', { active: activeView === 'quizzes' }]"
               >
                 Quizzes ({{ quizzes.length }})
               </button>
-              <button 
-                @click="activeView = 'assignments'" 
+              <button
+                @click="activeView = 'assignments'"
                 :class="['filter-tab', { active: activeView === 'assignments' }]"
               >
                 Assignments ({{ assignments.length }})
@@ -284,30 +396,47 @@
             <div class="section-header">
               <div class="section-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
                 </svg>
               </div>
               <div class="section-content">
                 <h2 class="section-title">Your Assessments</h2>
-                <p class="section-subtitle">{{ allAssessments.length }} assessment{{ allAssessments.length !== 1 ? 's' : '' }} created</p>
+                <p class="section-subtitle">
+                  {{ allAssessments.length }} assessment{{
+                    allAssessments.length !== 1 ? 's' : ''
+                  }}
+                  created
+                </p>
               </div>
             </div>
 
             <div class="quizzes-grid-modern">
               <!-- Quiz Cards -->
-              <div 
-                v-for="item in allAssessments" 
-                :key="item.id" 
+              <div
+                v-for="item in allAssessments"
+                :key="item.id"
                 class="quiz-card-modern"
                 :class="{ 'assignment-card': item.type === 'assignment' }"
               >
                 <div class="quiz-card-header">
                   <div class="assessment-type-badge" :class="item.type">
-                    <svg v-if="item.type === 'quiz'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                    <svg
+                      v-if="item.type === 'quiz'"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                      />
                     </svg>
                     <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M14,17H7V15H14M17,13H7V11H17M17,9H7V7H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                      <path
+                        d="M14,17H7V15H14M17,13H7V11H17M17,9H7V7H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z"
+                      />
                     </svg>
                     {{ item.type === 'quiz' ? 'Quiz' : 'Assignment' }}
                   </div>
@@ -316,12 +445,14 @@
                     {{ formatStatus(item.status) }}
                   </div>
                   <div class="quiz-menu">
-                    <button 
-                      @click="item.type === 'quiz' ? deleteQuiz(item) : deleteAssignment(item)" 
+                    <button
+                      @click="item.type === 'quiz' ? deleteQuiz(item) : deleteAssignment(item)"
                       class="menu-btn danger"
                     >
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                        <path
+                          d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
+                        />
                       </svg>
                     </button>
                   </div>
@@ -329,12 +460,14 @@
 
                 <div class="quiz-card-body">
                   <h3 class="quiz-title-modern">{{ item.title }}</h3>
-                  
+
                   <!-- Quiz Code Display (only for quizzes) -->
                   <div v-if="item.type === 'quiz' && item.quiz_code" class="quiz-code-modern">
                     <span class="code-icon">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z" />
+                        <path
+                          d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z"
+                        />
                       </svg>
                     </span>
                     <span class="code-text">{{ item.quiz_code }}</span>
@@ -345,7 +478,9 @@
                     {{ formatAssignmentType(item.assignment_type) }}
                   </div>
 
-                  <p v-if="item.description" class="quiz-description-modern">{{ item.description }}</p>
+                  <p v-if="item.description" class="quiz-description-modern">
+                    {{ item.description }}
+                  </p>
 
                   <!-- Stats (different for quiz vs assignment) -->
                   <div class="quiz-stats-modern">
@@ -353,7 +488,9 @@
                       <div class="stat-item-modern">
                         <div class="stat-icon-modern">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10Z" />
+                            <path
+                              d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10Z"
+                            />
                           </svg>
                         </div>
                         <div class="stat-content-modern">
@@ -365,7 +502,9 @@
                       <div class="stat-item-modern">
                         <div class="stat-icon-modern">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                            <path
+                              d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                            />
                           </svg>
                         </div>
                         <div class="stat-content-modern">
@@ -374,10 +513,15 @@
                         </div>
                       </div>
 
-                      <div class="stat-item-modern" v-if="item.has_time_limit && item.time_limit_minutes">
+                      <div
+                        class="stat-item-modern"
+                        v-if="item.has_time_limit && item.time_limit_minutes"
+                      >
                         <div class="stat-icon-modern">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                            <path
+                              d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                            />
                           </svg>
                         </div>
                         <div class="stat-content-modern">
@@ -391,7 +535,9 @@
                       <div class="stat-item-modern">
                         <div class="stat-icon-modern">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                            <path
+                              d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                            />
                           </svg>
                         </div>
                         <div class="stat-content-modern">
@@ -403,7 +549,9 @@
                       <div class="stat-item-modern">
                         <div class="stat-icon-modern">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9,10H7V12H9V10M13,10H11V12H13V10M17,10H15V12H17V10M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V8H19V19Z" />
+                            <path
+                              d="M9,10H7V12H9V10M13,10H11V12H13V10M17,10H15V12H17V10M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V8H19V19Z"
+                            />
                           </svg>
                         </div>
                         <div class="stat-content-modern">
@@ -415,7 +563,9 @@
                       <div class="stat-item-modern">
                         <div class="stat-icon-modern">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16,9H13V14.5H16M21,3H3A2,2 0 0,0 1,5V19A2,2 0 0,0 3,21H21A2,2 0 0,0 23,19V5A2,2 0 0,0 21,3M11,8H6V10H11V8M21,19H3V5H21V19M16,12H13V14H16V12Z" />
+                            <path
+                              d="M16,9H13V14.5H16M21,3H3A2,2 0 0,0 1,5V19A2,2 0 0,0 3,21H21A2,2 0 0,0 23,19V5A2,2 0 0,0 21,3M11,8H6V10H11V8M21,19H3V5H21V19M16,12H13V14H16V12Z"
+                            />
                           </svg>
                         </div>
                         <div class="stat-content-modern">
@@ -430,13 +580,20 @@
                   <div class="quiz-meta-modern">
                     <span class="meta-item-modern">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                        <path
+                          d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"
+                        />
                       </svg>
                       Created {{ formatDate(item.created_at) }}
                     </span>
-                    <span v-if="item.type === 'quiz' && item.shuffle_questions" class="meta-item-modern">
+                    <span
+                      v-if="item.type === 'quiz' && item.shuffle_questions"
+                      class="meta-item-modern"
+                    >
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M14,20H16V18H20V16H16A2,2 0 0,1 14,14V10A2,2 0 0,1 16,8H20V6H16V4H14V6L12,8V10L14,12V14L12,16V18L14,20M10,8V10L12,12L10,14V16L4,10L10,8Z" />
+                        <path
+                          d="M14,20H16V18H20V16H16A2,2 0 0,1 14,14V10A2,2 0 0,1 16,8H20V6H16V4H14V6L12,8V10L14,12V14L12,16V18L14,20M10,8V10L12,12L10,14V16L4,10L10,8Z"
+                        />
                       </svg>
                       Shuffle Enabled
                     </span>
@@ -444,33 +601,50 @@
                 </div>
 
                 <div class="quiz-card-footer">
-                  <button 
-                    @click="item.type === 'quiz' ? viewQuizDetails(item) : viewAssignmentDetails(item)" 
+                  <button
+                    @click="
+                      item.type === 'quiz' ? viewQuizDetails(item) : viewAssignmentDetails(item)
+                    "
                     class="action-btn-modern primary"
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
+                      <path
+                        d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z"
+                      />
                     </svg>
                     View Details
                   </button>
 
-                  <button 
-                    @click="item.type === 'quiz' ? editQuiz(item) : editAssignment(item)" 
+                  <button
+                    @click="item.type === 'quiz' ? editQuiz(item) : editAssignment(item)"
                     class="action-btn-modern secondary"
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                      <path
+                        d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"
+                      />
                     </svg>
                     Edit
                   </button>
 
-                  <button 
-                    @click="item.type === 'quiz' ? toggleQuizStatus(item) : toggleAssignmentStatus(item)" 
-                    :class="['action-btn-modern', item.status === 'published' ? 'warning' : 'success']"
+                  <button
+                    @click="
+                      item.type === 'quiz' ? toggleQuizStatus(item) : toggleAssignmentStatus(item)
+                    "
+                    :class="[
+                      'action-btn-modern',
+                      item.status === 'published' ? 'warning' : 'success',
+                    ]"
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path v-if="item.status === 'published'" d="M8.5,8.64L13.77,12L8.5,15.36V8.64M6.5,5V19L17.5,12"/>
-                      <path v-else d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.5,8L11,13.5L7.5,10L6,11.5L11,16.5Z"/>
+                      <path
+                        v-if="item.status === 'published'"
+                        d="M8.5,8.64L13.77,12L8.5,15.36V8.64M6.5,5V19L17.5,12"
+                      />
+                      <path
+                        v-else
+                        d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.5,8L11,13.5L7.5,10L6,11.5L11,16.5Z"
+                      />
                     </svg>
                     {{ item.status === 'published' ? 'Unpublish' : 'Publish' }}
                   </button>
@@ -489,7 +663,9 @@
           <h2>{{ selectedItem.title }}</h2>
           <button @click="closeModal" class="close-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+              <path
+                d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              />
             </svg>
           </button>
         </div>
@@ -504,8 +680,10 @@
               </div>
             </div>
 
-            <p v-if="selectedItem.description" class="quiz-description-modal">{{ selectedItem.description }}</p>
-            
+            <p v-if="selectedItem.description" class="quiz-description-modal">
+              {{ selectedItem.description }}
+            </p>
+
             <div class="overview-stats">
               <div class="stat-item">
                 <span class="stat-value">{{ selectedItem.question_count || 0 }}</span>
@@ -516,30 +694,42 @@
                 <span class="stat-label">Total Points</span>
               </div>
               <div class="stat-item">
-                <span class="stat-value">{{ selectedItem.has_time_limit && selectedItem.time_limit_minutes ? selectedItem.time_limit_minutes + ' min' : 'No Limit' }}</span>
+                <span class="stat-value">{{
+                  selectedItem.has_time_limit && selectedItem.time_limit_minutes
+                    ? selectedItem.time_limit_minutes + ' min'
+                    : 'No Limit'
+                }}</span>
                 <span class="stat-label">Time Limit</span>
               </div>
               <div class="stat-item">
-                <span class="stat-value">{{ selectedItem.attempts_allowed === 999 ? '∞' : selectedItem.attempts_allowed }}</span>
+                <span class="stat-value">{{
+                  selectedItem.attempts_allowed === 999 ? '∞' : selectedItem.attempts_allowed
+                }}</span>
                 <span class="stat-label">Attempts</span>
               </div>
             </div>
 
             <div class="questions-preview">
               <h4>Questions Preview</h4>
-              
+
               <div v-if="loadingDetails" class="loading-questions">
                 <div class="loading-spinner-small"></div>
                 <p>Loading questions...</p>
               </div>
 
               <div v-else-if="selectedQuizQuestions.length > 0" class="questions-list">
-                <div v-for="question in selectedQuizQuestions" :key="question.id" class="question-preview">
+                <div
+                  v-for="question in selectedQuizQuestions"
+                  :key="question.id"
+                  class="question-preview"
+                >
                   <div class="question-number">{{ question.question_number }}</div>
                   <div class="question-content">
                     <p class="question-text">{{ question.question_text }}</p>
                     <div class="question-meta">
-                      <span class="question-type">{{ formatQuestionType(question.question_type) }}</span>
+                      <span class="question-type">{{
+                        formatQuestionType(question.question_type)
+                      }}</span>
                       <span class="question-points">{{ question.points }} pts</span>
                     </div>
                   </div>
@@ -554,8 +744,10 @@
 
           <!-- Assignment Details -->
           <div v-else-if="selectedItemType === 'assignment'" class="assignment-overview">
-            <p v-if="selectedItem.description" class="quiz-description-modal">{{ selectedItem.description }}</p>
-            
+            <p v-if="selectedItem.description" class="quiz-description-modal">
+              {{ selectedItem.description }}
+            </p>
+
             <div class="overview-stats">
               <div class="stat-item">
                 <span class="stat-value">{{ selectedItem.total_points || 100 }}</span>
@@ -579,7 +771,9 @@
               <h4>Assignment Details</h4>
               <div class="detail-row">
                 <span class="detail-label">Type:</span>
-                <span class="detail-value">{{ formatAssignmentType(selectedItem.assignment_type) }}</span>
+                <span class="detail-value">{{
+                  formatAssignmentType(selectedItem.assignment_type)
+                }}</span>
               </div>
               <div class="detail-row">
                 <span class="detail-label">Submission Type:</span>
@@ -587,7 +781,9 @@
               </div>
               <div class="detail-row">
                 <span class="detail-label">Allow Late Submission:</span>
-                <span class="detail-value">{{ selectedItem.allow_late_submission ? 'Yes' : 'No' }}</span>
+                <span class="detail-value">{{
+                  selectedItem.allow_late_submission ? 'Yes' : 'No'
+                }}</span>
               </div>
               <div v-if="selectedItem.allow_late_submission" class="detail-row">
                 <span class="detail-label">Late Penalty:</span>
@@ -607,17 +803,29 @@
         </div>
         <div class="modal-body">
           <div class="logout-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-              <polyline points="16 17 21 12 16 7"/>
-              <line x1="21" y1="12" x2="9" y2="12"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
             </svg>
           </div>
           <p class="logout-message">Are you sure you want to logout?</p>
           <p class="logout-submessage">You will be redirected to the login page.</p>
         </div>
         <div class="modal-footer logout-footer">
-          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">Cancel</button>
+          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">
+            Cancel
+          </button>
           <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
             <span v-if="!isLoggingOut">Logout</span>
             <span v-else class="loading-text">
@@ -632,7 +840,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { supabase } from '../../supabase.js'
 import { useDarkMode } from '../../composables/useDarkMode.js'
@@ -683,13 +891,13 @@ let assignmentSubscription = null
 // Computed property for combined assessments
 const allAssessments = computed(() => {
   const all = [...quizzes.value, ...assignments.value]
-  
+
   if (activeView.value === 'quizzes') {
     return quizzes.value
   } else if (activeView.value === 'assignments') {
     return assignments.value
   }
-  
+
   return all.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
 })
 
@@ -725,46 +933,48 @@ const loadTeacherProfile = async () => {
   try {
     isLoadingName.value = true
     console.log('🔍 Loading teacher profile...')
-    
-    const { data: { user }, error: userError } = await supabase.auth.getUser()
+
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser()
     if (userError || !user) {
       console.error('❌ No user found:', userError)
       return false
     }
-    
+
     userId.value = user.id
     console.log('✅ User ID:', user.id)
-    
+
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
       .select('id, full_name, role')
       .eq('auth_user_id', user.id)
       .single()
-    
+
     if (profileError || !profile) {
       console.error('❌ Profile error:', profileError)
       return false
     }
-    
+
     console.log('✅ Profile found:', profile)
-    
+
     const { data: teacher, error: teacherError } = await supabase
       .from('teachers')
       .select('id, full_name')
       .eq('profile_id', profile.id)
       .single()
-    
+
     if (teacherError || !teacher) {
       console.error('❌ Teacher error:', teacherError)
       return false
     }
-    
+
     teacherId.value = teacher.id
     fullName.value = teacher.full_name || profile.full_name || 'Teacher'
-    
+
     console.log('✅ Teacher loaded:', { id: teacher.id, name: fullName.value })
     return true
-    
   } catch (err) {
     console.error('❌ Error loading profile:', err)
     return false
@@ -779,46 +989,86 @@ const loadNotifications = async () => {
     console.warn('⚠️ No teacher ID, cannot load notifications')
     return
   }
-  
+
   try {
     console.log('🔔 Loading notifications for teacher:', teacherId.value)
-    
+
     const yesterday = new Date()
     yesterday.setDate(yesterday.getDate() - 1)
     const yesterdayISO = yesterday.toISOString()
-    
+
+    // First get subject IDs for this teacher, then get section IDs
+    const { data: teacherSubjects } = await supabase
+      .from('subjects')
+      .select('id')
+      .eq('teacher_id', teacherId.value)
+
+    const subjectIds = teacherSubjects?.map((s) => s.id) || []
+
+    const { data: teacherSections } =
+      subjectIds.length > 0
+        ? await supabase.from('sections').select('id').in('subject_id', subjectIds)
+        : { data: [] }
+
+    const sectionIds = teacherSections?.map((s: any) => s.id) || []
+
+    // Get quiz IDs from those sections
+    const { data: teacherQuizzes } = await supabase
+      .from('quizzes')
+      .select('id, title')
+      .in('section_id', sectionIds)
+
+    const quizIds = teacherQuizzes?.map((q: any) => q.id) || []
+
+    if (quizIds.length === 0) {
+      notifications.value = []
+      return
+    }
+
+    // Fetch quiz attempts without !inner join (no FK from quiz_attempts to students)
     const { data: recentSubmissions, error: submissionsError } = await supabase
       .from('quiz_attempts')
-      .select(`
+      .select(
+        `
         id,
         submitted_at,
         student_id,
-        quiz_id,
-        quizzes!inner(title, teacher_id),
-        students!inner(full_name)
-      `)
-      .eq('quizzes.teacher_id', teacherId.value)
+        quiz_id
+      `,
+      )
+      .in('quiz_id', quizIds)
       .eq('status', 'submitted')
       .gte('submitted_at', yesterdayISO)
       .order('submitted_at', { ascending: false })
-    
+
     if (submissionsError) {
       console.error('❌ Error loading submissions:', submissionsError)
       return
     }
-    
-    const submissionNotifications = (recentSubmissions || []).map(submission => ({
-      id: `submission-${submission.id}`,
-      title: `New Quiz Submission`,
-      body: `${submission.students.full_name} submitted "${submission.quizzes.title}"`,
-      date: new Date(submission.submitted_at).toLocaleDateString(),
-      type: 'submission'
-    }))
-    
+
+    // Fetch student names separately
+    const studentIds = [...new Set((recentSubmissions || []).map((s) => s.student_id))]
+    const { data: students } =
+      studentIds.length > 0
+        ? await supabase.from('students').select('id, full_name').in('id', studentIds)
+        : { data: [] }
+    const studentsMap = new Map((students || []).map((s) => [s.id, s.full_name]))
+
+    const submissionNotifications = (recentSubmissions || []).map((submission) => {
+      const quiz = teacherQuizzes?.find((q: any) => q.id === submission.quiz_id)
+      const studentName = studentsMap.get(submission.student_id) || 'Student'
+      return {
+        id: `submission-${submission.id}`,
+        title: `New Quiz Submission`,
+        body: `${studentName} submitted "${quiz?.title || 'Quiz'}"`,
+        date: new Date(submission.submitted_at).toLocaleDateString(),
+        type: 'submission',
+      }
+    })
+
     notifications.value = submissionNotifications
-    
+
     console.log('✅ Loaded', notifications.value.length, 'notifications')
-    
   } catch (err) {
     console.error('❌ Error loading notifications:', err)
   }
@@ -837,15 +1087,28 @@ const closeLogoutModal = () => {
   showLogoutModal.value = false
 }
 
-const confirmLogout = () => {
+const confirmLogout = async () => {
   console.log('🚪 Logging out...')
+  isLoggingOut.value = true
+
   localStorage.clear()
   sessionStorage.clear()
-  supabase.auth.signOut().catch(err => console.log('Signout error:', err))
-  setTimeout(() => {
-    window.location.assign('/login')
-  }, 100)
-  console.log('✅ Logout initiated')
+
+  const forceRedirect = setTimeout(() => {
+    window.location.replace('/login')
+  }, 2000)
+
+  try {
+    await Promise.race([
+      supabase.auth.signOut(),
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+    ])
+  } catch (err) {
+    console.error('❌ Logout error:', err)
+  } finally {
+    clearTimeout(forceRedirect)
+    window.location.replace('/login')
+  }
 }
 
 const logout = () => {
@@ -854,7 +1117,10 @@ const logout = () => {
 
 const loadTeacherInfo = async () => {
   try {
-    const { data: { user }, error: userError } = await supabase.auth.getUser()
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser()
     if (userError) throw new Error('Authentication failed')
     if (!user) throw new Error('Please login to continue')
 
@@ -883,7 +1149,11 @@ const fetchQuizzes = async () => {
   try {
     if (!teacherId.value) await loadTeacherInfo()
 
-    console.log('📚 Fetching quizzes for:', { teacherId: teacherId.value, subjectId: subjectId.value, sectionId: sectionId.value })
+    console.log('📚 Fetching quizzes for:', {
+      teacherId: teacherId.value,
+      subjectId: subjectId.value,
+      sectionId: sectionId.value,
+    })
 
     const { data: quizzesData, error: quizzesError } = await supabase
       .from('quizzes')
@@ -897,14 +1167,14 @@ const fetchQuizzes = async () => {
 
     console.log('✅ Quizzes fetched:', quizzesData?.length || 0)
 
-    quizzes.value = (quizzesData || []).map(quiz => {
+    quizzes.value = (quizzesData || []).map((quiz) => {
       const questions = quiz.quiz_questions || []
       return {
         ...quiz,
         question_count: questions.length,
         total_points: questions.reduce((sum, q) => sum + (q.points || 0), 0),
         quiz_questions: undefined,
-        type: 'quiz'
+        type: 'quiz',
       }
     })
   } catch (err) {
@@ -917,14 +1187,20 @@ const fetchAssignments = async () => {
   try {
     if (!teacherId.value) await loadTeacherInfo()
 
-    console.log('📝 Fetching assignments for:', { teacherId: teacherId.value, subjectId: subjectId.value, sectionId: sectionId.value })
+    console.log('📝 Fetching assignments for:', {
+      teacherId: teacherId.value,
+      subjectId: subjectId.value,
+      sectionId: sectionId.value,
+    })
 
     const { data: assignmentsData, error: assignmentsError } = await supabase
       .from('assignments')
-      .select(`
+      .select(
+        `
         *,
         assignment_submissions(id, status)
-      `)
+      `,
+      )
       .eq('subject_id', subjectId.value)
       .eq('section_id', sectionId.value)
       .eq('teacher_id', teacherId.value)
@@ -934,14 +1210,14 @@ const fetchAssignments = async () => {
 
     console.log('✅ Assignments fetched:', assignmentsData?.length || 0)
 
-    assignments.value = (assignmentsData || []).map(assignment => {
+    assignments.value = (assignmentsData || []).map((assignment) => {
       const submissions = assignment.assignment_submissions || []
       return {
         ...assignment,
         submission_count: submissions.length,
-        graded_count: submissions.filter(s => s.status === 'graded').length,
+        graded_count: submissions.filter((s) => s.status === 'graded').length,
         assignment_submissions: undefined,
-        type: 'assignment'
+        type: 'assignment',
       }
     })
   } catch (err) {
@@ -953,10 +1229,13 @@ const fetchAssignments = async () => {
 const fetchAllAssessments = async () => {
   isLoading.value = true
   error.value = null
-  
+
   try {
     await Promise.all([fetchQuizzes(), fetchAssignments()])
-    console.log('✅ All assessments loaded:', { quizzes: quizzes.value.length, assignments: assignments.value.length })
+    console.log('✅ All assessments loaded:', {
+      quizzes: quizzes.value.length,
+      assignments: assignments.value.length,
+    })
   } catch (err) {
     error.value = err.message
     console.error('❌ Error loading assessments:', err)
@@ -974,14 +1253,14 @@ const viewQuizDetails = async (quiz) => {
   selectedItemType.value = 'quiz'
   selectedQuizQuestions.value = []
   loadingDetails.value = true
-  
+
   try {
     const { data: questions, error } = await supabase
       .from('quiz_questions')
       .select('*')
       .eq('quiz_id', quiz.id)
       .order('question_number')
-    
+
     if (error) throw error
     selectedQuizQuestions.value = questions || []
   } catch (err) {
@@ -1009,8 +1288,8 @@ const editQuiz = async (quiz) => {
         subjectName: subjectName.value,
         sectionName: sectionName.value,
         gradeLevel: gradeLevel.value,
-        sectionCode: sectionCode.value
-      }
+        sectionCode: sectionCode.value,
+      },
     })
   } catch (error) {
     alert('Error navigating to edit page: ' + error.message)
@@ -1024,14 +1303,19 @@ const editAssignment = async (assignment) => {
 
 const toggleQuizStatus = async (quiz) => {
   const newStatus = quiz.status === 'published' ? 'draft' : 'published'
-  if (!confirm(`Are you sure you want to ${newStatus === 'published' ? 'publish' : 'unpublish'} this quiz?`)) return
-  
+  if (
+    !confirm(
+      `Are you sure you want to ${newStatus === 'published' ? 'publish' : 'unpublish'} this quiz?`,
+    )
+  )
+    return
+
   try {
     const { error } = await supabase
       .from('quizzes')
       .update({ status: newStatus, updated_at: new Date().toISOString() })
       .eq('id', quiz.id)
-    
+
     if (error) throw error
     quiz.status = newStatus
     alert(`Quiz ${newStatus === 'published' ? 'published' : 'unpublished'} successfully!`)
@@ -1042,18 +1326,23 @@ const toggleQuizStatus = async (quiz) => {
 
 const toggleAssignmentStatus = async (assignment) => {
   const newStatus = assignment.status === 'published' ? 'draft' : 'published'
-  if (!confirm(`Are you sure you want to ${newStatus === 'published' ? 'publish' : 'unpublish'} this assignment?`)) return
-  
+  if (
+    !confirm(
+      `Are you sure you want to ${newStatus === 'published' ? 'publish' : 'unpublish'} this assignment?`,
+    )
+  )
+    return
+
   try {
     const { error } = await supabase
       .from('assignments')
-      .update({ 
-        status: newStatus, 
+      .update({
+        status: newStatus,
         updated_at: new Date().toISOString(),
-        published_at: newStatus === 'published' ? new Date().toISOString() : null
+        published_at: newStatus === 'published' ? new Date().toISOString() : null,
       })
       .eq('id', assignment.id)
-    
+
     if (error) throw error
     assignment.status = newStatus
     alert(`Assignment ${newStatus === 'published' ? 'published' : 'unpublished'} successfully!`)
@@ -1063,12 +1352,17 @@ const toggleAssignmentStatus = async (assignment) => {
 }
 
 const deleteQuiz = async (quiz) => {
-  if (!confirm(`Are you sure you want to delete "${quiz.title}"?\n\nThis action cannot be undone and will delete all associated questions, student attempts, and results.`)) return
-  
+  if (
+    !confirm(
+      `Are you sure you want to delete "${quiz.title}"?\n\nThis action cannot be undone and will delete all associated questions, student attempts, and results.`,
+    )
+  )
+    return
+
   try {
     const { error } = await supabase.from('quizzes').delete().eq('id', quiz.id)
     if (error) throw error
-    quizzes.value = quizzes.value.filter(q => q.id !== quiz.id)
+    quizzes.value = quizzes.value.filter((q) => q.id !== quiz.id)
     alert('Quiz deleted successfully!')
   } catch (err) {
     alert(`Error deleting quiz: ${err.message}`)
@@ -1076,12 +1370,17 @@ const deleteQuiz = async (quiz) => {
 }
 
 const deleteAssignment = async (assignment) => {
-  if (!confirm(`Are you sure you want to delete "${assignment.title}"?\n\nThis action cannot be undone and will delete all associated submissions.`)) return
-  
+  if (
+    !confirm(
+      `Are you sure you want to delete "${assignment.title}"?\n\nThis action cannot be undone and will delete all associated submissions.`,
+    )
+  )
+    return
+
   try {
     const { error } = await supabase.from('assignments').delete().eq('id', assignment.id)
     if (error) throw error
-    assignments.value = assignments.value.filter(a => a.id !== assignment.id)
+    assignments.value = assignments.value.filter((a) => a.id !== assignment.id)
     alert('Assignment deleted successfully!')
   } catch (err) {
     alert(`Error deleting assignment: ${err.message}`)
@@ -1097,8 +1396,8 @@ const navigateToCreateQuiz = async () => {
         subjectName: subjectName.value,
         sectionName: sectionName.value,
         gradeLevel: gradeLevel.value,
-        sectionCode: sectionCode.value
-      }
+        sectionCode: sectionCode.value,
+      },
     })
   } catch (error) {
     console.error('Navigation error:', error)
@@ -1117,68 +1416,92 @@ const closeModal = () => {
   loadingDetails.value = false
 }
 
-const formatStatus = (status) => status ? status.charAt(0).toUpperCase() + status.slice(1) : 'Unknown'
+const formatStatus = (status) =>
+  status ? status.charAt(0).toUpperCase() + status.slice(1) : 'Unknown'
 
 const formatDate = (dateString) => {
   if (!dateString) return 'N/A'
-  return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
 }
 
 const formatQuestionType = (type) => {
   const types = {
-    'multiple_choice': 'Multiple Choice',
-    'true_false': 'True/False',
-    'fill_blank': 'Fill in the Blank'
+    multiple_choice: 'Multiple Choice',
+    true_false: 'True/False',
+    fill_blank: 'Fill in the Blank',
   }
   return types[type] || type
 }
 
 const formatAssignmentType = (type) => {
   const types = {
-    'homework': 'Homework',
-    'project': 'Project',
-    'essay': 'Essay',
-    'presentation': 'Presentation',
-    'research': 'Research',
-    'lab': 'Lab Work',
-    'other': 'Other'
+    homework: 'Homework',
+    project: 'Project',
+    essay: 'Essay',
+    presentation: 'Presentation',
+    research: 'Research',
+    lab: 'Lab Work',
+    other: 'Other',
   }
   return types[type] || type
 }
 
 const setupRealtimeSubscription = () => {
-  if (!teacherId.value) return
+  if (!sectionId.value) return
 
   quizSubscription = supabase
     .channel('quiz-changes')
-    .on('postgres_changes', {
+    .on(
+      'postgres_changes',
+      {
         event: '*',
         schema: 'public',
         table: 'quizzes',
-        filter: `teacher_id=eq.${teacherId.value}`
+        filter: `section_id=eq.${sectionId.value}`,
       },
       () => {
         console.log('📡 Quiz change detected, refreshing...')
         fetchQuizzes()
-      }
+      },
     )
     .subscribe()
 
   assignmentSubscription = supabase
     .channel('assignment-changes')
-    .on('postgres_changes', {
+    .on(
+      'postgres_changes',
+      {
         event: '*',
         schema: 'public',
         table: 'assignments',
-        filter: `teacher_id=eq.${teacherId.value}`
+        filter: `section_id=eq.${sectionId.value}`,
       },
       () => {
         console.log('📡 Assignment change detected, refreshing...')
         fetchAssignments()
-      }
+      },
     )
     .subscribe()
 }
+
+// Watch for route parameter changes to refresh data
+watch(
+  () => [route.params.subjectId, route.params.sectionId],
+  async ([newSubjectId, newSectionId], [oldSubjectId, oldSectionId]) => {
+    if (newSubjectId !== oldSubjectId || newSectionId !== oldSectionId) {
+      console.log('🔄 Route params changed, refreshing data...')
+      subjectId.value = newSubjectId
+      sectionId.value = newSectionId
+      subjectName.value = (route.query.subjectName as string) || ''
+      sectionName.value = (route.query.sectionName as string) || ''
+      await fetchAllAssessments()
+    }
+  },
+)
 
 onMounted(async () => {
   console.log('🚀 Component mounted')
@@ -1186,7 +1509,7 @@ onMounted(async () => {
   window.addEventListener('scroll', handleScroll)
   await loadTeacherProfile()
   await loadNotifications()
-  
+
   if (!subjectId.value || !sectionId.value) {
     error.value = 'Missing required parameters'
     alert('Missing subject or section information. Redirecting back...')
@@ -1229,7 +1552,7 @@ onUnmounted(() => {
   left: 0;
   width: 80px;
   height: calc(100vh - 64px);
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-right: none;
   z-index: 900;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
@@ -1248,24 +1571,26 @@ onUnmounted(() => {
   width: 56px;
   margin: 8px 0;
   border-radius: 12px;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   cursor: pointer;
   position: relative;
   text-decoration: none;
 }
 
 .sidebar-item.rounded-bg {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .sidebar-item.active {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid #fff;
 }
 
 .sidebar-item:hover {
-  background: rgba(255,255,255,0.22);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .sidebar-icon svg {
@@ -1278,13 +1603,13 @@ onUnmounted(() => {
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  color: #3D8D7A;
+  color: #3d8d7a;
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
@@ -1303,7 +1628,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -1538,7 +1863,7 @@ onUnmounted(() => {
 
 .dropdown-header {
   padding: 1.5rem;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
 }
 
@@ -1593,7 +1918,7 @@ onUnmounted(() => {
 
 .dropdown-item:hover {
   background: #f1f5f9;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-item svg {
@@ -1602,7 +1927,7 @@ onUnmounted(() => {
 }
 
 .dropdown-item:hover svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-divider {
@@ -1630,12 +1955,12 @@ onUnmounted(() => {
 
 /* Rounded semi-transparent backgrounds for sidebar and navbar icons/buttons */
 .rounded-bg {
-  background: rgba(255,255,255,0.13);
+  background: rgba(255, 255, 255, 0.13);
   border-radius: 16px;
   transition: background 0.2s;
 }
 .rounded-bg:hover {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* Main Content */
@@ -1664,7 +1989,7 @@ onUnmounted(() => {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
@@ -1686,7 +2011,7 @@ onUnmounted(() => {
 /* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 /* Dark mode scrollbar */
@@ -1701,7 +2026,7 @@ onUnmounted(() => {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #18a577, #146e5a);
-  box-shadow: 0 2px  8px rgba(32, 201, 151, 0.3);
+  box-shadow: 0 2px 8px rgba(32, 201, 151, 0.3);
 }
 
 .dark ::-webkit-scrollbar-corner {
@@ -1715,7 +2040,7 @@ onUnmounted(() => {
   right: 2rem;
   width: 48px;
   height: 48px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   border-radius: 50%;
@@ -1761,7 +2086,7 @@ onUnmounted(() => {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1919,7 +2244,7 @@ onUnmounted(() => {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1972,7 +2297,7 @@ onUnmounted(() => {
 
 /* Header Section - Same as CreateQuiz */
 .header-section {
-  background: linear-gradient(135deg, #3D8D7A 0%, #2D6A5A 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #2d6a5a 100%);
   padding: 2rem 1.5rem;
   position: relative;
   overflow: hidden;
@@ -1989,7 +2314,8 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>') repeat-x;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>')
+    repeat-x;
   opacity: 0.5;
 }
 
@@ -2234,8 +2560,12 @@ onUnmounted(() => {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Enhanced Create Quiz Button */
@@ -2710,26 +3040,26 @@ onUnmounted(() => {
   .header-section {
     padding: 1.5rem 1rem;
   }
-  
+
   .header-content {
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
   }
-  
+
   .header-left {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .header-text h1.header-title {
     font-size: 1.5rem;
   }
-  
+
   .header-text p.header-subtitle {
     font-size: 1rem;
   }
-  
+
   .main-container {
     padding: 1.5rem 1rem;
   }
@@ -2738,20 +3068,20 @@ onUnmounted(() => {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .quiz-stats-modern {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .quiz-card-footer {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .action-btn-modern {
     flex: none;
   }
-  
+
   .status-card {
     padding: 2rem 1.5rem;
     margin: 1rem;
@@ -2779,8 +3109,12 @@ onUnmounted(() => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-content {
@@ -2796,11 +3130,11 @@ onUnmounted(() => {
 }
 
 @keyframes slideUp {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(20px) scale(0.95);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
@@ -3049,7 +3383,7 @@ onUnmounted(() => {
   border-radius: 16px;
   overflow: hidden;
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   animation: modalSlideIn 0.3s ease-out;
 }
 
@@ -3065,7 +3399,7 @@ onUnmounted(() => {
 }
 
 .logout-header {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
   padding: 1.5rem;
 }
@@ -3088,13 +3422,18 @@ onUnmounted(() => {
 }
 
 .logout-icon svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .logout-message {
@@ -3173,8 +3512,12 @@ onUnmounted(() => {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-logout .loading-text {
@@ -3200,8 +3543,8 @@ onUnmounted(() => {
 }
 
 .back-btn:hover {
-  background: #3D8D7A;
-  border-color: #3D8D7A;
+  background: #3d8d7a;
+  border-color: #3d8d7a;
   color: white;
   transform: translateX(-2px);
 }

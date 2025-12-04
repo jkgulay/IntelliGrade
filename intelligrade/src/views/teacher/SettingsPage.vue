@@ -1,5 +1,5 @@
 <template>
-  <div class="analytics-container" :class="{ 'dark': isDarkMode }">
+  <div class="analytics-container" :class="{ dark: isDarkMode }">
     <!-- Top Navigation Bar (Same as Dashboard) -->
     <nav class="top-navbar">
       <div class="navbar-content">
@@ -10,7 +10,7 @@
             <span class="brand-name">IntelliGrade</span>
           </div>
         </div>
-        
+
         <!-- Center: Navigation Links -->
         <div class="navbar-center">
           <router-link to="/teacher/dashboard" class="nav-item">
@@ -19,59 +19,75 @@
             </svg>
             <span>Dashboard</span>
           </router-link>
-          
+
           <router-link to="/teacher/subjects" class="nav-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+              <path
+                d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"
+              />
             </svg>
             <span>Classes</span>
           </router-link>
-          
+
           <router-link to="/teacher/gradebook" class="nav-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3Z" />
+              <path
+                d="M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3Z"
+              />
             </svg>
             <span>Gradebook</span>
           </router-link>
-          
+
           <router-link to="/teacher/analytics" class="nav-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" />
             </svg>
             <span>Analytics</span>
           </router-link>
-          
+
           <router-link to="/teacher/messages" class="nav-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
             </svg>
             <span>Messages</span>
           </router-link>
-          
+
           <router-link to="/teacher/upload-assessment" class="nav-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" />
             </svg>
             <span>Upload</span>
           </router-link>
-          
+
           <router-link to="/teacher/settings" class="nav-item active">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+              <path
+                d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"
+              />
             </svg>
             <span>Settings</span>
           </router-link>
         </div>
-        
+
         <!-- Right: User Profile -->
         <div class="navbar-right">
           <div class="user-profile">
             <span class="user-name">{{ userProfile.name || 'Teacher' }}</span>
             <button @click="handleLogout" class="logout-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                <polyline points="16 17 21 12 16 7"/>
-                <line x1="21" y1="12" x2="9" y2="12"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" y1="12" x2="9" y2="12" />
               </svg>
               Logout
             </button>
@@ -87,8 +103,20 @@
         <div class="header-content">
           <div class="header-left">
             <div class="header-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.67,8.75L19.67,5.27C19.56,5.08 19.3,5.03 19.1,5.12L16.9,6C16.5,5.65 16.08,5.36 15.61,5.1L15.2,2.83C15.15,2.56 14.9,2.33 14.62,2.33L9.38,2.33C9.1,2.33 8.85,2.56 8.8,2.83L8.39,5.09C7.92,5.34 7.5,5.65 7.1,6L4.9,5.12C4.7,5.03 4.44,5.08 4.33,5.27L2.33,8.75C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.33,15.25L4.33,18.73C4.44,18.92 4.7,18.97 4.9,18.88L7.1,18C7.5,18.35 7.92,18.64 8.39,18.9L8.8,21.17C8.85,21.44 9.1,21.67 9.38,21.67L14.62,21.67C14.9,21.67 15.15,21.44 15.2,21.17L15.61,18.91C16.08,18.66 16.5,18.35 16.9,18L19.1,18.88C19.3,18.97 19.56,18.92 19.67,18.73L21.67,15.25C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.67,8.75L19.67,5.27C19.56,5.08 19.3,5.03 19.1,5.12L16.9,6C16.5,5.65 16.08,5.36 15.61,5.1L15.2,2.83C15.15,2.56 14.9,2.33 14.62,2.33L9.38,2.33C9.1,2.33 8.85,2.56 8.8,2.83L8.39,5.09C7.92,5.34 7.5,5.65 7.1,6L4.9,5.12C4.7,5.03 4.44,5.08 4.33,5.27L2.33,8.75C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.33,15.25L4.33,18.73C4.44,18.92 4.7,18.97 4.9,18.88L7.1,18C7.5,18.35 7.92,18.64 8.39,18.9L8.8,21.17C8.85,21.44 9.1,21.67 9.38,21.67L14.62,21.67C14.9,21.67 15.15,21.44 15.2,21.17L15.61,18.91C16.08,18.66 16.5,18.35 16.9,18L19.1,18.88C19.3,18.97 19.56,18.92 19.67,18.73L21.67,15.25C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"
+                />
               </svg>
             </div>
             <div>
@@ -105,10 +133,21 @@
           <!-- Account & Profile Card -->
           <div class="settings-card">
             <h2 class="section-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg> 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="section-icon"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
               Account & Profile
             </h2>
             <p class="section-subtitle">Update your personal information and profile settings</p>
@@ -116,15 +155,36 @@
               <div class="setting-item" @click="openProfileModal">
                 <span>Update Profile Info</span>
                 <button class="action-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 20h9" />
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                   </svg>
                 </button>
               </div>
               <div class="setting-item" @click="openPasswordModal">
                 <span>Change Password</span>
                 <button class="action-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                     <circle cx="12" cy="16" r="1"></circle>
                     <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
@@ -133,15 +193,26 @@
               </div>
             </div>
           </div>
-          
+
           <!-- App Preferences Card -->
           <div class="settings-card">
             <h2 class="section-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="m12 1 0 6m0 6 0 6"/>
-                <path d="m21 12-6 0m-6 0-6 0"/>
-              </svg> 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="section-icon"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path d="m12 1 0 6m0 6 0 6" />
+                <path d="m21 12-6 0m-6 0-6 0" />
+              </svg>
               App Preferences
             </h2>
             <p class="section-subtitle">Customize the app's look and feel</p>
@@ -149,7 +220,7 @@
               <div class="setting-item">
                 <span>Dark Mode</span>
                 <label class="switch">
-                  <input type="checkbox" v-model="isDarkMode" @change="handleDarkModeToggle">
+                  <input type="checkbox" v-model="isDarkMode" @change="handleDarkModeToggle" />
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -159,9 +230,20 @@
           <!-- Privacy & Legal Card -->
           <div class="settings-card">
             <h2 class="section-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="section-icon"
+              >
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg> 
+              </svg>
               Privacy & Legal
             </h2>
             <p class="section-subtitle">Understand our policies and manage your data</p>
@@ -169,7 +251,17 @@
               <div class="setting-item" @click="showPrivacyPolicy">
                 <span>Privacy Policy</span>
                 <button class="action-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                     <polyline points="14 2 14 8 20 8" />
                     <line x1="16" y1="13" x2="8" y2="13" />
@@ -180,7 +272,17 @@
               <div class="setting-item" @click="showTermsOfService">
                 <span>Terms of Service</span>
                 <button class="action-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                     <polyline points="14 2 14 8 20 8" />
                     <line x1="16" y1="13" x2="8" y2="13" />
@@ -194,11 +296,24 @@
           <!-- Danger Zone Card -->
           <div class="settings-card danger-zone">
             <h2 class="section-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                <line x1="12" y1="9" x2="12" y2="13"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg> 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="section-icon"
+              >
+                <path
+                  d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
               Danger Zone
             </h2>
             <p class="section-subtitle">Sensitive actions that cannot be undone</p>
@@ -206,12 +321,22 @@
               <div class="setting-item" @click="openDeleteAccountModal">
                 <span class="danger-text">Delete Account</span>
                 <button class="action-btn danger-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 6l3 0l0 15a2 2 0 0 0 2 2l8 0a2 2 0 0 0 2 -2l0 -15l3 0"/>
-                    <path d="M14 10l0 5"/>
-                    <path d="M10 10l0 5"/>
-                    <path d="M18 6l-12 0"/>
-                    <path d="M10 3l4 0l0 3l-4 0l0 -3z"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 6l3 0l0 15a2 2 0 0 0 2 2l8 0a2 2 0 0 0 2 -2l0 -15l3 0" />
+                    <path d="M14 10l0 5" />
+                    <path d="M10 10l0 5" />
+                    <path d="M18 6l-12 0" />
+                    <path d="M10 3l4 0l0 3l-4 0l0 -3z" />
                   </svg>
                 </button>
               </div>
@@ -221,822 +346,920 @@
       </div>
     </main>
 
-  <!-- Profile Update Modal -->
-  <div v-if="showProfileModal" class="modal-overlay" @click="closeProfileModal">
-    <div class="modal-content" @click.stop>
-      <div class="modal-header">
-        <h3>Update Profile</h3>
-        <button @click="closeProfileModal" class="close-btn">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Profile Picture</label>
-          <div class="avatar-upload-section">
-            <div v-if="imagePreview || currentProfilePicture" class="current-avatar">
-              <img 
-                :src="imagePreview || currentProfilePicture" 
-                alt="Profile Picture" 
-                class="avatar-preview"
-              >
-            </div>
-            <div v-else class="avatar-placeholder">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2z"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-            </div>
-            <input 
-              type="file" 
-              @change="handleImageSelect"
-              accept="image/*"
-              class="file-input"
-              id="avatar-upload"
-            >
-            <label for="avatar-upload" class="file-input-label">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
-                <circle cx="12" cy="13" r="3"/>
-              </svg>
-              {{ selectedImage ? 'Change Photo' : 'Choose Photo' }}
-            </label>
-            <div v-if="selectedImage" class="selected-file">
-              Selected: {{ selectedImage.name }}
-            </div>
-          </div>
+    <!-- Profile Update Modal -->
+    <div v-if="showProfileModal" class="modal-overlay" @click="closeProfileModal">
+      <div class="modal-content" @click.stop>
+        <div class="modal-header">
+          <h3>Update Profile</h3>
+          <button @click="closeProfileModal" class="close-btn">×</button>
         </div>
-        
-        <div class="form-group">
-          <label>Full Name</label>
-          <input 
-            type="text" 
-            v-model="profileData.full_name" 
-            placeholder="Enter your full name"
-            class="form-input"
-          >
-        </div>
-        
-        <div v-if="profileError" class="error-message">{{ profileError }}</div>
-        <div v-if="profileSuccess" class="success-message">{{ profileSuccess }}</div>
-      </div>
-      <div class="modal-footer">
-        <button @click="closeProfileModal" class="btn-secondary">Cancel</button>
-        <button @click="saveProfile" class="btn-primary" :disabled="isSaving">
-          {{ isSaving ? 'Saving...' : 'Save Profile' }}
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Password Change Modal -->
-  <div v-if="showPasswordModal" class="modal-overlay" @click="closePasswordModal">
-    <div class="modal-content" @click.stop>
-      <div class="modal-header">
-        <h3>Change Password</h3>
-        <button @click="closePasswordModal" class="close-btn">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Current Password</label>
-          <input 
-            type="password" 
-            v-model="passwordData.currentPassword" 
-            placeholder="Enter current password"
-            class="form-input"
-          >
-        </div>
-        <div class="form-group">
-          <label>New Password</label>
-          <input 
-            type="password" 
-            v-model="passwordData.newPassword" 
-            placeholder="Enter new password"
-            class="form-input"
-          >
-        </div>
-        <div class="form-group">
-          <label>Confirm New Password</label>
-          <input 
-            type="password" 
-            v-model="passwordData.confirmPassword" 
-            placeholder="Confirm new password"
-            class="form-input"
-          >
-        </div>
-        
-        <div v-if="passwordError" class="error-message">{{ passwordError }}</div>
-        <div v-if="passwordSuccess" class="success-message">{{ passwordSuccess }}</div>
-      </div>
-      <div class="modal-footer">
-        <button @click="closePasswordModal" class="btn-secondary">Cancel</button>
-        <button @click="changePassword" class="btn-primary" :disabled="isChangingPassword">
-          {{ isChangingPassword ? 'Updating...' : 'Update Password' }}
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Privacy Policy Modal -->
-  <div v-if="showPrivacyModal" class="modal-overlay" @click="showPrivacyModal = false">
-    <div class="modal-content info-modal" @click.stop>
-      <div class="modal-header">
-        <h3>Privacy Policy</h3>
-        <button @click="showPrivacyModal = false" class="close-btn">×</button>
-      </div>
-      <div class="modal-body info-content">
-        <h4>IntelliGrade Privacy Policy</h4>
-        <p><strong>Last Updated:</strong> January 2025</p>
-        
-        <h5>1. Information We Collect</h5>
-        <p>We collect information you provide directly to us, including your name, email address, and profile information when you create an account.</p>
-        
-        <h5>2. How We Use Your Information</h5>
-        <p>We use the information we collect to provide, maintain, and improve our services, to communicate with you, and to protect IntelliGrade and our users.</p>
-        
-        <h5>3. Information Sharing</h5>
-        <p>We do not share your personal information with third parties except as described in this privacy policy or with your consent.</p>
-        
-        <h5>4. Data Security</h5>
-        <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, or destruction.</p>
-        
-        <h5>5. Your Rights</h5>
-        <p>You have the right to access, update, or delete your personal information at any time through your account settings.</p>
-        
-        <h5>6. Contact Us</h5>
-        <p>If you have any questions about this Privacy Policy, please contact us at privacy@intelligrade.com</p>
-      </div>
-      <div class="modal-footer">
-        <button @click="showPrivacyModal = false" class="btn-primary">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Terms of Service Modal -->
-  <div v-if="showTermsModal" class="modal-overlay" @click="showTermsModal = false">
-    <div class="modal-content info-modal" @click.stop>
-      <div class="modal-header">
-        <h3>Terms of Service</h3>
-        <button @click="showTermsModal = false" class="close-btn">×</button>
-      </div>
-      <div class="modal-body info-content">
-        <h4>IntelliGrade Terms of Service</h4>
-        <p><strong>Last Updated:</strong> January 2025</p>
-        
-        <h5>1. Acceptance of Terms</h5>
-        <p>By accessing and using IntelliGrade, you accept and agree to be bound by the terms and provisions of this agreement.</p>
-        
-        <h5>2. User Accounts</h5>
-        <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
-        
-        <h5>3. Acceptable Use</h5>
-        <p>You agree to use IntelliGrade only for lawful purposes and in accordance with these Terms. You must not use our service to transmit harmful, offensive, or illegal content.</p>
-        
-        <h5>4. Intellectual Property</h5>
-        <p>The service and its original content, features, and functionality are owned by IntelliGrade and are protected by international copyright, trademark, and other intellectual property laws.</p>
-        
-        <h5>5. Termination</h5>
-        <p>We may terminate or suspend your account immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.</p>
-        
-        <h5>6. Limitation of Liability</h5>
-        <p>IntelliGrade shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service.</p>
-        
-        <h5>7. Changes to Terms</h5>
-        <p>We reserve the right to modify these terms at any time. We will notify users of any material changes via email or through the service.</p>
-        
-        <h5>8. Contact Information</h5>
-        <p>For questions about these Terms, please contact us at terms@intelligrade.com</p>
-      </div>
-      <div class="modal-footer">
-        <button @click="showTermsModal = false" class="btn-primary">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Delete Account Confirmation Modal -->
-  <div v-if="showDeleteModal" class="modal-overlay" @click="closeDeleteModal">
-    <div class="modal-content delete-modal" @click.stop>
-      <div class="modal-header delete-header">
-        <h3>Delete Account</h3>
-        <button @click="closeDeleteModal" class="close-btn" v-if="!isDeleting">×</button>
-      </div>
-      <div class="modal-body">
-        <p class="delete-warning-text">This action cannot be undone. This will permanently delete your account and all associated data.</p>
-        
-        <!-- Show form when not deleting -->
-        <div v-if="!isDeleting">
+        <div class="modal-body">
           <div class="form-group">
-            <label class="delete-label">Type DELETE to confirm:</label>
-            <p class="helper-text">⚠️ Must be typed in CAPS LOCK: <strong>DELETE</strong></p>
-            <input 
-              type="text" 
-              v-model="deleteConfirmation" 
-              placeholder="TYPE DELETE TO CONFIRM"
-              class="form-input delete-input"
-            >
+            <label>Profile Picture</label>
+            <div class="avatar-upload-section">
+              <div v-if="imagePreview || currentProfilePicture" class="current-avatar">
+                <img
+                  :src="imagePreview || currentProfilePicture"
+                  alt="Profile Picture"
+                  class="avatar-preview"
+                />
+              </div>
+              <div v-else class="avatar-placeholder">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2z"
+                  />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
+              <input
+                type="file"
+                @change="handleImageSelect"
+                accept="image/*"
+                class="file-input"
+                id="avatar-upload"
+              />
+              <label for="avatar-upload" class="file-input-label">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
+                  />
+                  <circle cx="12" cy="13" r="3" />
+                </svg>
+                {{ selectedImage ? 'Change Photo' : 'Choose Photo' }}
+              </label>
+              <div v-if="selectedImage" class="selected-file">
+                Selected: {{ selectedImage.name }}
+              </div>
+            </div>
           </div>
-          
-          <div v-if="deleteError" class="error-message">{{ deleteError }}</div>
-        </div>
-        
-        <!-- Show loading indicator when deleting -->
-        <div v-if="isDeleting" class="loading-container">
-          <div class="spinner"></div>
-          <p class="loading-text">{{ deleteSuccess }}</p>
-        </div>
-      </div>
-      <div class="modal-footer" v-if="!isDeleting">
-        <button @click="closeDeleteModal" class="btn-secondary">Cancel</button>
-        <button 
-          @click="deleteAccount" 
-          class="btn-danger" 
-          :disabled="deleteConfirmation.trim() !== 'DELETE'"
-        >
-          DELETE ACCOUNT
-        </button>
-      </div>
-    </div>
-  </div>
 
-  <!-- Logout Confirmation Modal -->
-  <div v-if="showLogoutModal" class="modal-overlay" @click="closeLogoutModal">
-    <div class="modal-content logout-modal" @click.stop>
-      <div class="modal-header logout-header">
-        <h3>Confirm Logout</h3>
-      </div>
-      <div class="modal-body">
-        <div class="logout-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-            <polyline points="16 17 21 12 16 7"/>
-            <line x1="21" y1="12" x2="9" y2="12"/>
-          </svg>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input
+              type="text"
+              v-model="profileData.full_name"
+              placeholder="Enter your full name"
+              class="form-input"
+            />
+          </div>
+
+          <div v-if="profileError" class="error-message">{{ profileError }}</div>
+          <div v-if="profileSuccess" class="success-message">{{ profileSuccess }}</div>
         </div>
-        <p class="logout-message">Are you sure you want to logout?</p>
-        <p class="logout-submessage">You will be redirected to the login page.</p>
-      </div>
-      <div class="modal-footer logout-footer">
-        <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">Cancel</button>
-        <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
-          <span v-if="!isLoggingOut">Logout</span>
-          <span v-else class="loading-text">
-            <div class="logout-spinner"></div>
-            Redirecting...
-          </span>
-        </button>
+        <div class="modal-footer">
+          <button @click="closeProfileModal" class="btn-secondary">Cancel</button>
+          <button @click="saveProfile" class="btn-primary" :disabled="isSaving">
+            {{ isSaving ? 'Saving...' : 'Save Profile' }}
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+
+    <!-- Password Change Modal -->
+    <div v-if="showPasswordModal" class="modal-overlay" @click="closePasswordModal">
+      <div class="modal-content" @click.stop>
+        <div class="modal-header">
+          <h3>Change Password</h3>
+          <button @click="closePasswordModal" class="close-btn">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Current Password</label>
+            <input
+              type="password"
+              v-model="passwordData.currentPassword"
+              placeholder="Enter current password"
+              class="form-input"
+            />
+          </div>
+          <div class="form-group">
+            <label>New Password</label>
+            <input
+              type="password"
+              v-model="passwordData.newPassword"
+              placeholder="Enter new password"
+              class="form-input"
+            />
+          </div>
+          <div class="form-group">
+            <label>Confirm New Password</label>
+            <input
+              type="password"
+              v-model="passwordData.confirmPassword"
+              placeholder="Confirm new password"
+              class="form-input"
+            />
+          </div>
+
+          <div v-if="passwordError" class="error-message">{{ passwordError }}</div>
+          <div v-if="passwordSuccess" class="success-message">{{ passwordSuccess }}</div>
+        </div>
+        <div class="modal-footer">
+          <button @click="closePasswordModal" class="btn-secondary">Cancel</button>
+          <button @click="changePassword" class="btn-primary" :disabled="isChangingPassword">
+            {{ isChangingPassword ? 'Updating...' : 'Update Password' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div v-if="showPrivacyModal" class="modal-overlay" @click="showPrivacyModal = false">
+      <div class="modal-content info-modal" @click.stop>
+        <div class="modal-header">
+          <h3>Privacy Policy</h3>
+          <button @click="showPrivacyModal = false" class="close-btn">×</button>
+        </div>
+        <div class="modal-body info-content">
+          <h4>IntelliGrade Privacy Policy</h4>
+          <p><strong>Last Updated:</strong> January 2025</p>
+
+          <h5>1. Information We Collect</h5>
+          <p>
+            We collect information you provide directly to us, including your name, email address,
+            and profile information when you create an account.
+          </p>
+
+          <h5>2. How We Use Your Information</h5>
+          <p>
+            We use the information we collect to provide, maintain, and improve our services, to
+            communicate with you, and to protect IntelliGrade and our users.
+          </p>
+
+          <h5>3. Information Sharing</h5>
+          <p>
+            We do not share your personal information with third parties except as described in this
+            privacy policy or with your consent.
+          </p>
+
+          <h5>4. Data Security</h5>
+          <p>
+            We implement appropriate technical and organizational measures to protect your personal
+            information against unauthorized access, alteration, or destruction.
+          </p>
+
+          <h5>5. Your Rights</h5>
+          <p>
+            You have the right to access, update, or delete your personal information at any time
+            through your account settings.
+          </p>
+
+          <h5>6. Contact Us</h5>
+          <p>
+            If you have any questions about this Privacy Policy, please contact us at
+            privacy@intelligrade.com
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button @click="showPrivacyModal = false" class="btn-primary">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div v-if="showTermsModal" class="modal-overlay" @click="showTermsModal = false">
+      <div class="modal-content info-modal" @click.stop>
+        <div class="modal-header">
+          <h3>Terms of Service</h3>
+          <button @click="showTermsModal = false" class="close-btn">×</button>
+        </div>
+        <div class="modal-body info-content">
+          <h4>IntelliGrade Terms of Service</h4>
+          <p><strong>Last Updated:</strong> January 2025</p>
+
+          <h5>1. Acceptance of Terms</h5>
+          <p>
+            By accessing and using IntelliGrade, you accept and agree to be bound by the terms and
+            provisions of this agreement.
+          </p>
+
+          <h5>2. User Accounts</h5>
+          <p>
+            You are responsible for maintaining the confidentiality of your account credentials and
+            for all activities that occur under your account.
+          </p>
+
+          <h5>3. Acceptable Use</h5>
+          <p>
+            You agree to use IntelliGrade only for lawful purposes and in accordance with these
+            Terms. You must not use our service to transmit harmful, offensive, or illegal content.
+          </p>
+
+          <h5>4. Intellectual Property</h5>
+          <p>
+            The service and its original content, features, and functionality are owned by
+            IntelliGrade and are protected by international copyright, trademark, and other
+            intellectual property laws.
+          </p>
+
+          <h5>5. Termination</h5>
+          <p>
+            We may terminate or suspend your account immediately, without prior notice, for conduct
+            that we believe violates these Terms or is harmful to other users, us, or third parties.
+          </p>
+
+          <h5>6. Limitation of Liability</h5>
+          <p>
+            IntelliGrade shall not be liable for any indirect, incidental, special, consequential,
+            or punitive damages resulting from your use of or inability to use the service.
+          </p>
+
+          <h5>7. Changes to Terms</h5>
+          <p>
+            We reserve the right to modify these terms at any time. We will notify users of any
+            material changes via email or through the service.
+          </p>
+
+          <h5>8. Contact Information</h5>
+          <p>For questions about these Terms, please contact us at terms@intelligrade.com</p>
+        </div>
+        <div class="modal-footer">
+          <button @click="showTermsModal = false" class="btn-primary">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Account Confirmation Modal -->
+    <div v-if="showDeleteModal" class="modal-overlay" @click="closeDeleteModal">
+      <div class="modal-content delete-modal" @click.stop>
+        <div class="modal-header delete-header">
+          <h3>Delete Account</h3>
+          <button @click="closeDeleteModal" class="close-btn" v-if="!isDeleting">×</button>
+        </div>
+        <div class="modal-body">
+          <p class="delete-warning-text">
+            This action cannot be undone. This will permanently delete your account and all
+            associated data.
+          </p>
+
+          <!-- Show form when not deleting -->
+          <div v-if="!isDeleting">
+            <div class="form-group">
+              <label class="delete-label">Type DELETE to confirm:</label>
+              <p class="helper-text">⚠️ Must be typed in CAPS LOCK: <strong>DELETE</strong></p>
+              <input
+                type="text"
+                v-model="deleteConfirmation"
+                placeholder="TYPE DELETE TO CONFIRM"
+                class="form-input delete-input"
+              />
+            </div>
+
+            <div v-if="deleteError" class="error-message">{{ deleteError }}</div>
+          </div>
+
+          <!-- Show loading indicator when deleting -->
+          <div v-if="isDeleting" class="loading-container">
+            <div class="spinner"></div>
+            <p class="loading-text">{{ deleteSuccess }}</p>
+          </div>
+        </div>
+        <div class="modal-footer" v-if="!isDeleting">
+          <button @click="closeDeleteModal" class="btn-secondary">Cancel</button>
+          <button
+            @click="deleteAccount"
+            class="btn-danger"
+            :disabled="deleteConfirmation.trim() !== 'DELETE'"
+          >
+            DELETE ACCOUNT
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div v-if="showLogoutModal" class="modal-overlay" @click="closeLogoutModal">
+      <div class="modal-content logout-modal" @click.stop>
+        <div class="modal-header logout-header">
+          <h3>Confirm Logout</h3>
+        </div>
+        <div class="modal-body">
+          <div class="logout-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+          </div>
+          <p class="logout-message">Are you sure you want to logout?</p>
+          <p class="logout-submessage">You will be redirected to the login page.</p>
+        </div>
+        <div class="modal-footer logout-footer">
+          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">
+            Cancel
+          </button>
+          <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
+            <span v-if="!isLoggingOut">Logout</span>
+            <span v-else class="loading-text">
+              <div class="logout-spinner"></div>
+              Redirecting...
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { supabase } from '../../supabase.js';
-import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue'
+import { supabase } from '../../supabase.js'
+import { useRouter } from 'vue-router'
 
 // Click outside directive
 const vClickOutside = {
   mounted(el, binding) {
-    el.clickOutsideEvent = function(event) {
+    el.clickOutsideEvent = function (event) {
       if (!(el === event.target || el.contains(event.target))) {
-        binding.value();
+        binding.value()
       }
-    };
-    document.addEventListener('click', el.clickOutsideEvent);
+    }
+    document.addEventListener('click', el.clickOutsideEvent)
   },
   unmounted(el) {
-    document.removeEventListener('click', el.clickOutsideEvent);
-  }
-};
+    document.removeEventListener('click', el.clickOutsideEvent)
+  },
+}
 
-const router = useRouter();
+const router = useRouter()
 
 // ===== USER PROFILE & DROPDOWN =====
 const userProfile = ref({
   name: '',
-  avatar: null
-});
-const showUserDropdown = ref(false);
+  avatar: null,
+})
+const showUserDropdown = ref(false)
 
 // ===== THEME MANAGEMENT =====
-const isDarkMode = ref(false);
+const isDarkMode = ref(false)
 
 const handleDarkModeToggle = () => {
-  localStorage.setItem('darkMode', isDarkMode.value.toString());
-  applyTheme();
-};
+  localStorage.setItem('darkMode', isDarkMode.value.toString())
+  applyTheme()
+}
 
 const applyTheme = () => {
   if (isDarkMode.value) {
-    document.documentElement.classList.add('dark');
-    document.body.classList.add('dark-mode');
+    document.documentElement.classList.add('dark')
+    document.body.classList.add('dark-mode')
   } else {
-    document.documentElement.classList.remove('dark');
-    document.body.classList.remove('dark-mode');
+    document.documentElement.classList.remove('dark')
+    document.body.classList.remove('dark-mode')
   }
-};
+}
 
 const initializeTheme = () => {
-  const savedTheme = localStorage.getItem('darkMode');
+  const savedTheme = localStorage.getItem('darkMode')
   if (savedTheme !== null) {
-    isDarkMode.value = savedTheme === 'true';
-    applyTheme();
+    isDarkMode.value = savedTheme === 'true'
+    applyTheme()
   }
-};
+}
 
 // ===== MODAL STATES =====
-const showProfileModal = ref(false);
-const showPasswordModal = ref(false);
-const showPrivacyModal = ref(false);
-const showTermsModal = ref(false);
-const showDeleteModal = ref(false);
+const showProfileModal = ref(false)
+const showPasswordModal = ref(false)
+const showPrivacyModal = ref(false)
+const showTermsModal = ref(false)
+const showDeleteModal = ref(false)
 
 // ===== PROFILE MANAGEMENT =====
 const profileData = ref({
   full_name: '',
   profile_id: null,
-  auth_user_id: null
-});
+  auth_user_id: null,
+})
 
-const selectedImage = ref(null);
-const imagePreview = ref(null);
-const currentProfilePicture = ref(null);
-const isSaving = ref(false);
-const profileError = ref('');
-const profileSuccess = ref('');
-const userRole = ref('');
+const selectedImage = ref(null)
+const imagePreview = ref(null)
+const currentProfilePicture = ref(null)
+const isSaving = ref(false)
+const profileError = ref('')
+const profileSuccess = ref('')
+const userRole = ref('')
 
 // Profile Modal Functions
 const openProfileModal = async () => {
-  showProfileModal.value = true;
-  await loadUserProfile();
-  clearMessages();
-};
+  showProfileModal.value = true
+  await loadUserProfile()
+  clearMessages()
+}
 
 const closeProfileModal = () => {
-  showProfileModal.value = false;
-  selectedImage.value = null;
-  imagePreview.value = null;
-  clearMessages();
-};
+  showProfileModal.value = false
+  selectedImage.value = null
+  imagePreview.value = null
+  clearMessages()
+}
 
 // Load user profile data
 const loadUserProfile = async () => {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
     if (!user) {
-      return;
+      return
     }
 
     const { data: profile, error: fetchError } = await supabase
       .from('profiles')
       .select('id, full_name, role, auth_user_id')
       .eq('auth_user_id', user.id)
-      .single();
+      .single()
 
-    if (fetchError) throw fetchError;
+    if (fetchError) throw fetchError
 
     if (profile) {
-      profileData.value.profile_id = profile.id;
-      profileData.value.auth_user_id = profile.auth_user_id;
-      profileData.value.full_name = profile.full_name || '';
-      userRole.value = profile.role;
+      profileData.value.profile_id = profile.id
+      profileData.value.auth_user_id = profile.auth_user_id
+      profileData.value.full_name = profile.full_name || ''
+      userRole.value = profile.role
 
       if (profile.role === 'student') {
         const { data: studentData } = await supabase
           .from('students')
           .select('full_name')
           .eq('profile_id', profile.id)
-          .single();
-        
+          .single()
+
         if (studentData) {
-          profileData.value.full_name = studentData.full_name;
+          profileData.value.full_name = studentData.full_name
         }
       } else if (profile.role === 'teacher') {
         const { data: teacherData } = await supabase
           .from('teachers')
           .select('full_name')
           .eq('profile_id', profile.id)
-          .single();
-        
+          .single()
+
         if (teacherData) {
-          profileData.value.full_name = teacherData.full_name;
+          profileData.value.full_name = teacherData.full_name
         }
       }
     }
   } catch (error) {
-    console.error('Error loading profile:', error);
-    profileError.value = 'Failed to load profile data';
+    console.error('Error loading profile:', error)
+    profileError.value = 'Failed to load profile data'
   }
-};
+}
 
 // Handle image selection
 const handleImageSelect = (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
+  const file = event.target.files[0]
+  if (!file) return
 
   if (!file.type.startsWith('image/')) {
-    profileError.value = 'Please select an image file';
-    return;
+    profileError.value = 'Please select an image file'
+    return
   }
 
   if (file.size > 5 * 1024 * 1024) {
-    profileError.value = 'File size must be less than 5MB';
-    return;
+    profileError.value = 'File size must be less than 5MB'
+    return
   }
 
-  selectedImage.value = file;
-  profileError.value = '';
+  selectedImage.value = file
+  profileError.value = ''
 
-  const reader = new FileReader();
+  const reader = new FileReader()
   reader.onload = (e) => {
-    imagePreview.value = e.target.result;
-  };
-  reader.readAsDataURL(file);
-};
+    imagePreview.value = e.target.result
+  }
+  reader.readAsDataURL(file)
+}
 
 // Upload image to Supabase Storage
 const uploadImage = async () => {
-  if (!selectedImage.value) return null;
+  if (!selectedImage.value) return null
 
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) throw new Error('No user logged in');
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+    if (!user) throw new Error('No user logged in')
 
-    const fileExt = selectedImage.value.name.split('.').pop();
-    const fileName = `${user.id}-${Date.now()}.${fileExt}`;
+    const fileExt = selectedImage.value.name.split('.').pop()
+    const fileName = `${user.id}-${Date.now()}.${fileExt}`
 
     const { error: uploadError } = await supabase.storage
       .from('profiles')
-      .upload(fileName, selectedImage.value, { 
-        cacheControl: '3600', 
-        upsert: true 
-      });
+      .upload(fileName, selectedImage.value, {
+        cacheControl: '3600',
+        upsert: true,
+      })
 
-    if (uploadError) throw uploadError;
+    if (uploadError) throw uploadError
 
-    const { data: { publicUrl } } = supabase.storage
-      .from('profiles')
-      .getPublicUrl(fileName);
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from('profiles').getPublicUrl(fileName)
 
-    return publicUrl;
+    return publicUrl
   } catch (error) {
-    console.error('Upload error:', error);
-    throw error;
+    console.error('Upload error:', error)
+    throw error
   }
-};
+}
 
 // Save profile
 const saveProfile = async () => {
-  clearMessages();
+  clearMessages()
 
   if (!profileData.value.full_name.trim()) {
-    profileError.value = 'Full name is required';
-    return;
+    profileError.value = 'Full name is required'
+    return
   }
 
-  isSaving.value = true;
+  isSaving.value = true
 
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) throw new Error('No user logged in');
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+    if (!user) throw new Error('No user logged in')
 
-    let profileUrl = currentProfilePicture.value;
+    let profileUrl = currentProfilePicture.value
     if (selectedImage.value) {
-      profileUrl = await uploadImage();
+      profileUrl = await uploadImage()
     }
 
     const { error: profileUpdateError } = await supabase
       .from('profiles')
-      .update({ 
+      .update({
         full_name: profileData.value.full_name.trim(),
-        updated_at: new Date().toISOString()
+        updated_at: new Date().toISOString(),
       })
-      .eq('auth_user_id', user.id);
+      .eq('auth_user_id', user.id)
 
-    if (profileUpdateError) throw profileUpdateError;
+    if (profileUpdateError) throw profileUpdateError
 
     if (userRole.value === 'student') {
       const { error: studentError } = await supabase
         .from('students')
-        .update({ 
+        .update({
           full_name: profileData.value.full_name.trim(),
-          updated_at: new Date().toISOString()
+          updated_at: new Date().toISOString(),
         })
-        .eq('profile_id', profileData.value.profile_id);
-      
-      if (studentError) throw studentError;
+        .eq('profile_id', profileData.value.profile_id)
+
+      if (studentError) throw studentError
     } else if (userRole.value === 'teacher') {
       const { error: teacherError } = await supabase
         .from('teachers')
-        .update({ 
+        .update({
           full_name: profileData.value.full_name.trim(),
-          updated_at: new Date().toISOString()
+          updated_at: new Date().toISOString(),
         })
-        .eq('profile_id', profileData.value.profile_id);
-        if (teacherError) throw teacherError;
+        .eq('profile_id', profileData.value.profile_id)
+      if (teacherError) throw teacherError
     }
 
     if (profileUrl) {
-      currentProfilePicture.value = profileUrl;
+      currentProfilePicture.value = profileUrl
     }
 
-    profileSuccess.value = 'Profile updated successfully!';
-    
-    window.dispatchEvent(new CustomEvent('teacherProfileUpdated', {
-      detail: {
-        nameChanged: true,
-        photoChanged: selectedImage.value !== null,
-        newName: profileData.value.full_name.trim(),
-        newPhoto: profileUrl
-      }
-    }));
+    profileSuccess.value = 'Profile updated successfully!'
+
+    window.dispatchEvent(
+      new CustomEvent('teacherProfileUpdated', {
+        detail: {
+          nameChanged: true,
+          photoChanged: selectedImage.value !== null,
+          newName: profileData.value.full_name.trim(),
+          newPhoto: profileUrl,
+        },
+      }),
+    )
 
     setTimeout(() => {
-      closeProfileModal();
-    }, 1500);
-
+      closeProfileModal()
+    }, 1500)
   } catch (error) {
-    console.error('Profile save error:', error);
-    profileError.value = error.message || 'Failed to save profile';
+    console.error('Profile save error:', error)
+    profileError.value = error.message || 'Failed to save profile'
   } finally {
-    isSaving.value = false;
+    isSaving.value = false
   }
-};
+}
 
 // ===== PASSWORD MANAGEMENT =====
 const passwordData = ref({
   currentPassword: '',
   newPassword: '',
-  confirmPassword: ''
-});
+  confirmPassword: '',
+})
 
-const passwordError = ref('');
-const passwordSuccess = ref('');
-const isChangingPassword = ref(false);
+const passwordError = ref('')
+const passwordSuccess = ref('')
+const isChangingPassword = ref(false)
 
 const openPasswordModal = () => {
-  showPasswordModal.value = true;
-  resetPasswordForm();
-  clearMessages();
-};
+  showPasswordModal.value = true
+  resetPasswordForm()
+  clearMessages()
+}
 
 const closePasswordModal = () => {
-  showPasswordModal.value = false;
-  resetPasswordForm();
-};
+  showPasswordModal.value = false
+  resetPasswordForm()
+}
 
 const resetPasswordForm = () => {
   passwordData.value = {
     currentPassword: '',
     newPassword: '',
-    confirmPassword: ''
-  };
-};
+    confirmPassword: '',
+  }
+}
 
 const changePassword = async () => {
-  clearMessages();
+  clearMessages()
 
   if (!passwordData.value.newPassword || !passwordData.value.confirmPassword) {
-    passwordError.value = 'All fields are required';
-    return;
+    passwordError.value = 'All fields are required'
+    return
   }
 
   if (passwordData.value.newPassword.length < 6) {
-    passwordError.value = 'New password must be at least 6 characters';
-    return;
+    passwordError.value = 'New password must be at least 6 characters'
+    return
   }
 
   if (passwordData.value.newPassword !== passwordData.value.confirmPassword) {
-    passwordError.value = 'Passwords do not match';
-    return;
+    passwordError.value = 'Passwords do not match'
+    return
   }
 
-  isChangingPassword.value = true;
+  isChangingPassword.value = true
 
   try {
-    const { error } = await supabase.auth.updateUser({ 
-      password: passwordData.value.newPassword 
-    });
-    
-    if (error) throw error;
+    const { error } = await supabase.auth.updateUser({
+      password: passwordData.value.newPassword,
+    })
 
-    const { data: { user } } = await supabase.auth.getUser();
+    if (error) throw error
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
     if (user) {
       await supabase
         .from('profiles')
-        .update({ 
-          password_changed_at: new Date().toISOString() 
+        .update({
+          password_changed_at: new Date().toISOString(),
         })
-        .eq('auth_user_id', user.id);
+        .eq('auth_user_id', user.id)
     }
-    
-    passwordSuccess.value = 'Password updated successfully!';
+
+    passwordSuccess.value = 'Password updated successfully!'
     setTimeout(() => {
-      closePasswordModal();
-    }, 1500);
+      closePasswordModal()
+    }, 1500)
   } catch (error) {
-    passwordError.value = error.message || 'Failed to update password';
+    passwordError.value = error.message || 'Failed to update password'
   } finally {
-    isChangingPassword.value = false;
+    isChangingPassword.value = false
   }
-};
+}
 
 // ===== PRIVACY & LEGAL =====
 const showPrivacyPolicy = () => {
-  showPrivacyModal.value = true;
-};
+  showPrivacyModal.value = true
+}
 
 const showTermsOfService = () => {
-  showTermsModal.value = true;
-};
+  showTermsModal.value = true
+}
 
 // ===== DELETE ACCOUNT =====
-const deleteConfirmation = ref('');
-const deleteError = ref('');
-const deleteSuccess = ref('');
-const isDeleting = ref(false);
+const deleteConfirmation = ref('')
+const deleteError = ref('')
+const deleteSuccess = ref('')
+const isDeleting = ref(false)
 
 const openDeleteAccountModal = () => {
-  showDeleteModal.value = true;
-  deleteConfirmation.value = '';
-  deleteError.value = '';
-  deleteSuccess.value = '';
-};
+  showDeleteModal.value = true
+  deleteConfirmation.value = ''
+  deleteError.value = ''
+  deleteSuccess.value = ''
+}
 
 const closeDeleteModal = () => {
   if (!isDeleting.value) {
-    showDeleteModal.value = false;
-    deleteConfirmation.value = '';
-    deleteError.value = '';
-    deleteSuccess.value = '';
+    showDeleteModal.value = false
+    deleteConfirmation.value = ''
+    deleteError.value = ''
+    deleteSuccess.value = ''
   }
-};
+}
 
 const deleteAccount = async () => {
   if (deleteConfirmation.value.trim() !== 'DELETE') {
-    deleteError.value = 'You must type DELETE exactly (in uppercase) to confirm';
-    return;
+    deleteError.value = 'You must type DELETE exactly (in uppercase) to confirm'
+    return
   }
 
-  isDeleting.value = true;
-  deleteError.value = '';
-  deleteSuccess.value = 'Deleting your account...';
+  isDeleting.value = true
+  deleteError.value = ''
+  deleteSuccess.value = 'Deleting your account...'
 
   try {
-    console.log('🗑️ Step 1: Starting deletion...');
-    
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) throw new Error('No user logged in');
+    console.log('🗑️ Step 1: Starting deletion...')
 
-    console.log('🗑️ Step 2: Calling RPC function...');
-    const { data, error: rpcError } = await supabase.rpc('delete_user_account');
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+    if (!user) throw new Error('No user logged in')
+
+    console.log('🗑️ Step 2: Calling RPC function...')
+    const { data, error: rpcError } = await supabase.rpc('delete_user_account')
 
     if (rpcError) {
-      console.error('❌ RPC Error:', rpcError);
-      throw new Error(rpcError.message || 'Failed to delete account');
+      console.error('❌ RPC Error:', rpcError)
+      throw new Error(rpcError.message || 'Failed to delete account')
     }
 
-    console.log('📝 Step 3: RPC Response:', data);
+    console.log('📝 Step 3: RPC Response:', data)
 
     if (data && !data.success) {
-      throw new Error(data.message || 'Failed to delete account');
+      throw new Error(data.message || 'Failed to delete account')
     }
 
-    console.log('✅ Step 4: Account deleted!');
-    deleteSuccess.value = '✅ Account deleted successfully!';
-    
-    console.log('🧹 Step 5: Clearing all storage...');
-    localStorage.clear();
-    sessionStorage.clear();
-    
-    console.log('🚪 Step 6: Signing out...');
-    await supabase.auth.signOut({ scope: 'local' });
-    
-    console.log('🔄 Step 7: Redirecting to login page...');
-    deleteSuccess.value = '🔄 Redirecting to login page...';
-    
+    console.log('✅ Step 4: Account deleted!')
+    deleteSuccess.value = '✅ Account deleted successfully!'
+
+    console.log('🧹 Step 5: Clearing all storage...')
+    localStorage.clear()
+    sessionStorage.clear()
+
+    console.log('🚪 Step 6: Signing out...')
+    await supabase.auth.signOut({ scope: 'local' })
+
+    console.log('🔄 Step 7: Redirecting to login page...')
+    deleteSuccess.value = '🔄 Redirecting to login page...'
+
     // Force immediate redirect with multiple methods
     setTimeout(() => {
-      window.location.href = '/login';
-    }, 100);
-    
+      window.location.href = '/login'
+    }, 100)
+
     // Backup redirect method
     setTimeout(() => {
-      window.location.replace('/login');
-    }, 200);
-    
+      window.location.replace('/login')
+    }, 200)
+
     // Ultimate fallback - complete page reload to login
     setTimeout(() => {
-      window.location.href = '/login';
-    }, 300);
-
+      window.location.href = '/login'
+    }, 300)
   } catch (error) {
-    console.error('❌ Error:', error);
-    deleteError.value = error.message || 'Failed to delete account';
-    isDeleting.value = false;
+    console.error('❌ Error:', error)
+    deleteError.value = error.message || 'Failed to delete account'
+    isDeleting.value = false
   }
-};
+}
 
 // ===== UTILITY FUNCTIONS =====
 const clearMessages = () => {
-  profileError.value = '';
-  profileSuccess.value = '';
-  passwordError.value = '';
-  passwordSuccess.value = '';
-  deleteError.value = '';
-  deleteSuccess.value = '';
-};
+  profileError.value = ''
+  profileSuccess.value = ''
+  passwordError.value = ''
+  passwordSuccess.value = ''
+  deleteError.value = ''
+  deleteSuccess.value = ''
+}
 
 // ===== USER DROPDOWN FUNCTIONS =====
 const toggleUserDropdown = () => {
-  showUserDropdown.value = !showUserDropdown.value;
-};
+  showUserDropdown.value = !showUserDropdown.value
+}
 
 const closeUserDropdown = () => {
-  showUserDropdown.value = false;
-};
+  showUserDropdown.value = false
+}
 
 // Logout confirmation modal
-const showLogoutModal = ref(false);
+const showLogoutModal = ref(false)
 
 const openLogoutModal = () => {
-  showLogoutModal.value = true;
-};
+  showLogoutModal.value = true
+}
 
 const closeLogoutModal = () => {
-  showLogoutModal.value = false;
-};
+  showLogoutModal.value = false
+}
 
-const isLoggingOut = ref(false);
+const isLoggingOut = ref(false)
 
-const confirmLogout = () => {
-  console.log('🚪 Logging out...');
-  
-  // Clear storage immediately
-  localStorage.clear();
-  sessionStorage.clear();
-  
-  // Sign out from Supabase (don't wait)
-  supabase.auth.signOut().catch(err => console.log('Signout error:', err));
-  
-  // Immediate redirect - no waiting!
-  setTimeout(() => {
-    window.location.assign('/login');
-  }, 100);
-  
-  console.log('✅ Logout initiated');
-};
+const confirmLogout = async () => {
+  console.log('🚪 Logging out...')
+  isLoggingOut.value = true
+
+  localStorage.clear()
+  sessionStorage.clear()
+
+  const forceRedirect = setTimeout(() => {
+    window.location.replace('/login')
+  }, 2000)
+
+  try {
+    await Promise.race([
+      supabase.auth.signOut(),
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+    ])
+  } catch (err) {
+    console.error('❌ Logout error:', err)
+  } finally {
+    clearTimeout(forceRedirect)
+    window.location.replace('/login')
+  }
+}
 
 const handleLogout = () => {
-  openLogoutModal();
-};
+  openLogoutModal()
+}
 
 // Load user profile for navbar
 const loadUserProfileForNavbar = async () => {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+    if (!user) return
 
     const { data: profile } = await supabase
       .from('profiles')
       .select('id, full_name, role')
       .eq('auth_user_id', user.id)
-      .single();
+      .single()
 
     if (profile) {
-      userProfile.value.name = profile.full_name || 'User';
-      
+      userProfile.value.name = profile.full_name || 'User'
+
       // Get role-specific data
       if (profile.role === 'teacher') {
         const { data: teacherData } = await supabase
           .from('teachers')
           .select('full_name')
           .eq('profile_id', profile.id)
-          .single();
-        
+          .single()
+
         if (teacherData) {
-          userProfile.value.name = teacherData.full_name || 'Teacher';
+          userProfile.value.name = teacherData.full_name || 'Teacher'
         }
       }
     }
   } catch (error) {
-    console.error('Error loading user profile for navbar:', error);
+    console.error('Error loading user profile for navbar:', error)
   }
-};
+}
 
 // ===== INITIALIZATION =====
 onMounted(() => {
-  initializeTheme();
-  loadUserProfile();
-  loadUserProfileForNavbar();
-});
+  initializeTheme()
+  loadUserProfile()
+  loadUserProfileForNavbar()
+})
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* Reset and Hide Parent Layouts */
-body, html {
+body,
+html {
   overflow-x: hidden !important;
 }
 
@@ -1068,7 +1291,7 @@ body, html {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -1229,7 +1452,7 @@ body, html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3D8D7A, #20c997);
+  background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
@@ -1251,7 +1474,7 @@ body, html {
 /* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3D8D7A #f1f5f9;
+  scrollbar-color: #3d8d7a #f1f5f9;
 }
 
 /* Dark mode scrollbar */
@@ -1286,20 +1509,20 @@ body, html {
 .dark .page-header {
   background: #23272b;
   border: 1px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 /* CSS Variables */
 :root {
-  --bg-primary: #FBFFE4;
+  --bg-primary: #fbffe4;
   --bg-card: white;
   --text-primary: #1f2937;
   --text-secondary: #6b7280;
-  --text-accent: #3D8D7A;
-  --border-color: #A3D1C6;
-  --accent-color: #3D8D7A;
+  --text-accent: #3d8d7a;
+  --border-color: #a3d1c6;
+  --accent-color: #3d8d7a;
   --accent-hover: #2f6b5c;
-  --success-color: #B3D8A8;
+  --success-color: #b3d8a8;
   --danger-color: #dc3545;
   --shadow-light: rgba(61, 141, 122, 0.1);
 }
@@ -1309,9 +1532,9 @@ body, html {
   --bg-card: #2a2e36;
   --text-primary: #e5e7eb;
   --text-secondary: #9ca3af;
-  --text-accent: #3D8D7A;
-  --border-color: #3D8D7A;
-  --accent-color: #3D8D7A;
+  --text-accent: #3d8d7a;
+  --border-color: #3d8d7a;
+  --accent-color: #3d8d7a;
   --accent-hover: #2f6b5c;
   --success-color: #22c55e;
   --danger-color: #dc3545;
@@ -1327,7 +1550,7 @@ body, html {
 
 .page-container {
   min-height: 100vh;
-  background: #FBFFE4;
+  background: #fbffe4;
   padding: 1.5rem;
   font-family: 'Inter', sans-serif;
 }
@@ -1364,7 +1587,7 @@ body, html {
 .dark .header-card {
   background: #23272b;
   border: 1px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .header-content {
@@ -1382,7 +1605,7 @@ body, html {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1399,7 +1622,7 @@ body, html {
 }
 
 .dark .header-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .header-subtitle {
@@ -1408,7 +1631,7 @@ body, html {
 }
 
 .dark .header-subtitle {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Content Card */
@@ -1425,28 +1648,28 @@ body, html {
 .dark .content-card {
   background: #23272b;
   border: 1px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 /* Settings Cards */
 .settings-card {
   padding: 1.25rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   border-radius: 12px;
-  background: #FBFFE4;
+  background: #fbffe4;
   transition: all 0.2s;
 }
 
 .dark .settings-card {
   background: #23272b;
   border: 1px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .section-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #3D8D7A;
+  color: #3d8d7a;
   margin: 0 0 0.5rem 0;
   display: flex;
   align-items: center;
@@ -1454,15 +1677,15 @@ body, html {
 }
 
 .dark .section-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-icon {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dark .section-icon {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-subtitle {
@@ -1473,7 +1696,7 @@ body, html {
 }
 
 .dark .section-subtitle {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .settings-list {
@@ -1487,13 +1710,13 @@ body, html {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-  border-bottom: 1px solid #A3D1C6;
+  border-bottom: 1px solid #a3d1c6;
   font-size: 0.9rem;
   color: #1f2937;
 }
 
 .dark .setting-item {
-  color: #A3D1C6;
+  color: #a3d1c6;
   border-bottom: 1px solid #20c997;
 }
 
@@ -1502,7 +1725,7 @@ body, html {
 }
 
 .action-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   border-radius: 8px;
@@ -1526,7 +1749,7 @@ body, html {
 }
 
 .dark .action-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
 }
 
 /* Toggle Switch */
@@ -1551,19 +1774,19 @@ body, html {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: .3s;
+  transition: 0.3s;
   border-radius: 24px;
 }
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 18px;
   width: 18px;
   left: 3px;
   bottom: 3px;
   background-color: white;
-  transition: .3s;
+  transition: 0.3s;
   border-radius: 50%;
 }
 
@@ -1676,18 +1899,18 @@ input:checked + .slider:before {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 20px;
   width: 20px;
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -1749,14 +1972,14 @@ input:checked + .slider:before {
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   max-width: 600px;
   margin: 0 auto;
 }
 .dark .about-card {
   background: #23272b;
   border-color: #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .about-card h2 {
@@ -1766,7 +1989,7 @@ input:checked + .slider:before {
   margin-bottom: 0.5rem;
 }
 .dark .about-card h2 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .copyright-text {
@@ -1775,7 +1998,7 @@ input:checked + .slider:before {
   margin: 0;
 }
 .dark .copyright-text {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Modal Styles */
@@ -2027,7 +2250,9 @@ input:checked + .slider:before {
   border-radius: 0 0 16px 16px;
 }
 
-.btn-primary, .btn-secondary, .btn-danger {
+.btn-primary,
+.btn-secondary,
+.btn-danger {
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-size: 1rem;
@@ -2435,11 +2660,11 @@ input:checked + .slider:before {
   .main-content {
     padding: 1rem;
   }
-  
+
   .navbar-center {
     gap: 0.25rem;
   }
-  
+
   .nav-item {
     padding: 0.5rem 1rem;
     font-size: 0.7rem;
@@ -2450,59 +2675,61 @@ input:checked + .slider:before {
   .main-content {
     padding: 1rem;
   }
-  
+
   .page-header {
     padding: 1rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .navbar-content {
     padding: 0 0.5rem;
   }
-  
+
   .brand-name {
     display: none;
   }
-  
+
   .page-container {
     padding: 1rem;
   }
-  
+
   .header-card {
     padding: 1.5rem;
   }
-  
+
   .header-left {
     gap: 1rem;
   }
-  
+
   .header-icon {
     width: 40px;
     height: 40px;
   }
-  
+
   .header-title {
     font-size: 1.3rem;
   }
-  
+
   .content-card {
     padding: 1rem;
     gap: 1.5rem;
   }
-  
+
   .settings-card {
     padding: 1rem;
   }
-  
+
   .modal-overlay {
     padding: 10px;
   }
-  
+
   .modal-content {
     max-height: 95vh;
   }
-  
-  .modal-header, .modal-footer, .modal-body {
+
+  .modal-header,
+  .modal-footer,
+  .modal-body {
     padding: 1rem;
   }
 }
@@ -2630,8 +2857,12 @@ input:checked + .slider:before {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-text {
@@ -2644,8 +2875,13 @@ input:checked + .slider:before {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .dark .loading-text {
@@ -2684,7 +2920,7 @@ input:checked + .slider:before {
   border-radius: 16px;
   overflow: hidden;
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
 }
 
 .dark .logout-modal {
@@ -2693,7 +2929,7 @@ input:checked + .slider:before {
 }
 
 .logout-header {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
   padding: 1.5rem;
   text-align: center;
@@ -2717,7 +2953,7 @@ input:checked + .slider:before {
 }
 
 .logout-icon svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
   animation: pulse 2s infinite;
 }
 
@@ -2726,8 +2962,15 @@ input:checked + .slider:before {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
 
 .logout-message {
@@ -2763,7 +3006,7 @@ input:checked + .slider:before {
 }
 
 .dark .logout-footer {
-  border-top: 1px solid #3D8D7A;
+  border-top: 1px solid #3d8d7a;
   background: #1e2127;
 }
 
@@ -2784,13 +3027,13 @@ input:checked + .slider:before {
 
 .dark .btn-cancel {
   background: #2a2e36;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   color: #9ca3af;
 }
 
 .btn-cancel:hover {
-  border-color: #3D8D7A;
-  color: #3D8D7A;
+  border-color: #3d8d7a;
+  color: #3d8d7a;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(61, 141, 122, 0.2);
 }

@@ -5,7 +5,14 @@
       <div class="header-content">
         <div class="header-left">
           <div class="user-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -18,17 +25,24 @@
             <p class="header-subtitle">Welcome to your dashboard</p>
           </div>
         </div>
-        
+
         <!-- Notification Bell -->
         <div class="notif-wrapper" ref="notifWrapper">
           <button class="notif-btn" @click="toggleNotifDropdown" aria-label="Notifications">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
               <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
             </svg>
             <span v-if="notifications.length" class="notif-badge">{{ notifications.length }}</span>
           </button>
-          
+
           <!-- Notification Dropdown -->
           <div v-if="showNotifDropdown" class="notif-dropdown">
             <!-- Mobile backdrop overlay -->
@@ -37,7 +51,17 @@
               <div class="notif-header">
                 <span>Notifications</span>
                 <button @click="closeNotifDropdown" class="close-notif-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
@@ -60,7 +84,9 @@
       <div class="stat-card">
         <div class="stat-icon stat-subjects">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M5,19V5H19V19H5Z" />
+            <path
+              d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M5,19V5H19V19H5Z"
+            />
           </svg>
         </div>
         <div>
@@ -102,7 +128,11 @@
             </div>
             <div class="assessment-due">
               <span class="due-date">{{ formatDate(assessment.dueDate) }}</span>
-              <span v-if="assessment.status" class="status" :class="getStatusClass(assessment.status)">
+              <span
+                v-if="assessment.status"
+                class="status"
+                :class="getStatusClass(assessment.status)"
+              >
                 {{ formatStatus(assessment.status) }}
               </span>
             </div>
@@ -119,38 +149,56 @@
         <div class="quick-links">
           <button @click.prevent="navigateToSubjects" class="quick-link" type="button">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M5,19V5H19V19H5Z" />
+              <path
+                d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M5,19V5H19V19H5Z"
+              />
             </svg>
             My Subjects
           </button>
           <button @click.prevent="navigateToCalendar" class="quick-link" type="button">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16.5,13.5H11V18.5H16.5V13.5Z" />
+              <path
+                d="M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M16.5,13.5H11V18.5H16.5V13.5Z"
+              />
             </svg>
             Calendar
           </button>
           <button @click.prevent="navigateToMessages" class="quick-link" type="button">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zM4 6h16v.5l-8 5-8-5V6zm0 13.5V8l8 5 8-5v11.5H4z" />
+              <path
+                d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zM4 6h16v.5l-8 5-8-5V6zm0 13.5V8l8 5 8-5v11.5H4z"
+              />
             </svg>
             Messages
           </button>
           <button @click.prevent="navigateToSettings" class="quick-link" type="button">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.96 21.66,8.74L19.65,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.9,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.1,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.74C2.21,8.96 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.04 2.34,15.26L4.34,18.73C4.46,18.95 4.73,19.04 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.1,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.9,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.04 19.54,18.95 19.66,18.73L21.66,15.26C21.78,15.04 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+              <path
+                d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.96 21.66,8.74L19.65,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.9,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.1,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.74C2.21,8.96 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.04 2.34,15.26L4.34,18.73C4.46,18.95 4.73,19.04 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.1,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.9,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.04 19.54,18.95 19.66,18.73L21.66,15.26C21.78,15.04 21.73,14.78 21.54,14.63L19.43,12.97Z"
+              />
             </svg>
             Settings
           </button>
         </div>
       </div>
     </div>
-    
+
     <!-- Floating Help & Support Button -->
     <button @click="openHelpModal" class="floating-help-btn" title="Help & Support">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-        <line x1="12" y1="17" x2="12.01" y2="17"/>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+        <line x1="12" y1="17" x2="12.01" y2="17" />
       </svg>
     </button>
 
@@ -165,7 +213,7 @@
           <div class="document-content">
             <h4>Welcome to IntelliGrade Help Center</h4>
             <p class="document-date">We're here to help you!</p>
-            
+
             <section>
               <h5>📧 Contact Support</h5>
               <p>Have a question or need assistance? Reach out to our support team:</p>
@@ -183,7 +231,7 @@
                 <li>Try resetting your password</li>
                 <li>Clear your browser cache and cookies</li>
               </ul>
-              
+
               <p><strong>Quizzes not loading?</strong></p>
               <ul>
                 <li>Check your internet connection</li>
@@ -263,8 +311,8 @@
   </div>
 </template>
 
-<script>
-import { supabase } from '../../supabase.js';
+<script lang="ts">
+import { supabase } from '../../supabase.js'
 
 export default {
   name: 'StudentHome',
@@ -286,135 +334,139 @@ export default {
       pollInterval: null,
       enrolledSectionIds: [],
       subjectMap: new Map(),
-      sectionMap: new Map()
-    };
+      sectionMap: new Map(),
+    }
   },
-  
+
   methods: {
     toggleNotifDropdown() {
-      this.showNotifDropdown = !this.showNotifDropdown;
+      this.showNotifDropdown = !this.showNotifDropdown
       if (this.showNotifDropdown && this.unreadNotifications > 0) {
-        this.markNotificationsAsRead();
+        this.markNotificationsAsRead()
       }
     },
 
     closeNotifDropdown() {
-      this.showNotifDropdown = false;
+      this.showNotifDropdown = false
     },
 
     markNotificationsAsRead() {
-      this.unreadNotifications = 0;
+      this.unreadNotifications = 0
       if (this.studentRecordId) {
-        localStorage.setItem(`notif_read_${this.studentRecordId}`, new Date().toISOString());
+        localStorage.setItem(`notif_read_${this.studentRecordId}`, new Date().toISOString())
       }
     },
 
-    handleClickOutside(event) {
-      if (this.$refs.notifWrapper && !this.$refs.notifWrapper.contains(event.target)) {
-        this.closeNotifDropdown();
+    handleClickOutside(event: MouseEvent) {
+      const notifWrapper = this.$refs.notifWrapper as HTMLElement | undefined
+      if (notifWrapper && !notifWrapper.contains(event.target as Node)) {
+        this.closeNotifDropdown()
       }
     },
-    
+
     openHelpModal() {
-      this.showHelpModal = true;
+      this.showHelpModal = true
     },
-    
+
     closeHelpModal() {
-      this.showHelpModal = false;
+      this.showHelpModal = false
     },
 
     navigateToSubjects() {
-      this.$router.push('/student/subjects');
+      this.$router.push('/student/subjects')
     },
 
     navigateToCalendar() {
-      this.$router.push('/student/calendar');
+      this.$router.push('/student/calendar')
     },
 
     navigateToMessages() {
-      this.$router.push('/student/messages');
+      this.$router.push('/student/messages')
     },
 
     navigateToSettings() {
-      this.$router.push('/student/settings');
+      this.$router.push('/student/settings')
     },
 
     async loadStudentProfile() {
       try {
-        this.isLoadingName = true;
-        console.log('📝 Step 1: Loading student profile...');
-        
-        const { data: { user }, error: authError } = await supabase.auth.getUser();
-        
+        this.isLoadingName = true
+        console.log('📝 Step 1: Loading student profile...')
+
+        const {
+          data: { user },
+          error: authError,
+        } = await supabase.auth.getUser()
+
         if (authError || !user) {
-          console.error('❌ Auth error:', authError);
-          return false;
+          console.error('❌ Auth error:', authError)
+          return false
         }
 
-        this.userId = user.id;
-        console.log('✅ Auth user ID:', user.id);
+        this.userId = user.id
+        console.log('✅ Auth user ID:', user.id)
 
         const { data: profiles, error: profileError } = await supabase
           .from('profiles')
           .select('id, full_name, email, role')
-          .eq('auth_user_id', user.id);
+          .eq('auth_user_id', user.id)
 
         if (profileError || !profiles || profiles.length === 0) {
-          console.error('❌ Profile error:', profileError);
-          return false;
+          console.error('❌ Profile error:', profileError)
+          return false
         }
 
-        const profile = profiles[0];
-        this.profileId = profile.id;
-        console.log('✅ Profile ID:', profile.id, 'Role:', profile.role);
+        const profile = profiles[0]
+        this.profileId = profile.id
+        console.log('✅ Profile ID:', profile.id, 'Role:', profile.role)
 
         if (profile.role !== 'student') {
-          console.warn('⚠️ Not a student role');
-          return false;
+          console.warn('⚠️ Not a student role')
+          return false
         }
 
         const { data: students, error: studentError } = await supabase
           .from('students')
           .select('id, student_id, grade_level, full_name, email, is_active')
-          .eq('profile_id', profile.id);
+          .eq('profile_id', profile.id)
 
         if (studentError || !students || students.length === 0) {
-          console.error('❌ Student record not found:', studentError);
-          return false;
+          console.error('❌ Student record not found:', studentError)
+          return false
         }
 
-        const studentData = students[0];
-        this.studentRecordId = studentData.id;
-        this.studentName = studentData.full_name || profile.full_name || 'Student';
-        
+        const studentData = students[0]
+        this.studentRecordId = studentData.id
+        this.studentName = studentData.full_name || profile.full_name || 'Student'
+
         console.log('✅ Student loaded:', {
           name: this.studentName,
           id: this.studentRecordId,
-          studentId: studentData.student_id
-        });
+          studentId: studentData.student_id,
+        })
 
-        return true;
-
+        return true
       } catch (error) {
-        console.error('❌ Error:', error);
-        return false;
+        console.error('❌ Error:', error)
+        return false
       } finally {
-        this.isLoadingName = false;
+        this.isLoadingName = false
       }
     },
 
     async loadEnrolledSections() {
       if (!this.studentRecordId) {
-        console.warn('⚠️ No student ID');
-        return;
+        console.warn('⚠️ No student ID')
+        return
       }
-      
+
       try {
-        console.log('📚 Loading enrollments for student:', this.studentRecordId);
-        
+        console.log('📚 Loading enrollments for student:', this.studentRecordId)
+
         const { data: enrollments, error } = await supabase
           .from('enrollments')
-          .select(`
+          .select(
+            `
             id,
             section_id,
             subject_id,
@@ -432,191 +484,194 @@ export default {
                 description
               )
             )
-          `)
+          `,
+          )
           .eq('student_id', this.studentRecordId)
-          .eq('status', 'active');
+          .eq('status', 'active')
 
         if (error) {
-          console.error('❌ Enrollment error:', error);
-          return;
+          console.error('❌ Enrollment error:', error)
+          return
         }
 
-        console.log('📋 Raw enrollments:', enrollments);
+        console.log('📋 Raw enrollments:', enrollments)
 
         if (!enrollments || enrollments.length === 0) {
-          console.log('ℹ️ No enrollments');
-          this.enrolledSectionIds = [];
-          this.totalSubjects = 0;
-          return;
+          console.log('ℹ️ No enrollments')
+          this.enrolledSectionIds = []
+          this.totalSubjects = 0
+          return
         }
 
         // Extract section IDs
-        this.enrolledSectionIds = enrollments.map(e => e.section_id);
-        
+        this.enrolledSectionIds = enrollments.map((e) => e.section_id)
+
         // Build subject and section maps
-        const uniqueSubjects = new Set();
-        enrollments.forEach(e => {
+        const uniqueSubjects = new Set()
+        enrollments.forEach((e: any) => {
           if (e.sections) {
-            this.sectionMap.set(e.sections.id, e.sections.name);
-            
+            this.sectionMap.set(e.sections.id, e.sections.name)
+
             if (e.sections.subjects) {
-              uniqueSubjects.add(e.sections.subjects.id);
-              this.subjectMap.set(e.sections.subjects.id, e.sections.subjects.name);
+              uniqueSubjects.add(e.sections.subjects.id)
+              this.subjectMap.set(e.sections.subjects.id, e.sections.subjects.name)
             }
           }
-        });
+        })
 
-        this.totalSubjects = uniqueSubjects.size;
-        
+        this.totalSubjects = uniqueSubjects.size
+
         console.log('✅ Loaded:', {
           sections: this.enrolledSectionIds.length,
           subjects: this.totalSubjects,
-          sectionIds: this.enrolledSectionIds
-        });
-
+          sectionIds: this.enrolledSectionIds,
+        })
       } catch (error) {
-        console.error('❌ Error:', error);
+        console.error('❌ Error:', error)
       }
     },
 
     async loadAvailableQuizzes() {
-      if (!this.studentRecordId) return;
+      if (!this.studentRecordId) return
 
       try {
-        console.log('📋 Loading quizzes...');
+        console.log('📋 Loading quizzes...')
 
         if (this.enrolledSectionIds.length === 0) {
-          console.log('ℹ️ No sections enrolled');
-          this.recentAssessments = [];
-          this.pendingAssessments = 0;
-          return;
+          console.log('ℹ️ No sections enrolled')
+          this.recentAssessments = []
+          this.pendingAssessments = 0
+          return
         }
 
-        console.log('🔍 Checking quizzes for sections:', this.enrolledSectionIds);
+        console.log('🔍 Checking quizzes for sections:', this.enrolledSectionIds)
 
         const { data: quizzes, error } = await supabase
           .from('quizzes')
-          .select('id, title, start_date, end_date, section_id, subject_id, attempts_allowed, status')
+          .select(
+            'id, title, start_date, end_date, section_id, subject_id, attempts_allowed, status',
+          )
           .in('section_id', this.enrolledSectionIds)
           .eq('status', 'published')
-          .order('end_date', { ascending: true });
+          .order('end_date', { ascending: true })
 
         if (error) {
-          console.error('❌ Quiz error:', error);
-          return;
+          console.error('❌ Quiz error:', error)
+          return
         }
 
-        console.log('📝 Quizzes found:', quizzes?.length || 0);
+        console.log('📝 Quizzes found:', quizzes?.length || 0)
 
         if (!quizzes || quizzes.length === 0) {
-          this.recentAssessments = [];
-          this.pendingAssessments = 0;
-          return;
+          this.recentAssessments = []
+          this.pendingAssessments = 0
+          return
         }
 
         const { data: attempts } = await supabase
           .from('quiz_attempts')
           .select('quiz_id, status')
-          .eq('student_id', this.studentRecordId);
+          .eq('student_id', this.studentRecordId)
 
-        const attemptMap = {};
+        const attemptMap = {}
         if (attempts) {
-          attempts.forEach(a => {
-            if (!attemptMap[a.quiz_id]) attemptMap[a.quiz_id] = [];
-            attemptMap[a.quiz_id].push(a);
-          });
+          attempts.forEach((a) => {
+            if (!attemptMap[a.quiz_id]) attemptMap[a.quiz_id] = []
+            attemptMap[a.quiz_id].push(a)
+          })
         }
 
-        const now = new Date();
-        let pending = 0;
-        const processed = [];
+        const now = new Date()
+        let pending = 0
+        const processed = []
 
         for (const q of quizzes) {
-          const start = q.start_date ? new Date(q.start_date) : null;
-          const end = q.end_date ? new Date(q.end_date) : null;
-          const atts = attemptMap[q.id] || [];
-          
-          const completed = atts.filter(a => ['submitted', 'graded', 'reviewed'].includes(a.status)).length;
-          const inProgress = atts.some(a => a.status === 'in_progress');
-          
-          let status = 'pending';
+          const start = q.start_date ? new Date(q.start_date) : null
+          const end = q.end_date ? new Date(q.end_date) : null
+          const atts = attemptMap[q.id] || []
+
+          const completed = atts.filter((a) =>
+            ['submitted', 'graded', 'reviewed'].includes(a.status),
+          ).length
+          const inProgress = atts.some((a) => a.status === 'in_progress')
+
+          let status = 'pending'
           if (inProgress) {
-            status = 'in-progress';
-            pending++;
+            status = 'in-progress'
+            pending++
           } else if (completed >= q.attempts_allowed) {
-            status = 'completed';
+            status = 'completed'
           } else if (end && end < now) {
-            status = 'overdue';
+            status = 'overdue'
           } else if ((!start || start <= now) && (!end || end >= now)) {
-            status = 'available';
-            pending++;
+            status = 'available'
+            pending++
           } else if (start && start > now) {
-            status = 'upcoming';
+            status = 'upcoming'
           }
-          
+
           processed.push({
             id: q.id,
             title: q.title || 'Untitled Quiz',
             subject: this.subjectMap.get(q.subject_id) || 'Unknown',
             dueDate: end,
-            status: status
-          });
+            status: status,
+          })
         }
 
         processed.sort((a, b) => {
-          const priority = { 'in-progress': 1, 'available': 2, 'upcoming': 3, 'overdue': 4, 'completed': 5 };
-          return priority[a.status] - priority[b.status];
-        });
+          const priority = { 'in-progress': 1, available: 2, upcoming: 3, overdue: 4, completed: 5 }
+          return priority[a.status] - priority[b.status]
+        })
 
-        this.recentAssessments = processed.slice(0, 5);
-        this.pendingAssessments = pending;
-        
+        this.recentAssessments = processed.slice(0, 5)
+        this.pendingAssessments = pending
+
         console.log('✅ Quizzes loaded:', {
           total: processed.length,
           pending: pending,
-          showing: this.recentAssessments.length
-        });
-
+          showing: this.recentAssessments.length,
+        })
       } catch (error) {
-        console.error('❌ Error:', error);
+        console.error('❌ Error:', error)
       }
     },
 
     async loadNotifications() {
-      if (!this.studentRecordId) return;
+      if (!this.studentRecordId) return
 
       try {
-        console.log('🔔 Loading notifications...');
+        console.log('🔔 Loading notifications...')
 
-        const readKey = `notif_read_${this.studentRecordId}`;
-        const lastRead = new Date(localStorage.getItem(readKey) || 0);
-        const notifs = [];
-        
+        const readKey = `notif_read_${this.studentRecordId}`
+        const lastRead = new Date(localStorage.getItem(readKey) || 0)
+        const notifs = []
+
         const { data: messages } = await supabase
           .from('messages')
           .select('id, message_text, message_type, sent_at')
           .eq('recipient_id', this.studentRecordId)
           .order('sent_at', { ascending: false })
-          .limit(10);
+          .limit(10)
 
         if (messages?.length > 0) {
-          messages.forEach(m => {
-            const sent = new Date(m.sent_at);
+          messages.forEach((m) => {
+            const sent = new Date(m.sent_at)
             notifs.push({
               id: `msg-${m.id}`,
               title: m.message_type === 'announcement' ? '📢 Announcement' : '💬 Message',
               body: (m.message_text || '').substring(0, 80),
               date: sent.toLocaleString(),
               rawDate: sent,
-              isUnread: sent > lastRead
-            });
-          });
+              isUnread: sent > lastRead,
+            })
+          })
         }
 
         // Also check for urgent quizzes
         if (this.enrolledSectionIds.length > 0) {
-          const in3Days = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
-          
+          const in3Days = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
+
           const { data: urgentQuizzes } = await supabase
             .from('quizzes')
             .select('id, title, end_date, created_at')
@@ -624,194 +679,200 @@ export default {
             .eq('status', 'published')
             .gte('end_date', new Date().toISOString())
             .lte('end_date', in3Days.toISOString())
-            .limit(5);
+            .limit(5)
 
           if (urgentQuizzes?.length > 0) {
             const { data: completed } = await supabase
               .from('quiz_attempts')
               .select('quiz_id')
               .eq('student_id', this.studentRecordId)
-              .in('status', ['submitted', 'graded']);
+              .in('status', ['submitted', 'graded'])
 
-            const completedIds = new Set(completed?.map(c => c.quiz_id) || []);
+            const completedIds = new Set(completed?.map((c) => c.quiz_id) || [])
 
-            urgentQuizzes.forEach(q => {
+            urgentQuizzes.forEach((q) => {
               if (!completedIds.has(q.id)) {
-                const created = new Date(q.created_at);
-                const due = new Date(q.end_date);
+                const created = new Date(q.created_at)
+                const due = new Date(q.end_date)
                 notifs.push({
                   id: `quiz-${q.id}`,
                   title: '⏰ Quiz Due Soon',
                   body: `${q.title} - Due: ${due.toLocaleDateString()}`,
                   date: due.toLocaleString(),
                   rawDate: due,
-                  isUnread: created > lastRead
-                });
+                  isUnread: created > lastRead,
+                })
               }
-            });
+            })
           }
         }
 
-        notifs.sort((a, b) => b.rawDate - a.rawDate);
-        this.notifications = notifs.slice(0, 10);
-        this.unreadNotifications = notifs.filter(n => n.isUnread).length;
-        
-        console.log('✅ Notifications:', notifs.length, 'Unread:', this.unreadNotifications);
+        notifs.sort((a, b) => b.rawDate - a.rawDate)
+        this.notifications = notifs.slice(0, 10)
+        this.unreadNotifications = notifs.filter((n) => n.isUnread).length
 
+        console.log('✅ Notifications:', notifs.length, 'Unread:', this.unreadNotifications)
       } catch (error) {
-        console.error('❌ Notification error:', error);
+        console.error('❌ Notification error:', error)
       }
     },
 
-    formatDate(date) {
-      if (!date) return '';
-      const d = new Date(date);
-      if (isNaN(d.getTime())) return '';
-      
-      const now = new Date();
-      const diff = Math.ceil((d - now) / (1000 * 60 * 60 * 24));
+    formatDate(date: string | Date) {
+      if (!date) return ''
+      const d = new Date(date)
+      if (isNaN(d.getTime())) return ''
 
-      if (diff === 0) return 'Today';
-      if (diff === 1) return 'Tomorrow';
-      if (diff === -1) return 'Yesterday';
-      if (diff > 1 && diff <= 7) return `In ${diff} days`;
-      
-      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const now = new Date()
+      const diff = Math.ceil((d.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+
+      if (diff === 0) return 'Today'
+      if (diff === 1) return 'Tomorrow'
+      if (diff === -1) return 'Yesterday'
+      if (diff > 1 && diff <= 7) return `In ${diff} days`
+
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
     },
 
     formatStatus(status) {
-      return status?.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) || '';
+      return status?.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()) || ''
     },
 
     getStatusClass(status) {
-      const s = status?.toLowerCase() || '';
-      if (s.includes('progress') || s.includes('available')) return 'actionable';
-      if (s.includes('completed')) return 'completed';
-      return 'default';
+      const s = status?.toLowerCase() || ''
+      if (s.includes('progress') || s.includes('available')) return 'actionable'
+      if (s.includes('completed')) return 'completed'
+      return 'default'
     },
 
     setupRealtimeSubscriptions() {
-      if (!this.studentRecordId) return;
+      if (!this.studentRecordId) return
 
-      console.log('🔄 Setting up real-time subscriptions...');
+      console.log('🔄 Setting up real-time subscriptions...')
 
       try {
         // Subscribe to enrollment changes
         const enrollSub = supabase
           .channel(`enrollments_${this.studentRecordId}`)
-          .on('postgres_changes', {
-            event: '*',
-            schema: 'public',
-            table: 'enrollments',
-            filter: `student_id=eq.${this.studentRecordId}`
-          }, () => {
-            console.log('📚 Enrollment changed, reloading...');
-            this.loadEnrolledSections().then(() => {
-              this.loadAvailableQuizzes();
-            });
-          })
-          .subscribe();
+          .on(
+            'postgres_changes',
+            {
+              event: '*',
+              schema: 'public',
+              table: 'enrollments',
+              filter: `student_id=eq.${this.studentRecordId}`,
+            },
+            () => {
+              console.log('📚 Enrollment changed, reloading...')
+              this.loadEnrolledSections().then(() => {
+                this.loadAvailableQuizzes()
+              })
+            },
+          )
+          .subscribe()
 
         // Subscribe to quiz changes
         const quizSub = supabase
           .channel(`quizzes_${this.studentRecordId}`)
-          .on('postgres_changes', {
-            event: '*',
-            schema: 'public',
-            table: 'quizzes'
-          }, (payload) => {
-            const quiz = payload.new || payload.old;
-            if (quiz && this.enrolledSectionIds.includes(quiz.section_id)) {
-              console.log('📝 Quiz changed, reloading...');
-              this.loadAvailableQuizzes();
-            }
-          })
-          .subscribe();
+          .on(
+            'postgres_changes',
+            {
+              event: '*',
+              schema: 'public',
+              table: 'quizzes',
+            },
+            (payload: any) => {
+              const quiz = payload.new || payload.old
+              if (quiz && this.enrolledSectionIds.includes(quiz.section_id)) {
+                console.log('📝 Quiz changed, reloading...')
+                this.loadAvailableQuizzes()
+              }
+            },
+          )
+          .subscribe()
 
         // Subscribe to messages
         const msgSub = supabase
           .channel(`messages_${this.studentRecordId}`)
-          .on('postgres_changes', {
-            event: '*',
-            schema: 'public',
-            table: 'messages'
-          }, (payload) => {
-            const msg = payload.new || payload.old;
-            if (msg && msg.recipient_id === this.studentRecordId) {
-              console.log('💬 New message, reloading...');
-              this.loadNotifications();
-            }
-          })
-          .subscribe();
+          .on(
+            'postgres_changes',
+            {
+              event: '*',
+              schema: 'public',
+              table: 'messages',
+            },
+            (payload: any) => {
+              const msg = payload.new || payload.old
+              if (msg && msg.recipient_id === this.studentRecordId) {
+                console.log('💬 New message, reloading...')
+                this.loadNotifications()
+              }
+            },
+          )
+          .subscribe()
 
-        this.subscriptions = [enrollSub, quizSub, msgSub];
-        console.log('✅ Real-time subscriptions active');
-
+        this.subscriptions = [enrollSub, quizSub, msgSub]
+        console.log('✅ Real-time subscriptions active')
       } catch (error) {
-        console.error('❌ Subscription error:', error);
+        console.error('❌ Subscription error:', error)
       }
     },
 
     cleanupSubscriptions() {
-      console.log('🧹 Cleaning up subscriptions');
-      this.subscriptions.forEach(sub => {
+      console.log('🧹 Cleaning up subscriptions')
+      this.subscriptions.forEach((sub) => {
         try {
-          sub?.unsubscribe?.();
+          sub?.unsubscribe?.()
         } catch (e) {
-          console.error('Error unsubscribing:', e);
+          console.error('Error unsubscribing:', e)
         }
-      });
-      this.subscriptions = [];
-    }
+      })
+      this.subscriptions = []
+    },
   },
 
   async mounted() {
-    console.log('🚀 StudentHome mounted');
-    document.addEventListener('click', this.handleClickOutside);
-    
+    console.log('🚀 StudentHome mounted')
+    document.addEventListener('click', this.handleClickOutside)
+
     try {
       // Step 1: Load profile
-      const loaded = await this.loadStudentProfile();
+      const loaded = await this.loadStudentProfile()
       if (!loaded) {
-        console.error('❌ Cannot proceed without student profile');
-        return;
+        console.error('❌ Cannot proceed without student profile')
+        return
       }
 
       // Step 2: Load enrollments (this also loads subjects count)
-      await this.loadEnrolledSections();
+      await this.loadEnrolledSections()
 
       // Step 3: Load quizzes and notifications in parallel
-      await Promise.all([
-        this.loadAvailableQuizzes(),
-        this.loadNotifications()
-      ]);
+      await Promise.all([this.loadAvailableQuizzes(), this.loadNotifications()])
 
       // Step 4: Setup real-time subscriptions
-      this.setupRealtimeSubscriptions();
+      this.setupRealtimeSubscriptions()
 
       // Step 5: Poll for updates every 5 minutes
       this.pollInterval = setInterval(() => {
-        console.log('🔄 Polling for updates...');
+        console.log('🔄 Polling for updates...')
         this.loadEnrolledSections().then(() => {
-          this.loadAvailableQuizzes();
-          this.loadNotifications();
-        });
-      }, 300000);
+          this.loadAvailableQuizzes()
+          this.loadNotifications()
+        })
+      }, 300000)
 
-      console.log('✅ Dashboard ready');
-
+      console.log('✅ Dashboard ready')
     } catch (error) {
-      console.error('❌ Mount error:', error);
+      console.error('❌ Mount error:', error)
     }
   },
 
   beforeUnmount() {
-    console.log('🛑 Unmounting...');
-    document.removeEventListener('click', this.handleClickOutside);
-    if (this.pollInterval) clearInterval(this.pollInterval);
-    this.cleanupSubscriptions();
-  }
-};
+    console.log('🛑 Unmounting...')
+    document.removeEventListener('click', this.handleClickOutside)
+    if (this.pollInterval) clearInterval(this.pollInterval)
+    this.cleanupSubscriptions()
+  },
+}
 </script>
 
 <style scoped>
@@ -831,7 +892,7 @@ export default {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3D8D7A 0%, #2f6b5c 100%);
+  background: linear-gradient(135deg, #3d8d7a 0%, #2f6b5c 100%);
   color: white;
   border: none;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -845,12 +906,13 @@ export default {
 }
 
 .dark .floating-help-btn {
-  background: linear-gradient(135deg, #20c997 0%, #3D8D7A 100%);
+  background: linear-gradient(135deg, #20c997 0%, #3d8d7a 100%);
   box-shadow: 0 4px 20px rgba(32, 201, 151, 0.4);
 }
 
 @keyframes pulse-help {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
   }
@@ -898,7 +960,7 @@ export default {
   overflow-y: auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   color: #1f2937;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 
 .modal-content::-webkit-scrollbar {
@@ -914,7 +976,7 @@ export default {
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 3px;
 }
 .dark .modal-content::-webkit-scrollbar-thumb {
@@ -924,8 +986,8 @@ export default {
 .dark .modal-content {
   background: #23272b;
   border: 1px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-  color: #A3D1C6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  color: #a3d1c6;
 }
 
 .document-modal {
@@ -934,7 +996,7 @@ export default {
 
 .modal-header {
   padding: 1.5rem;
-  border-bottom: 1px solid #A3D1C6;
+  border-bottom: 1px solid #a3d1c6;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -947,18 +1009,18 @@ export default {
 
 .dark .modal-header {
   background: #2a2e36;
-  border-bottom: 1px solid #3D8D7A;
+  border-bottom: 1px solid #3d8d7a;
 }
 
 .modal-header h3 {
   margin: 0;
   font-size: 1.2rem;
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-weight: 600;
 }
 
 .dark .modal-header h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .close-btn {
@@ -979,7 +1041,7 @@ export default {
 }
 
 .dark .close-btn:hover {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-body {
@@ -1004,7 +1066,7 @@ export default {
 }
 
 .document-body::-webkit-scrollbar-thumb {
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 3px;
 }
 .dark .document-body::-webkit-scrollbar-thumb {
@@ -1017,13 +1079,13 @@ export default {
 
 .document-content h4 {
   font-size: 1.4rem;
-  color: #3D8D7A;
+  color: #3d8d7a;
   margin: 0 0 0.5rem 0;
   font-weight: 600;
 }
 
 .dark .document-content h4 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .document-date {
@@ -1078,7 +1140,7 @@ export default {
 
 .modal-footer {
   padding: 1.5rem;
-  border-top: 1px solid #A3D1C6;
+  border-top: 1px solid #a3d1c6;
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
@@ -1090,7 +1152,7 @@ export default {
 
 .dark .modal-footer {
   background: #2a2e36;
-  border-top: 1px solid #3D8D7A;
+  border-top: 1px solid #3d8d7a;
 }
 
 .btn-primary {
@@ -1101,7 +1163,7 @@ export default {
   cursor: pointer;
   transition: all 0.2s;
   border: none;
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -1112,7 +1174,7 @@ export default {
 
 .home-container {
   min-height: 100vh;
-  background: #FBFFE4;
+  background: #fbffe4;
   padding: 1.5rem;
   font-family: 'Inter', sans-serif;
 }
@@ -1124,7 +1186,7 @@ export default {
 .header-card {
   background: white;
   border-radius: 16px;
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 8px rgba(61, 141, 122, 0.08);
@@ -1132,7 +1194,7 @@ export default {
 .dark .header-card {
   background: #23272b;
   border: 1px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .header-content {
@@ -1150,7 +1212,7 @@ export default {
 .user-icon {
   width: 56px;
   height: 56px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1165,7 +1227,7 @@ export default {
   margin-bottom: 0.25rem;
 }
 .dark .header-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .header-subtitle {
@@ -1173,7 +1235,7 @@ export default {
   color: #6b7280;
 }
 .dark .header-subtitle {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Notification */
@@ -1184,8 +1246,8 @@ export default {
 .notif-btn {
   width: 48px;
   height: 48px;
-  background: #FBFFE4;
-  border: 2px solid #A3D1C6;
+  background: #fbffe4;
+  border: 2px solid #a3d1c6;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1193,16 +1255,16 @@ export default {
   cursor: pointer;
   transition: all 0.2s;
   position: relative;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 .dark .notif-btn {
   background: #23272b;
-  border-color: #3D8D7A;
-  color: #A3D1C6;
+  border-color: #3d8d7a;
+  color: #a3d1c6;
 }
 
 .notif-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   transform: scale(1.05);
 }
 
@@ -1235,8 +1297,8 @@ export default {
 }
 .dark .notif-dropdown {
   background: #23272b;
-  border-color: #3D8D7A;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  border-color: #3d8d7a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .notif-dropdown::-webkit-scrollbar {
@@ -1252,7 +1314,7 @@ export default {
 }
 
 .notif-dropdown::-webkit-scrollbar-thumb {
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 3px;
 }
 .dark .notif-dropdown::-webkit-scrollbar-thumb {
@@ -1281,9 +1343,9 @@ export default {
   align-items: center;
 }
 .dark .notif-header {
-  color: #A3D1C6;
+  color: #a3d1c6;
   background: #23272b;
-  border-bottom: 1px solid #3D8D7A;
+  border-bottom: 1px solid #3d8d7a;
 }
 
 .close-notif-btn {
@@ -1320,7 +1382,7 @@ export default {
   font-size: 0.875rem;
 }
 .dark .notif-empty {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .notif-item {
@@ -1351,7 +1413,7 @@ export default {
   margin-bottom: 0.25rem;
 }
 .dark .notif-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .notif-body {
@@ -1360,7 +1422,7 @@ export default {
   margin-bottom: 0.375rem;
 }
 .dark .notif-body {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .notif-date {
@@ -1368,7 +1430,7 @@ export default {
   color: #9ca3af;
 }
 .dark .notif-date {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Stats Grid */
@@ -1391,7 +1453,7 @@ export default {
 .dark .stat-card {
   background: #23272b;
   border: 1px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .stat-icon {
@@ -1405,8 +1467,12 @@ export default {
   flex-shrink: 0;
 }
 
-.stat-subjects { background: #3D8D7A; }
-.stat-pending { background: #A3D1C6; }
+.stat-subjects {
+  background: #3d8d7a;
+}
+.stat-pending {
+  background: #a3d1c6;
+}
 
 .stat-number {
   font-size: 1.875rem;
@@ -1415,7 +1481,7 @@ export default {
   line-height: 1;
 }
 .dark .stat-number {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .stat-label {
@@ -1425,7 +1491,7 @@ export default {
   font-weight: 500;
 }
 .dark .stat-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Content Grid */
@@ -1435,7 +1501,6 @@ export default {
   gap: 1.5rem;
 }
 
-
 .content-card {
   background: white;
   border-radius: 12px;
@@ -1443,7 +1508,7 @@ export default {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
 }
 
 .content-card:first-child {
@@ -1457,7 +1522,7 @@ export default {
 .dark .content-card {
   background: #23272b;
   border: 2px solid #20c997;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .card-header {
@@ -1471,7 +1536,7 @@ export default {
   margin-bottom: 0.25rem;
 }
 .dark .card-header h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .card-desc {
@@ -1479,7 +1544,7 @@ export default {
   color: #6b7280;
 }
 .dark .card-desc {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Assessment List */
@@ -1504,7 +1569,7 @@ export default {
 }
 
 .assessment-list::-webkit-scrollbar-thumb {
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 3px;
 }
 .dark .assessment-list::-webkit-scrollbar-thumb {
@@ -1512,14 +1577,14 @@ export default {
 }
 
 .assessment-item {
-  background: #FBFFE4;
+  background: #fbffe4;
   border-radius: 10px;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.2s;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 .dark .assessment-item {
   background: #23272b;
@@ -1527,12 +1592,12 @@ export default {
 }
 
 .assessment-item:hover {
-  background: #A3D1C6;
-  border-color: #3D8D7A;
+  background: #a3d1c6;
+  border-color: #3d8d7a;
 }
 .dark .assessment-item:hover {
   background: #23272b;
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
 }
 
 .assessment-info h4 {
@@ -1542,7 +1607,7 @@ export default {
   margin-bottom: 0.25rem;
 }
 .dark .assessment-info h4 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .assessment-class {
@@ -1551,16 +1616,16 @@ export default {
   margin-bottom: 0.25rem;
 }
 .dark .assessment-class {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .assessment-progress {
   font-size: 0.75rem;
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-weight: 500;
 }
 .dark .assessment-progress {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Assessment Due and Status */
@@ -1577,7 +1642,7 @@ export default {
   color: #1f2937;
 }
 .dark .due-date {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .status {
@@ -1626,7 +1691,7 @@ export default {
 .grade-btn {
   background: #20c997;
   color: #181c20;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
   padding: 0.5rem 1.25rem;
   border-radius: 8px;
   font-size: 0.875rem;
@@ -1637,17 +1702,17 @@ export default {
 .dark .grade-btn {
   background: #20c997;
   color: #181c20;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 
 .grade-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
   transform: translateY(-1px);
 }
 .dark .grade-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
 }
@@ -1659,7 +1724,7 @@ export default {
   font-size: 0.875rem;
 }
 .dark .empty-state {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Quick Links */
@@ -1683,7 +1748,7 @@ export default {
 }
 
 .quick-links::-webkit-scrollbar-thumb {
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 3px;
 }
 .dark .quick-links::-webkit-scrollbar-thumb {
@@ -1691,8 +1756,8 @@ export default {
 }
 
 .quick-link {
-  background: #FBFFE4;
-  border: 1px solid #A3D1C6;
+  background: #fbffe4;
+  border: 1px solid #a3d1c6;
   border-radius: 10px;
   padding: 0.75rem;
   display: flex;
@@ -1711,17 +1776,17 @@ export default {
 .dark .quick-link {
   background: #23272b;
   border-color: #20c997;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quick-link:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #181c20;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-2px);
 }
 .dark .quick-link:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
 }
@@ -1730,7 +1795,7 @@ export default {
   color: #20c997;
 }
 .dark .quick-link svg {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Quick Actions */
@@ -1745,8 +1810,8 @@ export default {
 }
 
 .action-card {
-  background: #FBFFE4;
-  border: 1px solid #A3D1C6;
+  background: #fbffe4;
+  border: 1px solid #a3d1c6;
   border-radius: 10px;
   padding: 1.25rem;
   display: flex;
@@ -1760,17 +1825,17 @@ export default {
 .dark .action-card {
   background: #23272b;
   border-color: #20c997;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .action-card:hover {
   background: #20c997;
   color: #181c20;
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
   transform: translateY(-2px);
 }
 .dark .action-card:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
 }
@@ -1791,7 +1856,7 @@ export default {
   font-size: 1.5rem;
 }
 .dark .action-icon i {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .action-content h3 {
@@ -1800,7 +1865,7 @@ export default {
   margin-bottom: 0.25rem;
 }
 .dark .action-content h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .action-content p {
@@ -1808,7 +1873,7 @@ export default {
   color: #6b7280;
 }
 .dark .action-content p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Responsive */
@@ -1906,7 +1971,7 @@ export default {
 
   .dark .notif-content {
     background: #23272b;
-    border-color: #3D8D7A;
+    border-color: #3d8d7a;
   }
 
   /* Stats grid mobile optimization */

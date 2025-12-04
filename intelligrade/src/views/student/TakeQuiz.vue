@@ -6,18 +6,22 @@
         <div class="section-header-left">
           <div class="section-header-icon">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 14l9-5-9-5-9 5 9 5z"/>
-              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+              <path d="M12 14l9-5-9-5-9 5 9 5z" />
+              <path
+                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+              />
             </svg>
           </div>
-          
+
           <div class="header-text">
             <h1 class="section-header-title">{{ subject.name }} - Quizzes</h1>
             <p class="section-header-subtitle">{{ section.name }}</p>
-            <p class="section-header-description">{{ studentInfo.full_name }} • Grade {{ studentInfo.grade_level }}</p>
+            <p class="section-header-description">
+              {{ studentInfo.full_name }} • Grade {{ studentInfo.grade_level }}
+            </p>
           </div>
         </div>
-        
+
         <div class="header-actions">
           <button @click="goBack" class="back-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -57,7 +61,12 @@
             <h2 class="category-title">
               <span class="category-icon">
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
                 </svg>
               </span>
               New Quizzes
@@ -78,21 +87,31 @@
               <div class="quiz-meta">
                 <div class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <path
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                   <span>{{ quiz.number_of_questions }} Questions</span>
                 </div>
                 <div class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span>{{ quiz.has_time_limit ? `${quiz.time_limit_minutes} min` : 'No limit' }}</span>
+                  <span>{{
+                    quiz.has_time_limit ? `${quiz.time_limit_minutes} min` : 'No limit'
+                  }}</span>
                 </div>
                 <div class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    <path
+                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                    />
                   </svg>
-                  <span>{{ quiz.attempts_allowed === 999 ? 'Unlimited' : `${quiz.attempts_allowed} attempt(s)` }}</span>
+                  <span>{{
+                    quiz.attempts_allowed === 999
+                      ? 'Unlimited'
+                      : `${quiz.attempts_allowed} attempt(s)`
+                  }}</span>
                 </div>
               </div>
               <div class="quiz-schedule" v-if="quiz.start_date || quiz.end_date">
@@ -108,8 +127,10 @@
               <div class="quiz-actions">
                 <button @click="viewQuizDetails(quiz)" class="btn btn-primary">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
                   </svg>
                   View Quiz
                 </button>
@@ -124,7 +145,12 @@
             <h2 class="category-title">
               <span class="category-icon">
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C20.832 18.477 19.247 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C20.832 18.477 19.247 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
                 </svg>
               </span>
               Past Quizzes
@@ -133,8 +159,12 @@
           </div>
           <div class="quiz-grid">
             <div v-for="quiz in pastQuizzes" :key="quiz.id" class="quiz-card past-quiz">
-              <div v-if="getQuizStatus(quiz) === 'completed'" class="quiz-badge completed-badge">Completed</div>
-              <div v-else-if="getQuizStatus(quiz) === 'expired'" class="quiz-badge expired-badge">Expired</div>
+              <div v-if="getQuizStatus(quiz) === 'completed'" class="quiz-badge completed-badge">
+                Completed
+              </div>
+              <div v-else-if="getQuizStatus(quiz) === 'expired'" class="quiz-badge expired-badge">
+                Expired
+              </div>
               <div class="quiz-header">
                 <h3 class="quiz-title">{{ quiz.title }}</h3>
                 <div class="quiz-code">
@@ -146,15 +176,19 @@
               <div class="quiz-meta">
                 <div class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <path
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                   <span>{{ quiz.number_of_questions }} Questions</span>
                 </div>
                 <div class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span>{{ quiz.has_time_limit ? `${quiz.time_limit_minutes} min` : 'No limit' }}</span>
+                  <span>{{
+                    quiz.has_time_limit ? `${quiz.time_limit_minutes} min` : 'No limit'
+                  }}</span>
                 </div>
               </div>
               <div v-if="getQuizResult(quiz.id)" class="quiz-result">
@@ -179,7 +213,12 @@
         <div v-if="quizzes.length === 0" class="empty-state">
           <div class="empty-icon">
             <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
             </svg>
           </div>
           <h3>No Quizzes Available</h3>
@@ -194,7 +233,7 @@
         <div class="details-header">
           <button @click="selectedQuiz = null" class="back-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15 19l-7-7 7-7"/>
+              <path d="M15 19l-7-7 7-7" />
             </svg>
             Back to Quizzes
           </button>
@@ -211,13 +250,26 @@
                 <span class="code-label">Quiz Code:</span>
                 <span class="code-value">{{ selectedQuiz.quiz_code }}</span>
               </div>
-              <p class="details-description">{{ selectedQuiz.description || 'No description provided' }}</p>
-              
+              <p class="details-description">
+                {{ selectedQuiz.description || 'No description provided' }}
+              </p>
+
               <div class="info-grid">
                 <div class="info-item">
                   <div class="info-icon">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
                   <div class="info-content">
@@ -227,35 +279,78 @@
                 </div>
                 <div class="info-item">
                   <div class="info-icon">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
                   <div class="info-content">
                     <span class="info-label">Time Limit</span>
-                    <span class="info-value">{{ selectedQuiz.has_time_limit ? `${selectedQuiz.time_limit_minutes} minutes` : 'No limit' }}</span>
+                    <span class="info-value">{{
+                      selectedQuiz.has_time_limit
+                        ? `${selectedQuiz.time_limit_minutes} minutes`
+                        : 'No limit'
+                    }}</span>
                   </div>
                 </div>
                 <div class="info-item">
                   <div class="info-icon">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      />
                     </svg>
                   </div>
                   <div class="info-content">
                     <span class="info-label">Attempts</span>
-                    <span class="info-value">{{ selectedQuiz.attempts_allowed === 999 ? 'Unlimited' : selectedQuiz.attempts_allowed }}</span>
+                    <span class="info-value">{{
+                      selectedQuiz.attempts_allowed === 999
+                        ? 'Unlimited'
+                        : selectedQuiz.attempts_allowed
+                    }}</span>
                   </div>
                 </div>
                 <div class="info-item">
                   <div class="info-icon">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      />
                     </svg>
                   </div>
                   <div class="info-content">
                     <span class="info-label">Remaining Attempts</span>
-                    <span class="info-value">{{ remainingAttempts === 999 ? 'Unlimited' : remainingAttempts }}</span>
+                    <span class="info-value">{{
+                      remainingAttempts === 999 ? 'Unlimited' : remainingAttempts
+                    }}</span>
                   </div>
                 </div>
               </div>
@@ -265,8 +360,19 @@
                 <div class="schedule-details">
                   <div v-if="selectedQuiz.start_date" class="schedule-row">
                     <span class="schedule-icon">
-                      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      <svg
+                        width="16"
+                        height="16"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
                       </svg>
                     </span>
                     <span class="schedule-label">Available from:</span>
@@ -274,8 +380,19 @@
                   </div>
                   <div v-if="selectedQuiz.end_date" class="schedule-row">
                     <span class="schedule-icon">
-                      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      <svg
+                        width="16"
+                        height="16"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
                       </svg>
                     </span>
                     <span class="schedule-label">Available until:</span>
@@ -299,19 +416,24 @@
             <div class="action-card">
               <div v-if="!canTakeCurrentQuiz" class="warning-message">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                  <path
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
                 </svg>
                 <span>{{ quizUnavailableReason }}</span>
               </div>
-              <button 
-                v-else
-                @click="startQuiz" 
-                :disabled="isStarting"
-                class="btn btn-start-quiz"
-              >
-                <svg v-if="!isStarting" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
-                  <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <button v-else @click="startQuiz" :disabled="isStarting" class="btn btn-start-quiz">
+                <svg
+                  v-if="!isStarting"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                  />
+                  <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div v-else class="spinner"></div>
                 <span>{{ isStarting ? 'Starting Quiz...' : 'Start Quiz Now' }}</span>
@@ -335,7 +457,10 @@
         <div class="progress-info">
           <span>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</span>
           <div class="progress-bar">
-            <div class="progress-fill" :style="{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }"></div>
+            <div
+              class="progress-fill"
+              :style="{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }"
+            ></div>
           </div>
         </div>
       </div>
@@ -344,9 +469,7 @@
       <div class="question-container">
         <div class="question-card" v-if="questions[currentQuestionIndex]">
           <div class="question-header">
-            <div class="question-number-badge">
-              Question {{ currentQuestionIndex + 1 }}
-            </div>
+            <div class="question-number-badge">Question {{ currentQuestionIndex + 1 }}</div>
             <div class="question-type-badge" :class="questions[currentQuestionIndex].question_type">
               {{ getQuestionTypeLabel(questions[currentQuestionIndex].question_type) }}
             </div>
@@ -355,39 +478,76 @@
           <h2 class="question-text">{{ questions[currentQuestionIndex].question_text }}</h2>
 
           <!-- Multiple Choice -->
-          <div v-if="questions[currentQuestionIndex].question_type === 'multiple_choice'" class="answer-options">
-            <div 
-              v-for="option in questions[currentQuestionIndex].options" 
+          <div
+            v-if="questions[currentQuestionIndex].question_type === 'multiple_choice'"
+            class="answer-options"
+          >
+            <div
+              v-for="option in questions[currentQuestionIndex].options"
               :key="option.id"
-              :class="['option-item', { 'selected': studentAnswers[questions[currentQuestionIndex].id]?.selected_option_id === option.id }]"
+              :class="[
+                'option-item',
+                {
+                  selected:
+                    studentAnswers[questions[currentQuestionIndex].id]?.selected_option_id ===
+                    option.id,
+                },
+              ]"
               @click="selectOption(questions[currentQuestionIndex].id, option.id)"
             >
               <div class="option-radio"></div>
-              <div class="option-letter">{{ String.fromCharCode(65 + option.option_number - 1) }}</div>
+              <div class="option-letter">
+                {{ String.fromCharCode(65 + option.option_number - 1) }}
+              </div>
               <div class="option-text">{{ option.option_text }}</div>
             </div>
           </div>
 
           <!-- True/False -->
-          <div v-else-if="questions[currentQuestionIndex].question_type === 'true_false'" class="answer-options tf-options">
-            <div 
-              :class="['tf-option', { 'selected': studentAnswers[questions[currentQuestionIndex].id]?.answer_text === 'true' }]"
+          <div
+            v-else-if="questions[currentQuestionIndex].question_type === 'true_false'"
+            class="answer-options tf-options"
+          >
+            <div
+              :class="[
+                'tf-option',
+                {
+                  selected:
+                    studentAnswers[questions[currentQuestionIndex].id]?.answer_text === 'true',
+                },
+              ]"
               @click="selectTrueFalse(questions[currentQuestionIndex].id, 'true')"
             >
               <div class="tf-icon">
                 <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
               <div class="tf-label">True</div>
             </div>
-            <div 
-              :class="['tf-option', { 'selected': studentAnswers[questions[currentQuestionIndex].id]?.answer_text === 'false' }]"
+            <div
+              :class="[
+                'tf-option',
+                {
+                  selected:
+                    studentAnswers[questions[currentQuestionIndex].id]?.answer_text === 'false',
+                },
+              ]"
               @click="selectTrueFalse(questions[currentQuestionIndex].id, 'false')"
             >
               <div class="tf-icon">
                 <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </div>
               <div class="tf-label">False</div>
@@ -395,11 +555,14 @@
           </div>
 
           <!-- Fill in the Blank -->
-          <div v-else-if="questions[currentQuestionIndex].question_type === 'fill_blank'" class="answer-input">
-            <input 
+          <div
+            v-else-if="questions[currentQuestionIndex].question_type === 'fill_blank'"
+            class="answer-input"
+          >
+            <input
               v-model="studentAnswers[questions[currentQuestionIndex].id].answer_text"
               @input="autoSaveAnswer(questions[currentQuestionIndex].id)"
-              type="text" 
+              type="text"
               placeholder="Type your answer here..."
               class="fill-blank-input"
             />
@@ -408,48 +571,49 @@
 
         <!-- Navigation -->
         <div class="question-navigation">
-          <button 
-            @click="previousQuestion" 
+          <button
+            @click="previousQuestion"
             :disabled="currentQuestionIndex === 0"
             class="btn btn-secondary"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15 19l-7-7 7-7"/>
+              <path d="M15 19l-7-7 7-7" />
             </svg>
             Previous
           </button>
 
           <div class="question-indicators">
-            <div 
-              v-for="(q, index) in questions" 
+            <div
+              v-for="(q, index) in questions"
               :key="q.id"
-              :class="['indicator-dot', { 
-                'active': index === currentQuestionIndex,
-                'answered': studentAnswers[q.id] && (studentAnswers[q.id].selected_option_id || studentAnswers[q.id].answer_text)
-              }]"
+              :class="[
+                'indicator-dot',
+                {
+                  active: index === currentQuestionIndex,
+                  answered:
+                    studentAnswers[q.id] &&
+                    (studentAnswers[q.id].selected_option_id || studentAnswers[q.id].answer_text),
+                },
+              ]"
               @click="goToQuestion(index)"
             ></div>
           </div>
 
-          <button 
+          <button
             v-if="currentQuestionIndex < questions.length - 1"
-            @click="nextQuestion" 
+            @click="nextQuestion"
             class="btn btn-primary"
           >
             Next
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 5l7 7-7 7"/>
+              <path d="M9 5l7 7-7 7" />
             </svg>
           </button>
 
-          <button 
-            v-else
-            @click="showSubmitConfirmation" 
-            class="btn btn-submit"
-          >
+          <button v-else @click="showSubmitConfirmation" class="btn btn-submit">
             Submit Quiz
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </button>
         </div>
@@ -466,7 +630,7 @@
         <div class="modal-body">
           <div class="modal-icon">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
           <div class="modal-text">
@@ -486,278 +650,316 @@
         </div>
       </div>
     </div>
+
+    <!-- Feedback Survey Modal -->
+    <FeedbackSurvey
+      :show="showFeedbackSurvey"
+      context="quiz_completion"
+      :context-id="lastCompletedQuizId"
+      :user-id="studentInfo?.student_id"
+      user-type="student"
+      @close="closeFeedbackSurvey"
+      @submitted="handleFeedbackSubmitted"
+    />
   </div>
 </template>
 
-<script>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import { supabase } from '@/supabase.js';
+<script lang="ts">
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { supabase } from '@/supabase.js'
+import FeedbackSurvey from '@/components/FeedbackSurvey.vue'
 
 export default {
   name: 'TakeQuiz',
+  components: {
+    FeedbackSurvey,
+  },
   setup() {
-    const router = useRouter();
-    const route = useRoute();
+    const router = useRouter()
+    const route = useRoute()
 
-    const loading = ref(true);
-    const studentInfo = ref({ full_name: 'Loading...', grade_level: '', student_id: null });
-    const subject = ref({ id: '', name: 'Subject' });
-    const section = ref({ id: '', name: '' });
-    const quizzes = ref([]);
-    const selectedQuiz = ref(null);
-    const takingQuiz = ref(false);
-    const showingResults = ref(false);
-    const currentAttempt = ref(null);
-    const questions = ref([]);
-    const studentAnswers = ref({});
-    const currentQuestionIndex = ref(0);
-    const timeRemaining = ref(0);
-    const timerInterval = ref(null);
-    const startTime = ref(null);
-    const previousAttempts = ref([]);
-    const quizResults = ref([]);
-    const canTakeCurrentQuiz = ref(true);
-    const quizUnavailableReason = ref('');
-    const isStarting = ref(false);
-    const showSubmitModal = ref(false);
-    const isSubmitting = ref(false);
-    const submittedAttempt = ref(null);
-    let saveTimeout = null;
+    const loading = ref(true)
+    const studentInfo = ref({ full_name: 'Loading...', grade_level: '', student_id: null })
+    const subject = ref({ id: '', name: 'Subject' })
+    const section = ref({ id: '', name: '' })
+    const quizzes = ref([])
+    const selectedQuiz = ref(null)
+    const takingQuiz = ref(false)
+    const showingResults = ref(false)
+    const currentAttempt = ref(null)
+    const questions = ref([])
+    const studentAnswers = ref({})
+    const currentQuestionIndex = ref(0)
+    const timeRemaining = ref(0)
+    const timerInterval = ref(null)
+    const startTime = ref(null)
+    const previousAttempts = ref([])
+    const quizResults = ref([])
+    const canTakeCurrentQuiz = ref(true)
+    const quizUnavailableReason = ref('')
+    const isStarting = ref(false)
+    const showSubmitModal = ref(false)
+    const isSubmitting = ref(false)
+    const submittedAttempt = ref(null)
+    const showFeedbackSurvey = ref(false)
+    const lastCompletedQuizId = ref(null)
+    let saveTimeout = null
 
-    let quizSubscription = null;
+    let quizSubscription = null
 
-    const formatPHTime = (utcDateString) => {
-      if (!utcDateString) return 'Not set';
+    const formatPHTime = (utcDateString: string) => {
+      if (!utcDateString) return 'Not set'
       try {
-        const utcDate = new Date(utcDateString);
-        const options = {
+        const utcDate = new Date(utcDateString)
+        const options: Intl.DateTimeFormatOptions = {
           year: 'numeric',
           month: 'short',
           day: 'numeric',
           hour: '2-digit',
           minute: '2-digit',
           timeZone: 'Asia/Manila',
-          hour12: true
-        };
-        return utcDate.toLocaleString('en-PH', options) + ' PHT';
+          hour12: true,
+        }
+        return utcDate.toLocaleString('en-PH', options) + ' PHT'
       } catch (error) {
-        console.error('Error formatting PH time:', error);
-        return 'Invalid date';
+        console.error('Error formatting PH time:', error)
+        return 'Invalid date'
       }
-    };
+    }
 
     const getCurrentUTCTime = () => {
-      return new Date();
-    };
+      return new Date()
+    }
 
     const formatTime = (seconds) => {
-      if (!seconds || seconds < 0) return '00:00';
-      const mins = Math.floor(seconds / 60);
-      const secs = seconds % 60;
-      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    };
+      if (!seconds || seconds < 0) return '00:00'
+      const mins = Math.floor(seconds / 60)
+      const secs = seconds % 60
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
+    }
 
     const shuffleArray = (array) => {
-      const shuffled = [...array];
+      const shuffled = [...array]
       for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
       }
-      return shuffled;
-    };
+      return shuffled
+    }
 
     const newQuizzes = computed(() => {
-      const now = getCurrentUTCTime();
-      return quizzes.value.filter(quiz => {
-        const result = quizResults.value.find(r => r.quiz_id === quiz.id);
-        const isNotTaken = !result || result.total_attempts === 0;
-        const isNotExpired = !quiz.end_date || new Date(quiz.end_date) > now;
-        return isNotTaken && isNotExpired;
-      }).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-    });
+      const now = getCurrentUTCTime()
+      return quizzes.value
+        .filter((quiz) => {
+          const result = quizResults.value.find((r) => r.quiz_id === quiz.id)
+          const isNotTaken = !result || result.total_attempts === 0
+          const isNotExpired = !quiz.end_date || new Date(quiz.end_date) > now
+          return isNotTaken && isNotExpired
+        })
+        .sort(
+          (a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+        )
+    })
 
     const pastQuizzes = computed(() => {
-      const now = getCurrentUTCTime();
-      return quizzes.value.filter(quiz => {
-        const result = quizResults.value.find(r => r.quiz_id === quiz.id);
-        const isTaken = result && result.total_attempts > 0;
-        const isExpired = quiz.end_date && new Date(quiz.end_date) <= now;
-        return isTaken || isExpired;
-      }).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-    });
+      const now = getCurrentUTCTime()
+      return quizzes.value
+        .filter((quiz) => {
+          const result = quizResults.value.find((r) => r.quiz_id === quiz.id)
+          const isTaken = result && result.total_attempts > 0
+          const isExpired = quiz.end_date && new Date(quiz.end_date) <= now
+          return isTaken || isExpired
+        })
+        .sort(
+          (a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+        )
+    })
 
     const completedQuizzes = computed(() => {
-      return quizResults.value.filter(r => r.total_attempts > 0);
-    });
+      return quizResults.value.filter((r) => r.total_attempts > 0)
+    })
 
     const answeredCount = computed(() => {
-      return Object.keys(studentAnswers.value).filter(qId => {
-        const answer = studentAnswers.value[qId];
-        return answer.selected_option_id || (answer.answer_text && answer.answer_text.trim());
-      }).length;
-    });
+      return Object.keys(studentAnswers.value).filter((qId) => {
+        const answer = studentAnswers.value[qId]
+        return answer.selected_option_id || (answer.answer_text && answer.answer_text.trim())
+      }).length
+    })
 
     const unansweredCount = computed(() => {
-      return questions.value.length - answeredCount.value;
-    });
+      return questions.value.length - answeredCount.value
+    })
 
     const remainingAttempts = computed(() => {
-      if (!selectedQuiz.value) return 0;
-      if (selectedQuiz.value.attempts_allowed === 999) return 999;
-      
-      const result = quizResults.value.find(r => r.quiz_id === selectedQuiz.value.id);
-      const usedAttempts = result ? result.total_attempts : 0;
-      return Math.max(0, selectedQuiz.value.attempts_allowed - usedAttempts);
-    });
+      if (!selectedQuiz.value) return 0
+      if (selectedQuiz.value.attempts_allowed === 999) return 999
+
+      const result = quizResults.value.find((r) => r.quiz_id === selectedQuiz.value.id)
+      const usedAttempts = result ? result.total_attempts : 0
+      return Math.max(0, selectedQuiz.value.attempts_allowed - usedAttempts)
+    })
 
     const loadStudentInfo = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const {
+          data: { session },
+        } = await supabase.auth.getSession()
         if (!session?.user) {
-          router.push('/login');
-          return false;
+          router.push('/login')
+          return false
         }
 
         const { data: profile } = await supabase
           .from('profiles')
           .select('id, role')
           .eq('auth_user_id', session.user.id)
-          .single();
+          .single()
 
         if (!profile || profile.role !== 'student') {
-          alert('Student profile not found');
-          return false;
+          alert('Student profile not found')
+          return false
         }
 
         const { data: student } = await supabase
           .from('students')
           .select('*')
           .eq('profile_id', profile.id)
-          .single();
+          .single()
 
         if (!student) {
-          alert('Student information not found');
-          return false;
+          alert('Student information not found')
+          return false
         }
 
         studentInfo.value = {
           full_name: student.full_name,
           grade_level: student.grade_level,
-          student_id: student.id
-        };
+          student_id: student.id,
+        }
 
-        return true;
+        return true
       } catch (error) {
-        console.error('Error loading student info:', error);
-        return false;
+        console.error('Error loading student info:', error)
+        return false
       }
-    };
+    }
 
     const loadRouteParams = () => {
-      const subjectId = route.params.subjectId;
-      const sectionId = route.params.sectionId;
-      const subjectName = route.query.subjectName || 'Subject';
-      const sectionName = route.query.sectionName || '';
+      const subjectId = route.params.subjectId
+      const sectionId = route.params.sectionId
+      const subjectName = (route.query.subjectName as string) || 'Subject'
+      const sectionName = (route.query.sectionName as string) || ''
 
       if (!subjectId || !sectionId) {
-        console.error('Missing required route parameters');
-        return false;
+        console.error('Missing required route parameters')
+        return false
       }
 
-      subject.value = { id: subjectId, name: subjectName };
-      section.value = { id: sectionId, name: sectionName };
+      subject.value = { id: subjectId as string, name: subjectName }
+      section.value = { id: sectionId as string, name: sectionName }
 
-      return true;
-    };
+      return true
+    }
 
     const loadQuizzes = async () => {
       try {
         console.log('📚 Loading quizzes for section:', section.value.id)
         console.log('📚 Section details:', section.value)
         console.log('📚 Subject details:', subject.value)
-        
+
         // DEBUG 1: Check ALL quizzes in the entire database (limit 10)
         const { data: anyQuizzes, error: anyError } = await supabase
           .from('quizzes')
           .select('id, title, status, section_id, subject_id, created_at')
           .limit(10)
-        
-        console.log('🔍 DEBUG 1 - ANY quizzes in database (up to 10):', { 
-          anyQuizzes, 
+
+        console.log('🔍 DEBUG 1 - ANY quizzes in database (up to 10):', {
+          anyQuizzes,
           anyError,
-          count: anyQuizzes?.length || 0
+          count: anyQuizzes?.length || 0,
         })
-        
+
         // DEBUG 2: Check all quizzes for this specific section (regardless of status)
         const { data: allQuizzesDebug, error: debugError } = await supabase
           .from('quizzes')
           .select('id, title, status, section_id, subject_id')
           .eq('section_id', section.value.id)
-        
-        console.log('🔍 DEBUG 2 - Quizzes for THIS section (any status):', { 
-          allQuizzesDebug, 
+
+        console.log('🔍 DEBUG 2 - Quizzes for THIS section (any status):', {
+          allQuizzesDebug,
           debugError,
           sectionId: section.value.id,
-          count: allQuizzesDebug?.length || 0
+          count: allQuizzesDebug?.length || 0,
         })
-        
+
         // DEBUG 3: Check if section_id might be stored differently - try subject_id instead
         const { data: subjectQuizzes, error: subjectError } = await supabase
           .from('quizzes')
           .select('id, title, status, section_id, subject_id')
           .eq('subject_id', subject.value.id)
-        
-        console.log('🔍 DEBUG 3 - Quizzes for THIS subject:', { 
-          subjectQuizzes, 
+
+        console.log('🔍 DEBUG 3 - Quizzes for THIS subject:', {
+          subjectQuizzes,
           subjectError,
           subjectId: subject.value.id,
-          count: subjectQuizzes?.length || 0
+          count: subjectQuizzes?.length || 0,
         })
-        
+
         // Now fetch only published quizzes for this section
         const { data, error } = await supabase
           .from('quizzes')
           .select('*')
           .eq('section_id', section.value.id)
           .eq('status', 'published')
-          .order('created_at', { ascending: false });
+          .order('created_at', { ascending: false })
 
-        console.log('📝 Published quizzes for section:', { data, error, sectionId: section.value.id, count: data?.length || 0 })
-        quizzes.value = data || [];
-        await loadQuizResults();
+        console.log('📝 Published quizzes for section:', {
+          data,
+          error,
+          sectionId: section.value.id,
+          count: data?.length || 0,
+        })
+        quizzes.value = data || []
+        await loadQuizResults()
       } catch (error) {
-        console.error('Error loading quizzes:', error);
-        alert('Failed to load quizzes');
+        console.error('Error loading quizzes:', error)
+        alert('Failed to load quizzes')
       }
-    };
+    }
 
     const loadQuizResults = async () => {
       try {
         if (quizzes.value.length === 0) {
-          quizResults.value = [];
-          return;
+          quizResults.value = []
+          return
         }
 
         const { data: results } = await supabase
           .from('quiz_results')
           .select('*')
           .eq('student_id', studentInfo.value.student_id)
-          .in('quiz_id', quizzes.value.map(q => q.id));
+          .in(
+            'quiz_id',
+            quizzes.value.map((q) => q.id),
+          )
 
         const { data: attempts } = await supabase
           .from('quiz_attempts')
           .select('quiz_id, id, status')
           .eq('student_id', studentInfo.value.student_id)
-          .in('quiz_id', quizzes.value.map(q => q.id))
-          .in('status', ['submitted', 'graded', 'reviewed']);
+          .in(
+            'quiz_id',
+            quizzes.value.map((q) => q.id),
+          )
+          .in('status', ['submitted', 'graded', 'reviewed'])
 
-        const resultsMap = new Map();
-        
+        const resultsMap = new Map()
+
         for (const quiz of quizzes.value) {
-          const existingResult = results?.find(r => r.quiz_id === quiz.id);
-          const quizAttempts = attempts?.filter(a => a.quiz_id === quiz.id) || [];
-          const totalAttempts = quizAttempts.length;
+          const existingResult = results?.find((r) => r.quiz_id === quiz.id)
+          const quizAttempts = attempts?.filter((a) => a.quiz_id === quiz.id) || []
+          const totalAttempts = quizAttempts.length
 
           resultsMap.set(quiz.id, {
             quiz_id: quiz.id,
@@ -765,134 +967,144 @@ export default {
             total_attempts: totalAttempts,
             best_percentage: existingResult?.best_percentage || 0,
             best_score: existingResult?.best_score || 0,
-            status: totalAttempts > 0 ? 'completed' : 'not_started'
-          });
+            status: totalAttempts > 0 ? 'completed' : 'not_started',
+          })
         }
 
-        quizResults.value = Array.from(resultsMap.values());
+        quizResults.value = Array.from(resultsMap.values())
       } catch (error) {
-        console.error('Error loading quiz results:', error);
+        console.error('Error loading quiz results:', error)
       }
-    };
+    }
 
     const setupRealtimeSubscription = () => {
-      if (!section.value.id) return;
+      if (!section.value.id) return
 
       quizSubscription = supabase
         .channel(`section-${section.value.id}-quizzes`)
-        .on('postgres_changes', {
-          event: '*',
-          schema: 'public',
-          table: 'quizzes',
-          filter: `section_id=eq.${section.value.id}`
-        }, async (payload) => {
-          if (payload.eventType === 'INSERT') {
-            quizzes.value.unshift(payload.new);
-          } else if (payload.eventType === 'UPDATE') {
-            const index = quizzes.value.findIndex(q => q.id === payload.new.id);
-            if (index !== -1) quizzes.value[index] = payload.new;
-          } else if (payload.eventType === 'DELETE') {
-            quizzes.value = quizzes.value.filter(q => q.id !== payload.old.id);
-          }
-          await loadQuizResults();
-        })
-        .subscribe();
-    };
+        .on(
+          'postgres_changes',
+          {
+            event: '*',
+            schema: 'public',
+            table: 'quizzes',
+            filter: `section_id=eq.${section.value.id}`,
+          },
+          async (payload) => {
+            if (payload.eventType === 'INSERT') {
+              quizzes.value.unshift(payload.new)
+            } else if (payload.eventType === 'UPDATE') {
+              const index = quizzes.value.findIndex((q) => q.id === payload.new.id)
+              if (index !== -1) quizzes.value[index] = payload.new
+            } else if (payload.eventType === 'DELETE') {
+              quizzes.value = quizzes.value.filter((q) => q.id !== payload.old.id)
+            }
+            await loadQuizResults()
+          },
+        )
+        .subscribe()
+    }
 
     const getQuizStatus = (quiz) => {
-      const result = quizResults.value.find(r => r.quiz_id === quiz.id);
-      const now = getCurrentUTCTime();
-      
-      if (result && result.total_attempts > 0) return 'completed';
-      if (quiz.end_date && new Date(quiz.end_date) <= now) return 'expired';
-      return 'available';
-    };
+      const result = quizResults.value.find((r) => r.quiz_id === quiz.id)
+      const now = getCurrentUTCTime()
+
+      if (result && result.total_attempts > 0) return 'completed'
+      if (quiz.end_date && new Date(quiz.end_date) <= now) return 'expired'
+      return 'available'
+    }
 
     const getQuizResult = (quizId) => {
-      return quizResults.value.find(r => r.quiz_id === quizId);
-    };
+      return quizResults.value.find((r) => r.quiz_id === quizId)
+    }
 
     const getQuizAvailabilityClass = () => {
-      if (!selectedQuiz.value) return '';
-      const now = getCurrentUTCTime();
-      
+      if (!selectedQuiz.value) return ''
+      const now = getCurrentUTCTime()
+
       if (selectedQuiz.value.start_date && new Date(selectedQuiz.value.start_date) > now) {
-        return 'not-started';
+        return 'not-started'
       }
       if (selectedQuiz.value.end_date && new Date(selectedQuiz.value.end_date) <= now) {
-        return 'expired';
+        return 'expired'
       }
-      
-      const result = quizResults.value.find(r => r.quiz_id === selectedQuiz.value.id);
-      const usedAttempts = result ? result.total_attempts : 0;
-      if (selectedQuiz.value.attempts_allowed !== 999 && usedAttempts >= selectedQuiz.value.attempts_allowed) {
-        return 'expired';
+
+      const result = quizResults.value.find((r) => r.quiz_id === selectedQuiz.value.id)
+      const usedAttempts = result ? result.total_attempts : 0
+      if (
+        selectedQuiz.value.attempts_allowed !== 999 &&
+        usedAttempts >= selectedQuiz.value.attempts_allowed
+      ) {
+        return 'expired'
       }
-      
-      return 'available';
-    };
+
+      return 'available'
+    }
 
     const getQuizAvailabilityText = () => {
-      if (!selectedQuiz.value) return '';
-      const now = getCurrentUTCTime();
-      
+      if (!selectedQuiz.value) return ''
+      const now = getCurrentUTCTime()
+
       if (selectedQuiz.value.start_date && new Date(selectedQuiz.value.start_date) > now) {
-        return 'Not Yet Available';
+        return 'Not Yet Available'
       }
       if (selectedQuiz.value.end_date && new Date(selectedQuiz.value.end_date) <= now) {
-        return 'Quiz Expired';
+        return 'Quiz Expired'
       }
-      
-      const result = quizResults.value.find(r => r.quiz_id === selectedQuiz.value.id);
-      const usedAttempts = result ? result.total_attempts : 0;
-      if (selectedQuiz.value.attempts_allowed !== 999 && usedAttempts >= selectedQuiz.value.attempts_allowed) {
-        return 'No Attempts Remaining';
+
+      const result = quizResults.value.find((r) => r.quiz_id === selectedQuiz.value.id)
+      const usedAttempts = result ? result.total_attempts : 0
+      if (
+        selectedQuiz.value.attempts_allowed !== 999 &&
+        usedAttempts >= selectedQuiz.value.attempts_allowed
+      ) {
+        return 'No Attempts Remaining'
       }
-      
-      return 'Available Now';
-    };
+
+      return 'Available Now'
+    }
 
     const viewQuizDetails = async (quiz) => {
-      selectedQuiz.value = quiz;
-      await checkQuizEligibility(quiz);
-      await loadPreviousAttempts(quiz.id);
-    };
+      selectedQuiz.value = quiz
+      await checkQuizEligibility(quiz)
+      await loadPreviousAttempts(quiz.id)
+    }
 
     const checkQuizEligibility = async (quiz) => {
-      const now = getCurrentUTCTime();
-      
+      const now = getCurrentUTCTime()
+
       if (quiz.start_date && new Date(quiz.start_date) > now) {
-        canTakeCurrentQuiz.value = false;
-        quizUnavailableReason.value = 'This quiz is not yet available.';
-        return;
+        canTakeCurrentQuiz.value = false
+        quizUnavailableReason.value = 'This quiz is not yet available.'
+        return
       }
-      
+
       if (quiz.end_date && new Date(quiz.end_date) <= now) {
-        canTakeCurrentQuiz.value = false;
-        quizUnavailableReason.value = 'This quiz has expired.';
-        return;
+        canTakeCurrentQuiz.value = false
+        quizUnavailableReason.value = 'This quiz has expired.'
+        return
       }
-      
+
       const { data: completedAttempts } = await supabase
         .from('quiz_attempts')
         .select('id')
         .eq('quiz_id', quiz.id)
         .eq('student_id', studentInfo.value.student_id)
-        .in('status', ['submitted', 'graded', 'reviewed']);
+        .in('status', ['submitted', 'graded', 'reviewed'])
 
-      const usedAttempts = completedAttempts ? completedAttempts.length : 0;
-      
+      const usedAttempts = completedAttempts ? completedAttempts.length : 0
+
       if (quiz.attempts_allowed !== 999) {
         if (usedAttempts >= quiz.attempts_allowed) {
-          canTakeCurrentQuiz.value = false;
-          quizUnavailableReason.value = `You have used all ${quiz.attempts_allowed} attempt(s). No more attempts remaining.`;
-          return;
+          canTakeCurrentQuiz.value = false
+          quizUnavailableReason.value = `You have used all ${quiz.attempts_allowed} attempt(s). No more attempts remaining.`
+          return
         }
       }
-      
-      canTakeCurrentQuiz.value = true;
-      quizUnavailableReason.value = '';
-    };
+
+      canTakeCurrentQuiz.value = true
+      quizUnavailableReason.value = ''
+    }
 
     const loadPreviousAttempts = async (quizId) => {
       try {
@@ -902,99 +1114,102 @@ export default {
           .eq('quiz_id', quizId)
           .eq('student_id', studentInfo.value.student_id)
           .in('status', ['submitted', 'graded', 'reviewed'])
-          .order('attempt_number', { ascending: false });
+          .order('attempt_number', { ascending: false })
 
-        previousAttempts.value = data || [];
+        previousAttempts.value = data || []
       } catch (error) {
-        console.error('Error loading previous attempts:', error);
+        console.error('Error loading previous attempts:', error)
       }
-    };
+    }
 
     const startQuiz = async () => {
-      if (!canTakeCurrentQuiz.value || isStarting.value) return;
-      
-      isStarting.value = true;
-      console.log('🚀 Starting quiz:', selectedQuiz.value.id);
-      
+      if (!canTakeCurrentQuiz.value || isStarting.value) return
+
+      isStarting.value = true
+      console.log('🚀 Starting quiz:', selectedQuiz.value.id)
+
       try {
         await supabase
           .from('quiz_attempts')
           .delete()
           .eq('quiz_id', selectedQuiz.value.id)
           .eq('student_id', studentInfo.value.student_id)
-          .eq('status', 'in_progress');
+          .eq('status', 'in_progress')
 
-        console.log('✅ Cleaned up old attempts');
+        console.log('✅ Cleaned up old attempts')
 
-        console.log('📥 Loading questions...');
+        console.log('📥 Loading questions...')
         const { data: questionsData, error: questionsError } = await supabase
           .from('quiz_questions')
           .select('id, question_number, question_type, question_text, points')
           .eq('quiz_id', selectedQuiz.value.id)
-          .order('question_number');
+          .order('question_number')
 
         if (questionsError) {
-          console.error('❌ Questions error:', questionsError);
-          throw new Error('Failed to load questions: ' + questionsError.message);
+          console.error('❌ Questions error:', questionsError)
+          throw new Error('Failed to load questions: ' + questionsError.message)
         }
 
         if (!questionsData || questionsData.length === 0) {
-          throw new Error('No questions found for this quiz');
+          throw new Error('No questions found for this quiz')
         }
 
-        console.log(`✅ Loaded ${questionsData.length} questions`);
+        console.log(`✅ Loaded ${questionsData.length} questions`)
 
         const questionsWithOptions = await Promise.all(
           questionsData.map(async (question) => {
-            console.log(`📝 Processing Q${question.question_number}: ${question.question_type}`);
-            
+            console.log(`📝 Processing Q${question.question_number}: ${question.question_type}`)
+
             if (question.question_type === 'multiple_choice') {
               const { data: options, error: optionsError } = await supabase
                 .from('question_options')
                 .select('id, option_number, option_text, is_correct')
                 .eq('question_id', question.id)
-                .order('option_number');
+                .order('option_number')
 
               if (optionsError) {
-                console.error(`❌ Options error for Q${question.id}:`, optionsError);
-                return { ...question, options: [] };
+                console.error(`❌ Options error for Q${question.id}:`, optionsError)
+                return { ...question, options: [] }
               }
 
-              console.log(`   ✅ Loaded ${options?.length || 0} options`);
+              console.log(`   ✅ Loaded ${options?.length || 0} options`)
 
-              let finalOptions = options || [];
+              let finalOptions = options || []
               if (selectedQuiz.value.shuffle_options && finalOptions.length > 0) {
-                finalOptions = shuffleArray(finalOptions);
-                console.log(`   🔀 Shuffled options`);
+                finalOptions = shuffleArray(finalOptions)
+                console.log(`   🔀 Shuffled options`)
               }
 
-              return { ...question, options: finalOptions };
-            } else if (question.question_type === 'true_false' || question.question_type === 'fill_blank') {
+              return { ...question, options: finalOptions }
+            } else if (
+              question.question_type === 'true_false' ||
+              question.question_type === 'fill_blank'
+            ) {
               const { data: answer } = await supabase
                 .from('question_answers')
                 .select('correct_answer, case_sensitive')
                 .eq('question_id', question.id)
-                .single();
+                .single()
 
-              return { ...question, correct_answer: answer };
+              return { ...question, correct_answer: answer }
             }
-            
-            return { ...question, options: [] };
-          })
-        );
+
+            return { ...question, options: [] }
+          }),
+        )
 
         if (selectedQuiz.value.shuffle_questions) {
-          questions.value = shuffleArray(questionsWithOptions);
-          console.log('🔀 Questions shuffled');
+          questions.value = shuffleArray(questionsWithOptions)
+          console.log('🔀 Questions shuffled')
         } else {
-          questions.value = questionsWithOptions;
+          questions.value = questionsWithOptions
         }
 
         if (questions.value.length === 0) {
-          throw new Error('No questions loaded');
+          throw new Error('No questions loaded')
         }
 
-        const maxScore = questions.value.reduce((sum, q) => sum + (q.points || 1), 0);
+        const maxScore = questions.value.reduce((sum, q) => sum + (q.points || 1), 0)
 
         const { data: allAttempts } = await supabase
           .from('quiz_attempts')
@@ -1002,17 +1217,16 @@ export default {
           .eq('quiz_id', selectedQuiz.value.id)
           .eq('student_id', studentInfo.value.student_id)
           .order('attempt_number', { ascending: false })
-          .limit(1);
+          .limit(1)
 
-        const nextAttemptNumber = allAttempts && allAttempts.length > 0 
-          ? allAttempts[0].attempt_number + 1 
-          : 1;
+        const nextAttemptNumber =
+          allAttempts && allAttempts.length > 0 ? allAttempts[0].attempt_number + 1 : 1
 
-        console.log('📝 Creating attempt #' + nextAttemptNumber);
+        console.log('📝 Creating attempt #' + nextAttemptNumber)
 
-        let attempt = null;
-        let retryCount = 0;
-        const maxRetries = 3;
+        let attempt = null
+        let retryCount = 0
+        const maxRetries = 3
 
         while (!attempt && retryCount < maxRetries) {
           try {
@@ -1023,313 +1237,316 @@ export default {
                 student_id: studentInfo.value.student_id,
                 attempt_number: nextAttemptNumber,
                 max_score: maxScore,
-                status: 'in_progress'
+                status: 'in_progress',
               })
               .select()
-              .single();
+              .single()
 
             if (attemptError) {
-              throw attemptError;
+              throw attemptError
             }
 
-            attempt = attemptData;
+            attempt = attemptData
           } catch (error) {
-            retryCount++;
-            console.log(`⚠️ Attempt creation retry ${retryCount}/${maxRetries}`);
+            retryCount++
+            console.log(`⚠️ Attempt creation retry ${retryCount}/${maxRetries}`)
             if (retryCount >= maxRetries) {
-              throw new Error('Failed to create quiz attempt after retries: ' + error.message);
+              throw new Error('Failed to create quiz attempt after retries: ' + error.message)
             }
-            await new Promise(resolve => setTimeout(resolve, 500));
+            await new Promise((resolve) => setTimeout(resolve, 500))
           }
         }
 
         if (!attempt) {
-          throw new Error('Failed to create quiz attempt');
+          throw new Error('Failed to create quiz attempt')
         }
 
-        currentAttempt.value = attempt;
-        console.log('✅ Attempt created:', attempt.id);
+        currentAttempt.value = attempt
+        console.log('✅ Attempt created:', attempt.id)
 
         const { data: verifyAttempt, error: verifyError } = await supabase
           .from('quiz_attempts')
           .select('id, status')
           .eq('id', attempt.id)
-          .single();
+          .single()
 
         if (verifyError || !verifyAttempt) {
-          throw new Error('Failed to verify attempt creation');
+          throw new Error('Failed to verify attempt creation')
         }
 
-        console.log('✅ Attempt verified:', verifyAttempt.id);
+        console.log('✅ Attempt verified:', verifyAttempt.id)
 
-        studentAnswers.value = {};
-        questions.value.forEach(q => {
+        studentAnswers.value = {}
+        questions.value.forEach((q) => {
           studentAnswers.value[q.id] = {
             selected_option_id: null,
             answer_text: '',
-            attempt_id: attempt.id
-          };
-        });
+            attempt_id: attempt.id,
+          }
+        })
 
-        console.log('✅ Initialized answers for', questions.value.length, 'questions');
+        console.log('✅ Initialized answers for', questions.value.length, 'questions')
 
         if (selectedQuiz.value.has_time_limit) {
-          timeRemaining.value = selectedQuiz.value.time_limit_minutes * 60;
-          startTimer();
-          console.log('⏱️ Timer started:', selectedQuiz.value.time_limit_minutes, 'minutes');
+          timeRemaining.value = selectedQuiz.value.time_limit_minutes * 60
+          startTimer()
+          console.log('⏱️ Timer started:', selectedQuiz.value.time_limit_minutes, 'minutes')
         }
 
-        startTime.value = Date.now();
-        currentQuestionIndex.value = 0;
-        takingQuiz.value = true;
+        startTime.value = Date.now()
+        currentQuestionIndex.value = 0
+        takingQuiz.value = true
 
-        console.log('🎉 Quiz started successfully!');
-
+        console.log('🎉 Quiz started successfully!')
       } catch (error) {
-        console.error('❌ Error starting quiz:', error);
-        alert(`Failed to start quiz: ${error.message}`);
-        currentAttempt.value = null;
-        questions.value = [];
-        studentAnswers.value = {};
-        takingQuiz.value = false;
+        console.error('❌ Error starting quiz:', error)
+        alert(`Failed to start quiz: ${error.message}`)
+        currentAttempt.value = null
+        questions.value = []
+        studentAnswers.value = {}
+        takingQuiz.value = false
       } finally {
-        isStarting.value = false;
+        isStarting.value = false
       }
-    };
+    }
 
     const startTimer = () => {
-      if (timerInterval.value) clearInterval(timerInterval.value);
+      if (timerInterval.value) clearInterval(timerInterval.value)
 
       timerInterval.value = setInterval(() => {
-        timeRemaining.value--;
+        timeRemaining.value--
         if (timeRemaining.value <= 0) {
-          clearInterval(timerInterval.value);
-          alert('Time is up!');
-          submitQuiz();
+          clearInterval(timerInterval.value)
+          alert('Time is up!')
+          submitQuiz()
         }
-      }, 1000);
-    };
+      }, 1000)
+    }
 
     const saveAnswer = async (questionId) => {
       try {
         if (!currentAttempt.value || !currentAttempt.value.id) {
-          console.error('❌ No active attempt - cannot save answer');
-          return false;
+          console.error('❌ No active attempt - cannot save answer')
+          return false
         }
 
-        const question = questions.value.find(q => q.id === questionId);
+        const question = questions.value.find((q) => q.id === questionId)
         if (!question) {
-          console.error('❌ Question not found:', questionId);
-          return false;
+          console.error('❌ Question not found:', questionId)
+          return false
         }
 
-        const answer = studentAnswers.value[questionId];
+        const answer = studentAnswers.value[questionId]
         if (!answer) {
-          console.error('❌ No answer data for question:', questionId);
-          return false;
+          console.error('❌ No answer data for question:', questionId)
+          return false
         }
 
-        console.log('💾 Saving answer for Q' + question.question_number);
+        console.log('💾 Saving answer for Q' + question.question_number)
 
         const answerData = {
           attempt_id: currentAttempt.value.id,
           question_id: questionId,
           selected_option_id: answer.selected_option_id || null,
-          answer_text: answer.answer_text && answer.answer_text.trim() ? answer.answer_text.trim() : null,
-          points_possible: parseFloat(question.points) || 1.00,
+          answer_text:
+            answer.answer_text && answer.answer_text.trim() ? answer.answer_text.trim() : null,
+          points_possible: parseFloat(question.points) || 1.0,
           is_correct: false,
-          points_earned: 0
-        };
+          points_earned: 0,
+        }
 
-        let saved = false;
-        let retryCount = 0;
-        const maxRetries = 3;
+        let saved = false
+        let retryCount = 0
+        const maxRetries = 3
 
         while (!saved && retryCount < maxRetries) {
           try {
-            const { data, error } = await supabase
+            const { error } = await supabase
               .from('student_answers')
-              .upsert(answerData, { 
-                onConflict: 'attempt_id,question_id'
+              .upsert(answerData, {
+                onConflict: 'attempt_id,question_id',
               })
-              .select();
+              .select()
 
             if (error) {
-              throw error;
+              throw error
             }
 
-            saved = true;
-            console.log('✅ Answer saved to student_answers table');
+            saved = true
+            console.log('✅ Answer saved to student_answers table')
           } catch (error) {
-            retryCount++;
-            console.log(`⚠️ Save answer retry ${retryCount}/${maxRetries}:`, error.message);
+            retryCount++
+            console.log(`⚠️ Save answer retry ${retryCount}/${maxRetries}:`, error.message)
             if (retryCount >= maxRetries) {
-              console.error('❌ Error saving answer after retries:', error.message);
-              return false;
+              console.error('❌ Error saving answer after retries:', error.message)
+              return false
             }
-            await new Promise(resolve => setTimeout(resolve, 300));
+            await new Promise((resolve) => setTimeout(resolve, 300))
           }
         }
 
-        return saved;
-
+        return saved
       } catch (error) {
-        console.error('❌ Exception saving answer:', error);
-        return false;
+        console.error('❌ Exception saving answer:', error)
+        return false
       }
-    };
+    }
 
     const selectOption = async (questionId, optionId) => {
-      console.log('✅ Selected option:', { questionId, optionId });
-      studentAnswers.value[questionId].selected_option_id = optionId;
-      studentAnswers.value[questionId].answer_text = '';
-      await saveAnswer(questionId);
-    };
+      console.log('✅ Selected option:', { questionId, optionId })
+      studentAnswers.value[questionId].selected_option_id = optionId
+      studentAnswers.value[questionId].answer_text = ''
+      await saveAnswer(questionId)
+    }
 
     const selectTrueFalse = async (questionId, value) => {
-      console.log('✅ Selected true/false:', { questionId, value });
-      studentAnswers.value[questionId].answer_text = value;
-      studentAnswers.value[questionId].selected_option_id = null;
-      await saveAnswer(questionId);
-    };
+      console.log('✅ Selected true/false:', { questionId, value })
+      studentAnswers.value[questionId].answer_text = value
+      studentAnswers.value[questionId].selected_option_id = null
+      await saveAnswer(questionId)
+    }
 
     const autoSaveAnswer = (questionId) => {
-      if (saveTimeout) clearTimeout(saveTimeout);
+      if (saveTimeout) clearTimeout(saveTimeout)
       saveTimeout = setTimeout(() => {
-        console.log('⏱️ Auto-saving answer for Q' + questionId);
-        saveAnswer(questionId);
-      }, 500);
-    };
+        console.log('⏱️ Auto-saving answer for Q' + questionId)
+        saveAnswer(questionId)
+      }, 500)
+    }
 
     const previousQuestion = () => {
       if (currentQuestionIndex.value > 0) {
-        currentQuestionIndex.value--;
+        currentQuestionIndex.value--
       }
-    };
+    }
 
     const nextQuestion = () => {
       if (currentQuestionIndex.value < questions.value.length - 1) {
-        currentQuestionIndex.value++;
+        currentQuestionIndex.value++
       }
-    };
+    }
 
     const goToQuestion = (index) => {
-      currentQuestionIndex.value = index;
-    };
+      currentQuestionIndex.value = index
+    }
 
     const showSubmitConfirmation = () => {
-      console.log('📋 Showing submit confirmation...');
-      showSubmitModal.value = true;
-    };
+      console.log('📋 Showing submit confirmation...')
+      showSubmitModal.value = true
+    }
 
     const submitQuiz = async () => {
       if (isSubmitting.value) {
-        console.log('⚠️ Already submitting, ignoring duplicate request');
-        return;
+        console.log('⚠️ Already submitting, ignoring duplicate request')
+        return
       }
-      
-      isSubmitting.value = true;
-      showSubmitModal.value = false;
 
-      console.log('📤 Starting quiz submission with AUTO-GRADING...');
+      isSubmitting.value = true
+      showSubmitModal.value = false
+
+      console.log('📤 Starting quiz submission with AUTO-GRADING...')
 
       try {
         if (timerInterval.value) {
-          clearInterval(timerInterval.value);
-          timerInterval.value = null;
-          console.log('⏹️ Timer stopped');
+          clearInterval(timerInterval.value)
+          timerInterval.value = null
+          console.log('⏹️ Timer stopped')
         }
 
-        const timeTaken = Math.floor((Date.now() - startTime.value) / 1000);
-        const timeTakenMinutes = Math.ceil(timeTaken / 60);
-        console.log(`⏱️ Time taken: ${timeTakenMinutes} minutes`);
+        const timeTaken = Math.floor((Date.now() - startTime.value) / 1000)
+        const timeTakenMinutes = Math.ceil(timeTaken / 60)
+        console.log(`⏱️ Time taken: ${timeTakenMinutes} minutes`)
 
         if (!currentAttempt.value || !currentAttempt.value.id) {
-          throw new Error('No active quiz attempt found');
+          throw new Error('No active quiz attempt found')
         }
 
-        console.log('🔍 Attempt ID:', currentAttempt.value.id);
+        console.log('🔍 Attempt ID:', currentAttempt.value.id)
 
         const { data: attemptCheck, error: checkError } = await supabase
           .from('quiz_attempts')
           .select('id, status')
           .eq('id', currentAttempt.value.id)
-          .single();
+          .single()
 
         if (checkError || !attemptCheck) {
-          throw new Error('Quiz attempt not found in database');
+          throw new Error('Quiz attempt not found in database')
         }
 
-        console.log('✅ Attempt verified in database:', attemptCheck.id);
-        console.log('📊 Answers submitted:', answeredCount.value, 'out of', questions.value.length);
+        console.log('✅ Attempt verified in database:', attemptCheck.id)
+        console.log('📊 Answers submitted:', answeredCount.value, 'out of', questions.value.length)
 
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 500))
 
-        console.log('🎯 AUTO-GRADING: Starting automatic grading process...');
+        console.log('🎯 AUTO-GRADING: Starting automatic grading process...')
 
-        let totalScore = 0;
-        let gradedAnswers = [];
+        let totalScore = 0
+        const gradedAnswers: any[] = []
 
         for (const question of questions.value) {
-          const studentAnswer = studentAnswers.value[question.id];
-          let isCorrect = false;
-          let pointsEarned = 0;
+          const studentAnswer = studentAnswers.value[question.id]
+          let isCorrect = false
+          let pointsEarned = 0
 
           if (question.question_type === 'multiple_choice') {
             if (studentAnswer.selected_option_id) {
-              const selectedOption = question.options.find(opt => opt.id === studentAnswer.selected_option_id);
-              isCorrect = selectedOption ? selectedOption.is_correct : false;
-              pointsEarned = isCorrect ? question.points : 0;
+              const selectedOption = question.options.find(
+                (opt) => opt.id === studentAnswer.selected_option_id,
+              )
+              isCorrect = selectedOption ? selectedOption.is_correct : false
+              pointsEarned = isCorrect ? question.points : 0
             }
           } else if (question.question_type === 'true_false') {
             if (studentAnswer.answer_text && question.correct_answer) {
-              const studentAns = studentAnswer.answer_text.toLowerCase().trim();
-              const correctAns = question.correct_answer.correct_answer.toLowerCase().trim();
-              isCorrect = studentAns === correctAns;
-              pointsEarned = isCorrect ? question.points : 0;
+              const studentAns = studentAnswer.answer_text.toLowerCase().trim()
+              const correctAns = question.correct_answer.correct_answer.toLowerCase().trim()
+              isCorrect = studentAns === correctAns
+              pointsEarned = isCorrect ? question.points : 0
             }
           } else if (question.question_type === 'fill_blank') {
             if (studentAnswer.answer_text && question.correct_answer) {
-              const studentAns = question.correct_answer.case_sensitive 
+              const studentAns = question.correct_answer.case_sensitive
                 ? studentAnswer.answer_text.trim()
-                : studentAnswer.answer_text.toLowerCase().trim();
+                : studentAnswer.answer_text.toLowerCase().trim()
               const correctAns = question.correct_answer.case_sensitive
                 ? question.correct_answer.correct_answer.trim()
-                : question.correct_answer.correct_answer.toLowerCase().trim();
-              isCorrect = studentAns === correctAns;
-              pointsEarned = isCorrect ? question.points : 0;
+                : question.correct_answer.correct_answer.toLowerCase().trim()
+              isCorrect = studentAns === correctAns
+              pointsEarned = isCorrect ? question.points : 0
             }
           }
 
-          totalScore += pointsEarned;
+          totalScore += pointsEarned
 
           gradedAnswers.push({
             attempt_id: currentAttempt.value.id,
             question_id: question.id,
             is_correct: isCorrect,
-            points_earned: pointsEarned
-          });
+            points_earned: pointsEarned,
+          })
 
-          console.log(`   Q${question.question_number}: ${isCorrect ? '✅' : '❌'} ${pointsEarned}/${question.points} pts`);
+          console.log(
+            `   Q${question.question_number}: ${isCorrect ? '✅' : '❌'} ${pointsEarned}/${question.points} pts`,
+          )
         }
 
-        console.log(`🎯 Total Score: ${totalScore}/${currentAttempt.value.max_score}`);
+        console.log(`🎯 Total Score: ${totalScore}/${currentAttempt.value.max_score}`)
 
-        const percentage = (totalScore / currentAttempt.value.max_score) * 100;
-        console.log(`📊 Percentage: ${percentage.toFixed(2)}%`);
+        const percentage = (totalScore / currentAttempt.value.max_score) * 100
+        console.log(`📊 Percentage: ${percentage.toFixed(2)}%`)
 
         for (const gradedAnswer of gradedAnswers) {
           await supabase
             .from('student_answers')
             .update({
               is_correct: gradedAnswer.is_correct,
-              points_earned: gradedAnswer.points_earned
+              points_earned: gradedAnswer.points_earned,
             })
             .eq('attempt_id', gradedAnswer.attempt_id)
-            .eq('question_id', gradedAnswer.question_id);
+            .eq('question_id', gradedAnswer.question_id)
         }
 
-        console.log('✅ All answers graded and updated');
+        console.log('✅ All answers graded and updated')
 
         const { error: attemptUpdateError } = await supabase
           .from('quiz_attempts')
@@ -1340,207 +1557,264 @@ export default {
             percentage: percentage,
             status: 'graded',
             auto_graded: true,
-            graded_at: new Date().toISOString()
+            graded_at: new Date().toISOString(),
           })
-          .eq('id', currentAttempt.value.id);
+          .eq('id', currentAttempt.value.id)
 
         if (attemptUpdateError) {
-          throw new Error('Failed to update attempt: ' + attemptUpdateError.message);
+          throw new Error('Failed to update attempt: ' + attemptUpdateError.message)
         }
 
-        console.log('✅ Quiz attempt updated to GRADED status');
+        console.log('✅ Quiz attempt updated to GRADED status')
 
-        const { data: existingResult } =await supabase
-.from('quiz_results')
-.select('*')
-.eq('quiz_id', selectedQuiz.value.id)
-.eq('student_id', studentInfo.value.student_id)
-.single();
-    const { data: allAttempts } = await supabase
-      .from('quiz_attempts')
-      .select('id, total_score, percentage')
-      .eq('quiz_id', selectedQuiz.value.id)
-      .eq('student_id', studentInfo.value.student_id)
-      .in('status', ['submitted', 'graded', 'reviewed'])
-      .order('percentage', { ascending: false });
+        const { data: existingResult } = await supabase
+          .from('quiz_results')
+          .select('*')
+          .eq('quiz_id', selectedQuiz.value.id)
+          .eq('student_id', studentInfo.value.student_id)
+          .single()
+        const { data: allAttempts } = await supabase
+          .from('quiz_attempts')
+          .select('id, total_score, percentage')
+          .eq('quiz_id', selectedQuiz.value.id)
+          .eq('student_id', studentInfo.value.student_id)
+          .in('status', ['submitted', 'graded', 'reviewed'])
+          .order('percentage', { ascending: false })
 
-    const bestAttempt = allAttempts && allAttempts.length > 0 ? allAttempts[0] : null;
-    const totalAttempts = allAttempts ? allAttempts.length : 0;
+        const bestAttempt = allAttempts && allAttempts.length > 0 ? allAttempts[0] : null
+        const totalAttempts = allAttempts ? allAttempts.length : 0
 
-    if (existingResult) {
-      await supabase
-        .from('quiz_results')
-        .update({
-          best_attempt_id: bestAttempt?.id,
-          best_score: bestAttempt?.total_score || 0,
-          best_percentage: bestAttempt?.percentage || 0,
-          total_attempts: totalAttempts,
-          latest_attempt_date: new Date().toISOString(),
-          status: 'graded',
-          visible_to_student: true
-        })
-        .eq('quiz_id', selectedQuiz.value.id)
-        .eq('student_id', studentInfo.value.student_id);
-    } else {
-      await supabase
-        .from('quiz_results')
-        .insert({
-          quiz_id: selectedQuiz.value.id,
-          student_id: studentInfo.value.student_id,
-          best_attempt_id: bestAttempt?.id,
-          best_score: bestAttempt?.total_score || 0,
-          best_percentage: bestAttempt?.percentage || 0,
-          total_attempts: totalAttempts,
-          latest_attempt_date: new Date().toISOString(),
-          status: 'graded',
-          visible_to_student: true
-        });
+        if (existingResult) {
+          await supabase
+            .from('quiz_results')
+            .update({
+              best_attempt_id: bestAttempt?.id,
+              best_score: bestAttempt?.total_score || 0,
+              best_percentage: bestAttempt?.percentage || 0,
+              total_attempts: totalAttempts,
+              latest_attempt_date: new Date().toISOString(),
+              status: 'graded',
+              visible_to_student: true,
+            })
+            .eq('quiz_id', selectedQuiz.value.id)
+            .eq('student_id', studentInfo.value.student_id)
+        } else {
+          await supabase.from('quiz_results').insert({
+            quiz_id: selectedQuiz.value.id,
+            student_id: studentInfo.value.student_id,
+            best_attempt_id: bestAttempt?.id,
+            best_score: bestAttempt?.total_score || 0,
+            best_percentage: bestAttempt?.percentage || 0,
+            total_attempts: totalAttempts,
+            latest_attempt_date: new Date().toISOString(),
+            status: 'graded',
+            visible_to_student: true,
+          })
+        }
+
+        console.log('✅ Quiz results updated')
+
+        const { data: finalAttempt } = await supabase
+          .from('quiz_attempts')
+          .select('*')
+          .eq('id', currentAttempt.value.id)
+          .single()
+
+        submittedAttempt.value = finalAttempt
+
+        console.log('✅ Quiz AUTO-GRADED and submitted successfully!')
+
+        // Store quiz ID for feedback survey context
+        lastCompletedQuizId.value = selectedQuiz.value.id
+
+        // Show brief success message
+        alert(
+          `🎉 Quiz submitted and graded automatically!\n\nYour Score: ${totalScore.toFixed(2)}/${currentAttempt.value.max_score}\nPercentage: ${percentage.toFixed(2)}%`,
+        )
+
+        takingQuiz.value = false
+        currentAttempt.value = null
+        questions.value = []
+        studentAnswers.value = {}
+        currentQuestionIndex.value = 0
+        startTime.value = null
+        timeRemaining.value = 0
+
+        console.log('🔄 Reloading quizzes...')
+        await loadQuizzes()
+
+        selectedQuiz.value = null
+
+        // Show feedback survey after quiz completion (randomly 30% of the time to not overwhelm)
+        const shouldShowSurvey = Math.random() < 0.3
+        if (shouldShowSurvey) {
+          setTimeout(() => {
+            showFeedbackSurvey.value = true
+          }, 1000)
+        }
+
+        console.log('✅ Submission complete - returned to quiz list')
+      } catch (error) {
+        console.error('❌ Submission error:', error)
+        console.error('Error message:', error.message)
+
+        let errorMessage = 'Failed to submit and grade quiz.\n\n'
+        if (error.message.includes('not found')) {
+          errorMessage += 'Your quiz attempt could not be found. Please contact your teacher.'
+        } else if (error.message.includes('connection')) {
+          errorMessage += 'Network error. Please check your internet connection.'
+        } else if (error.message.includes('database')) {
+          errorMessage += 'Database error. Please contact your teacher.'
+        } else {
+          errorMessage += error.message
+        }
+
+        alert(errorMessage)
+
+        if (selectedQuiz.value?.has_time_limit && takingQuiz.value) {
+          console.log('🔄 Restarting timer...')
+          startTimer()
+        }
+      } finally {
+        isSubmitting.value = false
+      }
     }
 
-    console.log('✅ Quiz results updated');
-
-    const { data: finalAttempt } = await supabase
-      .from('quiz_attempts')
-      .select('*')
-      .eq('id', currentAttempt.value.id)
-      .single();
-
-    submittedAttempt.value = finalAttempt;
-
-    console.log('✅ Quiz AUTO-GRADED and submitted successfully!');
-
-    alert(`🎉 Quiz submitted and graded automatically!\n\nYour Score: ${totalScore.toFixed(2)}/${currentAttempt.value.max_score}\nPercentage: ${percentage.toFixed(2)}%\n\nYour responses have been saved.`);
-
-    const completedQuizId = selectedQuiz.value.id;
-    takingQuiz.value = false;
-    currentAttempt.value = null;
-    questions.value = [];
-    studentAnswers.value = {};
-    currentQuestionIndex.value = 0;
-    startTime.value = null;
-    timeRemaining.value = 0;
-
-    console.log('🔄 Reloading quizzes...');
-    await loadQuizzes();
-    
-    selectedQuiz.value = null;
-    
-    console.log('✅ Submission complete - returned to quiz list');
-
-  } catch (error) {
-    console.error('❌ Submission error:', error);
-    console.error('Error message:', error.message);
-    
-    let errorMessage = 'Failed to submit and grade quiz.\n\n';
-    if (error.message.includes('not found')) {
-      errorMessage += 'Your quiz attempt could not be found. Please contact your teacher.';
-    } else if (error.message.includes('connection')) {
-      errorMessage += 'Network error. Please check your internet connection.';
-    } else if (error.message.includes('database')) {
-      errorMessage += 'Database error. Please contact your teacher.';
-    } else {
-      errorMessage += error.message;
+    const getQuestionTypeLabel = (type) => {
+      const labels = {
+        multiple_choice: 'Multiple Choice',
+        true_false: 'True/False',
+        fill_blank: 'Fill in the Blank',
+      }
+      return labels[type] || type
     }
 
-    alert(errorMessage);
-    
-    if (selectedQuiz.value?.has_time_limit && takingQuiz.value) {
-      console.log('🔄 Restarting timer...');
-      startTimer();
+    const goBack = () => {
+      if (takingQuiz.value) {
+        if (confirm('Leave quiz? Progress will be lost.')) {
+          if (timerInterval.value) clearInterval(timerInterval.value)
+          takingQuiz.value = false
+          currentAttempt.value = null
+          questions.value = []
+          studentAnswers.value = {}
+          selectedQuiz.value = null
+        }
+      } else {
+        router.back()
+      }
     }
 
-  } finally {
-    isSubmitting.value = false;
-  }
-};
-
-const getQuestionTypeLabel = (type) => {
-  const labels = {
-    'multiple_choice': 'Multiple Choice',
-    'true_false': 'True/False',
-    'fill_blank': 'Fill in the Blank'
-  };
-  return labels[type] || type;
-};
-
-const goBack = () => {
-  if (takingQuiz.value) {
-    if (confirm('Leave quiz? Progress will be lost.')) {
-      if (timerInterval.value) clearInterval(timerInterval.value);
-      takingQuiz.value = false;
-      currentAttempt.value = null;
-      questions.value = [];
-      studentAnswers.value = {};
-      selectedQuiz.value = null;
+    // Feedback survey handlers
+    const closeFeedbackSurvey = () => {
+      showFeedbackSurvey.value = false
+      lastCompletedQuizId.value = null
     }
-  } else {
-    router.back();
-  }
-};
 
-onMounted(async () => {
-  console.log('🔧 Component mounted - initializing...');
-  
-  const studentLoaded = await loadStudentInfo();
-  if (!studentLoaded) {
-    console.error('❌ Failed to load student info');
-    router.push('/login');
-    return;
-  }
+    const handleFeedbackSubmitted = (feedbackData: any) => {
+      console.log('✅ Feedback submitted:', feedbackData)
+      showFeedbackSurvey.value = false
+      lastCompletedQuizId.value = null
+    }
 
-  const paramsLoaded = loadRouteParams();
-  if (!paramsLoaded) {
-    console.error('❌ Failed to load route params');
-    alert('Missing information');
-    router.push('/student/subjects');
-    return;
-  }
+    onMounted(async () => {
+      console.log('🔧 Component mounted - initializing...')
 
-  await loadQuizzes();
-  setupRealtimeSubscription();
-  loading.value = false;
-  
-  console.log('✅ Component initialization complete');
-});
+      const studentLoaded = await loadStudentInfo()
+      if (!studentLoaded) {
+        console.error('❌ Failed to load student info')
+        router.push('/login')
+        return
+      }
 
-onUnmounted(() => {
-  console.log('🧹 Component unmounting - cleaning up...');
-  
-  if (timerInterval.value) {
-    clearInterval(timerInterval.value);
-    timerInterval.value = null;
-  }
-  
-  if (saveTimeout) {
-    clearTimeout(saveTimeout);
-    saveTimeout = null;
-  }
-  
-  if (quizSubscription) {
-    supabase.removeChannel(quizSubscription);
-    quizSubscription = null;
-  }
-  
-  console.log('✅ Cleanup complete');
-});
+      const paramsLoaded = loadRouteParams()
+      if (!paramsLoaded) {
+        console.error('❌ Failed to load route params')
+        alert('Missing information')
+        router.push('/student/subjects')
+        return
+      }
 
-return {
-  loading, studentInfo, subject, section, quizzes, newQuizzes, pastQuizzes,
-  completedQuizzes, selectedQuiz, takingQuiz, currentAttempt,
-  questions, studentAnswers, currentQuestionIndex, timeRemaining, previousAttempts,
-  canTakeCurrentQuiz, quizUnavailableReason, isStarting, showSubmitModal,
-  isSubmitting, answeredCount, unansweredCount, remainingAttempts, showingResults,
-  submittedAttempt,
-  formatPHTime, formatTime,
-  getQuizStatus, getQuizResult, getQuizAvailabilityClass, getQuizAvailabilityText,
-  viewQuizDetails, startQuiz, selectOption, selectTrueFalse, autoSaveAnswer,
-  previousQuestion, nextQuestion, goToQuestion, showSubmitConfirmation,
-  submitQuiz, getQuestionTypeLabel, goBack
-};
+      await loadQuizzes()
+      setupRealtimeSubscription()
+      loading.value = false
+
+      console.log('✅ Component initialization complete')
+    })
+
+    onUnmounted(() => {
+      console.log('🧹 Component unmounting - cleaning up...')
+
+      if (timerInterval.value) {
+        clearInterval(timerInterval.value)
+        timerInterval.value = null
+      }
+
+      if (saveTimeout) {
+        clearTimeout(saveTimeout)
+        saveTimeout = null
+      }
+
+      if (quizSubscription) {
+        supabase.removeChannel(quizSubscription)
+        quizSubscription = null
+      }
+
+      console.log('✅ Cleanup complete')
+    })
+
+    return {
+      loading,
+      studentInfo,
+      subject,
+      section,
+      quizzes,
+      newQuizzes,
+      pastQuizzes,
+      completedQuizzes,
+      selectedQuiz,
+      takingQuiz,
+      currentAttempt,
+      questions,
+      studentAnswers,
+      currentQuestionIndex,
+      timeRemaining,
+      previousAttempts,
+      canTakeCurrentQuiz,
+      quizUnavailableReason,
+      isStarting,
+      showSubmitModal,
+      isSubmitting,
+      answeredCount,
+      unansweredCount,
+      remainingAttempts,
+      showingResults,
+      submittedAttempt,
+      showFeedbackSurvey,
+      lastCompletedQuizId,
+      formatPHTime,
+      formatTime,
+      getQuizStatus,
+      getQuizResult,
+      getQuizAvailabilityClass,
+      getQuizAvailabilityText,
+      viewQuizDetails,
+      startQuiz,
+      selectOption,
+      selectTrueFalse,
+      autoSaveAnswer,
+      previousQuestion,
+      nextQuestion,
+      goToQuestion,
+      showSubmitConfirmation,
+      submitQuiz,
+      getQuestionTypeLabel,
+      goBack,
+      closeFeedbackSurvey,
+      handleFeedbackSubmitted,
+    }
+  },
 }
-};
 </script>
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -1553,7 +1827,7 @@ return {
 
 .take-quiz-page {
   min-height: 100vh;
-  background: #FBFFE4;
+  background: #fbffe4;
   padding: 1.5rem;
   font-family: 'Inter', sans-serif;
 }
@@ -1564,7 +1838,7 @@ return {
 
 /* Header */
 .section-header-card {
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(61, 141, 122, 0.08);
   background: white;
@@ -1576,7 +1850,7 @@ return {
 
 .dark .section-header-card {
   background: #23272b;
-  border: 1px solid #3D8D7A;
+  border: 1px solid #3d8d7a;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
@@ -1595,7 +1869,7 @@ return {
 .section-header-icon {
   width: 56px;
   height: 56px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1611,7 +1885,7 @@ return {
 }
 
 .dark .section-header-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-header-subtitle {
@@ -1620,7 +1894,7 @@ return {
 }
 
 .dark .section-header-subtitle {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .section-header-description {
@@ -1629,7 +1903,7 @@ return {
 }
 
 .dark .section-header-description {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .back-btn {
@@ -1645,11 +1919,11 @@ return {
   border: 2px solid #20c997;
   background: #20c997;
   color: #181c20;
-  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.10);
+  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.1);
 }
 
 .back-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
   box-shadow: 0 4px 16px rgba(61, 141, 122, 0.18);
@@ -1658,11 +1932,11 @@ return {
 .dark .back-btn {
   background: #20c997;
   color: #181c20;
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
 }
 
 .dark .back-btn:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
 }
@@ -1681,13 +1955,15 @@ return {
   width: 48px;
   height: 48px;
   border: 4px solid #e5e7eb;
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Stats Grid */
@@ -1700,14 +1976,14 @@ return {
 
 .stat-card {
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   border-radius: 12px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.10);
+  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.1);
 }
 
 .stat-card:hover {
@@ -1717,7 +1993,7 @@ return {
 
 .dark .stat-card {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .stat-icon {
@@ -1727,12 +2003,12 @@ return {
 .stat-value {
   font-size: 2rem;
   font-weight: 700;
-  color: #3D8D7A;
+  color: #3d8d7a;
   line-height: 1;
 }
 
 .dark .stat-value {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .stat-label {
@@ -1742,7 +2018,7 @@ return {
 }
 
 .dark .stat-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Quiz Categories */
@@ -1767,7 +2043,7 @@ return {
 }
 
 .dark .category-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .category-icon {
@@ -1775,7 +2051,7 @@ return {
 }
 
 .category-count {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -1799,12 +2075,12 @@ return {
 /* Quiz Cards */
 .quiz-card {
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   border-radius: 12px;
   padding: 1.5rem;
   position: relative;
   transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.10);
+  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.1);
 }
 
 .quiz-card:hover {
@@ -1814,7 +2090,7 @@ return {
 
 .dark .quiz-card {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .quiz-badge {
@@ -1829,12 +2105,12 @@ return {
 }
 
 .new-badge {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 
 .completed-badge {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -1855,7 +2131,7 @@ return {
 }
 
 .dark .quiz-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-code {
@@ -1871,12 +2147,12 @@ return {
 }
 
 .dark .code-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .code-value {
-  background: #FBFFE4;
-  color: #3D8D7A;
+  background: #fbffe4;
+  color: #3d8d7a;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-weight: 600;
@@ -1885,7 +2161,7 @@ return {
 
 .dark .code-value {
   background: #181c20;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-description {
@@ -1896,7 +2172,7 @@ return {
 }
 
 .dark .quiz-description {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-meta {
@@ -1909,7 +2185,7 @@ return {
 }
 
 .dark .quiz-meta {
-  border-bottom-color: #3D8D7A;
+  border-bottom-color: #3d8d7a;
 }
 
 .meta-item {
@@ -1921,11 +2197,11 @@ return {
 }
 
 .dark .meta-item {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-schedule {
-  background: #FBFFE4;
+  background: #fbffe4;
   border-radius: 8px;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -1951,20 +2227,20 @@ return {
 }
 
 .dark .schedule-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .schedule-time {
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-weight: 600;
 }
 
 .dark .schedule-time {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-result {
-  background: #FBFFE4;
+  background: #fbffe4;
   border-radius: 8px;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -1988,17 +2264,17 @@ return {
 }
 
 .dark .score-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .score-value {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dark .score-value {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .result-attempts {
@@ -2007,7 +2283,7 @@ return {
 }
 
 .dark .result-attempts {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-actions {
@@ -2037,14 +2313,14 @@ return {
 }
 
 .btn-primary:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
 }
 
 .btn-secondary {
   background: transparent;
-  color: #A3D1C6;
+  color: #a3d1c6;
   border: 2px solid #20c997;
 }
 
@@ -2068,12 +2344,12 @@ return {
   padding: 4rem 2rem;
   background: white;
   border-radius: 12px;
-  border: 2px dashed #A3D1C6;
+  border: 2px dashed #a3d1c6;
 }
 
 .dark .empty-state {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .empty-icon {
@@ -2089,7 +2365,7 @@ return {
 }
 
 .dark .empty-state h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .empty-state p {
@@ -2098,7 +2374,7 @@ return {
 }
 
 .dark .empty-state p {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Quiz Details View */
@@ -2111,7 +2387,7 @@ return {
 
 .dark .content-card {
   background: #23272b;
-  border: 1px solid #3D8D7A;
+  border: 1px solid #3d8d7a;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
@@ -2145,7 +2421,7 @@ return {
   cursor: pointer;
   border: none;
   background: transparent;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .back-link:hover {
@@ -2153,7 +2429,7 @@ return {
 }
 
 .dark .back-link {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-status-badge {
@@ -2164,7 +2440,7 @@ return {
 }
 
 .quiz-status-badge.available {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 
@@ -2179,8 +2455,8 @@ return {
 }
 
 .quiz-info-card {
-  background: #FBFFE4;
-  border: 1px solid #A3D1C6;
+  background: #fbffe4;
+  border: 1px solid #a3d1c6;
   border-radius: 12px;
   padding: 2rem;
   margin-bottom: 1.5rem;
@@ -2188,7 +2464,7 @@ return {
 
 .dark .quiz-info-card {
   background: #181c20;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .details-title {
@@ -2199,7 +2475,7 @@ return {
 }
 
 .dark .details-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-code-display {
@@ -2210,12 +2486,12 @@ return {
   padding: 0.75rem;
   background: white;
   border-radius: 8px;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
 }
 
 .dark .quiz-code-display {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .quiz-code-display .code-label {
@@ -2225,13 +2501,13 @@ return {
 }
 
 .dark .quiz-code-display .code-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .quiz-code-display .code-value {
   font-size: 1.25rem;
-  background: #FBFFE4;
-  color: #3D8D7A;
+  background: #fbffe4;
+  color: #3d8d7a;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-weight: 700;
@@ -2241,7 +2517,7 @@ return {
 
 .dark .quiz-code-display .code-value {
   background: #181c20;
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .details-description {
@@ -2252,7 +2528,7 @@ return {
 }
 
 .dark .details-description {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .info-grid {
@@ -2269,12 +2545,12 @@ return {
   padding: 1rem;
   background: white;
   border-radius: 8px;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 
 .dark .info-item {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .info-icon {
@@ -2295,17 +2571,17 @@ return {
 }
 
 .dark .info-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .info-value {
   font-size: 1rem;
   font-weight: 600;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dark .info-value {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .schedule-info {
@@ -2320,19 +2596,19 @@ return {
 }
 
 .dark .schedule-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .schedule-details {
   background: white;
   border-radius: 8px;
   padding: 1rem;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 
 .dark .schedule-details {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .schedule-row {
@@ -2348,7 +2624,7 @@ return {
 }
 
 .dark .schedule-row:not(:last-child) {
-  border-bottom-color: #3D8D7A;
+  border-bottom-color: #3d8d7a;
 }
 
 .schedule-icon {
@@ -2375,7 +2651,7 @@ return {
 }
 
 .dark .attempts-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .attempts-list {
@@ -2391,31 +2667,31 @@ return {
   padding: 1rem;
   background: white;
   border-radius: 8px;
-  border: 1px solid #A3D1C6;
+  border: 1px solid #a3d1c6;
 }
 
 .dark .attempt-item {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .attempt-number {
   font-weight: 600;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dark .attempt-number {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .attempt-score {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dark .attempt-score {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .attempt-date {
@@ -2424,19 +2700,19 @@ return {
 }
 
 .dark .attempt-date {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .action-card {
-  background: #FBFFE4;
-  border: 2px solid #3D8D7A;
+  background: #fbffe4;
+  border: 2px solid #3d8d7a;
   border-radius: 12px;
   padding: 2rem;
 }
 
 .dark .action-card {
   background: #181c20;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .warning-message {
@@ -2469,7 +2745,7 @@ return {
 }
 
 .btn-start-quiz:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #23272b;
   border-color: #20c997;
   transform: translateY(-2px);
@@ -2492,19 +2768,19 @@ return {
 
 .quiz-timer-header {
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.10);
+  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.1);
 }
 
 .dark .quiz-timer-header {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .timer-info {
@@ -2520,18 +2796,18 @@ return {
 }
 
 .dark .timer-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .timer-display {
   font-size: 2rem;
   font-weight: 700;
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-family: 'Courier New', monospace;
 }
 
 .dark .timer-display {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .timer-warning {
@@ -2540,8 +2816,13 @@ return {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .progress-info {
@@ -2559,7 +2840,7 @@ return {
 }
 
 .dark .progress-info > span {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .progress-bar {
@@ -2571,32 +2852,32 @@ return {
 }
 
 .dark .progress-bar {
-  background: #3D8D7A;
+  background: #3d8d7a;
 }
 
 .progress-fill {
   height: 100%;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 4px;
   transition: width 0.3s ease;
 }
 
 .dark .progress-fill {
-  background: #A3D1C6;
+  background: #a3d1c6;
 }
 
 /* Question Container */
 .question-container {
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.10);
+  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.1);
 }
 
 .dark .question-container {
   background: #23272b;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .question-card {
@@ -2611,7 +2892,7 @@ return {
 }
 
 .question-number-badge {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -2627,19 +2908,19 @@ return {
 }
 
 .question-type-badge.multiple_choice {
-  background: #B3D8A8;
+  background: #b3d8a8;
   color: #1f2937;
 }
 
 .question-type-badge.true_false {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #1f2937;
 }
 
 .question-type-badge.fill_blank {
-  background: #FBFFE4;
+  background: #fbffe4;
   color: #1f2937;
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
 }
 
 .question-text {
@@ -2651,7 +2932,7 @@ return {
 }
 
 .dark .question-text {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Answer Options */
@@ -2666,8 +2947,8 @@ return {
   align-items: center;
   gap: 1rem;
   padding: 1.25rem;
-  background: #FBFFE4;
-  border: 2px solid #A3D1C6;
+  background: #fbffe4;
+  border: 2px solid #a3d1c6;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
@@ -2675,39 +2956,39 @@ return {
 
 .option-item:hover {
   background: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateX(4px);
 }
 
 .option-item.selected {
   background: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.2);
 }
 
 .dark .option-item {
   background: #181c20;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .dark .option-item:hover,
 .dark .option-item.selected {
   background: #23272b;
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
   box-shadow: 0 0 0 3px rgba(163, 209, 198, 0.2);
 }
 
 .option-radio {
   width: 20px;
   height: 20px;
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   border-radius: 50%;
   position: relative;
   flex-shrink: 0;
 }
 
 .option-item.selected .option-radio {
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .option-item.selected .option-radio::after {
@@ -2718,16 +2999,16 @@ return {
   transform: translate(-50%, -50%);
   width: 10px;
   height: 10px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 50%;
 }
 
 .dark .option-item.selected .option-radio::after {
-  background: #A3D1C6;
+  background: #a3d1c6;
 }
 
 .option-letter {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   width: 32px;
   height: 32px;
@@ -2747,7 +3028,7 @@ return {
 }
 
 .dark .option-text {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* True/False Options */
@@ -2763,8 +3044,8 @@ return {
   align-items: center;
   gap: 0.75rem;
   padding: 2rem 1rem;
-  background: #FBFFE4;
-  border: 2px solid #A3D1C6;
+  background: #fbffe4;
+  border: 2px solid #a3d1c6;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
@@ -2772,25 +3053,25 @@ return {
 
 .tf-option:hover {
   background: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: scale(1.05);
 }
 
 .tf-option.selected {
   background: white;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.2);
 }
 
 .dark .tf-option {
   background: #181c20;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .dark .tf-option:hover,
 .dark .tf-option.selected {
   background: #23272b;
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
   box-shadow: 0 0 0 3px rgba(163, 209, 198, 0.2);
 }
 
@@ -2805,7 +3086,7 @@ return {
 }
 
 .dark .tf-label {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 /* Fill in the Blank */
@@ -2816,9 +3097,9 @@ return {
 .fill-blank-input {
   width: 100%;
   padding: 1rem 1.25rem;
-  border: 2px solid #A3D1C6;
+  border: 2px solid #a3d1c6;
   border-radius: 8px;
-  background: #FBFFE4;
+  background: #fbffe4;
   font-size: 1rem;
   color: #1f2937;
   font-family: 'Inter', sans-serif;
@@ -2827,20 +3108,20 @@ return {
 
 .fill-blank-input:focus {
   outline: none;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   background: white;
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.2);
 }
 
 .dark .fill-blank-input {
   background: #181c20;
-  color: #A3D1C6;
-  border-color: #3D8D7A;
+  color: #a3d1c6;
+  border-color: #3d8d7a;
 }
 
 .dark .fill-blank-input:focus {
   background: #23272b;
-  border-color: #A3D1C6;
+  border-color: #a3d1c6;
   box-shadow: 0 0 0 3px rgba(163, 209, 198, 0.2);
 }
 
@@ -2856,7 +3137,7 @@ return {
 }
 
 .dark .question-navigation {
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
 }
 
 .question-indicators {
@@ -2881,40 +3162,40 @@ return {
 }
 
 .indicator-dot.active {
-  background: #3D8D7A;
+  background: #3d8d7a;
   transform: scale(1.3);
 }
 
 .indicator-dot.answered {
-  background: #B3D8A8;
+  background: #b3d8a8;
 }
 
 .indicator-dot.answered.active {
-  background: #3D8D7A;
+  background: #3d8d7a;
 }
 
 .dark .indicator-dot {
-  background: #3D8D7A;
+  background: #3d8d7a;
 }
 
 .dark .indicator-dot.active {
-  background: #A3D1C6;
+  background: #a3d1c6;
 }
 
 .dark .indicator-dot.answered {
-  background: #B3D8A8;
+  background: #b3d8a8;
 }
 
 .btn-submit {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
 }
 
 .btn-submit:hover {
-  background: #A3D1C6;
+  background: #a3d1c6;
   color: #1f2937;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-2px);
 }
 
@@ -2946,7 +3227,7 @@ return {
 
 .dark .modal-content {
   background: #23272b;
-  border: 1px solid #3D8D7A;
+  border: 1px solid #3d8d7a;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
@@ -2966,7 +3247,7 @@ return {
 }
 
 .dark .modal-header {
-  border-bottom-color: #3D8D7A;
+  border-bottom-color: #3d8d7a;
 }
 
 .modal-header h3 {
@@ -2976,7 +3257,7 @@ return {
 }
 
 .dark .modal-header h3 {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-close {
@@ -3000,7 +3281,7 @@ return {
 }
 
 .dark .modal-close {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .dark .modal-close:hover {
@@ -3015,12 +3296,12 @@ return {
 }
 
 .modal-icon {
-  color: #3D8D7A;
+  color: #3d8d7a;
   flex-shrink: 0;
 }
 
 .dark .modal-icon {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-text {
@@ -3035,7 +3316,7 @@ return {
 }
 
 .dark .modal-title {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-description {
@@ -3045,7 +3326,7 @@ return {
 }
 
 .dark .modal-description {
-  color: #A3D1C6;
+  color: #a3d1c6;
 }
 
 .modal-actions {
@@ -3057,7 +3338,7 @@ return {
 }
 
 .dark .modal-actions {
-  border-top-color: #3D8D7A;
+  border-top-color: #3d8d7a;
 }
 
 .modal-actions .btn {

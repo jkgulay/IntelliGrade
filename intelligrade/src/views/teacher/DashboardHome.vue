@@ -10,23 +10,26 @@
             <span class="brand-name">IntelliGrade</span>
           </div>
         </div>
-        
+
         <!-- Center: Empty space for clean look -->
-        <div class="navbar-center">
-        </div>
-        
+        <div class="navbar-center"></div>
+
         <!-- Right: User Profile and Notifications -->
         <div class="navbar-right">
           <!-- Notification Bell -->
           <div class="notif-wrapper">
-            <button class="nav-icon-btn rounded-bg" @click="toggleNotifDropdown" aria-label="Notifications">
+            <button
+              class="nav-icon-btn rounded-bg"
+              @click="toggleNotifDropdown"
+              aria-label="Notifications"
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
               <span v-if="unreadCount > 0" class="notification-badge">{{ unreadCount }}</span>
             </button>
-            
+
             <!-- Notification Dropdown -->
             <div v-if="showNotifDropdown" class="notification-dropdown">
               <div class="dropdown-header">
@@ -39,11 +42,11 @@
                 <div v-if="notifications.length === 0" class="no-notifications">
                   No new notifications
                 </div>
-                <div 
-                  v-for="notif in notifications" 
-                  :key="notif.id" 
-                  class="notification-item" 
-                  :class="{ 'unread': !notif.viewed }"
+                <div
+                  v-for="notif in notifications"
+                  :key="notif.id"
+                  class="notification-item"
+                  :class="{ unread: !notif.viewed }"
                   @click="handleNotificationClick(notif)"
                 >
                   <div class="notif-content">
@@ -58,7 +61,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- User Profile -->
           <div class="user-profile-wrapper">
             <div class="user-profile rounded-bg" @click="toggleProfileDropdown">
@@ -69,11 +72,17 @@
                 </svg>
               </div>
               <span class="user-name">{{ fullName }}</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="dropdown-arrow">
-                <path d="M7 10l5 5 5-5z"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="dropdown-arrow"
+              >
+                <path d="M7 10l5 5 5-5z" />
               </svg>
             </div>
-            
+
             <!-- Profile Dropdown -->
             <div v-if="showProfileDropdown" class="profile-dropdown">
               <div class="dropdown-header">
@@ -90,20 +99,24 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="dropdown-menu">
                 <router-link to="/teacher/settings" class="dropdown-item">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"/>
+                    <path
+                      d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"
+                    />
                   </svg>
                   <span>Profile & Settings</span>
                 </router-link>
-                
+
                 <div class="dropdown-divider"></div>
-                
+
                 <button @click="logout" class="dropdown-item logout-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"/>
+                    <path
+                      d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"
+                    />
                   </svg>
                   <span>Logout</span>
                 </button>
@@ -115,46 +128,111 @@
     </nav>
 
     <!-- Sidebar Navigation - Custom Tooltip Labels on Hover -->
-    <aside class="sidebar" style="background:#3D8D7A; border-right:none;">
+    <aside class="sidebar" style="background: #3d8d7a; border-right: none">
       <nav class="sidebar-nav">
-        <router-link to="/teacher/dashboard" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/dashboard' }">
+        <router-link
+          to="/teacher/dashboard"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/dashboard' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M10 20v-6h4v6m5-8h3L12 3 2 12h3v8h5v-6h4v6h5v-8z" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Dashboard</span>
         </router-link>
-        <router-link to="/teacher/subjects" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/subjects' }">
+        <router-link
+          to="/teacher/subjects"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/subjects' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="7" width="18" height="13" rx="2" />
               <path d="M3 7l9-4 9 4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Classes</span>
         </router-link>
-        <router-link to="/teacher/gradebook" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/gradebook' }">
+        <router-link
+          to="/teacher/gradebook"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/gradebook' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="4" y="4" width="16" height="16" rx="2" />
               <path d="M8 2v4M16 2v4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Gradebook</span>
         </router-link>
-        <router-link to="/teacher/upload-assessment" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/upload-assessment' }">
+        <router-link
+          to="/teacher/upload-assessment"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/upload-assessment' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M12 19V6M5 12l7-7 7 7" />
               <rect x="5" y="19" width="14" height="2" rx="1" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Upload Assessment</span>
         </router-link>
-        <router-link to="/teacher/analytics" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/analytics' }">
+        <router-link
+          to="/teacher/analytics"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/analytics' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="12" width="4" height="8" />
               <rect x="10" y="8" width="4" height="12" />
               <rect x="17" y="4" width="4" height="16" />
@@ -162,9 +240,22 @@
           </div>
           <span class="sidebar-tooltip">Analytics</span>
         </router-link>
-        <router-link to="/teacher/messages" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/messages' }">
+        <router-link
+          to="/teacher/messages"
+          class="sidebar-item rounded-bg"
+          :class="{ active: $route.path === '/teacher/messages' }"
+        >
           <div class="sidebar-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="M3 5l9 7 9-7" />
             </svg>
@@ -179,10 +270,10 @@
       <!-- Scroll to Top Button -->
       <button v-if="showScrollTop" @click="scrollToTop" class="scroll-to-top">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 14l5-5 5 5z"/>
+          <path d="M7 14l5-5 5 5z" />
         </svg>
       </button>
-      
+
       <!-- Welcome Header -->
       <div class="welcome-header">
         <div class="welcome-content">
@@ -195,7 +286,9 @@
         <div class="quick-actions">
           <router-link to="/teacher/subjects" class="quick-action-btn primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+              <path
+                d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+              />
             </svg>
             <span>Create Quiz</span>
           </router-link>
@@ -229,7 +322,9 @@
           <div class="stat-card">
             <div class="stat-icon students">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 17v2H2v-2s0-4 7-4 7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 0 0-1.93.59 5 5 0 0 1 0 5.82A3.39 3.39 0 0 0 15 11a3.5 3.5 0 0 0 0-7z"/>
+                <path
+                  d="M16 17v2H2v-2s0-4 7-4 7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 0 0-1.93.59 5 5 0 0 1 0 5.82A3.39 3.39 0 0 0 15 11a3.5 3.5 0 0 0 0-7z"
+                />
               </svg>
             </div>
             <div class="stat-info">
@@ -279,7 +374,9 @@
               <div class="card-actions">
                 <button class="refresh-btn" @click="refreshAssessments">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" />
+                    <path
+                      d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z"
+                    />
                   </svg>
                 </button>
               </div>
@@ -287,23 +384,40 @@
             <div class="assessment-grid">
               <div v-if="assessmentsToGrade.length === 0" class="empty-state">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" opacity="0.3">
-                  <path d="M19 3H14.82C14.4 1.84 13.3 1 12 1S9.6 1.84 9.18 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"/>
+                  <path
+                    d="M19 3H14.82C14.4 1.84 13.3 1 12 1S9.6 1.84 9.18 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"
+                  />
                 </svg>
                 <h4>All caught up!</h4>
                 <p>No assessments need grading right now</p>
               </div>
-              <div v-for="assessment in assessmentsToGrade" :key="assessment.id" class="assessment-card">
+              <div
+                v-for="assessment in assessmentsToGrade"
+                :key="assessment.id"
+                class="assessment-card"
+              >
                 <div class="assessment-header">
                   <h4>{{ assessment.title }}</h4>
-                  <span class="assessment-badge">{{ assessment.studentsSubmitted }} submissions</span>
+                  <span class="assessment-badge"
+                    >{{ assessment.studentsSubmitted }} submissions</span
+                  >
                 </div>
                 <p class="assessment-class">{{ assessment.className }}</p>
                 <div class="assessment-footer">
                   <div class="progress-info">
                     <div class="progress-bar">
-                      <div class="progress-fill" :style="{ width: (assessment.studentsSubmitted / assessment.totalStudents * 100) + '%' }"></div>
+                      <div
+                        class="progress-fill"
+                        :style="{
+                          width:
+                            (assessment.studentsSubmitted / assessment.totalStudents) * 100 + '%',
+                        }"
+                      ></div>
                     </div>
-                    <span class="progress-text">{{ assessment.studentsSubmitted }} / {{ assessment.totalStudents }} submitted</span>
+                    <span class="progress-text"
+                      >{{ assessment.studentsSubmitted }} /
+                      {{ assessment.totalStudents }} submitted</span
+                    >
                   </div>
                   <button @click="gradeAssessment(assessment)" class="grade-assessment-btn">
                     Grade
@@ -321,13 +435,14 @@
                 <p class="card-description">Common tasks</p>
               </div>
             </div>
-            
 
             <div class="action-grid">
               <router-link to="/teacher/subjects" class="action-item">
                 <div class="action-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+                    <path
+                      d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"
+                    />
                   </svg>
                 </div>
                 <div class="action-content">
@@ -335,11 +450,13 @@
                   <p>View and edit your subjects</p>
                 </div>
               </router-link>
-              
+
               <router-link to="/teacher/gradebook" class="action-item">
                 <div class="action-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3Z" />
+                    <path
+                      d="M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3Z"
+                    />
                   </svg>
                 </div>
                 <div class="action-content">
@@ -347,7 +464,7 @@
                   <p>Review student grades</p>
                 </div>
               </router-link>
-              
+
               <router-link to="/teacher/upload-assessment" class="action-item">
                 <div class="action-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -359,11 +476,13 @@
                   <p>Add new materials</p>
                 </div>
               </router-link>
-              
+
               <router-link to="/teacher/subjects" class="action-item">
                 <div class="action-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                    <path
+                      d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                    />
                   </svg>
                 </div>
                 <div class="action-content">
@@ -385,17 +504,29 @@
         </div>
         <div class="modal-body">
           <div class="logout-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-              <polyline points="16 17 21 12 16 7"/>
-              <line x1="21" y1="12" x2="9" y2="12"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
             </svg>
           </div>
           <p class="logout-message">Are you sure you want to logout?</p>
           <p class="logout-submessage">You will be redirected to the login page.</p>
         </div>
         <div class="modal-footer logout-footer">
-          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">Cancel</button>
+          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">
+            Cancel
+          </button>
           <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
             <span v-if="!isLoggingOut">Logout</span>
             <span v-else class="loading-text">
@@ -409,7 +540,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, computed, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { supabase } from '../../supabase.js'
@@ -444,7 +575,7 @@ let statsIntervalId = null
 let notifIntervalId = null
 
 const unreadCount = computed(() => {
-  return notifications.value.filter(n => !n.viewed).length
+  return notifications.value.filter((n) => !n.viewed).length
 })
 
 const toggleNotifDropdown = () => {
@@ -456,9 +587,9 @@ const toggleNotifDropdown = () => {
 }
 
 const markNotificationsAsViewed = () => {
-  notifications.value = notifications.value.map(notif => ({
+  notifications.value = notifications.value.map((notif) => ({
     ...notif,
-    viewed: true
+    viewed: true,
   }))
   saveViewedNotifications()
 }
@@ -468,9 +599,7 @@ const markAllAsViewed = () => {
 }
 
 const saveViewedNotifications = () => {
-  const viewedIds = notifications.value
-    .filter(n => n.viewed)
-    .map(n => n.id)
+  const viewedIds = notifications.value.filter((n) => n.viewed).map((n) => n.id)
   localStorage.setItem(`teacher_${teacherId.value}_viewed_notifications`, JSON.stringify(viewedIds))
 }
 
@@ -514,15 +643,33 @@ const closeLogoutModal = () => {
   showLogoutModal.value = false
 }
 
-const confirmLogout = () => {
+const confirmLogout = async () => {
   console.log('🚪 Logging out...')
+  isLoggingOut.value = true
+
+  // Clear storage immediately
   localStorage.clear()
   sessionStorage.clear()
-  supabase.auth.signOut().catch(err => console.log('Signout error:', err))
-  setTimeout(() => {
-    window.location.assign('/login')
-  }, 100)
-  console.log('✅ Logout initiated')
+
+  // Set a timeout to force redirect after 2 seconds regardless of signOut result
+  const forceRedirect = setTimeout(() => {
+    console.log('⏱️ Force redirecting to login...')
+    window.location.replace('/login')
+  }, 2000)
+
+  try {
+    // Sign out from Supabase with timeout
+    await Promise.race([
+      supabase.auth.signOut(),
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+    ])
+    console.log('✅ Logout successful')
+  } catch (err) {
+    console.error('❌ Logout error:', err)
+  } finally {
+    clearTimeout(forceRedirect)
+    window.location.replace('/login')
+  }
 }
 
 const logout = () => {
@@ -542,8 +689,8 @@ const gradeAssessment = (assessment) => {
     query: {
       assessmentId: assessment.id,
       sectionId: assessment.sectionId,
-      subjectId: assessment.subjectId
-    }
+      subjectId: assessment.subjectId,
+    },
   })
 }
 
@@ -554,8 +701,11 @@ const loadTeacherProfile = async () => {
     console.log('========================================')
     console.log('🔍 LOADING TEACHER PROFILE')
     console.log('========================================')
-    
-    const { data: { user }, error: userError } = await supabase.auth.getUser()
+
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser()
     if (userError || !user) {
       console.error('❌ No user found:', userError)
       fullName.value = 'Teacher'
@@ -565,30 +715,30 @@ const loadTeacherProfile = async () => {
       }, 2000)
       return false
     }
-    
+
     userId.value = user.id
     console.log('✅ Step 1: User authenticated')
     console.log('   User ID:', user.id)
     console.log('   Email:', user.email)
-    
+
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
       .select('*')
       .eq('auth_user_id', user.id)
       .single()
-    
+
     if (profileError || !profile) {
       console.error('❌ Profile error:', profileError)
       fullName.value = 'Teacher'
       isLoadingName.value = false
       return false
     }
-    
+
     console.log('✅ Step 2: Profile found')
     console.log('   Profile ID:', profile.id)
     console.log('   Full Name:', profile.full_name)
     console.log('   Role:', profile.role)
-    
+
     if (profile.role !== 'teacher') {
       console.error('❌ Access denied: Role is', profile.role, 'not teacher')
       fullName.value = 'Teacher'
@@ -596,13 +746,13 @@ const loadTeacherProfile = async () => {
       router.replace('/login')
       return false
     }
-    
+
     const { data: teacher, error: teacherError } = await supabase
       .from('teachers')
       .select('*')
       .eq('profile_id', profile.id)
       .single()
-    
+
     if (teacherError || !teacher) {
       console.error('❌ Teacher record error:', teacherError)
       console.log('⚠️ Using profile name as fallback')
@@ -611,25 +761,24 @@ const loadTeacherProfile = async () => {
       isLoadingName.value = false
       return false
     }
-    
+
     console.log('✅ Step 3: Teacher record found')
     console.log('   Teacher ID:', teacher.id)
     console.log('   Full Name:', teacher.full_name)
     console.log('   Employee ID:', teacher.employee_id)
     console.log('   Department:', teacher.department)
-    
+
     teacherId.value = teacher.id
     fullName.value = teacher.full_name || profile.full_name || 'Teacher'
-    
+
     console.log('========================================')
     console.log('✅ PROFILE LOADED SUCCESSFULLY')
     console.log('   Display Name:', fullName.value)
     console.log('   Teacher ID:', teacherId.value)
     console.log('========================================')
-    
+
     isLoadingName.value = false
     return true
-    
   } catch (error) {
     console.error('❌ CRITICAL ERROR loading profile:', error)
     console.error('Error message:', error.message)
@@ -645,44 +794,96 @@ const loadNotifications = async () => {
     console.warn('⚠️ No teacher ID, cannot load notifications')
     return
   }
-  
+
   try {
     console.log('🔔 Loading notifications for teacher:', teacherId.value)
-    
+
     const allNotifications = []
     const yesterday = new Date()
     yesterday.setDate(yesterday.getDate() - 1)
     const yesterdayISO = yesterday.toISOString()
     const viewedIds = loadViewedNotifications()
-    
+
+    // First get subject IDs for this teacher
+    const { data: teacherSubjects } = await supabase
+      .from('subjects')
+      .select('id')
+      .eq('teacher_id', teacherId.value)
+
+    const subjectIds = teacherSubjects?.map((s) => s.id) || []
+
+    // Then get section IDs for those subjects
+    const { data: teacherSections } =
+      subjectIds.length > 0
+        ? await supabase.from('sections').select('id').in('subject_id', subjectIds)
+        : { data: [] }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const sectionIds = teacherSections?.map((s: any) => s.id) || []
+
+    // Get quiz IDs from those sections
+    const { data: teacherQuizzes } = await supabase
+      .from('quizzes')
+      .select('id')
+      .in('section_id', sectionIds)
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const quizIds = teacherQuizzes?.map((q: any) => q.id) || []
+
     try {
-      const { data: recentSubmissions, error: submissionsError } = await supabase
-        .from('quiz_attempts')
-        .select(`
-          id,
-          submitted_at,
-          student_id,
-          quiz_id,
-          quizzes!inner(title, teacher_id),
-          students!inner(full_name)
-        `)
-        .eq('quizzes.teacher_id', teacherId.value)
-        .eq('status', 'submitted')
-        .gte('submitted_at', yesterdayISO)
-        .order('submitted_at', { ascending: false })
-        .limit(10)
-      
+      if (quizIds.length === 0) {
+        console.log('No quizzes found for teacher')
+      }
+
+      // Fetch quiz attempts without !inner join (no FK from quiz_attempts to students)
+      const { data: recentSubmissions, error: submissionsError } =
+        quizIds.length > 0
+          ? await supabase
+              .from('quiz_attempts')
+              .select(
+                `
+            id,
+            submitted_at,
+            student_id,
+            quiz_id
+          `,
+              )
+              .in('quiz_id', quizIds)
+              .eq('status', 'submitted')
+              .gte('submitted_at', yesterdayISO)
+              .order('submitted_at', { ascending: false })
+              .limit(10)
+          : { data: [], error: null }
+
       if (!submissionsError && recentSubmissions) {
-        const submissionNotifications = recentSubmissions.map(submission => {
+        // Fetch related data separately
+        const studentIds = [...new Set(recentSubmissions.map((s) => s.student_id))]
+        const quizIdsFromSubmissions = [...new Set(recentSubmissions.map((s) => s.quiz_id))]
+
+        const [studentsResult, quizzesResult] = await Promise.all([
+          studentIds.length > 0
+            ? supabase.from('students').select('id, full_name').in('id', studentIds)
+            : { data: [] },
+          quizIdsFromSubmissions.length > 0
+            ? supabase.from('quizzes').select('id, title').in('id', quizIdsFromSubmissions)
+            : { data: [] },
+        ])
+
+        const studentsMap = new Map((studentsResult.data || []).map((s) => [s.id, s.full_name]))
+        const quizzesMap = new Map((quizzesResult.data || []).map((q) => [q.id, q.title]))
+
+        const submissionNotifications = recentSubmissions.map((submission) => {
           const notifId = `submission-${submission.id}`
+          const studentName = studentsMap.get(submission.student_id) || 'Student'
+          const quizTitle = quizzesMap.get(submission.quiz_id) || 'Quiz'
           return {
             id: notifId,
             title: '📝 New Quiz Submission',
-            body: `${submission.students.full_name} submitted "${submission.quizzes.title}"`,
+            body: `${studentName} submitted "${quizTitle}"`,
             date: new Date(submission.submitted_at).toLocaleString(),
             timestamp: new Date(submission.submitted_at).getTime(),
             type: 'submission',
-            viewed: viewedIds.includes(notifId)
+            viewed: viewedIds.includes(notifId),
           }
         })
         allNotifications.push(...submissionNotifications)
@@ -691,112 +892,143 @@ const loadNotifications = async () => {
     } catch (error) {
       console.error('❌ Error loading quiz submissions:', error)
     }
-    
+
     try {
+      // Filter messages by recipient_id (direct filter, no nested join needed)
       const { data: unreadMessages, error: messagesError } = await supabase
         .from('messages')
-        .select(`
-          id, 
-          message_text, 
+        .select(
+          `
+          id,
+          message_text,
           sent_at,
           sender_id,
           section_id,
-          sections!inner(
+          sections(
             name,
             subject_id,
-            subjects!inner(name, teacher_id)
+            subjects(name)
           )
-        `)
-        .eq('sections.subjects.teacher_id', teacherId.value)
+        `,
+        )
         .eq('recipient_id', teacherId.value)
         .eq('message_type', 'direct')
         .gte('sent_at', yesterdayISO)
         .order('sent_at', { ascending: false })
         .limit(10)
-      
+
       if (!messagesError && unreadMessages) {
         for (const message of unreadMessages) {
-          const { data: readStatus } = await supabase
-            .from('message_reads')
-            .select('id')
-            .eq('message_id', message.id)
-            .eq('reader_id', teacherId.value)
+          // Skip message_reads check since table may not exist - show all recent messages as notifications
+          const { data: student } = await supabase
+            .from('students')
+            .select('full_name')
+            .eq('id', message.sender_id)
             .single()
-          
-          if (!readStatus) {
-            const { data: student } = await supabase
-              .from('students')
-              .select('full_name')
-              .eq('id', message.sender_id)
-              .single()
-            
-            const notifId = `message-${message.id}`
-            allNotifications.push({
-              id: notifId,
-              title: '💬 New Message',
-              body: `${student?.full_name || 'Student'}: ${message.message_text.substring(0, 50)}${message.message_text.length > 50 ? '...' : ''}`,
-              date: new Date(message.sent_at).toLocaleString(),
-              timestamp: new Date(message.sent_at).getTime(),
-              type: 'message',
-              messageId: message.id,
-              viewed: viewedIds.includes(notifId)
-            })
-          }
+
+          const notifId = `message-${message.id}`
+          allNotifications.push({
+            id: notifId,
+            title: '💬 New Message',
+            body: `${student?.full_name || 'Student'}: ${message.message_text.substring(0, 50)}${message.message_text.length > 50 ? '...' : ''}`,
+            date: new Date(message.sent_at).toLocaleString(),
+            timestamp: new Date(message.sent_at).getTime(),
+            type: 'message',
+            messageId: message.id,
+            viewed: viewedIds.includes(notifId),
+          })
         }
-        console.log('✅ Loaded', allNotifications.filter(n => n.type === 'message').length, 'message notifications')
+        console.log(
+          '✅ Loaded',
+          allNotifications.filter((n) => n.type === 'message').length,
+          'message notifications',
+        )
       }
     } catch (msgError) {
       console.log('ℹ️ Error loading messages:', msgError.message)
     }
-    
+
     try {
-      const { data: recentEnrollments, error: enrollError } = await supabase
-        .from('enrollments')
-        .select(`
-          id,
-          enrolled_at,
-          student_id,
-          section_id,
-          students!inner(full_name),
-          sections!inner(
-            name,
-            subject_id,
-            subjects!inner(name, teacher_id)
-          )
-        `)
-        .eq('sections.subjects.teacher_id', teacherId.value)
-        .eq('status', 'active')
-        .gte('enrolled_at', yesterdayISO)
-        .order('enrolled_at', { ascending: false })
-        .limit(10)
-      
-      if (!enrollError && recentEnrollments) {
-        const enrollmentNotifications = recentEnrollments.map(enrollment => {
+      // Use section IDs already fetched above (sectionIds variable)
+      // Enrollments table has proper FKs to students, sections, and subjects
+      const { data: recentEnrollments, error: enrollError } =
+        sectionIds.length > 0
+          ? await supabase
+              .from('enrollments')
+              .select(
+                `
+            id,
+            enrolled_at,
+            student_id,
+            section_id
+          `,
+              )
+              .in('section_id', sectionIds)
+              .eq('status', 'active')
+              .gte('enrolled_at', yesterdayISO)
+              .order('enrolled_at', { ascending: false })
+              .limit(10)
+          : { data: [], error: null }
+
+      if (!enrollError && recentEnrollments && recentEnrollments.length > 0) {
+        // Fetch related data separately to avoid !inner join issues
+        const studentIds = [...new Set(recentEnrollments.map((e) => e.student_id))]
+        const enrollmentSectionIds = [...new Set(recentEnrollments.map((e) => e.section_id))]
+
+        const [studentsResult, sectionsResult] = await Promise.all([
+          supabase.from('students').select('id, full_name').in('id', studentIds),
+          supabase.from('sections').select('id, name, subject_id').in('id', enrollmentSectionIds),
+        ])
+
+        const studentsMap = new Map((studentsResult.data || []).map((s) => [s.id, s.full_name]))
+        const sectionsMap = new Map(
+          (sectionsResult.data || []).map((s) => [
+            s.id,
+            { name: s.name, subject_id: s.subject_id },
+          ]),
+        )
+
+        // Fetch subjects for sections
+        const subjectIds = [...new Set((sectionsResult.data || []).map((s) => s.subject_id))]
+        const subjectsResult =
+          subjectIds.length > 0
+            ? await supabase.from('subjects').select('id, name').in('id', subjectIds)
+            : { data: [] }
+        const subjectsMap = new Map((subjectsResult.data || []).map((s) => [s.id, s.name]))
+
+        const enrollmentNotifications = recentEnrollments.map((enrollment) => {
           const notifId = `enrollment-${enrollment.id}`
+          const studentName = studentsMap.get(enrollment.student_id) || 'Student'
+          const sectionInfo = sectionsMap.get(enrollment.section_id)
+          const sectionName = sectionInfo?.name || 'Section'
+          const subjectName = sectionInfo?.subject_id
+            ? subjectsMap.get(sectionInfo.subject_id) || 'Subject'
+            : 'Subject'
+
           return {
             id: notifId,
             title: '👥 New Student Enrolled',
-            body: `${enrollment.students.full_name} joined ${enrollment.sections.subjects.name} - ${enrollment.sections.name}`,
+            body: `${studentName} joined ${subjectName} - ${sectionName}`,
             date: new Date(enrollment.enrolled_at).toLocaleString(),
             timestamp: new Date(enrollment.enrolled_at).getTime(),
             type: 'enrollment',
             sectionId: enrollment.section_id,
-            subjectId: enrollment.sections.subject_id,
-            viewed: viewedIds.includes(notifId)
+            subjectId: sectionInfo?.subject_id,
+            viewed: viewedIds.includes(notifId),
           }
         })
         allNotifications.push(...enrollmentNotifications)
         console.log('✅ Loaded', enrollmentNotifications.length, 'enrollment notifications')
       }
-    } catch (enrollError) {
-      console.log('ℹ️ Error loading enrollments:', enrollError.message)
+    } catch (enrollError: unknown) {
+      const errorMessage = enrollError instanceof Error ? enrollError.message : 'Unknown error'
+      console.log('ℹ️ Error loading enrollments:', errorMessage)
     }
-    
+
     allNotifications.sort((a, b) => b.timestamp - a.timestamp)
     notifications.value = allNotifications
     console.log('✅ Total notifications loaded:', allNotifications.length)
-    console.log('📊 Unread notifications:', allNotifications.filter(n => !n.viewed).length)
-    
+    console.log('📊 Unread notifications:', allNotifications.filter((n) => !n.viewed).length)
   } catch (error) {
     console.error('❌ Error loading notifications:', error)
   }
@@ -807,43 +1039,42 @@ const loadDashboardStats = async () => {
     console.warn('⚠️ No teacher ID, cannot load stats')
     return
   }
-  
+
   try {
     console.log('📊 Loading dashboard stats for teacher:', teacherId.value)
-    
+
     const { data: subjects, error: subjectsError } = await supabase
       .from('subjects')
       .select('id')
       .eq('teacher_id', teacherId.value)
       .eq('is_active', true)
-    
+
     if (!subjectsError && subjects) {
       totalClasses.value = subjects.length
       console.log('📚 Total subjects:', subjects.length)
     }
-    
-    const { data: teacherSections, error: sectionsError } = await supabase
-      .from('sections')
-      .select(`
-        id,
-        subject_id,
-        subjects!inner(teacher_id)
-      `)
-      .eq('subjects.teacher_id', teacherId.value)
-    
+
+    // Get sections for teacher's subjects (use subject IDs directly)
+    const teacherSubjectIds = subjects?.map((s) => s.id) || []
+
+    const { data: teacherSections, error: sectionsError } =
+      teacherSubjectIds.length > 0
+        ? await supabase.from('sections').select('id').in('subject_id', teacherSubjectIds)
+        : { data: [], error: null }
+
     if (!sectionsError && teacherSections && teacherSections.length > 0) {
       console.log('📋 Found sections:', teacherSections.length)
-      
-      const sectionIds = teacherSections.map(s => s.id)
-      
+
+      const sectionIds = teacherSections.map((s) => s.id)
+
       const { data: enrollments, error: enrollError } = await supabase
         .from('enrollments')
         .select('student_id')
         .in('section_id', sectionIds)
         .eq('status', 'active')
-      
+
       if (!enrollError && enrollments) {
-        const uniqueStudents = new Set(enrollments.map(e => e.student_id))
+        const uniqueStudents = new Set(enrollments.map((e) => e.student_id))
         totalStudents.value = uniqueStudents.size
         console.log('👥 Total unique students:', uniqueStudents.size)
         console.log('  Total enrollments:', enrollments.length)
@@ -854,73 +1085,99 @@ const loadDashboardStats = async () => {
       console.log('⚠️ No sections found for teacher')
       if (sectionsError) console.error('❌ Sections error:', sectionsError)
     }
-    
+
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     const todayISO = today.toISOString()
-    
-    const { data: graded, error: gradedError } = await supabase
-      .from('quiz_attempts')
-      .select('id, quiz_id!inner(teacher_id)')
-      .eq('quiz_id.teacher_id', teacherId.value)
-      .eq('status', 'graded')
-      .gte('graded_at', todayISO)
-    
-    if (!gradedError && graded) {
-      gradedToday.value = graded.length
-      console.log('✅ Graded today:', graded.length)
+
+    // First get teacher's quiz IDs, then count graded attempts
+    const { data: teacherQuizzes } = await supabase
+      .from('quizzes')
+      .select('id')
+      .eq('teacher_id', teacherId.value)
+
+    const teacherQuizIds = teacherQuizzes?.map((q) => q.id) || []
+
+    if (teacherQuizIds.length > 0) {
+      const { data: graded, error: gradedError } = await supabase
+        .from('quiz_attempts')
+        .select('id')
+        .in('quiz_id', teacherQuizIds)
+        .eq('status', 'graded')
+        .gte('graded_at', todayISO)
+
+      if (!gradedError && graded) {
+        gradedToday.value = graded.length
+        console.log('✅ Graded today:', graded.length)
+      }
     }
-    
+
+    // Fetch quizzes separately, then get subject/section names
     const { data: quizzes, error: quizzesError } = await supabase
       .from('quizzes')
-      .select(`
+      .select(
+        `
         id,
         title,
         subject_id,
-        section_id,
-        subjects!inner(name),
-        sections!inner(name)
-      `)
+        section_id
+      `,
+      )
       .eq('teacher_id', teacherId.value)
       .eq('status', 'published')
-    
-    if (!quizzesError && quizzes) {
+
+    if (!quizzesError && quizzes && quizzes.length > 0) {
+      // Fetch subjects and sections separately
+      const subjectIds = [...new Set(quizzes.map((q) => q.subject_id))]
+      const quizSectionIds = [...new Set(quizzes.map((q) => q.section_id))]
+
+      const [subjectsResult, sectionsResult] = await Promise.all([
+        supabase.from('subjects').select('id, name').in('id', subjectIds),
+        supabase.from('sections').select('id, name').in('id', quizSectionIds),
+      ])
+
+      const subjectsMap = new Map((subjectsResult.data || []).map((s) => [s.id, s.name]))
+      const sectionsMap = new Map((sectionsResult.data || []).map((s) => [s.id, s.name]))
+
       const assessmentsWithSubmissions = []
-      
+
       for (const quiz of quizzes) {
         const { data: attempts } = await supabase
           .from('quiz_attempts')
           .select('id, student_id')
           .eq('quiz_id', quiz.id)
           .eq('status', 'submitted')
-        
+
         if (attempts && attempts.length > 0) {
           const { data: enrollments } = await supabase
             .from('enrollments')
             .select('student_id')
             .eq('section_id', quiz.section_id)
             .eq('status', 'active')
-          
+
+          // Use the maps we created above
+          const subjectName = subjectsMap.get(quiz.subject_id) || 'Subject'
+          const sectionName = sectionsMap.get(quiz.section_id) || 'Section'
+
           assessmentsWithSubmissions.push({
             id: quiz.id,
             title: quiz.title,
-            className: `${quiz.subjects.name} - ${quiz.sections.name}`,
+            className: `${subjectName} - ${sectionName}`,
             studentsSubmitted: attempts.length,
             totalStudents: enrollments?.length || 0,
             sectionId: quiz.section_id,
-            subjectId: quiz.subject_id
+            subjectId: quiz.subject_id,
           })
         }
       }
-      
+
       assessmentsToGrade.value = assessmentsWithSubmissions
       pendingReviews.value = assessmentsWithSubmissions.length
-      
+
       console.log('📝 Assessments to grade:', assessmentsWithSubmissions.length)
     }
-    
+
     console.log('✅ Dashboard stats loaded successfully')
-    
   } catch (error) {
     console.error('❌ Error loading dashboard stats:', error)
   }
@@ -928,21 +1185,21 @@ const loadDashboardStats = async () => {
 
 const handleNotificationClick = async (notification) => {
   console.log('📱 Clicked notification:', notification)
-  
+
   if (notification.type === 'submission') {
     router.push('/teacher/gradebook')
   } else if (notification.type === 'message') {
     router.push('/teacher/messages')
-    
+
     try {
       const messageId = notification.messageId
-      
+
       if (messageId) {
         await supabase.rpc('mark_message_read', {
           p_message_id: messageId,
-          p_reader_id: teacherId.value
+          p_reader_id: teacherId.value,
         })
-        
+
         await loadNotifications()
       }
     } catch (error) {
@@ -953,111 +1210,129 @@ const handleNotificationClick = async (notification) => {
       path: '/teacher/subjects',
       query: {
         subjectId: notification.subjectId,
-        sectionId: notification.sectionId
-      }
+        sectionId: notification.sectionId,
+      },
     })
   }
-  
+
   showNotifDropdown.value = false
 }
 
 onMounted(async () => {
   console.log('🚀 Dashboard mounting...')
-  
+
   const profileLoaded = await loadTeacherProfile()
-  
+
   if (profileLoaded) {
     await loadDashboardStats()
     await loadNotifications()
-    
+
     statsIntervalId = setInterval(() => {
       loadDashboardStats()
     }, 30000)
-    
+
     notifIntervalId = setInterval(() => {
       loadNotifications()
     }, 15000)
-    
+
     window.addEventListener('scroll', handleScroll)
-    
+
     quizSubscription = supabase
       .channel('quiz_attempts_channel')
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'quiz_attempts',
-        filter: `status=eq.submitted`
-      }, (payload) => {
-        console.log('🆕 New quiz submission:', payload)
-        loadNotifications()
-        loadDashboardStats()
-      })
-      .on('postgres_changes', {
-        event: 'UPDATE',
-        schema: 'public',
-        table: 'quiz_attempts',
-        filter: `status=eq.submitted`
-      }, (payload) => {
-        console.log('✏️ Quiz submission updated:', payload)
-        loadNotifications()
-        loadDashboardStats()
-      })
-      .subscribe()
-    
-    messageSubscription = supabase
-      .channel('messages_channel')
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'messages'
-      }, async (payload) => {
-        console.log('💬 New message received:', payload)
-        
-        const { data: section } = await supabase
-          .from('sections')
-          .select('subject_id, subjects!inner(teacher_id)')
-          .eq('id', payload.new.section_id)
-          .single()
-        
-        if (section?.subjects?.teacher_id === teacherId.value) {
-          loadNotifications()
-        }
-      })
-      .subscribe()
-    
-    enrollmentSubscription = supabase
-      .channel('enrollments_channel')
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'enrollments',
-        filter: `status=eq.active`
-      }, async (payload) => {
-        console.log('👥 New enrollment:', payload)
-        
-        const { data: section } = await supabase
-          .from('sections')
-          .select('subject_id, subjects!inner(teacher_id)')
-          .eq('id', payload.new.section_id)
-          .single()
-        
-        if (section?.subjects?.teacher_id === teacherId.value) {
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'quiz_attempts',
+          filter: `status=eq.submitted`,
+        },
+        (payload) => {
+          console.log('🆕 New quiz submission:', payload)
           loadNotifications()
           loadDashboardStats()
-        }
-      })
+        },
+      )
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'quiz_attempts',
+          filter: `status=eq.submitted`,
+        },
+        (payload) => {
+          console.log('✏️ Quiz submission updated:', payload)
+          loadNotifications()
+          loadDashboardStats()
+        },
+      )
+      .subscribe()
+
+    messageSubscription = supabase
+      .channel('messages_channel')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'messages',
+        },
+        async (payload) => {
+          console.log('💬 New message received:', payload)
+
+          const { data: section } = await supabase
+            .from('sections')
+            .select('subject_id, subjects!inner(teacher_id)')
+            .eq('id', payload.new.section_id)
+            .single()
+
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          if ((section?.subjects as any)?.teacher_id === teacherId.value) {
+            loadNotifications()
+          }
+        },
+      )
+      .subscribe()
+
+    enrollmentSubscription = supabase
+      .channel('enrollments_channel')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'enrollments',
+          filter: `status=eq.active`,
+        },
+        async (payload) => {
+          console.log('👥 New enrollment:', payload)
+
+          const { data: section } = await supabase
+            .from('sections')
+            .select('subject_id, subjects!inner(teacher_id)')
+            .eq('id', payload.new.section_id)
+            .single()
+
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          if ((section?.subjects as any)?.teacher_id === teacherId.value) {
+            loadNotifications()
+            loadDashboardStats()
+          }
+        },
+      )
       .subscribe()
   }
 })
 
 onUnmounted(() => {
   console.log('🧹 Cleaning up dashboard subscriptions...')
-  
+
   if (statsIntervalId) clearInterval(statsIntervalId)
   if (notifIntervalId) clearInterval(notifIntervalId)
-  
+
   window.removeEventListener('scroll', handleScroll)
-  
+
   if (quizSubscription) {
     supabase.removeChannel(quizSubscription)
   }
@@ -1069,7 +1344,6 @@ onUnmounted(() => {
   }
 })
 </script>
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -1095,7 +1369,7 @@ onUnmounted(() => {
   left: 0;
   width: 80px;
   height: calc(100vh - 64px);
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-right: none;
   z-index: 900;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
@@ -1114,19 +1388,21 @@ onUnmounted(() => {
   width: 56px;
   margin: 8px 0;
   border-radius: 12px;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   cursor: pointer;
   position: relative;
 }
 
 .sidebar-item.active {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid #fff;
 }
 
 .sidebar-item:hover {
-  background: rgba(255,255,255,0.22);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .sidebar-icon svg {
@@ -1139,13 +1415,13 @@ onUnmounted(() => {
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  color: #3D8D7A;
+  color: #3d8d7a;
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
@@ -1164,7 +1440,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -1393,7 +1669,7 @@ onUnmounted(() => {
 
 .profile-dropdown .dropdown-header {
   padding: 1.5rem;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
 }
 
@@ -1448,7 +1724,7 @@ onUnmounted(() => {
 
 .dropdown-item:hover {
   background: #f1f5f9;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-item svg {
@@ -1457,7 +1733,7 @@ onUnmounted(() => {
 }
 
 .dropdown-item:hover svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 .dropdown-divider {
@@ -1485,12 +1761,12 @@ onUnmounted(() => {
 
 /* Rounded semi-transparent backgrounds for sidebar and navbar icons/buttons */
 .rounded-bg {
-  background: rgba(255,255,255,0.13);
+  background: rgba(255, 255, 255, 0.13);
   border-radius: 16px;
   transition: background 0.2s;
 }
 .rounded-bg:hover {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* Main Content - Better Spacing */
@@ -1518,7 +1794,7 @@ onUnmounted(() => {
 }
 
 .main-content::-webkit-scrollbar-thumb {
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 8px;
 }
 
@@ -1533,7 +1809,7 @@ onUnmounted(() => {
   bottom: 2rem;
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   border: none;
   border-radius: 50%;
   color: white;
@@ -1595,7 +1871,7 @@ onUnmounted(() => {
 }
 
 .quick-action-btn.primary {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
 }
 
@@ -1606,13 +1882,13 @@ onUnmounted(() => {
 
 .quick-action-btn.secondary {
   background: #f1f5f9;
-  color: #3D8D7A;
+  color: #3d8d7a;
   border-color: #e2e8f0;
 }
 
 .quick-action-btn.secondary:hover {
   background: #e2e8f0;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 /* Stats Section */
@@ -1653,10 +1929,18 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
-.stat-icon.subjects { background: linear-gradient(135deg, #3D8D7A, #2d6a5a); }
-.stat-icon.students { background: linear-gradient(135deg, #06b6d4, #0891b2); }
-.stat-icon.graded { background: linear-gradient(135deg, #10b981, #059669); }
-.stat-icon.pending { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.stat-icon.subjects {
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
+}
+.stat-icon.students {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+.stat-icon.graded {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+.stat-icon.pending {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
 
 .stat-info {
   flex: 1;
@@ -1746,7 +2030,7 @@ onUnmounted(() => {
 
 .refresh-btn:hover {
   background: #e2e8f0;
-  color: #3D8D7A;
+  color: #3d8d7a;
 }
 
 /* Assessment Grid */
@@ -1789,7 +2073,7 @@ onUnmounted(() => {
 
 .assessment-card:hover {
   background: #f1f5f9;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
 }
 
 .assessment-header {
@@ -1806,7 +2090,7 @@ onUnmounted(() => {
 }
 
 .assessment-badge {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
@@ -1842,7 +2126,7 @@ onUnmounted(() => {
 
 .progress-fill {
   height: 100%;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 3px;
   transition: width 0.3s ease;
 }
@@ -1854,7 +2138,7 @@ onUnmounted(() => {
 }
 
 .grade-assessment-btn {
-  background: #3D8D7A;
+  background: #3d8d7a;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -1898,7 +2182,7 @@ onUnmounted(() => {
 }
 
 .compact-btn.analytics {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
 }
 
@@ -1939,14 +2223,14 @@ onUnmounted(() => {
 
 .action-item:hover {
   background: #f1f5f9;
-  border-color: #3D8D7A;
+  border-color: #3d8d7a;
   transform: translateY(-1px);
 }
 
 .action-icon {
   width: 40px;
   height: 40px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -1992,7 +2276,7 @@ onUnmounted(() => {
   border-radius: 16px;
   overflow: hidden;
   background: white;
-  border: 2px solid #3D8D7A;
+  border: 2px solid #3d8d7a;
   animation: modalSlideIn 0.3s ease-out;
 }
 
@@ -2008,7 +2292,7 @@ onUnmounted(() => {
 }
 
 .logout-header {
-  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
   color: white;
   padding: 1.5rem;
 }
@@ -2031,13 +2315,18 @@ onUnmounted(() => {
 }
 
 .logout-icon svg {
-  color: #3D8D7A;
+  color: #3d8d7a;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .logout-message {
@@ -2112,12 +2401,16 @@ onUnmounted(() => {
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-top: 2px solid white;
   border-radius: 50%;
-   animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-logout .loading-text {
@@ -2127,8 +2420,12 @@ onUnmounted(() => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Add these styles to your existing <style scoped> section */
@@ -2146,7 +2443,7 @@ onUnmounted(() => {
 .mark-all-read-btn {
   background: none;
   border: none;
-  color: #3D8D7A;
+  color: #3d8d7a;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -2163,7 +2460,7 @@ onUnmounted(() => {
 /* Unread notification styling */
 .notification-item.unread {
   background: #f0f9ff;
-  border-left: 3px solid #3D8D7A;
+  border-left: 3px solid #3d8d7a;
 }
 
 .notification-item.unread:hover {
@@ -2183,14 +2480,15 @@ onUnmounted(() => {
 .unread-dot {
   width: 8px;
   height: 8px;
-  background: #3D8D7A;
+  background: #3d8d7a;
   border-radius: 50%;
   flex-shrink: 0;
   animation: pulse-dot 2s infinite;
 }
 
 @keyframes pulse-dot {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -2218,7 +2516,8 @@ onUnmounted(() => {
 }
 
 @keyframes badge-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
