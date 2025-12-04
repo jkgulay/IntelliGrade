@@ -877,7 +877,7 @@ export default {
         console.log('🔍 DEBUG 1 - ANY quizzes in database (up to 10):', {
           anyQuizzes,
           anyError,
-          count: anyQuizzes?.length || 0,
+          count: anyQuizzes?.length || 0
         })
 
         // DEBUG 2: Check all quizzes for this specific section (regardless of status)
@@ -890,7 +890,7 @@ export default {
           allQuizzesDebug,
           debugError,
           sectionId: section.value.id,
-          count: allQuizzesDebug?.length || 0,
+          count: allQuizzesDebug?.length || 0
         })
 
         // DEBUG 3: Check if section_id might be stored differently - try subject_id instead
@@ -903,7 +903,7 @@ export default {
           subjectQuizzes,
           subjectError,
           subjectId: subject.value.id,
-          count: subjectQuizzes?.length || 0,
+          count: subjectQuizzes?.length || 0
         })
 
         // Now fetch only published quizzes for this section
@@ -914,17 +914,12 @@ export default {
           .eq('status', 'published')
           .order('created_at', { ascending: false })
 
-        console.log('📝 Published quizzes for section:', {
-          data,
-          error,
-          sectionId: section.value.id,
-          count: data?.length || 0,
-        })
-        quizzes.value = data || []
-        await loadQuizResults()
+        console.log('📝 Published quizzes for section:', { data, error, sectionId: section.value.id, count: data?.length || 0 })
+        quizzes.value = data || [];
+        await loadQuizResults();
       } catch (error) {
-        console.error('Error loading quizzes:', error)
-        alert('Failed to load quizzes')
+        console.error('Error loading quizzes:', error);
+        alert('Failed to load quizzes');
       }
     }
 

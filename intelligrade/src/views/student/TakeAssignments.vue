@@ -863,7 +863,6 @@ const loadAssignments = async () => {
     console.log('🔍 Section ID:', section.value.id)
     console.log('🔍 Student ID:', studentInfo.value.student_id)
 
-    // ✅ Fetch published assignments for this section
     const { data: assignmentsData, error: assignmentsError } = await supabase
       .from('assignments')
       .select('*')
@@ -1072,7 +1071,7 @@ const uploadFiles = async () => {
       }
 
       const { data: urlData } = supabase.storage
-        .from('assignment-submissions')
+        .from('assignment-attachments')
         .getPublicUrl(fileName)
 
       uploadedFiles.push({
@@ -1112,13 +1111,11 @@ const submitAssignment = async () => {
       submitted_at: new Date().toISOString(),
     }
 
-    // Add content based on submission type
     if (selectedAssignment.value.submission_type === 'text_entry') {
       submissionPayload.text_content = submissionData.value.text_content.trim()
     } else if (selectedAssignment.value.submission_type === 'link') {
       submissionPayload.link_url = submissionData.value.link_url.trim()
     } else if (selectedAssignment.value.submission_type === 'file_upload') {
-      // Upload files and get URLs
       const attachments = await uploadFiles()
       submissionPayload.attachments = attachments
     }
@@ -1140,7 +1137,6 @@ const submitAssignment = async () => {
 
     alert('✅ Assignment submitted successfully!')
 
-    // Reload submissions and go back
     await loadSubmissions()
     selectedAssignment.value = null
   } catch (error) {

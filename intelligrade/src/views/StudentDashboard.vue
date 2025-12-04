@@ -200,7 +200,7 @@
     </aside>
 
     <main class="main-content">
-      <router-view />
+      <router-view :key="$route.fullPath" />
     </main>
 
     <!-- Mobile Bottom Navigation -->
@@ -653,28 +653,29 @@ export default {
       this.isLoggingOut = true
 
       try {
-        console.log('Step 1: Cleaning up subscriptions')
-        this.cleanupSubscriptions()
+        console.log('Step 1: Cleaning up subscriptions');
+        this.cleanupSubscriptions();
 
-        await new Promise((resolve) => setTimeout(resolve, 200))
+        await new Promise(resolve => setTimeout(resolve, 200));
 
-        console.log('Step 2: Clearing local storage')
-        localStorage.clear()
-        sessionStorage.clear()
+        console.log('Step 2: Clearing local storage');
+        localStorage.clear();
+        sessionStorage.clear();
 
-        console.log('Step 3: Signing out from Supabase')
-        const { error } = await supabase.auth.signOut({ scope: 'local' })
+        console.log('Step 3: Signing out from Supabase');
+        const { error } = await supabase.auth.signOut({ scope: 'local' });
 
         if (error) {
           console.error('❌ Logout error:', error)
         }
 
-        console.log('✅ Logout successful')
+        console.log('✅ Logout successful');
 
-        await new Promise((resolve) => setTimeout(resolve, 500))
+        await new Promise(resolve => setTimeout(resolve, 500));
 
-        console.log('Step 4: Redirecting to login')
-        window.location.replace('/login')
+        console.log('Step 4: Redirecting to login');
+        window.location.replace('/login');
+
       } catch (error) {
         console.error('❌ Error during logout:', error)
         this.isLoggingOut = false

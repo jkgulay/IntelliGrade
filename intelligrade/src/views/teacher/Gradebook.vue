@@ -270,7 +270,7 @@
 
       <!-- Unified Gradebook Header -->
       <div class="gradebook-header">
-        <div class="header-content">
+        <div class="header-content-left">
           <div class="header-left">
             <div class="header-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
@@ -281,7 +281,7 @@
             </div>
             <div>
               <h1 class="header-title">Class Record</h1>
-              <p class="header-subtitle">All-in-One Gradebook • Excel-style Layout</p>
+              <p class="header-subtitle">Manage student grades and performance tracking</p>
             </div>
           </div>
           <div class="header-actions">
@@ -320,8 +320,106 @@
         </div>
       </div>
 
+      <!-- Grade Level and Section Selection -->
+      <div v-if="!loading || gradeLevels.length > 0" class="selection-container">
+        <!-- Grade Level Selector -->
+        <div class="grade-level-section">
+          <div class="section-title-bar">
+            <div class="title-content">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+              </svg>
+              <h3>Select Grade Level</h3>
+            </div>
+            <span class="count-badge">{{ gradeLevels.length }} Grade{{ gradeLevels.length !== 1 ? 's' : '' }}</span>
+          </div>
+          <div class="grade-buttons-container">
+            <button
+              v-for="grade in gradeLevels"
+              :key="grade"
+              @click="selectGradeLevel(grade)"
+              class="grade-level-btn"
+              :class="{ 'active': selectedGradeLevel === grade }"
+            >
+              <div class="grade-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+                </svg>
+              </div>
+              <div class="grade-content">
+                <div class="grade-title">Grade {{ grade }}</div>
+                <div class="grade-count">{{ getSectionCountForGrade(grade) }} Section{{ getSectionCountForGrade(grade) !== 1 ? 's' : '' }}</div>
+              </div>
+              <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+              </svg>
+            </button>
+            <div v-if="gradeLevels.length === 0" class="empty-state-inline">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+              </svg>
+              <p>No grade levels available</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Selector (shown when grade level is selected) -->
+        <div v-if="selectedGradeLevel" class="sections-section">
+          <div class="section-title-bar">
+            <div class="title-content">
+              <button @click="clearGradeSelection" class="back-btn-inline">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                </svg>
+              </button>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M7,7H17V9H7V7M7,11H17V13H7V11M7,15H17V17H7V15Z" />
+              </svg>
+              <h3>Grade {{ selectedGradeLevel }} Sections</h3>
+            </div>
+            <span class="count-badge">{{ filteredSections.length }} Section{{ filteredSections.length !== 1 ? 's' : '' }}</span>
+          </div>
+          <div class="sections-grid">
+            <button
+              v-for="section in filteredSections"
+              :key="section.id"
+              @click="selectSection(section)"
+              class="section-card-btn"
+              :class="{ 'active': selectedSectionId === section.id }"
+            >
+              <div class="section-card-header">
+                <div class="section-icon-wrapper">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+                  </svg>
+                </div>
+                <div class="section-badge">{{ section.section_code || 'N/A' }}</div>
+              </div>
+              <div class="section-card-body">
+                <h4>{{ section.name }}</h4>
+                <p class="section-subject">{{ section.subject_name }}</p>
+              </div>
+              <div class="section-card-footer">
+                <span class="section-stat">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" />
+                  </svg>
+                  {{ section.student_count || 0 }} Students
+                </span>
+              </div>
+            </button>
+            <div v-if="filteredSections.length === 0" class="empty-state-inline">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+              </svg>
+              <p>No sections available for Grade {{ selectedGradeLevel }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Loading State -->
-      <div v-if="loading && !selectedSectionId" class="loading-container">
+      <div v-if="loading && !selectedSectionId && gradeLevels.length === 0" class="loading-container">
         <div class="spinner-large"></div>
         <p>Loading sections...</p>
       </div>
@@ -556,7 +654,7 @@
 
                   <!-- Expandable Student History Row -->
                   <tr v-if="expandedStudent === student.id" class="student-history-row">
-                    <td colspan="100%" class="history-cell">
+                    <td :colspan="assessments.length + 2" class="history-cell">
                       <div class="student-history-panel">
                         <div class="history-header">
                           <h4>{{ student.full_name }} - Detailed History</h4>
@@ -629,13 +727,35 @@
               <i class="fas fa-times"></i>
             </button>
           </div>
+      <!-- Review/Grade Modal -->
+      <div v-if="showReviewModal" class="modal-overlay" @click="closeReviewModal">
+        <div class="review-modal" @click.stop>
+          <div class="modal-header">
+            <div>
+              <h3>{{ modalMode === 'view' ? 'View Submission' : 'Grade Submission' }}</h3>
+              <p class="modal-subtitle" v-if="selectedSubmission">
+                {{ selectedSubmission.student_name }} - {{ selectedSubmission.quiz_title }}
+              </p>
+            </div>
+            <button @click="closeReviewModal" class="modal-close">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
 
           <div class="modal-content">
             <div v-if="loadingQuestions" class="loading-questions">
               <div class="spinner-small"></div>
               <p>Loading questions...</p>
             </div>
+          <div class="modal-content">
+            <div v-if="loadingQuestions" class="loading-questions">
+              <div class="spinner-small"></div>
+              <p>Loading questions...</p>
+            </div>
 
+            <div v-else-if="reviewQuestions.length === 0" class="no-questions">
+              <p>No questions found for this quiz.</p>
+            </div>
             <div v-else-if="reviewQuestions.length === 0" class="no-questions">
               <p>No questions found for this quiz.</p>
             </div>
@@ -689,6 +809,7 @@
                     </div>
                   </div>
 
+                  <div class="question-text">{{ question.question_text }}</div>
                   <div class="question-text">{{ question.question_text }}</div>
 
                   <!-- Multiple Choice -->
@@ -907,7 +1028,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { supabase } from '@/supabase.js'
 import { useDarkMode } from '@/composables/useDarkMode.js'
@@ -920,17 +1041,16 @@ const loading = ref(true)
 const loadingQuestions = ref(false)
 const savingGrade = ref(false)
 const error = ref(null)
-const searchQuery = ref('')
 const teacherId = ref(null)
 
-// Data for unified gradebook
 const subjects = ref([])
+const selectedGradeLevel = ref(null)
 const selectedSectionId = ref('')
 const currentSectionInfo = ref({})
 const students = ref([])
 const assessments = ref([])
-const gradebookData = ref({}) // student_id -> assessment_id -> score
-const submissions = ref([]) // For pending review tracking
+const gradebookData = ref({})
+const submissions = ref([])
 const expandedStudent = ref(null)
 
 const showReviewModal = ref(false)
@@ -939,28 +1059,15 @@ const reviewQuestions = ref([])
 const reviewFeedback = ref('')
 const modalMode = ref('view')
 
-// Logout modal states
 const showLogoutModal = ref(false)
 const isLoggingOut = ref(false)
 
-const selectedSubjectFilter = ref('')
-const lastRefresh = ref(new Date())
-const newSubmissionsCount = ref(0)
-
-// Missing variables for pagination and filtering
-const selectedStatus = ref('all')
-const currentPage = ref(1)
-const sortField = ref('')
-const sortDirection = ref('asc')
-
-// Navbar dropdown states
 const showNotifDropdown = ref(false)
 const showProfileDropdown = ref(false)
 const notifications = ref([])
 const fullName = ref('Teacher')
 const showScrollTop = ref(false)
 
-// Analytics data for the selected section
 const analyticsData = computed(() => {
   if (!students.value.length || !assessments.value.length) {
     return {
@@ -1020,25 +1127,22 @@ const getTeacherInfo = async () => {
       return false
     }
 
-    // Get profile first
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
       .select('id, role')
       .eq('auth_user_id', user.id)
-      .eq('role', 'teacher')
-      .single()
+      .maybeSingle()
 
-    if (profileError || !profile) {
-      error.value = 'Access denied - Teacher role required'
+    if (profileError || !profile || profile.role !== 'teacher') {
+      error.value = 'Teacher access required'
       return false
     }
 
-    // Get teacher data separately
     const { data: teacher, error: teacherError } = await supabase
       .from('teachers')
-      .select('id')
+      .select('id, full_name')
       .eq('profile_id', profile.id)
-      .single()
+      .maybeSingle()
 
     if (teacherError || !teacher) {
       error.value = 'Teacher record not found'
@@ -1046,23 +1150,19 @@ const getTeacherInfo = async () => {
     }
 
     teacherId.value = teacher.id
+    fullName.value = teacher.full_name || 'Teacher'
     return true
   } catch (err) {
-    console.error('Error in getTeacherInfo:', err)
-    error.value = err.message || 'An error occurred'
+    error.value = err.message
     return false
   }
 }
 
-// Fetch all subjects with their sections for the dropdown
 const fetchSubjects = async () => {
   try {
     loading.value = true
     error.value = null
 
-    console.log('🔄 Fetching subjects and sections for teacher:', teacherId.value)
-
-    // Get subjects with sections
     const { data: subjectsData, error: subjectsError } = await supabase
       .from('subjects')
       .select(
@@ -1074,13 +1174,12 @@ const fetchSubjects = async () => {
           id,
           name,
           section_code,
-          is_active
+          enrollments(count)
         )
       `,
       )
       .eq('teacher_id', teacherId.value)
       .eq('is_active', true)
-      .eq('sections.is_active', true)
 
     if (subjectsError) throw subjectsError
 
@@ -1097,14 +1196,12 @@ const fetchSubjects = async () => {
 
     console.log('✅ Processed subjects:', subjects.value)
   } catch (err) {
-    console.error('❌ Error fetching subjects:', err)
     error.value = `Failed to load subjects: ${err.message}`
   } finally {
     loading.value = false
   }
 }
 
-// Handle section selection from dropdown
 const onSectionChange = async () => {
   if (!selectedSectionId.value) {
     currentSectionInfo.value = {}
@@ -1119,16 +1216,14 @@ const onSectionChange = async () => {
     error.value = null
     await fetchGradebookData(selectedSectionId.value)
   } catch (err) {
-    console.error('❌ Error loading gradebook data:', err)
     error.value = `Failed to load gradebook data: ${err.message}`
   } finally {
     loading.value = false
   }
 }
 
-// Fetch complete gradebook data for a section
 const fetchGradebookData = async (sectionId) => {
-  console.log('🔄 Fetching gradebook data for section:', sectionId)
+  console.log('🔄 Fetching REAL-TIME gradebook data for section:', sectionId)
 
   // Get section info
   const { data: sectionInfo, error: sectionError } = await supabase
@@ -1145,7 +1240,7 @@ const fetchGradebookData = async (sectionId) => {
   if (sectionError) throw sectionError
   currentSectionInfo.value = sectionInfo
 
-  // Get students in this section
+  // Get students
   const { data: studentsData, error: studentsError } = await supabase
     .from('enrollments')
     .select(
@@ -1160,13 +1255,24 @@ const fetchGradebookData = async (sectionId) => {
   if (studentsError) throw studentsError
   students.value = studentsData?.map((enrollment) => enrollment.students) || []
 
-  // Get quizzes (auto-graded assessments) for this section
+  console.log('📚 Students loaded:', students.value.length)
+
+  // Initialize gradebook data
+  const newGradebookData = {}
+  students.value.forEach(student => {
+    newGradebookData[student.id] = {}
+  })
+
+  // ONLY REAL DATA - NO FAKE ASSESSMENTS
+  const allAssessments = []
+
+  // Get REAL QUIZZES from database
   const { data: quizzesData, error: quizzesError } = await supabase
     .from('quizzes')
-    .select('id, title, created_at, status')
+    .select('id, title, number_of_questions, created_at, status')
     .eq('section_id', sectionId)
     .eq('status', 'published')
-    .order('created_at')
+    .order('created_at', { ascending: true })
 
   if (quizzesError) throw quizzesError
 
@@ -1248,7 +1354,6 @@ const getStudentPercentage = (studentId, assessmentId) => {
   if (!score || !assessment) return 0
   return Math.round((score / assessment.max_score) * 100)
 }
-
 const getStudentTotal = (studentId) => {
   let total = 0
   assessments.value.forEach((assessment) => {
@@ -1257,20 +1362,16 @@ const getStudentTotal = (studentId) => {
   })
   return total
 }
-
-const getTotalMaxScore = () => {
-  return assessments.value.reduce((sum, assessment) => sum + assessment.max_score, 0)
-}
-
+const getTotalMaxScore = () => assessments.value.reduce((sum, assessment) => sum + assessment.max_score, 0)
 const getStudentTotalPercentage = (studentId) => {
   const total = getStudentTotal(studentId)
   const maxTotal = getTotalMaxScore()
-  if (maxTotal === 0) return 0
-  return Math.round((total / maxTotal) * 100)
+  return maxTotal === 0 ? 0 : Math.round((total / maxTotal) * 100)
 }
-
 const getAssessmentTypeLabel = (type) => {
-  return type === 'auto' ? 'Quiz' : 'Manual'
+  if (type === 'quiz') return 'Quiz'
+  if (type === 'assignment') return 'Assignment'
+  return 'Manual'
 }
 
 const hasSubmissionPending = (studentId, assessmentId) => {
@@ -1289,17 +1390,11 @@ const toggleStudentHistory = (studentId) => {
 }
 
 const updateManualScore = (studentId, assessmentId, value) => {
-  if (!gradebookData.value[studentId]) {
-    gradebookData.value[studentId] = {}
-  }
+  if (!gradebookData.value[studentId]) gradebookData.value[studentId] = {}
   gradebookData.value[studentId][assessmentId] = parseFloat(value) || null
 }
-
 const saveManualScore = async (studentId, assessmentId) => {
-  // Implement saving manual scores to database
-  // For now, just log it
-  const score = getStudentScore(studentId, assessmentId)
-  console.log('💾 Saving manual score:', { studentId, assessmentId, score })
+  console.log('💾 Saving manual score')
 }
 
 const reviewStudentSubmission = async (studentId, assessmentId) => {
@@ -1314,7 +1409,6 @@ const reviewStudentSubmission = async (studentId, assessmentId) => {
 }
 
 const refreshData = async () => {
-  console.log('  Manual refresh triggered...')
   loading.value = true
 
   try {
@@ -2000,7 +2094,6 @@ const toggleNotifDropdown = () => {
   showNotifDropdown.value = !showNotifDropdown.value
   showProfileDropdown.value = false
 }
-
 const toggleProfileDropdown = () => {
   showProfileDropdown.value = !showProfileDropdown.value
   showNotifDropdown.value = false
@@ -2058,7 +2151,6 @@ const exportToExcel = () => {
     return
   }
 
-  // Prepare data for Excel export
   const exportData = []
 
   // Header row
@@ -2879,13 +2971,13 @@ html {
 .main-content::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, #3d8d7a, #20c997);
   border-radius: 16px;
-  border: 2px solid #f1f5f9;
+  border: 1px solid #f1f5f9;
   transition: all 0.3s ease;
 }
 
 .main-content::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #2a6e61, #1a9d7c);
-  transform: scale(1.1);
+  background: linear-gradient(135deg, #2d6a5a, #18a577);
+  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.3);
 }
 
 .dark .main-content {
@@ -2945,6 +3037,14 @@ html {
   gap: 1rem;
 }
 
+.header-content-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .header-left {
   display: flex;
   align-items: center;
@@ -2979,6 +3079,479 @@ html {
   font-size: 0.95rem;
   color: #64748b;
 }
+
+/* ================================================ */
+/* GRADE LEVEL AND SECTION SELECTION STYLES */
+/* ================================================ */
+
+/* Grade Level and Section Selection Container */
+.selection-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grade Level Section */
+.grade-level-section,
+.sections-section {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.dark .grade-level-section,
+.dark .sections-section {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.section-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.dark .section-title-bar {
+  border-bottom-color: #334155;
+}
+
+.title-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.title-content svg {
+  color: #3D8D7A;
+  flex-shrink: 0;
+}
+
+.dark .title-content svg {
+  color: #10b981;
+}
+
+.title-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.dark .title-content h3 {
+  color: #f1f5f9;
+}
+
+.count-badge {
+  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  color: white;
+  padding: 0.375rem 0.875rem;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.dark .count-badge {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+/* Back Button */
+.back-btn-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(61, 141, 122, 0.1);
+  border: 1px solid rgba(61, 141, 122, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #3D8D7A;
+}
+
+.back-btn-inline:hover {
+  background: rgba(61, 141, 122, 0.2);
+  border-color: #3D8D7A;
+  transform: translateX(-2px);
+}
+
+.dark .back-btn-inline {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.dark .back-btn-inline:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+}
+
+/* Grade Level Buttons */
+.grade-buttons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.grade-level-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.grade-level-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(61, 141, 122, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.grade-level-btn:hover::before {
+  left: 100%;
+}
+
+.grade-level-btn:hover {
+  border-color: #3D8D7A;
+  background: rgba(61, 141, 122, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(61, 141, 122, 0.15);
+}
+
+.grade-level-btn.active {
+  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  border-color: #3D8D7A;
+  color: white;
+  box-shadow: 0 6px 20px rgba(61, 141, 122, 0.3);
+}
+
+.dark .grade-level-btn {
+  background: #334155;
+  border-color: #475569;
+}
+
+.dark .grade-level-btn:hover {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.dark .grade-level-btn.active {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-color: #10b981;
+}
+
+.grade-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(61, 141, 122, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3D8D7A;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.grade-level-btn.active .grade-icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.dark .grade-icon {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.dark .grade-level-btn.active .grade-icon {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.grade-content {
+  flex: 1;
+}
+
+.grade-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.grade-level-btn.active .grade-title {
+  color: white;
+}
+
+.dark .grade-title {
+  color: #f1f5f9;
+}
+
+.grade-count {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.grade-level-btn.active .grade-count {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark .grade-count {
+  color: #94a3b8;
+}
+
+.arrow-icon {
+  color: #94a3b8;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.grade-level-btn:hover .arrow-icon {
+  transform: translateX(4px);
+  color: #3D8D7A;
+}
+
+.grade-level-btn.active .arrow-icon {
+  color: white;
+}
+
+.dark .grade-level-btn:hover .arrow-icon {
+  color: #10b981;
+}
+
+/* Sections Grid */
+.sections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.section-card-btn {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-card-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #3D8D7A, #2d6a5a);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.section-card-btn:hover::before {
+  transform: scaleY(1);
+}
+
+.section-card-btn:hover {
+  border-color: #3D8D7A;
+  background: rgba(61, 141, 122, 0.03);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(61, 141, 122, 0.15);
+}
+
+.section-card-btn.active {
+  background: linear-gradient(135deg, rgba(61, 141, 122, 0.1), rgba(45, 106, 90, 0.1));
+  border-color: #3D8D7A;
+  box-shadow: 0 6px 20px rgba(61, 141, 122, 0.2);
+}
+
+.section-card-btn.active::before {
+  transform: scaleY(1);
+}
+
+.dark .section-card-btn {
+  background: #334155;
+  border-color: #475569;
+}
+
+.dark .section-card-btn:hover {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.dark .section-card-btn.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
+  border-color: #10b981;
+}
+
+.section-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background: rgba(61, 141, 122, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3D8D7A;
+}
+
+.section-card-btn.active .section-icon-wrapper {
+  background: #3D8D7A;
+  color: white;
+}
+
+.dark .section-icon-wrapper {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.dark .section-card-btn.active .section-icon-wrapper {
+  background: #10b981;
+  color: white;
+}
+
+.section-badge {
+  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+  color: white;
+  padding: 0.25rem 0.625rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.dark .section-badge {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.section-card-body h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.375rem 0;
+}
+
+.dark .section-card-body h4 {
+  color: #f1f5f9;
+}
+
+.section-subject {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.dark .section-subject {
+  color: #94a3b8;
+}
+
+.section-card-footer {
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.dark .section-card-footer {
+  border-top-color: #475569;
+}
+
+.section-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.section-stat svg {
+  color: #3D8D7A;
+}
+
+.dark .section-stat {
+  color: #94a3b8;
+}
+
+.dark .section-stat svg {
+  color: #10b981;
+}
+
+/* Empty State Inline */
+.empty-state-inline {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.empty-state-inline svg {
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+
+.dark .empty-state-inline svg {
+  color: #475569;
+}
+
+.empty-state-inline p {
+  font-size: 0.9375rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.dark .empty-state-inline p {
+  color: #94a3b8;
+}
+
+/* ================================================ */
+/* END GRADE LEVEL AND SECTION SELECTION STYLES */
+/* ================================================ */
 
 /* Search Box in Navbar */
 .search-box {
@@ -3242,7 +3815,7 @@ html {
 
 .dark .subject-filters:hover {
   border-color: #34d399;
-  box-shadow: 0 4px 12px rgba(32, 201, 151, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .filter-header {
@@ -3497,7 +4070,7 @@ html {
 }
 
 .dark .content-card.modern:hover {
-  box-shadow: 0 8px 24px rgba(32, 201, 151, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   border-color: #34d399;
 }
 
@@ -4218,6 +4791,7 @@ html {
   flex-direction: column;
   gap: 0.25rem;
   font-size: 0.8125rem;
+  color: #64748b;
 }
 
 .score-info {
@@ -4578,9 +5152,8 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .stats-grid {
+  .analytics-stats {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
   }
 
   .stat-card.modern {
@@ -4652,7 +5225,12 @@ html {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: hidden;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -4727,12 +5305,8 @@ html {
   background: #fbffe4;
   border: 1px solid #a3d1c6;
   border-radius: 12px;
-  padding: 1.25rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  opacity: 0.3;
+  animation: pulse-animation 2s infinite;
 }
 .dark .subject-card,
 .dark .section-card {
@@ -4769,6 +5343,7 @@ html {
 .subject-info,
 .section-info {
   flex: 1;
+  min-width: 0;
 }
 
 .subject-info h4,
@@ -4799,9 +5374,9 @@ html {
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
   font-weight: 600;
-  display: inline-block;
-  font-family: 'Courier New', monospace;
-  margin: 0 0 0.5rem 0;
+  margin-bottom: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .dark .section-code {
   background: #3d8d7a;
@@ -4815,10 +5390,7 @@ html {
   flex-wrap: wrap;
 }
 
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+.stat-description {
   font-size: 0.75rem;
   color: #6b7280;
   font-weight: 500;
@@ -4908,11 +5480,12 @@ html {
   background: #23272b;
 }
 
-.submissions-table th,
-.submissions-table td {
-  padding: 1.25rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid rgba(61, 141, 122, 0.1);
+.stat-card.modern.graded {
+  border-left: 4px solid #10b981;
+}
+
+.stat-card.modern.graded:hover {
+  box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
 }
 .dark .submissions-table th,
 .dark .submissions-table td {
@@ -4950,11 +5523,9 @@ html {
   opacity: 0.5;
 }
 
-/* Table Content Styles */
-.student-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+/* Icon Wrapper with Animation */
+.stat-icon-wrapper {
+  position: relative;
 }
 
 .student-avatar {
@@ -4966,8 +5537,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: 0.875rem;
+  color: white;
   flex-shrink: 0;
 }
 
@@ -5020,8 +5590,8 @@ html {
   color: white;
 }
 
-.date-info {
-  font-size: 0.75rem;
+.stat-pulse.total {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
 .date {
@@ -5043,9 +5613,11 @@ html {
   text-align: center;
 }
 
-.score-percentage {
+.stat-number {
+  font-size: 1.75rem;
   font-weight: 700;
-  font-size: 1rem;
+  color: #1f2937;
+  line-height: 1;
   margin-bottom: 0.25rem;
 }
 
@@ -5062,31 +5634,38 @@ html {
   color: #dc2626;
 }
 
-.score-fraction {
-  font-size: 0.7rem;
+.stat-description {
+  font-size: 0.75rem;
   color: #6b7280;
+  font-weight: 400;
+  opacity: 0.8;
 }
-.dark .score-fraction {
+
+.dark .stat-description {
   color: #9ca3af;
 }
 
-.status-badge {
-  padding: 0.25rem 0.625rem;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
+/* Card Background Patterns */
+.stat-card.modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: 50%;
+  transform: translate(30px, -30px);
+  transition: all 0.3s ease;
 }
 
-.status-badge.submitted {
-  background: rgba(163, 209, 198, 0.2);
-  color: #1f2937;
+.dark .stat-card.modern::before {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.2), rgba(55, 65, 81, 0.1));
 }
 
-.status-badge.graded {
-  background: rgba(179, 216, 168, 0.3);
-  color: #1f2937;
+.stat-card.modern:hover::before {
+  transform: translate(20px, -20px) scale(1.2);
+  opacity: 0.8;
 }
 
 .status-badge.reviewed {
@@ -5116,10 +5695,8 @@ html {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Old style for backward compatibility */
-.btn-action:not(.modern) {
-  width: 32px;
-  height: 32px;
+.stat-card.modern.total {
+  border-left: 4px solid #3b82f6;
 }
 
 .btn-action:not(.modern).review {
@@ -5162,7 +5739,10 @@ html {
 .btn-action.modern.review {
   background: linear-gradient(135deg, #10b981, #059669);
   color: white;
-  border: 1px solid transparent;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .btn-action.modern.review:hover {
@@ -5173,8 +5753,7 @@ html {
 
 .btn-action.modern.view {
   background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white;
-  border: 1px solid transparent;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
 .btn-action.modern.view:hover {
@@ -5183,26 +5762,33 @@ html {
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
-.btn-action.modern:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Pulsing Animation Behind Icons */
+.stat-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  opacity: 0.3;
+  animation: pulse-animation 2s infinite;
 }
 
-/* Dark mode support */
-.dark .btn-action.modern.review {
-  background: linear-gradient(135deg, #059669, #047857);
+.stat-pulse.pending {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
 }
 
-.dark .btn-action.modern.review:hover {
-  background: linear-gradient(135deg, #047857, #065f46);
+.stat-pulse.graded {
+  background: linear-gradient(135deg, #10b981, #059669);
 }
 
-.dark .btn-action.modern.view {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+.stat-pulse.total {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
-.dark .btn-action.modern.view:hover {
-  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+.stat-pulse.average {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
 }
 
 /* Pagination */
@@ -5247,12 +5833,21 @@ html {
   color: white;
 }
 
-.pagination-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.stat-label {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 600;
+  margin-bottom: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.pagination-info {
+.dark .stat-label {
+  color: #d1d5db;
+}
+
+.stat-description {
+  font-size: 0.75rem;
   color: #6b7280;
   font-size: 0.875rem;
   font-weight: 500;
@@ -5261,19 +5856,18 @@ html {
   color: #a3d1c6;
 }
 
-/* Modal Styles */
-.modal-overlay {
-  position: fixed;
+/* Card Background Patterns */
+.stat-card.modern::before {
+  content: '';
+  position: absolute;
   top: 0;
-  left: 0;
   right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: 50%;
+  transform: translate(30px, -30px);
+  transition: all 0.3s ease;
 }
 
 .review-modal {
@@ -5324,18 +5918,16 @@ html {
   color: #a3d1c6;
 }
 
-.modal-close {
-  width: 36px;
-  height: 36px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6b7280;
-  transition: all 0.2s;
+.stat-card.modern.graded:hover {
+  box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
+}
+
+.stat-card.modern.total {
+  border-left: 4px solid #3b82f6;
+}
+
+.stat-card.modern.total:hover {
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
 }
 .dark .modal-close {
   color: #a3d1c6;
@@ -5358,7 +5950,6 @@ html {
 .loading-questions,
 .no-questions {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 3rem 2rem;
@@ -5415,8 +6006,8 @@ html {
   color: #a3d1c6;
 }
 
-.stat-value {
-  font-size: 1.25rem;
+.stat-number {
+  font-size: 1.75rem;
   font-weight: 700;
   color: #1f2937;
 }
@@ -5442,12 +6033,13 @@ html {
   border-color: #3d8d7a;
 }
 
-.question-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+.stat-label {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 600;
+  margin-bottom: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .question-number {
@@ -5459,21 +6051,31 @@ html {
   font-size: 0.8rem;
 }
 
-.question-result {
-  padding: 0.375rem 0.75rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.8rem;
+.dark .stat-description {
+  color: #9ca3af;
 }
 
-.question-result.correct {
-  background: rgba(179, 216, 168, 0.3);
-  color: #1f2937;
+/* Card Background Patterns */
+.stat-card.modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: 50%;
+  transform: translate(30px, -30px);
+  transition: all 0.3s ease;
 }
 
-.question-result.incorrect {
-  background: rgba(248, 113, 113, 0.1);
-  color: #dc2626;
+.dark .stat-card.modern::before {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.2), rgba(55, 65, 81, 0.1));
+}
+
+.stat-card.modern:hover::before {
+  transform: translate(20px, -20px) scale(1.2);
+  opacity: 0.8;
 }
 
 .question-points {
@@ -5506,36 +6108,47 @@ html {
   gap: 0.75rem;
 }
 
-.option-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 0.5rem;
-  background: white;
+.stat-card.modern.graded {
+  border-left: 4px solid #10b981;
 }
 
-.option-item.correct {
-  border-color: #10b981;
-  background: #ecfdf5;
+.stat-card.modern.graded:hover {
+  box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
 }
 
-.option-item.incorrect {
-  border-color: #ef4444;
-  background: #fef2f2;
+.stat-card.modern.total {
+  border-left: 4px solid #3b82f6;
 }
 
-.option-letter {
-  min-width: 32px;
-  height: 32px;
+.stat-card.modern.total:hover {
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+}
+
+.stat-card.modern.average {
+  border-left: 4px solid #8b5cf6;
+}
+
+.stat-card.modern.average:hover {
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+}
+
+/* Icon Wrapper with Animation */
+.stat-icon-wrapper {
+  position: relative;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f1f5f9;
-  border-radius: 50%;
-  font-weight: 700;
-  color: #475569;
+  color: white;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .option-item.correct .option-letter {
@@ -5563,34 +6176,66 @@ html {
   gap: 1rem;
 }
 
-.tf-option {
-  padding: 1.5rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 0.5rem;
-  text-align: center;
-  background: white;
+/* Pulsing Animation Behind Icons */
+.stat-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  opacity: 0.3;
+  animation: pulse-animation 2s infinite;
 }
 
-.tf-option.student-selected {
-  border-color: #3b82f6;
-  background: #eff6ff;
+.stat-pulse.pending {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
 }
 
-.tf-option.correct-answer {
-  border-color: #10b981;
-  background: #ecfdf5;
+.stat-pulse.graded {
+  background: linear-gradient(135deg, #10b981, #059669);
 }
 
-.tf-option strong {
-  display: block;
-  font-size: 1.125rem;
-  color: #1a202c;
+.stat-pulse.total {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
-.fill-blank-answers {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.stat-pulse.average {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* Stat Content */
+.stat-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, #1f2937, #374151);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .student-answer-box,
@@ -5600,47 +6245,46 @@ html {
   border: 1px solid #e2e8f0;
 }
 
-.answer-label {
+.stat-label {
   font-size: 0.875rem;
-  color: #64748b;
-  margin-bottom: 0.5rem;
+  color: #374151;
   font-weight: 600;
+  margin-bottom: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.answer-text {
-  padding: 0.75rem;
-  border-radius: 0.375rem;
-  font-size: 1rem;
+.dark .stat-label {
+  color: #d1d5db;
 }
 
-.answer-text.correct {
-  background: #d1fae5;
-  color: #065f46;
+.stat-description {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 400;
+  opacity: 0.8;
 }
 
-.answer-text.incorrect {
-  background: #fee2e2;
-  color: #991b1b;
+.dark .stat-description {
+  color: #9ca3af;
 }
 
-.teacher-comment-section {
-  margin-top: 1rem;
+/* Card Background Patterns */
+.stat-card.modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: 50%;
+  transform: translate(30px, -30px);
+  transition: all 0.3s ease;
 }
 
-.comment-input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.375rem;
-  font-family: inherit;
-  font-size: 0.875rem;
-  resize: vertical;
-}
-
-.comment-input:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+.dark .stat-card.modern::before {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.2), rgba(55, 65, 81, 0.1));
 }
 
 .overall-feedback-section {
@@ -5665,10 +6309,12 @@ html {
   resize: vertical;
 }
 
-.feedback-textarea:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+.stat-card.modern.graded {
+  border-left: 4px solid #10b981;
+}
+
+.stat-card.modern.graded:hover {
+  box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
 }
 
 .modal-actions {
@@ -5778,13 +6424,15 @@ html {
   box-shadow: 0 0 0 3px rgba(61, 141, 122, 0.1);
 }
 
-/* Answer Styles */
-.answer-section {
-  margin: 1rem 0;
+/* Stat Content */
+.stat-content {
+  flex: 1;
+  min-width: 0;
 }
 
-.answer-key-label {
-  font-weight: 600;
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 700;
   color: #1f2937;
   margin-bottom: 0.75rem;
 }
@@ -5798,18 +6446,24 @@ html {
   gap: 0.75rem;
 }
 
-.option-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  background: white;
+.dark .stat-number {
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.dark .option-item {
-  background: #23272b;
-  border-color: #374151;
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 600;
+  margin-bottom: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dark .stat-label {
+  color: #d1d5db;
 }
 
 .option-item.correct {
@@ -5834,9 +6488,8 @@ html {
   justify-content: center;
   background: #f1f5f9;
   border-radius: 50%;
-  font-weight: 700;
-  color: #475569;
-  font-size: 0.875rem;
+  transform: translate(30px, -30px);
+  transition: all 0.3s ease;
 }
 
 .option-item.correct .option-letter {
@@ -5849,13 +6502,9 @@ html {
   color: white;
 }
 
-.option-content {
-  flex: 1;
-}
-
-.option-text {
-  color: #1f2937;
-  line-height: 1.5;
+.stat-card.modern:hover::before {
+  transform: translate(20px, -20px) scale(1.2);
+  opacity: 0.8;
 }
 .dark .option-text {
   color: #a3d1c6;
@@ -5911,16 +6560,17 @@ html {
   background: rgba(179, 216, 168, 0.1);
 }
 
-.tf-option.wrong-answer {
-  border-color: #fca5a5;
-  background: rgba(248, 113, 113, 0.1);
+.stat-card.modern.average {
+  border-left: 4px solid #8b5cf6;
 }
 
-.tf-option strong {
-  display: block;
-  font-size: 1.125rem;
-  color: #1f2937;
-  margin-bottom: 0.5rem;
+.stat-card.modern.average:hover {
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+}
+
+/* Icon Wrapper with Animation */
+.stat-icon-wrapper {
+  position: relative;
 }
 .dark .tf-option strong {
   color: #a3d1c6;
@@ -5971,20 +6621,28 @@ html {
   color: #dc2626;
 }
 
-/* Teacher Comments */
-.teacher-comment-section {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(61, 141, 122, 0.1);
+/* Pulsing Animation Behind Icons */
+.stat-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  opacity: 0.3;
+  animation: pulse-animation 2s infinite;
 }
 .dark .teacher-comment-section {
   border-top-color: #3d8d7a;
 }
 
-.overall-feedback-section {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 2px solid rgba(61, 141, 122, 0.1);
+.stat-pulse.graded {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.stat-pulse.total {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 .dark .overall-feedback-section {
   border-top-color: #3d8d7a;
@@ -6038,9 +6696,18 @@ html {
   color: #a3d1c6;
 }
 
-.comment-display p {
-  margin: 0.5rem 0 0 0;
-  color: #1f2937;
+/* Card Background Patterns */
+.stat-card.modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: 50%;
+  transform: translate(30px, -30px);
+  transition: all 0.3s ease;
 }
 .dark .comment-display p {
   color: #a3d1c6;
@@ -6048,13 +6715,8 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .gradebook-container {
-    padding: 1rem;
-  }
-
-  .header-content {
-    flex-direction: column;
-    align-items: stretch;
+  .analytics-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .search-box {
@@ -6080,40 +6742,52 @@ html {
 
   .modal-actions {
     flex-direction: column;
-  }
-
-  .btn-modal {
-    width: 100%;
-    max-width: 100%;
+    align-items: stretch;
+    gap: 0.75rem;
   }
 }
 
-/* Logout Modal Specific Styles */
-.logout-modal {
-  max-width: 400px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+.stat-card.modern.graded {
+  border-left: 4px solid #10b981;
 }
 
-.dark .logout-modal {
-  background: #23272b;
-  border: 1px solid #374151;
+.stat-card.modern.graded:hover {
+  box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
 }
 
-.logout-header {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
+.stat-card.modern.total {
+  border-left: 4px solid #3b82f6;
+}
+
+.stat-card.modern.total:hover {
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+}
+
+.stat-card.modern.average {
+  border-left: 4px solid #8b5cf6;
+}
+
+.stat-card.modern.average:hover {
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+}
+
+/* Icon Wrapper with Animation */
+.stat-icon-wrapper {
+  position: relative;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  padding: 1.5rem;
-  border-bottom: none;
-}
-
-.logout-header h3 {
-  color: white;
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .modal-body {
@@ -6142,97 +6816,126 @@ html {
   font-size: 0.875rem;
 }
 
-.dark .logout-submessage {
+/* Pulsing Animation Behind Icons */
+.stat-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  opacity: 0.3;
+  animation: pulse-animation 2s infinite;
+}
+
+.stat-pulse.pending {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.stat-pulse.graded {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.stat-pulse.total {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.stat-pulse.average {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* Stat Content */
+.stat-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, #1f2937, #374151);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .stat-number {
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 600;
+  margin-bottom: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dark .stat-label {
+  color: #d1d5db;
+}
+
+.stat-description {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.dark .stat-description {
   color: #9ca3af;
 }
 
-.logout-footer {
-  padding: 1.5rem;
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-}
-
-.dark .logout-footer {
-  background: #374151;
-  border-color: #4b5563;
-}
-
-.btn-cancel {
-  padding: 0.75rem 1.5rem;
-  border: 1px solid #d1d5db;
-  background: white;
-  color: #374151;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.dark .btn-cancel {
-  background: #4b5563;
-  border-color: #6b7280;
-  color: #f1f5f9;
-}
-
-.btn-cancel:hover:not(:disabled) {
-  background: #f3f4f6;
-  border-color: #9ca3af;
-}
-
-.dark .btn-cancel:hover:not(:disabled) {
-  background: #6b7280;
-}
-
-.btn-logout {
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 120px;
-  justify-content: center;
-}
-
-.btn-logout:hover:not(:disabled) {
-  background: linear-gradient(135deg, #b91c1c, #991b1b);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-}
-
-.btn-logout:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.loading-text {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logout-spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top: 2px solid white;
+/* Card Background Patterns */
+.stat-card.modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  transform: translate(30px, -30px);
+  transition: all 0.3s ease;
 }
 
-/* Final responsive adjustments */
-@media (max-width: 480px) {
-  .logout-footer {
-    flex-direction: column;
+.dark .stat-card.modern::before {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.2), rgba(55, 65, 81, 0.1));
+}
+
+.stat-card.modern:hover::before {
+  transform: translate(20px, -20px) scale(1.2);
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .analytics-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .btn-cancel,
@@ -6250,6 +6953,7 @@ html {
 
   .header-actions {
     flex-direction: column;
+    align-items: flex-start;
     gap: 0.5rem;
   }
 
@@ -6259,95 +6963,52 @@ html {
 
   .modal-actions {
     flex-direction: column;
-  }
-
-  .btn-modal {
-    width: 100%;
-    max-width: 100%;
+    align-items: stretch;
+    gap: 0.75rem;
   }
 }
 
-/* Breadcrumb Navigation */
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
+.stat-card.modern.graded {
+  border-left: 4px solid #10b981;
 }
 
-.breadcrumb-item {
-  background: none;
-  border: none;
-  color: #64748b;
-  cursor: pointer;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.2s;
+.stat-card.modern.graded:hover {
+  box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
 }
 
-.breadcrumb-item:hover {
-  background: #f1f5f9;
-  color: #3b82f6;
+.stat-card.modern.total {
+  border-left: 4px solid #3b82f6;
 }
 
-.breadcrumb-item.active {
-  color: #1a202c;
-  font-weight: 600;
-  cursor: default;
+.stat-card.modern.total:hover {
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
 }
 
-.breadcrumb-item.active:hover {
-  background: none;
+.stat-card.modern.average {
+  border-left: 4px solid #8b5cf6;
 }
 
-.breadcrumb-separator {
-  color: #cbd5e1;
+.stat-card.modern.average:hover {
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
 }
 
-/* Subject Cards */
-.subjects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
+/* Icon Wrapper with Animation */
+.stat-icon-wrapper {
+  position: relative;
 }
 
-.subject-card {
-  background: white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.subject-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
-}
-
-.subject-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 0.75rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.5rem;
   flex-shrink: 0;
-}
-
-.subject-info {
-  flex: 1;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .subject-info h3 {
@@ -6493,33 +7154,19 @@ html {
   font-size: 0.875rem;
 }
 
-.points-input:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+.dark .stat-card.modern::before {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.2), rgba(55, 65, 81, 0.1));
 }
 
-/* True/False styling updates */
-.tf-option.wrong-answer {
-  border-color: #ef4444;
-  background: #fef2f2;
+.stat-card.modern:hover::before {
+  transform: translate(20px, -20px) scale(1.2);
+  opacity: 0.8;
 }
 
-.tf-option.correct-answer.student-selected {
-  border-color: #10b981;
-  background: #ecfdf5;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .main-content {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .main-content {
-    padding: 1rem;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .analytics-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .navbar-center {
@@ -6639,23 +7286,52 @@ html {
   border-color: rgba(163, 209, 198, 0.2);
 }
 
-.section-card.modern:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 16px;
+.stat-pulse.total {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
-.section-card.modern:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  border-color: rgba(99, 102, 241, 0.3);
+.stat-pulse.average {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* Stat Content */
+.stat-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, #1f2937, #374151);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .stat-number {
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .dark .section-card.modern:hover {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);

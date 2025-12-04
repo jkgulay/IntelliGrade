@@ -723,6 +723,8 @@ export default {
           console.error('❌ Error fetching quizzes:', quizzesError)
         }
 
+        console.log('📊 Loaded', allQuizzes?.length || 0, 'published quizzes')
+
         const quizzesBySection = {}
         if (allQuizzes) {
           allQuizzes.forEach((quiz) => {
@@ -732,8 +734,6 @@ export default {
             quizzesBySection[quiz.section_id].push(quiz)
           })
         }
-
-        console.log('📦 Quizzes grouped by section:', quizzesBySection)
 
         // Fetch quiz results for student
         const allQuizIds = allQuizzes ? allQuizzes.map((q) => q.id) : []

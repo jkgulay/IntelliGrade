@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Section Detail Enhancements */ .section-detail-card .info-label { color: #1f2937; font-weight:
 600; display: inline-block; min-width: 100px; } .dark .section-detail-card .info-label { color:
 #A3D1C6; } .section-detail-card .info-value { color: #6b7280; font-weight: 500; margin-left: 0.5rem;
@@ -357,6 +358,2052 @@ box-shadow: 0 2px 8px rgba(163, 209, 198, 0.3); } .dark .section-action-btn:hove
 #20c997; color: #ffffff; box-shadow: 0 2px 8px rgba(32, 201, 151, 0.3); } .dark-mode
 .section-actions-grid { background: var(--bg-card); border-radius: 8px; box-shadow: 0 2px 8px
 rgba(0,0,0,0.10); }
+=======
+
+
+/* Section Detail Enhancements */
+.section-detail-card .info-label {
+  color: #1f2937;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 100px;
+}
+.dark .section-detail-card .info-label {
+  color: #A3D1C6;
+}
+
+.section-detail-card .info-value {
+  color: #6b7280;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+.dark .section-detail-card .info-value {
+  color: #A3D1C6;
+}
+
+.section-code {
+  background: #f8f9fa;
+  color: #1f2937;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-block;
+}
+.dark .section-code {
+  background: #181c20;
+  color: #A3D1C6;
+  border: 1px solid #20c997;
+}
+
+.section-actions-grid {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+/* Stats and Counts */
+.section-stats-simple {
+  color: #6b7280;
+}
+
+  /*
+  |--------------------------------------------------------------------------
+  | BASE STYLES (Light Mode)
+  |--------------------------------------------------------------------------
+  | Gi-uniform ug gi-simplify ang card structure ug elements.
+  */
+  .section-info-grid {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    transition: all 0.2s ease-in-out;
+  }
+  .section-info-grid:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #9ca3af;
+    transform: translateY(-2px);
+  }
+  .section-detail-card {
+    padding: 0;
+  }
+  .section-detail-card .info-label {
+    color: #4b5563;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+  }
+  .section-detail-card .info-value {
+    color: #1f2937;
+    font-weight: 500;
+    margin-left: 0;
+    display: block;
+    font-size: 1rem;
+  }
+  .section-code {
+    background: #f3f4f6;
+    color: #1f2937;
+    border-radius: 6px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-block;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid #e5e7eb;
+  }
+  .section-actions-grid {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+  }
+  /*
+  |--------------------------------------------------------------------------
+  | DARK MODE STYLES
+  |--------------------------------------------------------------------------
+  | Gamit ang green (#10b981) isip highlight color.
+  */
+  .dark-mode .section-info-grid {
+    background-color: #1f2937;
+    border: 1px solid #10b981;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+    color: #e5e7eb;
+  }
+  .dark-mode .section-info-grid:hover {
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+    border-color: #059669;
+    transform: translateY(-2px);
+  }
+  .dark-mode .section-detail-card .info-label {
+    color: #34d399;
+  }
+  .dark-mode .section-detail-card .info-value {
+    color: #e5e7eb;
+  }
+  .dark-mode .section-code {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10b981;
+    color: #10b981;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+.section-card.simple:hover {
+  background: #f6f8fa;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-color: var(--color-primary);
+}
+.dark .section-card.simple, .dark .section-detail-card {
+  background: #23272b;
+  border: 1px solid #20c997;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+}
+
+/* Text Colors */
+.section-info h4,
+.section-detail-card h4,
+.info-label,
+.card-header h3 {
+  color: #1f2937;
+  font-weight: 600;
+}
+.dark .section-info h4,
+.dark .section-detail-card h4,
+.dark .info-label,
+.dark .card-header h3 {
+  color: #A3D1C6;
+}
+
+.info-value,
+.section-stats-simple {
+  color: #6b7280;
+}
+.dark .info-value,
+.dark .section-stats-simple {
+  color: #A3D1C6;
+}
+
+/* Simple, compact buttons */
+.breadcrumb-btn, .grade-filter-btn, .section-action-btn {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.97rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.breadcrumb-btn:hover, .grade-filter-btn:hover, .section-action-btn:hover {
+  background: var(--color-primary-dark);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Code Area Styling */
+.section-code-area,
+.section-code-inline {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.dark .section-code-area,
+.dark .section-code-inline {
+  background: #181c20;
+  border: 1px solid #20c997;
+}
+/* Grid Layouts */
+.sections-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Section Card Content */
+.section-simple-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section-info h4 {
+  color: #1f2937;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+.dark .section-info h4 {
+  color: #A3D1C6;
+}
+
+/* Enhanced Student Count Display */
+.section-stats-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.dark .section-stats-primary {
+  background: linear-gradient(135deg, #064e3b, #065f46);
+}
+
+.student-count-large {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #059669;
+  line-height: 1;
+}
+.dark .student-count-large {
+  color: #34d399;
+}
+
+.student-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+.dark .student-label {
+  color: #9ca3af;
+}
+
+/* Section Capacity Info */
+.section-capacity-info {
+  margin-top: 0.75rem;
+}
+
+.capacity-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.capacity-bar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.dark .capacity-bar {
+  background: #374151;
+}
+
+.capacity-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #059669);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.capacity-text {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-align: center;
+}
+.dark .capacity-text {
+  color: #9ca3af;
+}
+
+/* Subject Description */
+.subject-description {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dark .subject-description {
+  color: #9ca3af;
+}
+
+.subject-description-empty {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-style: italic;
+  margin: 0.5rem 0 0 0;
+}
+.dark .subject-description-empty {
+  color: #6b7280;
+}
+
+/* Subject Content Enhanced */
+.subject-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #f8fafc;
+  border-radius: 0 0 16px 16px;
+  border-top: 1px solid #e2e8f0;
+}
+.dark .subject-summary {
+  background: #1e293b;
+  border-top-color: #475569;
+}
+
+.summary-stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+.dark .stat-number {
+  color: #f9fafb;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+.dark .stat-label {
+  color: #9ca3af;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 2rem;
+  background: #e2e8f0;
+}
+.dark .stat-divider {
+  background: #475569;
+}
+
+.view-sections-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.view-sections-btn:hover {
+  background: #059669;
+  transform: translateX(2px);
+}
+
+/* Section Metadata */
+.section-metadata {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+.dark .section-metadata {
+  background: #374151;
+}
+
+.metadata-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metadata-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.dark .metadata-label {
+  color: #9ca3af;
+}
+
+.metadata-value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+.dark .metadata-value {
+  color: #f9fafb;
+}
+
+/* Clean UI - Section code styles removed */
+
+/* Section Detail View Code Styles */
+.section-code-details-expanded {
+  margin-top: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.dark .section-code-details-expanded {
+  border-color: #374151;
+}
+
+.section-code-summary-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: #f9fafb;
+  cursor: pointer;
+  list-style: none;
+  border-bottom: 1px solid #e5e7eb;
+}
+.dark .section-code-summary-detail {
+  background: #1f2937;
+  border-bottom-color: #374151;
+}
+
+.code-label-small {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+.dark .code-label-small {
+  color: #9ca3af;
+}
+
+.code-value-small {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.875rem;
+  color: #374151;
+  background: #ffffff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+}
+.dark .code-value-small {
+  color: #d1d5db;
+  background: #111827;
+  border-color: #4b5563;
+}
+
+.section-code-expanded-detail {
+  padding: 1rem;
+  background: #ffffff;
+}
+.dark .section-code-expanded-detail {
+  background: #111827;
+}
+
+.code-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.code-description {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.copy-btn-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.copy-btn-detail:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+.dark .copy-btn-detail {
+  border-color: #4b5563;
+  color: #9ca3af;
+}
+.dark .copy-btn-detail:hover {
+  background: #1f2937;
+  border-color: #6b7280;
+}
+
+/* Organized Section Detail Layout */
+.section-detail-enhanced-organized {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section-header-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.dark .section-header-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.section-main-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-icon-large {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.section-main-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+.dark .section-main-title {
+  color: #f9fafb;
+}
+
+.section-meta {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.subject-badge, .grade-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.subject-badge {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #d1fae5;
+}
+.dark .subject-badge {
+  background: #064e3b;
+  color: #34d399;
+  border-color: #065f46;
+}
+
+.grade-badge {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #dbeafe;
+}
+.dark .grade-badge {
+  background: #1e3a8a;
+  color: #60a5fa;
+  border-color: #1e40af;
+}
+
+.section-code-minimal {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+}
+.dark .section-code-minimal {
+  border-top-color: #374151;
+}
+
+.code-summary-minimal {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.875rem;
+  color: #6b7280;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.code-summary-minimal:hover {
+  background: #f9fafb;
+}
+.dark .code-summary-minimal {
+  color: #9ca3af;
+}
+.dark .code-summary-minimal:hover {
+  background: #374151;
+}
+
+.code-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+}
+
+.code-details-minimal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+.dark .code-details-minimal {
+  background: #374151;
+}
+
+.code-note {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-style: italic;
+  margin: 0;
+}
+
+.copy-btn-minimal {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.copy-btn-minimal:hover {
+  background: #ffffff;
+  border-color: #9ca3af;
+}
+.dark .copy-btn-minimal {
+  border-color: #4b5563;
+  color: #9ca3af;
+}
+.dark .copy-btn-minimal:hover {
+  background: #1f2937;
+  border-color: #6b7280;
+}
+
+/* Student Management Card */
+.student-management-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.dark .student-management-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.student-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.student-count-display {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+  border-radius: 12px;
+  border-left: 4px solid #10b981;
+}
+.dark .student-count-display {
+  background: linear-gradient(135deg, #064e3b, #065f46);
+}
+
+.count-circle {
+  width: 64px;
+  height: 64px;
+  background: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.count-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.count-info h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+}
+.dark .count-info h4 {
+  color: #f9fafb;
+}
+
+.count-info p {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+.dark .count-info p {
+  color: #9ca3af;
+}
+
+.enrollment-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.add-students-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+.add-students-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.view-students-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #10b981;
+  border: 2px solid #10b981;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.view-students-btn:hover {
+  background: #ecfdf5;
+  transform: translateY(-1px);
+}
+.dark .view-students-btn {
+  color: #34d399;
+  border-color: #34d399;
+}
+.dark .view-students-btn:hover {
+  background: #064e3b;
+}
+
+/* Academic Actions Card */
+.academic-actions-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.dark .academic-actions-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.actions-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+.dark .actions-title {
+  color: #f9fafb;
+}
+
+.actions-grid-organized {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.action-button.secondary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+.action-button.secondary:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateX(4px);
+}
+.dark .action-button.secondary {
+  background: #374151;
+  color: #d1d5db;
+  border-color: #4b5563;
+}
+.dark .action-button.secondary:hover {
+  background: #4b5563;
+  border-color: #6b7280;
+}
+
+@media (min-width: 1024px) {
+  .section-detail-enhanced-organized {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .student-management-card {
+    order: 2;
+  }
+
+  .academic-actions-card {
+    order: 3;
+  }
+}
+
+/* Add Students Modal Styles */
+.add-students-content {
+  padding: 0;
+  max-height: calc(95vh - 200px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Enroll Student by ID Styles */
+.enroll-student-section {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border: none;
+  border-bottom: 3px solid #10b981;
+  border-radius: 0;
+  flex-shrink: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+.dark .enroll-student-section {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+  border-bottom-color: #10b981;
+  box-shadow: none;
+}
+
+.enroll-header {
+  margin-bottom: 1rem;
+}
+
+.header-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.search-icon-circle {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.enroll-header .section-title {
+  color: #065f46;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.dark .enroll-header .section-title {
+  color: #6ee7b7;
+}
+
+.enroll-description {
+  color: #047857;
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dark .enroll-description {
+  color: #a7f3d0;
+}
+
+.enroll-form {
+  margin-top: 1rem;
+}
+
+.enroll-input-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background: white;
+  border: 2px solid #10b981;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+}
+
+.enroll-student-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.9375rem;
+  color: #1f2937;
+  padding: 0.375rem 0;
+  font-weight: 500;
+}
+
+.dark .enroll-student-input {
+  color: #065f46;
+}
+
+.enroll-student-input:focus {
+  outline: none;
+}
+
+.dark .enroll-student-input:focus {
+  outline: none;
+}
+
+.enroll-student-input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.dark .enroll-student-input::placeholder {
+  color: #6b7280;
+}
+
+.id-icon {
+  color: #10b981;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.dark .id-icon {
+  color: #10b981;
+}
+
+.enroll-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+.enroll-btn:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+}
+
+.enroll-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.enroll-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 4px rgba(13, 148, 136, 0.3);
+}
+
+.enroll-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0f766e, #134e4a);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(13, 148, 136, 0.4);
+}
+
+.enroll-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.enroll-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.enrollment-message {
+  padding: 0.625rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.enrollment-message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 2px solid #10b981;
+}
+
+.dark .enrollment-message.success {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border-color: rgba(110, 231, 183, 0.4);
+}
+
+.enrollment-message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 2px solid #ef4444;
+}
+
+.dark .enrollment-message.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: rgba(252, 165, 165, 0.4);
+}
+
+/* Modal Divider */
+.modal-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  background: #f9fafb;
+}
+
+.modal-divider::before,
+.modal-divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d1d5db, transparent);
+}
+
+.dark .modal-divider::before,
+.dark .modal-divider::after {
+  background: linear-gradient(90deg, transparent, #374151, transparent);
+}
+
+.modal-divider span {
+  padding: 0 1.25rem;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 0.375rem 1rem;
+}
+
+.dark .modal-divider span {
+  color: #9ca3af;
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.student-search-section {
+  padding: 2rem;
+  background: white;
+}
+
+.search-header {
+  margin-bottom: 1.25rem;
+}
+
+.header-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-title {
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.dark .section-title {
+  color: #f1f5f9;
+}
+
+.search-description {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0;
+}
+.dark .search-description {
+  color: #9ca3af;
+}
+
+.search-filters-enhanced {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  color: #9ca3af;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.student-search-input-enhanced {
+  width: 100%;
+  padding: 0.875rem 0.875rem 0.875rem 2.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background: white;
+}
+.student-search-input-enhanced:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+.dark .student-search-input-enhanced {
+  background: #1f2937;
+  border-color: #374151;
+  color: #f9fafb;
+}
+.dark .student-search-input-enhanced:focus {
+  border-color: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.1);
+}
+
+.grade-filter-select-enhanced {
+  padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 140px;
+}
+.grade-filter-select-enhanced:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+.dark .grade-filter-select-enhanced {
+  background: #1f2937;
+  border-color: #374151;
+  color: #f9fafb;
+}
+
+.search-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  color: #059669;
+  flex-shrink: 0;
+}
+.dark .search-hint {
+  background: #064e3b;
+  border-color: #065f46;
+  color: #34d399;
+}
+
+.students-list-section {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.dark .students-list-section {
+  border-top-color: #374151;
+}
+
+.students-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+.students-header h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+.dark .students-header h4 {
+  color: #f9fafb;
+}
+
+.batch-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.add-batch-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.add-batch-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+}
+.add-batch-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.clear-selection-btn {
+  background: transparent;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.clear-selection-btn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+.dark .clear-selection-btn {
+  color: #9ca3af;
+  border-color: #374151;
+}
+.dark .clear-selection-btn:hover {
+  background: #1f2937;
+  border-color: #4b5563;
+}
+
+.loading-state, .empty-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+.dark .loading-state, .dark .empty-search {
+  color: #9ca3af;
+}
+
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.625rem;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  max-height: 200px;
+  padding-right: 0.25rem;
+}
+
+.student-card {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  background: white;
+}
+.student-card:hover {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+.student-card.selected {
+  border-color: #10b981;
+  background: #ecfdf5;
+}
+.dark .student-card {
+  border-color: #374151;
+  background: #1f2937;
+}
+.dark .student-card:hover {
+  border-color: #10b981;
+  background: #064e3b;
+}
+.dark .student-card.selected {
+  background: #065f46;
+}
+
+.student-avatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.student-info h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+.dark .student-info h4 {
+  color: #f9fafb;
+}
+
+.student-id, .student-grade {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0;
+}
+.dark .student-id, .dark .student-grade {
+  color: #9ca3af;
+}
+
+.selection-indicator {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  background: #10b981;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.2s;
+}
+.student-card.selected .selection-indicator {
+  opacity: 1;
+}
+
+.btn-outline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #10b981;
+  border: 1px solid #10b981;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  background: #ecfdf5;
+}
+.dark .btn-outline {
+  color: #34d399;
+  border-color: #34d399;
+}
+.dark .btn-outline:hover {
+  background: #064e3b;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.dark .breadcrumb {
+  background: #1f2937;
+  border: 1px solid #374151;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  color: #A3D1C6;
+}
+
+.breadcrumb-separator {
+  color: #9ca3af;
+  font-weight: 300;
+  user-select: none;
+}
+
+.dark .breadcrumb-separator {
+  color: #6b7280;
+}
+
+.breadcrumb-current {
+  color: #1f2937;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  background: #f3f4f6;
+  border-radius: 6px;
+}
+
+.dark .breadcrumb-current {
+  color: #ffffff;
+  background: #374151;
+}
+
+/* Grade Filter */
+.grade-filter-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.grade-filter-btn.active {
+  background: #2a6d5f;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.empty-icon svg {
+  color: #A3D1C6;
+  margin-bottom: 1rem;
+}
+
+/* Modal Enhancements */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+  color: #1f2937;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+.dark .modal-header h2 {
+  color: #A3D1C6;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #1f2937;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.dark .form-group label {
+  color: #A3D1C6;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+}
+.dark .form-group input,
+.dark .form-group select,
+.dark .form-group textarea {
+  background: #181c20;
+  border: 1px solid #20c997;
+  color: #A3D1C6;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.breadcrumb-btn {
+  background: none;
+  border: none;
+  color: #17815c;
+  font-weight: 700;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.dark .breadcrumb-btn {
+  color: #A3D1C6;
+}
+
+.breadcrumb-btn:hover {
+  background: #A3D1C6;
+  color: #ffffff;
+  transform: translateX(-1px);
+}
+
+.dark .breadcrumb-btn:hover {
+  background: #20c997;
+  color: #ffffff;
+}
+.breadcrumb-separator {
+  color: #20c997;
+  font-weight: 700;
+}
+.breadcrumb-current {
+  color: #fff;
+  font-weight: 700;
+}
+.grade-filter-container {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.grade-filter-btn {
+  background: #ffffff;
+  color: #3D8D7A;
+  border: 1.5px solid #A3D1C6;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.dark .grade-filter-btn {
+  background: #23272f;
+  color: #20c997;
+  border: 1.5px solid #20c997;
+  font-weight: 600;
+}
+
+.grade-filter-btn.active, .grade-filter-btn:hover {
+  background: #A3D1C6;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(163, 209, 198, 0.3);
+}
+
+.dark .grade-filter-btn.active, .dark .grade-filter-btn:hover {
+  background: #20c997;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(32, 201, 151, 0.3);
+}
+.sections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  max-width: 100%;
+}
+
+.section-card.simple {
+  background: #ffffff;
+  border: 1.5px solid #A3D1C6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  max-width: 350px;
+  min-height: 120px;
+}
+
+.dark .section-card.simple {
+  background: #23272f;
+  border: 1.5px solid #20c997;
+  box-shadow: 0 2px 8px rgba(32, 201, 151, 0.15);
+}
+
+.section-card.simple:hover {
+  box-shadow: 0 4px 16px rgba(163, 209, 198, 0.25);
+  border-color: #3D8D7A;
+  transform: translateY(-2px);
+}
+
+.dark .section-card.simple:hover {
+  box-shadow: 0 4px 16px rgba(32, 201, 151, 0.3);
+  border-color: #18b087;
+}
+.section-simple-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.section-info h4 {
+  color: #3D8D7A;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.dark .section-info h4 {
+  color: #20c997;
+  font-weight: 700;
+}
+
+.section-code-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #F8F9FA;
+  border: 1px solid #A3D1C6;
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.dark .section-code-inline {
+  background: #181c1f;
+  border: 1px solid #20c997;
+}
+
+.code-label {
+  color: #3D8D7A;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.dark .code-label {
+  color: #20c997;
+}
+.section-code-text {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.copy-code-mini {
+  background: #20c997;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.copy-code-mini:hover {
+  background: #18b087;
+}
+.section-stats-simple {
+  color: #b5b5b5;
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+}
+.section-menu-container {
+  position: relative;
+}
+.section-action-btn.menu {
+  background: transparent;
+  border: none;
+  color: #3D8D7A;
+  font-size: 1.1rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark .section-action-btn.menu {
+  color: #20c997;
+}
+
+.section-action-btn.menu:hover {
+  background: #A3D1C6;
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.dark .section-action-btn.menu:hover {
+  background: #20c997;
+  color: #ffffff;
+}
+.section-dropdown-menu {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  background: #ffffff;
+  border: 1.5px solid #A3D1C6;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.875rem;
+}
+
+.dark .section-dropdown-menu {
+  background: #23272f;
+  border: 1.5px solid #20c997;
+  box-shadow: 0 4px 12px rgba(32, 201, 151, 0.2);
+}
+
+.section-dropdown-menu .menu-item {
+  background: none;
+  border: none;
+  color: #3D8D7A;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.dark .section-dropdown-menu .menu-item {
+  color: #20c997;
+  font-weight: 600;
+}
+
+.section-dropdown-menu .menu-item:hover {
+  background: #A3D1C6;
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.dark .section-dropdown-menu .menu-item:hover {
+  background: #20c997;
+  color: #ffffff;
+}
+
+.section-dropdown-menu .menu-item.delete {
+  color: #dc3545;
+}
+
+.dark .section-dropdown-menu .menu-item.delete {
+  color: #ff5c5c;
+}
+
+.section-dropdown-menu .menu-item.delete:hover {
+  background: #dc3545;
+  color: #ffffff;
+}
+
+.dark .section-dropdown-menu .menu-item.delete:hover {
+  background: #ff5c5c;
+  color: #ffffff;
+}
+
+/* Section Detail View Enhancements */
+.section-detail-view {
+  padding: 2rem;
+  background: #181c1f;
+  border-radius: 16px;
+  border: 2px solid #20c997;
+  box-shadow: 0 0 8px 0 #20c99733;
+  color: #f1f1f1;
+}
+.section-detail-card {
+  background: #23272f;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px 0 #20c99722;
+  border: 1.5px solid #20c997;
+  padding: 2rem;
+}
+.section-info-container {
+  background: #181c1f;
+  border-radius: 12px;
+  border: 1.5px solid #20c997;
+  padding: 1.5rem 1rem;
+  margin-bottom: 2rem;
+}
+.section-info-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.section-info-item {
+  text-align: center;
+}
+.section-actions-grid {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+.section-action-btn {
+  background: #ffffff;
+  color: #3D8D7A;
+  border: 1.5px solid #A3D1C6;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.dark .section-action-btn {
+  background: #23272f;
+  color: #20c997;
+  border: 1.5px solid #20c997;
+  font-weight: 600;
+}
+
+.section-action-btn:hover {
+  background: #A3D1C6;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(163, 209, 198, 0.3);
+}
+
+.dark .section-action-btn:hover {
+  background: #20c997;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(32, 201, 151, 0.3);
+}
+.dark-mode .section-actions-grid {
+  background: var(--bg-card);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
 
 <template>
   <div class="dashboard-container">
@@ -1871,6 +3918,631 @@ rgba(0,0,0,0.10); }
         </div>
         <!-- End content-wrapper -->
       </div>
+<<<<<<< HEAD
+=======
+    </div>
+
+    <!-- Create/Edit Subject Modal - REDESIGNED -->
+    <div v-if="showCreateModal" class="modal-overlay" @click="closeModal">
+      <div class="modal-content-enhanced" @click.stop>
+        <!-- Modal Header -->
+        <div class="modal-header-enhanced">
+          <div class="modal-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7V17L12 22L22 17V7M12 4.18L19.55 8L12 11.82L4.45 8M4 9.73L11 13.36V20.27L4 16.64M20 16.64L13 20.27V13.36L20 9.73Z"/>
+            </svg>
+          </div>
+          <div class="modal-title-area">
+            <h2>{{ isEditing ? 'Edit Subject' : 'Create New Subject' }}</h2>
+            <p class="modal-subtitle">{{ currentStep === 1 ? 'Enter subject details' : 'Configure your sections' }}</p>
+          </div>
+          <button @click="closeModal" class="close-btn-enhanced">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="progress-indicator">
+          <div class="progress-step" :class="{ active: currentStep === 1, completed: currentStep === 2 }">
+            <div class="step-circle">
+              <svg v-if="currentStep === 2" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
+              </svg>
+              <span v-else>1</span>
+            </div>
+            <span class="step-label">Subject Info</span>
+          </div>
+          <div class="progress-line" :class="{ active: currentStep === 2 }"></div>
+          <div class="progress-step" :class="{ active: currentStep === 2 }">
+            <div class="step-circle">
+              <span>2</span>
+            </div>
+            <span class="step-label">Section Setup</span>
+          </div>
+        </div>
+
+        <form @submit.prevent="currentStep === 1 ? nextStep() : saveSubject()" class="subject-form-enhanced">
+          <!-- Step 1: Basic Information -->
+          <div v-if="currentStep === 1" class="step-content-enhanced">
+            <div class="form-grid">
+              <div class="form-group-enhanced full-width">
+                <label for="subjectName">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+                  </svg>
+                  Subject Name <span class="required">*</span>
+                </label>
+                <input
+                  id="subjectName"
+                  v-model="formData.name"
+                  type="text"
+                  placeholder="e.g., English, Mathematics, Science"
+                  required
+                />
+              </div>
+
+              <div class="form-group-enhanced">
+                <label for="gradeLevel">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+                  </svg>
+                  Grade Level <span class="required">*</span>
+                </label>
+                <select id="gradeLevel" v-model="formData.grade_level" required>
+                  <option value="">Select Grade Level</option>
+                  <option value="7">Grade 7</option>
+                  <option value="8">Grade 8</option>
+                  <option value="9">Grade 9</option>
+                  <option value="10">Grade 10</option>
+                </select>
+              </div>
+
+              <div class="form-group-enhanced">
+                <label for="numberOfSections">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"/>
+                  </svg>
+                  Number of Sections <span class="required">*</span>
+                </label>
+                <select id="numberOfSections" v-model="formData.number_of_sections" required @change="generateSections">
+                  <option value="">Select Number</option>
+                  <option v-for="n in 10" :key="n" :value="n">{{ n }} Section{{ n > 1 ? 's' : '' }}</option>
+                </select>
+              </div>
+
+              <div class="form-group-enhanced full-width">
+                <label for="description">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                  </svg>
+                  Description <span class="optional">(Optional)</span>
+                </label>
+                <textarea
+                  id="description"
+                  v-model="formData.description"
+                  placeholder="Brief description of the subject"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="modal-actions-enhanced">
+              <button type="submit" :disabled="!canProceedToStep2" class="btn-primary" style="margin-left: auto;">
+                Next: Setup Sections
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Section Setup -->
+          <div v-if="currentStep === 2" class="step-content-enhanced">
+            <div class="sections-info-banner">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+              </svg>
+              <p>Customize section names below. Unique section codes will be automatically generated.</p>
+            </div>
+
+            <div class="sections-setup-enhanced">
+              <div v-for="(section, index) in formData.sections" :key="index" class="section-setup-card">
+                <div class="section-badge">{{ index + 1 }}</div>
+                <div class="section-fields">
+                  <div class="field-wrapper">
+                    <label :for="'section-' + index">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"/>
+                      </svg>
+                      Section Name
+                    </label>
+                    <input
+                      :id="'section-' + index"
+                      v-model="section.name"
+                      type="text"
+                      :placeholder="'Section ' + (index + 1)"
+                      required
+                    />
+                  </div>
+                  <div class="field-wrapper">
+                    <label :for="'max-students-' + index">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z"/>
+                      </svg>
+                      Max Students
+                    </label>
+                    <input
+                      :id="'max-students-' + index"
+                      v-model="section.max_students"
+                      type="number"
+                      min="1"
+                      max="50"
+                      placeholder="Default: 40"
+                    />
+                  </div>
+                </div>
+                <div class="auto-code-notice">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10Z"/>
+                  </svg>
+                  Code will be auto-generated
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-actions-enhanced">
+              <button type="button" @click="currentStep = 1" class="btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
+                </svg>
+                Back
+              </button>
+              <button type="submit" :disabled="isLoading" class="btn-primary">
+                <svg v-if="!isLoading" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
+                </svg>
+                <svg v-else class="spinner-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
+                </svg>
+                {{ isLoading ? 'Creating...' : (isEditing ? 'Update Subject' : 'Create Subject') }}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div v-if="showDeleteModal" class="modal-overlay" @click="cancelDelete">
+      <div class="modal-content delete-modal" @click.stop>
+        <div class="modal-header">
+          <div class="delete-icon-header">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
+            </svg>
+          </div>
+          <h2>Delete {{ deleteType === 'subject' ? 'Subject' : 'Section' }}?</h2>
+          <button @click="cancelDelete" class="close-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="delete-modal-body">
+          <div class="delete-item-card">
+            <div class="item-icon">
+              <svg v-if="deleteType === 'subject'" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 7V17L12 22L22 17V7M12 4.18L19.55 8L12 11.82L4.45 8M4 9.73L11 13.36V20.27L4 16.64M20 16.64L13 20.27V13.36L20 9.73Z"/>
+              </svg>
+              <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+              </svg>
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">
+                <template v-if="deleteType === 'subject'">
+                  {{ itemToDelete?.subject_name || itemToDelete?.name }}
+                </template>
+                <template v-else>
+                  {{ itemToDelete?.section_name || itemToDelete?.name }}
+                </template>
+              </h3>
+              <div class="item-meta">
+                <span class="item-type">{{ deleteType === 'subject' ? 'Subject' : 'Section' }}</span>
+                <span class="separator">•</span>
+                <span class="item-grade">Grade {{ itemToDelete?.grade_level }}</span>
+                <template v-if="deleteType === 'subject'">
+                  <span class="separator">•</span>
+                  <span class="item-stats">{{ itemToDelete?.section_count || 0 }} sections</span>
+                  <span class="separator">•</span>
+                  <span class="item-stats">{{ itemToDelete?.total_students || 0 }} students</span>
+                </template>
+                <template v-else>
+                  <span class="separator">•</span>
+                  <span class="item-stats">{{ itemToDelete?.student_count || 0 }} students enrolled</span>
+                </template>
+              </div>
+              <template v-if="deleteType === 'section' && itemToDelete?.subject_name">
+                <div class="item-parent">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7V17L12 22L22 17V7M12 4.18L19.55 8L12 11.82L4.45 8M4 9.73L11 13.36V20.27L4 16.64M20 16.64L13 20.27V13.36L20 9.73Z"/>
+                  </svg>
+                  <span>{{ itemToDelete.subject_name }}</span>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <div class="delete-warning">
+            <div class="warning-header">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
+              </svg>
+              <h4>This action cannot be undone!</h4>
+            </div>
+            <div class="warning-content">
+              <p v-if="deleteType === 'subject'">
+                Deleting this subject will permanently remove <strong>all {{ itemToDelete?.section_count || 0 }} sections</strong>
+                and <strong>unenroll all {{ itemToDelete?.total_students || 0 }} students</strong>. All associated data, quizzes, and grades will be lost.
+              </p>
+              <p v-else>
+                Deleting this section will permanently <strong>unenroll all {{ itemToDelete?.student_count || 0 }} students</strong>.
+                All section data, quizzes, and grades will be lost.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button @click="cancelDelete" class="cancel-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+            </svg>
+            Cancel
+          </button>
+          <button @click="confirmDelete" class="delete-confirm-btn" :disabled="isDeleting">
+            <svg v-if="!isDeleting" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+            </svg>
+            <svg v-else class="spinner" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" />
+            </svg>
+            {{ isDeleting ? 'Deleting...' : `Delete ${deleteType === 'subject' ? 'Subject' : 'Section'}` }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success/Error Toast Notification -->
+    <transition name="toast">
+      <div v-if="showNotification" class="toast-notification" :class="`toast-${notificationType}`">
+        <div class="toast-content">
+          <div class="toast-icon">
+            <svg v-if="notificationType === 'success'" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.41,10.09L6,11.5L11,16.5Z" />
+            </svg>
+            <svg v-else-if="notificationType === 'error'" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,7A1,1 0 0,0 11,8V16A1,1 0 0,0 12,17A1,1 0 0,0 13,16V8A1,1 0 0,0 12,7M12,19A1,1 0 0,0 11,20A1,1 0 0,0 12,21A1,1 0 0,0 13,20A1,1 0 0,0 12,19Z" />
+            </svg>
+            <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+            </svg>
+          </div>
+          <span class="toast-message">{{ notificationMessage }}</span>
+          <button @click="hideNotification" class="toast-close">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </transition>
+
+<!-- Edit Subject Info Modal - Simple Quick Edit -->
+<div v-if="showEditSubjectModal" class="modal-overlay" @click="closeEditSubjectModal">
+  <div class="modal-content-enhanced" @click.stop style="max-width: 600px;">
+    <!-- Modal Header -->
+    <div class="modal-header-enhanced">
+      <div class="modal-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+        </svg>
+      </div>
+      <div class="modal-title-area">
+        <h2>Edit Subject Information</h2>
+        <p class="modal-subtitle">Update subject name and description</p>
+      </div>
+      <button @click="closeEditSubjectModal" class="close-btn-enhanced">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Edit Form -->
+    <form @submit.prevent="saveEditedSubjectInfo" class="subject-form-enhanced">
+      <div class="step-content-enhanced">
+        <div class="form-grid">
+          <div class="form-group-enhanced full-width">
+            <label for="editSubjectName">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+              </svg>
+              Subject Name <span class="required">*</span>
+            </label>
+            <input
+              id="editSubjectName"
+              v-model="editSubjectData.name"
+              type="text"
+              placeholder="e.g., English, Mathematics, Science"
+              required
+            />
+          </div>
+
+          <div class="form-group-enhanced full-width">
+            <label for="editDescription">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+              </svg>
+              Description <span class="optional">(Optional)</span>
+            </label>
+            <textarea
+              id="editDescription"
+              v-model="editSubjectData.description"
+              placeholder="Brief description of the subject"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="info-note" style="background: #eff6ff; border-left: 3px solid #3b82f6; padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+            <div style="display: flex; gap: 0.75rem; align-items: start;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#3b82f6" style="flex-shrink: 0; margin-top: 2px;">
+                <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+              </svg>
+              <div>
+                <p style="margin: 0; color: #1e40af; font-weight: 600; font-size: 0.875rem;">Quick Edit Mode</p>
+                <p style="margin: 0.25rem 0 0 0; color: #3730a3; font-size: 0.8125rem;">This will only update the subject name and description. To modify grade level or sections, please delete and recreate the subject.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions-enhanced">
+        <button type="button" @click="closeEditSubjectModal" class="btn-secondary">
+          Cancel
+        </button>
+        <button type="submit" class="btn-primary" :disabled="isLoading || !editSubjectData.name">
+          <svg v-if="!isLoading" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
+          </svg>
+          <svg v-else class="spinner-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" />
+          </svg>
+          {{ isLoading ? 'Updating...' : 'Update Subject' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Replace the Add Students Modal section in your Subjects.vue -->
+
+<!-- Add Students Modal - REDESIGNED -->
+<div v-if="showAddStudentsModal" class="modal-overlay" @click="closeAddStudentsModal">
+  <div class="modal-content-enhanced add-students-modal" @click.stop>
+    <!-- Modal Header -->
+    <div class="modal-header-enhanced">
+      <div class="modal-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          <path d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14" />
+        </svg>
+      </div>
+      <div class="modal-title-area">
+        <h2>Add Students to Section</h2>
+        <p class="modal-subtitle">{{ selectedSectionForStudents?.section_name }} - {{ selectedSubjectForStudents?.subject_name }}</p>
+      </div>
+      <button @click="closeAddStudentsModal" class="close-btn-enhanced">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="add-students-content">
+      <!-- Add Student by ID Section - ENHANCED -->
+      <div class="enroll-student-section">
+        <div class="enroll-header">
+          <div class="header-icon-title">
+            <div class="icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="section-title">Enroll Student by ID</h3>
+              <p class="enroll-description">Quick enrollment using student ID number</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="enroll-form">
+          <div class="enroll-input-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="id-icon">
+              <path d="M22,18V22H18V19H15V16H12L9.74,13.74C9.19,13.91 8.61,14 8,14A6,6 0 0,1 2,8A6,6 0 0,1 8,2A6,6 0 0,1 14,8C14,8.61 13.91,9.19 13.74,9.74L22,18M7,5A1,1 0 0,0 6,6A1,1 0 0,0 7,7A1,1 0 0,0 8,6A1,1 0 0,0 7,5Z"/>
+            </svg>
+            <input
+              v-model="enrollStudentId"
+              type="text"
+              placeholder="Enter Student ID (e.g., 2024001)"
+              class="enroll-student-input"
+              @keyup.enter="enrollStudentById"
+            />
+            <button
+              @click="enrollStudentById"
+              class="enroll-btn"
+              :disabled="!enrollStudentId.trim() || isEnrollingStudent"
+            >
+              <svg v-if="!isEnrollingStudent" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+              <svg v-else class="spinner-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
+              </svg>
+              {{ isEnrollingStudent ? 'Enrolling...' : 'Enroll Student' }}
+            </button>
+          </div>
+
+          <div v-if="enrollmentMessage" class="enrollment-message" :class="enrollmentMessageType">
+            <svg v-if="enrollmentMessageType === 'success'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
+            </svg>
+            <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+            </svg>
+            {{ enrollmentMessage }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="modal-divider">
+        <span>OR</span>
+      </div>
+
+      <!-- Search Students Section - ENHANCED -->
+      <div class="student-search-section">
+        <div class="search-header">
+          <div class="header-icon-title">
+            <div class="icon-circle search-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="section-title">Find Existing Students</h3>
+              <p class="search-description">Search by name or ID, then select students to add</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-filters-enhanced">
+          <div class="search-input-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="search-icon">
+              <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+            </svg>
+            <input
+              v-model="studentSearchQuery"
+              type="text"
+              placeholder="Type student name or ID to search..."
+              class="student-search-input-enhanced"
+              @input="searchStudents"
+            />
+          </div>
+          <select v-model="gradeFilter" class="grade-filter-select-enhanced" @change="searchStudents">
+            <option value="">All Grades</option>
+            <option v-for="grade in [7, 8, 9, 10]" :key="grade" :value="grade">Grade {{ grade }}</option>
+          </select>
+        </div>
+
+        <div class="search-hint" v-if="!studentSearchQuery && !availableStudents.length">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+          </svg>
+          Start typing to search for students to add to this section
+        </div>
+      </div>
+
+      <!-- Available Students List -->
+      <div class="students-list-section">
+        <div class="students-header">
+          <h4>Available Students</h4>
+          <div v-if="selectedStudentsToAdd.length > 0" class="batch-actions">
+            <button @click="addSelectedStudents" class="add-batch-btn" :disabled="isAddingStudents">
+              <svg v-if="!isAddingStudents" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+              <svg v-else class="spinner-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
+              </svg>
+              {{ isAddingStudents ? 'Adding...' : `Add ${selectedStudentsToAdd.length} Student${selectedStudentsToAdd.length > 1 ? 's' : ''}` }}
+            </button>
+            <button @click="clearSelection" class="clear-selection-btn">Clear</button>
+          </div>
+        </div>
+
+        <div v-if="isSearchingStudents" class="loading-state">
+          <div class="loading-spinner"></div>
+          <span>Searching students...</span>
+        </div>
+
+        <div v-else-if="availableStudents.length === 0 && studentSearchQuery" class="empty-search">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M7,13H17V11H7"/>
+          </svg>
+          <p>No students found matching your search</p>
+          <p class="empty-subtitle">Try a different search term or check if all eligible students are already enrolled</p>
+        </div>
+
+        <div v-else-if="availableStudents.length === 0 && !isSearchingStudents" class="empty-search">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14" />
+          </svg>
+          <p>No available students for this section</p>
+          <p class="empty-subtitle">All eligible students for Grade {{ selectedSubjectForStudents?.grade_level }} may already be enrolled in this subject</p>
+        </div>
+
+        <div v-else class="students-grid">
+          <div
+            v-for="student in availableStudents"
+            :key="student.student_id"
+            class="student-card"
+            :class="{ 'selected': selectedStudentsToAdd.includes(student.student_id) }"
+            @click="toggleStudentSelection(student.student_id)"
+          >
+            <div class="student-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+              </svg>
+            </div>
+            <div class="student-info">
+              <h4>{{ student.student_name }}</h4>
+              <p class="student-id">ID: {{ student.student_number }}</p>
+              <p class="student-grade">Grade {{ student.grade_level }}</p>
+            </div>
+            <div class="selection-indicator">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-actions-enhanced">
+      <button @click="viewSectionStudents(selectedSubjectForStudents, selectedSectionForStudents)" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14" />
+        </svg>
+        View All Students
+      </button>
+      <button @click="closeAddStudentsModal" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+        </svg>
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+    </div>
+
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
     </main>
 
     <!-- Loading Overlay -->
@@ -2158,6 +4830,14 @@ const enrollStudentId = ref('')
 const isEnrollingStudent = ref(false)
 const enrollmentMessage = ref('')
 const enrollmentMessageType = ref('success') // 'success' or 'error'
+
+// Edit Subject Modal States
+const showEditSubjectModal = ref(false)
+const editSubjectData = ref({
+  id: null,
+  name: '',
+  description: ''
+})
 
 // Form data
 const formData = ref({
@@ -2474,6 +5154,7 @@ const fetchSubjects = async (forceRefresh = false) => {
             id: subject.id,
             subject_name: subjectName,
             name: subjectName,
+            description: subject.description,
             sections: [],
             grade_levels: new Set(),
             total_students: 0,
@@ -2524,7 +5205,6 @@ const fetchSubjects = async (forceRefresh = false) => {
     })
 
     subjects.value = processedSubjects
-
     // Progress: 100% - Complete
     loadingProgress.value = 100
     loadingMessage.value = 'Complete!'
@@ -2916,17 +5596,33 @@ const saveSubject = async () => {
   } catch (error) {
     console.error('❌ Save subject error:', error)
     isLoading.value = false
+<<<<<<< HEAD
 
     // Show detailed error message
+=======
+
+    // Show detailed error message with better handling for duplicate key
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
     let errorMessage = 'Error saving subject. '
 
     if (error.message) {
-      errorMessage += error.message
+      // Check for duplicate key constraint violation
+      if (error.message.includes('duplicate key') || error.code === '23505') {
+        errorMessage = `You already have a subject named "${formData.value.name}" for Grade ${formData.value.grade_level}. `
+        errorMessage += 'Please use a different name or edit the existing subject instead.'
+      } else {
+        errorMessage += error.message
+      }
     } else {
       errorMessage += 'Please try again.'
     }
+<<<<<<< HEAD
 
     if (error.code) {
+=======
+
+    if (error.code && !error.message.includes('duplicate key')) {
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
       errorMessage += ` (Code: ${error.code})`
     }
 
@@ -2935,10 +5631,11 @@ const saveSubject = async () => {
 }
 
 const editSubject = (subject) => {
-  isEditing.value = true
-  currentSubjectId.value = subject.id
-  formData.value = {
+  // Open the simple edit modal instead
+  editSubjectData.value = {
+    id: subject.id,
     name: subject.subject_name || subject.name,
+<<<<<<< HEAD
     grade_level: subject.grade_level.toString(),
     description: subject.description || '',
     number_of_sections: subject.section_count.toString(),
@@ -2946,10 +5643,60 @@ const editSubject = (subject) => {
       name: s.name,
       max_students: s.max_students,
     })),
+=======
+    description: subject.description || ''
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
   }
-  currentStep.value = 1
-  showCreateModal.value = true
+  showEditSubjectModal.value = true
   openSubjectMenuId.value = null
+}
+
+// Save edited subject info (simple update - name and description only)
+const saveEditedSubjectInfo = async () => {
+  try {
+    if (!editSubjectData.value.name) {
+      showToast('Subject name is required', 'error')
+      return
+    }
+
+    isLoading.value = true
+
+    const { error } = await supabase
+      .from('subjects')
+      .update({
+        name: editSubjectData.value.name,
+        description: editSubjectData.value.description || null
+      })
+      .eq('id', editSubjectData.value.id)
+      .eq('teacher_id', teacherInfo.value.id)
+
+    if (error) {
+      console.error('Error updating subject:', error)
+      throw error
+    }
+
+    showToast('Subject updated successfully!', 'success')
+    closeEditSubjectModal()
+
+    // Refresh subjects list
+    await fetchSubjects(true)
+
+    isLoading.value = false
+  } catch (error) {
+    console.error('Error saving subject info:', error)
+    showToast('Error updating subject. Please try again.', 'error')
+    isLoading.value = false
+  }
+}
+
+// Close edit subject modal
+const closeEditSubjectModal = () => {
+  showEditSubjectModal.value = false
+  editSubjectData.value = {
+    id: null,
+    name: '',
+    description: ''
+  }
 }
 
 // ============================================================
@@ -2995,6 +5742,59 @@ const closeAddStudentsModal = () => {
   isEnrollingStudent.value = false
   enrollmentMessage.value = ''
   enrollmentMessageType.value = 'success'
+}
+
+// Helper function to update local student count immediately
+const updateLocalStudentCount = (sectionId, countChange) => {
+  // Update in subjects array
+  subjects.value = subjects.value.map(subject => ({
+    ...subject,
+    sections: subject.sections?.map(section => {
+      if (section.id === sectionId) {
+        return {
+          ...section,
+          student_count: (section.student_count || 0) + countChange
+        }
+      }
+      return section
+    }),
+    total_students: subject.sections?.some(s => s.id === sectionId)
+      ? (subject.total_students || 0) + countChange
+      : subject.total_students
+  }))
+
+  // Update selectedSubject if it contains this section
+  if (selectedSubject.value?.sections?.some(s => s.id === sectionId)) {
+    selectedSubject.value = {
+      ...selectedSubject.value,
+      sections: selectedSubject.value.sections.map(section => {
+        if (section.id === sectionId) {
+          return {
+            ...section,
+            student_count: (section.student_count || 0) + countChange
+          }
+        }
+        return section
+      }),
+      total_students: (selectedSubject.value.total_students || 0) + countChange
+    }
+  }
+
+  // Update selectedSection if it's the one being modified
+  if (selectedSection.value?.id === sectionId) {
+    selectedSection.value = {
+      ...selectedSection.value,
+      student_count: (selectedSection.value.student_count || 0) + countChange
+    }
+  }
+
+  // Update selectedSectionForStudents if it's the one being modified (for modal display)
+  if (selectedSectionForStudents.value?.id === sectionId) {
+    selectedSectionForStudents.value = {
+      ...selectedSectionForStudents.value,
+      student_count: (selectedSectionForStudents.value.student_count || 0) + countChange
+    }
+  }
 }
 
 // Enroll student by ID function
@@ -3059,6 +5859,9 @@ const enrollStudentById = async () => {
       enrollmentMessageType.value = 'success'
       enrollStudentId.value = ''
 
+      // Immediately update local student count for instant UI feedback
+      updateLocalStudentCount(selectedSectionForStudents.value.id, 1)
+
       // Clear message after 3 seconds
       setTimeout(() => {
         enrollmentMessage.value = ''
@@ -3068,8 +5871,13 @@ const enrollStudentById = async () => {
       if (studentSearchQuery.value.trim()) {
         await searchStudents()
       }
+<<<<<<< HEAD
 
       // Refresh the main subjects data to update student counts
+=======
+
+      // Refresh the main subjects data to update student counts (confirms from server)
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
       await fetchSubjects()
     } else {
       enrollmentMessage.value = result.message
@@ -3173,6 +5981,7 @@ const addSelectedStudents = async () => {
     const result = data[0] // RPC returns array with single result
 
     if (result.successful > 0) {
+<<<<<<< HEAD
       showToast(
         `Successfully added ${result.successful} student${result.successful > 1 ? 's' : ''} to the section`,
         'success',
@@ -3183,6 +5992,18 @@ const addSelectedStudents = async () => {
       await searchStudents()
 
       // Refresh the main subjects data to update student counts
+=======
+      showToast(`Successfully added ${result.successful} student${result.successful > 1 ? 's' : ''} to the section`, 'success')
+
+      // Immediately update local student count for instant UI feedback
+      updateLocalStudentCount(selectedSectionForStudents.value.id, result.successful)
+
+      // Clear selections and refresh the search
+      selectedStudentsToAdd.value = []
+      await searchStudents()
+
+      // Refresh the main subjects data to update student counts (confirms from server)
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
       await fetchSubjects()
     }
 
@@ -4034,27 +6855,31 @@ onUnmounted(() => {
 }
 
 .back-btn {
-  background: #f3f4f6;
+  background: #10b981;
   border: none;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  color: #374151;
-  font-weight: 500;
+  padding: 0.875rem 1.5rem;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.625rem;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
 }
 .back-btn:hover {
-  background: #e5e7eb;
+  background: #059669;
+  transform: translateX(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 .dark .back-btn {
-  background: #334155;
-  color: #e2e8f0;
+  background: #10b981;
+  color: white;
 }
 .dark .back-btn:hover {
-  background: #475569;
+  background: #059669;
 }
 
 .view-title h2 {
@@ -4310,9 +7135,9 @@ onUnmounted(() => {
 .section-overview-card {
   background: white;
   border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 .dark .section-overview-card {
@@ -4322,8 +7147,8 @@ onUnmounted(() => {
 
 .overview-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.25rem;
 }
 
 .stat-box {
@@ -4331,18 +7156,18 @@ onUnmounted(() => {
 }
 
 .stat-box .stat-number {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #3b82f6;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 .dark .stat-box .stat-number {
   color: #60a5fa;
 }
 
 .stat-box .stat-label {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: #6b7280;
   font-weight: 500;
 }
@@ -4750,22 +7575,30 @@ onUnmounted(() => {
 }
 
 .close-btn-enhanced {
-  background: none;
+  background: linear-gradient(135deg, #10b981, #059669);
   border: none;
-  color: #6b7280;
-  padding: 0.5rem;
-  border-radius: 8px;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 10px;
   cursor: pointer;
   margin-left: auto;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 .close-btn-enhanced:hover {
-  background: #f3f4f6;
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
 }
 .dark .close-btn-enhanced {
-  color: #94a3b8;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
 }
 .dark .close-btn-enhanced:hover {
-  background: #374151;
+  background: linear-gradient(135deg, #059669, #047857);
 }
 
 /* Scroll to Top Button */
@@ -5540,13 +8373,18 @@ onUnmounted(() => {
 .create-subject-btn {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   gap: 0.5rem;
   background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
+=======
+  gap: 0.625rem;
+  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
   color: white;
   border: none;
-  padding: 0.75rem 1.25rem;
+  padding: 0.875rem 1.5rem;
   border-radius: 10px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -6195,22 +9033,36 @@ onUnmounted(() => {
 }
 
 .breadcrumb-btn {
-  background: transparent;
+  background: #f3f4f6;
   border: none;
-  color: #20c997;
+  color: #374151;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  font-size: 0.875rem;
-  text-decoration: underline;
+  gap: 0.625rem;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 .dark .breadcrumb-btn {
+<<<<<<< HEAD
   color: #a3d1c6;
 }
 
 .breadcrumb-btn:hover {
   color: #3d8d7a;
+=======
+  background: #374151;
+  color: #d1d5db;
+}
+
+.breadcrumb-btn:hover {
+  background: #10b981;
+  color: white;
+  transform: translateX(-2px);
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
 }
 
 .breadcrumb-separator {
@@ -6260,14 +9112,12 @@ onUnmounted(() => {
 /* Sections Grid - Enhanced Design */
 .sections-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
   margin-bottom: 2rem;
   padding: 1rem;
   width: 100%;
   box-sizing: border-box;
-  max-height: calc(100vh - 300px);
-  overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -6351,15 +9201,20 @@ onUnmounted(() => {
 .section-card.enhanced {
   background: #fff;
   border: 2px solid #e5e7eb;
+<<<<<<< HEAD
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+=======
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
   padding: 0;
   margin-bottom: 0;
   transition: all 0.3s ease;
   overflow: hidden;
   cursor: pointer;
   width: 100%;
-  min-height: 180px;
+  min-height: 140px;
   position: relative;
 }
 
@@ -6384,7 +9239,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  padding: 1rem 1.25rem 0.75rem 1.25rem;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-bottom: 1px solid #e2e8f0;
 }
@@ -6402,9 +9257,9 @@ onUnmounted(() => {
 }
 
 .section-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6414,7 +9269,7 @@ onUnmounted(() => {
 }
 
 .section-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #1f2937;
   margin: 0;
@@ -6531,7 +9386,7 @@ onUnmounted(() => {
 }
 
 .section-card-body {
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   background: #fff;
 }
 
@@ -6542,9 +9397,9 @@ onUnmounted(() => {
 .section-code-box {
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border: 2px solid #e2e8f0;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   transition: all 0.3s ease;
 }
 
@@ -6566,7 +9421,7 @@ onUnmounted(() => {
 
 .code-box-header {
   background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.875rem;
   border-bottom: 1px solid #d1d5db;
 }
 
@@ -6577,7 +9432,7 @@ onUnmounted(() => {
 }
 
 .code-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: #7ca3c7;
   text-transform: uppercase;
@@ -6593,13 +9448,13 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 0.8rem;
-  gap: 0.7rem;
+  padding: 0.4rem 0.7rem;
+  gap: 0.6rem;
 }
 
 .section-code-text {
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #1e293b;
   letter-spacing: 0.05em;
@@ -6646,12 +9501,19 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.5rem;
   color: #6b7280;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
 }
 
 .dark .section-stats {
+<<<<<<< HEAD
   color: #a3d1c6;
+=======
+  color: #A3D1C6;
+  border-color: #374151;
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
 }
 
 /* Dropdown transition */
@@ -6691,8 +9553,8 @@ onUnmounted(() => {
 .section-detail-enhanced {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1.5rem;
+  gap: 1.25rem;
+  margin-top: 1rem;
 }
 
 .section-info-card,
@@ -6700,7 +9562,7 @@ onUnmounted(() => {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -6714,22 +9576,22 @@ onUnmounted(() => {
 .section-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.875rem;
+  margin-bottom: 1rem;
 }
 
 .section-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   color: white;
 }
 
 .section-title-info .section-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #1f2937;
   margin: 0 0 0.25rem 0;
@@ -6752,15 +9614,15 @@ onUnmounted(() => {
 .section-details {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .detail-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
   border-bottom: 1px solid #f3f4f6;
 }
 
@@ -6771,7 +9633,7 @@ onUnmounted(() => {
 .detail-label {
   font-weight: 600;
   color: #1f2937;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
 }
 
 .dark .detail-label {
@@ -6781,7 +9643,7 @@ onUnmounted(() => {
 .detail-value {
   font-weight: 500;
   color: #6b7280;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
 }
 
 .dark .detail-value {
@@ -6792,10 +9654,10 @@ onUnmounted(() => {
   background: #f8f9fa;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.875rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .dark .section-code-container {
@@ -6817,11 +9679,11 @@ onUnmounted(() => {
 
 .code-value {
   font-family: 'Monaco', 'Menlo', monospace;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #10b981;
   letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .dark .code-value {
@@ -6832,13 +9694,13 @@ onUnmounted(() => {
   align-self: flex-start;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
   background: #10b981;
   color: white;
   border: none;
   border-radius: 6px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -6850,10 +9712,10 @@ onUnmounted(() => {
 }
 
 .actions-title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #1f2937;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1rem 0;
 }
 
 .dark .actions-title {
@@ -6863,7 +9725,7 @@ onUnmounted(() => {
 .actions-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 0.875rem;
 }
 
 .action-button {
@@ -6871,14 +9733,14 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 1.5rem 1rem;
+  gap: 0.625rem;
+  padding: 1rem 0.875rem;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
-  min-height: 120px;
+  min-height: 95px;
   background: #ffffff;
   color: #1f2937;
   border: 1px solid #e5e7eb;
@@ -6907,9 +9769,9 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   background: rgba(16, 185, 129, 0.1);
   color: #10b981;
 }
@@ -6920,7 +9782,7 @@ onUnmounted(() => {
 }
 
 .btn-text {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-align: center;
 }
@@ -6928,7 +9790,7 @@ onUnmounted(() => {
 @media (max-width: 1024px) {
   .section-detail-enhanced {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 }
 
@@ -8230,25 +11092,27 @@ onUnmounted(() => {
 /* Modal Actions Enhanced */
 .modal-actions-enhanced {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 0.75rem;
-  padding: 0.875rem 1.5rem;
-  border-top: 1px solid #f3f4f6;
+  padding: 1.25rem 2rem;
+  border-top: 2px solid #e5e7eb;
   flex-shrink: 0;
+  background: #f9fafb;
 }
 
 .dark .modal-actions-enhanced {
   border-top-color: #374151;
+  background: #111827;
 }
 
 .btn-primary,
 .btn-secondary {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  gap: 0.625rem;
+  padding: 0.875rem 1.75rem;
   border-radius: 10px;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
@@ -8273,21 +11137,48 @@ onUnmounted(() => {
 }
 
 .btn-secondary {
-  background: white;
-  color: #6b7280;
-  border: 2px solid #e5e7eb;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 .btn-secondary:hover {
-  background: #f9fafb;
-  border-color: #d1d5db;
-  color: #1f2937;
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
 }
 
 .dark .btn-secondary {
-  background: #374151;
-  color: #d1d5db;
-  border-color: #4b5563;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+}
+
+.btn-outline {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.dark .btn-outline {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
 }
 
 .spinner-icon {
@@ -8559,4 +11450,605 @@ onUnmounted(() => {
     opacity: 1;
   }
 }
+<<<<<<< HEAD
 </style>
+=======
+
+/* ============================================
+   ADD STUDENTS MODAL - ENHANCED DESIGN
+   ============================================ */
+
+.add-students-modal {
+  max-width: 900px;
+  max-height: 85vh;
+}
+
+.add-students-content {
+  padding: 0;
+  max-height: calc(85vh - 200px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Enroll Student by ID Styles - ENHANCED */
+.enroll-student-section {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border: none;
+  border-bottom: 3px solid #10b981;
+  border-radius: 0;
+  flex-shrink: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+.dark .enroll-student-section {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+  border-bottom-color: #10b981;
+  box-shadow: none;
+}
+
+.enroll-header {
+  margin-bottom: 1rem;
+}
+
+.header-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.search-icon-circle {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.enroll-header .section-title {
+  color: #065f46;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.dark .enroll-header .section-title {
+  color: #6ee7b7;
+}
+
+.enroll-description {
+  color: #047857;
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dark .enroll-description {
+  color: #a7f3d0;
+}
+
+.enroll-form {
+  margin-top: 1rem;
+}
+
+.enroll-input-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background: white;
+  border: 2px solid #10b981;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+}
+
+.enroll-student-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.9375rem;
+  color: #1f2937;
+  padding: 0.375rem 0;
+  font-weight: 500;
+}
+
+.dark .enroll-student-input {
+  color: #065f46;
+}
+
+.enroll-student-input:focus {
+  outline: none;
+}
+
+.dark .enroll-student-input:focus {
+  outline: none;
+}
+
+.enroll-student-input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.dark .enroll-student-input::placeholder {
+  color: #6b7280;
+}
+
+.id-icon {
+  color: #10b981;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.dark .id-icon {
+  color: #10b981;
+}
+
+.enroll-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+.enroll-btn:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+}
+
+.enroll-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.enroll-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.enrollment-message {
+  padding: 0.625rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.enrollment-message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 2px solid #10b981;
+}
+
+.dark .enrollment-message.success {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border-color: rgba(110, 231, 183, 0.4);
+}
+
+.enrollment-message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 2px solid #ef4444;
+}
+
+.dark .enrollment-message.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: rgba(252, 165, 165, 0.4);
+}
+
+/* Modal Divider - ENHANCED */
+.modal-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  background: #f9fafb;
+}
+
+.modal-divider::before,
+.modal-divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d1d5db, transparent);
+}
+
+.dark .modal-divider::before,
+.dark .modal-divider::after {
+  background: linear-gradient(90deg, transparent, #374151, transparent);
+}
+
+.modal-divider span {
+  padding: 0 1.25rem;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 0.375rem 1rem;
+}
+
+.dark .modal-divider span {
+  color: #9ca3af;
+  background: #1f2937;
+  border-color: #374151;
+}
+
+/* Student Search Section - ENHANCED */
+.student-search-section {
+  padding: 2rem;
+  background: white;
+}
+
+.search-header {
+  margin-bottom: 1.25rem;
+}
+
+.header-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-title {
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.dark .section-title {
+  color: #f1f5f9;
+}
+
+.search-description {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0;
+}
+.dark .search-description {
+  color: #9ca3af;
+}
+
+.search-filters-enhanced {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  color: #9ca3af;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.student-search-input-enhanced {
+  width: 100%;
+  padding: 0.875rem 0.875rem 0.875rem 2.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background: white;
+}
+.student-search-input-enhanced:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+.dark .student-search-input-enhanced {
+  background: #1f2937;
+  border-color: #374151;
+  color: #f9fafb;
+}
+.dark .student-search-input-enhanced:focus {
+  border-color: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.1);
+}
+
+.grade-filter-select-enhanced {
+  padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 140px;
+}
+.grade-filter-select-enhanced:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+.dark .grade-filter-select-enhanced {
+  background: #1f2937;
+  border-color: #374151;
+  color: #f9fafb;
+}
+
+.search-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  color: #059669;
+  flex-shrink: 0;
+}
+.dark .search-hint {
+  background: #064e3b;
+  border-color: #065f46;
+  color: #34d399;
+}
+
+/* Students List Section - ENHANCED */
+.students-list-section {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.dark .students-list-section {
+  border-top-color: #374151;
+}
+
+.students-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+.students-header h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+.dark .students-header h4 {
+  color: #f9fafb;
+}
+
+.batch-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.add-batch-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.add-batch-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+}
+.add-batch-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.clear-selection-btn {
+  background: transparent;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.clear-selection-btn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+.dark .clear-selection-btn {
+  color: #9ca3af;
+  border-color: #374151;
+}
+.dark .clear-selection-btn:hover {
+  background: #1f2937;
+  border-color: #4b5563;
+}
+
+.loading-state, .empty-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+.dark .loading-state, .dark .empty-search {
+  color: #9ca3af;
+}
+
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.625rem;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+max-height: 200px;
+padding-right: 0.25rem;
+}
+
+.student-card {
+display: flex;
+align-items: center;
+gap: 0.625rem;
+padding: 0.625rem;
+border: 2px solid #e5e7eb;
+border-radius: 6px;
+cursor: pointer;
+transition: all 0.2s;
+position: relative;
+background: white;
+}
+
+.student-card:hover {
+  border-color:#10b981;
+background: #f0fdf4;
+}
+.student-card.selected {
+border-color: #10b981;
+background: #ecfdf5;
+}
+.dark .student-card {
+border-color: #374151;
+background: #111827;
+}
+.dark .student-card:hover {
+border-color: #10b981;
+background: #064e3b;
+}
+.dark .student-card.selected {
+background: #065f46;
+border-color: #10b981;
+}
+.student-avatar {
+width: 48px;
+height: 48px;
+background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+flex-shrink: 0;
+}
+.student-info {
+flex: 1;
+}
+.student-info h4 {
+font-size: 0.9375rem;
+font-weight: 600;
+color: #1f2937;
+margin: 0 0 0.25rem 0;
+}
+.dark .student-info h4 {
+color: #f9fafb;
+}
+.student-id,
+.student-grade {
+font-size: 0.75rem;
+color: #6b7280;
+margin: 0;
+}
+.dark .student-id,
+.dark .student-grade {
+color: #9ca3af;
+}
+.selection-indicator {
+position: absolute;
+top: 0.5rem;
+right: 0.5rem;
+width: 24px;
+height: 24px;
+background: #10b981;
+border-radius: 50%;
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0;
+transition: all 0.2s;
+}
+.student-card.selected .selection-indicator {
+opacity: 1;
+}
+/* Responsive */
+@media (max-width: 768px) {
+.add-students-modal {
+max-width: 95%;
+}
+.search-filters-enhanced {
+grid-template-columns: 1fr;
+}
+.students-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995

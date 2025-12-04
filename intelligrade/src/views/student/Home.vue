@@ -104,7 +104,7 @@
         </div>
         <div>
           <div class="stat-number">{{ pendingAssessments }}</div>
-          <div class="stat-label">Pending Assessments</div>
+          <div class="stat-label">Pending Tasks</div>
         </div>
       </div>
     </div>
@@ -115,7 +115,7 @@
       <div class="content-card">
         <div class="card-header">
           <h3>Recent Assessments</h3>
-          <p class="card-desc">Keep track of your upcoming deadlines</p>
+          <p class="card-desc">Keep track of your quizzes and assignments</p>
         </div>
         <div class="assessment-list">
           <div v-if="recentAssessments.length === 0" class="empty-state">
@@ -123,7 +123,12 @@
           </div>
           <div v-for="assessment in recentAssessments" :key="assessment.id" class="assessment-item">
             <div class="assessment-info">
-              <h4>{{ assessment.title }}</h4>
+              <div class="assessment-title-row">
+                <h4>{{ assessment.title }}</h4>
+                <span class="assessment-type-badge" :class="assessment.type">
+                  {{ assessment.type === 'quiz' ? '📝 Quiz' : '📄 Assignment' }}
+                </span>
+              </div>
               <p class="assessment-class">{{ assessment.subject }}</p>
             </div>
             <div class="assessment-due">
@@ -546,7 +551,8 @@ export default {
 
         console.log('🔍 Checking quizzes for sections:', this.enrolledSectionIds)
 
-        const { data: quizzes, error } = await supabase
+        // Load Quizzes
+        const { data: quizzes, error: quizError } = await supabase
           .from('quizzes')
           .select(
             'id, title, start_date, end_date, section_id, subject_id, attempts_allowed, status',
@@ -668,7 +674,6 @@ export default {
           })
         }
 
-        // Also check for urgent quizzes
         if (this.enrolledSectionIds.length > 0) {
           const in3Days = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
 
@@ -698,6 +703,41 @@ export default {
                   id: `quiz-${q.id}`,
                   title: '⏰ Quiz Due Soon',
                   body: `${q.title} - Due: ${due.toLocaleDateString()}`,
+                  date: due.toLocaleString(),
+                  rawDate: due,
+                  isUnread: created > lastRead,
+                })
+              }
+            })
+          }
+
+          // Check for urgent assignments
+          const { data: urgentAssignments } = await supabase
+            .from('assignments')
+            .select('id, title, due_date, created_at')
+            .in('section_id', this.enrolledSectionIds)
+            .eq('status', 'published')
+            .gte('due_date', new Date().toISOString())
+            .lte('due_date', in3Days.toISOString())
+            .limit(5);
+
+          if (urgentAssignments?.length > 0) {
+            const { data: submissions } = await supabase
+              .from('assignment_submissions')
+              .select('assignment_id, status')
+              .eq('student_id', this.studentRecordId)
+              .in('status', ['submitted', 'graded']);
+
+            const submittedIds = new Set(submissions?.map(s => s.assignment_id) || []);
+
+            urgentAssignments.forEach(a => {
+              if (!submittedIds.has(a.id)) {
+                const created = new Date(a.created_at);
+                const due = new Date(a.due_date);
+                notifs.push({
+                  id: `assignment-${a.id}`,
+                  title: '⏰ Assignment Due Soon',
+                  body: `${a.title} - Due: ${due.toLocaleDateString()}`,
                   date: due.toLocaleString(),
                   rawDate: due,
                   isUnread: created > lastRead,
@@ -1675,6 +1715,28 @@ export default {
   background: #022c22;
   color: #34d399;
   border-color: #059669;
+}
+
+.status.submitted {
+  background: #e0e7ff;
+  color: #4338ca;
+  border: 1px solid #6366f1;
+}
+.dark .status.submitted {
+  background: #312e81;
+  color: #a5b4fc;
+  border-color: #4338ca;
+}
+
+.status.overdue {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #ef4444;
+}
+.dark .status.overdue {
+  background: #7f1d1d;
+  color: #fca5a5;
+  border-color: #dc2626;
 }
 
 .status.default {

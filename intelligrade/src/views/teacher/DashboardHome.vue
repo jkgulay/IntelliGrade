@@ -397,10 +397,20 @@
                 class="assessment-card"
               >
                 <div class="assessment-header">
+<<<<<<< HEAD
                   <h4>{{ assessment.title }}</h4>
                   <span class="assessment-badge"
                     >{{ assessment.studentsSubmitted }} submissions</span
                   >
+=======
+                  <div class="assessment-title-row">
+                    <h4>{{ assessment.title }}</h4>
+                    <span class="assessment-type-badge" :class="assessment.type">
+                      {{ assessment.type === 'quiz' ? 'Quiz' : 'Assignment' }}
+                    </span>
+                  </div>
+                  <span class="assessment-badge">{{ assessment.studentsSubmitted }} submissions</span>
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
                 </div>
                 <p class="assessment-class">{{ assessment.className }}</p>
                 <div class="assessment-footer">
@@ -569,6 +579,7 @@ const sidebarExpanded = ref(false)
 const showLogoutModal = ref(false)
 
 let quizSubscription = null
+let assignmentSubscription = null
 let messageSubscription = null
 let enrollmentSubscription = null
 let statsIntervalId = null
@@ -685,7 +696,7 @@ const refreshAssessments = async () => {
 const gradeAssessment = (assessment) => {
   console.log('Grading assessment:', assessment)
   router.push({
-    path: '/teacher/gradebook',
+    path: '/teacher/subjects',
     query: {
       assessmentId: assessment.id,
       sectionId: assessment.sectionId,
@@ -887,12 +898,11 @@ const loadNotifications = async () => {
           }
         })
         allNotifications.push(...submissionNotifications)
-        console.log('✅ Loaded', submissionNotifications.length, 'submission notifications')
+        console.log('✅ Loaded', submissionNotifications.length, 'quiz submission notifications')
       }
     } catch (error) {
       console.error('❌ Error loading quiz submissions:', error)
     }
-
     try {
       // Filter messages by recipient_id (direct filter, no nested join needed)
       const { data: unreadMessages, error: messagesError } = await supabase
@@ -1125,6 +1135,7 @@ const loadDashboardStats = async () => {
       )
       .eq('teacher_id', teacherId.value)
       .eq('status', 'published')
+<<<<<<< HEAD
 
     if (!quizzesError && quizzes && quizzes.length > 0) {
       // Fetch subjects and sections separately
@@ -1141,6 +1152,12 @@ const loadDashboardStats = async () => {
 
       const assessmentsWithSubmissions = []
 
+=======
+
+    const assessmentsWithSubmissions = []
+
+    if (!quizzesError && quizzes) {
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
       for (const quiz of quizzes) {
         const { data: attempts } = await supabase
           .from('quiz_attempts')
@@ -1161,6 +1178,7 @@ const loadDashboardStats = async () => {
 
           assessmentsWithSubmissions.push({
             id: quiz.id,
+            type: 'quiz',
             title: quiz.title,
             className: `${subjectName} - ${sectionName}`,
             studentsSubmitted: attempts.length,
@@ -1170,6 +1188,7 @@ const loadDashboardStats = async () => {
           })
         }
       }
+<<<<<<< HEAD
 
       assessmentsToGrade.value = assessmentsWithSubmissions
       pendingReviews.value = assessmentsWithSubmissions.length
@@ -1177,6 +1196,59 @@ const loadDashboardStats = async () => {
       console.log('📝 Assessments to grade:', assessmentsWithSubmissions.length)
     }
 
+=======
+      console.log('📝 Quizzes to grade:', assessmentsWithSubmissions.filter(a => a.type === 'quiz').length)
+    }
+
+    // Load assignments with submissions
+    const { data: assignments, error: assignmentsError } = await supabase
+      .from('assignments')
+      .select(`
+        id,
+        title,
+        subject_id,
+        section_id,
+        subjects!inner(name),
+        sections!inner(name)
+      `)
+      .eq('teacher_id', teacherId.value)
+      .eq('status', 'published')
+
+    if (!assignmentsError && assignments) {
+      for (const assignment of assignments) {
+        const { data: submissions } = await supabase
+          .from('assignment_submissions')
+          .select('id, student_id')
+          .eq('assignment_id', assignment.id)
+          .eq('status', 'submitted')
+
+        if (submissions && submissions.length > 0) {
+          const { data: enrollments } = await supabase
+            .from('enrollments')
+            .select('student_id')
+            .eq('section_id', assignment.section_id)
+            .eq('status', 'active')
+
+          assessmentsWithSubmissions.push({
+            id: assignment.id,
+            type: 'assignment',
+            title: assignment.title,
+            className: `${assignment.subjects.name} - ${assignment.sections.name}`,
+            studentsSubmitted: submissions.length,
+            totalStudents: enrollments?.length || 0,
+            sectionId: assignment.section_id,
+            subjectId: assignment.subject_id
+          })
+        }
+      }
+      console.log('📝 Assignments to grade:', assessmentsWithSubmissions.filter(a => a.type === 'assignment').length)
+    }
+
+    assessmentsToGrade.value = assessmentsWithSubmissions
+    pendingReviews.value = assessmentsWithSubmissions.length
+
+    console.log('📝 Total assessments to grade:', assessmentsWithSubmissions.length)
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
     console.log('✅ Dashboard stats loaded successfully')
   } catch (error) {
     console.error('❌ Error loading dashboard stats:', error)
@@ -1185,8 +1257,13 @@ const loadDashboardStats = async () => {
 
 const handleNotificationClick = async (notification) => {
   console.log('📱 Clicked notification:', notification)
+<<<<<<< HEAD
 
   if (notification.type === 'submission') {
+=======
+
+  if (notification.type === 'quiz_submission' || notification.type === 'assignment_submission') {
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
     router.push('/teacher/gradebook')
   } else if (notification.type === 'message') {
     router.push('/teacher/messages')
@@ -1239,6 +1316,7 @@ onMounted(async () => {
 
     quizSubscription = supabase
       .channel('quiz_attempts_channel')
+<<<<<<< HEAD
       .on(
         'postgres_changes',
         {
@@ -1249,6 +1327,92 @@ onMounted(async () => {
         },
         (payload) => {
           console.log('🆕 New quiz submission:', payload)
+=======
+      .on('postgres_changes', {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'quiz_attempts',
+        filter: `status=eq.submitted`
+      }, (payload) => {
+        console.log('🆕 New quiz submission:', payload)
+        loadNotifications()
+        loadDashboardStats()
+      })
+      .on('postgres_changes', {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'quiz_attempts',
+        filter: `status=eq.submitted`
+      }, (payload) => {
+        console.log('✏️ Quiz submission updated:', payload)
+        loadNotifications()
+        loadDashboardStats()
+      })
+      .subscribe()
+
+    assignmentSubscription = supabase
+      .channel('assignment_submissions_channel')
+      .on('postgres_changes', {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'assignment_submissions',
+        filter: `status=eq.submitted`
+      }, (payload) => {
+        console.log('🆕 New assignment submission:', payload)
+        loadNotifications()
+        loadDashboardStats()
+      })
+      .on('postgres_changes', {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'assignment_submissions',
+        filter: `status=eq.submitted`
+      }, (payload) => {
+        console.log('✏️ Assignment submission updated:', payload)
+        loadNotifications()
+        loadDashboardStats()
+      })
+      .subscribe()
+
+    messageSubscription = supabase
+      .channel('messages_channel')
+      .on('postgres_changes', {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'messages'
+      }, async (payload) => {
+        console.log('💬 New message received:', payload)
+
+        const { data: section } = await supabase
+          .from('sections')
+          .select('subject_id, subjects!inner(teacher_id)')
+          .eq('id', payload.new.section_id)
+          .single()
+
+        if (section?.subjects?.teacher_id === teacherId.value) {
+          loadNotifications()
+        }
+      })
+      .subscribe()
+
+    enrollmentSubscription = supabase
+      .channel('enrollments_channel')
+      .on('postgres_changes', {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'enrollments',
+        filter: `status=eq.active`
+      }, async (payload) => {
+        console.log('👥 New enrollment:', payload)
+
+        const { data: section } = await supabase
+          .from('sections')
+          .select('subject_id, subjects!inner(teacher_id)')
+          .eq('id', payload.new.section_id)
+          .single()
+
+        if (section?.subjects?.teacher_id === teacherId.value) {
+>>>>>>> 68129f7bed43840df314151b0eced9266a64f995
           loadNotifications()
           loadDashboardStats()
         },
@@ -1335,6 +1499,9 @@ onUnmounted(() => {
 
   if (quizSubscription) {
     supabase.removeChannel(quizSubscription)
+  }
+  if (assignmentSubscription) {
+    supabase.removeChannel(assignmentSubscription)
   }
   if (messageSubscription) {
     supabase.removeChannel(messageSubscription)
@@ -2078,15 +2245,42 @@ onUnmounted(() => {
 
 .assessment-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-.assessment-header h4 {
+.assessment-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.assessment-title-row h4 {
   font-size: 1rem;
   font-weight: 600;
   color: #1e293b;
+  flex: 1;
+}
+
+.assessment-type-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.assessment-type-badge.quiz {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.assessment-type-badge.assignment {
+  background: #fef3c7;
+  color: #92400e;
 }
 
 .assessment-badge {
@@ -2096,6 +2290,7 @@ onUnmounted(() => {
   border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 500;
+  align-self: flex-start;
 }
 
 .assessment-class {
