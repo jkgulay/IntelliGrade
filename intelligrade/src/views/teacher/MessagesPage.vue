@@ -316,11 +316,7 @@
         <div class="filter-tabs">
           <button
             :class="['filter-tab', { active: currentTab === 'students' && !showArchive }]"
-            @click="
-              currentTab = 'students'
-              showArchive = false
-              showBroadcastHistory = false
-            "
+            @click="currentTab = 'students'; showArchive = false; showBroadcastHistory = false"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -340,11 +336,7 @@
           </button>
           <button
             :class="['filter-tab', { active: currentTab === 'broadcast' && !showBroadcastHistory }]"
-            @click="
-              currentTab = 'broadcast'
-              showArchive = false
-              showBroadcastHistory = false
-            "
+            @click="currentTab = 'broadcast'; showArchive = false; showBroadcastHistory = false"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -364,11 +356,7 @@
           </button>
           <button
             :class="['filter-tab', { active: showArchive }]"
-            @click="
-              currentTab = 'students'
-              showArchive = true
-              showBroadcastHistory = false
-            "
+            @click="currentTab = 'students'; showArchive = true; showBroadcastHistory = false"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -466,10 +454,7 @@
               </div>
               <button
                 class="section-broadcast-btn"
-                @click="
-                  openBroadcastModal()
-                  broadcastSection = selectedSectionView?.section_id
-                "
+                @click="openBroadcastModal(); broadcastSection = selectedSectionView?.section_id"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -713,10 +698,7 @@
                   </span>
                   <button
                     class="broadcast-quick-btn"
-                    @click.stop="
-                      openBroadcastModal()
-                      broadcastSection = section.section_id
-                    "
+                    @click.stop="openBroadcastModal(); broadcastSection = section.section_id"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

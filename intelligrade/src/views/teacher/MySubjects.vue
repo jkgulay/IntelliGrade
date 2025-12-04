@@ -1,364 +1,3 @@
-<<<<<<< HEAD
-/* Section Detail Enhancements */ .section-detail-card .info-label { color: #1f2937; font-weight:
-600; display: inline-block; min-width: 100px; } .dark .section-detail-card .info-label { color:
-#A3D1C6; } .section-detail-card .info-value { color: #6b7280; font-weight: 500; margin-left: 0.5rem;
-} .dark .section-detail-card .info-value { color: #A3D1C6; } .section-code { background: #f8f9fa;
-color: #1f2937; border-radius: 8px; padding: 0.5rem 1rem; font-size: 1rem; font-weight: 600;
-display: inline-block; } .dark .section-code { background: #181c20; color: #A3D1C6; border: 1px
-solid #20c997; } .section-actions-grid { display: flex; gap: 1rem; margin-top: 1.5rem;
-justify-content: center; } /* Stats and Counts */ .section-stats-simple { color: #6b7280; } /*
-|-------------------------------------------------------------------------- | BASE STYLES (Light
-Mode) |-------------------------------------------------------------------------- | Gi-uniform ug
-gi-simplify ang card structure ug elements. */ .section-info-grid { background-color: #ffffff;
-border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); padding:
-1.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; transition: all 0.2s
-ease-in-out; } .section-info-grid:hover { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); border-color:
-#9ca3af; transform: translateY(-2px); } .section-detail-card { padding: 0; } .section-detail-card
-.info-label { color: #4b5563; font-weight: 600; display: block; margin-bottom: 0.25rem; font-size:
-0.9rem; } .section-detail-card .info-value { color: #1f2937; font-weight: 500; margin-left: 0;
-display: block; font-size: 1rem; } .section-code { background: #f3f4f6; color: #1f2937;
-border-radius: 6px; padding: 0.25rem 0.75rem; font-size: 0.9rem; font-weight: 700; display:
-inline-block; font-family: 'Courier New', Courier, monospace; border: 1px solid #e5e7eb; }
-.section-actions-grid { display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: flex-end; }
-/* |-------------------------------------------------------------------------- | DARK MODE STYLES
-|-------------------------------------------------------------------------- | Gamit ang green
-(#10b981) isip highlight color. */ .dark-mode .section-info-grid { background-color: #1f2937;
-border: 1px solid #10b981; border-radius: 12px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
-color: #e5e7eb; } .dark-mode .section-info-grid:hover { box-shadow: 0 8px 16px rgba(16, 185, 129,
-0.3); border-color: #059669; transform: translateY(-2px); } .dark-mode .section-detail-card
-.info-label { color: #34d399; } .dark-mode .section-detail-card .info-value { color: #e5e7eb; }
-.dark-mode .section-code { background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color:
-#10b981; font-family: 'Courier New', Courier, monospace; } .section-card.simple:hover { background:
-#f6f8fa; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-color: var(--color-primary); } .dark
-.section-card.simple, .dark .section-detail-card { background: #23272b; border: 1px solid #20c997;
-box-shadow: 0 2px 8px rgba(0,0,0,0.13); } /* Text Colors */ .section-info h4, .section-detail-card
-h4, .info-label, .card-header h3 { color: #1f2937; font-weight: 600; } .dark .section-info h4, .dark
-.section-detail-card h4, .dark .info-label, .dark .card-header h3 { color: #A3D1C6; } .info-value,
-.section-stats-simple { color: #6b7280; } .dark .info-value, .dark .section-stats-simple { color:
-#A3D1C6; } /* Simple, compact buttons */ .breadcrumb-btn, .grade-filter-btn, .section-action-btn {
-background: var(--color-primary); color: #fff; border: none; border-radius: 7px; padding: 0.45rem
-1.1rem; font-size: 0.97rem; font-weight: 600; cursor: pointer; transition: background 0.18s,
-box-shadow 0.18s; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 1px 3px
-rgba(0,0,0,0.03); } .breadcrumb-btn:hover, .grade-filter-btn:hover, .section-action-btn:hover {
-background: var(--color-primary-dark); box-shadow: 0 2px 6px rgba(0,0,0,0.08); } /* Code Area
-Styling */ .section-code-area, .section-code-inline { background: #f8f9fa; border-radius: 8px;
-padding: 1rem; margin: 1rem 0; } .dark .section-code-area, .dark .section-code-inline { background:
-#181c20; border: 1px solid #20c997; } /* Grid Layouts */ .sections-grid { display: flex;
-flex-direction: column; gap: 1rem; } /* Section Card Content */ .section-simple-header { display:
-flex; align-items: center; justify-content: space-between; } .section-info { display: flex;
-flex-direction: column; gap: 0.5rem; } .section-info h4 { color: #1f2937; font-size: 1.125rem;
-font-weight: 600; margin: 0; } .dark .section-info h4 { color: #A3D1C6; } /* Enhanced Student Count
-Display */ .section-stats-primary { display: flex; flex-direction: column; align-items: center; gap:
-0.5rem; padding: 1rem; background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border-radius: 12px;
-margin-bottom: 1rem; text-align: center; } .dark .section-stats-primary { background:
-linear-gradient(135deg, #064e3b, #065f46); } .student-count-large { font-size: 2rem; font-weight:
-700; color: #059669; line-height: 1; } .dark .student-count-large { color: #34d399; } .student-label
-{ font-size: 0.875rem; color: #6b7280; font-weight: 500; } .dark .student-label { color: #9ca3af; }
-/* Section Capacity Info */ .section-capacity-info { margin-top: 0.75rem; } .capacity-indicator {
-display: flex; flex-direction: column; gap: 0.5rem; } .capacity-bar { width: 100%; height: 6px;
-background: #e5e7eb; border-radius: 3px; overflow: hidden; } .dark .capacity-bar { background:
-#374151; } .capacity-fill { height: 100%; background: linear-gradient(90deg, #10b981, #059669);
-border-radius: 3px; transition: width 0.3s ease; } .capacity-text { font-size: 0.75rem; color:
-#6b7280; font-weight: 500; text-align: center; } .dark .capacity-text { color: #9ca3af; } /* Subject
-Description */ .subject-description { font-size: 0.8rem; color: #6b7280; margin: 0.5rem 0 0 0;
-line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-overflow: hidden; } .dark .subject-description { color: #9ca3af; } .subject-description-empty {
-font-size: 0.8rem; color: #9ca3af; font-style: italic; margin: 0.5rem 0 0 0; } .dark
-.subject-description-empty { color: #6b7280; } /* Subject Content Enhanced */ .subject-summary {
-display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem
-1.25rem; background: #f8fafc; border-radius: 0 0 16px 16px; border-top: 1px solid #e2e8f0; } .dark
-.subject-summary { background: #1e293b; border-top-color: #475569; } .summary-stats { display: flex;
-align-items: center; gap: 1rem; } .stat-group { display: flex; flex-direction: column; align-items:
-center; gap: 0.25rem; } .stat-number { font-size: 1.25rem; font-weight: 700; color: #1f2937;
-line-height: 1; } .dark .stat-number { color: #f9fafb; } .stat-label { font-size: 0.75rem; color:
-#6b7280; font-weight: 500; } .dark .stat-label { color: #9ca3af; } .stat-divider { width: 1px;
-height: 2rem; background: #e2e8f0; } .dark .stat-divider { background: #475569; } .view-sections-btn
-{ display: flex; align-items: center; gap: 0.5rem; background: #10b981; color: white; border: none;
-padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.875rem; font-weight: 500; cursor: pointer;
-transition: all 0.2s; } .view-sections-btn:hover { background: #059669; transform: translateX(2px);
-} /* Section Metadata */ .section-metadata { display: grid; grid-template-columns: 1fr 1fr; gap:
-1rem; margin-top: 1rem; padding: 1rem; background: #f9fafb; border-radius: 8px; } .dark
-.section-metadata { background: #374151; } .metadata-item { display: flex; flex-direction: column;
-gap: 0.25rem; } .metadata-label { font-size: 0.75rem; font-weight: 600; color: #6b7280;
-text-transform: uppercase; letter-spacing: 0.05em; } .dark .metadata-label { color: #9ca3af; }
-.metadata-value { font-size: 0.875rem; font-weight: 500; color: #1f2937; } .dark .metadata-value {
-color: #f9fafb; } /* Clean UI - Section code styles removed */ /* Section Detail View Code Styles */
-.section-code-details-expanded { margin-top: 1rem; border: 1px solid #e5e7eb; border-radius: 8px;
-overflow: hidden; } .dark .section-code-details-expanded { border-color: #374151; }
-.section-code-summary-detail { display: flex; align-items: center; justify-content: space-between;
-padding: 0.75rem 1rem; background: #f9fafb; cursor: pointer; list-style: none; border-bottom: 1px
-solid #e5e7eb; } .dark .section-code-summary-detail { background: #1f2937; border-bottom-color:
-#374151; } .code-label-small { font-size: 0.875rem; color: #6b7280; font-weight: 500; } .dark
-.code-label-small { color: #9ca3af; } .code-value-small { font-family: 'Courier New', Courier,
-monospace; font-size: 0.875rem; color: #374151; background: #ffffff; padding: 0.25rem 0.5rem;
-border-radius: 4px; border: 1px solid #d1d5db; } .dark .code-value-small { color: #d1d5db;
-background: #111827; border-color: #4b5563; } .section-code-expanded-detail { padding: 1rem;
-background: #ffffff; } .dark .section-code-expanded-detail { background: #111827; } .code-actions {
-display: flex; align-items: center; justify-content: space-between; gap: 1rem; } .code-description {
-font-size: 0.8rem; color: #9ca3af; font-style: italic; } .copy-btn-detail { display: flex;
-align-items: center; gap: 0.5rem; background: transparent; border: 1px solid #d1d5db; border-radius:
-6px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #6b7280; cursor: pointer; transition: all
-0.2s; } .copy-btn-detail:hover { background: #f3f4f6; border-color: #9ca3af; } .dark
-.copy-btn-detail { border-color: #4b5563; color: #9ca3af; } .dark .copy-btn-detail:hover {
-background: #1f2937; border-color: #6b7280; } /* Organized Section Detail Layout */
-.section-detail-enhanced-organized { display: flex; flex-direction: column; gap: 1.5rem; }
-.section-header-card { background: white; border: 1px solid #e5e7eb; border-radius: 16px; padding:
-2rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); } .dark .section-header-card { background: #1f2937;
-border-color: #374151; } .section-main-info { display: flex; align-items: center; gap: 1.5rem;
-margin-bottom: 1rem; } .section-icon-large { width: 64px; height: 64px; background:
-linear-gradient(135deg, #10b981, #059669); border-radius: 16px; display: flex; align-items: center;
-justify-content: center; color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
-.section-main-title { font-size: 1.75rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
-.dark .section-main-title { color: #f9fafb; } .section-meta { display: flex; gap: 0.75rem; }
-.subject-badge, .grade-badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.875rem;
-font-weight: 500; } .subject-badge { background: #ecfdf5; color: #047857; border: 1px solid #d1fae5;
-} .dark .subject-badge { background: #064e3b; color: #34d399; border-color: #065f46; } .grade-badge
-{ background: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; } .dark .grade-badge { background:
-#1e3a8a; color: #60a5fa; border-color: #1e40af; } .section-code-minimal { margin-top: 1rem;
-padding-top: 1rem; border-top: 1px solid #f3f4f6; } .dark .section-code-minimal { border-top-color:
-#374151; } .code-summary-minimal { display: flex; align-items: center; gap: 0.5rem; cursor: pointer;
-list-style: none; font-size: 0.875rem; color: #6b7280; padding: 0.5rem; border-radius: 6px;
-transition: all 0.2s; } .code-summary-minimal:hover { background: #f9fafb; } .dark
-.code-summary-minimal { color: #9ca3af; } .dark .code-summary-minimal:hover { background: #374151; }
-.code-text { font-family: 'Courier New', Courier, monospace; font-size: 0.8rem; }
-.code-details-minimal { display: flex; align-items: center; justify-content: space-between; padding:
-0.75rem; margin-top: 0.5rem; background: #f9fafb; border-radius: 6px; } .dark .code-details-minimal
-{ background: #374151; } .code-note { font-size: 0.75rem; color: #9ca3af; font-style: italic;
-margin: 0; } .copy-btn-minimal { display: flex; align-items: center; gap: 0.25rem; background:
-transparent; border: 1px solid #d1d5db; border-radius: 4px; padding: 0.25rem 0.5rem; font-size:
-0.7rem; color: #6b7280; cursor: pointer; transition: all 0.2s; } .copy-btn-minimal:hover {
-background: #ffffff; border-color: #9ca3af; } .dark .copy-btn-minimal { border-color: #4b5563;
-color: #9ca3af; } .dark .copy-btn-minimal:hover { background: #1f2937; border-color: #6b7280; } /*
-Student Management Card */ .student-management-card { background: white; border: 1px solid #e5e7eb;
-border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); } .dark
-.student-management-card { background: #1f2937; border-color: #374151; } .student-overview {
-display: flex; flex-direction: column; gap: 1.5rem; } .student-count-display { display: flex;
-align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, #f0fdf4,
-#ecfdf5); border-radius: 12px; border-left: 4px solid #10b981; } .dark .student-count-display {
-background: linear-gradient(135deg, #064e3b, #065f46); } .count-circle { width: 64px; height: 64px;
-background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content:
-center; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); } .count-number { font-size: 1.5rem;
-font-weight: 700; color: white; } .count-info h4 { font-size: 1.125rem; font-weight: 600; color:
-#1f2937; margin: 0 0 0.25rem 0; } .dark .count-info h4 { color: #f9fafb; } .count-info p {
-font-size: 0.875rem; color: #6b7280; margin: 0; } .dark .count-info p { color: #9ca3af; }
-.enrollment-actions { display: flex; gap: 1rem; } .add-students-btn { flex: 1; display: flex;
-align-items: center; justify-content: center; gap: 0.5rem; background: linear-gradient(135deg,
-#10b981, #059669); color: white; border: none; padding: 1rem 1.5rem; border-radius: 12px; font-size:
-1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(16, 185,
-129, 0.3); } .add-students-btn:hover { background: linear-gradient(135deg, #059669, #047857);
-transform: translateY(-2px); box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4); } .view-students-btn {
-display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: transparent;
-color: #10b981; border: 2px solid #10b981; padding: 1rem 1.5rem; border-radius: 12px; font-size:
-0.875rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-.view-students-btn:hover { background: #ecfdf5; transform: translateY(-1px); } .dark
-.view-students-btn { color: #34d399; border-color: #34d399; } .dark .view-students-btn:hover {
-background: #064e3b; } /* Academic Actions Card */ .academic-actions-card { background: white;
-border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0,
-0.04); } .dark .academic-actions-card { background: #1f2937; border-color: #374151; } .actions-title
-{ font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-bottom: 1rem; } .dark .actions-title
-{ color: #f9fafb; } .actions-grid-organized { display: flex; flex-direction: column; gap: 0.75rem; }
-.action-button.secondary { display: flex; align-items: center; gap: 1rem; background: #f8fafc;
-color: #475569; border: 1px solid #e2e8f0; padding: 1rem 1.25rem; border-radius: 8px; font-size:
-0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; text-align: left; }
-.action-button.secondary:hover { background: #f1f5f9; border-color: #cbd5e1; transform:
-translateX(4px); } .dark .action-button.secondary { background: #374151; color: #d1d5db;
-border-color: #4b5563; } .dark .action-button.secondary:hover { background: #4b5563; border-color:
-#6b7280; } @media (min-width: 1024px) { .section-detail-enhanced-organized { display: grid;
-grid-template-columns: 1fr; gap: 1.5rem; } .student-management-card { order: 2; }
-.academic-actions-card { order: 3; } } /* Add Students Modal Styles */ .add-students-content {
-padding: 0 1.5rem; max-height: calc(95vh - 200px); overflow-y: auto; display: flex; flex-direction:
-column; gap: 1rem; } /* Enroll Student by ID Styles */ .enroll-student-section { padding: 1rem
-1.25rem; background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); border: 2px solid #5eead4;
-border-radius: 12px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(94, 234, 212, 0.15); } .dark
-.enroll-student-section { background: linear-gradient(135deg, #134e4a 0%, #115e59 100%);
-border-color: #14b8a6; box-shadow: 0 2px 8px rgba(20, 184, 166, 0.2); } .enroll-header {
-margin-bottom: 0.5rem; } .enroll-header .section-title { display: flex; align-items: center; gap:
-0.625rem; color: #0f766e; margin-bottom: 0.375rem; font-size: 1.125rem; font-weight: 700; } .dark
-.enroll-header .section-title { color: #5eead4; } .enroll-header .section-title svg { flex-shrink:
-0; } .enroll-description { font-size: 0.875rem; color: #0f766e; margin: 0; font-weight: 500; } .dark
-.enroll-description { color: #99f6e4; } .enroll-form { display: flex; flex-direction: column; gap:
-0.5rem; } .enroll-input-wrapper { display: flex; gap: 0.5rem; align-items: stretch; }
-.enroll-student-input { flex: 1; padding: 0.75rem 0.875rem 0.75rem 2.75rem; border: 2px solid
-#14b8a6; border-radius: 8px; font-size: 0.875rem; background: white; color: #1f2937; position:
-relative; font-weight: 500; transition: all 0.2s ease; } .dark .enroll-student-input { background:
-#0f172a; border-color: #14b8a6; color: #f1f5f9; } .enroll-student-input:focus { outline: none;
-border-color: #0d9488; box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.15); background: #ffffff; } .dark
-.enroll-student-input:focus { border-color: #5eead4; box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.15);
-background: #020617; } .enroll-student-input::placeholder { color: #6b7280; font-weight: 400; }
-.dark .enroll-student-input::placeholder { color: #94a3b8; } .enroll-input-wrapper { position:
-relative; } .id-icon { position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%);
-color: #14b8a6; z-index: 1; pointer-events: none; } .dark .id-icon { color: #5eead4; } .enroll-btn {
-padding: 0.75rem 1.25rem; background: linear-gradient(135deg, #0d9488, #0f766e); color: white;
-border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
-display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; font-size: 0.875rem;
-box-shadow: 0 2px 4px rgba(13, 148, 136, 0.3); } .enroll-btn:hover:not(:disabled) { background:
-linear-gradient(135deg, #0f766e, #134e4a); transform: translateY(-1px); box-shadow: 0 4px 8px
-rgba(13, 148, 136, 0.4); } .enroll-btn:active:not(:disabled) { transform: translateY(0); }
-.enroll-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
-.spinner-icon { animation: spin 1s linear infinite; } @keyframes spin { from { transform:
-rotate(0deg); } to { transform: rotate(360deg); } } .enrollment-message { padding: 0.625rem
-0.875rem; border-radius: 8px; font-size: 0.875rem; font-weight: 600; display: flex; align-items:
-center; gap: 0.5rem; animation: slideIn 0.3s ease-out; } @keyframes slideIn { from { opacity: 0;
-transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-.enrollment-message.success { background: #d1fae5; color: #065f46; border: 2px solid #10b981; }
-.dark .enrollment-message.success { background: rgba(16, 185, 129, 0.15); color: #6ee7b7;
-border-color: rgba(110, 231, 183, 0.4); } .enrollment-message.error { background: #fee2e2; color:
-#991b1b; border: 2px solid #ef4444; } .dark .enrollment-message.error { background: rgba(239, 68,
-68, 0.15); color: #fca5a5; border-color: rgba(252, 165, 165, 0.4); } /* Modal Divider */
-.modal-divider { display: flex; align-items: center; margin: 0.5rem 0; text-align: center;
-flex-shrink: 0; } .modal-divider::before, .modal-divider::after { content: ''; flex: 1; height: 1px;
-background: #e2e8f0; } .dark .modal-divider::before, .dark .modal-divider::after { background:
-#334155; } .modal-divider span { padding: 0 1rem; color: #64748b; font-size: 0.875rem; font-weight:
-500; } .dark .modal-divider span { color: #94a3b8; } .student-search-section { flex: 1; display:
-flex; flex-direction: column; min-height: 0; } .search-header { margin-bottom: 0.75rem; flex-shrink:
-0; } .section-title { font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem; }
-.dark .section-title { color: #f9fafb; } .search-description { font-size: 0.8125rem; color: #6b7280;
-margin: 0; } .dark .search-description { color: #9ca3af; } .search-filters-enhanced { display: grid;
-grid-template-columns: 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; flex-shrink: 0; }
-.search-input-wrapper { position: relative; display: flex; align-items: center; } .search-icon {
-position: absolute; left: 0.75rem; color: #9ca3af; pointer-events: none; z-index: 1; }
-.student-search-input-enhanced { width: 100%; padding: 0.875rem 0.875rem 0.875rem 2.75rem; border:
-2px solid #e5e7eb; border-radius: 12px; font-size: 1rem; transition: all 0.2s; background: white; }
-.student-search-input-enhanced:focus { outline: none; border-color: #10b981; box-shadow: 0 0 0 3px
-rgba(16, 185, 129, 0.1); } .dark .student-search-input-enhanced { background: #1f2937; border-color:
-#374151; color: #f9fafb; } .dark .student-search-input-enhanced:focus { border-color: #34d399;
-box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.1); } .grade-filter-select-enhanced { padding: 0.875rem
-1rem; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 0.875rem; font-weight: 500;
-background: white; cursor: pointer; transition: all 0.2s; min-width: 140px; }
-.grade-filter-select-enhanced:focus { outline: none; border-color: #10b981; box-shadow: 0 0 0 3px
-rgba(16, 185, 129, 0.1); } .dark .grade-filter-select-enhanced { background: #1f2937; border-color:
-#374151; color: #f9fafb; } .search-hint { display: flex; align-items: center; gap: 0.5rem; padding:
-0.625rem 0.875rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; font-size:
-0.8125rem; color: #059669; flex-shrink: 0; } .dark .search-hint { background: #064e3b; border-color:
-#065f46; color: #34d399; } .students-list-section { border-top: 1px solid #e5e7eb; padding-top:
-0.75rem; flex: 1; display: flex; flex-direction: column; min-height: 0; } .dark
-.students-list-section { border-top-color: #374151; } .students-header { display: flex; align-items:
-center; justify-content: space-between; margin-bottom: 0.5rem; flex-shrink: 0; } .students-header h4
-{ font-size: 1rem; font-weight: 600; color: #1f2937; } .dark .students-header h4 { color: #f9fafb; }
-.batch-actions { display: flex; gap: 0.5rem; } .add-batch-btn { display: flex; align-items: center;
-gap: 0.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none;
-padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500; cursor: pointer;
-transition: all 0.2s; } .add-batch-btn:hover:not(:disabled) { background: linear-gradient(135deg,
-#059669, #047857); transform: translateY(-1px); } .add-batch-btn:disabled { opacity: 0.6; cursor:
-not-allowed; } .clear-selection-btn { background: transparent; color: #6b7280; border: 1px solid
-#d1d5db; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.875rem; cursor: pointer; transition:
-all 0.2s; } .clear-selection-btn:hover { background: #f3f4f6; border-color: #9ca3af; } .dark
-.clear-selection-btn { color: #9ca3af; border-color: #374151; } .dark .clear-selection-btn:hover {
-background: #1f2937; border-color: #4b5563; } .loading-state, .empty-search { display: flex;
-flex-direction: column; align-items: center; gap: 0.75rem; padding: 1.25rem; text-align: center;
-color: #6b7280; flex-shrink: 0; } .dark .loading-state, .dark .empty-search { color: #9ca3af; }
-.students-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:
-0.625rem; flex: 1; overflow-y: auto; min-height: 0; max-height: 200px; padding-right: 0.25rem; }
-.student-card { display: flex; align-items: center; gap: 0.625rem; padding: 0.625rem; border: 2px
-solid #e5e7eb; border-radius: 6px; cursor: pointer; transition: all 0.2s; position: relative;
-background: white; } .student-card:hover { border-color: #10b981; background: #f0fdf4; }
-.student-card.selected { border-color: #10b981; background: #ecfdf5; } .dark .student-card {
-border-color: #374151; background: #1f2937; } .dark .student-card:hover { border-color: #10b981;
-background: #064e3b; } .dark .student-card.selected { background: #065f46; } .student-avatar {
-width: 48px; height: 48px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius:
-50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
-.student-info h4 { font-size: 0.875rem; font-weight: 600; color: #1f2937; margin-bottom: 0.25rem; }
-.dark .student-info h4 { color: #f9fafb; } .student-id, .student-grade { font-size: 0.75rem; color:
-#6b7280; margin: 0; } .dark .student-id, .dark .student-grade { color: #9ca3af; }
-.selection-indicator { position: absolute; top: 0.5rem; right: 0.5rem; width: 24px; height: 24px;
-background: #10b981; border-radius: 50%; color: white; display: flex; align-items: center;
-justify-content: center; opacity: 0; transition: all 0.2s; } .student-card.selected
-.selection-indicator { opacity: 1; } .btn-outline { display: flex; align-items: center; gap: 0.5rem;
-background: transparent; color: #10b981; border: 1px solid #10b981; padding: 0.75rem 1.25rem;
-border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-.btn-outline:hover { background: #ecfdf5; } .dark .btn-outline { color: #34d399; border-color:
-#34d399; } .dark .btn-outline:hover { background: #064e3b; } /* Breadcrumb Styling */ .breadcrumb {
-display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; padding: 0.75rem 1rem;
-background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; box-shadow: 0 1px 3px
-rgba(0,0,0,0.05); font-size: 0.875rem; color: #6b7280; } .dark .breadcrumb { background: #1f2937;
-border: 1px solid #374151; box-shadow: 0 1px 3px rgba(0,0,0,0.2); color: #A3D1C6; }
-.breadcrumb-separator { color: #9ca3af; font-weight: 300; user-select: none; } .dark
-.breadcrumb-separator { color: #6b7280; } .breadcrumb-current { color: #1f2937; font-weight: 600;
-padding: 0.25rem 0.5rem; background: #f3f4f6; border-radius: 6px; } .dark .breadcrumb-current {
-color: #ffffff; background: #374151; } /* Grade Filter */ .grade-filter-container { display: flex;
-gap: 0.5rem; margin-bottom: 1.5rem; } .grade-filter-btn.active { background: #2a6d5f; } /* Empty
-State */ .empty-state { text-align: center; padding: 3rem 2rem; } .empty-icon svg { color: #A3D1C6;
-margin-bottom: 1rem; } /* Modal Enhancements */ .modal-overlay { position: fixed; top: 0; left: 0;
-right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); display: flex; align-items: center;
-justify-content: center; z-index: 1000; } .modal-content { max-width: 600px; width: 90%; max-height:
-90vh; overflow-y: auto; } .modal-header { display: flex; align-items: center; justify-content:
-space-between; margin-bottom: 1.5rem; } .modal-header h2 { color: #1f2937; font-size: 1.25rem;
-font-weight: 600; margin: 0; } .dark .modal-header h2 { color: #A3D1C6; } /* Form Elements */
-.form-group { margin-bottom: 1.5rem; } .form-group label { display: block; color: #1f2937;
-font-weight: 600; margin-bottom: 0.5rem; } .dark .form-group label { color: #A3D1C6; } .form-group
-input, .form-group select, .form-group textarea { width: 100%; background: white; border: 1px solid
-#d1d5db; border-radius: 8px; padding: 0.75rem; font-size: 0.875rem; } .dark .form-group input, .dark
-.form-group select, .dark .form-group textarea { background: #181c20; border: 1px solid #20c997;
-color: #A3D1C6; } .modal-actions { display: flex; justify-content: flex-end; gap: 1rem; margin-top:
-2rem; } .breadcrumb-btn { background: none; border: none; color: #17815c; font-weight: 700;
-text-decoration: underline; display: flex; align-items: center; gap: 0.4rem; padding: 0.25rem
-0.5rem; border-radius: 6px; transition: all 0.2s ease; cursor: pointer; font-size: 0.875rem; } .dark
-.breadcrumb-btn { color: #A3D1C6; } .breadcrumb-btn:hover { background: #A3D1C6; color: #ffffff;
-transform: translateX(-1px); } .dark .breadcrumb-btn:hover { background: #20c997; color: #ffffff; }
-.breadcrumb-separator { color: #20c997; font-weight: 700; } .breadcrumb-current { color: #fff;
-font-weight: 700; } .grade-filter-container { display: flex; gap: 0.75rem; margin-bottom: 1.5rem;
-flex-wrap: wrap; } .grade-filter-btn { background: #ffffff; color: #3D8D7A; border: 1.5px solid
-#A3D1C6; border-radius: 8px; padding: 0.5rem 1rem; font-weight: 500; transition: all 0.2s ease;
-cursor: pointer; font-size: 0.875rem; } .dark .grade-filter-btn { background: #23272f; color:
-#20c997; border: 1.5px solid #20c997; font-weight: 600; } .grade-filter-btn.active,
-.grade-filter-btn:hover { background: #A3D1C6; color: #ffffff; transform: translateY(-1px);
-box-shadow: 0 2px 6px rgba(163, 209, 198, 0.3); } .dark .grade-filter-btn.active, .dark
-.grade-filter-btn:hover { background: #20c997; color: #ffffff; box-shadow: 0 2px 6px rgba(32, 201,
-151, 0.3); } .sections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,
-1fr)); gap: 1.25rem; max-width: 100%; } .section-card.simple { background: #ffffff; border: 1.5px
-solid #A3D1C6; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 1.25rem 1rem;
-display: flex; flex-direction: column; gap: 0.75rem; transition: all 0.2s ease; cursor: pointer;
-position: relative; max-width: 350px; min-height: 120px; } .dark .section-card.simple { background:
-#23272f; border: 1.5px solid #20c997; box-shadow: 0 2px 8px rgba(32, 201, 151, 0.15); }
-.section-card.simple:hover { box-shadow: 0 4px 16px rgba(163, 209, 198, 0.25); border-color:
-#3D8D7A; transform: translateY(-2px); } .dark .section-card.simple:hover { box-shadow: 0 4px 16px
-rgba(32, 201, 151, 0.3); border-color: #18b087; } .section-simple-header { display: flex;
-align-items: flex-start; gap: 1rem; } .section-info h4 { color: #3D8D7A; font-size: 1rem;
-font-weight: 600; margin-bottom: 0.25rem; line-height: 1.3; } .dark .section-info h4 { color:
-#20c997; font-weight: 700; } .section-code-inline { display: flex; align-items: center; gap: 0.5rem;
-background: #F8F9FA; border: 1px solid #A3D1C6; border-radius: 6px; padding: 0.25rem 0.6rem;
-font-size: 0.875rem; margin-bottom: 0.25rem; } .dark .section-code-inline { background: #181c1f;
-border: 1px solid #20c997; } .code-label { color: #3D8D7A; font-weight: 600; font-size: 0.75rem; }
-.dark .code-label { color: #20c997; } .section-code-text { color: #fff; font-weight: 600;
-letter-spacing: 1px; cursor: pointer; } .copy-code-mini { background: #20c997; color: #fff; border:
-none; border-radius: 6px; padding: 0.2rem 0.6rem; font-size: 0.95rem; font-weight: 600; transition:
-background 0.2s; } .copy-code-mini:hover { background: #18b087; } .section-stats-simple { color:
-#b5b5b5; font-size: 0.95rem; margin-top: 0.2rem; } .section-menu-container { position: relative; }
-.section-action-btn.menu { background: transparent; border: none; color: #3D8D7A; font-size: 1.1rem;
-padding: 0.3rem; border-radius: 50%; transition: all 0.2s ease; width: 32px; height: 32px; display:
-flex; align-items: center; justify-content: center; } .dark .section-action-btn.menu { color:
-#20c997; } .section-action-btn.menu:hover { background: #A3D1C6; color: #ffffff; transform:
-scale(1.1); } .dark .section-action-btn.menu:hover { background: #20c997; color: #ffffff; }
-.section-dropdown-menu { position: absolute; top: 2rem; right: 0; background: #ffffff; border: 1.5px
-solid #A3D1C6; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10; min-width:
-140px; display: flex; flex-direction: column; font-size: 0.875rem; } .dark .section-dropdown-menu {
-background: #23272f; border: 1.5px solid #20c997; box-shadow: 0 4px 12px rgba(32, 201, 151, 0.2); }
-.section-dropdown-menu .menu-item { background: none; border: none; color: #3D8D7A; padding: 0.75rem
-1rem; text-align: left; font-weight: 500; border-radius: 6px; transition: all 0.2s ease; display:
-flex; align-items: center; gap: 0.5rem; cursor: pointer; } .dark .section-dropdown-menu .menu-item {
-color: #20c997; font-weight: 600; } .section-dropdown-menu .menu-item:hover { background: #A3D1C6;
-color: #ffffff; transform: translateX(2px); } .dark .section-dropdown-menu .menu-item:hover {
-background: #20c997; color: #ffffff; } .section-dropdown-menu .menu-item.delete { color: #dc3545; }
-.dark .section-dropdown-menu .menu-item.delete { color: #ff5c5c; } .section-dropdown-menu
-.menu-item.delete:hover { background: #dc3545; color: #ffffff; } .dark .section-dropdown-menu
-.menu-item.delete:hover { background: #ff5c5c; color: #ffffff; } /* Section Detail View Enhancements
-*/ .section-detail-view { padding: 2rem; background: #181c1f; border-radius: 16px; border: 2px solid
-#20c997; box-shadow: 0 0 8px 0 #20c99733; color: #f1f1f1; } .section-detail-card { background:
-#23272f; border-radius: 16px; box-shadow: 0 2px 8px 0 #20c99722; border: 1.5px solid #20c997;
-padding: 2rem; } .section-info-container { background: #181c1f; border-radius: 12px; border: 1.5px
-solid #20c997; padding: 1.5rem 1rem; margin-bottom: 2rem; } .section-info-grid { display: flex; gap:
-2rem; justify-content: center; margin-bottom: 1.5rem; } .section-info-item { text-align: center; }
-.section-actions-grid { display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center; }
-.section-action-btn { background: #ffffff; color: #3D8D7A; border: 1.5px solid #A3D1C6;
-border-radius: 8px; padding: 0.6rem 1.2rem; font-weight: 500; transition: all 0.2s ease; display:
-flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.875rem; } .dark
-.section-action-btn { background: #23272f; color: #20c997; border: 1.5px solid #20c997; font-weight:
-600; } .section-action-btn:hover { background: #A3D1C6; color: #ffffff; transform: translateY(-1px);
-box-shadow: 0 2px 8px rgba(163, 209, 198, 0.3); } .dark .section-action-btn:hover { background:
-#20c997; color: #ffffff; box-shadow: 0 2px 8px rgba(32, 201, 151, 0.3); } .dark-mode
-.section-actions-grid { background: var(--bg-card); border-radius: 8px; box-shadow: 0 2px 8px
-rgba(0,0,0,0.10); }
-=======
 
 
 /* Section Detail Enhancements */
@@ -407,7 +46,7 @@ rgba(0,0,0,0.10); }
 .section-stats-simple {
   color: #6b7280;
 }
-
+    
   /*
   |--------------------------------------------------------------------------
   | BASE STYLES (Light Mode)
@@ -1261,11 +900,11 @@ rgba(0,0,0,0.10); }
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-
+  
   .student-management-card {
     order: 2;
   }
-
+  
   .academic-actions-card {
     order: 3;
   }
@@ -2403,7 +2042,6 @@ rgba(0,0,0,0.10); }
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
 
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
 
 <template>
   <div class="dashboard-container">
@@ -2418,26 +2056,21 @@ rgba(0,0,0,0.10); }
           </div>
         </div>
         <!-- Center: Empty space for clean look -->
-        <div class="navbar-center"></div>
-
+        <div class="navbar-center">
+        </div>
+        
         <!-- Right: User Profile and Notifications -->
         <div class="navbar-right">
           <!-- Notification Bell -->
           <div class="notif-wrapper">
-            <button
-              class="nav-icon-btn rounded-bg"
-              @click="toggleNotifDropdown"
-              aria-label="Notifications"
-            >
+            <button class="nav-icon-btn rounded-bg" @click="toggleNotifDropdown" aria-label="Notifications">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
-              <span v-if="notifications.length" class="notification-badge">{{
-                notifications.length
-              }}</span>
+              <span v-if="notifications.length" class="notification-badge">{{ notifications.length }}</span>
             </button>
-
+            
             <!-- Notification Dropdown -->
             <div v-if="showNotifDropdown" class="notification-dropdown">
               <div class="dropdown-header">
@@ -2447,12 +2080,7 @@ rgba(0,0,0,0.10); }
                 <div v-if="notifications.length === 0" class="no-notifications">
                   No new notifications
                 </div>
-                <div
-                  v-for="notif in notifications"
-                  :key="notif.id"
-                  class="notification-item"
-                  @click="handleNotificationClick(notif)"
-                >
+                <div v-for="notif in notifications" :key="notif.id" class="notification-item" @click="handleNotificationClick(notif)">
                   <div class="notif-content">
                     <h4>{{ notif.title }}</h4>
                     <p>{{ notif.body }}</p>
@@ -2462,7 +2090,7 @@ rgba(0,0,0,0.10); }
               </div>
             </div>
           </div>
-
+          
           <!-- User Profile -->
           <div class="user-profile-wrapper">
             <div class="user-profile rounded-bg" @click="toggleProfileDropdown">
@@ -2473,17 +2101,11 @@ rgba(0,0,0,0.10); }
                 </svg>
               </div>
               <span class="user-name">{{ fullName }}</span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="dropdown-arrow"
-              >
-                <path d="M7 10l5 5 5-5z" />
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="dropdown-arrow">
+                <path d="M7 10l5 5 5-5z"/>
               </svg>
             </div>
-
+            
             <!-- Profile Dropdown -->
             <div v-if="showProfileDropdown" class="profile-dropdown">
               <div class="dropdown-header">
@@ -2500,24 +2122,20 @@ rgba(0,0,0,0.10); }
                   </div>
                 </div>
               </div>
-
+              
               <div class="dropdown-menu">
                 <router-link to="/teacher/settings" class="dropdown-item">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"
-                    />
+                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1V3H9V1L3 7V9H5V20A2 2 0 0 0 7 22H17A2 2 0 0 0 19 20V9H21M17 20H7V9H10V12H14V9H17V20Z"/>
                   </svg>
                   <span>Profile & Settings</span>
                 </router-link>
-
+                
                 <div class="dropdown-divider"></div>
-
+                
                 <button @click="logout" class="dropdown-item logout-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"
-                    />
+                    <path d="M16 17V14H9V10H16V7L21 12L16 17M14 2A2 2 0 0 1 16 4V6H14V4H5V20H14V18H16V20A2 2 0 0 1 14 22H5A2 2 0 0 1 3 20V4A2 2 0 0 1 5 2H14Z"/>
                   </svg>
                   <span>Logout</span>
                 </button>
@@ -2529,111 +2147,46 @@ rgba(0,0,0,0.10); }
     </nav>
 
     <!-- Sidebar Navigation - Custom Tooltip Labels on Hover -->
-    <aside class="sidebar" style="background: #3d8d7a; border-right: none">
+    <aside class="sidebar" style="background:#3D8D7A; border-right:none;">
       <nav class="sidebar-nav">
-        <router-link
-          to="/teacher/dashboard"
-          class="sidebar-item rounded-bg"
-          :class="{ active: $route.path === '/teacher/dashboard' }"
-        >
+        <router-link to="/teacher/dashboard" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/dashboard' }">
           <div class="sidebar-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 20v-6h4v6m5-8h3L12 3 2 12h3v8h5v-6h4v6h5v-8z" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Dashboard</span>
         </router-link>
-        <router-link
-          to="/teacher/subjects"
-          class="sidebar-item rounded-bg"
-          :class="{ active: $route.path.includes('/teacher/subjects') }"
-        >
+        <router-link to="/teacher/subjects" class="sidebar-item rounded-bg" :class="{ 'active': $route.path.includes('/teacher/subjects') }">
           <div class="sidebar-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="7" width="18" height="13" rx="2" />
               <path d="M3 7l9-4 9 4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Classes</span>
         </router-link>
-        <router-link
-          to="/teacher/gradebook"
-          class="sidebar-item rounded-bg"
-          :class="{ active: $route.path === '/teacher/gradebook' }"
-        >
+        <router-link to="/teacher/gradebook" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/gradebook' }">
           <div class="sidebar-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="4" y="4" width="16" height="16" rx="2" />
               <path d="M8 2v4M16 2v4" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Gradebook</span>
         </router-link>
-        <router-link
-          to="/teacher/upload-assessment"
-          class="sidebar-item rounded-bg"
-          :class="{ active: $route.path === '/teacher/upload-assessment' }"
-        >
+        <router-link to="/teacher/upload-assessment" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/upload-assessment' }">
           <div class="sidebar-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 19V6M5 12l7-7 7 7" />
               <rect x="5" y="19" width="14" height="2" rx="1" />
             </svg>
           </div>
           <span class="sidebar-tooltip">Upload Assessment</span>
         </router-link>
-        <router-link
-          to="/teacher/analytics"
-          class="sidebar-item rounded-bg"
-          :class="{ active: $route.path === '/teacher/analytics' }"
-        >
+        <router-link to="/teacher/analytics" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/analytics' }">
           <div class="sidebar-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="12" width="4" height="8" />
               <rect x="10" y="8" width="4" height="12" />
               <rect x="17" y="4" width="4" height="16" />
@@ -2641,22 +2194,9 @@ rgba(0,0,0,0.10); }
           </div>
           <span class="sidebar-tooltip">Analytics</span>
         </router-link>
-        <router-link
-          to="/teacher/messages"
-          class="sidebar-item rounded-bg"
-          :class="{ active: $route.path === '/teacher/messages' }"
-        >
+        <router-link to="/teacher/messages" class="sidebar-item rounded-bg" :class="{ 'active': $route.path === '/teacher/messages' }">
           <div class="sidebar-icon">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="M3 5l9 7 9-7" />
             </svg>
@@ -2671,7 +2211,7 @@ rgba(0,0,0,0.10); }
       <!-- Scroll to Top Button -->
       <button v-if="showScrollTop" @click="scrollToTop" class="scroll-to-top">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 14l5-5 5 5z" />
+          <path d="M7 14l5-5 5 5z"/>
         </svg>
       </button>
       <!-- Page Header -->
@@ -2680,9 +2220,7 @@ rgba(0,0,0,0.10); }
           <div class="header-left">
             <div class="header-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"
-                />
+                <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
               </svg>
             </div>
             <div>
@@ -2690,7 +2228,7 @@ rgba(0,0,0,0.10); }
               <p class="header-subtitle">Manage your classes and student sections</p>
             </div>
           </div>
-
+          
           <div class="header-actions">
             <button @click="showCreateModal = true" class="create-subject-btn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -2704,1222 +2242,352 @@ rgba(0,0,0,0.10); }
 
       <!-- Content Area -->
       <div class="content-wrapper">
-        <!-- Subjects Overview -->
-        <div v-if="viewMode === 'subjects'" class="subjects-overview">
-          <!-- Search and Filter Bar -->
-          <div class="search-filter-bar">
-            <div class="search-input-container">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="search-icon">
-                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" />
-                <path
-                  d="m21 21-4.35-4.35"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <input
-                v-model="searchQuery"
-                class="search-input"
-                type="text"
-                placeholder="Search subjects..."
-              />
-            </div>
-            <select v-model="subjectDropdown" class="grade-filter">
-              <option v-for="option in subjectOptions" :key="option" :value="option.toLowerCase()">
-                {{ option }}
-              </option>
-            </select>
-          </div>
 
-          <!-- Empty State -->
-          <div v-if="subjects.length === 0" class="empty-state">
-            <div class="empty-icon">
-              <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
-                <path
-                  fill="currentColor"
-                  d="M12 2a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v1H4V7a2 2 0 0 1 2-2h4V4a2 2 0 0 1 2-2Zm8 7v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h16Zm-2 2H6v7h12v-7Z"
-                />
-              </svg>
-            </div>
-            <div class="empty-title">No Subjects Created Yet</div>
-            <div class="empty-desc">
-              Create your first subject to start managing your classes and student sections
-            </div>
-            <button class="create-quiz-btn" @click="showCreateModal = true">
-              Create Your First Subject
-            </button>
-          </div>
+    <!-- Subjects Overview -->
+    <div v-if="viewMode === 'subjects'" class="subjects-overview">
+      <!-- Search and Filter Bar -->
+      <div class="search-filter-bar">
+        <div class="search-input-container">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="search-icon">
+            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+            <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input
+            v-model="searchQuery"
+            class="search-input"
+            type="text"
+            placeholder="Search subjects..."
+          />
+        </div>
+        <select v-model="subjectDropdown" class="grade-filter">
+          <option v-for="option in subjectOptions" :key="option" :value="option.toLowerCase()">{{ option }}</option>
+        </select>
+      </div>
+      
+      <!-- Empty State -->
+      <div v-if="subjects.length === 0" class="empty-state">
+        <div class="empty-icon">
+          <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 2a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v1H4V7a2 2 0 0 1 2-2h4V4a2 2 0 0 1 2-2Zm8 7v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h16Zm-2 2H6v7h12v-7Z"/>
+          </svg>
+        </div>
+        <div class="empty-title">No Subjects Created Yet</div>
+        <div class="empty-desc">Create your first subject to start managing your classes and student sections</div>
+        <button class="create-quiz-btn" @click="showCreateModal = true">Create Your First Subject</button>
+      </div>
+      
+      <!-- Filtered Results -->
+      <div v-else-if="filteredSubjects.length === 0" class="empty-state">
+        <div class="empty-icon">
+          <svg width="48" height="48" fill="none" viewBox="0 0 48 48">
+            <rect x="8" y="16" width="32" height="24" rx="4" fill="#B3D8A8"/>
+            <rect x="8" y="16" width="32" height="24" rx="4" stroke="#3D8D7A" stroke-width="2"/>
+            <rect x="14" y="22" width="20" height="8" rx="2" fill="#FBFFE4"/>
+            <rect x="14" y="22" width="20" height="8" rx="2" stroke="#3D8D7A" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="empty-title">No subjects found</div>
+        <div class="empty-desc">Try adjusting your search or filter.</div>
+      </div>
 
-          <!-- Filtered Results -->
-          <div v-else-if="filteredSubjects.length === 0" class="empty-state">
-            <div class="empty-icon">
-              <svg width="48" height="48" fill="none" viewBox="0 0 48 48">
-                <rect x="8" y="16" width="32" height="24" rx="4" fill="#B3D8A8" />
-                <rect
-                  x="8"
-                  y="16"
-                  width="32"
-                  height="24"
-                  rx="4"
-                  stroke="#3D8D7A"
-                  stroke-width="2"
-                />
-                <rect x="14" y="22" width="20" height="8" rx="2" fill="#FBFFE4" />
-                <rect
-                  x="14"
-                  y="22"
-                  width="20"
-                  height="8"
-                  rx="2"
-                  stroke="#3D8D7A"
-                  stroke-width="1.5"
-                />
-              </svg>
-            </div>
-            <div class="empty-title">No subjects found</div>
-            <div class="empty-desc">Try adjusting your search or filter.</div>
-          </div>
-
-          <!-- Subjects Grid -->
-          <div v-else class="subjects-grid">
-            <div
-              v-for="subject in filteredSubjects"
-              :key="subject.id"
-              class="subject-card"
-              @click="selectSubject(subject)"
+      <!-- Subjects Grid -->
+      <div v-else class="subjects-grid">
+        <div v-for="subject in filteredSubjects" :key="subject.id" class="subject-card" @click="selectSubject(subject)">
+          <div class="subject-card-header">
+            <div 
+              class="subject-icon" 
+              :style="{
+                background: getSubjectIconColor(subject.subject_name || subject.name || 'N').bg
+              }"
             >
-              <div class="subject-card-header">
-                <div
-                  class="subject-icon"
-                  :style="{
-                    background: getSubjectIconColor(subject.subject_name || subject.name || 'N').bg,
-                  }"
-                >
-                  <span class="subject-initial">{{
-                    (subject.subject_name || subject.name || 'N').charAt(0)
-                  }}</span>
-                </div>
-
-                <!-- Subject Menu -->
-                <div class="subject-menu-container" @click.stop>
-                  <button
-                    class="subject-menu-btn"
-                    @click="toggleSubjectMenu(subject.id)"
-                    title="More Options"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <circle cx="5" cy="12" r="2" />
-                      <circle cx="12" cy="12" r="2" />
-                      <circle cx="19" cy="12" r="2" />
-                    </svg>
-                  </button>
-                  <div v-if="openSubjectMenuId === subject.id" class="subject-dropdown-menu">
-                    <button @click="editSubject(subject)" class="menu-item">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"
-                        />
-                      </svg>
-                      Edit
-                    </button>
-                    <button @click="openDeleteModal('subject', subject)" class="menu-item delete">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
-                        />
-                      </svg>
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="subject-card-body">
-                <h3 class="subject-title">{{ subject.subject_name || subject.name }}</h3>
-                <p class="grade-level">Grade {{ subject.grade_level }}</p>
-                <p v-if="subject.description" class="subject-description">
-                  {{ subject.description }}
-                </p>
-                <p v-else class="subject-description-placeholder">No description provided</p>
-
-                <div class="subject-stats">
-                  <div class="stat-item">
-                    <span class="stat-number">{{ subject.section_count || 0 }}</span>
-                    <span class="stat-label">{{
-                      (subject.section_count || 0) === 1 ? 'Section' : 'Sections'
-                    }}</span>
-                  </div>
-                  <div class="stat-item">
-                    <span class="stat-number">{{ subject.total_students || 0 }}</span>
-                    <span class="stat-label">{{
-                      (subject.total_students || 0) === 1 ? 'Student' : 'Students'
-                    }}</span>
-                  </div>
-                </div>
-              </div>
+              <span class="subject-initial">{{ (subject.subject_name || subject.name || 'N').charAt(0) }}</span>
             </div>
-          </div>
-        </div>
-
-        <!-- Sections View -->
-        <div v-if="viewMode === 'sections' && selectedSubject" class="sections-view">
-          <!-- Navigation -->
-          <div class="view-header">
-            <button @click="goBackToSubjects" class="back-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
-              </svg>
-              Back to Subjects
-            </button>
-            <div class="view-title">
-              <h2>{{ selectedSubject.subject_name }}</h2>
-              <p>Grade {{ selectedSubject.grade_level }} - Manage sections and students</p>
-            </div>
-          </div>
-
-          <div class="sections-grid">
-            <div v-for="section in filteredSections" :key="section.id" class="section-card">
-              <div class="section-card-header">
-                <div class="section-info" @click="selectSection(section)">
-                  <h3 class="section-title">{{ section.section_name }}</h3>
-                  <p class="section-subtitle">Grade {{ section.grade_level }}</p>
-                </div>
-
-                <div class="section-menu-container" @click.stop>
-                  <button class="section-menu-btn" @click="toggleSectionMenu(section.id)">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <circle cx="5" cy="12" r="2" />
-                      <circle cx="12" cy="12" r="2" />
-                      <circle cx="19" cy="12" r="2" />
-                    </svg>
-                  </button>
-                  <div v-if="openMenuId === section.id" class="section-dropdown-menu">
-                    <button @click="editSection(section)" class="menu-item">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"
-                        />
-                      </svg>
-                      Edit
-                    </button>
-                    <button @click="openDeleteModal('section', section)" class="menu-item delete">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
-                        />
-                      </svg>
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="section-card-body" @click="selectSection(section)">
-                <div class="enrollment-status">
-                  <div class="student-count">
-                    <span class="count-number">{{ section.student_count || 0 }}</span>
-                    <span class="count-label">Students</span>
-                  </div>
-                  <div class="capacity-info">
-                    <div class="capacity-bar">
-                      <div
-                        class="capacity-fill"
-                        :style="{
-                          width: `${Math.min(((section.student_count || 0) / (section.max_students || 40)) * 100, 100)}%`,
-                        }"
-                      ></div>
-                    </div>
-                    <span class="capacity-text"
-                      >{{ section.student_count || 0 }} / {{ section.max_students || 40 }}</span
-                    >
-                  </div>
-                </div>
-
-                <div class="section-actions" @click.stop>
-                  <button
-                    class="action-btn primary"
-                    @click="manageStudents(selectedSubject, section)"
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                    </svg>
-                    Manage Students
-                  </button>
-                  <button class="action-btn secondary" @click="selectSection(section)">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                    </svg>
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Section Detail View -->
-        <div v-if="viewMode === 'section-detail' && selectedSection" class="section-detail-view">
-          <!-- Navigation -->
-          <div class="view-header">
-            <button @click="goBackToSections" class="back-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
-              </svg>
-              Back to {{ selectedSubject.subject_name }}
-            </button>
-            <div class="view-title">
-              <h2>{{ selectedSection.section_name }}</h2>
-              <p>Grade {{ selectedSection.grade_level }} - {{ selectedSection.subject_name }}</p>
-            </div>
-          </div>
-
-          <!-- Section Overview -->
-          <div class="section-overview-card">
-            <div class="overview-stats">
-              <div class="stat-box">
-                <div class="stat-number">{{ selectedSection.student_count || 0 }}</div>
-                <div class="stat-label">Students Enrolled</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-number">{{ selectedSection.max_students || 40 }}</div>
-                <div class="stat-label">Max Capacity</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-number">
-                  {{
-                    Math.round(
-                      ((selectedSection.student_count || 0) /
-                        (selectedSection.max_students || 40)) *
-                        100,
-                    )
-                  }}%
-                </div>
-                <div class="stat-label">Filled</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick Actions -->
-          <div class="quick-actions-section">
-            <h3 class="section-heading">Quick Actions</h3>
-            <div class="action-cards-grid">
-              <!-- Student Management -->
-              <div class="action-card student-management">
-                <div class="card-header">
-                  <div class="card-icon student-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14"
-                      />
-                    </svg>
-                  </div>
-                  <h3>Student Management</h3>
-                </div>
-                <p class="card-description">Manage student enrollment and view class roster</p>
-                <div class="card-actions">
-                  <button
-                    @click="manageStudents(selectedSubject, selectedSection)"
-                    class="action-btn primary"
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                    </svg>
-                    Add Students
-                  </button>
-                  <button
-                    @click="viewSectionStudents(selectedSubject, selectedSection)"
-                    class="action-btn secondary"
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"
-                      />
-                    </svg>
-                    View All Students
-                  </button>
-                </div>
-              </div>
-
-              <!-- Assessment Management -->
-              <div class="action-card assessment-management">
-                <div class="card-header">
-                  <div class="card-icon assessment-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
-                      />
-                    </svg>
-                  </div>
-                  <h3>Assessment Management</h3>
-                </div>
-                <p class="card-description">
-                  Create and manage quizzes and assignments for your students
-                </p>
-                <div class="card-actions">
-                  <div class="assessment-type-buttons">
-                    <button
-                      @click="showCreateAssessmentModal(selectedSubject, selectedSection, 'quiz')"
-                      class="assessment-type-btn quiz-btn"
-                    >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M9,5V9H21V7.5L22.5,6L21,4.5L19.5,6L18,4.5L16.5,6L18,7.5V9H15V5H9M9,19V15H15V19H9M21,15V13.5L19.5,12L18,13.5V15H21Z"
-                        />
-                      </svg>
-                      Create Quiz
-                      <span class="btn-subtitle">Multiple-choice, True/False, Fill-in-blank</span>
-                    </button>
-                    <button
-                      @click="
-                        showCreateAssessmentModal(selectedSubject, selectedSection, 'assignment')
-                      "
-                      class="assessment-type-btn assignment-btn"
-                    >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
-                        />
-                      </svg>
-                      Create Assignment
-                      <span class="btn-subtitle">Essays, Projects, Research tasks</span>
-                    </button>
-                  </div>
-                  <div class="view-assessments-section">
-                    <button
-                      @click="viewAllAssessments(selectedSubject, selectedSection)"
-                      class="action-btn secondary full-width"
-                    >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"
-                        />
-                      </svg>
-                      View All Assessments
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Grade Management -->
-              <div class="action-card grade-management">
-                <div class="card-header">
-                  <div class="card-icon grade-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M16,18H18V16H16M16,14H18V12H16M14,18H16V16H14M12,18H14V16H12M12,14H14V12H12M10,18H12V16H10M8,18H10V16H8M8,14H10V12H8M6,18H8V16H6M14,10H16V8H14M12,10H14V8H12M10,10H12V8H10M8,10H10V8H8M6,10H8V8H6M6,14H8V12H6"
-                      />
-                    </svg>
-                  </div>
-                  <h3>Grade Management</h3>
-                </div>
-                <p class="card-description">Review and manage student grades and performance</p>
-                <div class="card-actions">
-                  <button
-                    @click="manageGrades(selectedSubject, selectedSection)"
-                    class="action-btn primary"
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M9,5V9H21V7.5L22.5,6L21,4.5L19.5,6L18,4.5L16.5,6L18,7.5V9H15V5H9M9,19V15H15V19H9M21,15V13.5L19.5,12L18,13.5V15H21Z"
-                      />
-                    </svg>
-                    Manage Grades
-                  </button>
-                  <button
-                    @click="viewStudentSubmissions(selectedSubject, selectedSection)"
-                    class="action-btn secondary"
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15L14,19H10M9,13H15V14H9V13M9,10H15V11H9V10Z"
-                      />
-                    </svg>
-                    Student Submissions
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Create/Edit Subject Modal - REDESIGNED -->
-        <div v-if="showCreateModal" class="modal-overlay" @click="closeModal">
-          <div class="modal-content-enhanced" @click.stop>
-            <!-- Modal Header -->
-            <div class="modal-header-enhanced">
-              <div class="modal-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2L2 7V17L12 22L22 17V7M12 4.18L19.55 8L12 11.82L4.45 8M4 9.73L11 13.36V20.27L4 16.64M20 16.64L13 20.27V13.36L20 9.73Z"
-                  />
-                </svg>
-              </div>
-              <div class="modal-title-area">
-                <h2>{{ isEditing ? 'Edit Subject' : 'Create New Subject' }}</h2>
-                <p class="modal-subtitle">
-                  {{ currentStep === 1 ? 'Enter subject details' : 'Configure your sections' }}
-                </p>
-              </div>
-              <button @click="closeModal" class="close-btn-enhanced">
+            
+            <!-- Subject Menu -->
+            <div class="subject-menu-container" @click.stop>
+              <button class="subject-menu-btn" @click="toggleSubjectMenu(subject.id)" title="More Options">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  />
+                  <circle cx="5" cy="12" r="2" />
+                  <circle cx="12" cy="12" r="2" />
+                  <circle cx="19" cy="12" r="2" />
                 </svg>
               </button>
-            </div>
-
-            <!-- Progress Indicator -->
-            <div class="progress-indicator">
-              <div
-                class="progress-step"
-                :class="{ active: currentStep === 1, completed: currentStep === 2 }"
-              >
-                <div class="step-circle">
-                  <svg
-                    v-if="currentStep === 2"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                  </svg>
-                  <span v-else>1</span>
-                </div>
-                <span class="step-label">Subject Info</span>
-              </div>
-              <div class="progress-line" :class="{ active: currentStep === 2 }"></div>
-              <div class="progress-step" :class="{ active: currentStep === 2 }">
-                <div class="step-circle">
-                  <span>2</span>
-                </div>
-                <span class="step-label">Section Setup</span>
-              </div>
-            </div>
-
-            <form
-              @submit.prevent="currentStep === 1 ? nextStep() : saveSubject()"
-              class="subject-form-enhanced"
-            >
-              <!-- Step 1: Basic Information -->
-              <div v-if="currentStep === 1" class="step-content-enhanced">
-                <div class="form-grid">
-                  <div class="form-group-enhanced full-width">
-                    <label for="subjectName">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"
-                        />
-                      </svg>
-                      Subject Name <span class="required">*</span>
-                    </label>
-                    <input
-                      id="subjectName"
-                      v-model="formData.name"
-                      type="text"
-                      placeholder="e.g., English, Mathematics, Science"
-                      required
-                    />
-                  </div>
-
-                  <div class="form-group-enhanced">
-                    <label for="gradeLevel">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"
-                        />
-                      </svg>
-                      Grade Level <span class="required">*</span>
-                    </label>
-                    <select id="gradeLevel" v-model="formData.grade_level" required>
-                      <option value="">Select Grade Level</option>
-                      <option value="7">Grade 7</option>
-                      <option value="8">Grade 8</option>
-                      <option value="9">Grade 9</option>
-                      <option value="10">Grade 10</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group-enhanced">
-                    <label for="numberOfSections">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"
-                        />
-                      </svg>
-                      Number of Sections <span class="required">*</span>
-                    </label>
-                    <select
-                      id="numberOfSections"
-                      v-model="formData.number_of_sections"
-                      required
-                      @change="generateSections"
-                    >
-                      <option value="">Select Number</option>
-                      <option v-for="n in 10" :key="n" :value="n">
-                        {{ n }} Section{{ n > 1 ? 's' : '' }}
-                      </option>
-                    </select>
-                  </div>
-
-                  <div class="form-group-enhanced full-width">
-                    <label for="description">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
-                        />
-                      </svg>
-                      Description <span class="optional">(Optional)</span>
-                    </label>
-                    <textarea
-                      id="description"
-                      v-model="formData.description"
-                      placeholder="Brief description of the subject"
-                      rows="3"
-                    ></textarea>
-                  </div>
-                </div>
-
-                <div class="modal-actions-enhanced">
-                  <button type="button" @click="closeModal" class="btn-secondary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                      />
-                    </svg>
-                    Cancel
-                  </button>
-                  <button type="submit" :disabled="!canProceedToStep2" class="btn-primary">
-                    Next: Setup Sections
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Step 2: Section Setup -->
-              <div v-if="currentStep === 2" class="step-content-enhanced">
-                <div class="sections-info-banner">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
-                    />
-                  </svg>
-                  <p>
-                    Customize section names below. Unique section codes will be automatically
-                    generated.
-                  </p>
-                </div>
-
-                <div class="sections-setup-enhanced">
-                  <div
-                    v-for="(section, index) in formData.sections"
-                    :key="index"
-                    class="section-setup-card"
-                  >
-                    <div class="section-badge">{{ index + 1 }}</div>
-                    <div class="section-fields">
-                      <div class="field-wrapper">
-                        <label :for="'section-' + index">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                              d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"
-                            />
-                          </svg>
-                          Section Name
-                        </label>
-                        <input
-                          :id="'section-' + index"
-                          v-model="section.name"
-                          type="text"
-                          :placeholder="'Section ' + (index + 1)"
-                          required
-                        />
-                      </div>
-                      <div class="field-wrapper">
-                        <label :for="'max-students-' + index">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                              d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z"
-                            />
-                          </svg>
-                          Max Students
-                        </label>
-                        <input
-                          :id="'max-students-' + index"
-                          v-model="section.max_students"
-                          type="number"
-                          min="1"
-                          max="50"
-                          placeholder="Default: 40"
-                        />
-                      </div>
-                    </div>
-                    <div class="auto-code-notice">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10Z"
-                        />
-                      </svg>
-                      Code will be auto-generated
-                    </div>
-                  </div>
-                </div>
-
-                <div class="modal-actions-enhanced">
-                  <button type="button" @click="currentStep = 1" class="btn-secondary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"
-                      />
-                    </svg>
-                    Back
-                  </button>
-                  <button type="submit" :disabled="isLoading" class="btn-primary">
-                    <svg
-                      v-if="!isLoading"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                    </svg>
-                    <svg
-                      v-else
-                      class="spinner-icon"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" />
-                    </svg>
-                    {{
-                      isLoading ? 'Creating...' : isEditing ? 'Update Subject' : 'Create Subject'
-                    }}
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- Delete Confirmation Modal -->
-        <div v-if="showDeleteModal" class="modal-overlay" @click="cancelDelete">
-          <div class="modal-content delete-modal" @click.stop>
-            <div class="modal-header">
-              <div class="delete-icon-header">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"
-                  />
-                </svg>
-              </div>
-              <h2>Delete {{ deleteType === 'subject' ? 'Subject' : 'Section' }}?</h2>
-              <button @click="cancelDelete" class="close-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div class="delete-modal-body">
-              <div class="delete-item-card">
-                <div class="item-icon">
-                  <svg
-                    v-if="deleteType === 'subject'"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M12 2L2 7V17L12 22L22 17V7M12 4.18L19.55 8L12 11.82L4.45 8M4 9.73L11 13.36V20.27L4 16.64M20 16.64L13 20.27V13.36L20 9.73Z"
-                    />
-                  </svg>
-                  <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
-                    />
-                  </svg>
-                </div>
-                <div class="item-details">
-                  <h3 class="item-name">
-                    <template v-if="deleteType === 'subject'">
-                      {{ itemToDelete?.subject_name || itemToDelete?.name }}
-                    </template>
-                    <template v-else>
-                      {{ itemToDelete?.section_name || itemToDelete?.name }}
-                    </template>
-                  </h3>
-                  <div class="item-meta">
-                    <span class="item-type">{{
-                      deleteType === 'subject' ? 'Subject' : 'Section'
-                    }}</span>
-                    <span class="separator">•</span>
-                    <span class="item-grade">Grade {{ itemToDelete?.grade_level }}</span>
-                    <template v-if="deleteType === 'subject'">
-                      <span class="separator">•</span>
-                      <span class="item-stats"
-                        >{{ itemToDelete?.section_count || 0 }} sections</span
-                      >
-                      <span class="separator">•</span>
-                      <span class="item-stats"
-                        >{{ itemToDelete?.total_students || 0 }} students</span
-                      >
-                    </template>
-                    <template v-else>
-                      <span class="separator">•</span>
-                      <span class="item-stats"
-                        >{{ itemToDelete?.student_count || 0 }} students enrolled</span
-                      >
-                    </template>
-                  </div>
-                  <template v-if="deleteType === 'section' && itemToDelete?.subject_name">
-                    <div class="item-parent">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M12 2L2 7V17L12 22L22 17V7M12 4.18L19.55 8L12 11.82L4.45 8M4 9.73L11 13.36V20.27L4 16.64M20 16.64L13 20.27V13.36L20 9.73Z"
-                        />
-                      </svg>
-                      <span>{{ itemToDelete.subject_name }}</span>
-                    </div>
-                  </template>
-                </div>
-              </div>
-
-              <div class="delete-warning">
-                <div class="warning-header">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
-                  </svg>
-                  <h4>This action cannot be undone!</h4>
-                </div>
-                <div class="warning-content">
-                  <p v-if="deleteType === 'subject'">
-                    Deleting this subject will permanently remove
-                    <strong>all {{ itemToDelete?.section_count || 0 }} sections</strong> and
-                    <strong>unenroll all {{ itemToDelete?.total_students || 0 }} students</strong>.
-                    All associated data, quizzes, and grades will be lost.
-                  </p>
-                  <p v-else>
-                    Deleting this section will permanently
-                    <strong>unenroll all {{ itemToDelete?.student_count || 0 }} students</strong>.
-                    All section data, quizzes, and grades will be lost.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="modal-actions">
-              <button @click="cancelDelete" class="cancel-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  />
-                </svg>
-                Cancel
-              </button>
-              <button @click="confirmDelete" class="delete-confirm-btn" :disabled="isDeleting">
-                <svg
-                  v-if="!isDeleting"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
-                  />
-                </svg>
-                <svg
-                  v-else
-                  class="spinner"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" />
-                </svg>
-                {{
-                  isDeleting
-                    ? 'Deleting...'
-                    : `Delete ${deleteType === 'subject' ? 'Subject' : 'Section'}`
-                }}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Success/Error Toast Notification -->
-        <transition name="toast">
-          <div
-            v-if="showNotification"
-            class="toast-notification"
-            :class="`toast-${notificationType}`"
-          >
-            <div class="toast-content">
-              <div class="toast-icon">
-                <svg
-                  v-if="notificationType === 'success'"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.41,10.09L6,11.5L11,16.5Z"
-                  />
-                </svg>
-                <svg
-                  v-else-if="notificationType === 'error'"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,7A1,1 0 0,0 11,8V16A1,1 0 0,0 12,17A1,1 0 0,0 13,16V8A1,1 0 0,0 12,7M12,19A1,1 0 0,0 11,20A1,1 0 0,0 12,21A1,1 0 0,0 13,20A1,1 0 0,0 12,19Z"
-                  />
-                </svg>
-                <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
-                  />
-                </svg>
-              </div>
-              <span class="toast-message">{{ notificationMessage }}</span>
-              <button @click="hideNotification" class="toast-close">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </transition>
-
-        <!-- Add Students Modal -->
-        <div v-if="showAddStudentsModal" class="modal-overlay" @click="closeAddStudentsModal">
-          <div class="modal-content-enhanced" @click.stop>
-            <!-- Modal Header -->
-            <div class="modal-header-enhanced">
-              <div class="modal-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                  <path
-                    d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14"
-                  />
-                </svg>
-              </div>
-              <div class="modal-title-area">
-                <h2>Add Students to Section</h2>
-                <p class="modal-subtitle">
-                  {{ selectedSectionForStudents?.section_name }} -
-                  {{ selectedSubjectForStudents?.subject_name }}
-                </p>
-              </div>
-              <button @click="closeAddStudentsModal" class="close-btn-enhanced">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div class="add-students-content">
-              <!-- Add Student by ID Section -->
-              <div class="enroll-student-section">
-                <div class="enroll-header">
-                  <h3 class="section-title">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                    </svg>
-                    Enroll Student by ID
-                  </h3>
-                  <p class="enroll-description">
-                    Enter a student ID to directly enroll them in this section.
-                  </p>
-                </div>
-                <div class="enroll-form">
-                  <div class="enroll-input-wrapper">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      class="id-icon"
-                    >
-                      <path
-                        d="M22,18V22H18V19H15V16H12L9.74,13.74C9.19,13.91 8.61,14 8,14A6,6 0 0,1 2,8A6,6 0 0,1 8,2A6,6 0 0,1 14,8C14,8.61 13.91,9.19 13.74,9.74L22,18M7,5A1,1 0 0,0 6,6A1,1 0 0,0 7,7A1,1 0 0,0 8,6A1,1 0 0,0 7,5Z"
-                      />
-                    </svg>
-                    <input
-                      v-model="enrollStudentId"
-                      type="text"
-                      placeholder="Enter Student ID (e.g., 2024001)"
-                      class="enroll-student-input"
-                      @keyup.enter="enrollStudentById"
-                    />
-                    <button
-                      @click="enrollStudentById"
-                      class="enroll-btn"
-                      :disabled="!enrollStudentId.trim() || isEnrollingStudent"
-                    >
-                      <svg
-                        v-if="!isEnrollingStudent"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                      </svg>
-                      <svg
-                        v-else
-                        class="spinner-icon"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" />
-                      </svg>
-                      {{ isEnrollingStudent ? 'Enrolling...' : 'Enroll Student' }}
-                    </button>
-                  </div>
-                  <div
-                    v-if="enrollmentMessage"
-                    class="enrollment-message"
-                    :class="enrollmentMessageType"
-                  >
-                    <svg
-                      v-if="enrollmentMessageType === 'success'"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                    </svg>
-                    <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
-                      />
-                    </svg>
-                    {{ enrollmentMessage }}
-                  </div>
-                </div>
-              </div>
-
-              <!-- Divider -->
-              <div class="modal-divider">
-                <span>OR</span>
-              </div>
-
-              <!-- Search Students -->
-              <div class="student-search-section">
-                <div class="search-header">
-                  <h3 class="section-title">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
-                      />
-                    </svg>
-                    Find Existing Students
-                  </h3>
-                  <p class="search-description">
-                    Search for students by name or ID, then select them to add to this section.
-                  </p>
-                </div>
-                <div class="search-filters-enhanced">
-                  <div class="search-input-wrapper">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      class="search-icon"
-                    >
-                      <path
-                        d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
-                      />
-                    </svg>
-                    <input
-                      v-model="studentSearchQuery"
-                      type="text"
-                      placeholder="Type student name or ID to search..."
-                      class="student-search-input-enhanced"
-                      @input="searchStudents"
-                    />
-                  </div>
-                  <select
-                    v-model="gradeFilter"
-                    class="grade-filter-select-enhanced"
-                    @change="searchStudents"
-                  >
-                    <option value="">All Grades</option>
-                    <option v-for="grade in [7, 8, 9, 10]" :key="grade" :value="grade">
-                      Grade {{ grade }}
-                    </option>
-                  </select>
-                </div>
-                <div class="search-hint" v-if="!studentSearchQuery && !availableStudents.length">
+              <div v-if="openSubjectMenuId === subject.id" class="subject-dropdown-menu">
+                <button @click="editSubject(subject)" class="menu-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
-                    />
+                    <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
                   </svg>
-                  Start typing to search for students to add to this section
-                </div>
-              </div>
-
-              <!-- Available Students List -->
-              <div class="students-list-section">
-                <div class="students-header">
-                  <h4>Available Students</h4>
-                  <div v-if="selectedStudentsToAdd.length > 0" class="batch-actions">
-                    <button
-                      @click="addSelectedStudents"
-                      class="add-batch-btn"
-                      :disabled="isAddingStudents"
-                    >
-                      <svg
-                        v-if="!isAddingStudents"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                      </svg>
-                      <svg
-                        v-else
-                        class="spinner-icon"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" />
-                      </svg>
-                      {{
-                        isAddingStudents
-                          ? 'Adding...'
-                          : `Add ${selectedStudentsToAdd.length} Student${selectedStudentsToAdd.length > 1 ? 's' : ''}`
-                      }}
-                    </button>
-                    <button @click="clearSelection" class="clear-selection-btn">Clear</button>
-                  </div>
-                </div>
-
-                <div v-if="isSearchingStudents" class="loading-state">
-                  <div class="loading-spinner"></div>
-                  <span>Searching students...</span>
-                </div>
-
-                <div
-                  v-else-if="availableStudents.length === 0 && studentSearchQuery"
-                  class="empty-search"
-                >
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M7,13H17V11H7"
-                    />
+                  Edit
+                </button>
+                <button @click="openDeleteModal('subject', subject)" class="menu-item delete">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
                   </svg>
-                  <p>No students found matching your search</p>
-                  <p class="empty-subtitle">
-                    Try a different search term or check if all eligible students are already
-                    enrolled
-                  </p>
-                </div>
-
-                <div
-                  v-else-if="availableStudents.length === 0 && !isSearchingStudents"
-                  class="empty-search"
-                >
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14"
-                    />
-                  </svg>
-                  <p>No available students for this section</p>
-                  <p class="empty-subtitle">
-                    All eligible students for Grade
-                    {{ selectedSubjectForStudents?.grade_level }} may already be enrolled in this
-                    subject
-                  </p>
-                </div>
-
-                <div v-else class="students-grid">
-                  <div
-                    v-for="student in availableStudents"
-                    :key="student.student_id"
-                    class="student-card"
-                    :class="{ selected: selectedStudentsToAdd.includes(student.student_id) }"
-                    @click="toggleStudentSelection(student.student_id)"
-                  >
-                    <div class="student-avatar">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                          d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"
-                        />
-                      </svg>
-                    </div>
-                    <div class="student-info">
-                      <h4>{{ student.student_name }}</h4>
-                      <p class="student-id">ID: {{ student.student_number }}</p>
-                      <p class="student-grade">Grade {{ student.grade_level }}</p>
-                    </div>
-                    <div class="selection-indicator">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
+                  Delete
+                </button>
               </div>
             </div>
+          </div>
+          
+          <div class="subject-card-body">
+            <h3 class="subject-title">{{ subject.subject_name || subject.name }}</h3>
+            <p class="grade-level">Grade {{ subject.grade_level }}</p>
+            <p v-if="subject.description" class="subject-description">{{ subject.description }}</p>
+            <p v-else class="subject-description-placeholder">No description provided</p>
+            
+            <div class="subject-stats">
+              <div class="stat-item">
+                <span class="stat-number">{{ subject.section_count || 0 }}</span>
+                <span class="stat-label">{{ (subject.section_count || 0) === 1 ? 'Section' : 'Sections' }}</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">{{ subject.total_students || 0 }}</span>
+                <span class="stat-label">{{ (subject.total_students || 0) === 1 ? 'Student' : 'Students' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <div class="modal-actions-enhanced">
-              <button @click="closeAddStudentsModal" class="btn-secondary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  />
+    <!-- Sections View -->
+    <div v-if="viewMode === 'sections' && selectedSubject" class="sections-view">
+      <!-- Navigation -->
+      <div class="view-header">
+        <button @click="goBackToSubjects" class="back-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+          </svg>
+          Back to Subjects
+        </button>
+        <div class="view-title">
+          <h2>{{ selectedSubject.subject_name }}</h2>
+          <p>Grade {{ selectedSubject.grade_level }} - Manage sections and students</p>
+        </div>
+      </div>
+      
+      <div class="sections-grid">
+        <div v-for="section in filteredSections" :key="section.id" class="section-card">
+          <div class="section-card-header">
+            <div class="section-info" @click="selectSection(section)">
+              <h3 class="section-title">{{ section.section_name }}</h3>
+              <p class="section-subtitle">Grade {{ section.grade_level }}</p>
+            </div>
+            
+            <div class="section-menu-container" @click.stop>
+              <button class="section-menu-btn" @click="toggleSectionMenu(section.id)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="5" cy="12" r="2" />
+                  <circle cx="12" cy="12" r="2" />
+                  <circle cx="19" cy="12" r="2" />
                 </svg>
-                Cancel
               </button>
-              <button
-                @click="viewSectionStudents(selectedSubjectForStudents, selectedSectionForStudents)"
-                class="btn-outline"
+              <div v-if="openMenuId === section.id" class="section-dropdown-menu">
+                <button @click="editSection(section)" class="menu-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                  </svg>
+                  Edit
+                </button>
+                <button @click="openDeleteModal('section', section)" class="menu-item delete">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                  </svg>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="section-card-body" @click="selectSection(section)">
+            <div class="enrollment-status">
+              <div class="student-count">
+                <span class="count-number">{{ section.student_count || 0 }}</span>
+                <span class="count-label">Students</span>
+              </div>
+              <div class="capacity-info">
+                <div class="capacity-bar">
+                  <div 
+                    class="capacity-fill" 
+                    :style="{ width: `${Math.min((section.student_count || 0) / (section.max_students || 40) * 100, 100)}%` }"
+                  ></div>
+                </div>
+                <span class="capacity-text">{{ section.student_count || 0 }} / {{ section.max_students || 40 }}</span>
+              </div>
+            </div>
+            
+            <div class="section-actions" @click.stop>
+              <button class="action-btn primary" @click="manageStudents(selectedSubject, section)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+                Manage Students
+              </button>
+              <button class="action-btn secondary" @click="selectSection(section)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                </svg>
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Detail View -->
+    <div v-if="viewMode === 'section-detail' && selectedSection" class="section-detail-view">
+      <!-- Navigation -->
+      <div class="view-header">
+        <button @click="goBackToSections" class="back-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+          </svg>
+          Back to {{ selectedSubject.subject_name }}
+        </button>
+        <div class="view-title">
+          <h2>{{ selectedSection.section_name }}</h2>
+          <p>Grade {{ selectedSection.grade_level }} - {{ selectedSection.subject_name }}</p>
+        </div>
+      </div>
+
+      <!-- Section Overview -->
+      <div class="section-overview-card">
+        <div class="overview-stats">
+          <div class="stat-box">
+            <div class="stat-number">{{ selectedSection.student_count || 0 }}</div>
+            <div class="stat-label">Students Enrolled</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">{{ selectedSection.max_students || 40 }}</div>
+            <div class="stat-label">Max Capacity</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">{{ Math.round(((selectedSection.student_count || 0) / (selectedSection.max_students || 40)) * 100) }}%</div>
+            <div class="stat-label">Filled</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions-section">
+        <h3 class="section-heading">Quick Actions</h3>
+        <div class="action-cards-grid">
+          <!-- Student Management -->
+          <div class="action-card student-management">
+            <div class="card-header">
+              <div class="card-icon student-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14" />
+                </svg>
+              </div>
+              <h3>Student Management</h3>
+            </div>
+            <p class="card-description">Manage student enrollment and view class roster</p>
+            <div class="card-actions">
+              <button 
+                @click="manageStudents(selectedSubject, selectedSection)"
+                class="action-btn primary"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14"
-                  />
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+                Add Students
+              </button>
+              <button 
+                @click="viewSectionStudents(selectedSubject, selectedSection)"
+                class="action-btn secondary"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
                 </svg>
                 View All Students
               </button>
             </div>
           </div>
+
+          <!-- Assessment Management -->
+          <div class="action-card assessment-management">
+            <div class="card-header">
+              <div class="card-icon assessment-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                </svg>
+              </div>
+              <h3>Assessment Management</h3>
+            </div>
+            <p class="card-description">Create and manage quizzes and assignments for your students</p>
+            <div class="card-actions">
+              <div class="assessment-type-buttons">
+                <button 
+                  @click="showCreateAssessmentModal(selectedSubject, selectedSection, 'quiz')"
+                  class="assessment-type-btn quiz-btn"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9,5V9H21V7.5L22.5,6L21,4.5L19.5,6L18,4.5L16.5,6L18,7.5V9H15V5H9M9,19V15H15V19H9M21,15V13.5L19.5,12L18,13.5V15H21Z" />
+                  </svg>
+                  Create Quiz
+                  <span class="btn-subtitle">Multiple-choice, True/False, Fill-in-blank</span>
+                </button>
+                <button 
+                  @click="showCreateAssessmentModal(selectedSubject, selectedSection, 'assignment')"
+                  class="assessment-type-btn assignment-btn"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                  </svg>
+                  Create Assignment
+                  <span class="btn-subtitle">Essays, Projects, Research tasks</span>
+                </button>
+              </div>
+              <div class="view-assessments-section">
+                <button 
+                  @click="viewAllAssessments(selectedSubject, selectedSection)"
+                  class="action-btn secondary full-width"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z" />
+                  </svg>
+                  View All Assessments
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grade Management -->
+          <div class="action-card grade-management">
+            <div class="card-header">
+              <div class="card-icon grade-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16,18H18V16H16M16,14H18V12H16M14,18H16V16H14M12,18H14V16H12M12,14H14V12H12M10,18H12V16H10M8,18H10V16H8M8,14H10V12H8M6,18H8V16H6M14,10H16V8H14M12,10H14V8H12M10,10H12V8H10M8,10H10V8H8M6,10H8V8H6M6,14H8V12H6" />
+                </svg>
+              </div>
+              <h3>Grade Management</h3>
+            </div>
+            <p class="card-description">Review and manage student grades and performance</p>
+            <div class="card-actions">
+              <button 
+                @click="manageGrades(selectedSubject, selectedSection)"
+                class="action-btn primary"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9,5V9H21V7.5L22.5,6L21,4.5L19.5,6L18,4.5L16.5,6L18,7.5V9H15V5H9M9,19V15H15V19H9M21,15V13.5L19.5,12L18,13.5V15H21Z" />
+                </svg>
+                Manage Grades
+              </button>
+              <button 
+                @click="viewStudentSubmissions(selectedSubject, selectedSection)"
+                class="action-btn secondary"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15L14,19H10M9,13H15V14H9V13M9,10H15V11H9V10Z" />
+                </svg>
+                Student Submissions
+              </button>
+            </div>
+          </div>
         </div>
-        <!-- End content-wrapper -->
       </div>
-<<<<<<< HEAD
-=======
     </div>
 
     <!-- Create/Edit Subject Modal - REDESIGNED -->
@@ -4175,7 +2843,7 @@ rgba(0,0,0,0.10); }
               </template>
             </div>
           </div>
-
+          
           <div class="delete-warning">
             <div class="warning-header">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -4185,11 +2853,11 @@ rgba(0,0,0,0.10); }
             </div>
             <div class="warning-content">
               <p v-if="deleteType === 'subject'">
-                Deleting this subject will permanently remove <strong>all {{ itemToDelete?.section_count || 0 }} sections</strong>
+                Deleting this subject will permanently remove <strong>all {{ itemToDelete?.section_count || 0 }} sections</strong> 
                 and <strong>unenroll all {{ itemToDelete?.total_students || 0 }} students</strong>. All associated data, quizzes, and grades will be lost.
               </p>
               <p v-else>
-                Deleting this section will permanently <strong>unenroll all {{ itemToDelete?.student_count || 0 }} students</strong>.
+                Deleting this section will permanently <strong>unenroll all {{ itemToDelete?.student_count || 0 }} students</strong>. 
                 All section data, quizzes, and grades will be lost.
               </p>
             </div>
@@ -4369,7 +3037,7 @@ rgba(0,0,0,0.10); }
             </div>
           </div>
         </div>
-
+        
         <div class="enroll-form">
           <div class="enroll-input-wrapper">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="id-icon">
@@ -4382,8 +3050,8 @@ rgba(0,0,0,0.10); }
               class="enroll-student-input"
               @keyup.enter="enrollStudentById"
             />
-            <button
-              @click="enrollStudentById"
+            <button 
+              @click="enrollStudentById" 
               class="enroll-btn"
               :disabled="!enrollStudentId.trim() || isEnrollingStudent"
             >
@@ -4396,7 +3064,7 @@ rgba(0,0,0,0.10); }
               {{ isEnrollingStudent ? 'Enrolling...' : 'Enroll Student' }}
             </button>
           </div>
-
+          
           <div v-if="enrollmentMessage" class="enrollment-message" :class="enrollmentMessageType">
             <svg v-if="enrollmentMessageType === 'success'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
@@ -4497,8 +3165,8 @@ rgba(0,0,0,0.10); }
         </div>
 
         <div v-else class="students-grid">
-          <div
-            v-for="student in availableStudents"
+          <div 
+            v-for="student in availableStudents" 
             :key="student.student_id"
             class="student-card"
             :class="{ 'selected': selectedStudentsToAdd.includes(student.student_id) }"
@@ -4542,7 +3210,6 @@ rgba(0,0,0,0.10); }
 </div>
     </div>
 
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
     </main>
 
     <!-- Loading Overlay -->
@@ -4569,9 +3236,7 @@ rgba(0,0,0,0.10); }
         <div class="modal-header-enhanced">
           <div class="modal-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"
-              />
+              <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
             </svg>
           </div>
           <div class="modal-title-area">
@@ -4580,9 +3245,7 @@ rgba(0,0,0,0.10); }
           </div>
           <button @click="closeEditSectionModal" class="close-btn-enhanced">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-              />
+              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
             </svg>
           </button>
         </div>
@@ -4593,9 +3256,7 @@ rgba(0,0,0,0.10); }
               <div class="form-group-enhanced">
                 <label for="editSectionName">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"
-                    />
+                    <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"/>
                   </svg>
                   Section Name <span class="required">*</span>
                 </label>
@@ -4611,9 +3272,7 @@ rgba(0,0,0,0.10); }
               <div class="form-group-enhanced">
                 <label for="editMaxStudents">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z"
-                    />
+                    <path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z"/>
                   </svg>
                   Max Students <span class="required">*</span>
                 </label>
@@ -4631,9 +3290,7 @@ rgba(0,0,0,0.10); }
               <div class="form-group-enhanced full-width">
                 <label>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                      d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10Z"
-                    />
+                    <path d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10Z"/>
                   </svg>
                   Section Code (Read-only)
                 </label>
@@ -4641,42 +3298,25 @@ rgba(0,0,0,0.10); }
                   v-model="editingSectionData.section_code"
                   type="text"
                   readonly
-                  style="background: #f3f4f6; color: #6b7280; cursor: not-allowed"
+                  style="background: #f3f4f6; color: #6b7280; cursor: not-allowed;"
                 />
-                <small style="color: #6b7280; font-size: 0.75rem"
-                  >Section codes cannot be changed after creation</small
-                >
+                <small style="color: #6b7280; font-size: 0.75rem;">Section codes cannot be changed after creation</small>
               </div>
             </div>
 
             <div class="modal-actions-enhanced">
               <button type="button" @click="closeEditSectionModal" class="btn-secondary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  />
+                  <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
                 </svg>
                 Cancel
               </button>
               <button type="submit" :disabled="isLoading" class="btn-primary">
-                <svg
-                  v-if="!isLoading"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+                <svg v-if="!isLoading" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
                 </svg>
-                <svg
-                  v-else
-                  class="spinner-icon"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" />
+                <svg v-else class="spinner-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
                 </svg>
                 {{ isLoading ? 'Updating...' : 'Update Section' }}
               </button>
@@ -4691,9 +3331,7 @@ rgba(0,0,0,0.10); }
       <div class="success-modal-content">
         <div class="success-icon">
           <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.41,10.09L6,11.5L11,16.5Z"
-            />
+            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.41,10.09L6,11.5L11,16.5Z" />
           </svg>
         </div>
         <h3>Success!</h3>
@@ -4710,29 +3348,17 @@ rgba(0,0,0,0.10); }
         </div>
         <div class="modal-body">
           <div class="logout-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-              <polyline points="16 17 21 12 16 7" />
-              <line x1="21" y1="12" x2="9" y2="12" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
             </svg>
           </div>
           <p class="logout-message">Are you sure you want to logout?</p>
           <p class="logout-submessage">You will be redirected to the login page.</p>
         </div>
         <div class="modal-footer logout-footer">
-          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">
-            Cancel
-          </button>
+          <button @click="closeLogoutModal" class="btn-cancel" :disabled="isLoggingOut">Cancel</button>
           <button @click="confirmLogout" class="btn-logout" :disabled="isLoggingOut">
             <span v-if="!isLoggingOut">Logout</span>
             <span v-else class="loading-text">
@@ -4845,7 +3471,7 @@ const formData = ref({
   grade_level: '',
   description: '',
   number_of_sections: '',
-  sections: [],
+  sections: []
 })
 
 // ============================================================
@@ -4854,10 +3480,10 @@ const formData = ref({
 const waitForAuth = async (maxAttempts = 30, intervalMs = 200) => {
   return new Promise((resolve, reject) => {
     let attempts = 0
-
+    
     const checkAuth = setInterval(() => {
       attempts++
-
+      
       // Check if teacher info is available and has an ID
       if (teacherInfo.value?.id) {
         clearInterval(checkAuth)
@@ -4880,7 +3506,7 @@ const canProceedToStep2 = computed(() => {
 
 // Subject filtering and search
 const subjectOptions = computed(() => {
-  const names = subjects.value.map((s) => s.subject_name || s.name)
+  const names = subjects.value.map(s => s.subject_name || s.name)
   const unique = Array.from(new Set(names.filter(Boolean)))
   unique.sort((a, b) => a.localeCompare(b))
   return ['All', ...unique]
@@ -4888,22 +3514,22 @@ const subjectOptions = computed(() => {
 
 const filteredSubjects = computed(() => {
   let filtered = subjects.value
-
+  
   if (subjectDropdown.value && subjectDropdown.value.toLowerCase() !== 'all') {
-    filtered = filtered.filter((s) => {
+    filtered = filtered.filter(s => {
       const subjectName = (s.subject_name || s.name || '').toLowerCase()
       return subjectName === subjectDropdown.value.toLowerCase()
     })
   }
-
+  
   if (searchQuery.value.trim()) {
     const query = searchQuery.value.trim().toLowerCase()
-    filtered = filtered.filter((s) => {
+    filtered = filtered.filter(s => {
       const subjectName = (s.subject_name || s.name || '').toLowerCase()
       return subjectName.includes(query)
     })
   }
-
+  
   return filtered
 })
 
@@ -4911,13 +3537,13 @@ const filteredSections = computed(() => {
   if (!selectedSubject.value || !selectedSubject.value.sections) {
     return []
   }
-
+  
   if (selectedGradeFilter.value === 'all') {
     return selectedSubject.value.sections
   }
-
-  return selectedSubject.value.sections.filter(
-    (section) => section.grade_level.toString() === selectedGradeFilter.value,
+  
+  return selectedSubject.value.sections.filter(section => 
+    section.grade_level.toString() === selectedGradeFilter.value
   )
 })
 
@@ -4925,8 +3551,8 @@ const availableGrades = computed(() => {
   if (!selectedSubject.value || !selectedSubject.value.sections) {
     return []
   }
-
-  const grades = [...new Set(selectedSubject.value.sections.map((section) => section.grade_level))]
+  
+  const grades = [...new Set(selectedSubject.value.sections.map(section => section.grade_level))]
   return grades.sort((a, b) => a - b)
 })
 
@@ -4946,15 +3572,15 @@ const getSubjectIconColor = (subjectName) => {
     { bg: 'linear-gradient(135deg, #ec4899, #db2777)', shadow: 'rgba(236, 72, 153, 0.3)' }, // Pink
     { bg: 'linear-gradient(135deg, #6366f1, #4f46e5)', shadow: 'rgba(99, 102, 241, 0.3)' }, // Indigo
   ]
-
+  
   // Generate a consistent index based on subject name
   let hash = 0
   for (let i = 0; i < subjectName.length; i++) {
     const char = subjectName.charCodeAt(i)
-    hash = (hash << 5) - hash + char
+    hash = ((hash << 5) - hash) + char
     hash = hash & hash // Convert to 32bit integer
   }
-
+  
   const index = Math.abs(hash) % colors.length
   return colors[index]
 }
@@ -4975,16 +3601,16 @@ const getSectionIconColor = (sectionName, gradeLevel) => {
     { bg: 'linear-gradient(135deg, #ec4899, #db2777)', shadow: 'rgba(236, 72, 153, 0.3)' }, // Pink
     { bg: 'linear-gradient(135deg, #6366f1, #4f46e5)', shadow: 'rgba(99, 102, 241, 0.3)' }, // Indigo
   ]
-
+  
   // Generate a consistent index based on section name and grade level
   const combinedString = `${sectionName}-${gradeLevel}`
   let hash = 0
   for (let i = 0; i < combinedString.length; i++) {
     const char = combinedString.charCodeAt(i)
-    hash = (hash << 5) - hash + char
+    hash = ((hash << 5) - hash) + char
     hash = hash & hash // Convert to 32bit integer
   }
-
+  
   const index = Math.abs(hash) % colors.length
   return colors[index]
 }
@@ -5013,28 +3639,22 @@ const closeLogoutModal = () => {
   showLogoutModal.value = false
 }
 
-const confirmLogout = async () => {
+const confirmLogout = () => {
   console.log('🚪 Logging out...')
-  isLoggingOut.value = true
-
+  
+  // Clear storage immediately
   localStorage.clear()
   sessionStorage.clear()
-
-  const forceRedirect = setTimeout(() => {
-    window.location.replace('/login')
-  }, 2000)
-
-  try {
-    await Promise.race([
-      supabase.auth.signOut(),
-      new Promise((resolve) => setTimeout(resolve, 1500)),
-    ])
-  } catch (err) {
-    console.error('❌ Logout error:', err)
-  } finally {
-    clearTimeout(forceRedirect)
-    window.location.replace('/login')
-  }
+  
+  // Sign out from Supabase (don't wait)
+  supabase.auth.signOut().catch(err => console.log('Signout error:', err))
+  
+  // Immediate redirect - no waiting!
+  setTimeout(() => {
+    window.location.assign('/login')
+  }, 100)
+  
+  console.log('✅ Logout initiated')
 }
 
 const logout = () => {
@@ -5066,8 +3686,7 @@ const fetchSubjects = async (forceRefresh = false) => {
     // Single optimized query with enrollment counts using a view or RPC
     const { data: subjectsData, error: subjectsError } = await supabase
       .from('subjects')
-      .select(
-        `
+      .select(`
         id,
         name,
         grade_level,
@@ -5082,8 +3701,7 @@ const fetchSubjects = async (forceRefresh = false) => {
           is_active,
           subject_id
         )
-      `,
-      )
+      `)
       .eq('teacher_id', teacherInfo.value.id)
       .eq('is_active', true)
       .eq('sections.is_active', true)
@@ -5108,8 +3726,8 @@ const fetchSubjects = async (forceRefresh = false) => {
 
     // Get all section IDs for batch enrollment counting
     const allSectionIds = subjectsData
-      .flatMap((subject) => subject.sections || [])
-      .map((section) => section.id)
+      .flatMap(subject => subject.sections || [])
+      .map(section => section.id)
 
     console.log(`Fetching enrollments for ${allSectionIds.length} sections...`)
 
@@ -5145,7 +3763,7 @@ const fetchSubjects = async (forceRefresh = false) => {
     // Process subjects efficiently
     const subjectGroups = new Map()
 
-    subjectsData.forEach((subject) => {
+    subjectsData.forEach(subject => {
       if (subject.sections && subject.sections.length > 0) {
         const subjectName = subject.name
 
@@ -5159,14 +3777,14 @@ const fetchSubjects = async (forceRefresh = false) => {
             grade_levels: new Set(),
             total_students: 0,
             section_count: 0,
-            expanded: false,
+            expanded: false
           })
         }
 
         const subjectGroup = subjectGroups.get(subjectName)
         subjectGroup.grade_levels.add(subject.grade_level)
 
-        subject.sections.forEach((section) => {
+        subject.sections.forEach(section => {
           if (section.is_active) {
             const studentCount = enrollmentCounts[section.id] || 0
             subjectGroup.total_students += studentCount
@@ -5182,7 +3800,7 @@ const fetchSubjects = async (forceRefresh = false) => {
               is_active: section.is_active,
               grade_level: subject.grade_level,
               subject_id: subject.id,
-              subject_name: subject.name,
+              subject_name: subject.name
             })
 
             subjectGroup.section_count++
@@ -5191,24 +3809,53 @@ const fetchSubjects = async (forceRefresh = false) => {
       }
     })
 
-    const processedSubjects = Array.from(subjectGroups.values()).map((group) => {
+    const processedSubjects = Array.from(subjectGroups.values()).map(group => {
       const gradeLevelsArray = Array.from(group.grade_levels).sort((a, b) => a - b)
       return {
         ...group,
         grade_levels: gradeLevelsArray,
         grade_level: gradeLevelsArray[0],
-        grade_level_display:
-          gradeLevelsArray.length === 1
-            ? `Grade ${gradeLevelsArray[0]}`
-            : `Grades ${gradeLevelsArray.join(', ')}`,
+        grade_level_display: gradeLevelsArray.length === 1 
+          ? `Grade ${gradeLevelsArray[0]}` 
+          : `Grades ${gradeLevelsArray.join(', ')}`
       }
     })
 
     subjects.value = processedSubjects
+    
+    // Update selectedSubject and selectedSection if they exist
+    if (selectedSubject.value) {
+      const updatedSubject = processedSubjects.find(s => s.id === selectedSubject.value.id || s.name === selectedSubject.value.name)
+      if (updatedSubject) {
+        selectedSubject.value = updatedSubject
+        
+        // Also update selectedSection if it exists
+        if (selectedSection.value) {
+          const updatedSection = updatedSubject.sections?.find(sec => sec.id === selectedSection.value.id)
+          if (updatedSection) {
+            selectedSection.value = updatedSection
+          }
+        }
+      }
+    }
+    
+    // Also update selectedSectionForStudents if modal is open
+    if (selectedSectionForStudents.value) {
+      const parentSubject = processedSubjects.find(s => 
+        s.sections?.some(sec => sec.id === selectedSectionForStudents.value.id)
+      )
+      if (parentSubject) {
+        const updatedSection = parentSubject.sections.find(sec => sec.id === selectedSectionForStudents.value.id)
+        if (updatedSection) {
+          selectedSectionForStudents.value = updatedSection
+        }
+      }
+    }
+    
     // Progress: 100% - Complete
     loadingProgress.value = 100
     loadingMessage.value = 'Complete!'
-
+    
     console.log('Subjects loaded:', processedSubjects)
     console.timeEnd('fetchSubjects')
 
@@ -5217,6 +3864,7 @@ const fetchSubjects = async (forceRefresh = false) => {
       isLoading.value = false
       loadingProgress.value = 0
     }, 300)
+
   } catch (error) {
     console.error('Error fetching subjects:', error)
     showToast('Error loading subjects. Please try again.', 'error')
@@ -5270,14 +3918,14 @@ const navigateToCreateQuiz = async (subject, section) => {
       name: 'CreateQuiz',
       params: {
         subjectId: section.subject_id,
-        sectionId: section.id,
+        sectionId: section.id
       },
       query: {
         subjectName: subject.name,
         sectionName: section.name,
         gradeLevel: subject.grade_level,
-        sectionCode: section.section_code,
-      },
+        sectionCode: section.section_code
+      }
     })
   } catch (error) {
     console.error('Navigation error:', error)
@@ -5290,14 +3938,14 @@ const viewQuizzes = async (subject, section) => {
       name: 'ViewAssessments',
       params: {
         subjectId: section.subject_id,
-        sectionId: section.id,
+        sectionId: section.id
       },
       query: {
         subjectName: subject.name,
         sectionName: section.name,
         gradeLevel: subject.grade_level,
-        sectionCode: section.section_code,
-      },
+        sectionCode: section.section_code
+      }
     })
   } catch (error) {
     console.error('Navigation error:', error)
@@ -5307,7 +3955,7 @@ const viewQuizzes = async (subject, section) => {
 // Assessment Management Methods
 const showCreateAssessmentModal = (subject, section, assessmentType) => {
   console.log('Creating assessment:', assessmentType, 'for', subject.name, section.name)
-
+  
   switch (assessmentType) {
     case 'quiz':
       navigateToCreateQuiz(subject, section)
@@ -5326,14 +3974,14 @@ const navigateToCreateAssignment = async (subject, section) => {
       name: 'CreateAssignment',
       params: {
         subjectId: section.subject_id,
-        sectionId: section.id,
+        sectionId: section.id
       },
       query: {
         subjectName: subject.name,
         sectionName: section.name,
         gradeLevel: subject.grade_level,
-        sectionCode: section.section_code,
-      },
+        sectionCode: section.section_code
+      }
     })
   } catch (error) {
     console.error('Navigation error:', error)
@@ -5348,14 +3996,14 @@ const viewAllAssessments = async (subject, section) => {
       name: 'ViewAssessments',
       params: {
         subjectId: section.subject_id,
-        sectionId: section.id,
+        sectionId: section.id
       },
       query: {
         subjectName: subject.name,
         sectionName: section.name,
         gradeLevel: subject.grade_level,
-        sectionCode: section.section_code,
-      },
+        sectionCode: section.section_code
+      }
     })
   } catch (error) {
     console.error('Navigation error:', error)
@@ -5370,14 +4018,14 @@ const manageGrades = async (subject, section) => {
       name: 'GradeManagement',
       params: {
         subjectId: section.subject_id,
-        sectionId: section.id,
+        sectionId: section.id
       },
       query: {
         subjectName: subject.name,
         sectionName: section.name,
         gradeLevel: subject.grade_level,
-        sectionCode: section.section_code,
-      },
+        sectionCode: section.section_code
+      }
     })
   } catch (error) {
     console.error('Navigation error:', error)
@@ -5390,14 +4038,14 @@ const viewStudentSubmissions = async (subject, section) => {
       name: 'StudentSubmissions',
       params: {
         subjectId: section.subject_id,
-        sectionId: section.id,
+        sectionId: section.id
       },
       query: {
         subjectName: subject.name,
         sectionName: section.name,
         gradeLevel: subject.grade_level,
-        sectionCode: section.section_code,
-      },
+        sectionCode: section.section_code
+      }
     })
   } catch (error) {
     console.error('Navigation error:', error)
@@ -5411,14 +4059,14 @@ const viewSectionStudents = async (subject, section) => {
       name: 'ViewStudents',
       params: {
         subjectId: sec.subject_id || subject.id,
-        sectionId: sec.id || sec.section_id,
+        sectionId: sec.id || sec.section_id
       },
       query: {
         subjectName: subject.name || subject.subject_name,
         sectionName: sec.name || sec.section_name,
         gradeLevel: subject.grade_level,
-        sectionCode: sec.section_code,
-      },
+        sectionCode: sec.section_code
+      }
     })
   } catch (error) {
     console.error('Navigation error:', error)
@@ -5434,7 +4082,7 @@ const manageStudents = async (subject, section) => {
   selectedStudentsToAdd.value = []
   studentSearchQuery.value = ''
   gradeFilter.value = subject.grade_level.toString()
-
+  
   // Automatically load available students when modal opens
   await searchStudents()
 }
@@ -5445,11 +4093,11 @@ const manageStudents = async (subject, section) => {
 const generateSections = () => {
   const numSections = parseInt(formData.value.number_of_sections)
   formData.value.sections = []
-
+  
   for (let i = 1; i <= numSections; i++) {
     formData.value.sections.push({
       name: `Section ${i}`,
-      max_students: 40,
+      max_students: 40
     })
   }
 }
@@ -5467,7 +4115,7 @@ const saveSubject = async () => {
     if (!isAuthReady.value || !teacherInfo.value?.id) {
       console.warn('⚠️ Auth not ready, waiting...')
       showToast('Please wait, authenticating...', 'info')
-
+      
       try {
         await waitForAuth()
       } catch (error) {
@@ -5475,10 +4123,10 @@ const saveSubject = async () => {
         return
       }
     }
-
+    
     isLoading.value = true
     loadingMessage.value = isEditing.value ? 'Updating subject...' : 'Creating subject...'
-
+    
     console.log('📝 Saving subject with teacher ID:', teacherInfo.value.id)
 
     const subjectData = {
@@ -5486,14 +4134,14 @@ const saveSubject = async () => {
       grade_level: parseInt(formData.value.grade_level),
       teacher_id: teacherInfo.value.id,
       description: formData.value.description || null,
-      is_active: true,
+      is_active: true
     }
 
     let subjectId
 
     if (isEditing.value) {
       console.log('✏️ Updating existing subject:', currentSubjectId.value)
-
+      
       const { error: updateError } = await supabase
         .from('subjects')
         .update(subjectData)
@@ -5504,7 +4152,7 @@ const saveSubject = async () => {
         console.error('❌ Update error:', updateError)
         throw updateError
       }
-
+      
       subjectId = currentSubjectId.value
 
       // Delete old sections
@@ -5512,14 +4160,15 @@ const saveSubject = async () => {
         .from('sections')
         .delete()
         .eq('subject_id', subjectId)
-
+      
       if (deleteError) {
         console.error('❌ Delete sections error:', deleteError)
         throw deleteError
       }
+
     } else {
       console.log('➕ Creating new subject')
-
+      
       const { data: newSubject, error: insertError } = await supabase
         .from('subjects')
         .insert([subjectData])
@@ -5530,11 +4179,11 @@ const saveSubject = async () => {
         console.error('❌ Insert error:', insertError)
         throw insertError
       }
-
+      
       if (!newSubject || !newSubject.id) {
         throw new Error('Failed to create subject - no ID returned')
       }
-
+      
       subjectId = newSubject.id
       console.log('✅ Subject created with ID:', subjectId)
     }
@@ -5542,33 +4191,32 @@ const saveSubject = async () => {
     // Create sections
     const sectionsToInsert = []
     const createdSectionCodes = []
-
+    
     for (let i = 0; i < formData.value.sections.length; i++) {
       const section = formData.value.sections[i]
-
-      const subjectPrefix = formData.value.name
-        .substring(0, 4)
-        .toUpperCase()
-        .replace(/[^A-Z]/g, '')
+      
+      const subjectPrefix = formData.value.name.substring(0, 4).toUpperCase().replace(/[^A-Z]/g, '')
       const year = new Date().getFullYear()
       const timestamp = Date.now().toString().slice(-6)
       const sectionCode = `${subjectPrefix}${formData.value.grade_level}-${year}-${timestamp}${String(i + 1).padStart(2, '0')}`
-
+      
       sectionsToInsert.push({
         subject_id: subjectId,
         name: section.name,
         section_code: sectionCode,
         max_students: parseInt(section.max_students) || 40,
-        is_active: true,
+        is_active: true
       })
-
+      
       createdSectionCodes.push(`${section.name}: ${sectionCode}`)
     }
 
     console.log('📋 Inserting', sectionsToInsert.length, 'sections')
-
-    const { error: sectionsError } = await supabase.from('sections').insert(sectionsToInsert)
-
+    
+    const { error: sectionsError } = await supabase
+      .from('sections')
+      .insert(sectionsToInsert)
+    
     if (sectionsError) {
       console.error('❌ Sections insert error:', sectionsError)
       throw sectionsError
@@ -5580,31 +4228,25 @@ const saveSubject = async () => {
     closeModal()
 
     // Show success message - Updated for teacher-managed enrollment
-    const sectionsCreatedText = formData.value.sections
-      .map((section) => `• ${section.name}`)
-      .join('\n')
-
+    const sectionsCreatedText = formData.value.sections.map(section => `• ${section.name}`).join('\n')
+    
     successMessage.value = `Subject "${formData.value.name}" ${isEditing.value ? 'updated' : 'created'} successfully!\n\nSections Created:\n${sectionsCreatedText}\n\nYou can now add students directly to each section through the "Manage Students" option.`
     showSuccessModal.value = true
 
     // Refresh subjects list
     console.log('🔄 Refreshing subjects list...')
     await fetchSubjects(true)
-
+    
     isLoading.value = false
     console.log('✅ Save complete!')
+
   } catch (error) {
     console.error('❌ Save subject error:', error)
     isLoading.value = false
-<<<<<<< HEAD
-
-    // Show detailed error message
-=======
-
+    
     // Show detailed error message with better handling for duplicate key
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
     let errorMessage = 'Error saving subject. '
-
+    
     if (error.message) {
       // Check for duplicate key constraint violation
       if (error.message.includes('duplicate key') || error.code === '23505') {
@@ -5616,16 +4258,11 @@ const saveSubject = async () => {
     } else {
       errorMessage += 'Please try again.'
     }
-<<<<<<< HEAD
-
-    if (error.code) {
-=======
-
+    
     if (error.code && !error.message.includes('duplicate key')) {
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
       errorMessage += ` (Code: ${error.code})`
     }
-
+    
     showToast(errorMessage, 'error')
   }
 }
@@ -5635,17 +4272,7 @@ const editSubject = (subject) => {
   editSubjectData.value = {
     id: subject.id,
     name: subject.subject_name || subject.name,
-<<<<<<< HEAD
-    grade_level: subject.grade_level.toString(),
-    description: subject.description || '',
-    number_of_sections: subject.section_count.toString(),
-    sections: subject.sections.map((s) => ({
-      name: s.name,
-      max_students: s.max_students,
-    })),
-=======
     description: subject.description || ''
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
   }
   showEditSubjectModal.value = true
   openSubjectMenuId.value = null
@@ -5677,7 +4304,7 @@ const saveEditedSubjectInfo = async () => {
 
     showToast('Subject updated successfully!', 'success')
     closeEditSubjectModal()
-
+    
     // Refresh subjects list
     await fetchSubjects(true)
 
@@ -5736,7 +4363,7 @@ const closeAddStudentsModal = () => {
   gradeFilter.value = ''
   isSearchingStudents.value = false
   isAddingStudents.value = false
-
+  
   // Reset enrollment fields
   enrollStudentId.value = ''
   isEnrollingStudent.value = false
@@ -5762,7 +4389,7 @@ const updateLocalStudentCount = (sectionId, countChange) => {
       ? (subject.total_students || 0) + countChange
       : subject.total_students
   }))
-
+  
   // Update selectedSubject if it contains this section
   if (selectedSubject.value?.sections?.some(s => s.id === sectionId)) {
     selectedSubject.value = {
@@ -5779,7 +4406,7 @@ const updateLocalStudentCount = (sectionId, countChange) => {
       total_students: (selectedSubject.value.total_students || 0) + countChange
     }
   }
-
+  
   // Update selectedSection if it's the one being modified
   if (selectedSection.value?.id === sectionId) {
     selectedSection.value = {
@@ -5787,7 +4414,7 @@ const updateLocalStudentCount = (sectionId, countChange) => {
       student_count: (selectedSection.value.student_count || 0) + countChange
     }
   }
-
+  
   // Update selectedSectionForStudents if it's the one being modified (for modal display)
   if (selectedSectionForStudents.value?.id === sectionId) {
     selectedSectionForStudents.value = {
@@ -5841,7 +4468,7 @@ const enrollStudentById = async () => {
     const { data, error: enrollError } = await supabase.rpc('teacher_add_student_to_section', {
       p_teacher_id: teacherInfo.value.id,
       p_student_id: existingStudent.id,
-      p_section_id: selectedSectionForStudents.value.id,
+      p_section_id: selectedSectionForStudents.value.id
     })
 
     if (enrollError) {
@@ -5853,7 +4480,7 @@ const enrollStudentById = async () => {
 
     // Check the result from the function
     const result = data[0]
-
+    
     if (result.success) {
       enrollmentMessage.value = `Successfully enrolled ${existingStudent.full_name} (ID: ${existingStudent.student_id})`
       enrollmentMessageType.value = 'success'
@@ -5871,18 +4498,14 @@ const enrollStudentById = async () => {
       if (studentSearchQuery.value.trim()) {
         await searchStudents()
       }
-<<<<<<< HEAD
-
-      // Refresh the main subjects data to update student counts
-=======
-
+      
       // Refresh the main subjects data to update student counts (confirms from server)
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
       await fetchSubjects()
     } else {
       enrollmentMessage.value = result.message
       enrollmentMessageType.value = 'error'
     }
+
   } catch (error) {
     console.error('Error enrolling student:', error)
     enrollmentMessage.value = 'Failed to enroll student. Please try again.'
@@ -5895,7 +4518,7 @@ const enrollStudentById = async () => {
 const searchStudents = async () => {
   try {
     isSearchingStudents.value = true
-
+    
     // Wait for auth to be ready
     if (!isAuthReady.value || !teacherInfo.value?.id) {
       await waitForAuth()
@@ -5914,9 +4537,7 @@ const searchStudents = async () => {
     // Add search filters
     if (studentSearchQuery.value.trim()) {
       const searchTerm = studentSearchQuery.value.trim()
-      query = query.or(
-        `student_name.ilike.%${searchTerm}%,student_number.ilike.%${searchTerm}%,student_email.ilike.%${searchTerm}%`,
-      )
+      query = query.or(`student_name.ilike.%${searchTerm}%,student_number.ilike.%${searchTerm}%,student_email.ilike.%${searchTerm}%`)
     }
 
     if (gradeFilter.value) {
@@ -5932,6 +4553,7 @@ const searchStudents = async () => {
     }
 
     availableStudents.value = data || []
+
   } catch (error) {
     console.error('Search students error:', error)
     showToast('Failed to search students', 'error')
@@ -5969,7 +4591,7 @@ const addSelectedStudents = async () => {
     const { data, error } = await supabase.rpc('teacher_bulk_add_students', {
       p_teacher_id: teacherInfo.value.id,
       p_section_id: selectedSectionForStudents.value.id,
-      p_student_ids: selectedStudentsToAdd.value,
+      p_student_ids: selectedStudentsToAdd.value
     })
 
     if (error) {
@@ -5979,41 +4601,26 @@ const addSelectedStudents = async () => {
     }
 
     const result = data[0] // RPC returns array with single result
-
+    
     if (result.successful > 0) {
-<<<<<<< HEAD
-      showToast(
-        `Successfully added ${result.successful} student${result.successful > 1 ? 's' : ''} to the section`,
-        'success',
-      )
-
-      // Clear selections and refresh the search
-      selectedStudentsToAdd.value = []
-      await searchStudents()
-
-      // Refresh the main subjects data to update student counts
-=======
       showToast(`Successfully added ${result.successful} student${result.successful > 1 ? 's' : ''} to the section`, 'success')
-
+      
       // Immediately update local student count for instant UI feedback
       updateLocalStudentCount(selectedSectionForStudents.value.id, result.successful)
-
+      
       // Clear selections and refresh the search
       selectedStudentsToAdd.value = []
       await searchStudents()
-
+      
       // Refresh the main subjects data to update student counts (confirms from server)
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
       await fetchSubjects()
     }
 
     if (result.failed > 0) {
-      showToast(
-        `${result.failed} student${result.failed > 1 ? 's' : ''} could not be added. Check the details for more information.`,
-        'info',
-      )
+      showToast(`${result.failed} student${result.failed > 1 ? 's' : ''} could not be added. Check the details for more information.`, 'info')
       console.log('Add students details:', result.details)
     }
+
   } catch (error) {
     console.error('Add students error:', error)
     showToast('Failed to add students', 'error')
@@ -6035,7 +4642,7 @@ const closeModal = () => {
     grade_level: '',
     description: '',
     number_of_sections: '',
-    sections: [],
+    sections: []
   }
 }
 
@@ -6084,16 +4691,16 @@ const deleteSubjectConfirmed = async (subjectId) => {
     if (!teacherInfo.value) return
 
     isDeleting.value = true
-    const subject = subjects.value.find((s) => s.id === subjectId)
+    const subject = subjects.value.find(s => s.id === subjectId)
 
-    const sectionIds = subject.sections.map((s) => s.id)
-
+    const sectionIds = subject.sections.map(s => s.id)
+    
     if (sectionIds.length > 0) {
       const { error: enrollmentError } = await supabase
         .from('enrollments')
         .delete()
         .in('section_id', sectionIds)
-
+      
       if (enrollmentError) {
         console.error('Error deleting enrollments:', enrollmentError)
         throw enrollmentError
@@ -6104,7 +4711,7 @@ const deleteSubjectConfirmed = async (subjectId) => {
       .from('sections')
       .delete()
       .eq('subject_id', subjectId)
-
+    
     if (sectionsError) {
       console.error('Error deleting sections:', sectionsError)
       throw sectionsError
@@ -6115,15 +4722,16 @@ const deleteSubjectConfirmed = async (subjectId) => {
       .delete()
       .eq('id', subjectId)
       .eq('teacher_id', teacherInfo.value.id)
-
+    
     if (subjectError) {
       console.error('Error deleting subject:', subjectError)
       throw subjectError
     }
-
-    subjects.value = subjects.value.filter((s) => s.id !== subjectId)
-
+    
+    subjects.value = subjects.value.filter(s => s.id !== subjectId)
+    
     showToast(`Subject "${subject?.name}" and all its sections deleted successfully!`, 'success')
+    
   } catch (error) {
     console.error('Delete subject error:', error)
     showToast('Error deleting section. Please try again.', 'error')
@@ -6139,7 +4747,7 @@ const showToast = (message, type = 'success') => {
   notificationMessage.value = message
   notificationType.value = type
   showNotification.value = true
-
+  
   setTimeout(() => {
     showNotification.value = false
   }, 4000)
@@ -6178,7 +4786,7 @@ const editingSectionData = ref({
   id: null,
   name: '',
   max_students: '',
-  section_code: '',
+  section_code: ''
 })
 
 const editSection = (section) => {
@@ -6186,7 +4794,7 @@ const editSection = (section) => {
     id: section.id,
     name: section.section_name || section.name,
     max_students: section.max_students,
-    section_code: section.section_code,
+    section_code: section.section_code
   }
   showEditSectionModal.value = true
   openMenuId.value = null
@@ -6208,7 +4816,7 @@ const saveEditedSection = async () => {
 
     const updateData = {
       name: editingSectionData.value.name.trim(),
-      max_students: parseInt(editingSectionData.value.max_students),
+      max_students: parseInt(editingSectionData.value.max_students)
     }
 
     const { error } = await supabase
@@ -6220,19 +4828,17 @@ const saveEditedSection = async () => {
 
     // Update local data immediately for better UX
     if (selectedSubject.value && selectedSubject.value.sections) {
-      const sectionIndex = selectedSubject.value.sections.findIndex(
-        (s) => s.id === editingSectionData.value.id,
-      )
+      const sectionIndex = selectedSubject.value.sections.findIndex(s => s.id === editingSectionData.value.id)
       if (sectionIndex !== -1) {
         selectedSubject.value.sections[sectionIndex] = {
           ...selectedSubject.value.sections[sectionIndex],
           name: updateData.name,
           section_name: updateData.name,
-          max_students: updateData.max_students,
+          max_students: updateData.max_students
         }
 
         // Update in main subjects array as well
-        const subjectIndex = subjects.value.findIndex((s) => s.id === selectedSubject.value.id)
+        const subjectIndex = subjects.value.findIndex(s => s.id === selectedSubject.value.id)
         if (subjectIndex !== -1) {
           subjects.value[subjectIndex].sections = [...selectedSubject.value.sections]
         }
@@ -6241,6 +4847,7 @@ const saveEditedSection = async () => {
 
     showEditSectionModal.value = false
     showToast('Section updated successfully!', 'success')
+
   } catch (error) {
     console.error('Error updating section:', error)
     showToast('Error updating section. Please try again.', 'error')
@@ -6255,7 +4862,7 @@ const closeEditSectionModal = () => {
     id: null,
     name: '',
     max_students: '',
-    section_code: '',
+    section_code: ''
   }
 }
 
@@ -6266,7 +4873,7 @@ const handleClickOutside = (event) => {
   const targetElement = event.target
   const isOutsideSectionMenu = !targetElement.closest('.section-menu-container')
   const isOutsideSubjectMenu = !targetElement.closest('.subject-menu-container')
-
+  
   if (isOutsideSectionMenu && isOutsideSubjectMenu) {
     openMenuId.value = null
     openSubjectMenuId.value = null
@@ -6297,17 +4904,17 @@ const viewStudentRoster = async (subject) => {
     let totalActualStudents = 0
 
     if (allSections && allSections.length > 0) {
-      allSections.forEach((section) => {
+      allSections.forEach(section => {
         const sectionKey = `${section.name} (${section.section_code})`
         studentsBySection[sectionKey] = {
           section: section,
-          students: [],
+          students: []
         }
       })
     }
 
     if (rosterData && rosterData.length > 0) {
-      rosterData.forEach((enrollment) => {
+      rosterData.forEach(enrollment => {
         const studentInfo = {
           id: enrollment.student_id,
           student_id: enrollment.student_number || 'N/A',
@@ -6317,20 +4924,20 @@ const viewStudentRoster = async (subject) => {
           enrollment_date: enrollment.enrolled_at,
           enrollment_method: enrollment.enrollment_method || 'teacher_added',
           added_by: enrollment.added_by || 'Teacher',
-          enrollment_id: enrollment.enrollment_id,
+          enrollment_id: enrollment.enrollment_id
         }
 
         const sectionKey = `${enrollment.section_name} (${enrollment.section_code})`
-
+        
         if (!studentsBySection[sectionKey]) {
           studentsBySection[sectionKey] = {
             section: {
               id: enrollment.section_id,
               name: enrollment.section_name,
               section_code: enrollment.section_code,
-              max_students: enrollment.max_students,
+              max_students: enrollment.max_students
             },
-            students: [],
+            students: []
           }
         }
 
@@ -6342,10 +4949,11 @@ const viewStudentRoster = async (subject) => {
     currentStudentRoster.value = {
       subject,
       studentsBySection,
-      totalActualStudents,
+      totalActualStudents
     }
-
+    
     showStudentRosterModal.value = true
+
   } catch (error) {
     console.error('Error viewing student roster:', error)
   }
@@ -6358,7 +4966,7 @@ const formatEnrollmentDate = (dateString) => {
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric',
+      day: 'numeric'
     })
   } catch {
     return 'Invalid Date'
@@ -6367,24 +4975,23 @@ const formatEnrollmentDate = (dateString) => {
 
 const exportStudentRoster = () => {
   if (!currentStudentRoster.value) return
-
+  
   try {
     let csvContent = `Subject: ${currentStudentRoster.value.subject.name} (Grade ${currentStudentRoster.value.subject.grade_level})\n`
     csvContent += `Total Students: ${currentStudentRoster.value.totalActualStudents}\n\n`
-
-    Object.keys(currentStudentRoster.value.studentsBySection).forEach((sectionKey) => {
+    
+    Object.keys(currentStudentRoster.value.studentsBySection).forEach(sectionKey => {
       const sectionData = currentStudentRoster.value.studentsBySection[sectionKey]
       csvContent += `Section: ${sectionData.section.name} (${sectionData.section.section_code})\n`
       csvContent += `Student ID,Full Name,Email,Grade,Enrollment Date,Enrollment Method,Added By\n`
-
-      sectionData.students.forEach((student) => {
-        const enrollMethod =
-          student.enrollment_method === 'teacher_added' ? 'Teacher Added' : 'Self-Enrolled'
+      
+      sectionData.students.forEach(student => {
+        const enrollMethod = student.enrollment_method === 'teacher_added' ? 'Teacher Added' : 'Self-Enrolled'
         csvContent += `"${student.student_id}","${student.full_name}","${student.email}","${student.grade_level}","${formatEnrollmentDate(student.enrollment_date)}","${enrollMethod}","${student.added_by || 'N/A'}"\n`
       })
       csvContent += `\n`
     })
-
+    
     const blob = new Blob([csvContent], { type: 'text/csv' })
     const url = window.URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -6417,7 +5024,7 @@ const removeStudentFromSection = async (enrollmentId, studentName) => {
     const { data, error } = await supabase.rpc('teacher_remove_student_from_section', {
       p_teacher_id: teacherInfo.value.id,
       p_enrollment_id: enrollmentId,
-      p_reason: 'Removed by teacher',
+      p_reason: 'Removed by teacher'
     })
 
     if (error) {
@@ -6428,20 +5035,21 @@ const removeStudentFromSection = async (enrollmentId, studentName) => {
 
     // Check the result from the function
     const result = data[0]
-
+    
     if (result.success) {
       showToast(`Successfully removed ${studentName} from the section`, 'success')
-
+      
       // Refresh the roster modal
       if (currentStudentRoster.value?.subject) {
         await viewStudentRoster(currentStudentRoster.value.subject)
       }
-
+      
       // Refresh the main subjects data to update student counts
       await fetchSubjects()
     } else {
       showToast(result.message, 'error')
     }
+
   } catch (error) {
     console.error('Error removing student:', error)
     showToast('Failed to remove student. Please try again.', 'error')
@@ -6454,22 +5062,22 @@ const removeStudentFromSection = async (enrollmentId, studentName) => {
 onMounted(async () => {
   try {
     console.log('🚀 Component mounting...')
-
+    
     // Initialize dark mode immediately
     initDarkMode()
-
+    
     // Initialize auth
     const { initializeAuth, setupAuthListener } = useTeacherAuth()
     setupAuthListener()
-
+    
     // Set up click handler
     document.addEventListener('click', handleClickOutside)
-
+    
     console.log('🔐 Starting authentication...')
-
+    
     // Initialize auth
     const authResult = await initializeAuth()
-
+    
     if (!authResult.success) {
       if (authResult.needsLogin || authResult.wrongRole) {
         console.warn('⚠️ Authentication failed, redirecting to login')
@@ -6477,13 +5085,13 @@ onMounted(async () => {
         return
       }
     }
-
+    
     console.log('✅ Auth initialization complete')
-
+    
     // Wait for teacherInfo to be fully loaded with retry logic
     try {
       await waitForAuth(30, 200) // Wait up to 6 seconds
-
+      
       // Load teacher name
       try {
         const { data: teacher, error } = await supabase
@@ -6491,7 +5099,7 @@ onMounted(async () => {
           .select('full_name')
           .eq('id', teacherInfo.value.id)
           .single()
-
+          
         if (!error && teacher) {
           fullName.value = teacher.full_name || 'Teacher'
           console.log('✅ Teacher loaded:', { id: teacherInfo.value.id, name: fullName.value })
@@ -6500,16 +5108,17 @@ onMounted(async () => {
         console.warn('⚠️ Failed to load teacher name:', err)
         // Continue anyway - name is not critical
       }
-
+      
       // Fetch subjects only after auth is confirmed ready
       console.log('📚 Fetching subjects...')
       await fetchSubjects()
+      
     } catch (authError) {
       console.error('❌ Auth timeout:', authError)
-
+      
       // Show user-friendly error
       showToast('Authentication is taking longer than expected. Please reload the page.', 'error')
-
+      
       // Still try to fetch if we have any auth info
       if (teacherInfo.value?.id) {
         console.log('⚠️ Attempting to fetch with partial auth...')
@@ -6521,10 +5130,11 @@ onMounted(async () => {
         }, 3000)
       }
     }
+    
   } catch (error) {
     console.error('❌ Component mount error:', error)
     showToast('Failed to initialize page. Please reload.', 'error')
-
+    
     // Try to continue if we have auth
     if (teacherInfo.value?.id) {
       console.log('⚠️ Attempting recovery...')
@@ -7364,7 +5974,7 @@ onUnmounted(() => {
   left: 0;
   width: 80px;
   height: calc(100vh - 64px);
-  background: #3d8d7a;
+  background: #3D8D7A;
   border-right: none;
   z-index: 900;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
@@ -7378,7 +5988,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   height: 64px;
-  background: #3d8d7a;
+  background: #3D8D7A;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -7841,24 +6451,24 @@ onUnmounted(() => {
   .subjects-grid {
     grid-template-columns: 1fr;
   }
-
+  
   .sections-grid {
     grid-template-columns: 1fr;
   }
-
+  
   .action-cards-grid {
     grid-template-columns: 1fr;
   }
-
+  
   .search-filter-bar {
     flex-direction: column;
     align-items: stretch;
   }
-
+  
   .search-filters-enhanced {
     flex-direction: column;
   }
-
+  
   .students-grid {
     grid-template-columns: 1fr;
   }
@@ -7876,21 +6486,19 @@ onUnmounted(() => {
   width: 56px;
   margin: 8px 0;
   border-radius: 12px;
-  transition:
-    background 0.2s,
-    box-shadow 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
   cursor: pointer;
   position: relative;
 }
 
 .sidebar-item.active {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255,255,255,0.15);
   border: 2px solid #fff;
 }
 
 .sidebar-item:hover {
-  background: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: rgba(255,255,255,0.22);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .sidebar-icon svg {
@@ -7903,13 +6511,13 @@ onUnmounted(() => {
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  color: #3d8d7a;
+  color: #3D8D7A;
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 14px;
   font-family: 'Inter', sans-serif;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
@@ -7919,14 +6527,13 @@ onUnmounted(() => {
 .sidebar-item:hover .sidebar-tooltip {
   opacity: 1;
   pointer-events: auto;
-}
-.top-navbar {
+}.top-navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 64px;
-  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
+  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(61, 141, 122, 0.3);
@@ -8053,12 +6660,12 @@ onUnmounted(() => {
 
 /* Rounded semi-transparent backgrounds for sidebar and navbar icons/buttons */
 .rounded-bg {
-  background: rgba(255, 255, 255, 0.13);
+  background: rgba(255,255,255,0.13);
   border-radius: 16px;
   transition: background 0.2s;
 }
 .rounded-bg:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255,255,255,0.22);
 }
 
 /* Notification dropdown styles */
@@ -8079,7 +6686,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #3d8d7a;
+  border: 2px solid #3D8D7A;
 }
 
 .notification-dropdown {
@@ -8168,7 +6775,7 @@ onUnmounted(() => {
 
 .profile-dropdown .dropdown-header {
   padding: 1.5rem;
-  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
+  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
   color: white;
 }
 
@@ -8223,7 +6830,7 @@ onUnmounted(() => {
 
 .dropdown-item:hover {
   background: #f1f5f9;
-  color: #3d8d7a;
+  color: #3D8D7A;
 }
 
 .dropdown-item svg {
@@ -8232,7 +6839,7 @@ onUnmounted(() => {
 }
 
 .dropdown-item:hover svg {
-  color: #3d8d7a;
+  color: #3D8D7A;
 }
 
 .dropdown-divider {
@@ -8258,6 +6865,7 @@ onUnmounted(() => {
   color: #dc2626 !important;
 }
 
+
 /* Scroll to Top Button */
 .scroll-to-top {
   position: fixed;
@@ -8265,7 +6873,7 @@ onUnmounted(() => {
   right: 2rem;
   width: 48px;
   height: 48px;
-  background: #3d8d7a;
+  background: #3D8D7A;
   color: white;
   border: none;
   border-radius: 50%;
@@ -8309,7 +6917,7 @@ onUnmounted(() => {
 }
 
 .main-content::-webkit-scrollbar-thumb {
-  background: #3d8d7a;
+  background: #3D8D7A;
   border-radius: 8px;
 }
 
@@ -8344,7 +6952,7 @@ onUnmounted(() => {
 .header-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
+  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -8373,13 +6981,8 @@ onUnmounted(() => {
 .create-subject-btn {
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-  gap: 0.5rem;
-  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
-=======
   gap: 0.625rem;
   background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
   color: white;
   border: none;
   padding: 0.875rem 1.5rem;
@@ -8415,15 +7018,13 @@ onUnmounted(() => {
   padding: 0.75rem 1.5rem;
   background: linear-gradient(90deg, #fbffe4 80%, #e6f7f1 100%);
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(61, 141, 122, 0.1);
+  box-shadow: 0 4px 16px rgba(61, 141, 122, 0.10);
   border: 1.5px solid #a3d1c6;
-  transition:
-    box-shadow 0.18s,
-    background 0.18s;
+  transition: box-shadow 0.18s, background 0.18s;
 }
 .dark .subject-search-bar.enhanced.extra {
   background: #232c2d;
-  box-shadow: 0 1.5px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1.5px 6px rgba(0,0,0,0.10);
   border: 1.5px solid #2a3c36;
   border-radius: 18px;
 }
@@ -8455,10 +7056,7 @@ onUnmounted(() => {
   min-width: 120px;
   padding: 0.7rem 1.2rem 0.7rem 1.1rem;
   outline: none;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    box-shadow 0.18s;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
   z-index: 2;
   appearance: none;
   -webkit-appearance: none;
@@ -8507,10 +7105,7 @@ onUnmounted(() => {
   font-size: 1rem;
   padding: 0.7rem 1.2rem 0.7rem 0.9rem;
   outline: none;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    box-shadow 0.18s;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
   z-index: 2;
 }
 .dark .subject-search-input.enhanced.extra {
@@ -8534,27 +7129,22 @@ onUnmounted(() => {
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    transform 0.15s;
+  transition: background 0.18s, color 0.18s, transform 0.15s;
   outline: none;
   z-index: 2;
   box-shadow: none;
 }
-.search-btn.extra:focus,
-.search-btn.extra:hover {
+.search-btn.extra:focus, .search-btn.extra:hover {
   background: #e6f7f1;
   color: #17815c;
   transform: scale(1.08);
-  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.1);
+  box-shadow: 0 2px 8px rgba(61, 141, 122, 0.10);
 }
 .dark .search-btn.extra {
   color: #b3d8a8;
   background: transparent;
 }
-.dark .search-btn.extra:focus,
-.dark .search-btn.extra:hover {
+.dark .search-btn.extra:focus, .dark .search-btn.extra:hover {
   background: #23332d;
   color: #a3d1c6;
   transform: scale(1.08);
@@ -8573,8 +7163,7 @@ onUnmounted(() => {
     border: none;
     gap: 0.5rem;
   }
-  .subject-dropdown.enhanced.extra,
-  .subject-search-input.enhanced.extra {
+  .subject-dropdown.enhanced.extra, .subject-search-input.enhanced.extra {
     border-radius: 12px;
     width: 100%;
     min-width: 0;
@@ -8598,7 +7187,7 @@ onUnmounted(() => {
 
 .subjects-page {
   min-height: 100vh;
-  background: #fbffe4;
+  background: #FBFFE4;
   padding: 1.5rem;
   font-family: 'Inter', sans-serif;
 }
@@ -8609,7 +7198,7 @@ onUnmounted(() => {
 /* Header */
 .header-card {
   background: white;
-  border: 1.5px solid #3d8d7a;
+  border: 1.5px solid #3D8D7A;
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -8617,7 +7206,7 @@ onUnmounted(() => {
 }
 .dark .header-card {
   background: #23272b;
-  border: 1.5px solid #a3d1c6;
+  border: 1.5px solid #A3D1C6;
   box-shadow: 0 2px 8px rgba(163, 209, 198, 0.1);
 }
 
@@ -8636,7 +7225,7 @@ onUnmounted(() => {
 .user-icon {
   width: 56px;
   height: 56px;
-  background: #3d8d7a;
+  background: #3D8D7A;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -8651,7 +7240,7 @@ onUnmounted(() => {
   margin-bottom: 0.25rem;
 }
 .dark .header-title {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .header-subtitle {
@@ -8659,7 +7248,7 @@ onUnmounted(() => {
   color: #6b7280;
 }
 .dark .header-subtitle {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .header-actions {
@@ -8671,24 +7260,24 @@ onUnmounted(() => {
 .dark-mode-toggle {
   width: 48px;
   height: 48px;
-  background: #fbffe4;
-  border: 2px solid #a3d1c6;
+  background: #FBFFE4;
+  border: 2px solid #A3D1C6;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
-  color: #3d8d7a;
+  color: #3D8D7A;
 }
 .dark .dark-mode-toggle {
   background: #23272b;
-  border-color: #3d8d7a;
-  color: #a3d1c6;
+  border-color: #3D8D7A;
+  color: #A3D1C6;
 }
 
 .dark-mode-toggle:hover {
-  background: #a3d1c6;
+  background: #A3D1C6;
   transform: scale(1.05);
 }
 
@@ -8699,22 +7288,22 @@ onUnmounted(() => {
   padding: 2.5rem 1.5rem;
   margin: 2rem auto;
   max-width: 480px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
   text-align: center;
   color: #1f2937;
 }
 .dark .empty-state {
   background: #23272b;
-  color: #a3d1c6;
+  color: #A3D1C6;
   border: 1px solid #20c997;
 }
 
 .empty-icon {
   margin-bottom: 1rem;
-  color: #3d8d7a;
+  color: #3D8D7A;
 }
 .dark .empty-icon {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .empty-title {
@@ -8763,7 +7352,7 @@ onUnmounted(() => {
 }
 
 .subjects-grid.enhanced::-webkit-scrollbar-thumb {
-  background: #3d8d7a;
+  background: #3D8D7A;
   border-radius: 6px;
 }
 
@@ -8776,7 +7365,7 @@ onUnmounted(() => {
   background: #fff;
   border: 1.5px solid #e5e7eb;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   padding: 0;
   margin-bottom: 1rem;
   transition: all 0.18s ease;
@@ -8991,7 +7580,7 @@ onUnmounted(() => {
 .create-quiz-btn {
   background: #20c997;
   color: #181c20;
-  border: 1px solid #a3d1c6;
+  border: 1px solid #A3D1C6;
   padding: 0.5rem 1.25rem;
   border-radius: 8px;
   font-size: 0.875rem;
@@ -9005,17 +7594,17 @@ onUnmounted(() => {
 .dark .create-quiz-btn {
   background: #20c997;
   color: #181c20;
-  border: 1px solid #a3d1c6;
+  border: 1px solid #A3D1C6;
 }
 
 .create-quiz-btn:hover {
-  background: #a3d1c6;
+  background: #A3D1C6;
   color: #23272b;
   border-color: #20c997;
   transform: translateY(-1px);
 }
 .dark .create-quiz-btn:hover {
-  background: #a3d1c6;
+  background: #A3D1C6;
   color: #23272b;
   border-color: #20c997;
 }
@@ -9029,7 +7618,7 @@ onUnmounted(() => {
   font-size: 0.875rem;
 }
 .dark .breadcrumb {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .breadcrumb-btn {
@@ -9047,13 +7636,6 @@ onUnmounted(() => {
   transition: all 0.2s ease;
 }
 .dark .breadcrumb-btn {
-<<<<<<< HEAD
-  color: #a3d1c6;
-}
-
-.breadcrumb-btn:hover {
-  color: #3d8d7a;
-=======
   background: #374151;
   color: #d1d5db;
 }
@@ -9062,14 +7644,13 @@ onUnmounted(() => {
   background: #10b981;
   color: white;
   transform: translateX(-2px);
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
 }
 
 .breadcrumb-separator {
   color: #6b7280;
 }
 .dark .breadcrumb-separator {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .breadcrumb-current {
@@ -9077,7 +7658,7 @@ onUnmounted(() => {
   font-weight: 500;
 }
 .dark .breadcrumb-current {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 /* Grade Filter */
@@ -9089,8 +7670,8 @@ onUnmounted(() => {
 
 .grade-filter-btn {
   background: white;
-  border: 1px solid #a3d1c6;
-  color: #3d8d7a;
+  border: 1px solid #A3D1C6;
+  color: #3D8D7A;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-size: 0.875rem;
@@ -9100,7 +7681,7 @@ onUnmounted(() => {
 .dark .grade-filter-btn {
   background: #23272b;
   border-color: #20c997;
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .grade-filter-btn.active,
@@ -9133,7 +7714,7 @@ onUnmounted(() => {
 }
 
 .sections-grid::-webkit-scrollbar-thumb {
-  background: #3d8d7a;
+  background: #3D8D7A;
   border-radius: 6px;
 }
 
@@ -9145,8 +7726,8 @@ onUnmounted(() => {
   background: white;
   border-radius: 12px;
   padding: 1.25rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid #a3d1c6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #A3D1C6;
   transition: all 0.2s;
   cursor: pointer;
 }
@@ -9201,13 +7782,8 @@ onUnmounted(() => {
 .section-card.enhanced {
   background: #fff;
   border: 2px solid #e5e7eb;
-<<<<<<< HEAD
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-=======
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
   padding: 0;
   margin-bottom: 0;
   transition: all 0.3s ease;
@@ -9231,7 +7807,7 @@ onUnmounted(() => {
 }
 
 .dark .section-card.enhanced:hover {
-  border-color: #a3d1c6;
+  border-color: #A3D1C6;
   box-shadow: none;
 }
 
@@ -9277,7 +7853,7 @@ onUnmounted(() => {
 }
 
 .dark .section-title {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .section-menu-container {
@@ -9428,7 +8004,7 @@ onUnmounted(() => {
 .dark .code-box-header {
   background: #181c20 !important;
   border-bottom-color: #374151;
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .code-label {
@@ -9440,7 +8016,7 @@ onUnmounted(() => {
 }
 
 .dark .code-label {
-  color: #a3d1c6 !important;
+  color: #A3D1C6 !important;
   background: #181c20 !important;
 }
 
@@ -9462,7 +8038,7 @@ onUnmounted(() => {
 }
 
 .dark .section-code-text {
-  color: #fbffe4;
+  color: #FBFFE4;
 }
 
 .copy-code-btn {
@@ -9477,15 +8053,13 @@ onUnmounted(() => {
   font-size: 0.97rem;
   font-weight: 600;
   cursor: pointer;
-  transition:
-    background 0.18s,
-    box-shadow 0.18s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: background 0.18s, box-shadow 0.18s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
 
 .copy-code-btn:hover {
   background: var(--color-primary-dark, #059669);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .copy-code-btn.copied {
@@ -9508,12 +8082,8 @@ onUnmounted(() => {
 }
 
 .dark .section-stats {
-<<<<<<< HEAD
-  color: #a3d1c6;
-=======
   color: #A3D1C6;
   border-color: #374151;
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
 }
 
 /* Dropdown transition */
@@ -9539,11 +8109,11 @@ onUnmounted(() => {
     flex-direction: column;
     gap: 1rem;
   }
-
+  
   .header-left {
     width: 100%;
   }
-
+  
   .header-actions {
     align-self: flex-end;
   }
@@ -9598,7 +8168,7 @@ onUnmounted(() => {
 }
 
 .dark .section-title-info .section-title {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .section-title-info .section-subtitle {
@@ -9608,7 +8178,7 @@ onUnmounted(() => {
 }
 
 .dark .section-title-info .section-subtitle {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .section-details {
@@ -9637,7 +8207,7 @@ onUnmounted(() => {
 }
 
 .dark .detail-label {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .detail-value {
@@ -9647,7 +8217,7 @@ onUnmounted(() => {
 }
 
 .dark .detail-value {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .section-code-container {
@@ -9719,7 +8289,7 @@ onUnmounted(() => {
 }
 
 .dark .actions-title {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 .actions-grid {
@@ -9748,7 +8318,7 @@ onUnmounted(() => {
 
 .dark .action-button {
   background: #23272b;
-  color: #a3d1c6;
+  color: #A3D1C6;
   border: 1px solid #20c997;
 }
 
@@ -9798,11 +8368,11 @@ onUnmounted(() => {
   .actions-grid {
     grid-template-columns: 1fr;
   }
-
+  
   .section-detail-enhanced {
     gap: 1rem;
   }
-
+  
   .section-info-card,
   .quick-actions-card {
     padding: 1rem;
@@ -9947,7 +8517,7 @@ onUnmounted(() => {
 }
 
 .dark .loading-text {
-  color: #a3d1c6;
+  color: #A3D1C6;
 }
 
 /* Delete Modal Styles */
@@ -11181,6 +9751,8 @@ onUnmounted(() => {
   color: white;
 }
 
+
+
 .spinner-icon {
   animation: spin 0.8s linear infinite;
 }
@@ -11205,11 +9777,11 @@ onUnmounted(() => {
   .main-content {
     padding: 1rem;
   }
-
+  
   .navbar-center {
     gap: 0.25rem;
   }
-
+  
   .nav-item {
     padding: 0.5rem 1rem;
     font-size: 0.7rem;
@@ -11220,31 +9792,31 @@ onUnmounted(() => {
   .main-content {
     padding: 1rem;
   }
-
+  
   .page-header {
     padding: 1rem;
     margin-bottom: 1.5rem;
   }
-
+  
   .header-content {
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
   }
-
+  
   .header-actions {
     align-self: flex-start;
   }
-
+  
   .create-subject-btn {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
   }
-
+  
   .navbar-content {
     padding: 0 0.5rem;
   }
-
+  
   .brand-name {
     display: none;
   }
@@ -11255,24 +9827,24 @@ onUnmounted(() => {
   .form-grid {
     grid-template-columns: 1fr;
   }
-
+  
   .section-fields {
     grid-template-columns: 1fr;
   }
-
+  
   .modal-content-enhanced {
     width: 100%;
     max-height: 95vh;
   }
-
+  
   .modal-header-enhanced {
     padding: 1.5rem 1rem 1rem;
   }
-
+  
   .subject-form-enhanced {
     padding: 0 1rem 1.5rem;
   }
-
+  
   .progress-indicator {
     padding: 1.5rem 1rem 1rem;
   }
@@ -11299,7 +9871,7 @@ onUnmounted(() => {
   border-radius: 16px;
   overflow: hidden;
   background: white;
-  border: 2px solid #3d8d7a;
+  border: 2px solid #3D8D7A;
   animation: modalSlideIn 0.3s ease-out;
 }
 
@@ -11315,7 +9887,7 @@ onUnmounted(() => {
 }
 
 .logout-header {
-  background: linear-gradient(135deg, #3d8d7a, #2d6a5a);
+  background: linear-gradient(135deg, #3D8D7A, #2d6a5a);
   color: white;
   padding: 1.5rem;
 }
@@ -11338,18 +9910,13 @@ onUnmounted(() => {
 }
 
 .logout-icon svg {
-  color: #3d8d7a;
+  color: #3D8D7A;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 .logout-message {
@@ -11428,12 +9995,8 @@ onUnmounted(() => {
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .btn-logout .loading-text {
@@ -11443,16 +10006,9 @@ onUnmounted(() => {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-<<<<<<< HEAD
-</style>
-=======
 
 /* ============================================
    ADD STUDENTS MODAL - ENHANCED DESIGN
@@ -12051,4 +10607,3 @@ grid-template-columns: 1fr;
 }
 }
 </style>
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995

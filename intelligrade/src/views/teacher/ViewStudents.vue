@@ -290,7 +290,6 @@
 
       <!-- Content Area -->
 
-<<<<<<< HEAD
       <!-- Main Content -->
       <div class="main-content-wrapper">
         <button v-if="showScrollTop" @click="scrollToTop" class="scroll-to-top">
@@ -301,39 +300,6 @@
         <div v-if="isLoading" class="loading-state">
           <div class="loading-spinner"></div>
           <p>{{ loadingMessage }}</p>
-=======
-    <!-- Main Content -->
-    <div class="main-content-wrapper">
-      <div v-if="isLoading" class="loading-state">
-        <div class="loading-spinner"></div>
-        <p>{{ loadingMessage }}</p>
-      </div>
-      <div v-else>
-        <!-- Simple Summary Cards -->
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon stat-classes">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16,4C18.21,4 20,5.79 20,8C20,10.21 18.21,12 16,12C13.79,12 12,10.21 12,8C12,5.79 13.79,4 16,4M16,14C20.42,14 24,15.79 24,18V20H8V18C8,15.79 11.58,14 16,14M6,6C7.1,6 8,6.9 8,8C8,9.1 7.1,10 6,10C4.9,10 4,9.1 4,8C4,6.9 4.9,6 6,6M6,12C8.67,12 12,13.34 12,16V18H0V16C0,13.34 3.33,12 6,12Z" />
-              </svg>
-            </div>
-            <div>
-              <div class="stat-number">{{ students.length }}</div>
-              <div class="stat-label">Total Students</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon stat-graded">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-              </svg>
-            </div>
-            <div>
-              <div class="stat-number">{{ activeStudents }}</div>
-              <div class="stat-label">Active Students</div>
-            </div>
-          </div>
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
         </div>
         <div v-else>
           <!-- Simple Summary Cards -->
@@ -1240,13 +1206,8 @@ onUnmounted(() => {
 
 /* Firefox Scrollbar - More Visible */
 * {
-<<<<<<< HEAD
   scrollbar-width: thin;
   scrollbar-color: #3d8d7a #f1f5f9;
-=======
-  scrollbar-width: auto;
-  scrollbar-color: #3D8D7A #e2e8f0;
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
 }
 
 /* Dark mode scrollbar - More Visible */
@@ -2006,21 +1967,17 @@ onUnmounted(() => {
     gap: 1rem;
     align-items: stretch;
   }
-<<<<<<< HEAD
 
-=======
-  
   .header-left {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .back-button {
     width: 100%;
     justify-content: center;
   }
-  
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
+
   .header-actions {
     flex-direction: column;
     gap: 0.5rem;

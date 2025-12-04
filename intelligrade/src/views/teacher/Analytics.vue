@@ -342,17 +342,9 @@
           </div>
           <div>
             <div class="stat-number">{{ overallStats.totalStudents }}</div>
-            <div class="stat-label">Total Students</div>
+            <div class="stat-label">{{ selectedSection ? 'Students in Section' : 'Total Students' }}</div>
           </div>
         </div>
-<<<<<<< HEAD
-=======
-        <div>
-          <div class="stat-number">{{ overallStats.totalStudents }}</div>
-          <div class="stat-label">{{ selectedSection ? 'Students in Section' : 'Total Students' }}</div>
-        </div>
-      </div>
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
 
         <div class="stat-card">
           <div class="stat-icon stat-assessments">
@@ -546,11 +538,6 @@
             {{ selectedSection ? `Showing students from ${getSelectedSectionName()}` : 'Quiz results and performance data for all students' }}
           </p>
           <div class="table-controls">
-<<<<<<< HEAD
-            <input
-              v-model="searchQuery"
-              type="text"
-=======
             <select v-model="selectedSection" class="sort-select" style="min-width: 200px;">
               <option value="">All Sections</option>
               <option v-for="section in sections" :key="section.id" :value="section.id">
@@ -571,7 +558,6 @@
             <input 
               v-model="searchQuery" 
               type="text" 
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
               placeholder="Search students..."
               class="search-input"
             />
@@ -2012,7 +1998,6 @@ export default {
       toggleNotifDropdown,
       handleNotificationClick,
       logout,
-<<<<<<< HEAD
       // Logout modal
       showLogoutModal,
       isLoggingOut,
@@ -2022,14 +2007,6 @@ export default {
       // Scroll to top
       showScrollTop,
       scrollToTop,
-=======
-      showLogoutModal,
-      isLoggingOut,
-      closeLogoutModal,
-      confirmLogout,
-      showScrollTop,
-      scrollToTop
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
     }
   },
 }

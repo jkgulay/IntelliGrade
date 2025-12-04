@@ -56,10 +56,7 @@
       <div class="filter-tabs">
         <button
           :class="['filter-tab', { active: currentTab === 'teachers' }]"
-          @click="
-            currentTab = 'teachers'
-            showArchive = false
-          "
+          @click="currentTab = 'teachers'; showArchive = false"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -79,10 +76,7 @@
         </button>
         <button
           :class="['filter-tab', { active: currentTab === 'archive' }]"
-          @click="
-            currentTab = 'archive'
-            showArchive = true
-          "
+          @click="currentTab = 'archive'; showArchive = true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -104,10 +98,7 @@
         </button>
         <button
           :class="['filter-tab', { active: currentTab === 'notifications' }]"
-          @click="
-            currentTab = 'notifications'
-            showArchive = false
-          "
+          @click="currentTab = 'notifications'; showArchive = false"
         >
           Announcements
           <span v-if="unreadNotificationsCount > 0" class="notification-badge">{{
@@ -244,10 +235,7 @@
                         @click.stop
                       >
                         <button
-                          @click.stop="
-                            archiveConversation(teacher)
-                            activeTeacherOptionsId = null
-                          "
+                          @click.stop="archiveConversation(teacher); activeTeacherOptionsId = null"
                           class="simple-dropdown-item"
                         >
                           <svg
@@ -268,10 +256,7 @@
                           {{ teacher.archived ? 'Unarchive' : 'Archive' }}
                         </button>
                         <button
-                          @click.stop="
-                            deleteConversation(teacher)
-                            activeTeacherOptionsId = null
-                          "
+                          @click.stop="deleteConversation(teacher); activeTeacherOptionsId = null"
                           class="simple-dropdown-item delete-option"
                         >
                           <svg

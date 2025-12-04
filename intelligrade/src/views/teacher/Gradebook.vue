@@ -727,35 +727,13 @@
               <i class="fas fa-times"></i>
             </button>
           </div>
-      <!-- Review/Grade Modal -->
-      <div v-if="showReviewModal" class="modal-overlay" @click="closeReviewModal">
-        <div class="review-modal" @click.stop>
-          <div class="modal-header">
-            <div>
-              <h3>{{ modalMode === 'view' ? 'View Submission' : 'Grade Submission' }}</h3>
-              <p class="modal-subtitle" v-if="selectedSubmission">
-                {{ selectedSubmission.student_name }} - {{ selectedSubmission.quiz_title }}
-              </p>
-            </div>
-            <button @click="closeReviewModal" class="modal-close">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
 
           <div class="modal-content">
             <div v-if="loadingQuestions" class="loading-questions">
               <div class="spinner-small"></div>
               <p>Loading questions...</p>
             </div>
-          <div class="modal-content">
-            <div v-if="loadingQuestions" class="loading-questions">
-              <div class="spinner-small"></div>
-              <p>Loading questions...</p>
-            </div>
 
-            <div v-else-if="reviewQuestions.length === 0" class="no-questions">
-              <p>No questions found for this quiz.</p>
-            </div>
             <div v-else-if="reviewQuestions.length === 0" class="no-questions">
               <p>No questions found for this quiz.</p>
             </div>
@@ -1116,6 +1094,68 @@ const maxReviewScore = computed(() => {
   return reviewQuestions.value.reduce((sum, q) => sum + (q.points || 1), 0)
 })
 
+// Computed property to get unique grade levels from subjects
+const gradeLevels = computed(() => {
+  const levels = [...new Set(subjects.value.map(s => s.grade_level).filter(Boolean))]
+  return levels.sort((a, b) => a - b)
+})
+
+// Computed property to get sections filtered by selected grade level
+const filteredSections = computed(() => {
+  if (!selectedGradeLevel.value) return []
+  
+  const sections = []
+  subjects.value
+    .filter(s => s.grade_level === selectedGradeLevel.value)
+    .forEach(subject => {
+      subject.sections?.forEach(section => {
+        sections.push({
+          ...section,
+          subject_name: subject.name,
+          subject_id: subject.id,
+          student_count: section.enrollments?.[0]?.count || 0
+        })
+      })
+    })
+  return sections
+})
+
+// Function to select a grade level
+const selectGradeLevel = (grade) => {
+  selectedGradeLevel.value = grade
+  selectedSectionId.value = ''
+  currentSectionInfo.value = {}
+  students.value = []
+  assessments.value = []
+}
+
+// Function to select a section
+const selectSection = (section) => {
+  selectedSectionId.value = section.id
+  currentSectionInfo.value = section
+  onSectionChange()
+}
+
+// Function to clear grade selection and go back
+const clearGradeSelection = () => {
+  selectedGradeLevel.value = null
+  selectedSectionId.value = ''
+  currentSectionInfo.value = {}
+  students.value = []
+  assessments.value = []
+}
+
+// Function to get section count for a grade level
+const getSectionCountForGrade = (grade) => {
+  let count = 0
+  subjects.value
+    .filter(s => s.grade_level === grade)
+    .forEach(subject => {
+      count += subject.sections?.length || 0
+    })
+  return count
+}
+
 const getTeacherInfo = async () => {
   try {
     const {
@@ -1262,9 +1302,6 @@ const fetchGradebookData = async (sectionId) => {
   students.value.forEach(student => {
     newGradebookData[student.id] = {}
   })
-
-  // ONLY REAL DATA - NO FAKE ASSESSMENTS
-  const allAssessments = []
 
   // Get REAL QUIZZES from database
   const { data: quizzesData, error: quizzesError } = await supabase
@@ -2391,10 +2428,6 @@ const exportToPDF = () => {
 
   console.log('✅ PDF export initiated for:', sectionName)
 }
-
-watch([searchQuery, selectedStatus], () => {
-  currentPage.value = 1
-})
 
 onMounted(async () => {
   const success = await getTeacherInfo()

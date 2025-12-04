@@ -397,12 +397,6 @@
                 class="assessment-card"
               >
                 <div class="assessment-header">
-<<<<<<< HEAD
-                  <h4>{{ assessment.title }}</h4>
-                  <span class="assessment-badge"
-                    >{{ assessment.studentsSubmitted }} submissions</span
-                  >
-=======
                   <div class="assessment-title-row">
                     <h4>{{ assessment.title }}</h4>
                     <span class="assessment-type-badge" :class="assessment.type">
@@ -410,7 +404,6 @@
                     </span>
                   </div>
                   <span class="assessment-badge">{{ assessment.studentsSubmitted }} submissions</span>
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
                 </div>
                 <p class="assessment-class">{{ assessment.className }}</p>
                 <div class="assessment-footer">
@@ -1135,29 +1128,22 @@ const loadDashboardStats = async () => {
       )
       .eq('teacher_id', teacherId.value)
       .eq('status', 'published')
-<<<<<<< HEAD
 
-    if (!quizzesError && quizzes && quizzes.length > 0) {
-      // Fetch subjects and sections separately
-      const subjectIds = [...new Set(quizzes.map((q) => q.subject_id))]
-      const quizSectionIds = [...new Set(quizzes.map((q) => q.section_id))]
+    // Fetch subjects and sections separately for quizzes
+    const subjectIds = [...new Set((quizzes || []).map((q) => q.subject_id))]
+    const quizSectionIds = [...new Set((quizzes || []).map((q) => q.section_id))]
 
-      const [subjectsResult, sectionsResult] = await Promise.all([
-        supabase.from('subjects').select('id, name').in('id', subjectIds),
-        supabase.from('sections').select('id, name').in('id', quizSectionIds),
-      ])
+    const [subjectsResult, sectionsResult] = await Promise.all([
+      subjectIds.length > 0 ? supabase.from('subjects').select('id, name').in('id', subjectIds) : { data: [] },
+      quizSectionIds.length > 0 ? supabase.from('sections').select('id, name').in('id', quizSectionIds) : { data: [] },
+    ])
 
-      const subjectsMap = new Map((subjectsResult.data || []).map((s) => [s.id, s.name]))
-      const sectionsMap = new Map((sectionsResult.data || []).map((s) => [s.id, s.name]))
-
-      const assessmentsWithSubmissions = []
-
-=======
+    const subjectsMap = new Map((subjectsResult.data || []).map((s) => [s.id, s.name]))
+    const sectionsMap = new Map((sectionsResult.data || []).map((s) => [s.id, s.name]))
 
     const assessmentsWithSubmissions = []
 
     if (!quizzesError && quizzes) {
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
       for (const quiz of quizzes) {
         const { data: attempts } = await supabase
           .from('quiz_attempts')
@@ -1188,15 +1174,6 @@ const loadDashboardStats = async () => {
           })
         }
       }
-<<<<<<< HEAD
-
-      assessmentsToGrade.value = assessmentsWithSubmissions
-      pendingReviews.value = assessmentsWithSubmissions.length
-
-      console.log('📝 Assessments to grade:', assessmentsWithSubmissions.length)
-    }
-
-=======
       console.log('📝 Quizzes to grade:', assessmentsWithSubmissions.filter(a => a.type === 'quiz').length)
     }
 
@@ -1248,7 +1225,6 @@ const loadDashboardStats = async () => {
     pendingReviews.value = assessmentsWithSubmissions.length
 
     console.log('📝 Total assessments to grade:', assessmentsWithSubmissions.length)
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
     console.log('✅ Dashboard stats loaded successfully')
   } catch (error) {
     console.error('❌ Error loading dashboard stats:', error)
@@ -1257,13 +1233,8 @@ const loadDashboardStats = async () => {
 
 const handleNotificationClick = async (notification) => {
   console.log('📱 Clicked notification:', notification)
-<<<<<<< HEAD
-
-  if (notification.type === 'submission') {
-=======
 
   if (notification.type === 'quiz_submission' || notification.type === 'assignment_submission') {
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
     router.push('/teacher/gradebook')
   } else if (notification.type === 'message') {
     router.push('/teacher/messages')
@@ -1316,18 +1287,6 @@ onMounted(async () => {
 
     quizSubscription = supabase
       .channel('quiz_attempts_channel')
-<<<<<<< HEAD
-      .on(
-        'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'quiz_attempts',
-          filter: `status=eq.submitted`,
-        },
-        (payload) => {
-          console.log('🆕 New quiz submission:', payload)
-=======
       .on('postgres_changes', {
         event: 'INSERT',
         schema: 'public',
@@ -1389,7 +1348,8 @@ onMounted(async () => {
           .eq('id', payload.new.section_id)
           .single()
 
-        if (section?.subjects?.teacher_id === teacherId.value) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        if ((section?.subjects as any)?.teacher_id === teacherId.value) {
           loadNotifications()
         }
       })
@@ -1411,80 +1371,12 @@ onMounted(async () => {
           .eq('id', payload.new.section_id)
           .single()
 
-        if (section?.subjects?.teacher_id === teacherId.value) {
->>>>>>> 68129f7bed43840df314151b0eced9266a64f995
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        if ((section?.subjects as any)?.teacher_id === teacherId.value) {
           loadNotifications()
           loadDashboardStats()
-        },
-      )
-      .on(
-        'postgres_changes',
-        {
-          event: 'UPDATE',
-          schema: 'public',
-          table: 'quiz_attempts',
-          filter: `status=eq.submitted`,
-        },
-        (payload) => {
-          console.log('✏️ Quiz submission updated:', payload)
-          loadNotifications()
-          loadDashboardStats()
-        },
-      )
-      .subscribe()
-
-    messageSubscription = supabase
-      .channel('messages_channel')
-      .on(
-        'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'messages',
-        },
-        async (payload) => {
-          console.log('💬 New message received:', payload)
-
-          const { data: section } = await supabase
-            .from('sections')
-            .select('subject_id, subjects!inner(teacher_id)')
-            .eq('id', payload.new.section_id)
-            .single()
-
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          if ((section?.subjects as any)?.teacher_id === teacherId.value) {
-            loadNotifications()
-          }
-        },
-      )
-      .subscribe()
-
-    enrollmentSubscription = supabase
-      .channel('enrollments_channel')
-      .on(
-        'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'enrollments',
-          filter: `status=eq.active`,
-        },
-        async (payload) => {
-          console.log('👥 New enrollment:', payload)
-
-          const { data: section } = await supabase
-            .from('sections')
-            .select('subject_id, subjects!inner(teacher_id)')
-            .eq('id', payload.new.section_id)
-            .single()
-
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          if ((section?.subjects as any)?.teacher_id === teacherId.value) {
-            loadNotifications()
-            loadDashboardStats()
-          }
-        },
-      )
+        }
+      })
       .subscribe()
   }
 })
